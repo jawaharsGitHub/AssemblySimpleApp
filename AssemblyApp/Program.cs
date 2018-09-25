@@ -1,5 +1,6 @@
 ﻿using Common;
 using System;
+using System.Configuration;
 using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
@@ -24,14 +25,30 @@ namespace CenturyFinCorpApp
 
             Thread.CurrentThread.CurrentCulture = myCI;
 
-            var dataFolder = General.GetDataFolder("CenturyFinCorpApp\\bin\\Debug", "DataAccess\\Data\\");
+            var dataFolder = General.GetDataFolder("AssemblyApp\\bin\\Debug", "DataAccess\\Data\\");
 
-            if (AppConfiguration.AddOrUpdateAppSettings("SourceFolder", dataFolder))
+            string key = "SourceFolder";
+            string value = dataFolder;
+
+            var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var settings = configFile.AppSettings.Settings;
+            if (settings[key] == null)
             {
+                settings.Add(key, value);
+            }
+            else
+            {
+                settings[key].Value = value;
+            }
+            configFile.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
+
+            //if (AppConfiguration.AddOrUpdateAppSettings("SourceFolder", dataFolder))
+            //{
                 //LogHelper.WriteLog($"started application");
                 Application.Run(new frmIndexForm());
                 
-            }
+            //}
 
             //frmPrediction.Predict();
 

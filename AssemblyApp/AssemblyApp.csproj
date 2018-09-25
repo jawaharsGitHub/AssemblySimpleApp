@@ -73,167 +73,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FormGeneral.cs" />
-    <Compile Include="UsrCtrl\frmBatches.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UsrCtrl\frmBatches.Designer.cs">
-      <DependentUpon>frmBatches.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UsrCtrl\frmAddCustomer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UsrCtrl\frmAddCustomer.Designer.cs">
-      <DependentUpon>frmAddCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UsrCtrl\frmCreditReport.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UsrCtrl\frmCreditReport.Designer.cs">
-      <DependentUpon>frmCreditReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UsrCtrl\frmCustomerTransaction.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UsrCtrl\frmCustomerTransaction.Designer.cs">
-      <DependentUpon>frmCustomerTransaction.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UsrCtrl\frmCustomers.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UsrCtrl\frmCustomers.Designer.cs">
-      <DependentUpon>frmCustomers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UsrCtrl\frmDataCheck.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UsrCtrl\frmDataCheck.Designer.cs">
-      <DependentUpon>frmDataCheck.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UsrCtrl\frmGeneralReport.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UsrCtrl\frmGeneralReport.Designer.cs">
-      <DependentUpon>frmGeneralReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UsrCtrl\frmHealth.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UsrCtrl\frmHealth.Designer.cs">
-      <DependentUpon>frmHealth.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UsrCtrl\frmInHand.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UsrCtrl\frmInHand.Designer.cs">
-      <DependentUpon>frmInHand.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UsrCtrl\frmDailyEntry.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UsrCtrl\frmDailyEntry.Designer.cs">
-      <DependentUpon>frmDailyEntry.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UsrCtrl\frmDataCorrection.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UsrCtrl\frmDataCorrection.Designer.cs">
-      <DependentUpon>frmDataCorrection.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UsrCtrl\frmExpenditure.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UsrCtrl\frmExpenditure.Designer.cs">
-      <DependentUpon>frmExpenditure.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmIndexForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmIndexForm.Designer.cs">
       <DependentUpon>frmIndexForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UsrCtrl\frmOutstanding.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UsrCtrl\frmOutstanding.Designer.cs">
-      <DependentUpon>frmOutstanding.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UsrCtrl\frmPetrol.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UsrCtrl\frmPetrol.Designer.cs">
-      <DependentUpon>frmPetrol.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UsrCtrl\frmPolitics.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UsrCtrl\frmPolitics.Designer.cs">
-      <DependentUpon>frmPolitics.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UsrCtrl\frmPrediction.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UsrCtrl\frmPrediction.Designer.cs">
-      <DependentUpon>frmPrediction.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UsrCtrl\frmDynamicReport.cs">
+    <Compile Include="ToDo.cs" />
+    <Compile Include="UsrCtrl\uclAddMember.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UsrCtrl\frmDynamicReport.Designer.cs">
-      <DependentUpon>frmDynamicReport.cs</DependentUpon>
+    <Compile Include="UsrCtrl\uclAddMember.Designer.cs">
+      <DependentUpon>uclAddMember.cs</DependentUpon>
     </Compile>
-    <Compile Include="ToDo.cs" />
-    <EmbeddedResource Include="UsrCtrl\frmBatches.resx">
-      <DependentUpon>frmBatches.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UsrCtrl\frmAddCustomer.resx">
-      <DependentUpon>frmAddCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UsrCtrl\frmCreditReport.resx">
-      <DependentUpon>frmCreditReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UsrCtrl\frmCustomerTransaction.resx">
-      <DependentUpon>frmCustomerTransaction.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UsrCtrl\frmCustomers.resx">
-      <DependentUpon>frmCustomers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UsrCtrl\frmDataCheck.resx">
-      <DependentUpon>frmDataCheck.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UsrCtrl\frmGeneralReport.resx">
-      <DependentUpon>frmGeneralReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UsrCtrl\frmHealth.resx">
-      <DependentUpon>frmHealth.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UsrCtrl\frmInHand.resx">
-      <DependentUpon>frmInHand.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UsrCtrl\frmDailyEntry.resx">
-      <DependentUpon>frmDailyEntry.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UsrCtrl\frmDataCorrection.resx">
-      <DependentUpon>frmDataCorrection.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UsrCtrl\frmExpenditure.resx">
-      <DependentUpon>frmExpenditure.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmIndexForm.resx">
       <DependentUpon>frmIndexForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UsrCtrl\frmOutstanding.resx">
-      <DependentUpon>frmOutstanding.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UsrCtrl\frmPetrol.resx">
-      <DependentUpon>frmPetrol.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UsrCtrl\frmPolitics.resx">
-      <DependentUpon>frmPolitics.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UsrCtrl\frmPrediction.resx">
-      <DependentUpon>frmPrediction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -245,8 +101,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UsrCtrl\frmDynamicReport.resx">
-      <DependentUpon>frmDynamicReport.cs</DependentUpon>
+    <EmbeddedResource Include="UsrCtrl\uclAddMember.resx">
+      <DependentUpon>uclAddMember.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config">
       <SubType>Designer</SubType>

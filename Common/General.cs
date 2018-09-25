@@ -30,7 +30,7 @@ namespace Common
         {
             string exeFile = (new Uri(Assembly.GetEntryAssembly().CodeBase)).AbsolutePath;
             string exeDir = Path.GetDirectoryName(exeFile);
-            string dataFolder = exeDir.Replace("CenturyFinCorpApp\\bin\\Debug", "DataAccess\\Data\\");
+            string dataFolder = exeDir.Replace("AssemblyApp\\bin\\Debug", "DataAccess\\Data\\");
 
             return dataFolder;
         }

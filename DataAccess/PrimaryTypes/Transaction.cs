@@ -22,7 +22,7 @@ namespace DataAccess.PrimaryTypes
         public int CustomerSequenceNo { get; set; }
         public DateTime TxnDate { get; set; }
         [JsonIgnore]
-        private Customer _customer;
+        private Division _customer;
 
 
         public static void AddTransaction(Transaction newTxn)
@@ -150,7 +150,7 @@ namespace DataAccess.PrimaryTypes
             }
         }
 
-        public static List<Transaction> GetTransactionDetails(Customer customer)
+        public static List<Transaction> GetTransactionDetails(Division customer)
         {
             try
             {
@@ -273,7 +273,7 @@ namespace DataAccess.PrimaryTypes
 
         }
 
-        public static int GetBalance(Customer customer)
+        public static int GetBalance(Division customer)
         {
             var list = ReadFileAsObjects<Transaction>(JsonFilePath);
             if (list == null || list.Count == 0) return customer.LoanAmount - 0;
@@ -313,7 +313,7 @@ namespace DataAccess.PrimaryTypes
                                 group L by new { L.CustomerId, L.CustomerSequenceNo } into newGroup
                                 select newGroup).ToList();
 
-            var customers = Customer.GetAllCustomer().Where(w => w.IsActive).ToList();
+            var customers = Division.GetAllCustomer().Where(w => w.IsActive).ToList();
 
 
             outsideMoney.ForEach(fe =>
@@ -331,7 +331,7 @@ namespace DataAccess.PrimaryTypes
                             c.Name,
                             c.LoanAmount,
                             t.Balance,
-                            CreditScore = Customer.GetCreditScore(c.CustomerId),
+                            CreditScore = Division.GetCreditScore(c.CustomerId),
                             NeedToClose = ((DateTime.Now - c.AmountGivenDate.Value).TotalDays) > 100 ? 0 : ((c.AmountGivenDate.Value.AddDays(100) - DateTime.Today.Date).Days),
                             DaysToClose = ((DateTime.Now - c.AmountGivenDate.Value).TotalDays) > 100 ? (100 - (DateTime.Now - c.AmountGivenDate.Value.Date).Days) : (t.Balance / (c.LoanAmount / 100)),
                             c.AmountGivenDate,
@@ -353,7 +353,7 @@ namespace DataAccess.PrimaryTypes
                                 group L by new { L.CustomerId, L.CustomerSequenceNo } into newGroup
                                 select newGroup).ToList();
 
-            var customers = Customer.GetAllCustomer().Where(w => w.IsActive).ToList();
+            var customers = Division.GetAllCustomer().Where(w => w.IsActive).ToList();
 
 
             outsideMoney.ForEach(fe =>
@@ -368,7 +368,7 @@ namespace DataAccess.PrimaryTypes
                             c.Name,
                             c.LoanAmount,
                             t.Balance,
-                            CreditScore = Customer.GetCreditScore(c.CustomerId),
+                            CreditScore = Division.GetCreditScore(c.CustomerId),
                             NotGivenFor = (DateTime.Now.Date - t.TxnDate.Date).TotalDays,
                             LastTxnDate = t.TxnDate,
                             c.AmountGivenDate,
@@ -386,7 +386,7 @@ namespace DataAccess.PrimaryTypes
 
                 if (list == null)
                 {
-                    var customersOutstanding = (Customer.GetAllCustomer() ?? new List<Customer>()).Where(w => w.IsActive);
+                    var customersOutstanding = (Division.GetAllCustomer() ?? new List<Division>()).Where(w => w.IsActive);
                     return (customersOutstanding.Sum(s => s.LoanAmount - s.Interest), customersOutstanding.Sum(s => s.LoanAmount));
                 }
 
@@ -397,7 +397,7 @@ namespace DataAccess.PrimaryTypes
                                     select newGroup.ToList().OrderBy(w => w.Balance).First()).ToList(); //.Sum(s => s.Balance);
 
                 // this is useful to calculate all external balances
-                var result = (from c in Customer.GetAllCustomer()
+                var result = (from c in Division.GetAllCustomer()
                               join t in outsideMoney on new { CustomerSeqNumber = c.CustomerSeqNumber, c.CustomerId } equals new
                               {
                                   CustomerSeqNumber = t.CustomerSequenceNo,
