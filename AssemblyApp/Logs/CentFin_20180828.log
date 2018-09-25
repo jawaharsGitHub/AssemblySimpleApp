@@ -1,0 +1,12 @@
+2018-08-28 01:28:34,360 [1] DEBUG - [-] started application
+2018-08-28 01:31:36,041 [1] DEBUG - [-] started application
+2018-08-28 01:35:16,294 [1] DEBUG - [-] started application
+2018-08-28 21:42:54,146 [1] DEBUG - [-] started application
+2018-08-28 21:43:02,320 [1] DEBUG - [-] started application
+2018-08-28 21:47:56,014 [1] DEBUG - [44-68] Good News, This txn will be closed!
+2018-08-28 21:48:26,483 [1] DEBUG - [44-68] Balance is less than 0. Please check your amount. Txn Aborted!
+2018-08-28 21:48:51,642 [1] DEBUG - [44-115] Balance is less than 0. Please check your amount. Txn Aborted!
+2018-08-28 21:49:17,977 [1] DEBUG - [44-115] Good News, This txn will be closed!
+2018-08-28 22:35:58,051 [1] DEBUG - [-] started application
+2018-08-28 22:37:48,098 [1] DEBUG - [-] started application
+2018-08-28 22:39:42,512 [1] DEBUG - [-] started application

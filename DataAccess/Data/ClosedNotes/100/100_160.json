@@ -1,0 +1,32 @@
+[
+  {
+    "CustomerId": 100,
+    "IsClosed": false,
+    "TransactionId": 4106,
+    "AmountReceived": 0,
+    "Balance": 5000,
+    "TxnUpdatedDate": null,
+    "CustomerSequenceNo": 160,
+    "TxnDate": "2018-09-09T22:10:52.3982743-04:00"
+  },
+  {
+    "CustomerId": 100,
+    "IsClosed": false,
+    "TransactionId": 4140,
+    "AmountReceived": 100,
+    "Balance": 4900,
+    "TxnUpdatedDate": null,
+    "CustomerSequenceNo": 160,
+    "TxnDate": "2018-09-10T22:03:16.7213468-04:00"
+  },
+  {
+    "CustomerId": 100,
+    "IsClosed": true,
+    "TransactionId": 4181,
+    "AmountReceived": 4900,
+    "Balance": 0,
+    "TxnUpdatedDate": null,
+    "CustomerSequenceNo": 160,
+    "TxnDate": "2018-09-11T21:55:25.4152913-04:00"
+  }
+]

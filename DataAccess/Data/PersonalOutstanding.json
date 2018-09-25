@@ -1,0 +1,118 @@
+﻿[
+
+  {
+    "Name": "Vanitha",
+    "Amount": 15000,
+    "Date": "01-03-2016",
+    "Notes": "March 2016 - For Shed"
+  },
+  {
+    "Name": "Vanitha",
+    "Amount": 10000,
+    "Date": "01-05-2016",
+    "Notes": "May 2016 -10k"
+  },
+  {
+    "Name": "Vanitha",
+    "Amount": 85000,
+    "Date": "01-10-2016",
+    "Notes": "Oct 2016 -Credit-1,3000 Balance is 85K , paid 9month*5k=45k"
+  },
+  {
+    "Name": "Vanitha",
+    "Amount": 27000,
+    "Date": "01-07-2017",
+    "Notes": "Shahana School Fee"
+  },
+  {
+    "Name": "Vanitha",
+    "Amount": 10000,
+    "Date": "01-07-2017",
+    "Notes": "Shahana LIC 5k,  Sathvika School Fees - 5k"
+  },
+  {
+    "Name": "Vanitha",
+    "Amount": 50000,
+    "Date": "01-11-2017",
+    "Notes": "Mama Credit"
+  },
+  {
+    "Name": "Vanitha",
+    "Amount": 10000,
+    "Date": "01-12-2017",
+    "Notes": "Mama Credit"
+  },
+  {
+    "Name": "Vanitha",
+    "Amount": 50000,
+    "Date": "01-12-2017",
+    "Notes": "2 wheeler active -  Credit"
+  },
+  {
+    "Name": "Sekar Bro",
+    "Amount": 20000,
+    "Date": "01-02-2017",
+    "Notes": ""
+  },
+  {
+    "Name": "Jothi",
+    "Amount": 20000,
+    "Date": "01-12-2017",
+    "Notes": ""
+  },
+  {
+    "Name": "Santhanam Uncle",
+    "Amount": 25000,
+    "Date": "02-08-2018",
+    "Notes": "for selavu"
+  },
+  {
+    "Name": "Santhanam Uncle",
+    "Amount": 7000, // return on sep 4th 2018. - 7000 on 12 sep 2018
+    "Date": "12-09-2018",
+    "Notes": "for bank loan as vanitha salary not yet credited."
+  },
+  {
+    "Name": "Vanitha",
+    "Amount": 25000,
+    "Date": "01-02-2017",
+    "Notes": "First Month Salary after Govt Job"
+  },
+  {
+    "Name": "Vengulam Raju",
+    "Amount": 30000,
+    "Date": "01-02-2017",
+    "Notes": ""
+  },
+  {
+    "Name": "Vanitha",
+    "Amount": 400000,
+    "Date": "01-02-2017",
+    "Notes": "Gold Return"
+  },
+  {
+    "Name": "Vanitha",
+    "Amount": 293000,
+    "Date": "01-02-2017",
+    "Notes": "For Mama Arusi Loan"
+  },
+  {
+    "Name": "Vanitha",
+    "Amount": 10000,
+    "Date": "01-02-2017",
+    "Notes": "Lawyer Fee - Job Care"
+  },
+  {
+    "Name": "G",
+    "Amount": 92000,
+    "Date": "01-02-2017",
+    "Notes": "Seetu Money"
+  },
+  {
+    "Name": "Ramesh Bro",
+    "Amount": 15000,
+    "Date": "01-08-2017",
+    "Notes": "Help"
+  }
+
+]

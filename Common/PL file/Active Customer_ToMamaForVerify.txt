@@ -1,0 +1,78 @@
+--1.Panner Selvam
+--2.Kumar-MuruganIdliKadai
+-- 3.vignesh-Computer System
+--4.Selvi - Regunathapuram
+-- 5.Rani - Regunathapuram
+--6.Karthick - Bharathi Nagar
+---7.Seeni Mohamed - Chappel Business
+--8.Dinesh - Bharathi Nagar
+--9.Muniasamy-PorattaMaster
+--10.Pandi Maligai - CheckPost
+-- 11.Munis - Travels
+--12.Naga Periasamy
+-- 13.Asan-Kaikari Kadai
+--14.Balaji-Om Sakthi Nagar
+--15.MS Fancy
+----16.Md Karu - Muttia business
+--17.veera murugan - driver
+-- 18.Ganesan - Murugan Canteen
+--19.Mujibur Rahman - Ramnad
+--20.Bala - Ilai Kadai
+--21.Murugan - InMuruganIdliShop
+--22.Raghavan - Muthunal
+--23.Durai - Britannia
+-- 24.arumugam - Bharthi Nagar 
+-- 25.Bavani Store - Kadamba Nagar
+--26.Iqbal
+--27.abi - thirupullani
+--28.Gopi - Gokulam Mess
+--29.Vigneswaran - PCC Service
+--30.Muthu Alif - Muttai Kadai
+-- 31.Sulthan - Travels
+-- 32.Dharmaraj - Ironing Shop
+-- 33.Raja Lakshmi - Kalangarai
+--34.Selvam - Contractor work
+--35.mohamed Kassim - Kokarako Hotel
+-- 36.jothi - Aranmanai
+-- 37.Thanga Raj - Juice Shop
+-- 38.Seeni - Bharathi Nagar
+-- 39.Sameem Bai - Market
+-- 40.jayakumar - kaikari kadai
+--41.Naga Periasamy
+--42.Raja - Auto Driver - Kadamba Nagar
+--43.Thanga Pandi - Murukku Business
+--44.Sikkanthar
+--45.Nagoor Gani - Kaikari Shop
+--46.Maruthu - Ironing Shop
+-- 47.Yasik - MaligaiMarket
+-- 48.Bagavathi - Saloon
+--49.SivaPrakasam-TN Store
+--50.Vasu - Tea Shop
+-- 51.Kaleeswari - Kadamba Nagar - Maligai
+-- 52.Raja - Mechanic - Kadamba Nagar
+-- 53.Sabi - Bai
+-- 54.Gautham - Electrician
+--55.Muniasamy - Thalaiari
+-- 56.Syed Raja Md - Soopu Kadai
+--57.Thiruvikas-Maligai-old check post
+-- 58.Setu Baseer - Market
+--59.Raj Roja - Soopu Kadai
+--60.KalaiSelvan-Tirupullani
+-- 61.Masthan Maligai Market
+-- 62.Bala - Ilai Kadai (2)
+-- 63.Ganesh - Fish Market
+--64.Akbar - Bharathi Nagar
+-- 65.Syed Thahir - Chicken Shop
+-- 66.Murugan - Travels -Pattinamkathan
+-- 67.Gopal - Bharathinagar - Checku Ennai
+-- 68.Kumar - Market - Kaikari Kadia - Pound Kadai Theru
+--69.Manikandan T Stall Kadamba Nagar
+--70.Raghavan - Ilamanur
+-- 71.Mani - PattinamKathan - T Shop
+-- 72.Gurusamy - Vadakku theru - petti kadai
+-- 73.Kathiravan - Fancy Store KTR Complex
+--74.Dharmar Driver Anna
+-- 75.Jayakumar - Bovonto Agency
+-- 76.Md Rabik - Vanmalai Water -  Madurai Road
+--77.Bala - Vanni vayal - Share auto
+--78. raj bavani

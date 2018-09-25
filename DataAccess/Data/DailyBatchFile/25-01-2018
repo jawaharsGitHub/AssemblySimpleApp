@@ -1,0 +1,12 @@
+[
+  {
+    "CustomerId": 1,
+    "IsClosed": true,
+    "TransactionId": 1067,
+    "AmountReceived": 0,
+    "Balance": 10000,
+    "TxnUpdatedDate": null,
+    "CustomerSequenceNo": 1,
+    "TxnDate": "2018-01-25T23:43:54"
+  }
+]
