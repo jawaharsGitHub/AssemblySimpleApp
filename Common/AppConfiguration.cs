@@ -7,7 +7,7 @@ namespace Common
     public class AppConfiguration
     {
 
-        public static string DivisionFile { get { return GetFullPath("DivisionFile");  } }
+        public static string ZonalFile { get { return GetFullPath("zonal");  } }
 
         public static string TransactionFile { get; } = GetFullPath("TransactionFile");
 

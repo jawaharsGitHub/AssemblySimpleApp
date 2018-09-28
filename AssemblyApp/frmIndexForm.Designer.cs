@@ -35,7 +35,7 @@
             // 
             this.panel1.Location = new System.Drawing.Point(7, 30);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1027, 573);
+            this.panel1.Size = new System.Drawing.Size(1109, 787);
             this.panel1.TabIndex = 18;
             // 
             // frmIndexForm
@@ -44,7 +44,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.ClientSize = new System.Drawing.Size(1128, 647);
+            this.ClientSize = new System.Drawing.Size(1128, 829);
             this.Controls.Add(this.panel1);
             this.Name = "frmIndexForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

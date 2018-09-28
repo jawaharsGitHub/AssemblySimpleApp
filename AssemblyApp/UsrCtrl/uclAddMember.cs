@@ -18,7 +18,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             InitializeComponent();
 
-            cmbDivision.DataSource = Division.GetAll();
+            cmbDivision.DataSource = Zonal.GetAll();
         }
     }
 }

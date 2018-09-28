@@ -88,6 +88,12 @@
     <Compile Include="UsrCtrl\uclAddMember.Designer.cs">
       <DependentUpon>uclAddMember.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsrCtrl\ucZonal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsrCtrl\ucZonal.Designer.cs">
+      <DependentUpon>ucZonal.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmIndexForm.resx">
       <DependentUpon>frmIndexForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,6 +109,9 @@
     </Compile>
     <EmbeddedResource Include="UsrCtrl\uclAddMember.resx">
       <DependentUpon>uclAddMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsrCtrl\ucZonal.resx">
+      <DependentUpon>ucZonal.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config">
       <SubType>Designer</SubType>

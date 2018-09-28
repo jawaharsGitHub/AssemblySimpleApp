@@ -73,7 +73,7 @@
     <Compile Include="PrimaryTypes\InHandAndBank.cs" />
     <Compile Include="PrimaryTypes\Investment.cs" />
     <Compile Include="PrimaryTypes\Petrol.cs" />
-    <Compile Include="PrimaryTypes\Division.cs" />
+    <Compile Include="PrimaryTypes\Zonal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -89,7 +89,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\division.json" />
+    <None Include="Data\zonal.json" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

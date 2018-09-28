@@ -44,7 +44,7 @@ namespace CenturyFinCorpApp
             panel1.Width = 1300;
             panel1.Height = this.Height;
 
-            ShowForm<uclAddMember>(); // initial form to be loaded
+            ShowForm<ucZonal>(); // initial form to be loaded
         }
 
         private void CreateMenu()
@@ -61,13 +61,17 @@ namespace CenturyFinCorpApp
             var mnuMember = new ToolStripMenuItem() { Name = "addMember", Text = "ADD-MEMBER" };
             mnuMember.Click += (s, e) => ShowForm<uclAddMember>(); ;
             menuStrip.Items.Add(mnuMember);
-            
+
+            var mnuZonal = new ToolStripMenuItem() { Name = "zonal", Text = "ZONAL" };
+            mnuZonal.Click += (s, e) => ShowForm<ucZonal>(); ;
+            menuStrip.Items.Add(mnuZonal);
+
 
             this.Controls.Add(menuStrip);
         }
 
         
-        public void ShowForm<T>(Division cus = null) where T : UserControl, new()
+        public void ShowForm<T>(Zonal cus = null) where T : UserControl, new()
         {
 
             T ac = new T();
