@@ -1,33 +1,33 @@
-ZonalId,Name,Code,Headquarters,Established,FormedFrom,AreakmSquare,Population,PopulationDensity,Taluk
-1,Ariyalur,AR,Ariyalur,23-Nov-07,Perambalur district,1949.31,754894,387,3
-2,Chennai,CH,,1-Nov-56,,426,4646732,26105,17
-3,Coimbatore,CO,Coimbatore,1-Nov-56,,4723,3458045,732,9
-4,Cuddalore,CU,Cuddalore,30-Sep-93,South Arcot district,3678,2605914,709,7
-5,Dharmapuri,DH,Dharmapuri,2-Oct-65,Salem district,4497.77,1506843,335,7
-6,Dindigul,DI,Dindigul,15-Sep-85,Madurai district,6266.64,2159775,345,9
-7,Erode,ER,Erode,31-Aug-79,Coimbatore district,4723,2251744,394,7
-8,Kanchipuram,KC,Kanchipuram,1-Jul-97,Chengalpattu district,4393,3998252,910,11
-9,Kanniyakumari,KC,Nagercoil,1-Nov-56,,1672,1870374,1119,4
-10,Karur,KR,Karur,30-Sep-95,Tiruchirappalli district,2895.57,1064493,368,6
-11,Krishnagiri,KR,Krishnagiri,9-Feb-04,Dharmapuri district,5143,1879809,366,5
-12,Madurai,MA,Madurai,1-Nov-56,Dharmapuri district,3741.73,3038252,812,7
-13,Nagapattinam,NG,Nagapattinam,18-Oct-91,Thanjavur district,2715.83,1616450,595,7
-14,Namakkal,NM,Namakkal,1-Jan-97,Salem district,3363,1726601,513,5
-15,Nilgiris,NI,Ooty,1-Nov-56,,2452.5,735394,300,6
-16,Perambalur,PE,Perambalur,30-Sep-95,Tiruchirappalli district,1757,565223,322,4
-17,Pudukkottai,PU,Pudukkottai,14-Jan-74,Tiruchirappalli district,4663,1618345,347,10
-18,Ramanathapuram,RA,Ramanathapuram,1-Nov-56,,4089.57,1353445,331,8
-19,Salem,SA,Salem,1-Nov-56,,5205,3482056,669,9
-20,Sivagangai,SI,Sivagangai,15-Mar-85,Madurai district and Ramanathapuram district,4086,1339101,328,7
-21,Thanjavur,TJ,Thanjavur,1-Nov-56,,3396.57,2405890,708,8
-22,Theni,TH,Theni,25-Jul-96,Madurai District,3306,1245899,406,5
-23,Thoothukudi,TK,Thoothukudi,20-Oct-86,Tirunelveli District,4621,1750176,379,8
-24,Tiruchirappalli,TC,Tiruchirappalli,1-Nov-56,,4407,2722290,618,11
-25,Tirunelveli,TI,Tirunelveli,1-Nov-56,,6810,3077233,452,12
-26,Tiruppur,TP,Tiruppur,22-Feb-09,Coimbatore district and Erode district,5186.34,2479052,478,7
-27,Tiruvallur,TL,Tiruvallur,1-Jul-97,Chengalpattu District,3424,3728104,1089,8
-28,Tiruvannamalai,TV,Tiruvannamalai,30-Sep-89,North Arcot District,6191,2464875,398,7
-29,Tiruvarur,TR,Thiruvarur,18-Oct-91,Thanjavur District,2161,1264277,585,7
-30,Vellore,VE,Vellore,30-Sep-89,Vellore District,6077,3936331,648,9
-31,Villuppuram,VL,Villuppuram,30-Sep-93,South Arcot District,7217,3458873,479,10
-32,Viridhunagar,VR,Virudhunagar,15-Mar-85,Madurai district and Ramanathapuram district,4288,1942288,453,8
+ZonalId,Name,Code,Headquarters,Established,FormedFrom,AreakmSquare,Population,PopulationDensity,District,Taluk,Block
+1,Ariyalur,AR,Ariyalur,23-Nov-07,Perambalur district,1949.31,754894,387,,3,
+2,Chennai,CH,,1-Nov-56,,426,4646732,26105,,17,
+3,Coimbatore,CO,Coimbatore,1-Nov-56,,4723,3458045,732,,9,
+4,Cuddalore,CU,Cuddalore,30-Sep-93,South Arcot district,3678,2605914,709,,7,
+5,Dharmapuri,DH,Dharmapuri,2-Oct-65,Salem district,4497.77,1506843,335,,7,
+6,Dindigul,DI,Dindigul,15-Sep-85,Madurai district,6266.64,2159775,345,,9,
+7,Erode,ER,Erode,31-Aug-79,Coimbatore district,4723,2251744,394,,7,
+8,Kanchipuram,KC,Kanchipuram,1-Jul-97,Chengalpattu district,4393,3998252,910,,11,
+9,Kanniyakumari,KC,Nagercoil,1-Nov-56,,1672,1870374,1119,,4,
+10,Karur,KR,Karur,30-Sep-95,Tiruchirappalli district,2895.57,1064493,368,,6,
+11,Krishnagiri,KR,Krishnagiri,9-Feb-04,Dharmapuri district,5143,1879809,366,,5,
+12,Madurai,MA,Madurai,1-Nov-56,Dharmapuri district,3741.73,3038252,812,,7,
+13,Nagapattinam,NG,Nagapattinam,18-Oct-91,Thanjavur district,2715.83,1616450,595,,7,
+14,Namakkal,NM,Namakkal,1-Jan-97,Salem district,3363,1726601,513,,5,
+15,Nilgiris,NI,Ooty,1-Nov-56,,2452.5,735394,300,,6,
+16,Perambalur,PE,Perambalur,30-Sep-95,Tiruchirappalli district,1757,565223,322,,4,
+17,Pudukkottai,PU,Pudukkottai,14-Jan-74,Tiruchirappalli district,4663,1618345,347,,10,
+18,Ramanathapuram,RA,Ramanathapuram,1-Nov-56,,4089.57,1353445,331,2,8,11
+19,Salem,SA,Salem,1-Nov-56,,5205,3482056,669,,9,
+20,Sivagangai,SI,Sivagangai,15-Mar-85,Madurai district and Ramanathapuram district,4086,1339101,328,,7,
+21,Thanjavur,TJ,Thanjavur,1-Nov-56,,3396.57,2405890,708,,8,
+22,Theni,TH,Theni,25-Jul-96,Madurai District,3306,1245899,406,,5,
+23,Thoothukudi,TK,Thoothukudi,20-Oct-86,Tirunelveli District,4621,1750176,379,,8,
+24,Tiruchirappalli,TC,Tiruchirappalli,1-Nov-56,,4407,2722290,618,,11,
+25,Tirunelveli,TI,Tirunelveli,1-Nov-56,,6810,3077233,452,,12,
+26,Tiruppur,TP,Tiruppur,22-Feb-09,Coimbatore district and Erode district,5186.34,2479052,478,,7,
+27,Tiruvallur,TL,Tiruvallur,1-Jul-97,Chengalpattu District,3424,3728104,1089,,8,
+28,Tiruvannamalai,TV,Tiruvannamalai,30-Sep-89,North Arcot District,6191,2464875,398,,7,
+29,Tiruvarur,TR,Thiruvarur,18-Oct-91,Thanjavur District,2161,1264277,585,,7,
+30,Vellore,VE,Vellore,30-Sep-89,Vellore District,6077,3936331,648,,9,
+31,Villuppuram,VL,Villuppuram,30-Sep-93,South Arcot District,7217,3458873,479,,10,
+32,Viridhunagar,VR,Virudhunagar,15-Mar-85,Madurai district and Ramanathapuram district,4288,1942288,453,,8,

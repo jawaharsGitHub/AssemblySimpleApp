@@ -9,7 +9,9 @@
     "AreakmSquare": 1949.31,
     "Population": 754894,
     "PopulationDensity": 387,
-    "Taluk": 3
+    "District": "",
+    "Taluk": 3,
+    "Block": ""
   },
   {
     "ZonalId": 2,
@@ -21,7 +23,9 @@
     "AreakmSquare": 426,
     "Population": 4646732,
     "PopulationDensity": 26105,
-    "Taluk": 17
+    "District": "",
+    "Taluk": 17,
+    "Block": ""
   },
   {
     "ZonalId": 3,
@@ -33,7 +37,9 @@
     "AreakmSquare": 4723,
     "Population": 3458045,
     "PopulationDensity": 732,
-    "Taluk": 9
+    "District": "",
+    "Taluk": 9,
+    "Block": ""
   },
   {
     "ZonalId": 4,
@@ -45,7 +51,9 @@
     "AreakmSquare": 3678,
     "Population": 2605914,
     "PopulationDensity": 709,
-    "Taluk": 7
+    "District": "",
+    "Taluk": 7,
+    "Block": ""
   },
   {
     "ZonalId": 5,
@@ -57,7 +65,9 @@
     "AreakmSquare": 4497.77,
     "Population": 1506843,
     "PopulationDensity": 335,
-    "Taluk": 7
+    "District": "",
+    "Taluk": 7,
+    "Block": ""
   },
   {
     "ZonalId": 6,
@@ -69,7 +79,9 @@
     "AreakmSquare": 6266.64,
     "Population": 2159775,
     "PopulationDensity": 345,
-    "Taluk": 9
+    "District": "",
+    "Taluk": 9,
+    "Block": ""
   },
   {
     "ZonalId": 7,
@@ -81,7 +93,9 @@
     "AreakmSquare": 4723,
     "Population": 2251744,
     "PopulationDensity": 394,
-    "Taluk": 7
+    "District": "",
+    "Taluk": 7,
+    "Block": ""
   },
   {
     "ZonalId": 8,
@@ -93,7 +107,9 @@
     "AreakmSquare": 4393,
     "Population": 3998252,
     "PopulationDensity": 910,
-    "Taluk": 11
+    "District": "",
+    "Taluk": 11,
+    "Block": ""
   },
   {
     "ZonalId": 9,
@@ -105,7 +121,9 @@
     "AreakmSquare": 1672,
     "Population": 1870374,
     "PopulationDensity": 1119,
-    "Taluk": 4
+    "District": "",
+    "Taluk": 4,
+    "Block": ""
   },
   {
     "ZonalId": 10,
@@ -117,7 +135,9 @@
     "AreakmSquare": 2895.57,
     "Population": 1064493,
     "PopulationDensity": 368,
-    "Taluk": 6
+    "District": "",
+    "Taluk": 6,
+    "Block": ""
   },
   {
     "ZonalId": 11,
@@ -129,7 +149,9 @@
     "AreakmSquare": 5143,
     "Population": 1879809,
     "PopulationDensity": 366,
-    "Taluk": 5
+    "District": "",
+    "Taluk": 5,
+    "Block": ""
   },
   {
     "ZonalId": 12,
@@ -141,7 +163,9 @@
     "AreakmSquare": 3741.73,
     "Population": 3038252,
     "PopulationDensity": 812,
-    "Taluk": 7
+    "District": "",
+    "Taluk": 7,
+    "Block": ""
   },
   {
     "ZonalId": 13,
@@ -153,7 +177,9 @@
     "AreakmSquare": 2715.83,
     "Population": 1616450,
     "PopulationDensity": 595,
-    "Taluk": 7
+    "District": "",
+    "Taluk": 7,
+    "Block": ""
   },
   {
     "ZonalId": 14,
@@ -165,7 +191,9 @@
     "AreakmSquare": 3363,
     "Population": 1726601,
     "PopulationDensity": 513,
-    "Taluk": 5
+    "District": "",
+    "Taluk": 5,
+    "Block": ""
   },
   {
     "ZonalId": 15,
@@ -177,7 +205,9 @@
     "AreakmSquare": 2452.5,
     "Population": 735394,
     "PopulationDensity": 300,
-    "Taluk": 6
+    "District": "",
+    "Taluk": 6,
+    "Block": ""
   },
   {
     "ZonalId": 16,
@@ -189,7 +219,9 @@
     "AreakmSquare": 1757,
     "Population": 565223,
     "PopulationDensity": 322,
-    "Taluk": 4
+    "District": "",
+    "Taluk": 4,
+    "Block": ""
   },
   {
     "ZonalId": 17,
@@ -201,7 +233,9 @@
     "AreakmSquare": 4663,
     "Population": 1618345,
     "PopulationDensity": 347,
-    "Taluk": 10
+    "District": "",
+    "Taluk": 10,
+    "Block": ""
   },
   {
     "ZonalId": 18,
@@ -213,7 +247,9 @@
     "AreakmSquare": 4089.57,
     "Population": 1353445,
     "PopulationDensity": 331,
-    "Taluk": 8
+    "District": 2,
+    "Taluk": 8,
+    "Block": 11
   },
   {
     "ZonalId": 19,
@@ -225,7 +261,9 @@
     "AreakmSquare": 5205,
     "Population": 3482056,
     "PopulationDensity": 669,
-    "Taluk": 9
+    "District": "",
+    "Taluk": 9,
+    "Block": ""
   },
   {
     "ZonalId": 20,
@@ -237,7 +275,9 @@
     "AreakmSquare": 4086,
     "Population": 1339101,
     "PopulationDensity": 328,
-    "Taluk": 7
+    "District": "",
+    "Taluk": 7,
+    "Block": ""
   },
   {
     "ZonalId": 21,
@@ -249,7 +289,9 @@
     "AreakmSquare": 3396.57,
     "Population": 2405890,
     "PopulationDensity": 708,
-    "Taluk": 8
+    "District": "",
+    "Taluk": 8,
+    "Block": ""
   },
   {
     "ZonalId": 22,
@@ -261,7 +303,9 @@
     "AreakmSquare": 3306,
     "Population": 1245899,
     "PopulationDensity": 406,
-    "Taluk": 5
+    "District": "",
+    "Taluk": 5,
+    "Block": ""
   },
   {
     "ZonalId": 23,
@@ -273,7 +317,9 @@
     "AreakmSquare": 4621,
     "Population": 1750176,
     "PopulationDensity": 379,
-    "Taluk": 8
+    "District": "",
+    "Taluk": 8,
+    "Block": ""
   },
   {
     "ZonalId": 24,
@@ -285,7 +331,9 @@
     "AreakmSquare": 4407,
     "Population": 2722290,
     "PopulationDensity": 618,
-    "Taluk": 11
+    "District": "",
+    "Taluk": 11,
+    "Block": ""
   },
   {
     "ZonalId": 25,
@@ -297,7 +345,9 @@
     "AreakmSquare": 6810,
     "Population": 3077233,
     "PopulationDensity": 452,
-    "Taluk": 12
+    "District": "",
+    "Taluk": 12,
+    "Block": ""
   },
   {
     "ZonalId": 26,
@@ -309,7 +359,9 @@
     "AreakmSquare": 5186.34,
     "Population": 2479052,
     "PopulationDensity": 478,
-    "Taluk": 7
+    "District": "",
+    "Taluk": 7,
+    "Block": ""
   },
   {
     "ZonalId": 27,
@@ -321,7 +373,9 @@
     "AreakmSquare": 3424,
     "Population": 3728104,
     "PopulationDensity": 1089,
-    "Taluk": 8
+    "District": "",
+    "Taluk": 8,
+    "Block": ""
   },
   {
     "ZonalId": 28,
@@ -333,7 +387,9 @@
     "AreakmSquare": 6191,
     "Population": 2464875,
     "PopulationDensity": 398,
-    "Taluk": 7
+    "District": "",
+    "Taluk": 7,
+    "Block": ""
   },
   {
     "ZonalId": 29,
@@ -345,7 +401,9 @@
     "AreakmSquare": 2161,
     "Population": 1264277,
     "PopulationDensity": 585,
-    "Taluk": 7
+    "District": "",
+    "Taluk": 7,
+    "Block": ""
   },
   {
     "ZonalId": 30,
@@ -357,7 +415,9 @@
     "AreakmSquare": 6077,
     "Population": 3936331,
     "PopulationDensity": 648,
-    "Taluk": 9
+    "District": "",
+    "Taluk": 9,
+    "Block": ""
   },
   {
     "ZonalId": 31,
@@ -369,7 +429,9 @@
     "AreakmSquare": 7217,
     "Population": 3458873,
     "PopulationDensity": 479,
-    "Taluk": 10
+    "District": "",
+    "Taluk": 10,
+    "Block": ""
   },
   {
     "ZonalId": 32,
@@ -381,6 +443,8 @@
     "AreakmSquare": 4288,
     "Population": 1942288,
     "PopulationDensity": 453,
-    "Taluk": 8
+    "District": "",
+    "Taluk": 8,
+    "Block": ""
   }
 ]

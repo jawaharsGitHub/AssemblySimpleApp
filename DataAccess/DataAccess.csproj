@@ -89,6 +89,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\union.json" />
     <None Include="Data\zonal.json" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

@@ -24,7 +24,9 @@ namespace DataAccess.PrimaryTypes
         public decimal AreakmSquare { get; set; }
         public int Population { get; set; }
         public int PopulationDensity { get; set; }
+        public int? District { get; set; }
         public int Taluk { get; set; }
+        public int? Block { get; set; }
 
 
         public static void AddDivision(Zonal newCustomer)
