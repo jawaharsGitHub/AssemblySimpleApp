@@ -4,10 +4,10 @@ using System.IO;
 
 namespace Common
 {
-    public static class AppConfiguration
+    public class AppConfiguration
     {
 
-        public static string DivisionFile { get; } = GetFullPath("DivisionFile");
+        public static string DivisionFile { get { return GetFullPath("DivisionFile");  } }
 
         public static string TransactionFile { get; } = GetFullPath("TransactionFile");
 
@@ -33,8 +33,8 @@ namespace Common
 
         private static string GetFullPath(string configKey)
         {
-            //if (ConfigurationManager.AppSettings["SourceFolder"] == "") return null;
-                return Path.Combine(ConfigurationManager.AppSettings["SourceFolder"], ConfigurationManager.AppSettings[configKey]);
+            if (ConfigurationManager.AppSettings[configKey] == null) return null;
+            return Path.Combine(ConfigurationManager.AppSettings["SourceFolder"], ConfigurationManager.AppSettings[configKey]);
 
         }
 

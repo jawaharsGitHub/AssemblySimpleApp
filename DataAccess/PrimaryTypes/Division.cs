@@ -11,16 +11,11 @@ namespace DataAccess.PrimaryTypes
     public class Division : BaseClass
     {
 
-        private static string JsonFilePath;
+        private static string JsonFilePath = AppConfiguration.DivisionFile;
 
         public int DivisionId { get; set; }
         public string Name { get; set; }
 
-        static Division()
-        {
-            JsonFilePath = AppConfiguration.DivisionFile;
-
-        }
 
         public static void AddDivision(Division newCustomer)
         {
