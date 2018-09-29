@@ -13,6 +13,8 @@ namespace DataAccess.PrimaryTypes
         private static string JsonFilePath = AppConfiguration.AssemblyFile;
 
 
+        public int SNo { get; set; }
+
         public int AssemblyNo { get; set; }
 
         public string Name { get; set; }

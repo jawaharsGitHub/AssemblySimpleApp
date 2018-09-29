@@ -45,9 +45,9 @@ namespace CenturyFinCorpApp.UsrCtrl
         private void cmbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
             var value = ((KeyValuePair<int, string>)cmbFilter.SelectedItem).Key;
-            List<Zonal> filteredZonals;
+            List<Zonal> filteredZonals = zonals;
 
-            if (value == 2) filteredZonals = zonals.OrderBy(o => o.ZonalId).ToList(); 
+            if (value == 1) filteredZonals = zonals.OrderBy(o => o.ZonalId).ToList(); 
 
             else if (value == 2) filteredZonals = zonals.OrderBy(o => o.Name).ToList();
 
@@ -65,7 +65,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             else if (value == 9) filteredZonals = zonals.OrderByDescending(o => o.PopulationDensity).ToList();
 
-            else  filteredZonals = zonals.OrderByDescending(o => o.Taluk).ToList(); // (value == 10)
+            else if (value == 10) filteredZonals = zonals.OrderByDescending(o => o.Taluk).ToList(); 
 
 
 
