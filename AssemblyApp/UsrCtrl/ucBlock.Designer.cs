@@ -1,6 +1,6 @@
 ﻿namespace CenturyFinCorpApp.UsrCtrl
 {
-    partial class ucPanchayat
+    partial class ucBlock
     {
         /// <summary> 
         /// Required designer variable.
@@ -35,18 +35,18 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(28, 40);
+            this.dataGridView1.Location = new System.Drawing.Point(34, 84);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1206, 560);
+            this.dataGridView1.Size = new System.Drawing.Size(603, 411);
             this.dataGridView1.TabIndex = 0;
             // 
-            // ucPanchayat
+            // ucBlock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dataGridView1);
-            this.Name = "ucPanchayat";
-            this.Size = new System.Drawing.Size(1271, 620);
+            this.Name = "ucBlock";
+            this.Size = new System.Drawing.Size(675, 545);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

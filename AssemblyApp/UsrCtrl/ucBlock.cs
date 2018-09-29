@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataAccess.PrimaryTypes;
 
 namespace CenturyFinCorpApp.UsrCtrl
 {
-    public partial class ucUnionBlock : UserControl
+    public partial class ucBlock : UserControl
     {
-        public ucUnionBlock()
+        public ucBlock()
         {
             InitializeComponent();
+
+            dataGridView1.DataSource = Block.GetAll();
         }
     }
 }

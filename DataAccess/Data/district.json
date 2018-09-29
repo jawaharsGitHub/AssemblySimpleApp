@@ -1,0 +1,16 @@
+[
+  {
+    "DistrictId": 181,
+    "ZonalId": 18,
+    "Name": "Ramanathapuram",
+    "Code": "RMD",
+    "Blocks": "5"
+  },
+  {
+    "DistrictId": 182,
+    "ZonalId": 18,
+    "Name": "Paramakudi",
+    "Code": "PKD",
+    "Blocks": "6"
+  }
+]

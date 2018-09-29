@@ -94,6 +94,18 @@
     <Compile Include="UsrCtrl\ucAssembly.Designer.cs">
       <DependentUpon>ucAssembly.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsrCtrl\ucBlock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsrCtrl\ucBlock.Designer.cs">
+      <DependentUpon>ucBlock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsrCtrl\ucDistrict.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsrCtrl\ucDistrict.Designer.cs">
+      <DependentUpon>ucDistrict.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsrCtrl\uclAddMember.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -105,12 +117,6 @@
     </Compile>
     <Compile Include="UsrCtrl\ucPanchayat.Designer.cs">
       <DependentUpon>ucPanchayat.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UsrCtrl\ucUnionBlock.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UsrCtrl\ucUnionBlock.Designer.cs">
-      <DependentUpon>ucUnionBlock.cs</DependentUpon>
     </Compile>
     <Compile Include="UsrCtrl\ucZonal.cs">
       <SubType>UserControl</SubType>
@@ -137,14 +143,17 @@
     <EmbeddedResource Include="UsrCtrl\ucAssembly.resx">
       <DependentUpon>ucAssembly.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UsrCtrl\ucBlock.resx">
+      <DependentUpon>ucBlock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsrCtrl\ucDistrict.resx">
+      <DependentUpon>ucDistrict.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UsrCtrl\uclAddMember.resx">
       <DependentUpon>uclAddMember.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsrCtrl\ucPanchayat.resx">
       <DependentUpon>ucPanchayat.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UsrCtrl\ucUnionBlock.resx">
-      <DependentUpon>ucUnionBlock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsrCtrl\ucZonal.resx">
       <DependentUpon>ucZonal.cs</DependentUpon>

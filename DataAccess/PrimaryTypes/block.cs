@@ -7,20 +7,21 @@ using System.Threading.Tasks;
 
 namespace DataAccess.PrimaryTypes
 {
-    public class Panchayat : BaseClass
+    public class Block : BaseClass
     {
 
-        private static string JsonFilePath = AppConfiguration.PanchayatFile;
+        private static string JsonFilePath = AppConfiguration.BlockFile;
 
-
-        public int PanchayatId { get; set; }
-
-        public int? AssemblyId { get; set; }
 
         public int BlockId { get; set; }
 
+        public int DistrictId { get; set; }
+
         public string Name { get; set; }
-        // TODO: need to remove nullable types.
+
+        public int Ondrium { get; set; }
+
+        // TODO: remove nullable
         public int? Population { get; set; }
         public int? Male { get; set; }
         public int? Female { get; set; }
@@ -31,10 +32,11 @@ namespace DataAccess.PrimaryTypes
         public int? Stmale { get; set; }
         public int? StFemale { get; set; }
 
-        public static List<Panchayat> GetAll()
+        public static List<Block> GetAll()
         {
-            return ReadFileAsObjects<Panchayat>(JsonFilePath);
+            return ReadFileAsObjects<Block>(JsonFilePath);
         }
+
 
     }
 }

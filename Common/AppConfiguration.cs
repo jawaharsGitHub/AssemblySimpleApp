@@ -13,6 +13,10 @@ namespace Common
 
         public static string PanchayatFile { get; } = GetFullPath("panchayat");
 
+        public static string DistrictFile { get; } = GetFullPath("district");
+
+        public static string BlockFile { get; } = GetFullPath("block");
+
         public static string InvestmentFile { get; } = GetFullPath("InvestmentFile");
 
         public static string ClosedNotesFile { get; } = GetFullPath("ClosedNotesFile");

@@ -67,9 +67,11 @@
     <Compile Include="ExtendedTypes\CustomerDailyTxn.cs" />
     <Compile Include="ExtendedTypes\ExtDailyTxn.cs" />
     <Compile Include="ExtendedTypes\ReturnTypeEnum.cs" />
+    <Compile Include="PrimaryTypes\block.cs" />
     <Compile Include="PrimaryTypes\Assembly.cs" />
     <Compile Include="PrimaryTypes\DailyCollectionDetail.cs" />
     <Compile Include="PrimaryTypes\CollectionPerDay.cs" />
+    <Compile Include="PrimaryTypes\District.cs" />
     <Compile Include="PrimaryTypes\Expenditure.cs" />
     <Compile Include="PrimaryTypes\IncomeReport.cs" />
     <Compile Include="PrimaryTypes\InHandAndBank.cs" />
@@ -98,7 +100,8 @@
     <None Include="Data\csvData\PanchayatUnion%28Blocks%29.csv" />
     <None Include="Data\csvData\Zonal.csv" />
     <None Include="Data\panchayat.json" />
-    <None Include="Data\union.json" />
+    <None Include="Data\block.json" />
+    <None Include="Data\district.json" />
     <None Include="Data\zonal.json" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

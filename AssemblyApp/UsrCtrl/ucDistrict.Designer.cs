@@ -1,6 +1,6 @@
 ﻿namespace CenturyFinCorpApp.UsrCtrl
 {
-    partial class ucUnionBlock
+    partial class ucDistrict
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,18 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // ucUnionBlock
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(60, 40);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(567, 493);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // ucDistrict
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "ucUnionBlock";
-            this.Size = new System.Drawing.Size(584, 525);
+            this.Controls.Add(this.dataGridView1);
+            this.Name = "ucDistrict";
+            this.Size = new System.Drawing.Size(910, 566);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
