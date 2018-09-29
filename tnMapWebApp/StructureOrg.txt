@@ -1,8 +1,9 @@
-﻿Sattamandra Thoguthi
-		Punchayat
-				Village
-					Ward
-						Booth	
+﻿Mandalam (Actual Maavattam or district)
+	Maavattam(2 thoguthi)
+		Sattamandra Thoguthi
+			Ondrium
+				Punchayat
+						Booth Member	
 					
 				
 
