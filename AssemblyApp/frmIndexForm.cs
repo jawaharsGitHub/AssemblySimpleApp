@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace CenturyFinCorpApp
@@ -57,10 +58,7 @@ namespace CenturyFinCorpApp
             };
 
 
-            //Member
-            var mnuMember = new ToolStripMenuItem() { Name = "addMember", Text = "ADD-MEMBER" };
-            mnuMember.Click += (s, e) => ShowForm<uclAddMember>(); ;
-            menuStrip.Items.Add(mnuMember);
+
 
             var mnuZonal = new ToolStripMenuItem() { Name = "zonal", Text = "ZONAL" };
             mnuZonal.Click += (s, e) => ShowForm<ucZonal>(); ;
@@ -75,7 +73,7 @@ namespace CenturyFinCorpApp
             mnuAssembly.Click += (s, e) => ShowForm<ucAssembly>(); ;
             menuStrip.Items.Add(mnuAssembly);
 
-            var mnuBlock= new ToolStripMenuItem() { Name = "block", Text = "UNION-BLOCK" };
+            var mnuBlock = new ToolStripMenuItem() { Name = "block", Text = "UNION-BLOCK" };
             mnuBlock.Click += (s, e) => ShowForm<ucBlock>(); ;
             menuStrip.Items.Add(mnuBlock);
 
@@ -83,29 +81,65 @@ namespace CenturyFinCorpApp
             mnuPanchayat.Click += (s, e) => ShowForm<ucPanchayat>(); ;
             menuStrip.Items.Add(mnuPanchayat);
 
+
+
+
+
+
+            //Member
+            var mnuMember = new ToolStripMenuItem() { Name = "addMember", Text = "ADD-MEMBER" };
+            mnuMember.Click += (s, e) => ShowForm<uclAddMember>(); ;
+            menuStrip.Items.Add(mnuMember);
+
             var mnuDataHelper = new ToolStripMenuItem() { Name = "dataHelper", Text = "DATA-HELPER" };
             mnuDataHelper.Click += (s, e) => ShowForm<DataHelper>(); ;
             menuStrip.Items.Add(mnuDataHelper);
+
+            var mnuInternational = new ToolStripMenuItem() { Name = "international", Text = "INTER-NATIONAL" };
+            mnuInternational.Click += (s, e) => ShowForm<ucInternational>(); ;
+            menuStrip.Items.Add(mnuInternational);
+
+            var mnuLocalbody = new ToolStripMenuItem() { Name = "localbody", Text = "LOCAL-BODY" };
+            mnuLocalbody.Click += (s, e) => ShowForm<ucLocalBody>(); ;
+            menuStrip.Items.Add(mnuLocalbody);
 
 
             this.Controls.Add(menuStrip);
         }
 
-        
-        public void ShowForm<T>(Zonal cus = null) where T : UserControl, new()
+
+        public void ShowForm<T>(BaseClass cus = null) where T : UserControl
         {
 
-            T ac = new T();
+            //UserControl ac = null;
 
-            if (isAdded && panel1.Controls.Count > 0)
+            if (panel1.Controls.Count > 0)
             {
                 panel1.Controls.RemoveAt(0);
             }
 
+            if (cus == null)
+            {
+                isAdded = false;
+                //T t = new T();
+                ucZonal ucZ = new ucZonal();
+                panel1.Controls.Add(ucZ);
+                ucZ.Show();
+            }
+            
 
-            isAdded = true;
-            panel1.Controls.Add(ac);
-            ac.Show();
+            if (typeof(T) == typeof(ucDistrict))
+            {
+                var zonal = (Zonal)cus;
+                var ucd = new ucDistrict(zonal);
+                //ucd._selectedZonal = zonal;
+                isAdded = true;
+                panel1.Controls.Add(ucd);
+                ucd.Show();
+            }
+
+           
+
         }
 
     }

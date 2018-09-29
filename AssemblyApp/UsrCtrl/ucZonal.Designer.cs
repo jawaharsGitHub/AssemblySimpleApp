@@ -30,16 +30,18 @@
         {
             this.dgvZonal = new System.Windows.Forms.DataGridView();
             this.cmbFilter = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvZonal)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvZonal
             // 
             this.dgvZonal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvZonal.Location = new System.Drawing.Point(40, 42);
+            this.dgvZonal.Location = new System.Drawing.Point(27, 42);
             this.dgvZonal.Name = "dgvZonal";
-            this.dgvZonal.Size = new System.Drawing.Size(1109, 764);
+            this.dgvZonal.Size = new System.Drawing.Size(1109, 586);
             this.dgvZonal.TabIndex = 0;
+            this.dgvZonal.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvZonal_MouseDoubleClick);
             // 
             // cmbFilter
             // 
@@ -53,16 +55,26 @@
             this.cmbFilter.ValueMember = "key";
             this.cmbFilter.SelectedIndexChanged += new System.EventHandler(this.cmbFilter_SelectedIndexChanged);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(334, 15);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(182, 20);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // ucZonal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.cmbFilter);
             this.Controls.Add(this.dgvZonal);
             this.Name = "ucZonal";
             this.Size = new System.Drawing.Size(1186, 887);
             ((System.ComponentModel.ISupportInitialize)(this.dgvZonal)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -70,5 +82,6 @@
 
         private System.Windows.Forms.DataGridView dgvZonal;
         private System.Windows.Forms.ComboBox cmbFilter;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -14,6 +14,8 @@ namespace CenturyFinCorpApp.UsrCtrl
     public partial class ucZonal : UserControl
     {
         List<Zonal> zonals;
+       
+
         public ucZonal()
         {
             InitializeComponent();
@@ -70,6 +72,25 @@ namespace CenturyFinCorpApp.UsrCtrl
 
 
             dgvZonal.DataSource = filteredZonals;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            dgvZonal.DataSource = zonals.Where(w => w.Name.ToLower().Contains(textBox1.Text.ToLower().Trim())).ToList();
+
+        }
+
+        private void dgvZonal_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var selectedRows = (sender as DataGridView).SelectedRows;
+
+            if (selectedRows.Count != 1) return;
+
+            var selectedCustomer = (selectedRows[0].DataBoundItem as Zonal);
+
+            var mainForm = (frmIndexForm)(((DataGridView)sender).Parent.Parent.Parent); //new frmIndexForm(true);
+
+            mainForm.ShowForm<ucDistrict>(selectedCustomer);
         }
     }
 }
