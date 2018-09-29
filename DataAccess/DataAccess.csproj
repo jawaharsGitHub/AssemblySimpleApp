@@ -74,6 +74,7 @@
     <Compile Include="PrimaryTypes\IncomeReport.cs" />
     <Compile Include="PrimaryTypes\InHandAndBank.cs" />
     <Compile Include="PrimaryTypes\Investment.cs" />
+    <Compile Include="PrimaryTypes\Panchayat.cs" />
     <Compile Include="PrimaryTypes\Petrol.cs" />
     <Compile Include="PrimaryTypes\Zonal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -96,6 +97,7 @@
     <None Include="Data\csvData\Panchayat.csv" />
     <None Include="Data\csvData\PanchayatUnion%28Blocks%29.csv" />
     <None Include="Data\csvData\Zonal.csv" />
+    <None Include="Data\panchayat.json" />
     <None Include="Data\union.json" />
     <None Include="Data\zonal.json" />
     <None Include="packages.config">
