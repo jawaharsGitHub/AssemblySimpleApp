@@ -62,10 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\assembly.json" />
     <Compile Include="ExtendedTypes\CreditReport.cs" />
     <Compile Include="ExtendedTypes\CustomerDailyTxn.cs" />
     <Compile Include="ExtendedTypes\ExtDailyTxn.cs" />
     <Compile Include="ExtendedTypes\ReturnTypeEnum.cs" />
+    <Compile Include="PrimaryTypes\Assembly.cs" />
     <Compile Include="PrimaryTypes\DailyCollectionDetail.cs" />
     <Compile Include="PrimaryTypes\CollectionPerDay.cs" />
     <Compile Include="PrimaryTypes\Expenditure.cs" />
@@ -89,6 +91,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\csvData\Assembly.csv" />
+    <None Include="Data\csvData\District.csv" />
+    <None Include="Data\csvData\PanchayatUnion%28Blocks%29.csv" />
+    <None Include="Data\csvData\Zonal.csv" />
     <None Include="Data\union.json" />
     <None Include="Data\zonal.json" />
     <None Include="packages.config">

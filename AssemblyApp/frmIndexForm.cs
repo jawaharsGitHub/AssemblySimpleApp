@@ -67,6 +67,15 @@ namespace CenturyFinCorpApp
             menuStrip.Items.Add(mnuZonal);
 
 
+            var mnuAssembly = new ToolStripMenuItem() { Name = "assembly", Text = "ASSEMBLY" };
+            mnuAssembly.Click += (s, e) => ShowForm<ucAssembly>(); ;
+            menuStrip.Items.Add(mnuAssembly);
+
+            var mnuDataHelper = new ToolStripMenuItem() { Name = "dataHelper", Text = "DATA-HELPER" };
+            mnuDataHelper.Click += (s, e) => ShowForm<DataHelper>(); ;
+            menuStrip.Items.Add(mnuDataHelper);
+
+
             this.Controls.Add(menuStrip);
         }
 

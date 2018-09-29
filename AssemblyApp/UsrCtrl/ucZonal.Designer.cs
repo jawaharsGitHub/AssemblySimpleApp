@@ -43,12 +43,14 @@
             // 
             // cmbFilter
             // 
+            this.cmbFilter.DisplayMember = "value";
             this.cmbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFilter.FormattingEnabled = true;
             this.cmbFilter.Location = new System.Drawing.Point(641, 15);
             this.cmbFilter.Name = "cmbFilter";
             this.cmbFilter.Size = new System.Drawing.Size(173, 21);
             this.cmbFilter.TabIndex = 1;
+            this.cmbFilter.ValueMember = "key";
             this.cmbFilter.SelectedIndexChanged += new System.EventHandler(this.cmbFilter_SelectedIndexChanged);
             // 
             // ucZonal

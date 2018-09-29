@@ -72,6 +72,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataHelper.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataHelper.Designer.cs">
+      <DependentUpon>DataHelper.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormGeneral.cs" />
     <Compile Include="frmIndexForm.cs">
       <SubType>Form</SubType>
@@ -82,6 +88,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ToDo.cs" />
+    <Compile Include="UsrCtrl\ucAssembly.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsrCtrl\ucAssembly.Designer.cs">
+      <DependentUpon>ucAssembly.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsrCtrl\uclAddMember.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -94,6 +106,9 @@
     <Compile Include="UsrCtrl\ucZonal.Designer.cs">
       <DependentUpon>ucZonal.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DataHelper.resx">
+      <DependentUpon>DataHelper.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmIndexForm.resx">
       <DependentUpon>frmIndexForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -107,6 +122,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UsrCtrl\ucAssembly.resx">
+      <DependentUpon>ucAssembly.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UsrCtrl\uclAddMember.resx">
       <DependentUpon>uclAddMember.cs</DependentUpon>
     </EmbeddedResource>

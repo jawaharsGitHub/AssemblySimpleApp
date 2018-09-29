@@ -1,0 +1,1408 @@
+﻿
+// file:///D:/project/AssemblySimpleApp/TamilNaduElections/DB/2016-ELctionResults/10-Detailed%20Resultstamil.pdf
+[
+  {
+    "AssemblyNo": 1,
+    "Name": "Gummidipoondi",
+    "Category": "",
+    "Electors": 260912
+  },
+  {
+    "AssemblyNo": 2,
+    "Name": "Ponneri(SC)",
+    "Category": "SC",
+    "Electors": 250403
+  },
+  {
+    "AssemblyNo": 3,
+    "Name": "Tiruttani",
+    "Category": "",
+    "Electors": 262980
+  },
+  {
+    "AssemblyNo": 4,
+    "Name": "Thiruvallur",
+    "Category": "",
+    "Electors": 300891
+  },
+  {
+    "AssemblyNo": 5,
+    "Name": "Poonamallee(SC)",
+    "Category": "SC",
+    "Electors": 602472
+  },
+  {
+    "AssemblyNo": 6,
+    "Name": "Avadi",
+    "Category": "",
+    "Electors": 351470
+  },
+  {
+    "AssemblyNo": 7,
+    "Name": "Maduravoyal",
+    "Category": "",
+    "Electors": 306296
+  },
+  {
+    "AssemblyNo": 8,
+    "Name": "Ambattur",
+    "Category": "",
+    "Electors": 406839
+  },
+  {
+    "AssemblyNo": 9,
+    "Name": "Madavaram",
+    "Category": "",
+    "Electors": 381359
+  },
+  {
+    "AssemblyNo": 10,
+    "Name": "Thiruvottiyur",
+    "Category": "",
+    "Electors": 274818
+  },
+  {
+    "AssemblyNo": 11,
+    "Name": "Dr",
+    "Category": "",
+    "Electors": 257558
+  },
+  {
+    "AssemblyNo": 12,
+    "Name": "Perambur",
+    "Category": "",
+    "Electors": 371109
+  },
+  {
+    "AssemblyNo": 13,
+    "Name": "Kolathur",
+    "Category": "",
+    "Electors": 254307
+  },
+  {
+    "AssemblyNo": 14,
+    "Name": "Villivakkam",
+    "Category": "",
+    "Electors": 211135
+  },
+  {
+    "AssemblyNo": 15,
+    "Name": "Thiru-Vi-Ka-Nagar(SC)",
+    "Category": "SC",
+    "Electors": 315718
+  },
+  {
+    "AssemblyNo": 16,
+    "Name": "Egmore(SC)",
+    "Category": "SC",
+    "Electors": 218831
+  },
+  {
+    "AssemblyNo": 17,
+    "Name": "Royapuram",
+    "Category": "",
+    "Electors": 239472
+  },
+  {
+    "AssemblyNo": 18,
+    "Name": "Harbour",
+    "Category": "",
+    "Electors": 296893
+  },
+  {
+    "AssemblyNo": 19,
+    "Name": "Chepauk-Thiruvallikeni",
+    "Category": "",
+    "Electors": 398613
+  },
+  {
+    "AssemblyNo": 20,
+    "Name": "Thousand Lights",
+    "Category": "",
+    "Electors": 402205
+  },
+  {
+    "AssemblyNo": 21,
+    "Name": "Anna Nagar",
+    "Category": "",
+    "Electors": 219621
+  },
+  {
+    "AssemblyNo": 22,
+    "Name": "Virugampakkam",
+    "Category": "",
+    "Electors": 257291
+  },
+  {
+    "AssemblyNo": 23,
+    "Name": "Saidapet",
+    "Category": "",
+    "Electors": 229868
+  },
+  {
+    "AssemblyNo": 24,
+    "Name": "Thiyagarayanagar",
+    "Category": "",
+    "Electors": 247501
+  },
+  {
+    "AssemblyNo": 25,
+    "Name": "Mylapore",
+    "Category": "",
+    "Electors": 246835
+  },
+  {
+    "AssemblyNo": 26,
+    "Name": "Velachery",
+    "Category": "",
+    "Electors": 249715
+  },
+  {
+    "AssemblyNo": 27,
+    "Name": "Shozhinganallur",
+    "Category": "",
+    "Electors": 359345
+  },
+  {
+    "AssemblyNo": 28,
+    "Name": "Alandur",
+    "Category": "",
+    "Electors": 231928
+  },
+  {
+    "AssemblyNo": 29,
+    "Name": "Sriperumbudur(SC)",
+    "Category": "SC",
+    "Electors": 205533
+  },
+  {
+    "AssemblyNo": 30,
+    "Name": "Pallavaram",
+    "Category": "",
+    "Electors": 263119
+  },
+  {
+    "AssemblyNo": 31,
+    "Name": "Tambaram",
+    "Category": "",
+    "Electors": 223458
+  },
+  {
+    "AssemblyNo": 32,
+    "Name": "Chengalpattu",
+    "Category": "",
+    "Electors": 212306
+  },
+  {
+    "AssemblyNo": 33,
+    "Name": "Thiruporur",
+    "Category": "",
+    "Electors": 223488
+  },
+  {
+    "AssemblyNo": 34,
+    "Name": "Cheyyur(SC)",
+    "Category": "SC",
+    "Electors": 224938
+  },
+  {
+    "AssemblyNo": 35,
+    "Name": "Madurantakam(SC)",
+    "Category": "SC",
+    "Electors": 218671
+  },
+  {
+    "AssemblyNo": 36,
+    "Name": "Uthiramerur",
+    "Category": "",
+    "Electors": 392299
+  },
+  {
+    "AssemblyNo": 37,
+    "Name": "Kancheepuram",
+    "Category": "",
+    "Electors": 284010
+  },
+  {
+    "AssemblyNo": 38,
+    "Name": "Arakkonam(SC)",
+    "Category": "SC",
+    "Electors": 228893
+  },
+  {
+    "AssemblyNo": 39,
+    "Name": "Sholingur",
+    "Category": "",
+    "Electors": 248873
+  },
+  {
+    "AssemblyNo": 40,
+    "Name": "Katpadi",
+    "Category": "",
+    "Electors": 228145
+  },
+  {
+    "AssemblyNo": 41,
+    "Name": "Ranipet",
+    "Category": "",
+    "Electors": 302410
+  },
+  {
+    "AssemblyNo": 42,
+    "Name": "Arcot",
+    "Category": "",
+    "Electors": 229749
+  },
+  {
+    "AssemblyNo": 43,
+    "Name": "Vellore",
+    "Category": "",
+    "Electors": 213136
+  },
+  {
+    "AssemblyNo": 44,
+    "Name": "Anaikattu",
+    "Category": "",
+    "Electors": 226746
+  },
+  {
+    "AssemblyNo": 45,
+    "Name": "Kilvaithinankuppam(SC)",
+    "Category": "SC",
+    "Electors": 252311
+  },
+  {
+    "AssemblyNo": 46,
+    "Name": "Gudiyattam(SC)",
+    "Category": "SC",
+    "Electors": 243367
+  },
+  {
+    "AssemblyNo": 47,
+    "Name": "Vaniyambadi",
+    "Category": "",
+    "Electors": 225545
+  },
+  {
+    "AssemblyNo": 48,
+    "Name": "Ambur",
+    "Category": "",
+    "Electors": 250015
+  },
+  {
+    "AssemblyNo": 49,
+    "Name": "Jolarpet",
+    "Category": "",
+    "Electors": 255195
+  },
+  {
+    "AssemblyNo": 50,
+    "Name": "Tirupattur",
+    "Category": "",
+    "Electors": 233605
+  },
+  {
+    "AssemblyNo": 51,
+    "Name": "Uthangarai(SC)",
+    "Category": "SC",
+    "Electors": 219301
+  },
+  {
+    "AssemblyNo": 52,
+    "Name": "Bargur",
+    "Category": "",
+    "Electors": 227936
+  },
+  {
+    "AssemblyNo": 53,
+    "Name": "Krishnagiri",
+    "Category": "",
+    "Electors": 256327
+  },
+  {
+    "AssemblyNo": 54,
+    "Name": "Veppanahalli",
+    "Category": "",
+    "Electors": 243084
+  },
+  {
+    "AssemblyNo": 55,
+    "Name": "Hosur",
+    "Category": "",
+    "Electors": 222453
+  },
+  {
+    "AssemblyNo": 56,
+    "Name": "Thalli",
+    "Category": "",
+    "Electors": 251396
+  },
+  {
+    "AssemblyNo": 57,
+    "Name": "Palacode",
+    "Category": "",
+    "Electors": 211372
+  },
+  {
+    "AssemblyNo": 58,
+    "Name": "Pennagaram",
+    "Category": "",
+    "Electors": 221864
+  },
+  {
+    "AssemblyNo": 59,
+    "Name": "Dharmapuri",
+    "Category": "",
+    "Electors": 221269
+  },
+  {
+    "AssemblyNo": 60,
+    "Name": "Pappireddippatti",
+    "Category": "",
+    "Electors": 247327
+  },
+  {
+    "AssemblyNo": 61,
+    "Name": "Harur(SC)",
+    "Category": "SC",
+    "Electors": 218619
+  },
+  {
+    "AssemblyNo": 62,
+    "Name": "Chengam(SC)",
+    "Category": "SC",
+    "Electors": 239087
+  },
+  {
+    "AssemblyNo": 63,
+    "Name": "Tiruvannamalai",
+    "Category": "",
+    "Electors": 274436
+  },
+  {
+    "AssemblyNo": 64,
+    "Name": "Kilpennathur",
+    "Category": "",
+    "Electors": 244427
+  },
+  {
+    "AssemblyNo": 65,
+    "Name": "Kalasapakkam",
+    "Category": "",
+    "Electors": 250770
+  },
+  {
+    "AssemblyNo": 66,
+    "Name": "Polur",
+    "Category": "",
+    "Electors": 264140
+  },
+  {
+    "AssemblyNo": 67,
+    "Name": "Arani",
+    "Category": "",
+    "Electors": 218854
+  },
+  {
+    "AssemblyNo": 68,
+    "Name": "Cheyyar",
+    "Category": "",
+    "Electors": 234136
+  },
+  {
+    "AssemblyNo": 69,
+    "Name": "Vandavasi(SC)",
+    "Category": "SC",
+    "Electors": 260157
+  },
+  {
+    "AssemblyNo": 70,
+    "Name": "Gingee",
+    "Category": "",
+    "Electors": 265892
+  },
+  {
+    "AssemblyNo": 71,
+    "Name": "Mailam",
+    "Category": "",
+    "Electors": 263189
+  },
+  {
+    "AssemblyNo": 72,
+    "Name": "Tindivanam(SC)",
+    "Category": "SC",
+    "Electors": 261304
+  },
+  {
+    "AssemblyNo": 73,
+    "Name": "Vanur(SC)",
+    "Category": "SC",
+    "Electors": 256847
+  },
+  {
+    "AssemblyNo": 74,
+    "Name": "Villupuram",
+    "Category": "",
+    "Electors": 271212
+  },
+  {
+    "AssemblyNo": 75,
+    "Name": "Vikravandi",
+    "Category": "",
+    "Electors": 265999
+  },
+  {
+    "AssemblyNo": 76,
+    "Name": "Tirukkoyilur",
+    "Category": "",
+    "Electors": 263233
+  },
+  {
+    "AssemblyNo": 77,
+    "Name": "Ulundurpettai",
+    "Category": "",
+    "Electors": 254558
+  },
+  {
+    "AssemblyNo": 78,
+    "Name": "Rishivandiyam",
+    "Category": "",
+    "Electors": 290522
+  },
+  {
+    "AssemblyNo": 79,
+    "Name": "Sankarapuram",
+    "Category": "",
+    "Electors": 259843
+  },
+  {
+    "AssemblyNo": 80,
+    "Name": "Kallakurichi(SC)",
+    "Category": "SC",
+    "Electors": 250657
+  },
+  {
+    "AssemblyNo": 81,
+    "Name": "Gangavalli(SC)",
+    "Category": "SC",
+    "Electors": 214976
+  },
+  {
+    "AssemblyNo": 82,
+    "Name": "Attur(SC)",
+    "Category": "SC",
+    "Electors": 239268
+  },
+  {
+    "AssemblyNo": 83,
+    "Name": "Yercaud(ST)",
+    "Category": "",
+    "Electors": 221806
+  },
+  {
+    "AssemblyNo": 84,
+    "Name": "Omalur",
+    "Category": "",
+    "Electors": 229911
+  },
+  {
+    "AssemblyNo": 85,
+    "Name": "Mettur",
+    "Category": "",
+    "Electors": 242615
+  },
+  {
+    "AssemblyNo": 86,
+    "Name": "Edappadi",
+    "Category": "",
+    "Electors": 208633
+  },
+  {
+    "AssemblyNo": 87,
+    "Name": "Sankari",
+    "Category": "",
+    "Electors": 216720
+  },
+  {
+    "AssemblyNo": 88,
+    "Name": "Salem (West)",
+    "Category": "",
+    "Electors": 231009
+  },
+  {
+    "AssemblyNo": 89,
+    "Name": "Salem (North)",
+    "Category": "",
+    "Electors": 212746
+  },
+  {
+    "AssemblyNo": 90,
+    "Name": "Salem (South)",
+    "Category": "",
+    "Electors": 191494
+  },
+  {
+    "AssemblyNo": 91,
+    "Name": "Veerapandi",
+    "Category": "",
+    "Electors": 256208
+  },
+  {
+    "AssemblyNo": 92,
+    "Name": "Rasipuram(SC)",
+    "Category": "SC",
+    "Electors": 222002
+  },
+  {
+    "AssemblyNo": 93,
+    "Name": "Senthamangalam(ST)",
+    "Category": "",
+    "Electors": 238070
+  },
+  {
+    "AssemblyNo": 94,
+    "Name": "Namakkal",
+    "Category": "",
+    "Electors": 233793
+  },
+  {
+    "AssemblyNo": 95,
+    "Name": "Paramathi-Velur",
+    "Category": "",
+    "Electors": 212885
+  },
+  {
+    "AssemblyNo": 96,
+    "Name": "Tiruchengodu",
+    "Category": "",
+    "Electors": 228069
+  },
+  {
+    "AssemblyNo": 97,
+    "Name": "Kumarapalayam",
+    "Category": "",
+    "Electors": 192283
+  },
+  {
+    "AssemblyNo": 98,
+    "Name": "Erode (East)",
+    "Category": "",
+    "Electors": 207641
+  },
+  {
+    "AssemblyNo": 99,
+    "Name": "Erode (West)",
+    "Category": "",
+    "Electors": 242690
+  },
+  {
+    "AssemblyNo": 100,
+    "Name": "Modakkurichi",
+    "Category": "",
+    "Electors": 239778
+  },
+  {
+    "AssemblyNo": 101,
+    "Name": "Dharapuram (SC)(SC)",
+    "Category": "SC",
+    "Electors": 188171
+  },
+  {
+    "AssemblyNo": 102,
+    "Name": "Kangayam",
+    "Category": "",
+    "Electors": 202898
+  },
+  {
+    "AssemblyNo": 103,
+    "Name": "Perundurai",
+    "Category": "",
+    "Electors": 180136
+  },
+  {
+    "AssemblyNo": 104,
+    "Name": "Bhavani",
+    "Category": "",
+    "Electors": 188075
+  },
+  {
+    "AssemblyNo": 105,
+    "Name": "Anthiyur",
+    "Category": "",
+    "Electors": 279110
+  },
+  {
+    "AssemblyNo": 106,
+    "Name": "Gobichettipalayam",
+    "Category": "",
+    "Electors": 230619
+  },
+  {
+    "AssemblyNo": 107,
+    "Name": "Bhavanisagar(SC)",
+    "Category": "SC",
+    "Electors": 249571
+  },
+  {
+    "AssemblyNo": 108,
+    "Name": "Udhagamandalam",
+    "Category": "",
+    "Electors": 329853
+  },
+  {
+    "AssemblyNo": 109,
+    "Name": "Gudalur(SC)",
+    "Category": "SC",
+    "Electors": 247665
+  },
+  {
+    "AssemblyNo": 110,
+    "Name": "Coonoor",
+    "Category": "",
+    "Electors": 331995
+  },
+  {
+    "AssemblyNo": 111,
+    "Name": "Mettuppalayam",
+    "Category": "",
+    "Electors": 281890
+  },
+  {
+    "AssemblyNo": 112,
+    "Name": "Avanashi (SC)(SC)",
+    "Category": "SC",
+    "Electors": 410090
+  },
+  {
+    "AssemblyNo": 113,
+    "Name": "Tiruppur (North)",
+    "Category": "",
+    "Electors": 304374
+  },
+  {
+    "AssemblyNo": 114,
+    "Name": "Tiruppur (South)",
+    "Category": "",
+    "Electors": 235724
+  },
+  {
+    "AssemblyNo": 115,
+    "Name": "Palladam",
+    "Category": "",
+    "Electors": 297360
+  },
+  {
+    "AssemblyNo": 116,
+    "Name": "Sulur",
+    "Category": "",
+    "Electors": 245307
+  },
+  {
+    "AssemblyNo": 117,
+    "Name": "Kavundampalayam",
+    "Category": "",
+    "Electors": 304833
+  },
+  {
+    "AssemblyNo": 118,
+    "Name": "Coimbatore (North)",
+    "Category": "",
+    "Electors": 297116
+  },
+  {
+    "AssemblyNo": 119,
+    "Name": "Thondamuthur",
+    "Category": "",
+    "Electors": 217007
+  },
+  {
+    "AssemblyNo": 120,
+    "Name": "Coimbatore (South)",
+    "Category": "",
+    "Electors": 196795
+  },
+  {
+    "AssemblyNo": 121,
+    "Name": "Singanallur",
+    "Category": "",
+    "Electors": 248679
+  },
+  {
+    "AssemblyNo": 122,
+    "Name": "Kinathukadavu",
+    "Category": "",
+    "Electors": 225451
+  },
+  {
+    "AssemblyNo": 123,
+    "Name": "Pollachi",
+    "Category": "",
+    "Electors": 257151
+  },
+  {
+    "AssemblyNo": 124,
+    "Name": "Valparai(SC)",
+    "Category": "SC",
+    "Electors": 223074
+  },
+  {
+    "AssemblyNo": 125,
+    "Name": "Udumalaipettai",
+    "Category": "",
+    "Electors": 268876
+  },
+  {
+    "AssemblyNo": 126,
+    "Name": "Madathukulam",
+    "Category": "",
+    "Electors": 218582
+  },
+  {
+    "AssemblyNo": 127,
+    "Name": "Palani",
+    "Category": "",
+    "Electors": 258718
+  },
+  {
+    "AssemblyNo": 128,
+    "Name": "Oddanchatram",
+    "Category": "",
+    "Electors": 248751
+  },
+  {
+    "AssemblyNo": 129,
+    "Name": "Athoor",
+    "Category": "",
+    "Electors": 246548
+  },
+  {
+    "AssemblyNo": 130,
+    "Name": "Nilakkottai(SC)",
+    "Category": "SC",
+    "Electors": 218582
+  },
+  {
+    "AssemblyNo": 131,
+    "Name": "Natham",
+    "Category": "",
+    "Electors": 232072
+  },
+  {
+    "AssemblyNo": 132,
+    "Name": "Dindigul",
+    "Category": "",
+    "Electors": 203049
+  },
+  {
+    "AssemblyNo": 133,
+    "Name": "Vedasandur",
+    "Category": "",
+    "Electors": 208870
+  },
+  {
+    "AssemblyNo": 134,
+    "Name": "Aravakurichi",
+    "Category": "",
+    "Electors": 262415
+  },
+  {
+    "AssemblyNo": 135,
+    "Name": "Karur",
+    "Category": "",
+    "Electors": 283355
+  },
+  {
+    "AssemblyNo": 136,
+    "Name": "Krishnarayapuram(SC)",
+    "Category": "SC",
+    "Electors": 254751
+  },
+  {
+    "AssemblyNo": 137,
+    "Name": "Kulithalai",
+    "Category": "",
+    "Electors": 242482
+  },
+  {
+    "AssemblyNo": 138,
+    "Name": "Manapparai",
+    "Category": "",
+    "Electors": 267001
+  },
+  {
+    "AssemblyNo": 139,
+    "Name": "Srirangam",
+    "Category": "",
+    "Electors": 203917
+  },
+  {
+    "AssemblyNo": 140,
+    "Name": "Tiruchirappalli (West)",
+    "Category": "",
+    "Electors": 219337
+  },
+  {
+    "AssemblyNo": 141,
+    "Name": "Tiruchirappalli (East)",
+    "Category": "",
+    "Electors": 212655
+  },
+  {
+    "AssemblyNo": 142,
+    "Name": "Thiruverumbur",
+    "Category": "",
+    "Electors": 210463
+  },
+  {
+    "AssemblyNo": 143,
+    "Name": "Lalgudi",
+    "Category": "",
+    "Electors": 278485
+  },
+  {
+    "AssemblyNo": 144,
+    "Name": "Manachanallur",
+    "Category": "",
+    "Electors": 255823
+  },
+  {
+    "AssemblyNo": 145,
+    "Name": "Musiri",
+    "Category": "",
+    "Electors": 248541
+  },
+  {
+    "AssemblyNo": 146,
+    "Name": "Thuraiyur(SC)",
+    "Category": "SC",
+    "Electors": 250673
+  },
+  {
+    "AssemblyNo": 147,
+    "Name": "Perambalur(SC)",
+    "Category": "SC",
+    "Electors": 206089
+  },
+  {
+    "AssemblyNo": 148,
+    "Name": "Kunnam",
+    "Category": "",
+    "Electors": 231740
+  },
+  {
+    "AssemblyNo": 149,
+    "Name": "Ariyalur",
+    "Category": "",
+    "Electors": 201040
+  },
+  {
+    "AssemblyNo": 150,
+    "Name": "Jayankondam",
+    "Category": "",
+    "Electors": 226257
+  },
+  {
+    "AssemblyNo": 151,
+    "Name": "Tittagudi (SC)(SC)",
+    "Category": "SC",
+    "Electors": 231205
+  },
+  {
+    "AssemblyNo": 152,
+    "Name": "Vridhachalam",
+    "Category": "",
+    "Electors": 223575
+  },
+  {
+    "AssemblyNo": 153,
+    "Name": "Neyveli",
+    "Category": "",
+    "Electors": 238837
+  },
+  {
+    "AssemblyNo": 154,
+    "Name": "Panruti",
+    "Category": "",
+    "Electors": 229162
+  },
+  {
+    "AssemblyNo": 155,
+    "Name": "Cuddalore",
+    "Category": "",
+    "Electors": 212053
+  },
+  {
+    "AssemblyNo": 156,
+    "Name": "Kurinjipadi",
+    "Category": "",
+    "Electors": 231675
+  },
+  {
+    "AssemblyNo": 157,
+    "Name": "Bhuvanagiri",
+    "Category": "",
+    "Electors": 233224
+  },
+  {
+    "AssemblyNo": 158,
+    "Name": "Chidambaram",
+    "Category": "",
+    "Electors": 254828
+  },
+  {
+    "AssemblyNo": 159,
+    "Name": "Kattumannarkoil(SC)(SC)",
+    "Category": "SC",
+    "Electors": 283857
+  },
+  {
+    "AssemblyNo": 160,
+    "Name": "Sirkazhi(SC)",
+    "Category": "SC",
+    "Electors": 183119
+  },
+  {
+    "AssemblyNo": 161,
+    "Name": "Mayiladuthurai",
+    "Category": "",
+    "Electors": 163415
+  },
+  {
+    "AssemblyNo": 162,
+    "Name": "Poompuhar",
+    "Category": "",
+    "Electors": 180294
+  },
+  {
+    "AssemblyNo": 163,
+    "Name": "Nagapattinam",
+    "Category": "",
+    "Electors": 222916
+  },
+  {
+    "AssemblyNo": 164,
+    "Name": "Kilvelur(SC)",
+    "Category": "SC",
+    "Electors": 241448
+  },
+  {
+    "AssemblyNo": 165,
+    "Name": "Vedaranyam",
+    "Category": "",
+    "Electors": 253227
+  },
+  {
+    "AssemblyNo": 166,
+    "Name": "Thiruthuraipoondi(SC)",
+    "Category": "SC",
+    "Electors": 253606
+  },
+  {
+    "AssemblyNo": 167,
+    "Name": "Mannargudi",
+    "Category": "",
+    "Electors": 234108
+  },
+  {
+    "AssemblyNo": 168,
+    "Name": "Thiruvarur",
+    "Category": "",
+    "Electors": 246392
+  },
+  {
+    "AssemblyNo": 169,
+    "Name": "Nannilam",
+    "Category": "",
+    "Electors": 240357
+  },
+  {
+    "AssemblyNo": 170,
+    "Name": "Thiruvidaimarudur(SC)",
+    "Category": "SC",
+    "Electors": 248086
+  },
+  {
+    "AssemblyNo": 171,
+    "Name": "Kumbakonam",
+    "Category": "",
+    "Electors": 246392
+  },
+  {
+    "AssemblyNo": 172,
+    "Name": "Papanasam",
+    "Category": "",
+    "Electors": 225366
+  },
+  {
+    "AssemblyNo": 173,
+    "Name": "Thiruvaiyaru",
+    "Category": "",
+    "Electors": 227191
+  },
+  {
+    "AssemblyNo": 174,
+    "Name": "Thanjavur",
+    "Category": "",
+    "Electors": 205368
+  },
+  {
+    "AssemblyNo": 175,
+    "Name": "Orathanadu",
+    "Category": "",
+    "Electors": 186922
+  },
+  {
+    "AssemblyNo": 176,
+    "Name": "Pattukkottai",
+    "Category": "",
+    "Electors": 202517
+  },
+  {
+    "AssemblyNo": 177,
+    "Name": "Peravurani",
+    "Category": "",
+    "Electors": 227802
+  },
+  {
+    "AssemblyNo": 178,
+    "Name": "Gandharvakottai(SC)",
+    "Category": "SC",
+    "Electors": 208304
+  },
+  {
+    "AssemblyNo": 179,
+    "Name": "Viralimalai",
+    "Category": "",
+    "Electors": 198988
+  },
+  {
+    "AssemblyNo": 180,
+    "Name": "Pudukkottai",
+    "Category": "",
+    "Electors": 214394
+  },
+  {
+    "AssemblyNo": 181,
+    "Name": "Thirumayam",
+    "Category": "",
+    "Electors": 286435
+  },
+  {
+    "AssemblyNo": 182,
+    "Name": "Alangudi",
+    "Category": "",
+    "Electors": 268126
+  },
+  {
+    "AssemblyNo": 183,
+    "Name": "Aranthangi",
+    "Category": "",
+    "Electors": 273251
+  },
+  {
+    "AssemblyNo": 184,
+    "Name": "Karaikudi",
+    "Category": "",
+    "Electors": 255081
+  },
+  {
+    "AssemblyNo": 185,
+    "Name": "Tiruppattur",
+    "Category": "",
+    "Electors": 232476
+  },
+  {
+    "AssemblyNo": 186,
+    "Name": "Sivaganga",
+    "Category": "",
+    "Electors": 286766
+  },
+  {
+    "AssemblyNo": 187,
+    "Name": "Manamadurai(SC)",
+    "Category": "SC",
+    "Electors": 206488
+  },
+  {
+    "AssemblyNo": 188,
+    "Name": "Melur",
+    "Category": "",
+    "Electors": 233129
+  },
+  {
+    "AssemblyNo": 189,
+    "Name": "Madurai East",
+    "Category": "",
+    "Electors": 219349
+  },
+  {
+    "AssemblyNo": 190,
+    "Name": "Sholavandan(SC)",
+    "Category": "SC",
+    "Electors": 233084
+  },
+  {
+    "AssemblyNo": 191,
+    "Name": "Madurai North",
+    "Category": "",
+    "Electors": 280863
+  },
+  {
+    "AssemblyNo": 192,
+    "Name": "Madurai South",
+    "Category": "",
+    "Electors": 279599
+  },
+  {
+    "AssemblyNo": 193,
+    "Name": "Madurai Central",
+    "Category": "",
+    "Electors": 261622
+  },
+  {
+    "AssemblyNo": 194,
+    "Name": "Madurai West",
+    "Category": "",
+    "Electors": 269244
+  },
+  {
+    "AssemblyNo": 195,
+    "Name": "Thiruparankundram",
+    "Category": "",
+    "Electors": 292248
+  },
+  {
+    "AssemblyNo": 196,
+    "Name": "Thirumangalam",
+    "Category": "",
+    "Electors": 253826
+  },
+  {
+    "AssemblyNo": 197,
+    "Name": "Usilampatti",
+    "Category": "",
+    "Electors": 257555
+  },
+  {
+    "AssemblyNo": 198,
+    "Name": "Andipatti",
+    "Category": "",
+    "Electors": 257500
+  },
+  {
+    "AssemblyNo": 199,
+    "Name": "Periyakulam(SC)",
+    "Category": "SC",
+    "Electors": 262868
+  },
+  {
+    "AssemblyNo": 200,
+    "Name": "Bodinayakanur",
+    "Category": "",
+    "Electors": 224407
+  },
+  {
+    "AssemblyNo": 201,
+    "Name": "Cumbum",
+    "Category": "",
+    "Electors": 233156
+  },
+  {
+    "AssemblyNo": 202,
+    "Name": "Rajapalayam",
+    "Category": "",
+    "Electors": 224931
+  },
+  {
+    "AssemblyNo": 203,
+    "Name": "Srivilliputhur(SC)",
+    "Category": "SC",
+    "Electors": 237773
+  },
+  {
+    "AssemblyNo": 204,
+    "Name": "Sattur",
+    "Category": "",
+    "Electors": 208304
+  },
+  {
+    "AssemblyNo": 205,
+    "Name": "Sivakasi",
+    "Category": "",
+    "Electors": 208309
+  },
+  {
+    "AssemblyNo": 206,
+    "Name": "Virudhunagar",
+    "Category": "",
+    "Electors": 207142
+  },
+  {
+    "AssemblyNo": 207,
+    "Name": "Aruppukkottai",
+    "Category": "",
+    "Electors": 245978
+  },
+  {
+    "AssemblyNo": 208,
+    "Name": "Tiruchuli",
+    "Category": "",
+    "Electors": 273644
+  },
+  {
+    "AssemblyNo": 209,
+    "Name": "Paramakudi(SC)",
+    "Category": "SC",
+    "Electors": 284405
+  },
+  {
+    "AssemblyNo": 210,
+    "Name": "Tiruvadanai",
+    "Category": "",
+    "Electors": 297394
+  },
+  {
+    "AssemblyNo": 211,
+    "Name": "Ramanathapuram",
+    "Category": "",
+    "Electors": 205689
+  },
+  {
+    "AssemblyNo": 212,
+    "Name": "Mudhukulathur",
+    "Category": "",
+    "Electors": 273187
+  },
+  {
+    "AssemblyNo": 213,
+    "Name": "Vilathikulam",
+    "Category": "",
+    "Electors": 227058
+  },
+  {
+    "AssemblyNo": 214,
+    "Name": "Thoothukkudi",
+    "Category": "",
+    "Electors": 207471
+  },
+  {
+    "AssemblyNo": 215,
+    "Name": "Tiruchendur",
+    "Category": "",
+    "Electors": 220737
+  },
+  {
+    "AssemblyNo": 216,
+    "Name": "Srivaikuntam",
+    "Category": "",
+    "Electors": 248279
+  },
+  {
+    "AssemblyNo": 217,
+    "Name": "Ottapidaram(SC)",
+    "Category": "SC",
+    "Electors": 233672
+  },
+  {
+    "AssemblyNo": 218,
+    "Name": "Kovilpatti",
+    "Category": "",
+    "Electors": 221225
+  },
+  {
+    "AssemblyNo": 219,
+    "Name": "Sankarankovil(SC)",
+    "Category": "SC",
+    "Electors": 264848
+  },
+  {
+    "AssemblyNo": 220,
+    "Name": "Vasudevanallur(SC)",
+    "Category": "SC",
+    "Electors": 282052
+  },
+  {
+    "AssemblyNo": 221,
+    "Name": "Kadayanallur",
+    "Category": "",
+    "Electors": 245101
+  },
+  {
+    "AssemblyNo": 222,
+    "Name": "Tenkasi",
+    "Category": "",
+    "Electors": 263584
+  },
+  {
+    "AssemblyNo": 223,
+    "Name": "Alangulam",
+    "Category": "",
+    "Electors": 244588
+  },
+  {
+    "AssemblyNo": 224,
+    "Name": "Tirunelveli",
+    "Category": "",
+    "Electors": 268968
+  },
+  {
+    "AssemblyNo": 225,
+    "Name": "Ambasamudram",
+    "Category": "",
+    "Electors": 235065
+  },
+  {
+    "AssemblyNo": 226,
+    "Name": "Palayamkottai",
+    "Category": "",
+    "Electors": 253520
+  },
+  {
+    "AssemblyNo": 227,
+    "Name": "Nanguneri",
+    "Category": "",
+    "Electors": 241732
+  },
+  {
+    "AssemblyNo": 228,
+    "Name": "Radhapuram",
+    "Category": "",
+    "Electors": 240072
+  },
+  {
+    "AssemblyNo": 229,
+    "Name": "Kanniyakumari",
+    "Category": "",
+    "Electors": 279651
+  },
+  {
+    "AssemblyNo": 230,
+    "Name": "Nagercoil",
+    "Category": "",
+    "Electors": 263633
+  },
+  {
+    "AssemblyNo": 231,
+    "Name": "Colachel",
+    "Category": "",
+    "Electors": 262175
+  },
+  {
+    "AssemblyNo": 232,
+    "Name": "Padmanabhapuram",
+    "Category": "",
+    "Electors": 236398
+  },
+  {
+    "AssemblyNo": 233,
+    "Name": "Vilavancode",
+    "Category": "",
+    "Electors": 244388
+  },
+  {
+    "AssemblyNo": 234,
+    "Name": "Killiyoor",
+    "Category": "",
+    "Electors": 252676
+  }
+]

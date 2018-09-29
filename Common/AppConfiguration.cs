@@ -9,7 +9,7 @@ namespace Common
 
         public static string ZonalFile { get { return GetFullPath("zonal");  } }
 
-        public static string TransactionFile { get; } = GetFullPath("TransactionFile");
+        public static string AssemblyFile { get; } = GetFullPath("assembly");
 
         public static string InvestmentFile { get; } = GetFullPath("InvestmentFile");
 
