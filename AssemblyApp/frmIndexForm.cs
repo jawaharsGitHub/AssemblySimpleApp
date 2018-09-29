@@ -71,6 +71,10 @@ namespace CenturyFinCorpApp
             mnuAssembly.Click += (s, e) => ShowForm<ucAssembly>(); ;
             menuStrip.Items.Add(mnuAssembly);
 
+            var mnuBlock= new ToolStripMenuItem() { Name = "block", Text = "OORAATCHI" };
+            mnuBlock.Click += (s, e) => ShowForm<ucUnionBlock>(); ;
+            menuStrip.Items.Add(mnuBlock);
+
             var mnuDataHelper = new ToolStripMenuItem() { Name = "dataHelper", Text = "DATA-HELPER" };
             mnuDataHelper.Click += (s, e) => ShowForm<DataHelper>(); ;
             menuStrip.Items.Add(mnuDataHelper);

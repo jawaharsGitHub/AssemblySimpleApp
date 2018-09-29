@@ -100,6 +100,12 @@
     <Compile Include="UsrCtrl\uclAddMember.Designer.cs">
       <DependentUpon>uclAddMember.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsrCtrl\ucUnionBlock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsrCtrl\ucUnionBlock.Designer.cs">
+      <DependentUpon>ucUnionBlock.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsrCtrl\ucZonal.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -127,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UsrCtrl\uclAddMember.resx">
       <DependentUpon>uclAddMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsrCtrl\ucUnionBlock.resx">
+      <DependentUpon>ucUnionBlock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsrCtrl\ucZonal.resx">
       <DependentUpon>ucZonal.cs</DependentUpon>

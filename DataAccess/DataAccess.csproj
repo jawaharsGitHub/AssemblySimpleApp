@@ -93,6 +93,7 @@
   <ItemGroup>
     <None Include="Data\csvData\Assembly.csv" />
     <None Include="Data\csvData\District.csv" />
+    <None Include="Data\csvData\Panchayat.csv" />
     <None Include="Data\csvData\PanchayatUnion%28Blocks%29.csv" />
     <None Include="Data\csvData\Zonal.csv" />
     <None Include="Data\union.json" />
