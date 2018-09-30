@@ -8,22 +8,21 @@ namespace DataAccess.ExtendedTypes
 {
     public class AssemblyPanchayat
     {
-        
+
 
         //public int SNo { get; set; }
 
+        public int PanchayatId { get; set; }
+
+        public string Name { get; set; }
 
         public int AssemblyNo { get; set; }
 
         public string AssemblyName { get; set; }
 
-        public int PanchayatId { get; set; }
-
-        public int? AssemblyId { get; set; }
-
         public int BlockId { get; set; }
 
-        public string Name { get; set; }
+        
         // TODO: need to remove nullable types.
         public int? Population { get; set; }
         public int? Male { get; set; }

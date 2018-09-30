@@ -15,7 +15,7 @@ namespace DataAccess.PrimaryTypes
 
         public int PanchayatId { get; set; }
 
-        public int? AssemblyId { get; set; }
+        public int? AssemblyNo { get; set; }
 
         public int BlockId { get; set; }
 

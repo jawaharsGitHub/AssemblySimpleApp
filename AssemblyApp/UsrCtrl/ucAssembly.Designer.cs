@@ -42,6 +42,7 @@
             this.dgvAssembly.Name = "dgvAssembly";
             this.dgvAssembly.Size = new System.Drawing.Size(721, 492);
             this.dgvAssembly.TabIndex = 0;
+            this.dgvAssembly.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvAssembly_MouseDoubleClick);
             // 
             // cmbFilter
             // 
@@ -73,7 +74,6 @@
             this.cmbDistrict.Size = new System.Drawing.Size(174, 21);
             this.cmbDistrict.TabIndex = 3;
             this.cmbDistrict.ValueMember = "DistrictId";
-            //this.cmbDistrict.SelectedIndexChanged += new System.EventHandler(this.cmbDistrict_SelectedIndexChanged);
             // 
             // ucAssembly
             // 

@@ -149,8 +149,8 @@ namespace CenturyFinCorpApp
             }
             else if (typeof(T) == typeof(ucPanchayat))
             {
-                //var zonal = (Assembly)cus;
-                var ucd = new ucPanchayat(); // (zonal);
+                var da = (DistrictAssembly)cus;
+                var ucd = new ucPanchayat(da); // (zonal);
                 panel1.Controls.Add(ucd);
             }
             //else //(cus == null)

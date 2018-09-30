@@ -24,6 +24,19 @@ namespace DataAccess.PrimaryTypes
 
         public string Category { get; set; }
 
+
+        public Assembly()
+        {
+
+        }
+        public Assembly(int assemblyId, string name)
+        {
+
+            AssemblyNo = assemblyId;
+            AssemblyName = name;
+
+        }
+
         public static List<Assembly> GetAll()
         {
             return ReadFileAsObjects<Assembly>(JsonFilePath);

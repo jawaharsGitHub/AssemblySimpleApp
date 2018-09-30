@@ -118,5 +118,18 @@ namespace CenturyFinCorpApp.UsrCtrl
                 dgvAssembly.DataSource = assemblies;
 
         }
+
+        private void dgvAssembly_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var selectedRows = (sender as DataGridView).SelectedRows;
+
+            if (selectedRows.Count != 1) return;
+
+            var selectedCustomer = (selectedRows[0].DataBoundItem as DistrictAssembly);
+
+            var mainForm = (frmIndexForm)(((DataGridView)sender).Parent.Parent.Parent); //new frmIndexForm(true);
+
+            mainForm.ShowForm<ucPanchayat>(selectedCustomer);
+        }
     }
 }
