@@ -12,6 +12,8 @@ namespace DataAccess.ExtendedTypes
 
         public string ZonalName { get; set; }
 
+        public int DistrictId { get; set; }
+
         public string DistrictName { get; set; }
 
         public string Code { get; set; }

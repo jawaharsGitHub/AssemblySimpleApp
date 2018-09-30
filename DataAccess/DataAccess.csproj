@@ -65,6 +65,8 @@
     <None Include="Data\assembly.json" />
     <Compile Include="ExtendedTypes\CreditReport.cs" />
     <Compile Include="ExtendedTypes\CustomerDailyTxn.cs" />
+    <Compile Include="ExtendedTypes\AssemblyPanchayat.cs" />
+    <Compile Include="ExtendedTypes\DistrictAssembly.cs" />
     <Compile Include="ExtendedTypes\ExtDailyTxn.cs" />
     <Compile Include="ExtendedTypes\ReturnTypeEnum.cs" />
     <Compile Include="ExtendedTypes\ZonalDistrict.cs" />

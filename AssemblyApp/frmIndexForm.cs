@@ -1,6 +1,7 @@
 ﻿using CenturyFinCorpApp.UsrCtrl;
 using Common;
 using DataAccess;
+using DataAccess.ExtendedTypes;
 using DataAccess.PrimaryTypes;
 using Newtonsoft.Json;
 using System;
@@ -73,10 +74,6 @@ namespace CenturyFinCorpApp
             mnuAssembly.Click += (s, e) => ShowForm<ucAssembly>(); ;
             menuStrip.Items.Add(mnuAssembly);
 
-            var mnuBlock = new ToolStripMenuItem() { Name = "block", Text = "UNION-BLOCK" };
-            mnuBlock.Click += (s, e) => ShowForm<ucBlock>(); ;
-            menuStrip.Items.Add(mnuBlock);
-
             var mnuPanchayat = new ToolStripMenuItem() { Name = "kilai", Text = "PANCHAYAT" };
             mnuPanchayat.Click += (s, e) => ShowForm<ucPanchayat>(); ;
             menuStrip.Items.Add(mnuPanchayat);
@@ -84,6 +81,9 @@ namespace CenturyFinCorpApp
 
 
 
+            var mnuBlock = new ToolStripMenuItem() { Name = "block", Text = "UNION-BLOCK" };
+            mnuBlock.Click += (s, e) => ShowForm<ucBlock>(); ;
+            menuStrip.Items.Add(mnuBlock);   
 
 
             //Member
@@ -108,7 +108,7 @@ namespace CenturyFinCorpApp
         }
 
 
-        public void ShowForm<T>(BaseClass cus = null) where T : UserControl
+        public void ShowForm<T>(object cus = null) where T : UserControl
         {
 
             //UserControl ac = null;
@@ -118,27 +118,48 @@ namespace CenturyFinCorpApp
                 panel1.Controls.RemoveAt(0);
             }
 
-            if (cus == null)
+            if (typeof(T) == typeof(ucZonal))
             {
-                isAdded = false;
-                //T t = new T();
                 ucZonal ucZ = new ucZonal();
                 panel1.Controls.Add(ucZ);
-                ucZ.Show();
             }
-            
-
-            if (typeof(T) == typeof(ucDistrict))
+            else if (typeof(T) == typeof(ucDistrict))
             {
                 var zonal = (Zonal)cus;
                 var ucd = new ucDistrict(zonal);
-                //ucd._selectedZonal = zonal;
-                isAdded = true;
                 panel1.Controls.Add(ucd);
-                ucd.Show();
             }
+            else if (typeof(T) == typeof(ucAssembly))
+            {
+                var dist = (ZonalDistrict)cus;
+                var ucd = new ucAssembly(dist); // (zonal);
+                panel1.Controls.Add(ucd);
+            }
+            else if (typeof(T) == typeof(ucBlock))
+            {
+                //var zonal = (Assembly)cus;
+                var ucd = new ucBlock(); // (zonal);
+                panel1.Controls.Add(ucd);
+            }
+            else if (typeof(T) == typeof(ucBlock))
+            {
+                //var zonal = (Assembly)cus;
+                var ucd = new ucBlock(); // (zonal);
+                panel1.Controls.Add(ucd);
+            }
+            else if (typeof(T) == typeof(ucPanchayat))
+            {
+                //var zonal = (Assembly)cus;
+                var ucd = new ucPanchayat(); // (zonal);
+                panel1.Controls.Add(ucd);
+            }
+            //else //(cus == null)
+            //{
+            //    ucZonal ucZ = new ucZonal();
+            //    panel1.Controls.Add(ucZ);
+            //}
 
-           
+
 
         }
 

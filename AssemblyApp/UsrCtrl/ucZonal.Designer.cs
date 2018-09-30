@@ -48,7 +48,7 @@
             this.cmbFilter.DisplayMember = "value";
             this.cmbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFilter.FormattingEnabled = true;
-            this.cmbFilter.Location = new System.Drawing.Point(641, 15);
+            this.cmbFilter.Location = new System.Drawing.Point(235, 15);
             this.cmbFilter.Name = "cmbFilter";
             this.cmbFilter.Size = new System.Drawing.Size(173, 21);
             this.cmbFilter.TabIndex = 1;
@@ -57,7 +57,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(334, 15);
+            this.textBox1.Location = new System.Drawing.Point(514, 15);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(182, 20);
             this.textBox1.TabIndex = 2;

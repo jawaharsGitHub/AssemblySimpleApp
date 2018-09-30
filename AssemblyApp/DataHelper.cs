@@ -36,7 +36,7 @@ namespace CenturyFinCorpApp
             {
                 assemblies.Add(new Assembly() {
                     AssemblyNo = Convert.ToInt32(d.Split('.')[0]),
-                    Name = d.Split('.')[1],
+                    AssemblyName = d.Split('.')[1],
                     Category = d.Split('.')[1].Contains("(SC)") ? "SC" : ""
                 });
             });
@@ -101,7 +101,7 @@ namespace CenturyFinCorpApp
             var sb = new StringBuilder();
             foreach (var a in assemblies.OrderBy(o => o.AssemblyNo).ToList())
             {
-                sb.AppendLine(a.AssemblyNo + "," + a.Name + "," + a.Category + "," + a.Electors);
+                sb.AppendLine(a.AssemblyNo + "," + a.AssemblyName + "," + a.Category + "," + a.Electors);
             }
 
 

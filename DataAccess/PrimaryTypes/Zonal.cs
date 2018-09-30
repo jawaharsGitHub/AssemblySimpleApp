@@ -28,6 +28,14 @@ namespace DataAccess.PrimaryTypes
         public int Taluk { get; set; }
         public int? Block { get; set; }
 
+        public Zonal(int zonalId, string name)
+        {
+            ZonalId = zonalId;
+            Name = name;
+
+
+        }
+
 
         public static void AddDivision(Zonal newCustomer)
         {

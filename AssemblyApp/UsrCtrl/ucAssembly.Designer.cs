@@ -31,6 +31,7 @@
             this.dgvAssembly = new System.Windows.Forms.DataGridView();
             this.cmbFilter = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cmbDistrict = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAssembly)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +48,7 @@
             this.cmbFilter.DisplayMember = "value";
             this.cmbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFilter.FormattingEnabled = true;
-            this.cmbFilter.Location = new System.Drawing.Point(445, 44);
+            this.cmbFilter.Location = new System.Drawing.Point(589, 44);
             this.cmbFilter.Name = "cmbFilter";
             this.cmbFilter.Size = new System.Drawing.Size(174, 21);
             this.cmbFilter.TabIndex = 1;
@@ -56,16 +57,29 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(142, 44);
+            this.textBox1.Location = new System.Drawing.Point(348, 44);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(195, 20);
             this.textBox1.TabIndex = 2;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // cmbDistrict
+            // 
+            this.cmbDistrict.DisplayMember = "Name";
+            this.cmbDistrict.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDistrict.FormattingEnabled = true;
+            this.cmbDistrict.Location = new System.Drawing.Point(111, 43);
+            this.cmbDistrict.Name = "cmbDistrict";
+            this.cmbDistrict.Size = new System.Drawing.Size(174, 21);
+            this.cmbDistrict.TabIndex = 3;
+            this.cmbDistrict.ValueMember = "DistrictId";
+            //this.cmbDistrict.SelectedIndexChanged += new System.EventHandler(this.cmbDistrict_SelectedIndexChanged);
+            // 
             // ucAssembly
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cmbDistrict);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.cmbFilter);
             this.Controls.Add(this.dgvAssembly);
@@ -82,5 +96,6 @@
         private System.Windows.Forms.DataGridView dgvAssembly;
         private System.Windows.Forms.ComboBox cmbFilter;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox cmbDistrict;
     }
 }

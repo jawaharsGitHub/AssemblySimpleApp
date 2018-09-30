@@ -22,6 +22,13 @@ namespace DataAccess.PrimaryTypes
 
         public int Blocks { get; set; }
 
+        public District(int districtId, string name )
+        {
+            DistrictId = districtId;
+            Name = name;
+                
+        }
+
         public static List<District> GetAll()
         {
             return ReadFileAsObjects<District>(JsonFilePath);
