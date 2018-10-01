@@ -8,9 +8,6 @@ namespace DataAccess.ExtendedTypes
 {
     public class ZonalDistrict
     {
-        public int ZonalId { get; set; }
-
-        public string ZonalName { get; set; }
 
         public int DistrictId { get; set; }
 
@@ -19,5 +16,9 @@ namespace DataAccess.ExtendedTypes
         public string Code { get; set; }
 
         public int Blocks { get; set; }
+
+        public int ZonalId { get; set; }
+
+        public string ZonalName { get; set; }
     }
 }

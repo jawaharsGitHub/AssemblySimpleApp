@@ -1,6 +1,6 @@
-﻿namespace CenturyFinCorpApp.UsrCtrl
+﻿namespace CenturyFinCorpApp
 {
-    partial class ucInternational
+    partial class ucTitle
     {
         /// <summary> 
         /// Required designer variable.
@@ -37,19 +37,19 @@
             this.label1.BackColor = System.Drawing.Color.Maroon;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Yellow;
-            this.label1.Location = new System.Drawing.Point(205, 46);
+            this.label1.Location = new System.Drawing.Point(3, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(381, 39);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "வெளிநாட்டு கிளைகள்";
+            this.label1.Size = new System.Drawing.Size(107, 39);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "[Title]";
             // 
-            // ucInternational
+            // ucTitle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label1);
-            this.Name = "ucInternational";
-            this.Size = new System.Drawing.Size(752, 556);
+            this.Name = "ucTitle";
+            this.Size = new System.Drawing.Size(187, 54);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -34,7 +34,7 @@ namespace CenturyFinCorpApp
             //var closedTxn = customers.Count(c => c.IsActive == false);
             //var totalTxn = activeTxn + closedTxn;
 
-            this.Text = "WELCOME - 2019 NTK";
+            this.Text = "நாம் தமிழர் - 2019";
 
 
             //this.TopMost = true;
@@ -61,45 +61,45 @@ namespace CenturyFinCorpApp
 
 
 
-            var mnuZonal = new ToolStripMenuItem() { Name = "zonal", Text = "ZONAL" };
+            var mnuZonal = new ToolStripMenuItem() { Name = "zonal", Text = "மண்டலம்" };
             mnuZonal.Click += (s, e) => ShowForm<ucZonal>(); ;
             menuStrip.Items.Add(mnuZonal);
 
-            var mnuDistrict = new ToolStripMenuItem() { Name = "district", Text = "DISTRICT(SUB-ZONAL)" };
+            var mnuDistrict = new ToolStripMenuItem() { Name = "district", Text = "மாவட்டம்" };
             mnuDistrict.Click += (s, e) => ShowForm<ucDistrict>(); ;
             menuStrip.Items.Add(mnuDistrict);
 
 
-            var mnuAssembly = new ToolStripMenuItem() { Name = "assembly", Text = "ASSEMBLY" };
+            var mnuAssembly = new ToolStripMenuItem() { Name = "assembly", Text = "சட்டமன்ற-தொகுதி" };
             mnuAssembly.Click += (s, e) => ShowForm<ucAssembly>(); ;
             menuStrip.Items.Add(mnuAssembly);
 
-            var mnuPanchayat = new ToolStripMenuItem() { Name = "kilai", Text = "PANCHAYAT" };
+            var mnuPanchayat = new ToolStripMenuItem() { Name = "kilai", Text = "பஞ்சாயத்து-கிளைகள்" };
             mnuPanchayat.Click += (s, e) => ShowForm<ucPanchayat>(); ;
             menuStrip.Items.Add(mnuPanchayat);
 
 
 
 
-            var mnuBlock = new ToolStripMenuItem() { Name = "block", Text = "UNION-BLOCK" };
+            var mnuBlock = new ToolStripMenuItem() { Name = "block", Text = "ஒன்றியம்" };
             mnuBlock.Click += (s, e) => ShowForm<ucBlock>(); ;
             menuStrip.Items.Add(mnuBlock);   
 
 
             //Member
-            var mnuMember = new ToolStripMenuItem() { Name = "addMember", Text = "ADD-MEMBER" };
+            var mnuMember = new ToolStripMenuItem() { Name = "addMember", Text = "பொறுப்பாளர்கள்" };
             mnuMember.Click += (s, e) => ShowForm<uclAddMember>(); ;
             menuStrip.Items.Add(mnuMember);
 
-            var mnuDataHelper = new ToolStripMenuItem() { Name = "dataHelper", Text = "DATA-HELPER" };
-            mnuDataHelper.Click += (s, e) => ShowForm<DataHelper>(); ;
-            menuStrip.Items.Add(mnuDataHelper);
+            //var mnuDataHelper = new ToolStripMenuItem() { Name = "dataHelper", Text = "DATA-HELPER" };
+            //mnuDataHelper.Click += (s, e) => ShowForm<DataHelper>(); ;
+            //menuStrip.Items.Add(mnuDataHelper);
 
-            var mnuInternational = new ToolStripMenuItem() { Name = "international", Text = "INTER-NATIONAL" };
+            var mnuInternational = new ToolStripMenuItem() { Name = "international", Text = "வெளிநாட்டு-கிளைகள்" };
             mnuInternational.Click += (s, e) => ShowForm<ucInternational>(); ;
             menuStrip.Items.Add(mnuInternational);
 
-            var mnuLocalbody = new ToolStripMenuItem() { Name = "localbody", Text = "LOCAL-BODY" };
+            var mnuLocalbody = new ToolStripMenuItem() { Name = "localbody", Text = "உள்ளாட்சி-தேர்தல்" };
             mnuLocalbody.Click += (s, e) => ShowForm<ucLocalBody>(); ;
             menuStrip.Items.Add(mnuLocalbody);
 
@@ -151,6 +151,12 @@ namespace CenturyFinCorpApp
             {
                 var da = (DistrictAssembly)cus;
                 var ucd = new ucPanchayat(da); // (zonal);
+                panel1.Controls.Add(ucd);
+            }
+            else if (typeof(T) == typeof(uclAddMember))
+            {
+                //var da = (DistrictAssembly)cus;
+                var ucd = new uclAddMember(); // (zonal);
                 panel1.Controls.Add(ucd);
             }
             //else //(cus == null)
