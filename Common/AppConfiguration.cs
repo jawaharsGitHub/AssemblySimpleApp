@@ -17,6 +17,8 @@ namespace Common
 
         public static string BlockFile { get; } = GetFullPath("block");
 
+        public static string VoteDataFile { get { return GetFullPath("votedata"); } }
+
         public static string InvestmentFile { get; } = GetFullPath("InvestmentFile");
 
         public static string ClosedNotesFile { get; } = GetFullPath("ClosedNotesFile");

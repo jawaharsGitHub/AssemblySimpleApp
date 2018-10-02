@@ -88,6 +88,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ToDo.cs" />
+    <Compile Include="UsrCtrl\ucAnalysis.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsrCtrl\ucAnalysis.Designer.cs">
+      <DependentUpon>ucAnalysis.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsrCtrl\ucAssembly.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -152,6 +158,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UsrCtrl\ucAnalysis.resx">
+      <DependentUpon>ucAnalysis.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UsrCtrl\ucAssembly.resx">
       <DependentUpon>ucAssembly.cs</DependentUpon>
     </EmbeddedResource>
