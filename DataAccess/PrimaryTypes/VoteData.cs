@@ -11,6 +11,7 @@ namespace DataAccess.PrimaryTypes
     {
         private static string JsonFilePath = AppConfiguration.VoteDataFile;
 
+        public int SNo { get; set; }
 
         public int Rank { get; set; }
 

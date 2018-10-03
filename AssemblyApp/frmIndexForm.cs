@@ -104,7 +104,7 @@ namespace CenturyFinCorpApp
             menuStrip.Items.Add(mnuLocalbody);
 
             var mnuAnalysis = new ToolStripMenuItem() { Name = "localbody", Text = "2016-Election" };
-            mnuAnalysis.Click += (s, e) => ShowForm<ucAnalysis>(); ;
+            mnuAnalysis.Click += (s, e) => ShowForm<ucVotes>(); ;
             menuStrip.Items.Add(mnuAnalysis);
 
 
@@ -164,10 +164,10 @@ namespace CenturyFinCorpApp
                 panel1.Controls.Add(ucd);
             }
 
-            else if (typeof(T) == typeof(ucAnalysis))
+            else if (typeof(T) == typeof(ucVotes))
             {
                 //var da = (DistrictAssembly)cus;
-                var ucd = new ucAnalysis(); // (zonal);
+                var ucd = new ucVotes(); // (zonal);
                 panel1.Controls.Add(ucd);
             }
             //else //(cus == null)

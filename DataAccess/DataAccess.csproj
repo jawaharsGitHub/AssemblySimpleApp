@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\assembly.json" />
+    <Compile Include="ExtendedTypes\AssemblyAndVotes.cs" />
     <Compile Include="ExtendedTypes\CreditReport.cs" />
     <Compile Include="ExtendedTypes\CustomerDailyTxn.cs" />
     <Compile Include="ExtendedTypes\AssemblyPanchayat.cs" />
