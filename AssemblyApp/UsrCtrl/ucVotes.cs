@@ -47,9 +47,10 @@ namespace CenturyFinCorpApp.UsrCtrl
             var myKeyValuePair = new List<KeyValuePair<int, string>>()
                {
                    new KeyValuePair<int, string>(1, "By AssemblyNo"),
-                   new KeyValuePair<int, string>(2, "Only NTK"),
+                   new KeyValuePair<int, string>(2, "Only NTK By Votes"),
                    new KeyValuePair<int, string>(3, "Winners"),
                    new KeyValuePair<int, string>(4, "NOTA only"),
+                   new KeyValuePair<int, string>(5, "Only NTK By Votes %"),
                    //new KeyValuePair<int, string>(5, "By District Name"),
 
                };
@@ -69,6 +70,9 @@ namespace CenturyFinCorpApp.UsrCtrl
             else if (value == 3) filteredVotes = votes.Where(w => w.Rank == 1).OrderByDescending(o => o.VotesPolled).ToList();
 
             else if (value == 4) filteredVotes = votes.Where(w => w.PartyAbbreviation.ToLower() == "nota").OrderByDescending(o => o.VotesPolled).ToList();
+
+            else if (value == 5) filteredVotes = votes.Where(w => w.PartyAbbreviation.ToLower() == "ntk").OrderByDescending(o => o.PercVotesPolled).ToList();
+
 
             filteredVotes.ForEach(a =>
             {
