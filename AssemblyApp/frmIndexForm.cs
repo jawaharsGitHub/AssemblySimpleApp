@@ -26,20 +26,8 @@ namespace CenturyFinCorpApp
         {
 
             InitializeComponent();
-
-            //var customers = Customer.GetAllCustomer().OrderBy(o => o.AmountGivenDate).ToList();
-
-
-            //var activeTxn = customers.Count(c => c.IsActive == true);
-            //var closedTxn = customers.Count(c => c.IsActive == false);
-            //var totalTxn = activeTxn + closedTxn;
-
             this.Text = "நாம் தமிழர் - 2019";
-
-
-            //this.TopMost = true;
             this.AutoScrollOffset = new Point(0, 0);
-
 
             CreateMenu();
 
@@ -78,6 +66,9 @@ namespace CenturyFinCorpApp
             mnuPanchayat.Click += (s, e) => ShowForm<ucPanchayat>(); ;
             menuStrip.Items.Add(mnuPanchayat);
 
+            var mnuPollingStation = new ToolStripMenuItem() { Name = "pollingstation", Text = "POLLING_STATION" };
+            mnuPollingStation.Click += (s, e) => ShowForm<ucPollingStation>(); ;
+            menuStrip.Items.Add(mnuPollingStation);
 
 
 
@@ -168,6 +159,12 @@ namespace CenturyFinCorpApp
             {
                 //var da = (DistrictAssembly)cus;
                 var ucd = new ucVotes(); // (zonal);
+                panel1.Controls.Add(ucd);
+            }
+            else if (typeof(T) == typeof(ucPollingStation))
+            {
+                //var da = (DistrictAssembly)cus;
+                var ucd = new ucPollingStation(); // (zonal);
                 panel1.Controls.Add(ucd);
             }
             //else //(cus == null)
