@@ -190,8 +190,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\29 Thiruvarur.txt" />
-    <Content Include="Data\RawData\Assembly1.txt" />
-    <Content Include="Data\RawData\AssemblyTotalVotes.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
