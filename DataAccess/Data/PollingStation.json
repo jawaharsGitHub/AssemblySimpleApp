@@ -7843,9 +7843,9 @@
     "PollingStationId": 250,
     "Location": "Town Panchayat Marriage Hall, North Portion Mandapam",
     "PollingArea": "1.Mandapam(R.V) And (T.P) South kadarkarai , 2.Mandapam (R.V) And (T.P) Fisherman colony , 3.Mandapam (R.V) And (T.P) Railway colony , 4.Mandapam(R.V) And (T.P) Fisherman colony umayalpuram",
-    "Gender": "",
-    "AssemblyNo": "",
-    "ParlimentaryNo": ""
+    "Gender": "All Voters",
+    "AssemblyNo": 211,
+    "ParlimentaryNo": 35
   },
   {
     "SlNo": 251,

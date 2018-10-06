@@ -19,6 +19,8 @@ namespace Common
 
         public static string VoteDataFile { get { return GetFullPath("votedata"); } }
 
+        public static string PollingStationFile { get { return GetFullPath("pollingStation"); } }
+
         public static string InvestmentFile { get; } = GetFullPath("InvestmentFile");
 
         public static string ClosedNotesFile { get; } = GetFullPath("ClosedNotesFile");

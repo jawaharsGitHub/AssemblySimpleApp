@@ -82,6 +82,7 @@
     <Compile Include="PrimaryTypes\Investment.cs" />
     <Compile Include="PrimaryTypes\Panchayat.cs" />
     <Compile Include="PrimaryTypes\Petrol.cs" />
+    <Compile Include="PrimaryTypes\PollingStation.cs" />
     <Compile Include="PrimaryTypes\VoteData.cs" />
     <Compile Include="PrimaryTypes\Zonal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -175,7 +176,7 @@
     <None Include="Data\panchayat.json" />
     <None Include="Data\block.json" />
     <None Include="Data\district.json" />
-    <None Include="Data\PollingStation\35Ramnad.json" />
+    <None Include="Data\PollingStation.json" />
     <None Include="Data\votedata.json" />
     <None Include="Data\zonal.json" />
     <None Include="packages.config">

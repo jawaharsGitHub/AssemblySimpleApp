@@ -24,6 +24,8 @@ namespace DataAccess.PrimaryTypes
 
         public string Category { get; set; }
 
+        public string AssemblyFullName { get { return $"{AssemblyNo}-{AssemblyName}"; } }
+
 
         public Assembly()
         {
