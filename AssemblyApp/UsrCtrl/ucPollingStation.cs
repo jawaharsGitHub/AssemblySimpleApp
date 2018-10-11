@@ -26,6 +26,9 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             cmbAssembly.DataSource = Assembly.GetAll();
 
+            SetWrap("Location", "PollingArea");
+
+
         }
 
         private void cmbAssembly_SelectedIndexChanged(object sender, EventArgs e)
@@ -36,6 +39,23 @@ namespace CenturyFinCorpApp.UsrCtrl
 
 
             label1.Text = $"{ps.Count} Polling Stations";
+        }
+
+        private void SetWrap(params string[] columnNames)
+        {
+            for (int i = 0; i < columnNames.Length; i++)
+            {
+                // Console.Write(list[i] + " ");
+
+
+                dataGridView1.Columns[columnNames[i]].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+
+                dataGridView1.Columns[columnNames[i]].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+
+
+            }
+
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
     }
 }

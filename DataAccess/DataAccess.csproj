@@ -103,6 +103,11 @@
     <None Include="Data\csvData\Assembly.csv" />
     <None Include="Data\csvData\DataSource\2016-Results\AC WISE CANDIDATE COUNT.pdf" />
     <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\01 ARIYALUR.pdf" />
+    <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\01 ARIYALUR\01 ARIYALUR-converted.docx" />
+    <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\01 ARIYALUR\01 ARIYALUR-converted.xlsx" />
+    <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\01 ARIYALUR\01 ARIYALUR-converted_1.xlsx" />
+    <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\01 ARIYALUR\01 ARIYALUR.pdf" />
+    <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\01 ARIYALUR\01 ARIYALUR.xlsx" />
     <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\02 CHENNAI.pdf" />
     <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\03 COIMBATORE.pdf" />
     <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\04 CUDDALORE.pdf" />
@@ -120,6 +125,11 @@
     <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\16 PERAMBALUR.pdf" />
     <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\17 PUDHUKOTAI.pdf" />
     <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\18 RAMANATHAPURAM.pdf" />
+    <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\18 RAMANATHAPURAM\18 RAMANATHAPURAM-converted.docx" />
+    <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\18 RAMANATHAPURAM\18 RAMANATHAPURAM-converted.xls" />
+    <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\18 RAMANATHAPURAM\18 RAMANATHAPURAM-CSV.csv" />
+    <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\18 RAMANATHAPURAM\18 RAMANATHAPURAM.pdf" />
+    <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\18 RAMANATHAPURAM\18 RAMANATHAPURAM.xlsx" />
     <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\19 SALEM.pdf" />
     <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\20 SIVAGANGA.pdf" />
     <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\21 THANJAVUR.pdf" />
@@ -131,6 +141,8 @@
     <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\27 THIRUVALLUR.pdf" />
     <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\28 TIRUVANNAMALAI.pdf" />
     <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\30 VELLORE.pdf" />
+    <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\30 VELLORE\30 VELLORE.pdf" />
+    <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\30 VELLORE\30 VELLORE.xlsx" />
     <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\31 VILLUPURAM.pdf" />
     <None Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\32 VIRDHUNAGAR.pdf" />
     <None Include="Data\csvData\DataSource\tamilnadu_AssemblyAndPanchayat.pdf" />
@@ -191,6 +203,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\29 Thiruvarur.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\01 ARIYALUR\New folder %282%29\" />
+    <Folder Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\01 ARIYALUR\New folder\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
