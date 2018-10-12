@@ -94,6 +94,12 @@
     <Compile Include="UsrCtrl\ucPollingStation.Designer.cs">
       <DependentUpon>ucPollingStation.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsrCtrl\ucReports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsrCtrl\ucReports.Designer.cs">
+      <DependentUpon>ucReports.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsrCtrl\ucVotes.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -166,6 +172,9 @@
     </Compile>
     <EmbeddedResource Include="UsrCtrl\ucPollingStation.resx">
       <DependentUpon>ucPollingStation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsrCtrl\ucReports.resx">
+      <DependentUpon>ucReports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsrCtrl\ucVotes.resx">
       <DependentUpon>ucVotes.cs</DependentUpon>

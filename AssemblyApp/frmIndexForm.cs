@@ -98,6 +98,9 @@ namespace CenturyFinCorpApp
             mnuAnalysis.Click += (s, e) => ShowForm<ucVotes>(); ;
             menuStrip.Items.Add(mnuAnalysis);
 
+            var mnuReports = new ToolStripMenuItem() { Name = "reports", Text = "Reports" };
+            mnuReports.Click += (s, e) => ShowForm<ucReports>(); ;
+            menuStrip.Items.Add(mnuReports);
 
             this.Controls.Add(menuStrip);
         }
@@ -165,6 +168,12 @@ namespace CenturyFinCorpApp
             {
                 //var da = (DistrictAssembly)cus;
                 var ucd = new ucPollingStation(); // (zonal);
+                panel1.Controls.Add(ucd);
+            }
+            else if (typeof(T) == typeof(ucReports))
+            {
+                //var da = (DistrictAssembly)cus;
+                var ucd = new ucReports(); // (zonal);
                 panel1.Controls.Add(ucd);
             }
             //else //(cus == null)
