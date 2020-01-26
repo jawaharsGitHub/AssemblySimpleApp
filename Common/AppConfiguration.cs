@@ -11,6 +11,8 @@ namespace Common
 
         public static string AssemblyFile { get; } = GetFullPath("assembly");
 
+        public static string VoterFile { get; } = GetFullPath("voter");
+
         public static string PanchayatFile { get; } = GetFullPath("panchayat");
 
         public static string DistrictFile { get; } = GetFullPath("district");

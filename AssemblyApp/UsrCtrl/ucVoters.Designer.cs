@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvAssembly = new System.Windows.Forms.DataGridView();
+            this.dgvVoters = new System.Windows.Forms.DataGridView();
             this.cmbFilter = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.cmbDistrict = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAssembly)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVoters)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvAssembly
+            // dgvVoters
             // 
-            this.dgvAssembly.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAssembly.Location = new System.Drawing.Point(42, 109);
-            this.dgvAssembly.Name = "dgvAssembly";
-            this.dgvAssembly.Size = new System.Drawing.Size(721, 492);
-            this.dgvAssembly.TabIndex = 0;
-            this.dgvAssembly.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvAssembly_MouseDoubleClick);
+            this.dgvVoters.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVoters.Location = new System.Drawing.Point(42, 109);
+            this.dgvVoters.Name = "dgvVoters";
+            this.dgvVoters.Size = new System.Drawing.Size(721, 492);
+            this.dgvVoters.TabIndex = 0;
+            this.dgvVoters.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvAssembly_MouseDoubleClick);
             // 
             // cmbFilter
             // 
@@ -96,10 +96,10 @@
             this.Controls.Add(this.cmbDistrict);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.cmbFilter);
-            this.Controls.Add(this.dgvAssembly);
+            this.Controls.Add(this.dgvVoters);
             this.Name = "ucVoters";
             this.Size = new System.Drawing.Size(841, 582);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAssembly)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVoters)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -107,7 +107,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvAssembly;
+        private System.Windows.Forms.DataGridView dgvVoters;
         private System.Windows.Forms.ComboBox cmbFilter;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox cmbDistrict;
