@@ -115,20 +115,53 @@ namespace CenturyFinCorpApp.UsrCtrl
             int pageNo = txtPageNo.Text.ToInt32();
 
 
-            for (int i = 0; i < voters.Count() - 1; i = i + 10)
-            {
-                var items = voters.Skip(i).Take(10).ToList();
 
-                // Do something with 10 or remaining items
+            int rowCount = 3;
+
+            int fullrowCount = voters.Count / rowCount;
+            if (voters.Count % rowCount > 0)
+                fullrowCount += 1;
+
+            int extraDataInRow = voters.Count % rowCount;
+
+
+            int columnCount = 3;
+            int fullcolumnCount = voters.Count >= 3 ? 3 : voters.Count;
+            //fullcolumnCount += (voters.Count / columnCount) + (voters.Count % columnCount);
+
+
+
+
+            var checkCount = fullrowCount == 1 ? voters.Count() : voters.Count() - 1;
+
+            int roundNumber = 0;
+            int fetchCount = fullrowCount;
+
+            int skipRecordCount = 0;
+
+
+            for (int i = 0; i < checkCount; i = i + fullrowCount)
+            {
+
+                roundNumber += 1;
+
+                if (extraDataInRow != 0 && extraDataInRow < roundNumber)
+                    fetchCount = fullrowCount - 1;
+
+                var items = voters.Skip(skipRecordCount).Take(fetchCount).ToList();
+                skipRecordCount += fetchCount;
+
+                // Do something with taken items
                 foreach (var item in items)
                 {
                     item.Sno = startingNo;
                     item.PageNumber = pageNo;
 
-                    startingNo += 3;
+                    startingNo += (fullrowCount == 1 ? 1 : fullcolumnCount);
                 }
                 nextStartingNO += 1;
                 startingNo = nextStartingNO;
+
             }
 
             string sJSONResponse = JsonConvert.SerializeObject(voters.OrderBy(o => o.Sno), Formatting.Indented);
@@ -151,8 +184,8 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             if (givenVoterId.Contains("/34/201/") || (givenVoterId.Contains("/34") && givenVoterId.Contains("201/")))
                 return "TN/34/201/" + givenVoterId.Substring(givenVoterId.Length - 7);
-            else if(givenVoterId.Contains("₹") || givenVoterId.Contains("?") || givenVoterId.Contains("₹)") || givenVoterId.Contains("7)") || givenVoterId.Contains("%") || givenVoterId.Contains("["))
-                return "FXJ" + givenVoterId.Substring(givenVoterId.Length - 7); 
+            else if (givenVoterId.Contains("₹") || givenVoterId.Contains("?") || givenVoterId.Contains("₹)") || givenVoterId.Contains("7)") || givenVoterId.Contains("%") || givenVoterId.Contains("["))
+                return "FXJ" + givenVoterId.Substring(givenVoterId.Length - 7);
             else
                 return "WRM" + givenVoterId.Substring(givenVoterId.Length - 7);
         }
