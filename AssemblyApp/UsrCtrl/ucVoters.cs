@@ -37,6 +37,17 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             //var data = allVoters.Where(w => w.Gender.Trim() == "ஆண்‌").ToList();
 
+            /*total voters
+             * voters by age
+             * voters by gender
+             * number of families
+             * voters by panchayat
+             * voters by ondrium
+             * voters by caste
+             * voters by street or THERU.
+             * voyers of younster/middle age/old
+             * */
+
 
             lblRecordCount.Text = $"Total Voters: {allVoters.Count()}";
 
