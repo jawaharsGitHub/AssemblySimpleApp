@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web.Helpers;
 using System.Windows.Forms;
 
@@ -13,7 +14,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 {
     public partial class ucVoters : UserControl
     {
-        List<VoterDetail> assemblies;
+        List<VoterDetail> voterDetails;
         public ZonalDistrict _selectedDistrict;
 
         public ucVoters(ZonalDistrict selectedDistrict = null)
@@ -35,27 +36,16 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             }
 
-            //var data = allVoters.Where(w => w.Gender.Trim() == "ஆண்‌").ToList();
-
-            /*total voters
-             * voters by age
-             * voters by gender
-             * number of families
-             * voters by panchayat
-             * voters by ondrium
-             * voters by caste
-             * voters by street or THERU.
-             * voyers of younster/middle age/old
-             * */
+           
 
 
             lblRecordCount.Text = $"Total Voters: {allVoters.Count()}";
 
-            assemblies = allVoters.OrderBy(o => o.Sno).ToList();
+            voterDetails = allVoters.OrderBy(o => o.Sno).ToList();
             // (from a in VoterDetail.GetAll()
             //              select a).ToList();
 
-            dgvVoters.DataSource = assemblies;
+            dgvVoters.DataSource = voterDetails;
             LoadFilter();
             LoadDistrict();
             FormatGrid();
@@ -125,7 +115,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             int extraDataInRow = voters.Count % rowCount;
 
 
-            int columnCount = 3;
+            //int columnCount = 3;
             int fullcolumnCount = voters.Count >= 3 ? 3 : voters.Count;
             //fullcolumnCount += (voters.Count / columnCount) + (voters.Count % columnCount);
 
@@ -305,6 +295,32 @@ namespace CenturyFinCorpApp.UsrCtrl
                 //MessageBox.Show(file);
                 ProcessVoterList(file);
             }
+
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            //var data = voterDetails.Where(w => w.Gender.Trim() == "ஆண்‌").ToList();
+
+            //var data = voterDetails.Count;
+
+            sb.AppendLine($"Total Voters: {voterDetails.Count}");
+
+            /*total voters
+             * voters by age
+             * voters by gender
+             * number of families
+             * voters by panchayat
+             * voters by ondrium
+             * voters by caste
+             * voters by street or THERU.
+             * voyers of younster/middle age/old
+             * */
+
+            MessageBox.Show(sb.ToString());
 
 
         }
