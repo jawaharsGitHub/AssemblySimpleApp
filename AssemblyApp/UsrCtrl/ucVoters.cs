@@ -20,15 +20,29 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             InitializeComponent();
 
-
-
-
             _selectedDistrict = selectedDistrict;
 
-            assemblies = (from a in VoterDetail.GetAll()
-                              //join d in DataAccess.PrimaryTypes.District.GetAll()
-                              //on a.DistrictId equals d.DistrictId
-                          select a).ToList();
+
+            var folderPath = @"E:\NTK\jawa - 2021\Voters List\json";
+            var allVoters = new List<VoterDetail>();
+
+
+            foreach (string file in Directory.EnumerateFiles(folderPath, "*.json"))
+            {
+                string jsonText = File.ReadAllText(file);
+                List<VoterDetail> list = JsonConvert.DeserializeObject<List<VoterDetail>>(jsonText) ?? new List<VoterDetail>();
+                allVoters.AddRange(list);
+
+            }
+
+            //var data = allVoters.Where(w => w.Gender.Trim() == "ஆண்‌").ToList();
+
+
+            lblRecordCount.Text = $"Total Voters: {allVoters.Count()}";
+
+            assemblies = allVoters.OrderBy(o => o.Sno).ToList();
+            // (from a in VoterDetail.GetAll()
+            //              select a).ToList();
 
             dgvVoters.DataSource = assemblies;
             LoadFilter();
@@ -39,16 +53,11 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void ProcessVoterList(string fileName)
         {
-            //var fileName = @"E:\NTK\jawa - 2021\Voters List\newocr.com-Single Columns.txt";
-
             var fileNamewithoutExt = Path.GetFileNameWithoutExtension(fileName);
-
-
             var processedFileName = fileNamewithoutExt.Split('-');
 
-
-            txtStartingNo.Text =  processedFileName[1].ToInt32().ToString();
-            txtPageNo.Text = processedFileName[3].ToInt32().ToString();
+            txtStartingNo.Text = processedFileName[3].ToInt32().ToString();
+            txtPageNo.Text = processedFileName[1].ToInt32().ToString();
 
 
             if (string.IsNullOrEmpty(txtPageNo.Text) || string.IsNullOrEmpty(txtStartingNo.Text))
@@ -129,25 +138,12 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private string CorrectVoterId(string givenVoterId)
         {
-            if (givenVoterId.Contains("/"))
-                return givenVoterId.Replace("111/34/201/", "TN/34/201/").Replace("714/34/201/", "TN/34/201/");
+            if (givenVoterId.Contains("/34/201/") || (givenVoterId.Contains("/34") && givenVoterId.Contains("201/")))
+                return "TN/34/201/" + givenVoterId.Substring(givenVoterId.Length - 7);
+            else if(givenVoterId.Contains("₹") || givenVoterId.Contains("?") || givenVoterId.Contains("₹)") || givenVoterId.Contains("7)") || givenVoterId.Contains("%") || givenVoterId.Contains("["))
+                return "FXJ" + givenVoterId.Substring(givenVoterId.Length - 7); 
             else
-                //return string.Format("WRM{0}", givenVoterId.Substring(3));
-                return givenVoterId.Replace("4 / 3 / 4", "WRM");
-
-
-            //1 / 41
-            //1//81/
-            //1/4
-            //1/1140
-            //4914
-            //4 / 1 /
-            //14/81/
-            //4/714
-            //14/814
-
-
-
+                return "WRM" + givenVoterId.Substring(givenVoterId.Length - 7);
         }
 
         private void FormatGrid()
@@ -247,7 +243,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
 
 
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            //OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.ShowDialog();
             openFileDialog1.InitialDirectory = @"E:\NTK\jawa - 2021\Voters List";
             openFileDialog1.RestoreDirectory = true;
@@ -258,7 +254,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             openFileDialog1.CheckPathExists = true;
 
             //textBox1.Text = openFileDialog1.FileName;
-            this.openFileDialog1.Multiselect = true;
+            //this.openFileDialog1.Multiselect = true;
 
             foreach (String file in openFileDialog1.FileNames)
             {

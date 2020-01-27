@@ -39,6 +39,7 @@
             this.txtPageNo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblRecordCount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVoters)).BeginInit();
             this.SuspendLayout();
             // 
@@ -145,10 +146,23 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "starting no";
             // 
+            // lblRecordCount
+            // 
+            this.lblRecordCount.AutoSize = true;
+            this.lblRecordCount.BackColor = System.Drawing.Color.Maroon;
+            this.lblRecordCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecordCount.ForeColor = System.Drawing.Color.Yellow;
+            this.lblRecordCount.Location = new System.Drawing.Point(738, 0);
+            this.lblRecordCount.Name = "lblRecordCount";
+            this.lblRecordCount.Size = new System.Drawing.Size(164, 39);
+            this.lblRecordCount.TabIndex = 11;
+            this.lblRecordCount.Text = "VOTERS";
+            // 
             // ucVoters
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblRecordCount);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtPageNo);
@@ -180,5 +194,6 @@
         private System.Windows.Forms.TextBox txtPageNo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblRecordCount;
     }
 }

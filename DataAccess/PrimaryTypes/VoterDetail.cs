@@ -26,6 +26,9 @@ namespace DataAccess.PrimaryTypes
 
         public static List<VoterDetail> GetAll()
         {
+
+            
+
             return ReadFileAsObjects<VoterDetail>(JsonFilePath);
         }
 
