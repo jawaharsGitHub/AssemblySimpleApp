@@ -34,7 +34,7 @@ namespace CenturyFinCorpApp
             panel1.Width = 1300;
             panel1.Height = this.Height;
 
-            ShowForm<ucZonal>(); // initial form to be loaded
+            ShowForm<ucVoters>(); // initial form to be loaded
         }
 
         private void CreateMenu()

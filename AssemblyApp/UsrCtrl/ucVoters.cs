@@ -21,13 +21,13 @@ namespace CenturyFinCorpApp.UsrCtrl
             InitializeComponent();
 
 
-            //ProcessVoterList();
+
 
             _selectedDistrict = selectedDistrict;
 
             assemblies = (from a in VoterDetail.GetAll()
-                          //join d in DataAccess.PrimaryTypes.District.GetAll()
-                          //on a.DistrictId equals d.DistrictId
+                              //join d in DataAccess.PrimaryTypes.District.GetAll()
+                              //on a.DistrictId equals d.DistrictId
                           select a).ToList();
 
             dgvVoters.DataSource = assemblies;
@@ -37,24 +37,27 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         }
 
-        private void ProcessVoterList()
+        private void ProcessVoterList(string fileName)
         {
-            var fileName = @"E:\NTK\jawa - 2021\Voters List\newocr.com-Single Columns.txt";
+            //var fileName = @"E:\NTK\jawa - 2021\Voters List\newocr.com-Single Columns.txt";
+
+            var fileNamewithoutExt = Path.GetFileNameWithoutExtension(fileName);
+
+
+            var processedFileName = fileNamewithoutExt.Split('-');
+
+
+            txtStartingNo.Text =  processedFileName[1].ToInt32().ToString();
+            txtPageNo.Text = processedFileName[3].ToInt32().ToString();
+
+
+            if (string.IsNullOrEmpty(txtPageNo.Text) || string.IsNullOrEmpty(txtStartingNo.Text))
+            {
+                MessageBox.Show("page no and strating no is needed");
+                return;
+            }
 
             var content = File.ReadAllLines(fileName).Where(w => string.IsNullOrEmpty(w.Trim()) == false).ToList();
-
-            //var content2 = File.ReadAllLines(fileName);
-
-            var pageDetails = content[50];
-            var pageTitle = content[101];
-            var areaDetails = content[102];
-            var zoneDetails = content[153];
-
-            content.RemoveAt(50);
-            content.RemoveAt(100);
-            content.RemoveAt(100);
-            content.RemoveAt(150);
-            
 
             var voters = new List<VoterDetail>();
 
@@ -62,19 +65,22 @@ namespace CenturyFinCorpApp.UsrCtrl
             for (int i = 0; i < content.Count() - 1; i = i + 5)
             {
                 var items = content.Skip(i).Take(5).ToList();
-                // Do something with 100 or remaining items
+                // Do something with 5 or remaining items
 
 
                 var ageAndGender = items[4].Split(' ');
 
+                var voterId = items[0].Split('.').Last().Replace("எண்", "").Trim();
+                var address = items[3].Split(':').Last().Trim();
+
                 var voter = new VoterDetail()
                 {
-                    VoterId = items[0].Split('.').Last().Trim(),
-                    CorrectedVoterId = CorrectVoterId(items[0].Split('.').Last()).Trim(),
+                    VoterId = voterId,
+                    CorrectedVoterId = CorrectVoterId(voterId).Trim(),
                     Name = items[1].Split(':').Last().Trim(),
                     Fname = items[2].Split(':').Last().Trim(),
-                    Address = items[3].Split(':').Last().Trim(),
-                    CorrectedAddress = CorrectAddress(items[3].Split(':').Last().Trim()),
+                    Address = address,
+                    CorrectedAddress = CorrectAddress(address.Trim()),
                     Age = ageAndGender[2],
                     Gender = ageAndGender[4].Replace(":", ""),
                     R = "H"
@@ -84,28 +90,35 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             }
 
-            int nextStartingNO = 1; // Starting serail no of that page
-            int startingNo = 1; // Starting serail no of that page
-            int pageNo = 3;
-            
-            
+            int nextStartingNO = txtStartingNo.Text.ToInt32(); // Starting serail no of that page
+            int startingNo = txtStartingNo.Text.ToInt32(); // Starting serail no of that page
+            int pageNo = txtPageNo.Text.ToInt32();
+
+
             for (int i = 0; i < voters.Count() - 1; i = i + 10)
             {
                 var items = voters.Skip(i).Take(10).ToList();
 
-                // Do something with 100 or remaining items
+                // Do something with 10 or remaining items
                 foreach (var item in items)
                 {
                     item.Sno = startingNo;
                     item.PageNumber = pageNo;
-                    
+
                     startingNo += 3;
                 }
                 nextStartingNO += 1;
                 startingNo = nextStartingNO;
             }
 
-            string sJSONResponse = JsonConvert.SerializeObject(voters.OrderBy(o => o.Sno));
+            string sJSONResponse = JsonConvert.SerializeObject(voters.OrderBy(o => o.Sno), Formatting.Indented);
+
+
+            var jsonFilePath = Path.Combine(Path.GetDirectoryName(fileName), fileNamewithoutExt);
+
+            File.WriteAllText($"{jsonFilePath}_json.json", sJSONResponse);
+
+            MessageBox.Show($"Done for {fileNamewithoutExt}");
 
         }
 
@@ -119,10 +132,19 @@ namespace CenturyFinCorpApp.UsrCtrl
             if (givenVoterId.Contains("/"))
                 return givenVoterId.Replace("111/34/201/", "TN/34/201/").Replace("714/34/201/", "TN/34/201/");
             else
-                return string.Format("WRM{0}", givenVoterId.Substring(3));
+                //return string.Format("WRM{0}", givenVoterId.Substring(3));
+                return givenVoterId.Replace("4 / 3 / 4", "WRM");
 
 
-
+            //1 / 41
+            //1//81/
+            //1/4
+            //1/1140
+            //4914
+            //4 / 1 /
+            //14/81/
+            //4/714
+            //14/814
 
 
 
@@ -219,6 +241,32 @@ namespace CenturyFinCorpApp.UsrCtrl
             var mainForm = (frmIndexForm)(((DataGridView)sender).Parent.Parent.Parent); //new frmIndexForm(true);
 
             mainForm.ShowForm<ucPanchayat>(selectedCustomer);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.ShowDialog();
+            openFileDialog1.InitialDirectory = @"E:\NTK\jawa - 2021\Voters List";
+            openFileDialog1.RestoreDirectory = true;
+            openFileDialog1.Title = "Browse Text Files";
+            openFileDialog1.DefaultExt = "txt";
+            openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog1.CheckFileExists = true;
+            openFileDialog1.CheckPathExists = true;
+
+            //textBox1.Text = openFileDialog1.FileName;
+            this.openFileDialog1.Multiselect = true;
+
+            foreach (String file in openFileDialog1.FileNames)
+            {
+                //MessageBox.Show(file);
+                ProcessVoterList(file);
+            }
+
+
         }
     }
 }
