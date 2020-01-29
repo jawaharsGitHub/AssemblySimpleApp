@@ -16,6 +16,7 @@ namespace CenturyFinCorpApp.UsrCtrl
     {
         List<VoterDetail> voterDetails;
         public ZonalDistrict _selectedDistrict;
+        string filePath = @"E:\NTK\jawa - 2021\Voters List\PanchayatVoters\P-211-Ramanathapuram\Nagaratchi\Rameswaram\Ward8\json\MergedJson\Rmm ward8.json";
 
         public ucVoters(ZonalDistrict selectedDistrict = null)
         {
@@ -23,29 +24,16 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             _selectedDistrict = selectedDistrict;
 
+            string jsonText = File.ReadAllText(filePath);
+            List<VoterDetail> list = JsonConvert.DeserializeObject<List<VoterDetail>>(jsonText) ?? new List<VoterDetail>();
 
-            var folderPath = @"E:\NTK\jawa - 2021\Voters List\json";
-            var allVoters = new List<VoterDetail>();
+            lblRecordCount.Text = $"Total Voters: {list.Count()}";
 
-
-            foreach (string file in Directory.EnumerateFiles(folderPath, "*.json"))
-            {
-                string jsonText = File.ReadAllText(file);
-                List<VoterDetail> list = JsonConvert.DeserializeObject<List<VoterDetail>>(jsonText) ?? new List<VoterDetail>();
-                allVoters.AddRange(list);
-
-            }
-
-           
-
-
-            lblRecordCount.Text = $"Total Voters: {allVoters.Count()}";
-
-            voterDetails = allVoters.OrderBy(o => o.Sno).ToList();
-            // (from a in VoterDetail.GetAll()
-            //              select a).ToList();
+            voterDetails = list.OrderBy(o => o.Sno).ToList();
 
             dgvVoters.DataSource = voterDetails;
+            dgvVoters.Columns["R"].DisplayIndex = 4;
+
             LoadFilter();
             LoadDistrict();
             FormatGrid();
@@ -114,12 +102,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             int extraDataInRow = voters.Count % rowCount;
 
-
-            //int columnCount = 3;
             int fullcolumnCount = voters.Count >= 3 ? 3 : voters.Count;
-            //fullcolumnCount += (voters.Count / columnCount) + (voters.Count % columnCount);
-
-
 
 
             var checkCount = fullrowCount == 1 ? voters.Count() : voters.Count() - 1;
@@ -287,12 +270,8 @@ namespace CenturyFinCorpApp.UsrCtrl
             openFileDialog1.CheckFileExists = true;
             openFileDialog1.CheckPathExists = true;
 
-            //textBox1.Text = openFileDialog1.FileName;
-            //this.openFileDialog1.Multiselect = true;
-
             foreach (String file in openFileDialog1.FileNames)
             {
-                //MessageBox.Show(file);
                 ProcessVoterList(file);
             }
 
@@ -309,6 +288,45 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             sb.AppendLine($"Total Voters: {voterDetails.Count}");
 
+            // by R
+            var byR = voterDetails.GroupBy(g => g.R).Select(s => new { s.Key, s.ToList().Count }).OrderByDescending(o => o.Count).ToList();
+
+            // by Age
+            var byAge = voterDetails.GroupBy(g => g.Age).Select(s => new { s.Key, s.ToList().Count }).OrderByDescending(o => o.Count).ToList();
+
+            sb.AppendLine($"AGE - VOTERS");
+            byAge.ForEach(f =>
+            {
+                sb.AppendLine($"{f.Key} - {f.Count}");
+            });
+
+            // male voters
+            var maleVoters = voterDetails.Where(g => g.Gender.First() == 'ஆ').ToList();
+
+            // ladies voters
+            var ladiesVoters = voterDetails.Where(g => g.Gender.Substring(0, 2) == "பெ").ToList();
+
+            // other voters
+            var otherVoters = voterDetails.Where(g => g.Gender.Substring(0, 2) != "பெ" && g.Gender.First() != 'ஆ').ToList();
+
+            // Voters by Families.
+            //var byFamilyAddress = voterDetails.GroupBy(g => g.CorrectedAddress)
+            //    .Select(s => new
+            //    {
+            //        Key = s.Key + String.Join(",", s.Select(d => d.Sno).ToList(),
+            //    s.ToList().Count
+            //});
+
+
+            var d = (from v in voterDetails
+                     group v by v.CorrectedAddress into newGroup
+                     select new
+                     {
+                         Key = newGroup.Key + String.Join(",", newGroup.Select(ss => ss.Sno).ToList()),
+                         newGroup.ToList().Count
+                     }).ToList();
+
+
             /*total voters
              * voters by age
              * voters by gender
@@ -323,6 +341,138 @@ namespace CenturyFinCorpApp.UsrCtrl
             MessageBox.Show(sb.ToString());
 
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            FolderBrowserDialog folderDialog1 = new FolderBrowserDialog();
+            folderDialog1.SelectedPath = @"E:\NTK\jawa - 2021\Voters List";
+            folderDialog1.ShowNewFolderButton = false;
+            folderDialog1.ShowDialog();
+
+            var folderPath = folderDialog1.SelectedPath; // @"E:\NTK\jawa - 2021\Voters List\json";
+            var allVoters = new List<VoterDetail>();
+
+
+            var allJsonFiles = Directory.EnumerateFiles(folderPath, "*.json");
+
+            var mergedFileName = allJsonFiles.First();
+
+            var splittedFileName = Path.GetFileNameWithoutExtension(mergedFileName).Split(' ');
+
+            mergedFileName = $"{splittedFileName[0].Trim()} {splittedFileName[1].Trim()}"; // $"Rmm ward8 OCR PNo-3-StartNo-1_json";
+
+            foreach (string file in Directory.EnumerateFiles(folderPath, "*.json"))
+            {
+                string jsonText = File.ReadAllText(file);
+                List<VoterDetail> list = JsonConvert.DeserializeObject<List<VoterDetail>>(jsonText) ?? new List<VoterDetail>();
+                allVoters.AddRange(list);
+            }
+
+            var singleJonFile = JsonConvert.SerializeObject(allVoters.OrderBy(o => o.Sno).ToList(), Formatting.Indented);
+
+
+            var fileDir = $"{folderPath}/MergedJson/";
+
+            if (Directory.Exists(fileDir) == false)
+                Directory.CreateDirectory(fileDir);
+
+            File.WriteAllText($"{fileDir}/{mergedFileName}.json", singleJonFile);
+
+
+            lblRecordCount.Text = $"Total Voters: {allVoters.Count()}";
+
+            voterDetails = allVoters.OrderBy(o => o.Sno).ToList();
+            dgvVoters.DataSource = voterDetails;
+
+            MessageBox.Show("Done");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog fileDial = new OpenFileDialog();
+            fileDial.InitialDirectory = @"E:\NTK\jawa - 2021\Voters List";
+            fileDial.ShowDialog();
+
+            var file = fileDial.FileName; // @"E:\NTK\jawa - 2021\Voters List\json";
+            var allVoters = new List<VoterDetail>();
+
+
+            string jsonText = File.ReadAllText(file);
+            List<VoterDetail> list = JsonConvert.DeserializeObject<List<VoterDetail>>(jsonText) ?? new List<VoterDetail>();
+
+            var neededData = (from l in list
+                              select new
+                              { l.Sno, l.CorrectedVoterId, l.CorrectedAddress }).OrderBy(o => o.Sno).ToList();
+
+            var singleWrongJson = JsonConvert.SerializeObject(neededData, Formatting.Indented);
+
+            var Worngfile = $"{Path.GetDirectoryName(file)}/{Path.GetFileNameWithoutExtension(file)}_Wrong.json";
+
+            File.WriteAllText(Worngfile, singleWrongJson);
+
+            MessageBox.Show("Done");
+
+        }
+
+        private void dgvVoters_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            var grid = (sender as DataGridView);
+            var rowIndex = grid.CurrentCell.RowIndex;
+
+            var owningColumnName = grid.CurrentCell.OwningColumn.Name;
+
+            var cellValue = GetGridCellValue(grid, rowIndex, owningColumnName);
+
+            if (cellValue == null) return;
+
+            var cus = grid.Rows[grid.CurrentCell.RowIndex].DataBoundItem as VoterDetail;
+
+            var updatedCustomer = new VoterDetail()
+            {
+                Sno = cus.Sno
+            };
+
+
+            if (owningColumnName == "R" && cellValue != null)
+            {
+                updatedCustomer.R = cellValue;
+                UpdateR(updatedCustomer);
+                return;
+            }
+        }
+
+        public static string GetGridCellValue(DataGridView grid, int rowIndex, string columnName)
+        {
+            var cellValue = Convert.ToString(grid.Rows[grid.CurrentCell.RowIndex].Cells[columnName].Value);
+            return (cellValue == string.Empty) ? null : cellValue;
+        }
+
+        public void UpdateR(VoterDetail updatedCustomer)
+        {
+            try
+            {
+
+                var jsonText = File.ReadAllText(filePath);
+                var list = JsonConvert.DeserializeObject<List<VoterDetail>>(jsonText) ?? new List<VoterDetail>();
+                //return list;
+
+                //List<VoterDetail> list = ReadFileAsObjects<Customer>(JsonFilePath);
+
+                var u = list.Where(c => c.Sno == updatedCustomer.Sno).FirstOrDefault();
+                u.R = updatedCustomer.R;
+
+                //WriteObjectsToFile(list, JsonFilePath);
+
+                string jsonString = JsonConvert.SerializeObject(list, Formatting.Indented);
+                File.WriteAllText(filePath, jsonString);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
