@@ -43,6 +43,8 @@ namespace Common
 
         public static string PetrolFile { get; } = GetFullPath("PetrolFile");
 
+        public static string MemberVerifyFile { get { return GetFullPath("memberverify"); } }
+
         private static string GetFullPath(string configKey)
         {
             if (ConfigurationManager.AppSettings[configKey] == null) return null;

@@ -86,6 +86,7 @@
     <Compile Include="PrimaryTypes\PollingStation.cs" />
     <Compile Include="PrimaryTypes\VoteData.cs" />
     <Compile Include="PrimaryTypes\VoterDetail.cs" />
+    <Compile Include="PrimaryTypes\MemberVerify.cs" />
     <Compile Include="PrimaryTypes\Zonal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -192,6 +193,7 @@
     <None Include="Data\district.json" />
     <None Include="Data\PollingStation.json" />
     <None Include="Data\votedata.json" />
+    <None Include="Data\memberverify.json" />
     <None Include="Data\zonal.json" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

@@ -86,11 +86,11 @@ namespace CenturyFinCorpApp
             //mnuDataHelper.Click += (s, e) => ShowForm<DataHelper>(); ;
             //menuStrip.Items.Add(mnuDataHelper);
 
-            var mnuInternational = new ToolStripMenuItem() { Name = "international", Text = "வெளிநாட்டு-கிளைகள்" };
-            mnuInternational.Click += (s, e) => ShowForm<ucInternational>(); ;
+            var mnuInternational = new ToolStripMenuItem() { Name = "international", Text = "Member-Verification" };
+            mnuInternational.Click += (s, e) => ShowForm<ucMemberVerify>(); ;
             menuStrip.Items.Add(mnuInternational);
 
-            var mnuLocalbody = new ToolStripMenuItem() { Name = "localbody", Text = "உள்ளாட்சி-தேர்தல்" };
+            var mnuLocalbody = new ToolStripMenuItem() { Name = "localbody", Text = "உள்ளாட்சி-தேர்தல்-2020" };
             mnuLocalbody.Click += (s, e) => ShowForm<ucLocalBody>(); ;
             menuStrip.Items.Add(mnuLocalbody);
 
@@ -182,18 +182,14 @@ namespace CenturyFinCorpApp
             }
             else if (typeof(T) == typeof(ucVoters))
             {
-                //var da = (DistrictAssembly)cus;
-                var ucd = new ucVoters(); // (zonal);
+                var ucd = new ucVoters(); 
                 panel1.Controls.Add(ucd);
             }
-            //else //(cus == null)
-            //{
-            //    ucZonal ucZ = new ucZonal();
-            //    panel1.Controls.Add(ucZ);
-            //}
-
-
-
+            else if (typeof(T) == typeof(ucMemberVerify))
+            {
+                var ucd = new ucMemberVerify(); 
+                panel1.Controls.Add(ucd);
+            }
         }
 
     }

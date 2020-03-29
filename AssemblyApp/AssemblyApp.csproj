@@ -148,11 +148,9 @@
     <Compile Include="UsrCtrl\ucDistrict.Designer.cs">
       <DependentUpon>ucDistrict.cs</DependentUpon>
     </Compile>
-    <Compile Include="UsrCtrl\ucInternational.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UsrCtrl\ucInternational.Designer.cs">
-      <DependentUpon>ucInternational.cs</DependentUpon>
+    <Compile Include="UsrCtrl\ucMemberVerify.cs" />
+    <Compile Include="UsrCtrl\ucMemberVerify.Designer.cs">
+      <DependentUpon>ucMemberVerify.cs</DependentUpon>
     </Compile>
     <Compile Include="UsrCtrl\uclAddMember.cs">
       <SubType>UserControl</SubType>
@@ -215,8 +213,8 @@
     <EmbeddedResource Include="UsrCtrl\ucDistrict.resx">
       <DependentUpon>ucDistrict.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UsrCtrl\ucInternational.resx">
-      <DependentUpon>ucInternational.cs</DependentUpon>
+    <EmbeddedResource Include="UsrCtrl\ucMemberVerify.resx">
+      <DependentUpon>ucMemberVerify.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsrCtrl\uclAddMember.resx">
       <DependentUpon>uclAddMember.cs</DependentUpon>
