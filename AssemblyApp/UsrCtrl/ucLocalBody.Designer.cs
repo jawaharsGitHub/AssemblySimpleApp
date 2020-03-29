@@ -37,7 +37,7 @@
             this.label1.BackColor = System.Drawing.Color.Maroon;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Yellow;
-            this.label1.Location = new System.Drawing.Point(189, 35);
+            this.label1.Location = new System.Drawing.Point(184, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(316, 39);
             this.label1.TabIndex = 6;
