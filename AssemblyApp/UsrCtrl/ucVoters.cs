@@ -16,7 +16,7 @@ namespace CenturyFinCorpApp.UsrCtrl
     {
         List<VoterDetail> voterDetails;
         public ZonalDistrict _selectedDistrict;
-        string filePath = @"E:\NTK\jawa - 2021\Voters List\PanchayatVoters\P-211-Ramanathapuram\Nagaratchi\Rameswaram\Ward8\json\MergedJson\Rmm ward8.json";
+        string filePath = @"F:\NTK\jawa - 2021\Voters List\PanchayatVoters\P-211-Ramanathapuram\Nagaratchi\Rameswaram\Ward8\json\MergedJson\Rmm ward8.json";
 
         public ucVoters(ZonalDistrict selectedDistrict = null)
         {
