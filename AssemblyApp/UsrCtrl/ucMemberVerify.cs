@@ -37,28 +37,26 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             // group by phone number and look for dulicate names
 
-            #region DuplicatePhoneNo
+            /*
+            string thoguthiName = "rmd";
+            var fpath = @"E:/" + thoguthiName;
+            var text = File.ReadAllLines(fpath);
+            var rrr = new List<string>();
 
-            //string thoguthiName = "rmd";
-            //var fpath = @"E:/" + thoguthiName;
-            //var text = File.ReadAllLines(fpath);
-            //var rrr = new List<string>();
+            text.ToList().ForEach(f =>
+            {
+                var lines = f.Split(' ').ToList();
 
-            //text.ToList().ForEach(f =>
-            //{
-            //    var lines = f.Split(' ').ToList();
+                lines.ForEach(fe =>
+                {
+                    if (fe.Length == 10 && fe.ToInt64OrNull() != null)
+                        rrr.Add(fe);
+                });
 
-            //    lines.ForEach(fe =>
-            //    {
-            //        if (fe.Length == 10 && fe.ToInt64OrNull() != null)
-            //            rrr.Add(fe);
-            //    });
+            });
+            */
 
-            //});
-
-            var allPhoneNos = memberVerify.Select(s => s.ContactNo).ToList();
-
-            var duplicatePNo = (from p in allPhoneNos
+            var duplicatePNo = (from p in memberVerify.Select(s => s.ContactNo)
                                 group p by p into newPh
                                 select new
                                 {
@@ -105,16 +103,60 @@ namespace CenturyFinCorpApp.UsrCtrl
             File.WriteAllText($"E:/DupByPhone-result.txt", resultP.ToString());
 
             Process.Start($"E:/DupByPhone-result.txt");
-
-            #endregion
-
-
-
         }
 
         private void btnNameAddressVerify_Click(object sender, EventArgs e)
         {
             // group by name and look for duplicate or nearest address.
+
+            var duplicateName = (from p in memberVerify.Select(s => s.Name)
+                                 group p by p into newNameList
+                                 select new
+                                 {
+                                     newNameList.Key,
+                                     Count = newNameList.Count()
+                                 }).ToList();
+
+            var resultPh = duplicateName.Where(w => w.Count > 1).OrderByDescending(o => o.Count).Select(s => s.Key).ToList();
+
+            var phoneResult = new List<DuplicateByPhone>();
+
+            resultPh.ForEach(fe =>
+            {
+
+                var data = (from m in memberVerify
+                            where m.Name == fe
+                            select m).ToList();
+
+                var dupName = (from d in data
+                               group d by d.Address into nameGroup
+                               select new DuplicateByPhone
+                               {
+                                   Name = nameGroup.Key,
+                                   NameCount = nameGroup.Count(),
+                                   PhNo = nameGroup.ToList().First().ContactNo
+                               }).Where(w => w.NameCount > 1).ToList();
+
+                phoneResult.AddRange(dupName);
+
+            });
+
+
+            // Write it in a file and open in notepad
+            StringBuilder resultP = new StringBuilder();
+            int index = 0;
+            phoneResult.ForEach(rfe =>
+            {
+                index += 1;
+                resultP.AppendLine($"{index}.{rfe.PhNo}({rfe.NameCount}) --> {rfe.Name}");
+            });
+
+
+            File.WriteAllText($"E:/DupByName-result.txt", resultP.ToString());
+
+            Process.Start($"E:/DupByName-result.txt");
+
+
 
         }
     }
