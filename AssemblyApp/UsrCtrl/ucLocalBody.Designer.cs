@@ -37,6 +37,8 @@
             this.lblCount = new System.Windows.Forms.Label();
             this.lblDone = new System.Windows.Forms.Label();
             this.cmbPanchayat = new System.Windows.Forms.ComboBox();
+            this.btnPSProcess = new System.Windows.Forms.Button();
+            this.cmbAssembly = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -129,10 +131,31 @@
             this.cmbPanchayat.Size = new System.Drawing.Size(121, 21);
             this.cmbPanchayat.TabIndex = 9;
             // 
+            // btnPSProcess
+            // 
+            this.btnPSProcess.Location = new System.Drawing.Point(477, 286);
+            this.btnPSProcess.Name = "btnPSProcess";
+            this.btnPSProcess.Size = new System.Drawing.Size(108, 50);
+            this.btnPSProcess.TabIndex = 10;
+            this.btnPSProcess.Text = "Process Polling Station";
+            this.btnPSProcess.UseVisualStyleBackColor = true;
+            this.btnPSProcess.Click += new System.EventHandler(this.btnPSProcess_Click);
+            // 
+            // cmbAssembly
+            // 
+            this.cmbAssembly.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAssembly.FormattingEnabled = true;
+            this.cmbAssembly.Location = new System.Drawing.Point(464, 243);
+            this.cmbAssembly.Name = "cmbAssembly";
+            this.cmbAssembly.Size = new System.Drawing.Size(121, 21);
+            this.cmbAssembly.TabIndex = 11;
+            // 
             // ucLocalBody
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cmbAssembly);
+            this.Controls.Add(this.btnPSProcess);
             this.Controls.Add(this.cmbPanchayat);
             this.Controls.Add(this.lblDone);
             this.Controls.Add(this.lblCount);
@@ -161,5 +184,7 @@
         private System.Windows.Forms.Label lblCount;
         private System.Windows.Forms.Label lblDone;
         private System.Windows.Forms.ComboBox cmbPanchayat;
+        private System.Windows.Forms.Button btnPSProcess;
+        private System.Windows.Forms.ComboBox cmbAssembly;
     }
 }

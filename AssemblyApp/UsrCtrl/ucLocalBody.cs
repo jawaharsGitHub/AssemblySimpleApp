@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 
@@ -28,6 +29,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             //cmbSubItems.SelectedIndex = 1; // for ondrium
             cmbSubItems.SelectedIndex = 2; // for panchayat
             LoadZonal();
+            LoadAssembly();
         }
 
         public static List<KeyValuePair<int, string>> GetOptions()
@@ -56,7 +58,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             //    // Do whatever you need to do with clipboardText
             //}
 
-           
+
 
             ProcessPanchayat();
 
@@ -232,6 +234,20 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         }
 
+        private void LoadAssembly()
+        {
+            var assembly = Assembly.GetAll();
+            //zonal.Add(new Zonal(0, "ALL"));
+
+            cmbAssembly.DisplayMember = "AssemblyName";
+            cmbAssembly.ValueMember = "AssemblyNo";
+            cmbAssembly.DataSource = assembly.OrderBy(o => o.AssemblyName).ToList();
+            //this.cmbZonal.SelectedIndexChanged += new System.EventHandler(this.cmbZonal_SelectedIndexChanged);
+            //cmbZonal.SelectedValue = _selectedZonal == null ? 0 : _selectedZonal.ZonalId;
+
+
+        }
+
         private void cmbZonal_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbZonal.SelectedValue.ToInt32() > 0)
@@ -286,7 +302,109 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             ParentForm.AcceptButton = btnProcess;
         }
-       
+
+        private void btnPSProcess_Click(object sender, EventArgs e)
+        {
+            var url = $"https://www.elections.tn.gov.in/SSR2019/ac{cmbAssembly.SelectedValue}.htm";
+
+            var sourceCode = GetHTMLSource(url);
+
+            var data = sourceCode.Substring(sourceCode.IndexOf("lb_AC_NAME"));
+            data = data.Remove(data.IndexOf("<span id="));
+            data = data.Substring(data.IndexOf("<input type"));
+            data = data.Replace("<tr>", "~");
+
+            var neededData = data.Split('~').Where(w => w.Trim() != "").ToList();
+
+            var psList = new List<MyPollingStation>();
+
+            neededData.ForEach(fe =>
+            {
+
+                var ps = new MyPollingStation();
+
+                var row = fe;
+
+                // place Name
+                var pn = row.Substring(row.IndexOf("<a"));
+                pn = pn.Remove(pn.IndexOf("</a>"));
+                pn = pn.Substring(pn.IndexOf(">") + 1);
+                ps.Name = pn;
+
+                // place Address
+                var address = row.Substring(row.IndexOf("<br><br><br>"));
+                address = address.Remove(address.IndexOf("<br />"));
+                address = address.Replace("<br>", ""); //.Substring(pn.IndexOf(">") + 1);
+                ps.Address = address;
+
+                // Area Voted
+                var votingArea = row.Substring(row.IndexOf("<br />"));
+                votingArea = votingArea.Substring(votingArea.IndexOf("<p>"));
+                votingArea = votingArea.Remove(votingArea.IndexOf("</p>"));
+                votingArea = votingArea.Replace("<p>", "").Replace("<br />", "");
+                ps.AreaVoting = votingArea.Trim();
+
+                psList.Add(ps);
+
+
+            });
+
+
+            string path = @"e:\json\ac" + cmbAssembly.SelectedValue + ".txt";
+
+            if (!File.Exists(path))
+            {
+                // Create a file to write to.
+                using (StreamWriter sw1 = File.CreateText(path))
+                {
+
+
+                }
+            }
+
+            // This text is always added, making the file longer over time
+            // if it is not deleted.
+            //using (StreamWriter sw2 = File.AppendText(path))
+            //{
+            File.WriteAllText(path,JsonConvert.SerializeObject(psList, Formatting.Indented));
+            //}
+
+        }
+
+        private string GetHTMLSource(string urlAddress)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlAddress);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            string data = null;
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                Stream receiveStream = response.GetResponseStream();
+                StreamReader readStream = null;
+
+                if (String.IsNullOrWhiteSpace(response.CharacterSet))
+                    readStream = new StreamReader(receiveStream);
+                else
+                    readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
+
+                data = readStream.ReadToEnd();
+
+                response.Close();
+                readStream.Close();
+
+
+            }
+
+            return data;
+        }
+    }
+
+    public class MyPollingStation
+    {
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string AreaVoting { get; set; }
+
     }
 
 }
