@@ -34,7 +34,7 @@ namespace CenturyFinCorpApp
             panel1.Width = 1300;
             panel1.Height = this.Height;
 
-            ShowForm<ucVoters>(); // initial form to be loaded
+            ShowForm<ucLocalBody>(); // initial form to be loaded
         }
 
         private void CreateMenu()
@@ -188,6 +188,11 @@ namespace CenturyFinCorpApp
             else if (typeof(T) == typeof(ucMemberVerify))
             {
                 var ucd = new ucMemberVerify(); 
+                panel1.Controls.Add(ucd);
+            }
+            else if (typeof(T) == typeof(ucLocalBody))
+            {
+                var ucd = new ucLocalBody();
                 panel1.Controls.Add(ucd);
             }
         }

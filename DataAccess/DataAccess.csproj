@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\BaseData.json" />
     <None Include="Data\voter.json" />
     <None Include="Data\assembly.json" />
     <Compile Include="ExtendedTypes\AssemblyAndVotes.cs" />

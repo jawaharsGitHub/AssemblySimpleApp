@@ -26,6 +26,8 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             InitializeComponent();
 
+            
+
 
 
             districts = (from d in DataAccess.PrimaryTypes.District.GetAll()
