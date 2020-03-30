@@ -28,6 +28,9 @@ namespace DataAccess.PrimaryTypes
         public int Taluk { get; set; }
         public int? Block { get; set; }
 
+        [JsonIgnore]
+        public string ZonalFullName { get { return $"{Name}-{ZonalId}"; } }
+
         public Zonal(int zonalId, string name)
         {
             ZonalId = zonalId;
