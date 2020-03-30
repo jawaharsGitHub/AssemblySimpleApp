@@ -1,10 +1,7 @@
 ﻿using Common;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.PrimaryTypes
 {
@@ -13,7 +10,11 @@ namespace DataAccess.PrimaryTypes
 
         private static string JsonFilePath = AppConfiguration.BaseDataFile;
 
-        public int DistrictNoId { get; set; }
+        private static List<BaseData> OndriumForDistrict;
+        //private static List<BaseData> PanchayatForOndrium;
+
+
+        public int DistrictId { get; set; }
 
         public string DistrictName { get; set; }
 
@@ -27,15 +28,28 @@ namespace DataAccess.PrimaryTypes
 
         [JsonIgnore]
         public string OndriumFullName { get { return $"{OndriumId}-{OndriumName}"; } }
-        
-        public static List<BaseData> GetBaseData(int districtId)
+
+        public static List<BaseData> GetOndrium(int districtId)
         {
-            var baseDataForDis = GetAll().Where(w => w.DistrictNoId == districtId).ToList();
+            OndriumForDistrict = GetAll().Where(w => w.DistrictId == districtId).ToList();
 
-            return baseDataForDis;
-            //AssemblyNo = assemblyId;
-            //AssemblyName = name;
+             var result = (from bd in OndriumForDistrict
+                           where bd.DistrictId == districtId
+                                  group bd by bd.OndriumId into newGrp
+                                  select new BaseData()
+                                  {
+                                      OndriumId = newGrp.Key,
+                                      OndriumName = newGrp.First().OndriumName
+                                  }).ToList();
 
+            
+            
+            return result;
+        }
+
+        public static List<BaseData> GetPanchayat(int ondriumId)
+        {
+            return OndriumForDistrict.Where(w => w.OndriumId == ondriumId).ToList();
         }
 
         public static List<BaseData> GetAll()

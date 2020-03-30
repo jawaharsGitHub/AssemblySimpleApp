@@ -34,6 +34,9 @@
             this.cmbSubItems = new System.Windows.Forms.ComboBox();
             this.cmbZonal = new System.Windows.Forms.ComboBox();
             this.cmbOndrium = new System.Windows.Forms.ComboBox();
+            this.lblCount = new System.Windows.Forms.Label();
+            this.lblDone = new System.Windows.Forms.Label();
+            this.cmbPanchayat = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -58,7 +61,7 @@
             // 
             // btnProcess
             // 
-            this.btnProcess.Location = new System.Drawing.Point(392, 245);
+            this.btnProcess.Location = new System.Drawing.Point(192, 318);
             this.btnProcess.Name = "btnProcess";
             this.btnProcess.Size = new System.Drawing.Size(108, 50);
             this.btnProcess.TabIndex = 5;
@@ -69,7 +72,7 @@
             // cmbSubItems
             // 
             this.cmbSubItems.FormattingEnabled = true;
-            this.cmbSubItems.Location = new System.Drawing.Point(331, 167);
+            this.cmbSubItems.Location = new System.Drawing.Point(51, 371);
             this.cmbSubItems.Name = "cmbSubItems";
             this.cmbSubItems.Size = new System.Drawing.Size(121, 21);
             this.cmbSubItems.TabIndex = 4;
@@ -78,7 +81,7 @@
             // 
             this.cmbZonal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbZonal.FormattingEnabled = true;
-            this.cmbZonal.Location = new System.Drawing.Point(331, 97);
+            this.cmbZonal.Location = new System.Drawing.Point(356, 69);
             this.cmbZonal.Name = "cmbZonal";
             this.cmbZonal.Size = new System.Drawing.Size(121, 21);
             this.cmbZonal.TabIndex = 2;
@@ -88,15 +91,51 @@
             // 
             this.cmbOndrium.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOndrium.FormattingEnabled = true;
-            this.cmbOndrium.Location = new System.Drawing.Point(331, 130);
+            this.cmbOndrium.Location = new System.Drawing.Point(356, 102);
             this.cmbOndrium.Name = "cmbOndrium";
             this.cmbOndrium.Size = new System.Drawing.Size(121, 21);
             this.cmbOndrium.TabIndex = 3;
+            // 
+            // lblCount
+            // 
+            this.lblCount.AutoSize = true;
+            this.lblCount.BackColor = System.Drawing.Color.Maroon;
+            this.lblCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCount.ForeColor = System.Drawing.Color.Yellow;
+            this.lblCount.Location = new System.Drawing.Point(33, 395);
+            this.lblCount.Name = "lblCount";
+            this.lblCount.Size = new System.Drawing.Size(37, 39);
+            this.lblCount.TabIndex = 7;
+            this.lblCount.Text = "[]";
+            // 
+            // lblDone
+            // 
+            this.lblDone.AutoSize = true;
+            this.lblDone.BackColor = System.Drawing.Color.Maroon;
+            this.lblDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDone.ForeColor = System.Drawing.Color.Yellow;
+            this.lblDone.Location = new System.Drawing.Point(33, 446);
+            this.lblDone.Name = "lblDone";
+            this.lblDone.Size = new System.Drawing.Size(37, 39);
+            this.lblDone.TabIndex = 8;
+            this.lblDone.Text = "[]";
+            // 
+            // cmbPanchayat
+            // 
+            this.cmbPanchayat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPanchayat.FormattingEnabled = true;
+            this.cmbPanchayat.Location = new System.Drawing.Point(356, 146);
+            this.cmbPanchayat.Name = "cmbPanchayat";
+            this.cmbPanchayat.Size = new System.Drawing.Size(121, 21);
+            this.cmbPanchayat.TabIndex = 9;
             // 
             // ucLocalBody
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cmbPanchayat);
+            this.Controls.Add(this.lblDone);
+            this.Controls.Add(this.lblCount);
             this.Controls.Add(this.cmbOndrium);
             this.Controls.Add(this.cmbZonal);
             this.Controls.Add(this.cmbSubItems);
@@ -119,5 +158,8 @@
         private System.Windows.Forms.ComboBox cmbSubItems;
         private System.Windows.Forms.ComboBox cmbZonal;
         private System.Windows.Forms.ComboBox cmbOndrium;
+        private System.Windows.Forms.Label lblCount;
+        private System.Windows.Forms.Label lblDone;
+        private System.Windows.Forms.ComboBox cmbPanchayat;
     }
 }

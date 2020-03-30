@@ -1,16 +1,13 @@
-﻿using System;
+﻿using Common.ExtensionMethod;
+using DataAccess.PrimaryTypes;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Common.ExtensionMethod;
-using Newtonsoft.Json;
-using System.IO;
-using DataAccess.PrimaryTypes;
 
 namespace CenturyFinCorpApp.UsrCtrl
 {
@@ -49,9 +46,26 @@ namespace CenturyFinCorpApp.UsrCtrl
         private void btnProcess_Click(object sender, EventArgs e)
         {
 
-            //ProcessOndrium();
+            //var copiedData = Clipboard.GetDataObject();
+
+            //if (Clipboard.ContainsText(TextDataFormat.Text))
+            //{
+            //    //string clipboardText = Clipboard.GetText(TextDataFormat.Rtf);
+
+            //    var ddd = txtData.Text;
+            //    // Do whatever you need to do with clipboardText
+            //}
+
+           
+
             ProcessPanchayat();
+
+            //ProcessOndrium();
+
+            txtData.Text = "";
+            txtData.SelectAll();
             txtData.Focus();
+
         }
 
 
@@ -85,7 +99,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 d.Add(new BaseData()
                 {
 
-                    DistrictNoId = selectedDisId,
+                    DistrictId = selectedDisId,
                     DistrictName = selectedDisName.Trim(),
                     OndriumId = selectedOndId,
                     OndriumName = selectedOndName,
@@ -115,9 +129,30 @@ namespace CenturyFinCorpApp.UsrCtrl
 
 
 
-            MessageBox.Show($"{selectedDisName} done!", "DONE!");
+            MessageBox.Show($"{selectedOndName}-{selectedDisName} done!", "DONE!");
 
-            txtData.Text = "";
+
+            if (cmbOndrium.SelectedIndex + 1 <= cmbOndrium.Items.Count - 1)
+            {
+                cmbOndrium.SelectedIndex += 1;
+            }
+            else
+            {
+                MessageBox.Show("COMPLETE DONE!!!!!");
+
+                if (cmbZonal.SelectedIndex + 1 <= cmbZonal.Items.Count - 1)
+                {
+                    cmbZonal.SelectedIndex += 1;
+                }
+                else
+                {
+                    MessageBox.Show("ALL DONE!!!!!");
+
+                }
+
+            }
+
+
         }
 
         private void ProcessOndrium()
@@ -137,7 +172,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             allLines.RemoveRange(0, 2);
 
             var fnalData = new StringBuilder();
-            var d = new List<PanchayatData>();
+            var d = new List<BaseData>();
 
             allLines.ForEach(fe =>
             {
@@ -147,10 +182,10 @@ namespace CenturyFinCorpApp.UsrCtrl
                 var id = NeededData[0].Replace("\"", "");
                 var name = NeededData[1];
 
-                d.Add(new PanchayatData()
+                d.Add(new BaseData()
                 {
 
-                    DistrictNoId = selectedDisId,
+                    DistrictId = selectedDisId,
                     DistrictName = selectedDisName.Trim(),
                     OndriumId = Convert.ToInt32(id),
                     OndriumName = name
@@ -180,7 +215,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             MessageBox.Show($"{selectedDisName} done!", "DONE!");
 
-            txtData.Text = "";
+
         }
 
         private void LoadZonal()
@@ -203,8 +238,6 @@ namespace CenturyFinCorpApp.UsrCtrl
             {
                 selectedDisId = (cmbZonal.SelectedItem as Zonal).ZonalId;
                 selectedDisName = (cmbZonal.SelectedItem as Zonal).Name;
-
-
                 LoadOndrium(selectedDisId);
             }
 
@@ -212,14 +245,14 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void LoadOndrium(int disId)
         {
-            var ondriums = BaseData.GetBaseData(disId);
-            //zonal.Add(new BaseData(0, "--SELECT--"));
+            var ondriums = BaseData.GetOndrium(disId);
 
-            cmbOndrium.DataSource = ondriums.OrderBy(o => o.OndriumId).ToList();
+            cmbOndrium.DataSource = ondriums;
+
+            lblCount.Text = $"{ondriums.Count} in {selectedDisName}";
 
             cmbOndrium.DisplayMember = "OndriumFullName";
             cmbOndrium.ValueMember = "OndriumId";
-            //cmbZonal.DataSource = zonal.OrderBy(o => o.ZonalId).ToList();
             this.cmbOndrium.SelectedIndexChanged += CmbOndrium_SelectedIndexChanged;
         }
 
@@ -230,32 +263,30 @@ namespace CenturyFinCorpApp.UsrCtrl
                 selectedOndId = (cmbOndrium.SelectedItem as BaseData).OndriumId;
                 selectedOndName = (cmbOndrium.SelectedItem as BaseData).OndriumName;
 
-                //LoadOndrium(selectedDisId);
+                LoadPanchayat(selectedOndId);
+                //lblDone.Text = $"{cmbOndrium.SelectedIndex} done";
             }
+        }
+
+
+        private void LoadPanchayat(int ondriumId)
+        {
+            var panchayats = BaseData.GetPanchayat(ondriumId);
+
+            cmbPanchayat.DataSource = panchayats;
+
+            lblCount.Text = $"{panchayats.Count} in {selectedOndName}";
+
+            cmbPanchayat.DisplayMember = "PanchayatName";
+            cmbPanchayat.ValueMember = "PanchayatId";
+            //this.cmbOndrium.SelectedIndexChanged += CmbOndrium_SelectedIndexChanged;
         }
 
         private void ucLocalBody_Load(object sender, EventArgs e)
         {
             ParentForm.AcceptButton = btnProcess;
         }
+       
     }
 
-
-
-    public class PanchayatData
-    {
-
-        public int DistrictNoId { get; set; }
-
-        public string DistrictName { get; set; }
-
-        public int OndriumId { get; set; }
-
-        public string OndriumName { get; set; }
-
-        public int OoratchiId { get; set; }
-
-        public string OoratchiName { get; set; }
-
-    }
 }
