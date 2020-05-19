@@ -39,6 +39,7 @@
             this.cmbPanchayat = new System.Windows.Forms.ComboBox();
             this.btnPSProcess = new System.Windows.Forms.Button();
             this.cmbAssembly = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -150,10 +151,21 @@
             this.cmbAssembly.Size = new System.Drawing.Size(121, 21);
             this.cmbAssembly.TabIndex = 11;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(477, 371);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(108, 50);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Select File...";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ucLocalBody
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cmbAssembly);
             this.Controls.Add(this.btnPSProcess);
             this.Controls.Add(this.cmbPanchayat);
@@ -186,5 +198,6 @@
         private System.Windows.Forms.ComboBox cmbPanchayat;
         private System.Windows.Forms.Button btnPSProcess;
         private System.Windows.Forms.ComboBox cmbAssembly;
+        private System.Windows.Forms.Button button1;
     }
 }

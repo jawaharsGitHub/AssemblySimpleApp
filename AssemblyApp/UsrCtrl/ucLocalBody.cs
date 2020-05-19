@@ -366,7 +366,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             // if it is not deleted.
             //using (StreamWriter sw2 = File.AppendText(path))
             //{
-            File.WriteAllText(path,JsonConvert.SerializeObject(psList, Formatting.Indented));
+            File.WriteAllText(path, JsonConvert.SerializeObject(psList, Formatting.Indented));
             //}
 
         }
@@ -397,6 +397,71 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             return data;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd1 = new OpenFileDialog();
+            if (ofd1.ShowDialog() == DialogResult.OK)
+            {
+                var filePath = ofd1.FileName;
+
+                var fileText = File.ReadAllLines(filePath).ToList();
+
+                // voter id
+                var onlyepicNo = (from ft in fileText
+                                  where ft.Contains(":") == false &&
+                                        string.IsNullOrEmpty(ft) == false &&
+                                        ft.Contains("Photo") == false &&
+                                        ft.Contains("is") == false &&
+                                        ft.Contains("Available") == false &&
+                                        (char.IsUpper(ft.First()) == true || char.IsNumber(ft.First()) == true)
+                                  select ft).ToList();
+
+                var voters = new List<VoterData>();
+
+                onlyepicNo.ForEach(fe =>
+                {
+                    voters.Add(new VoterData() { VoterId = fe });
+                }
+                );
+
+
+                // home number
+                var homeNos = (from ft in fileText
+                               where ft.Contains("வீட்டு")
+                               select ft).ToList();
+
+
+
+                for (int i = 0; i < homeNos.Count; i++)
+                {
+                    if (homeNos[i].Contains(":"))
+                    {
+                        voters[i].HomeNo = homeNos[i].Split(':')[1];
+                    }
+                    else
+                    {
+                        voters[i].IsDeleted = true;
+                    }
+                }
+
+
+                // all voter details.
+
+
+
+
+            }
+        }
+    }
+
+    public class VoterData
+    {
+        public string VoterId { get; set; }
+
+        public string HomeNo { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 
     public class MyPollingStation
