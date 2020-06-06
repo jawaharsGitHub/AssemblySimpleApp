@@ -7,6 +7,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Windows.Forms;
 
@@ -415,7 +416,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                                         ft.Contains("is") == false &&
                                         ft.Contains("Available") == false &&
                                         (char.IsUpper(ft.First()) == true || char.IsNumber(ft.First()) == true)
-                                  select ft).ToList();
+                                  select ft.Trim()).ToList();
 
                 var voters = new List<VoterData>();
 
@@ -431,7 +432,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                                where ft.Contains("வீட்டு")
                                select ft).ToList();
 
-
+                string captche = textBox1.Text; // "vEKkJm";
 
                 for (int i = 0; i < homeNos.Count; i++)
                 {
@@ -443,6 +444,87 @@ namespace CenturyFinCorpApp.UsrCtrl
                     {
                         voters[i].IsDeleted = true;
                     }
+
+                    var url = "https://electoralsearch.in/Home/searchVoter?epic_no=" + voters[i].VoterId + "&txtCaptcha=" + captche + "&page_no=1&results_per_page=10&reureureired=ca3ac2c8-4676-48eb-9129-4cdce3adf6ea&search_type=epic&state=S22";
+
+
+                    //webBrowser1.Navigate(new Uri(url));
+
+                    //var tes = webBrowser1.DocumentText;
+
+                    //MessageBox.Show(tes);
+
+                    //MessageBox.Show(url);
+
+                    // return;
+
+
+                    //webBrowser1.Url = url;
+                    //using (var client = new HttpClient())
+                    //{
+                    //    HttpResponseMessage response = client.GetAsync(url).Result;  // Blocking call!  
+                    //    if (response.IsSuccessStatusCode)
+                    //    {
+                    //        Console.WriteLine("Request Message Information:- \n\n" + response.RequestMessage + "\n");
+                    //        Console.WriteLine("Response Message Header \n\n" + response.Content.Headers + "\n");
+                    //        // Get the response
+                    //        var customerJsonString = response.Content.ReadAsStringAsync();
+                    //        Console.WriteLine("Your response data is: " + customerJsonString);
+
+                    //        // Deserialise the data (include the Newtonsoft JSON Nuget package if you don't already have it)
+                    //        //var deserialized = JsonConvert.DeserializeObject<IEnumerable<Customer>>(custome‌​rJsonString);
+                    //        // Do something with it
+                    //    }
+                    //}
+
+
+                    //System.Xml.XmlDocument document = new System.Xml.XmlDocument();
+                    //document.Load(url);
+                    //string allText = document.InnerText;
+
+
+                    //HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                    //request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+
+                    //using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                    //using (Stream stream = response.GetResponseStream())
+                    //using (StreamReader reader = new StreamReader(stream))
+                    //{
+                    //    var data =  reader.ReadToEnd();
+                    //}
+
+                    using (WebClient wc = new WebClient())
+                    {
+                        //var json = wc.DownloadString(url);
+
+                        WebRequest request = WebRequest.Create(url);
+
+                        var reqHeaders = new WebHeaderCollection();
+                        //reqHeaders.Add("", "");
+
+                        reqHeaders.Add("electoralSearchId", "ax1brxqo14gozflcvjoafavz");
+                        reqHeaders.Add("__RequestVerificationToken", "JSIrx2i7uArQE-e1ob91r0NvNj9XMmUCAApH7mPluWHPk3W2iSm6nCc98eve9OtUQTqQhJHQEsndfF3spRj-VV6R59GXfbdNDVq1nEA5DkY1	");
+                        reqHeaders.Add("ServerAffinity", "a916ee78d08daa7d38242ee3b334b6aec768ab5e622167d3ebc9b179bf12c839	");
+                        reqHeaders.Add("_ga", "GA1.2.1267771172.1579806954");
+                        reqHeaders.Add("_gid", "GA1.2.1062821620.1589918604");
+                        reqHeaders.Add("runOnce", "true");
+
+                        request.Headers = reqHeaders;
+                        //request.ho
+
+                        //request.TryAddCookie(new Cookie("electoralSearchId", "ax1brxqo14gozflcvjoafavz"));
+                        //request.TryAddCookie(new Cookie("__RequestVerificationToken", "JSIrx2i7uArQE-e1ob91r0NvNj9XMmUCAApH7mPluWHPk3W2iSm6nCc98eve9OtUQTqQhJHQEsndfF3spRj-VV6R59GXfbdNDVq1nEA5DkY1	"));
+                        //request.TryAddCookie(new Cookie("ServerAffinity", "a916ee78d08daa7d38242ee3b334b6aec768ab5e622167d3ebc9b179bf12c839	"));
+                        //request.TryAddCookie(new Cookie("_ga", "GA1.2.1267771172.1579806954"));
+                        //request.TryAddCookie(new Cookie("_gid", "GA1.2.1062821620.1589918604"));
+                        //request.TryAddCookie(new Cookie("runOnce", "true"));
+                        //request.TryAddCookie(new Cookie("electoralSearchId", "ax1brxqo14gozflcvjoafavz"));
+                        //request.TryAddCookie(new Cookie("electoralSearchId", "ax1brxqo14gozflcvjoafavz"));
+                        WebResponse response = request.GetResponse();
+
+
+                    }
+
                 }
 
 
@@ -453,6 +535,8 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             }
         }
+
+
     }
 
     public class VoterData
@@ -472,4 +556,28 @@ namespace CenturyFinCorpApp.UsrCtrl
 
     }
 
+    public static class MyWebExtension
+    {
+        public static bool TryAddCookie(this WebRequest webRequest, Cookie cookie)
+        {
+            HttpWebRequest httpRequest = webRequest as HttpWebRequest;
+            if (httpRequest == null)
+            {
+                return false;
+            }
+
+            if (httpRequest.CookieContainer == null)
+            {
+                httpRequest.CookieContainer = new CookieContainer();
+            }
+
+            cookie.Domain = "electoralsearch.in";
+
+            httpRequest.CookieContainer.Add(cookie);
+            return true;
+        }
+    }
+
 }
+
+
