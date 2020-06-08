@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Common.ExtensionMethod;
+using Newtonsoft.Json;
 
 namespace CenturyFinCorpApp.UsrCtrl
 {
@@ -38,6 +39,10 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             var NoOfpagesToProcess = totalPages.Replace("மொத்த பக்கங்கள்", "").Replace("-", "").Trim().ToInt32() - 3; // -3 means - not consider page 1, page 2 and last page
 
+            var exceptionText = new StringBuilder();
+
+            var fileEntryPath = "";
+
             for (int i = 0; i < NoOfpagesToProcess; i++)
             {
                 // processing page number
@@ -50,12 +55,23 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 var data = pageContent;
 
+                bool mayHaveError = false;
+
                 data = data.Replace("Photo", "").Replace("is", "").Replace("Available", "");  // Rempve Photo is AVailable.
+
                 data = data.Replace("தந்தை பெயர்", "$FATHER")
                            .Replace("கணவர் பெயர்", "$HUSBAND")
+                           .Replace("கணவர் பெய", "$HUSBAND-1:") // scenerio 1
+                           .Replace("தாய் பெயர்", "$MOTHER")
+                           .Replace("இதரர் பெயர்", "$OTHERS")
+                           // NOTE: dont change this order of Replace
                            .Replace("பெயர்", "$NAME")  // Rempoe Photo is AVailable.
+
                            .Replace("வீட்டு எண்", "$ADDRESS")
+                           .Replace("வீட்டு", "$ADDRESS:D")
+
                            .Replace("வயது", "$AGE")
+
                            .Replace("பாலினம்", "$SEX");
 
                 var splittedData = data.Split('$').ToList();
@@ -65,62 +81,149 @@ namespace CenturyFinCorpApp.UsrCtrl
                 var pageRecordCount = splittedData.Count; //
 
                 var names = splittedData.Where(w => w.StartsWith("NAME")).ToList();
-                var fatherOrHusband = splittedData.Where(w => w.StartsWith("FATHER") || w.StartsWith("HUSBAND")).ToList();
+
+
+                var fatherOrHusband = splittedData.Where(
+                                            w => w.StartsWith("FATHER") ||
+                                            w.StartsWith("MOTHER") || w.StartsWith("HUSBAND") ||
+                                            w.StartsWith("OTHERS")).ToList();
+
+                if (fatherOrHusband.Count != names.Count)
+                {
+                    AddNameLog(exceptionText, pageNumber, $"FATHER COUNT MISMATCH - NAME:{names.Count} - AGE:{fatherOrHusband.Count}");
+                    mayHaveError = true;
+                }
+
+
+
+
                 var address = splittedData.Where(w => w.StartsWith("ADDRESS")).ToList();
+
+                if (address.Count != names.Count)
+                {
+                    mayHaveError = true;
+                    AddNameLog(exceptionText, pageNumber, $"ADDRESS COUNT MISMATCH - NAME:{names.Count} - AGE:{address.Count}");
+
+                    for (int index = 0; index < fatherOrHusband.Count; index++)
+                    {
+                        if (fatherOrHusband[index].Contains("HUSBAND-1:"))
+                            address.Insert(index, "$ADDRESS:SDELETEDADDRESS");
+                    }
+                }
+
                 var age = splittedData.Where(w => w.StartsWith("AGE")).ToList();
                 age.RemoveAt(age.Count - 1);
+
+                if (age.Count != names.Count)
+                {
+                    mayHaveError = true;
+                    AddNameLog(exceptionText, pageNumber, $"AGE COUNT MISMATCH - NAME:{names.Count} - AGE:{age.Count}");
+                }
+
                 var sex = splittedData.Where(w => w.StartsWith("SEX")).ToList();
+
+                if (sex.Count != names.Count)
+                {
+                    mayHaveError = true;
+                    AddNameLog(exceptionText, pageNumber, $"SEX COUNT MISMATCH - NAME:{names.Count} - SEX:{sex.Count}");
+                }
+
 
                 var voterList = new List<VoterList>();
 
-                var exceptionText = new StringBuilder();
-
-                var fileEntryPath = @"C:\Users\Public\TestFolder\WriteText.txt";
 
 
-
-                
-
+                fileEntryPath = $@"F:\NTK\VotersAnalysis\{pageNumber}.txt";
 
                 // 1. Name
                 names.ForEach(fe =>
                 {
+                    var nm = GetOne(fe);
 
                     voterList.Add(new VoterList()
                     {
-                        Name = fe.Contains(":") ? fe.Split(':')[1] : fe.Split(' ')[1]
+                        Name = nm.Item1 ? nm.Item2 : AddNameLog(exceptionText, pageNumber, "#NERROR#"), //fe.Contains(":") ? fe.Split(':')[1] : fe.Split(' ')[1],
+                        MayError = mayHaveError
+
                     });
                 });
 
+                for (int index = 0; index < voterList.Count; index++)
+                {
+                    voterList[index].PageNo = pageNumber;
+                    voterList[index].RowNo = (index / 3) + 1;
+                }
+
+                var s = "";
                 // 2. HorFName
                 for (int index = 0; index < fatherOrHusband.Count; index++)
                 {
-                    voterList[index].HorFName = fatherOrHusband[index].Split(':')[1];
+                    var nm = GetOne(fatherOrHusband[index]);
+                    voterList[index].HorFName = nm.Item1 ? nm.Item2 : AddLog(exceptionText, pageNumber, voterList[index]); //fatherOrHusband[index].Split(':')[1];
                 }
+
 
                 // 3. HomeAddress
                 for (int index = 0; index < address.Count; index++)
                 {
-                    voterList[index].HomeAddress = address[index].Split(':')[1];
+                    var nm = GetOne(address[index]);
+                    voterList[index].HomeAddress = nm.Item1 ? nm.Item2 : AddLog(exceptionText, pageNumber, voterList[index]);  // address[index].Split(':')[1];
                 }
 
                 // 4. Age
                 for (int index = 0; index < age.Count; index++)
                 {
-                    voterList[index].Age = age[index].Split(':')[1].ToInt32();
+                    var nm = GetOne(age[index]);
+                    try
+                    {
+                        try
+                        {
+                            voterList[index].Age = nm.Item1 ? nm.Item2.ToInt32() : -999;
+
+                            if (voterList[index].Age == 0)
+                                voterList[index].IsDeleted = true;
+                        }
+                        catch (Exception exc)
+                        {
+                            voterList[index].Age = 0;
+                            voterList[index].IsDeleted = true;
+                            if (sex.Count != names.Count)
+                            {
+                                sex.Insert(index, "SEX:DELETED-S");
+                            }
+                            exceptionText.AppendLine($"{pageNumber}-{voterList[index - 1]}-DELETED");
+
+                        }
+
+                        //age[index].Split(':')[1].ToInt32();
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+
                 }
 
                 // 5. Sex
                 for (int index = 0; index < sex.Count; index++)
                 {
-                    voterList[index].Sex =
-                        sex[index].Contains(":") ?
-                        sex[index].Split(':')[1].TrimStart().Split(' ')[0] : sex[index].Split(' ')[1];
+                    var nm = GetTwo(sex[index]);
+                    voterList[index].Sex = nm.Item1 ? nm.Item2 : AddLog(exceptionText, pageNumber, voterList[index]);
                 }
 
+                //Append to final list
                 fullList.AddRange(voterList);
-                File.AppendAllText(fileEntryPath, exceptionText.ToString());
             }
+
+
+            if (string.IsNullOrEmpty(exceptionText.ToString()) == false)
+                File.AppendAllText(fileEntryPath, exceptionText.ToString());
+
+            exceptionText.Clear();
+
+            var fd = JsonConvert.SerializeObject(fullList, Formatting.Indented);
+
+            MessageBox.Show("DONE!");
 
         }
 
@@ -129,6 +232,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             try
             {
+
                 var d = content.Contains(":") ? content.Split(':')[1] : content.Split(' ')[1];
                 return (true, d);
             }
@@ -136,8 +240,36 @@ namespace CenturyFinCorpApp.UsrCtrl
             {
                 return (false, ex.ToString());
             }
-            
+
         }
+
+        public (bool, string) GetTwo(string content)
+        {
+            try
+            {
+                var d = content.Contains(":") ?
+                        content.Split(':')[1].TrimStart().Split(' ')[0] : content.Split(' ')[1];
+                return (true, d);
+            }
+            catch (Exception ex)
+            {
+                return (false, ex.ToString());
+            }
+
+        }
+
+        private string AddNameLog(StringBuilder sb, int pn, string name)
+        {
+            sb.AppendLine($"{pn}-{name}");
+            return $"{pn}-{name}";
+        }
+
+        private string AddLog(StringBuilder sb, int pn, VoterList vl)
+        {
+            sb.AppendLine($"{pn}-{vl}");
+            return $"{pn}-{vl}";
+        }
+
 
         private int IndexOf(string allContent, int pageNo)
         {
@@ -157,6 +289,14 @@ namespace CenturyFinCorpApp.UsrCtrl
         public int Age { get; set; }
 
         public string Sex { get; set; }
+
+        public int PageNo { get; set; }
+
+        public int RowNo { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public bool MayError { get; set; }
 
         public override string ToString()
         {
