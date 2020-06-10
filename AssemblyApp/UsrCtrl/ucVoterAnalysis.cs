@@ -683,7 +683,13 @@ namespace CenturyFinCorpApp.UsrCtrl
                    new KeyValuePair<int, string>(6, "Gender Null?"),
                    new KeyValuePair<int, string>(7, "Delete Page"),
                    new KeyValuePair<int, string>(8, "> 1 Deleted Page"),
-                   new KeyValuePair<int, string>(9, "May Error Page")
+                   new KeyValuePair<int, string>(9, "May Error Page"),
+                   new KeyValuePair<int, string>(10, "Name Issue"),
+                   new KeyValuePair<int, string>(11, "FNAME Issue"),
+                   new KeyValuePair<int, string>(12, "Address Issue"),
+                   new KeyValuePair<int, string>(13, "Age Issue"),
+                   new KeyValuePair<int, string>(14, "Gender Issue"),
+
                    //new KeyValuePair<int, string>(3, "By Customer Id"),
                    //new KeyValuePair<int, string>(4, "By Customer Name"),
                    //new KeyValuePair<int, string>(10, "Return By Yesterday"),
@@ -786,6 +792,36 @@ namespace CenturyFinCorpApp.UsrCtrl
             {
                 filteredData = fullList.Where(w =>
                 w.MayError
+                ).ToList();
+            }
+            else if (value == 10)
+            {
+                filteredData = fullList.Where(w =>
+                w.Name.Trim().Split(' ').Count() > 1
+                ).ToList();
+            }
+            else if (value == 11)
+            {
+                filteredData = fullList.Where(w =>
+                w.HorFName.Trim().Split(' ').Count() > 1
+                ).ToList();
+            }
+            else if (value == 12)
+            {
+                filteredData = fullList.Where(w =>
+                w.HomeAddress.Trim().Split(' ').Count() > 1
+                ).ToList();
+            }
+            else if (value == 13)
+            {
+                filteredData = fullList.Where(w =>
+                w.Age.ToString().Trim().Split(' ').Count() > 1
+                ).ToList();
+            }
+            else if (value == 14)
+            {
+                filteredData = fullList.Where(w =>
+                w.Sex.Trim().Split(' ').Count() > 1
                 ).ToList();
             }
 
