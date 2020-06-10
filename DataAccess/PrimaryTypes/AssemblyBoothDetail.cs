@@ -85,18 +85,40 @@ namespace DataAccess.PrimaryTypes
 
                 var u = list.Where(c => c.PartNo == bd.PartNo).FirstOrDefault();
 
-                if(u == null)
+                if (u == null)
                 {
                     InsertSingleObjectToListJson<BoothDetail>(jsonFilePath, bd);
                 }
                 else
                 {
-                    u = bd;
+                    u.PartNo = bd.PartNo;
+                    u.PartPlaceName = bd.PartPlaceName;
+                    u.PartLocationAddress = bd.PartLocationAddress;
+                    u.Type = bd.Type;
+                    u.AssemblyName = bd.AssemblyName;
+                    u.ParlimentNo = bd.ParlimentNo;
+                    u.ParlimentName = bd.ParlimentName;
+                    u.AssemblyNo = bd.AssemblyNo;
+                    u.EligibilityDay = bd.EligibilityDay;
+                    u.ReleaseDate = bd.ReleaseDate;
+                    u.MainCityOrVillage = bd.MainCityOrVillage;
+                    u.Zone = bd.Zone;
+                    u.Birga = bd.Birga;
+                    u.PoliceStation = bd.PoliceStation;
+                    u.Taluk = bd.Taluk;
+                    u.District = bd.District;
+                    u.Pincode = bd.Pincode;
+                    u.StartNo = bd.StartNo;
+                    u.EndNo = bd.EndNo;
+                    u.Male = bd.Male;
+                    u.Female = bd.Female;
+                    u.ThirdGender = bd.ThirdGender;
+                    u.TotalVoters = bd.TotalVoters;
                 }
 
                 WriteObjectsToFile(list, jsonFilePath);
 
-                
+
             }
             catch (Exception ex)
             {

@@ -164,7 +164,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             bd.Type = fpSPlitted[9].Replace("வாக்குச் சாவடியின் விவரங்கள்", "").Trim();
 
-            bd.PartPlaceName = fpSPlitted[10];
+            //bd.PartPlaceName = fpSPlitted[10];
 
             bd.PartLocationAddress = fpSPlitted[11].Replace("எண்ணிக்கை", "$").Split('$')[1].Split('4')[0].Trim();
 
