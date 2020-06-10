@@ -122,6 +122,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1059, 459);
             this.dataGridView1.TabIndex = 7;
+            this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             // 
             // chkPageList
             // 
@@ -130,7 +131,6 @@
             this.chkPageList.Name = "chkPageList";
             this.chkPageList.Size = new System.Drawing.Size(133, 21);
             this.chkPageList.TabIndex = 8;
-            this.chkPageList.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // txtMissingRow
             // 

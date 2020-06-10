@@ -29,6 +29,9 @@ namespace CenturyFinCorpApp.UsrCtrl
             InitializeComponent();
         }
 
+        string voterFilePath = "";
+        string boothDetailPath = "";
+
         private void button1_Click(object sender, EventArgs e)
         {
             cmbFIlter.DataSource = GetOptions();
@@ -40,8 +43,8 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             int year = 2020;
             var filePath = $@"{folderPath}ac211200.txt";
-            string voterFilePath = "";
-            string boothDetailPath = "";
+            //string voterFilePath = "";
+            //string boothDetailPath = "";
 
             try
             {
@@ -298,7 +301,12 @@ namespace CenturyFinCorpApp.UsrCtrl
             errorPages.Insert(0, "--SELECT PAGE--");
 
             chkPageList.DataSource = errorPages;
+            SetErrorDetail();
 
+        }
+
+        private void SetErrorDetail()
+        {
             var errorPerc = fullList.Where(w => string.IsNullOrEmpty(w.Name.Trim())).Count();
             errorPerc += fullList.Where(w => string.IsNullOrEmpty(w.HorFName.Trim())).Count();
             errorPerc += fullList.Where(w => string.IsNullOrEmpty(w.HomeAddress.Trim())).Count();
@@ -309,7 +317,6 @@ namespace CenturyFinCorpApp.UsrCtrl
             lblDetails.Text = $"Total Records:{fullList.Count} {Environment.NewLine} " +
                 $"Error Records:{errorPerc} {Environment.NewLine} " +
                 $"Error - {Math.Round((Convert.ToDecimal(errorPerc) / Convert.ToDecimal(fullList.Count) * 100), 2)}%";
-
         }
 
         public (bool, string, bool) GetOne(string content)
@@ -388,11 +395,6 @@ namespace CenturyFinCorpApp.UsrCtrl
         private void chkDebugMode_CheckedChanged(object sender, EventArgs e)
         {
             txtPage.Enabled = txtRow.Enabled = chkDebugMode.Enabled;
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -818,6 +820,24 @@ namespace CenturyFinCorpApp.UsrCtrl
             }
 
             dataGridView1.DataSource = filteredData;
+
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView grid = (sender as DataGridView);
+            int rowIndex = grid.CurrentCell.RowIndex;
+            string owningColumnName = grid.CurrentCell.OwningColumn.Name;
+            string cellValue = FormGeneral.GetGridCellValue(grid, rowIndex, owningColumnName);
+            VoterList cus = grid.Rows[grid.CurrentCell.RowIndex].DataBoundItem as VoterList;
+            //Update data
+
+            //var path = Path.Combine(AppConfiguration.AssemblyVotersFolder, $"{ufn.Substring(2, 3)}");
+            //voterFilePath = Path.Combine(voterFilePath, $"{ufn.Substring(5, 3)}.json");
+
+            VoterList.UpdateVoterDetails(cus, voterFilePath);
+
+            SetErrorDetail();
 
         }
     }
