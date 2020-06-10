@@ -164,8 +164,6 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             bd.Type = fpSPlitted[9].Replace("வாக்குச் சாவடியின் விவரங்கள்", "").Trim();
 
-            //bd.PartPlaceName = fpSPlitted[10];
-
             bd.PartLocationAddress = fpSPlitted[11].Replace("எண்ணிக்கை", "$").Split('$')[1].Split('4')[0].Trim();
 
             bd.StartNo = fpSPlitted[12].Replace("தொடங்கும் வரிசை எண்", "").Trim().ToInt32();
@@ -211,7 +209,11 @@ namespace CenturyFinCorpApp.UsrCtrl
                 bd.ThirdGender = genderVotes[2].Trim().ToInt32();
             }
 
+            /*************************************************************/
+
             BoothDetail.Save(bd, boothDetailPath);
+
+            /*************************************************************/
 
             reProcessFile = $"{folderPath}{bd.AssemblyNo}\\{bd.PartNo}";
 
@@ -296,6 +298,17 @@ namespace CenturyFinCorpApp.UsrCtrl
             errorPages.Insert(0, "--SELECT PAGE--");
 
             chkPageList.DataSource = errorPages;
+
+            var errorPerc = fullList.Where(w => string.IsNullOrEmpty(w.Name.Trim())).Count();
+            errorPerc += fullList.Where(w => string.IsNullOrEmpty(w.HorFName.Trim())).Count();
+            errorPerc += fullList.Where(w => string.IsNullOrEmpty(w.HomeAddress.Trim())).Count();
+            errorPerc += fullList.Where(w => string.IsNullOrEmpty(w.HorFName.Trim())).Count();
+            errorPerc += fullList.Where(w => w.Age == 0).Count();
+
+
+            lblDetails.Text = $"Total Records:{fullList.Count} {Environment.NewLine} " +
+                $"Error Records:{errorPerc} {Environment.NewLine} " +
+                $"Error - {Math.Round((Convert.ToDecimal(errorPerc) / Convert.ToDecimal(fullList.Count) * 100), 2)}%";
 
         }
 
@@ -558,6 +571,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             {
                 voterList[index].PageNo = pageNumber;
                 voterList[index].RowNo = (index / 3) + 1;
+                voterList[index].SNo = index + 1;
             }
 
             // 2. HorFName

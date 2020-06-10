@@ -45,6 +45,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbFIlter = new System.Windows.Forms.ComboBox();
+            this.lblDetails = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,6 +72,7 @@
             // chkDebugMode
             // 
             this.chkDebugMode.AutoSize = true;
+            this.chkDebugMode.ForeColor = System.Drawing.Color.Yellow;
             this.chkDebugMode.Location = new System.Drawing.Point(216, 29);
             this.chkDebugMode.Name = "chkDebugMode";
             this.chkDebugMode.Size = new System.Drawing.Size(64, 17);
@@ -96,6 +98,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Yellow;
             this.label1.Location = new System.Drawing.Point(286, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 13);
@@ -105,6 +108,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Yellow;
             this.label2.Location = new System.Drawing.Point(482, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
@@ -172,7 +176,8 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(189, 83);
+            this.label3.ForeColor = System.Drawing.Color.Yellow;
+            this.label3.Location = new System.Drawing.Point(198, 80);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(19, 13);
             this.label3.TabIndex = 14;
@@ -181,6 +186,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Yellow;
             this.label4.Location = new System.Drawing.Point(313, 79);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(16, 13);
@@ -197,10 +203,23 @@
             this.cmbFIlter.TabIndex = 16;
             this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
             // 
+            // lblDetails
+            // 
+            this.lblDetails.AutoSize = true;
+            this.lblDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetails.ForeColor = System.Drawing.Color.Yellow;
+            this.lblDetails.Location = new System.Drawing.Point(919, 15);
+            this.lblDetails.Name = "lblDetails";
+            this.lblDetails.Size = new System.Drawing.Size(83, 25);
+            this.lblDetails.TabIndex = 17;
+            this.lblDetails.Text = "[Details]";
+            // 
             // ucVoterAnalysis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Maroon;
+            this.Controls.Add(this.lblDetails);
             this.Controls.Add(this.cmbFIlter);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -234,7 +253,6 @@
         private System.Windows.Forms.TextBox txtPage;
         private System.Windows.Forms.TextBox txtRow;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox chkPageList;
         private System.Windows.Forms.TextBox txtMissingRow;
@@ -242,8 +260,10 @@
         private System.Windows.Forms.TextBox txtFIlterPn;
         private System.Windows.Forms.TextBox txtFIlterRn;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox cmbFIlter;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cmbFIlter;
+        private System.Windows.Forms.Label lblDetails;
     }
 }
