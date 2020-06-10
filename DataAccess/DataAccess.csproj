@@ -74,6 +74,8 @@
     <Compile Include="ExtendedTypes\ExtDailyTxn.cs" />
     <Compile Include="ExtendedTypes\ReturnTypeEnum.cs" />
     <Compile Include="ExtendedTypes\ZonalDistrict.cs" />
+    <Compile Include="PrimaryTypes\AssemblyBoothDetail.cs" />
+    <Compile Include="PrimaryTypes\AssemblyVoterList.cs" />
     <Compile Include="PrimaryTypes\BaseData.cs" />
     <Compile Include="PrimaryTypes\block.cs" />
     <Compile Include="PrimaryTypes\Assembly.cs" />

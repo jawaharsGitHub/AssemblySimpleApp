@@ -35,5 +35,14 @@ namespace Common
             return dataFolder;
         }
 
+        public static void WriteToFile(string path, string content)
+        {
+            if (File.Exists(path))
+                File.Delete(path);
+
+            File.WriteAllText(path, content);
+
+        }
+
     }
 }
