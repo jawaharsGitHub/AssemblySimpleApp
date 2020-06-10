@@ -41,15 +41,17 @@ namespace CenturyFinCorpApp.UsrCtrl
             int year = 2020;
             var filePath = $@"{folderPath}ac211200.txt";
             string voterFilePath = "";
+            string boothDetailPath = "";
 
             try
             {
                 var ufn = (new FileInfo(filePath)).Name.Split('.')[0];
                 voterFilePath = Path.Combine(AppConfiguration.AssemblyVotersFolder, $"{ufn.Substring(2, 3)}");
 
-                if (File.Exists(Path.Combine(voterFilePath, $"{ufn.Substring(5, 3)}-BoothDetail.json")) == false)
+                boothDetailPath = Path.Combine(voterFilePath, $"{ufn.Substring(5, 3)}-BoothDetail.json");
+                if (File.Exists(boothDetailPath) == false)
                 {
-                    File.Create(Path.Combine(voterFilePath, $"{ufn.Substring(5, 3)}-BoothDetail.json"));
+                    File.Create(boothDetailPath);
                 }
 
                 voterFilePath = Path.Combine(voterFilePath, $"{ufn.Substring(5, 3)}.json");
@@ -132,20 +134,20 @@ namespace CenturyFinCorpApp.UsrCtrl
             bd.ReleaseDate = fpSPlitted[7].Replace("பட்டியல் வெளியிடப்பட்ட நாள்", "$").Split('$')[1].Split(' ')[1];
 
             if (year == 2020)
-                bd.PartPlaceName = fpSPlitted[8].Split('-')[2].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1];
+                bd.PartPlaceName = fpSPlitted[8].Split('-')[2].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Trim();
             else
-                bd.PartPlaceName = fpSPlitted[8].Split('-')[0].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1];
+                bd.PartPlaceName = fpSPlitted[8].Split('-')[0].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Trim();
 
             var otherDetails = fpSPlitted[8].Split('-')[5].Split(' ');
 
             if (year == 2020)
             {
                 bd.MainCityOrVillage = otherDetails[2];
-                bd.Zone = otherDetails[3];
+                bd.Zone = otherDetails[3].Trim();
                 bd.Birga = otherDetails[5];
                 bd.PoliceStation = otherDetails[6];
                 bd.Taluk = otherDetails[7];
-                bd.District = fpSPlitted[8].Split('-')[6];
+                bd.District = fpSPlitted[8].Split('-')[6].Trim();
                 bd.Pincode = fpSPlitted[8].Split('-')[12].Split(' ')[2].ToInt32();
             }
             else
@@ -208,6 +210,8 @@ namespace CenturyFinCorpApp.UsrCtrl
                 bd.Female = genderVotes[1].Trim().ToInt32();
                 bd.ThirdGender = genderVotes[2].Trim().ToInt32();
             }
+
+            BoothDetail.Save(bd, boothDetailPath);
 
             reProcessFile = $"{folderPath}{bd.AssemblyNo}\\{bd.PartNo}";
 

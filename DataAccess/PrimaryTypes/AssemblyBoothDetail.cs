@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.PrimaryTypes
 {
-    public class BoothDetail
+    public class BoothDetail : BaseData
     {
         public string PartNo { get; set; }
 
@@ -75,6 +75,47 @@ namespace DataAccess.PrimaryTypes
         //public int TotalFemale { get; set; }
         //public int TotalThirdGender { get; set; }
         //public int TotalTotalVoters { get; set; }
+
+        public static void Save(BoothDetail bd, string jsonFilePath)
+        {
+
+            try
+            {
+                List<BoothDetail> list = ReadFileAsObjects<BoothDetail>(jsonFilePath);
+
+                var u = list.Where(c => c.PartNo == bd.PartNo).FirstOrDefault();
+
+                if(u == null)
+                {
+                    InsertSingleObjectToListJson<BoothDetail>(jsonFilePath, bd);
+                }
+                else
+                {
+                    u = bd;
+                }
+
+                WriteObjectsToFile(list, jsonFilePath);
+
+                
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static List<BoothDetail> GetAll(string path)
+        {
+
+            try
+            {
+                return ReadFileAsObjects<BoothDetail>(path);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
 
     }

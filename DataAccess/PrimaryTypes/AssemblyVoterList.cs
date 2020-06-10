@@ -38,8 +38,20 @@ namespace DataAccess.PrimaryTypes
 
             try
             {
-                //List<Zonal> list = ReadFileAsObjects<Zonal>(path);
                 WriteObjectsToFile(voterList, path);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static List<VoterList> GetAll(string path)
+        {
+
+            try
+            {
+                return ReadFileAsObjects<VoterList>(path);
             }
             catch (Exception ex)
             {

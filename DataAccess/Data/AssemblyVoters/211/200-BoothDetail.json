@@ -1,0 +1,33 @@
+[
+  {
+    "PartNo": "200",
+    "PartPlaceName": "வாக்குச்சாவடியின் எண் மற்றும் பெயர் 200-ஊராட்சி ஒன்றிய தொடக்கப்பள்ளி \r\n",
+    "PartLocationAddress": "ஊராட்சி ஒன்றிய தொடக்கப்பள்ளி, கிழக்கு கட்டிடம் இரட்டையூரணி",
+    "Type": "பொது",
+    "AssemblyName": " இராமநாதபுரம் (பொது)",
+    "ParlimentNo": " 35 ",
+    "ParlimentName": "ராமநாதபுரம் (பொது)",
+    "AssemblyNo": "211",
+    "EligibilityDay": "01-01-2020",
+    "ReleaseDate": "14-02-2020",
+    "MainCityOrVillage": "இரட்டையூரணி",
+    "Zone": "\r\nஇரட்டையூரணி",
+    "Birga": "பெருங்குளம்",
+    "PoliceStation": "உச்சிப்புளி",
+    "Taluk": "இராமநாதபுரம்",
+    "District": " இராமநாதபுரம் \r\n",
+    "Pincode": 623523,
+    "StartNo": 1,
+    "EndNo": 848,
+    "Male": 399,
+    "Female": 441,
+    "ThirdGender": 0,
+    "TotalVoters": 840,
+    "DistrictId": 0,
+    "DistrictName": null,
+    "OndriumId": 0,
+    "OndriumName": null,
+    "PanchayatId": 0,
+    "PanchayatName": null
+  }
+]
