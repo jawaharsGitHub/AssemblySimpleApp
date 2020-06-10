@@ -299,7 +299,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             try
             {
-                string d = content.Contains(":") ? content.Split(':')[1] : content.Split(' ')[1];
+                string d = content.Contains(":") ? content.Split(':')[1].Trim() : content.Split(' ')[1].Trim();
                 var isEmpty = string.IsNullOrEmpty(d);
                 return (true, d, isEmpty);
             }
@@ -314,7 +314,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             try
             {
                 var d = content.Contains(":") ?
-                        content.Split(':')[1].TrimStart().Split(' ')[0] : content.Split(' ')[1];
+                        content.Split(':')[1].TrimStart().Split(' ')[0].Trim() : content.Split(' ')[1].Trim();
                 var isEmpty = string.IsNullOrEmpty(d);
                 return (true, d, isEmpty);
             }
@@ -324,13 +324,12 @@ namespace CenturyFinCorpApp.UsrCtrl
             }
         }
 
-
         public (bool, string, bool, bool) GetAddress(string content)
         {
             bool isDel = false;
             try
             {
-                string d = content.Contains(":") ? content.Split(':')[1] : content.Split(' ')[1];
+                string d = content.Contains(":") ? content.Split(':')[1].Trim() : content.Split(' ')[1].Trim();
 
                 isDel = content.Contains("ADDRESS-D");
 
