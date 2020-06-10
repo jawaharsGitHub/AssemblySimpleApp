@@ -120,7 +120,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(33, 112);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1059, 459);
+            this.dataGridView1.Size = new System.Drawing.Size(1173, 504);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             // 
@@ -238,7 +238,7 @@
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button1);
             this.Name = "ucVoterAnalysis";
-            this.Size = new System.Drawing.Size(1146, 562);
+            this.Size = new System.Drawing.Size(1246, 649);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -9,7 +9,9 @@ namespace DataAccess.PrimaryTypes
 {
     public class VoterList : BaseClass
     {
+        public int PageNo { get; set; }
 
+        public int RowNo { get; set; }
         public int SNo { get; set; }
 
         public string Name { get; set; }
@@ -21,9 +23,7 @@ namespace DataAccess.PrimaryTypes
 
         public string Sex { get; set; }
 
-        public int PageNo { get; set; }
-
-        public int RowNo { get; set; }
+        
 
         public bool IsDeleted { get; set; }
 
