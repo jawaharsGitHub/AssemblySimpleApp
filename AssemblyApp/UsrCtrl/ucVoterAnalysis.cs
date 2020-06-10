@@ -20,10 +20,14 @@ namespace CenturyFinCorpApp.UsrCtrl
         string folderPath = @"F:\NTK\VotersAnalysis\";
         string reProcessFile = "";
         BoothDetail bd;
+        bool haveErrorinFile = false;
 
         string fileEntryPath = "";
         int lastPageNumberToProcess;
-        StringBuilder exceptionText;
+        // StringBuilder exceptionText;
+
+        List<string> logs;
+
 
         public ucVoterAnalysis()
         {
@@ -32,15 +36,15 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void button1_Click(object sender, EventArgs e)
         {
+            cmbFIlter.DataSource = GetOptions();
 
-
-            // var filePath = @"F:\NTK\jawa - 2021\211-RMD\Voter List For Analysis\ac210333.txt";
+            reProcessFile = "";
 
             //int year = 2019;
-            //var filePath = @"F:\NTK\jawa - 2021\211-RMD\Voter List For Analysis\ac210333.txt";
-            reProcessFile = "";
+            //var filePath = $@"{folderPath}ac210333.txt";
+
             int year = 2020;
-            var filePath = @"F:\NTK\jawa - 2021\211-RMD\Voter List For Analysis\ac211200.txt";
+            var filePath = $@"{folderPath}ac211200.txt";
 
             var allPageContent = File.ReadAllText(filePath);
 
@@ -197,9 +201,8 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             lastPageNumberToProcess = NoOfpagesToProcess + 2;
 
-            exceptionText = new StringBuilder();
-
-
+            //exceptionText = new StringBuilder();
+            logs = new List<string>();
 
 
             for (int i = 0; i < NoOfpagesToProcess; i++)
@@ -221,30 +224,55 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 var pageContent = onlyVotersPages.Substring(startIndex, lastIndex);
 
-                ProcessPage(pageNumber, pageContent);
+                if (ProcessPage(pageNumber, pageContent) == true)
+                {
+                    haveErrorinFile = true;
+                }
             }
 
+            // After - [all page processed]
+            //if (Directory.Exists(reProcessFile) == false)
+            //    Directory.CreateDirectory(reProcessFile);
 
-            // After all page processed
-            if (Directory.Exists(reProcessFile) == false)
-                Directory.CreateDirectory(reProcessFile);
 
-            if (string.IsNullOrEmpty(exceptionText.ToString()) == false)
+            string flag = "OK";
+            //LOG FILE IF EXCEPTION OCCURS
+            // if (string.IsNullOrEmpty(exceptionText.ToString()) == false || haveErrorinFile)
+            if (logs.Count > 0 || haveErrorinFile)
             {
-                var file = Path.Combine(reProcessFile, $"Log-{bd.AssemblyNo}-{bd.PartNo}.txt");
-                ReplaceToFile(file, exceptionText.ToString());
-            }
-            else
-            {
-                var file4 = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{DateTime.Now.ToLocalTime().ToString().Replace(":", "~")}-OK.txt");
-                ReplaceToFile(file4, onlyVotersPages);
+                var file = Path.Combine(reProcessFile, $"Log-{bd.AssemblyNo}-{bd.PartNo}-Exception.txt");
+
+                var delData = logs.Where(w => w.StartsWith("DEL-")).Distinct().Reverse().ToList();
+                var errData = logs.Where(w => w.StartsWith("DEL-") == false).ToList();
+
+                StringBuilder logText = new StringBuilder();
+                logText.AppendLine("==================DELETED RECORD========================================");
+                delData.ForEach(fe => logText.AppendLine(fe.Trim()));
+                logText.AppendLine("==================ERROR RECORD========================================");
+                errData.ForEach(fe => logText.AppendLine(fe));
+
+
+                WriteToFile(file, logText.ToString());
+                flag = "ERRORFILE";
             }
 
-            exceptionText.Clear();
+            //else
+            //{
+            //    // OK TXT PROCESSED FILE
+            //    var file4 = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{DateTime.Now.ToLocalTime().ToString().Replace(":", "~")}-OK.txt");
+            //    WriteToFile(file4, onlyVotersPages);
+            //}
 
+            var file4 = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{DateTime.Now.ToLocalTime().ToString().Replace(":", "~")}-{flag}.txt");
+            WriteToFile(file4, onlyVotersPages);
+
+            //exceptionText.Clear();
+            logs.Clear();
+
+            // PROCESSED WHOLE JSON FILE.
             var fd = JsonConvert.SerializeObject(fullList, Formatting.Indented);
             var file3 = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{DateTime.Now.ToLocalTime().ToString().Replace(":", "~")}.json");
-            ReplaceToFile(file3, fd);
+            WriteToFile(file3, fd);
 
             MessageBox.Show("DONE!");
 
@@ -259,10 +287,9 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             chkPageList.DataSource = errorPages;
 
-
         }
 
-        private void ReplaceToFile(string path, string content)
+        private void WriteToFile(string path, string content)
         {
             if (File.Exists(path))
                 File.Delete(path);
@@ -276,23 +303,14 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             try
             {
-
-                var d = content.Contains(":") ? content.Split(':')[1] : content.Split(' ')[1];
-
+                string d = content.Contains(":") ? content.Split(':')[1] : content.Split(' ')[1];
                 var isEmpty = string.IsNullOrEmpty(d);
-
-                if (isEmpty)
-                {
-
-                }
-
                 return (true, d, isEmpty);
             }
             catch (Exception ex)
             {
                 return (false, ex.ToString(), false);
             }
-
         }
 
         public (bool, string, bool) GetTwo(string content)
@@ -302,29 +320,50 @@ namespace CenturyFinCorpApp.UsrCtrl
                 var d = content.Contains(":") ?
                         content.Split(':')[1].TrimStart().Split(' ')[0] : content.Split(' ')[1];
                 var isEmpty = string.IsNullOrEmpty(d);
-
-                if (isEmpty)
-                {
-
-                }
                 return (true, d, isEmpty);
             }
             catch (Exception ex)
             {
                 return (false, ex.ToString(), false);
             }
-
         }
 
-        private string AddNameLog(StringBuilder sb, int pn, string name)
+
+        public (bool, string, bool, bool) GetAddress(string content)
         {
-            sb.AppendLine($"PageNo:{pn}-{name}");
+            bool isDel = false;
+            try
+            {
+                string d = content.Contains(":") ? content.Split(':')[1] : content.Split(' ')[1];
+
+                isDel = content.Contains("ADDRESS-D");
+
+                var isEmpty = string.IsNullOrEmpty(d);
+                return (true, d, isEmpty, isDel);
+            }
+            catch (Exception ex)
+            {
+                return (false, ex.ToString(), false, isDel);
+            }
+        }
+
+        private string AddNameLog(int pn, string name)
+        {
+            //sb.AppendLine($"PageNo:{pn}-{name}");
+            logs.Add($"PageNo:{pn}-{name}");
             return $"{pn}-{name}";
         }
 
-        private string AddLog(StringBuilder sb, int pn, VoterList vl)
+        private string AddLog(int pn, VoterList vl)
         {
-            sb.AppendLine($"PageNo:{vl.PageNo}-RowNo:{vl.RowNo}-{vl}");
+            //sb.AppendLine($"PageNo:{vl.PageNo}-RowNo:{vl.RowNo}-{vl}");
+            logs.Add($"PageNo:{vl.PageNo}-RowNo:{vl.RowNo}-{vl}");
+            return $"{pn}-{vl}";
+        }
+
+        private string AddDeleteItemLog(int pn, VoterList vl)
+        {
+            logs.Insert(0, $"DEL-PageNo:{vl.PageNo}-RowNo:{vl.RowNo}-{vl.Name}");
             return $"{pn}-{vl}";
         }
 
@@ -367,12 +406,19 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 var text = File.ReadAllText(pageText);
 
+                //if(ProcessPage(selectedPage, text, txtMissingRow.Text.ToInt32()))
+                //{
+                //    var jsonFile = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{selectedPage}-{lastPageNumberToProcess}-ReRun-Failed.json");
+                //    var fd = JsonConvert.SerializeObject(voterList, Formatting.Indented);
+                //    WriteToFile(jsonFile, fd);
+                //}
                 ProcessPage(selectedPage, text, txtMissingRow.Text.ToInt32());
+
             }
 
         }
 
-        private void ProcessPage(int pageNumber, string pageContent, int errorRowNumber = 0)
+        private bool ProcessPage(int pageNumber, string pageContent, int errorRowNumber = 0)
         {
             // processing page number
 
@@ -395,9 +441,6 @@ namespace CenturyFinCorpApp.UsrCtrl
                                where p.Contains("Photo")
                                select p).ToList().Count;
 
-
-
-
             data = data.Replace("Photo", "").Replace("is", "").Replace("Available", "");  // Rempve Photo is AVailable.
 
             data = data.Replace("தந்தை பெயர்", "$FATHER")
@@ -409,10 +452,10 @@ namespace CenturyFinCorpApp.UsrCtrl
                        .Replace("பெயர்", "$NAME")  // Rempoe Photo is AVailable.
 
                        .Replace("வீட்டு எண்", "$ADDRESS")
-                       .Replace("வீட்டு என்", "$ADDRESS")
-                        .Replace("வீட்டு தன்", "$ADDRESS")
-                        .Replace("வீட்டு பண்", "$ADDRESS")
-                        .Replace("வீட்டு கண்", "$ADDRESS")
+                       .Replace("வீட்டு என்", "$ADDRESS-D")
+                        .Replace("வீட்டு தன்", "$ADDRESS-D")
+                        .Replace("வீட்டு பண்", "$ADDRESS-D")
+                        .Replace("வீட்டு கண்", "$ADDRESS-D")
                        //.Replace("வீட்டு", "$ADDRESS:D")
 
                        .Replace("வயது", "$AGE")
@@ -476,42 +519,43 @@ namespace CenturyFinCorpApp.UsrCtrl
                 mayHaveError = true;
 
             if (isNameIssue)
-                AddNameLog(exceptionText, pageNumber, $"NAME COUNT MISMATCH - recordCount:{names.Count} - NAME:{recordCount}");
+                AddNameLog(pageNumber, $"NAME COUNT MISMATCH - recordCount:{names.Count} - NAME:{recordCount}");
 
             /* FATHER-NAME */
             if (isFNameIssue)
-                AddNameLog(exceptionText, pageNumber, $"FATHER COUNT MISMATCH - recordCount:{names.Count} - FATHER:{fatherOrHusband.Count}");
+                AddNameLog(pageNumber, $"FATHER COUNT MISMATCH - recordCount:{names.Count} - FATHER:{fatherOrHusband.Count}");
 
             /* ADDRESS */
             if (isAddressIssue)
-                AddNameLog(exceptionText, pageNumber, $"ADDRESS COUNT MISMATCH - recordCount:{names.Count} - ADDRESS:{address.Count}");
+                AddNameLog(pageNumber, $"ADDRESS COUNT MISMATCH - recordCount:{names.Count} - ADDRESS:{address.Count}");
 
             /* AGE */
             if (isAgeIssue)
-                AddNameLog(exceptionText, pageNumber, $"AGE COUNT MISMATCH - recordCount:{recordCount} - AGE:{age.Count}");
+                AddNameLog(pageNumber, $"AGE COUNT MISMATCH - recordCount:{recordCount} - AGE:{age.Count}");
 
             /* SEX */
             if (isSexIssue)
-                AddNameLog(exceptionText, pageNumber, $"SEX COUNT MISMATCH - recordCount:{recordCount} - SEX:{sex.Count}");
+                AddNameLog(pageNumber, $"SEX COUNT MISMATCH - recordCount:{recordCount} - SEX:{sex.Count}");
 
             var voterList = new List<VoterList>();
-
-
 
             // 1. Name
             names.ForEach(fe =>
             {
                 var nm = GetOne(fe);
-
-
-                voterList.Add(new VoterList()
+                var vl = new VoterList()
                 {
-                    Name = nm.Item1 ? nm.Item2 : AddNameLog(exceptionText, pageNumber, "#NERROR#"),
+                    Name = nm.Item1 ? nm.Item2 : AddNameLog(pageNumber, "#NERROR#"),
                     MayError = mayHaveError ? mayHaveError : (nm.Item3)
 
-                });
+                };
+
+                if (vl.MayError)
+                    AddNameLog(pageNumber, $"NAME ERROR @ {voterList.Count + 1}");
+                voterList.Add(vl);
             });
 
+            // 1.1 add pageNo and index
             for (int index = 0; index < voterList.Count; index++)
             {
                 voterList[index].PageNo = pageNumber;
@@ -522,18 +566,27 @@ namespace CenturyFinCorpApp.UsrCtrl
             for (int index = 0; index < fatherOrHusband.Count; index++)
             {
                 var nm = GetOne(fatherOrHusband[index]);
-                voterList[index].HorFName = nm.Item1 ? nm.Item2 : AddLog(exceptionText, pageNumber, voterList[index]);
+                voterList[index].HorFName = nm.Item1 ? nm.Item2 : AddLog(pageNumber, voterList[index]);
                 if (voterList[index].MayError == false) voterList[index].MayError = nm.Item3;
-
+                if (voterList[index].MayError)
+                    AddNameLog(pageNumber, $"FATHERNAME ERROR @ {index + 1}");
             }
 
 
             // 3. HomeAddress
             for (int index = 0; index < address.Count; index++)
             {
-                var nm = GetOne(address[index]);
-                voterList[index].HomeAddress = nm.Item1 ? nm.Item2 : AddLog(exceptionText, pageNumber, voterList[index]);
+                var nm = GetAddress(address[index]);
+
+                voterList[index].HomeAddress = nm.Item1 ? nm.Item2 : AddLog(pageNumber, voterList[index]);
                 if (voterList[index].MayError == false) voterList[index].MayError = nm.Item3;
+                if (voterList[index].MayError)
+                    AddNameLog(pageNumber, $"HOMEADDRESS ERROR @ {index + 1}");
+
+                voterList[index].IsDeleted = nm.Item4;
+
+                if (nm.Item4)
+                    AddDeleteItemLog(pageNumber, voterList[index]);
             }
 
             // 4. Age
@@ -541,6 +594,8 @@ namespace CenturyFinCorpApp.UsrCtrl
             {
                 var nm = GetOne(age[index]);
                 if (voterList[index].MayError == false) voterList[index].MayError = nm.Item3;
+                if (voterList[index].MayError)
+                    AddNameLog(pageNumber, $"AGE ERROR @ {index + 1}");
                 var a = 0;
 
                 try
@@ -552,7 +607,11 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 }
 
-                if (a == 0) voterList[index].IsDeleted = true;
+                if (a == 0)
+                {
+                    voterList[index].IsDeleted = true;
+                    AddDeleteItemLog(pageNumber, voterList[index]);
+                }
 
                 voterList[index].Age = nm.Item1 ? a : -999;
             }
@@ -561,7 +620,9 @@ namespace CenturyFinCorpApp.UsrCtrl
             for (int index = 0; index < sex.Count; index++)
             {
                 var nm = GetTwo(sex[index]);
-                voterList[index].Sex = nm.Item1 ? nm.Item2 : AddLog(exceptionText, pageNumber, voterList[index]);
+                voterList[index].Sex = nm.Item1 ? nm.Item2 : AddLog(pageNumber, voterList[index]);
+                if (voterList[index].MayError)
+                    AddNameLog(pageNumber, $"SEX ERROR @ {index + 1}");
 
                 if (voterList[index].MayError == false) voterList[index].MayError = nm.Item3;
             }
@@ -573,24 +634,163 @@ namespace CenturyFinCorpApp.UsrCtrl
             {
                 var jsonFile = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}-ReRun.json");
                 var fd = JsonConvert.SerializeObject(voterList, Formatting.Indented);
-                ReplaceToFile(jsonFile, fd);
+                WriteToFile(jsonFile, fd);
+                //exceptionText.Clear();
+                logs.Clear();
             }
 
 
-            if (voterList[0].MayError)
+            if (voterList.Any(a => a.MayError))
             {
                 if (Directory.Exists(reProcessFile) == false)
                     Directory.CreateDirectory(reProcessFile);
 
                 var file = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}.txt");
-                ReplaceToFile(file, pageContent);
+                WriteToFile(file, pageContent);
 
                 //write as json
                 var jsonFile = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}-Error.json");
                 var fd = JsonConvert.SerializeObject(voterList, Formatting.Indented);
-                ReplaceToFile(jsonFile, fd);
+                WriteToFile(jsonFile, fd);
+            }
+
+            return voterList.Any(a => a.MayError);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            var fData = fullList.Where(w => w.PageNo == txtFIlterPn.Text.ToInt32());
+
+            if (txtFIlterRn.Text.Trim() != "")
+            {
+                fData = fData.Where(w => w.RowNo == txtFIlterRn.Text.ToInt32());
+            }
+
+            dataGridView1.DataSource = fData.ToList();
+
+        }
+
+        public static List<KeyValuePair<int, string>> GetOptions()
+        {
+            var myKeyValuePair = new List<KeyValuePair<int, string>>()
+               {
+                   new KeyValuePair<int, string>(1, "Any Null?"),
+                   new KeyValuePair<int, string>(2, "Name Null?"),
+                   new KeyValuePair<int, string>(3, "FNAME Null?"),
+                   new KeyValuePair<int, string>(4, "Address Null?"),
+                   new KeyValuePair<int, string>(5, "Age Null?"),
+                   new KeyValuePair<int, string>(6, "Gender Null?"),
+                   new KeyValuePair<int, string>(7, "Delete Page"),
+                   new KeyValuePair<int, string>(8, "> 1 Deleted Page"),
+                   new KeyValuePair<int, string>(9, "May Error Page")
+                   //new KeyValuePair<int, string>(3, "By Customer Id"),
+                   //new KeyValuePair<int, string>(4, "By Customer Name"),
+                   //new KeyValuePair<int, string>(10, "Return By Yesterday"),
+                   //new KeyValuePair<int, string>(5, "Return By Today"),
+                   //new KeyValuePair<int, string>(6, "Return By Tomorrow"),
+                   //new KeyValuePair<int, string>(7, "By Return Day"),
+                   //new KeyValuePair<int, string>(8, "By Return Type"),
+                   //new KeyValuePair<int, string>(9, "By CollectionSpot"),
+                   //new KeyValuePair<int, string>(10, "By AdjustedAmount"),
+                   //new KeyValuePair<int, string>(11, "Not Eligible Members"),
+                   //new KeyValuePair<int, string>(12, "Need Investigation Members"),
+                   //new KeyValuePair<int, string>(13, "Only Note With us"),
+                   //new KeyValuePair<int, string>(14, "Only Personal"),
+                   //new KeyValuePair<int, string>(15, "No Tamil Name"),
+                   //new KeyValuePair<int, string>(16, "Only Adj & To Be Closed."),
+                   //new KeyValuePair<int, string>(17, "By Balance %"),
+                   //new KeyValuePair<int, string>(18, "By Interest")
+
+               };
+
+            return myKeyValuePair;
+
+        }
+
+        List<VoterList> filteredData = new List<VoterList>();
+
+        private void cmbFIlter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (fullList.Count == 0) return;
+
+            var value = ((KeyValuePair<int, string>)cmbFIlter.SelectedItem).Key;
+
+            if (value == 1)
+            {
+                filteredData = fullList.Where(w =>
+                string.IsNullOrEmpty(w.Name.Trim()) ||
+                string.IsNullOrEmpty(w.HorFName.Trim()) ||
+                string.IsNullOrEmpty(w.HomeAddress.Trim()) ||
+                w.Age == 0 ||
+                string.IsNullOrEmpty(w.Sex.Trim())
+                ).ToList();
+            }
+            if (value == 2)
+            {
+                filteredData = fullList.Where(w =>
+                string.IsNullOrEmpty(w.Name.Trim())
+                ).ToList();
+            }
+            if (value == 3)
+            {
+                filteredData = fullList.Where(w =>
+                string.IsNullOrEmpty(w.HorFName.Trim())
+                ).ToList();
+            }
+            if (value == 4)
+            {
+                filteredData = fullList.Where(w =>
+                string.IsNullOrEmpty(w.HomeAddress.Trim())
+                ).ToList();
+            }
+            if (value == 5)
+            {
+                filteredData = fullList.Where(w =>
+                w.Age == 0
+                ).ToList();
+            }
+            if (value == 6)
+            {
+                var da =
+                filteredData = fullList.Where(w =>
+                string.IsNullOrEmpty(w.Sex.Trim())
+                ).ToList();
+            }
+            else if (value == 7)
+            {
+                filteredData = fullList.Where(w =>
+                w.IsDeleted
+                ).ToList();
+            }
+            else if (value == 8)
+            {
+                var da = (from f in fullList
+                          where f.IsDeleted
+                          group f by f.PageNo into ng
+                          select ng).ToList();
+
+                da.ForEach(fe =>
+                {
+
+                    if (fe.ToList().Count > 1)
+                    {
+                        filteredData.AddRange(fe.ToList());
+                    }
+
+                });
 
             }
+            else if (value == 9)
+            {
+                filteredData = fullList.Where(w =>
+                w.MayError
+                ).ToList();
+            }
+
+            dataGridView1.DataSource = filteredData;
+
         }
     }
 

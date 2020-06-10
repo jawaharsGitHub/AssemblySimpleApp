@@ -39,6 +39,12 @@
             this.chkPageList = new System.Windows.Forms.ComboBox();
             this.txtMissingRow = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.txtFIlterPn = new System.Windows.Forms.TextBox();
+            this.txtFIlterRn = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmbFIlter = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,7 +114,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(33, 73);
+            this.dataGridView1.Location = new System.Drawing.Point(33, 112);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(807, 405);
             this.dataGridView1.TabIndex = 7;
@@ -139,10 +145,68 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // txtFIlterPn
+            // 
+            this.txtFIlterPn.Location = new System.Drawing.Point(238, 76);
+            this.txtFIlterPn.Name = "txtFIlterPn";
+            this.txtFIlterPn.Size = new System.Drawing.Size(42, 20);
+            this.txtFIlterPn.TabIndex = 11;
+            // 
+            // txtFIlterRn
+            // 
+            this.txtFIlterRn.Location = new System.Drawing.Point(338, 73);
+            this.txtFIlterRn.Name = "txtFIlterRn";
+            this.txtFIlterRn.Size = new System.Drawing.Size(43, 20);
+            this.txtFIlterRn.TabIndex = 12;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(420, 71);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(125, 23);
+            this.button3.TabIndex = 13;
+            this.button3.Text = "Filter";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(189, 83);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(19, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "pn";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(313, 79);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(16, 13);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "rn";
+            // 
+            // cmbFIlter
+            // 
+            this.cmbFIlter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFIlter.FormattingEnabled = true;
+            this.cmbFIlter.Location = new System.Drawing.Point(563, 76);
+            this.cmbFIlter.Name = "cmbFIlter";
+            this.cmbFIlter.Size = new System.Drawing.Size(133, 21);
+            this.cmbFIlter.TabIndex = 16;
+            this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
+            // 
             // ucVoterAnalysis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cmbFIlter);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.txtFIlterRn);
+            this.Controls.Add(this.txtFIlterPn);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.txtMissingRow);
             this.Controls.Add(this.chkPageList);
@@ -175,5 +239,11 @@
         private System.Windows.Forms.ComboBox chkPageList;
         private System.Windows.Forms.TextBox txtMissingRow;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox txtFIlterPn;
+        private System.Windows.Forms.TextBox txtFIlterRn;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmbFIlter;
     }
 }
