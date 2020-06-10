@@ -797,13 +797,13 @@ namespace CenturyFinCorpApp.UsrCtrl
             else if (value == 10)
             {
                 filteredData = fullList.Where(w =>
-                w.Name.Trim().Split(' ').Count() > 1
+                w.Name.Trim().Split(' ').Count() > 2
                 ).ToList();
             }
             else if (value == 11)
             {
                 filteredData = fullList.Where(w =>
-                w.HorFName.Trim().Split(' ').Count() > 1
+                w.HorFName.Trim().Split(' ').Count() > 2
                 ).ToList();
             }
             else if (value == 12)

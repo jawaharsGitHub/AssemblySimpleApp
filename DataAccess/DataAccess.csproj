@@ -64,7 +64,7 @@
   <ItemGroup>
     <None Include="Data\BaseData - WIthoutPanchayat.json" />
     <None Include="Data\BaseData.json" />
-    <None Include="Data\voter.json" />
+    <None Include="Data\voter-Panchayat.json" />
     <None Include="Data\assembly.json" />
     <Compile Include="ExtendedTypes\AssemblyAndVotes.cs" />
     <Compile Include="ExtendedTypes\CreditReport.cs" />
@@ -197,6 +197,8 @@
     <None Include="Data\PollingStation.json" />
     <None Include="Data\votedata.json" />
     <None Include="Data\memberverify.json" />
+    <None Include="Data\AssemblyBoothDetail.json" />
+    <None Include="Data\AssemblyVoterList.json" />
     <None Include="Data\zonal.json" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -212,6 +214,7 @@
     <Content Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\29 Thiruvarur.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Data\AssemblyVoters\211\" />
     <Folder Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\01 ARIYALUR\New folder %282%29\" />
     <Folder Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\01 ARIYALUR\New folder\" />
   </ItemGroup>
