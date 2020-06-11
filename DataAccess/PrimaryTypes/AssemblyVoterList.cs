@@ -67,9 +67,6 @@ namespace DataAccess.PrimaryTypes
         {
             try
             {
-
-                // var jsonFilePath = updatedTransaction.IsClosed ? $"{ClosedTxnFilePath}/{updatedTransaction.CustomerId}/{updatedTransaction.CustomerId}_{updatedTransaction.CustomerSequenceNo}.json" : JsonFilePath;
-
                 List<VoterList> list = ReadFileAsObjects<VoterList>(jsonFilePath);
 
                 var u = list.Where(c => c.PageNo == updatedTransaction.PageNo && c.SNo == updatedTransaction.SNo).First();
@@ -78,7 +75,7 @@ namespace DataAccess.PrimaryTypes
                 u.HorFName = updatedTransaction.HorFName;
                 u.HomeAddress = updatedTransaction.HomeAddress;
                 u.Age = updatedTransaction.Age;
-                u.Sex = updatedTransaction.Sex;
+                u.Sex = updatedTransaction.Sex.Trim().ToLower() == "m" ? "ஆண்" : (updatedTransaction.Sex.Trim().ToLower() == "f" ? "பெண்" : "other");
                 u.IsManualEdit = true;
                 u.IsDeleted = updatedTransaction.IsDeleted;
                 u.MayError = updatedTransaction.MayError;

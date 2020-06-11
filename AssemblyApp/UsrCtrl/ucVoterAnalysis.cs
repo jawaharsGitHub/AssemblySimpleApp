@@ -63,6 +63,15 @@ namespace CenturyFinCorpApp.UsrCtrl
                 {
                     File.Create(voterFilePath);
                 }
+                else
+                {
+                    MessageBox.Show("Willload an existing data!!");
+                    // Load and exit
+                    fullList = VoterList.GetAll(voterFilePath);
+                    dataGridView1.DataSource = fullList;
+                    SetErrorDetail();
+                    return;
+                }
 
             }
             catch (Exception)
@@ -993,8 +1002,6 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             SetErrorDetail();
             
-
-
         }
 
         private void button4_Click(object sender, EventArgs e)
