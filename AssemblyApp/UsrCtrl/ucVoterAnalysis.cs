@@ -77,7 +77,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("Invalid file name");
             }

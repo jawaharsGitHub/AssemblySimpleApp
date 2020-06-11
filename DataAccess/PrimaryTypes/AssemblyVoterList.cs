@@ -75,7 +75,7 @@ namespace DataAccess.PrimaryTypes
                 u.HorFName = updatedTransaction.HorFName;
                 u.HomeAddress = updatedTransaction.HomeAddress;
                 u.Age = updatedTransaction.Age;
-                u.Sex = SetGender(u.Sex,  updatedTransaction.Sex), //.Trim().ToLower() == "m" ? "ஆண்" : (updatedTransaction.Sex.Trim().ToLower() == "f" ? "பெண்" : "other");
+                u.Sex = SetGender(u.Sex, updatedTransaction.Sex); //.Trim().ToLower() == "m" ? "ஆண்" : (updatedTransaction.Sex.Trim().ToLower() == "f" ? "பெண்" : "other");
                 u.IsManualEdit = true;
                 u.IsDeleted = updatedTransaction.IsDeleted;
                 u.MayError = updatedTransaction.MayError;
