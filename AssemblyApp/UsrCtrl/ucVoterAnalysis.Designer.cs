@@ -202,7 +202,7 @@
             this.cmbFIlter.Name = "cmbFIlter";
             this.cmbFIlter.Size = new System.Drawing.Size(133, 21);
             this.cmbFIlter.TabIndex = 16;
-            this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
+            //this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
             // 
             // lblDetails
             // 

@@ -71,6 +71,8 @@ namespace CenturyFinCorpApp.UsrCtrl
                         // Load and exit
                         fullList = VoterList.GetAll(voterFilePath);
                         dataGridView1.DataSource = fullList;
+                        this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
+                        this.cmbFIlter.SelectedIndex = 8; // may error.
                         SetErrorDetail();
                         return;
                     }
@@ -293,7 +295,10 @@ namespace CenturyFinCorpApp.UsrCtrl
             General.WriteToFile(file4, onlyVotersPages);
 
             if (chkDebugMode.Checked == false) // We should save ony in run modeNOT IN DEBUG MODE.
-                VoterList.Save(fullList, voterFilePath);
+            {
+                if (DialogResult.Yes == MessageBox.Show("You want Save? ", "", MessageBoxButtons.YesNo))
+                    VoterList.Save(fullList, voterFilePath);
+            }
 
             logs.Clear();
 
@@ -851,6 +856,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             var myKeyValuePair = new List<KeyValuePair<int, string>>()
                {
+
                    new KeyValuePair<int, string>(1, "Any Null?"),
                    new KeyValuePair<int, string>(2, "Name Null?"),
                    new KeyValuePair<int, string>(3, "FNAME Null?"),
