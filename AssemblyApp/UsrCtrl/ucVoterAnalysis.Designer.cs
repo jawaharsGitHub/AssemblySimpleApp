@@ -46,6 +46,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cmbFIlter = new System.Windows.Forms.ComboBox();
             this.lblDetails = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -214,11 +215,22 @@
             this.lblDetails.TabIndex = 17;
             this.lblDetails.Text = "[Details]";
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(713, 74);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(98, 23);
+            this.button4.TabIndex = 18;
+            this.button4.Text = "Refresh..";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // ucVoterAnalysis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.lblDetails);
             this.Controls.Add(this.cmbFIlter);
             this.Controls.Add(this.label4);
@@ -265,5 +277,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblDetails;
+        private System.Windows.Forms.Button button4;
     }
 }

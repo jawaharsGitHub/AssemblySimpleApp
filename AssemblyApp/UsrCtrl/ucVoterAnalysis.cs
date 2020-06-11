@@ -312,6 +312,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             errorPerc += fullList.Where(w => string.IsNullOrEmpty(w.HomeAddress.Trim())).Count();
             errorPerc += fullList.Where(w => string.IsNullOrEmpty(w.HorFName.Trim())).Count();
             errorPerc += fullList.Where(w => w.Age == 0).Count();
+            errorPerc += fullList.Where(w => w.MayError).Count();
 
 
             lblDetails.Text = $"Total Records:{fullList.Count} {Environment.NewLine} " +
@@ -323,7 +324,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             try
             {
-                string d = content.Contains(":") ? content.Split(':')[1].Trim() : content.Split(' ')[1].Trim();
+                string d = content.Contains(":") ? content.Split(':')[1] : content.Split(' ')[1];
                 var isEmpty = string.IsNullOrEmpty(d);
                 return (true, d, isEmpty);
             }
@@ -333,12 +334,27 @@ namespace CenturyFinCorpApp.UsrCtrl
             }
         }
 
-        public (bool, string, bool) GetTwo(string content)
+
+        public (bool, string, bool) GetFNname(string content)
+        {
+            try
+            {
+                string d = content.Contains(":") ? content.Split(':')[1] : content.Split(' ')[1];
+                var isEmpty = string.IsNullOrEmpty(d) || !d.Contains('-');
+                return (true, d, isEmpty);
+            }
+            catch (Exception ex)
+            {
+                return (false, ex.ToString(), false);
+            }
+        }
+
+        public (bool, string, bool) GetGender(string content)
         {
             try
             {
                 var d = content.Contains(":") ?
-                        content.Split(':')[1].TrimStart().Split(' ')[0].Trim() : content.Split(' ')[1].Trim();
+                        content.Split(':')[1].TrimStart().Split(' ')[0] : content.Split(' ')[1];
                 var isEmpty = string.IsNullOrEmpty(d);
                 return (true, d, isEmpty);
             }
@@ -353,7 +369,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             bool isDel = false;
             try
             {
-                string d = content.Contains(":") ? content.Split(':')[1].Trim() : content.Split(' ')[1].Trim();
+                string d = content.Contains(":") ? content.Split(':')[1] : content.Split(' ')[1];
 
                 isDel = content.Contains("ADDRESS-D");
 
@@ -457,10 +473,10 @@ namespace CenturyFinCorpApp.UsrCtrl
             data = data.Replace("Photo", "").Replace("is", "").Replace("Available", "");  // Rempve Photo is AVailable.
 
             data = data.Replace("தந்தை பெயர்", "$FATHER")
-                       .Replace("கணவர் பெயர்", "$HUSBAND")
+                       .Replace("கணவர் பெயர்", "$FATHER")
                        //.Replace("கணவர் பெய", "$HUSBAND-1:") // scenerio 1
-                       .Replace("தாய் பெயர்", "$MOTHER")
-                       .Replace("இதரர் பெயர்", "$OTHERS")
+                       .Replace("தாய் பெயர்", "$FATHER")
+                       .Replace("இதரர் பெயர்", "$FATHER")
                        // NOTE: dont change this order of Replace
                        .Replace("பெயர்", "$NAME")  // Rempoe Photo is AVailable.
 
@@ -475,7 +491,57 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                        .Replace("பாலினம்", "$SEX");
 
+
+            //data = data.Replace("தந்தை பெயர்", "$F")
+            //           .Replace("கணவர் பெயர்", "$F")
+            //           //.Replace("கணவர் பெய", "$HUSBAND-1:") // scenerio 1
+            //           .Replace("தாய் பெயர்", "$F")
+            //           .Replace("இதரர் பெயர்", "$F")
+            //           // NOTE: dont change this order of Replace
+            //           .Replace("பெயர்", "$N")  // Rempoe Photo is AVailable.
+
+            //           .Replace("வீட்டு எண்", "$A")
+            //           .Replace("வீட்டு என்", "$A")
+            //            .Replace("வீட்டு தன்", "$A")
+            //            .Replace("வீட்டு பண்", "$A")
+            //            .Replace("வீட்டு கண்", "$A")
+            //           //.Replace("வீட்டு", "$ADDRESS:D")
+
+            //           .Replace("வயது", "$G")
+
+            //           .Replace("பாலினம்", "$X");
+
             var splittedData = data.Split('$').ToList();
+
+            //var test = data.Where(w => w == '$').Count();
+
+            //var sbb = new List<string>();
+
+            //int si = 0;
+            //for (int i = 0; i < 150; i++)
+            //{
+            //    si = data.IndexOf('$', si);
+            //    var ddd = data.Substring(si, 2);
+            //    si += 1;
+            //    sbb.Add(ddd);
+            //}
+
+
+            //var str = new StringBuilder();
+
+            //for (int j = 0; j < 10; j++)
+            //{
+            //    for (int i = 0; i < 15; i++)
+            //    {
+            //        str.Append(sbb[i].Replace("$", "") + " ");
+            //    }
+            //    str.Append(Environment.NewLine);
+
+            //    sbb.RemoveRange(0, 15);
+
+            //}
+
+
 
             splittedData.RemoveRange(0, 1);
 
@@ -568,6 +634,23 @@ namespace CenturyFinCorpApp.UsrCtrl
                 voterList.Add(vl);
             });
 
+
+            //for (int index = 0; index < voterList.Count; index++)
+            //{
+
+            //    voterList[index].PageNo = pageNumber;
+            //    voterList[index].RowNo = (index / 3) + 1;
+            //    voterList[index].SNo = index + 1;
+
+            //    // Process record by record 
+            //    DoHFname(fatherOrHusband[index], pageNumber, voterList[index], index);
+            //    DoAddress(address[index], pageNumber, voterList[index], index);
+            //    DoAge(age[index], pageNumber, voterList[index], index);
+            //    DoGender(sex[index], pageNumber, voterList[index], index);
+
+            //}
+
+
             // 1.1 add pageNo and index
             for (int index = 0; index < voterList.Count; index++)
             {
@@ -579,66 +662,79 @@ namespace CenturyFinCorpApp.UsrCtrl
             // 2. HorFName
             for (int index = 0; index < fatherOrHusband.Count; index++)
             {
-                var nm = GetOne(fatherOrHusband[index]);
-                voterList[index].HorFName = nm.Item1 ? nm.Item2 : AddLog(pageNumber, voterList[index]);
-                if (voterList[index].MayError == false) voterList[index].MayError = nm.Item3;
+                DoHFname(fatherOrHusband[index], pageNumber, voterList[index], index);
+
                 if (voterList[index].MayError)
-                    AddNameLog(pageNumber, $"FATHERNAME ERROR @ {index + 1}");
+                    voterList.Where(w => w.RowNo == voterList[index].RowNo).ToList().ForEach(fe => fe.MayError = true);
+
+
+                //var nm = GetOne(fatherOrHusband[index]);
+                //voterList[index].IsManualEdit = fatherOrHusband[index].Contains("\r\n");
+                //voterList[index].HorFName = nm.Item1 ? nm.Item2 : AddLog(pageNumber, voterList[index]);
+                //if (voterList[index].MayError == false) voterList[index].MayError = nm.Item3;
+                //if (voterList[index].MayError)
+                //    AddNameLog(pageNumber, $"FATHERNAME ERROR @ {index + 1}");
             }
 
 
             // 3. HomeAddress
             for (int index = 0; index < address.Count; index++)
             {
-                var nm = GetAddress(address[index]);
+                DoAddress(address[index], pageNumber, voterList[index], index);
 
-                voterList[index].HomeAddress = nm.Item1 ? nm.Item2 : AddLog(pageNumber, voterList[index]);
-                if (voterList[index].MayError == false) voterList[index].MayError = nm.Item3;
-                if (voterList[index].MayError)
-                    AddNameLog(pageNumber, $"HOMEADDRESS ERROR @ {index + 1}");
+                //var nm = GetAddress(address[index]);
 
-                voterList[index].IsDeleted = nm.Item4;
+                //voterList[index].HomeAddress = nm.Item1 ? nm.Item2 : AddLog(pageNumber, voterList[index]);
+                //if (voterList[index].MayError == false) voterList[index].MayError = nm.Item3;
+                //if (voterList[index].MayError)
+                //    AddNameLog(pageNumber, $"HOMEADDRESS ERROR @ {index + 1}");
 
-                if (nm.Item4)
-                    AddDeleteItemLog(pageNumber, voterList[index]);
+                //voterList[index].IsDeleted = nm.Item4;
+
+                //if (nm.Item4)
+                //    AddDeleteItemLog(pageNumber, voterList[index]);
             }
 
             // 4. Age
             for (int index = 0; index < age.Count; index++)
             {
-                var nm = GetOne(age[index]);
-                if (voterList[index].MayError == false) voterList[index].MayError = nm.Item3;
-                if (voterList[index].MayError)
-                    AddNameLog(pageNumber, $"AGE ERROR @ {index + 1}");
-                var a = 0;
 
-                try
-                {
-                    a = nm.Item2.ToInt32();
-                }
-                catch (Exception)
-                {
+                DoAge(age[index], pageNumber, voterList[index], index);
 
-                }
+                //var nm = GetOne(age[index]);
+                //if (voterList[index].MayError == false) voterList[index].MayError = nm.Item3;
+                //if (voterList[index].MayError)
+                //    AddNameLog(pageNumber, $"AGE ERROR @ {index + 1}");
+                //var a = 0;
 
-                if (a == 0)
-                {
-                    voterList[index].IsDeleted = true;
-                    AddDeleteItemLog(pageNumber, voterList[index]);
-                }
+                //try
+                //{
+                //    a = nm.Item2.ToInt32();
+                //}
+                //catch (Exception)
+                //{
 
-                voterList[index].Age = nm.Item1 ? a : -999;
+                //}
+
+                //if (a == 0)
+                //{
+                //    voterList[index].IsDeleted = true;
+                //    AddDeleteItemLog(pageNumber, voterList[index]);
+                //}
+
+                //voterList[index].Age = nm.Item1 ? a : -999;
             }
 
             // 5. Sex
             for (int index = 0; index < sex.Count; index++)
             {
-                var nm = GetTwo(sex[index]);
-                voterList[index].Sex = nm.Item1 ? nm.Item2 : AddLog(pageNumber, voterList[index]);
-                if (voterList[index].MayError)
-                    AddNameLog(pageNumber, $"SEX ERROR @ {index + 1}");
+                DoGender(sex[index], pageNumber, voterList[index], index);
+                //var nm = GetTwo(sex[index]);
+                //voterList[index].Sex = nm.Item1 ? nm.Item2 : AddLog(pageNumber, voterList[index]);
+                //if (voterList[index].MayError)
+                //    AddNameLog(pageNumber, $"SEX ERROR @ {index + 1}");
 
-                if (voterList[index].MayError == false) voterList[index].MayError = nm.Item3;
+                //if (voterList[index].MayError == false) voterList[index].MayError = nm.Item3;
             }
 
             //Append to final list
@@ -668,6 +764,60 @@ namespace CenturyFinCorpApp.UsrCtrl
             }
 
             return voterList.Any(a => a.MayError);
+        }
+
+        private void DoHFname(string fName, int pn, VoterList vl, int ind)
+        {
+            var nm = GetFNname(fName);
+            vl.HorFName = nm.Item1 ? nm.Item2 : AddLog(pn, vl);
+            if (vl.MayError == false) vl.MayError = nm.Item3;
+            if (vl.MayError)
+                AddNameLog(pn, $"FATHERNAME ERROR @ {ind + 1}");
+        }
+
+        private void DoAddress(string add, int pn, VoterList vl, int ind)
+        {
+            var nm = GetAddress(add);
+            vl.HomeAddress = nm.Item1 ? nm.Item2 : AddLog(pn, vl);
+            if (vl.MayError == false) vl.MayError = nm.Item3;
+            if (vl.MayError)
+                AddNameLog(pn, $"HOMEADDRESS ERROR @ {ind + 1}");
+            vl.IsDeleted = nm.Item4;
+            if (nm.Item4)
+                AddDeleteItemLog(pn, vl);
+        }
+
+        private void DoAge(string age, int pn, VoterList vl, int ind)
+        {
+            var nm = GetOne(age);
+            if (vl.MayError == false) vl.MayError = nm.Item3;
+            if (vl.MayError)
+                AddNameLog(pn, $"AGE ERROR @ {ind + 1}");
+            var a = 0;
+            try
+            {
+                a = nm.Item2.ToInt32();
+            }
+            catch (Exception)
+            {
+
+            }
+            if (a == 0)
+            {
+                vl.IsDeleted = true;
+                AddDeleteItemLog(pn, vl);
+            }
+            vl.Age = nm.Item1 ? a : -999;
+        }
+
+        private void DoGender(string gender, int pn, VoterList vl, int ind)
+        {
+            var nm = GetGender(gender);
+            vl.Sex = nm.Item1 ? nm.Item2 : AddLog(pn, vl);
+            if (vl.MayError)
+                AddNameLog(pn, $"SEX ERROR @ {ind + 1}");
+
+            if (vl.MayError == false) vl.MayError = nm.Item3;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -702,6 +852,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                    new KeyValuePair<int, string>(12, "Address Issue"),
                    new KeyValuePair<int, string>(13, "Age Issue"),
                    new KeyValuePair<int, string>(14, "Gender Issue"),
+                   new KeyValuePair<int, string>(15, "Manual Edit"),
                };
 
             return myKeyValuePair;
@@ -818,6 +969,12 @@ namespace CenturyFinCorpApp.UsrCtrl
                 w.Sex.Trim().Split(' ').Count() > 1
                 ).ToList();
             }
+            else if (value == 15)
+            {
+                filteredData = fullList.Where(w =>
+                w.IsManualEdit
+                ).ToList();
+            }
 
             dataGridView1.DataSource = filteredData;
 
@@ -832,13 +989,17 @@ namespace CenturyFinCorpApp.UsrCtrl
             VoterList cus = grid.Rows[grid.CurrentCell.RowIndex].DataBoundItem as VoterList;
             //Update data
 
-            //var path = Path.Combine(AppConfiguration.AssemblyVotersFolder, $"{ufn.Substring(2, 3)}");
-            //voterFilePath = Path.Combine(voterFilePath, $"{ufn.Substring(5, 3)}.json");
-
             VoterList.UpdateVoterDetails(cus, voterFilePath);
 
             SetErrorDetail();
+            
 
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            cmbFIlter_SelectedIndexChanged(null, null);
         }
     }
 }
