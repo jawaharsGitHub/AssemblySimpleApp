@@ -23,7 +23,7 @@ namespace DataAccess.PrimaryTypes
 
         public string Sex { get; set; }
 
-        
+
 
         public bool IsDeleted { get; set; }
 
@@ -75,7 +75,7 @@ namespace DataAccess.PrimaryTypes
                 u.HorFName = updatedTransaction.HorFName;
                 u.HomeAddress = updatedTransaction.HomeAddress;
                 u.Age = updatedTransaction.Age;
-                u.Sex = updatedTransaction.Sex.Trim().ToLower() == "m" ? "ஆண்" : (updatedTransaction.Sex.Trim().ToLower() == "f" ? "பெண்" : "other");
+                u.Sex = SetGender(u.Sex,  updatedTransaction.Sex), //.Trim().ToLower() == "m" ? "ஆண்" : (updatedTransaction.Sex.Trim().ToLower() == "f" ? "பெண்" : "other");
                 u.IsManualEdit = true;
                 u.IsDeleted = updatedTransaction.IsDeleted;
                 u.MayError = updatedTransaction.MayError;
@@ -89,6 +89,27 @@ namespace DataAccess.PrimaryTypes
                 throw ex;
             }
         }
+
+        private static string SetGender(string oldsex, string newSex)
+        {
+            var s = newSex.Trim().ToLower();
+
+            if (oldsex.Trim().ToLower() == s)
+            {
+                return oldsex;
+            }
+            else
+            {
+                if (s == "m")
+                    return "ஆண்";
+                else if (s == "f")
+                    return "பெண்";
+                else
+                    return "Third";
+            }
+
+        }
+
 
     }
 }

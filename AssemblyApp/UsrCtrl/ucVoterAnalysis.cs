@@ -65,12 +65,15 @@ namespace CenturyFinCorpApp.UsrCtrl
                 }
                 else
                 {
-                    MessageBox.Show("Willload an existing data!!");
-                    // Load and exit
-                    fullList = VoterList.GetAll(voterFilePath);
-                    dataGridView1.DataSource = fullList;
-                    SetErrorDetail();
-                    return;
+                    if (chkDebugMode.Checked == false)
+                    {
+                        MessageBox.Show("Willload an existing data!!");
+                        // Load and exit
+                        fullList = VoterList.GetAll(voterFilePath);
+                        dataGridView1.DataSource = fullList;
+                        SetErrorDetail();
+                        return;
+                    }
                 }
 
             }
@@ -289,7 +292,8 @@ namespace CenturyFinCorpApp.UsrCtrl
             var file4 = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{DateTime.Now.ToLocalTime().ToString().Replace(":", "~")}-{flag}.txt");
             General.WriteToFile(file4, onlyVotersPages);
 
-            VoterList.Save(fullList, voterFilePath);
+            if (chkDebugMode.Checked == false) // We should save ony in run modeNOT IN DEBUG MODE.
+                VoterList.Save(fullList, voterFilePath);
 
             logs.Clear();
 
@@ -1001,7 +1005,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             VoterList.UpdateVoterDetails(cus, voterFilePath);
 
             SetErrorDetail();
-            
+
         }
 
         private void button4_Click(object sender, EventArgs e)
