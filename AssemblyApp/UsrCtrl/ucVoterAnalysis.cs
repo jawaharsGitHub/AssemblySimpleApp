@@ -60,10 +60,11 @@ namespace CenturyFinCorpApp.UsrCtrl
                 General.CreateFile(boothDetailPath);
 
                 voterFilePath = Path.Combine(voterFilePath, $"{ufn.Substring(5, 3)}.json");
+                this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
 
                 if (File.Exists(voterFilePath) == false)
                 {
-                    File.Create(voterFilePath);
+                    // File.Create(voterFilePath);
                     //using (var stream = File.Create(voterFilePath))
                     //{
                     //    File.Create(voterFilePath);
@@ -77,7 +78,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                         // Load and exit
                         fullList = VoterList.GetAll(voterFilePath);
                         dataGridView1.DataSource = fullList;
-                        this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
+                        //this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
                         this.cmbFIlter.SelectedIndex = 8; // may error.
                         SetErrorDetail();
                         return;
@@ -306,8 +307,8 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             if (chkDebugMode.Checked == false) // We should save ony in run modeNOT IN DEBUG MODE.
             {
-                if (DialogResult.Yes == MessageBox.Show("You want Save? ", "", MessageBoxButtons.YesNo))
-                    VoterList.Save(fullList, voterFilePath);
+                //if (DialogResult.Yes == MessageBox.Show("You want Save? ", "", MessageBoxButtons.YesNo))
+                //VoterList.Save(fullList, voterFilePath);
             }
 
             logs.Clear();
@@ -352,8 +353,15 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             try
             {
-                string d = content.Contains(":") ? content.Split(':')[1] : content.Split(' ')[1];
+                string d = "";
+
+                if (content.Contains(":"))
+                    d = content.Split(':')[1];
+                else
+                    d = content.Split(' ')[1];
+
                 var isEmpty = string.IsNullOrEmpty(d);
+
                 return (true, d, isEmpty);
             }
             catch (Exception ex)
@@ -383,7 +391,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             try
             {
                 string d = content.Contains(":") ? content.Split(':')[1] : content.Split(' ')[1];
-                var isEmpty = string.IsNullOrEmpty(d) || !d.Contains('-');
+                var isEmpty = string.IsNullOrEmpty(d.Trim()); // || !d.Contains('-');
                 return (true, d, isEmpty);
             }
             catch (Exception ex)
@@ -548,6 +556,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             //            .Replace("வீட்டு தன்", "$A")
             //            .Replace("வீட்டு பண்", "$A")
             //            .Replace("வீட்டு கண்", "$A")
+            //            .Replace("வீட்டு கண்", "$A")
             //           //.Replace("வீட்டு", "$ADDRESS:D")
 
             //           .Replace("வயது", "$G")
@@ -556,42 +565,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             var splittedData = data.Split('$').ToList();
 
-            //var test = data.Where(w => w == '$').Count();
-
-            //var sbb = new List<string>();
-
-            //int si = 0;
-            //for (int i = 0; i < 150; i++)
-            //{
-            //    si = data.IndexOf('$', si);
-            //    var ddd = data.Substring(si, 2);
-            //    si += 1;
-            //    sbb.Add(ddd);
-            //}
-
-
-            //var str = new StringBuilder();
-
-            //for (int j = 0; j < 10; j++)
-            //{
-            //    for (int i = 0; i < 15; i++)
-            //    {
-            //        str.Append(sbb[i].Replace("$", "") + " ");
-            //    }
-            //    str.Append(Environment.NewLine);
-
-            //    sbb.RemoveRange(0, 15);
-
-            //}
-
-
-
             splittedData.RemoveRange(0, 1);
-
-            //if (lastPageNumberToProcess == pageNumber)
-            //    splittedData.RemoveRange(0, 2);
-            //else
-            //    splittedData.RemoveRange(0, 3);
 
             // no of voters in a page
             var pageRecordCount = splittedData.Count; //
@@ -677,21 +651,25 @@ namespace CenturyFinCorpApp.UsrCtrl
                 voterList.Add(vl);
             });
 
+            sb2.AppendLine($"------------{pageNumber}------------");
 
-            //for (int index = 0; index < voterList.Count; index++)
-            //{
+            for (int index = 0; index < voterList.Count; index++)
+            {
 
-            //    voterList[index].PageNo = pageNumber;
-            //    voterList[index].RowNo = (index / 3) + 1;
-            //    voterList[index].SNo = index + 1;
+                voterList[index].PageNo = pageNumber;
+                voterList[index].RowNo = (index / 3) + 1;
+                voterList[index].SNo = index + 1;
+                if (voterList[index].RowNo.ToString() == txtRow.Text.Trim())
+                {
 
-            //    // Process record by record 
-            //    DoHFname(fatherOrHusband[index], pageNumber, voterList[index], index);
-            //    DoAddress(address[index], pageNumber, voterList[index], index);
-            //    DoAge(age[index], pageNumber, voterList[index], index);
-            //    DoGender(sex[index], pageNumber, voterList[index], index);
+                }
+                // Process record by record 
+                DoHFname(fatherOrHusband[index], pageNumber, voterList[index], index);
+                DoAddress(address[index], pageNumber, voterList[index], index);
+                DoAge(age[index], pageNumber, voterList[index], index);
+                DoGender(sex[index], pageNumber, voterList[index], index);
 
-            //}
+            }
 
 
             // 1.1 add pageNo and index
@@ -705,10 +683,10 @@ namespace CenturyFinCorpApp.UsrCtrl
             // 2. HorFName
             for (int index = 0; index < fatherOrHusband.Count; index++)
             {
-                DoHFname(fatherOrHusband[index], pageNumber, voterList[index], index);
+                //DoHFname(fatherOrHusband[index], pageNumber, voterList[index], index);
 
-                if (voterList[index].MayError)
-                    voterList.Where(w => w.RowNo == voterList[index].RowNo).ToList().ForEach(fe => fe.MayError = true);
+                //if (voterList[index].MayError)
+                //    voterList.Where(w => w.RowNo == voterList[index].RowNo).ToList().ForEach(fe => fe.MayError = true);
             }
 
 
@@ -767,10 +745,20 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         }
 
+        StringBuilder sb2 = new StringBuilder();
+
         private void DoHFname(string fName, int pn, VoterList vl, int ind)
         {
             var nm = GetFNname(fName);
             vl.HorFName = nm.Item1 ? nm.Item2 : AddLog(pn, vl);
+            //sb2.AppendLine($"{fName.Replace("\r\n", "@") [fName.Replace("\r\n", "@").Count(c => c == '@')]}  -->  {nm.Item2.Replace("\r\n", "$") [nm.Item2.Replace("\r\n", "@").Count(c => c == '@')]}");
+            //sb2.Append($"{pn}~{vl.RowNo}~{vl.Name.Trim()}~");
+            //sb2.Append(fName.Replace("\r\n", "@") + "===>");
+            //sb2.Append($"[{fName.Replace("\r\n", "@").Count(c => c == '@')}]");
+            //sb2.Append(nm.Item2.Replace("\r\n", "$") + "--->");
+            //sb2.Append($"[{nm.Item2.Replace("\r\n", "$").Count(c => c == '$')}]");
+            //sb2.Append(Environment.NewLine);
+
             if (vl.MayError == false) vl.MayError = nm.Item3;
             if (vl.MayError)
                 AddNameLog(pn, $"FATHERNAME ERROR @ {ind + 1}");

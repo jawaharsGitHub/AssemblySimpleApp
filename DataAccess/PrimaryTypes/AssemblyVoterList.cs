@@ -33,7 +33,7 @@ namespace DataAccess.PrimaryTypes
 
         public override string ToString()
         {
-            return $"{Name}-{HorFName}-{HomeAddress}-{Age}-{Sex}";
+            return $"{PageNo}#{RowNo}#{Name}#{HorFName}#{HomeAddress}#{Age}#{Sex}";
         }
 
 
