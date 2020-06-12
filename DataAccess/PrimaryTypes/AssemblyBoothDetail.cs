@@ -47,6 +47,8 @@ namespace DataAccess.PrimaryTypes
         public int Female { get; set; }
         public int ThirdGender { get; set; }
 
+        public int NewVoters { get; set; }
+
         public int TotalVoters { get; set; }
 
         //// Last Page Data
@@ -118,6 +120,25 @@ namespace DataAccess.PrimaryTypes
 
                 WriteObjectsToFile(list, jsonFilePath);
 
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void UpdateNewVoters(BoothDetail bd, string jsonFilePath)
+        {
+
+            try
+            {
+                List<BoothDetail> list = ReadFileAsObjects<BoothDetail>(jsonFilePath);
+
+                var u = list.Where(c => c.PartNo == bd.PartNo).First();
+                u.NewVoters = bd.NewVoters;
+
+                WriteObjectsToFile(list, jsonFilePath);
 
             }
             catch (Exception ex)

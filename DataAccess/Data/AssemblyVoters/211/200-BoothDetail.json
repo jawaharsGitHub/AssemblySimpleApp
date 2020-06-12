@@ -22,6 +22,7 @@
     "Male": 399,
     "Female": 441,
     "ThirdGender": 0,
+    "NewVoters": 20,
     "TotalVoters": 840,
     "DistrictId": 0,
     "DistrictName": null,

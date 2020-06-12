@@ -62,6 +62,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\AssemblyVoters\211\200-BoothDetail.json" />
+    <None Include="Data\AssemblyVoters\211\200-DONE.json" />
     <None Include="Data\BaseData - WIthoutPanchayat.json" />
     <None Include="Data\BaseData.json" />
     <None Include="Data\voter-Panchayat.json" />
@@ -216,7 +218,6 @@
     <Content Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\29 Thiruvarur.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\AssemblyVoters\211\" />
     <Folder Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\01 ARIYALUR\New folder %282%29\" />
     <Folder Include="Data\csvData\DataSource\Parlimentary_Assembly-PollingBooths\01 ARIYALUR\New folder\" />
   </ItemGroup>
