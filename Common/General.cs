@@ -44,5 +44,17 @@ namespace Common
 
         }
 
+        public static void CreateFile(string path)
+        {
+            if (File.Exists(path) == false)
+            {
+                using (var stream = File.Create(path))
+                {
+                    File.Create(path);
+                }
+            }
+
+        }
+
     }
 }

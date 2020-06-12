@@ -49,16 +49,25 @@ namespace CenturyFinCorpApp.UsrCtrl
                 voterFilePath = Path.Combine(AppConfiguration.AssemblyVotersFolder, $"{ufn.Substring(2, 3)}");
 
                 boothDetailPath = Path.Combine(voterFilePath, $"{ufn.Substring(5, 3)}-BoothDetail.json");
-                if (File.Exists(boothDetailPath) == false)
-                {
-                    File.Create(boothDetailPath);
-                }
+
+
+                //if (File.Exists(boothDetailPath) == false)
+                //{
+                //    File.Create(boothDetailPath);
+                //}
+
+                //    File.Create(boothDetailPath);
+                General.CreateFile(boothDetailPath);
 
                 voterFilePath = Path.Combine(voterFilePath, $"{ufn.Substring(5, 3)}.json");
 
                 if (File.Exists(voterFilePath) == false)
                 {
                     File.Create(voterFilePath);
+                    //using (var stream = File.Create(voterFilePath))
+                    //{
+                    //    File.Create(voterFilePath);
+                    //}
                 }
                 else
                 {
@@ -151,6 +160,8 @@ namespace CenturyFinCorpApp.UsrCtrl
                 bd.PartPlaceName = fpSPlitted[8].Split('-')[2].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Trim();
             else
                 bd.PartPlaceName = fpSPlitted[8].Split('-')[0].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Trim();
+
+
 
             var otherDetails = fpSPlitted[8].Split('-')[5].Split(' ');
 
@@ -268,7 +279,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 }
             }
 
-           
+
 
             string flag = "OK";
             //LOG FILE IF EXCEPTION OCCURS
@@ -753,7 +764,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             return voterList.Any(a => a.MayError);
 
-            
+
         }
 
         private void DoHFname(string fName, int pn, VoterList vl, int ind)

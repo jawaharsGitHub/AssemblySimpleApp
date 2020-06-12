@@ -53,6 +53,14 @@ namespace Common
         {
             string jsonString = JsonConvert.SerializeObject(listObject, Formatting.Indented);
             File.WriteAllText(filePath, jsonString);
+
+
+            //using (var stream = File.Open(filePath, FileMode.Open))
+            //{
+            //    // Use stream
+            //}
+
+           
         }
 
 
