@@ -54,12 +54,22 @@ namespace Common
 
         }
 
+        public static void CreateFolderIfNotExist(string folderPath)
+        {
+            if (Directory.Exists(folderPath) == false)
+            {
+                var myFile = Directory.CreateDirectory(folderPath);
+
+            }
+
+        }
+
         static string LogPath = $@"F:\NTK\VotersAnalysis\VoterList\Log-{DateTime.Now.ToLongTimeString().Replace(":", "-")}";
 
-        public static void WriteLog(string content, string assNo, string partNo)
+        public static void WriteLog(string content, string assNo, string partNo, int pn)
         {
             CreateFileIfNotExist(LogPath);
-            File.AppendAllText(LogPath, $"{assNo}-{partNo} : {content}{Environment.NewLine}");
+            File.AppendAllText(LogPath, $"{assNo}-{partNo}-{pn} : {content}{Environment.NewLine}");
         }
 
     }

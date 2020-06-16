@@ -94,7 +94,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 }
                 catch (Exception ex)
                 {
-                    General.WriteLog($"Error in FileName - {ex.ToString()}", assNo, partNo);
+                    General.WriteLog($"Error in FileName - {ex.ToString()}", assNo, partNo, 0);
                     //MessageBox.Show("Invalid file name");
                 }
 
@@ -112,21 +112,21 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                     // First Page Details
                     List<string> toReplace = new List<string>()
-            {
-                "வாக்காளர் பட்டியல்",
-                "சட்டமன்றத் தொகுதி எண்",
-                "பாகம் எண்",
-                "சட்டமன்றத் தொகுதி அடங்கியுள்ள நாடாளுமன்றத் தொகுதியின் எண்",
-                "திருத்தப்படும் ஆண்டு",
-                "தகுதியேற்படுத்தும் நாள்",
-                "பட்டியல் வகை",
-                "பாகத்தின் விவரங்கள்",
-                "வாக்குச் சாவடியின் விவரங்கள்",
-                "வாக்குச்சாவடியின் எண் மற்றும் பெயர்",
-                "வாக்குச்சாவடியின் வகைப்பாடு",
-                "தொடங்கும் வரிசை எண்",
-                "முடியும் வரிசை எண்"
-            };
+                            {
+                                "வாக்காளர் பட்டியல்",
+                                "சட்டமன்றத் தொகுதி எண்",
+                                "பாகம் எண்",
+                                "சட்டமன்றத் தொகுதி அடங்கியுள்ள நாடாளுமன்றத் தொகுதியின் எண்",
+                                "திருத்தப்படும் ஆண்டு",
+                                "தகுதியேற்படுத்தும் நாள்",
+                                "பட்டியல் வகை",
+                                "பாகத்தின் விவரங்கள்",
+                                "வாக்குச் சாவடியின் விவரங்கள்",
+                                "வாக்குச்சாவடியின் எண் மற்றும் பெயர்",
+                                "வாக்குச்சாவடியின் வகைப்பாடு",
+                                "தொடங்கும் வரிசை எண்",
+                                "முடியும் வரிசை எண்"
+                            };
 
                     toReplace.ForEach(fe =>
                       {
@@ -310,7 +310,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 }
                 catch (Exception ex)
                 {
-                    General.WriteLog($"Error in First Page", assNo, partNo);
+                    General.WriteLog($"Error in First Page", assNo, partNo, 1);
                 }
 
 
@@ -350,13 +350,13 @@ namespace CenturyFinCorpApp.UsrCtrl
                     var pageContent = onlyVotersPages.Substring(startIndex, lastIndex);
 
 
-                    if (ProcessPage(pageNumber, pageContent) == true)
+                    if (ProcessPage(pageNumber, pageContent, assNo, partNo) == true)
                     {
                         haveErrorinFile = true;
                     }
                     else
                     {
-                        General.WriteLog($"Error in PageProcess", assNo, partNo);
+                        General.WriteLog($"Error in PageProcess", assNo, partNo, pageNumber);
                         isProcessed = false;
                         break;
                     }
@@ -364,7 +364,8 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 }
 
-                if (isProcessed == false) continue;
+                if (isProcessed == false)
+                    continue;
 
 
                 string flag = "OK";
@@ -392,27 +393,35 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 if (chkDebugMode.Checked == false) // We should save ony in run modeNOT IN DEBUG MODE.
                 {
-                    if (DialogResult.Yes == MessageBox.Show($"You want Save for {assNo}-{partNo}", "", MessageBoxButtons.YesNo))
+                    //if (DialogResult.Yes == MessageBox.Show($"You want Save for {assNo}-{partNo}", "", MessageBoxButtons.YesNo))
+                    //{
+
+
+                    if (File.Exists(voterFilePath) == false)
                     {
-
-
-                        if (File.Exists(voterFilePath) == false)
-                        {
-                            var myFile = File.Create(voterFilePath);
-                            myFile.Close();
-                        }
-
-                        VoterList.Save(fullList, voterFilePath);
-
+                        var myFile = File.Create(voterFilePath);
+                        myFile.Close();
                     }
+                    else
+                    {
+                        File.Delete(voterFilePath);
+                    }
+
+                    VoterList.Save(fullList, voterFilePath);
+
+
+
+                    //}
                 }
 
                 logs.Clear();
 
                 // PROCESSED WHOLE JSON FILE.
-                var fd = JsonConvert.SerializeObject(fullList, Formatting.Indented);
-                var file3 = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{DateTime.Now.ToLocalTime().ToString().Replace(":", "~")}.json");
-                General.WriteToFile(file3, fd);
+                //var fd = JsonConvert.SerializeObject(fullList, Formatting.Indented);
+                //var file3 = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{DateTime.Now.ToLocalTime().ToString().Replace(":", "~")}.json");
+                //General.WriteToFile(file3, fd);
+
+                fullList.Clear();
 
             }
 
@@ -616,7 +625,8 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         }
 
-        private bool ProcessPage(int pageNumber, string pageContent, int errorRowNumber = 0)
+        string data = "";
+        private bool ProcessPage(int pageNumber, string pageContent, string assNum, string partNum, int errorRowNumber = 0)
         {
 
             try
@@ -632,7 +642,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                  */
 
 
-                var data = pageContent;
+                data = pageContent;
 
                 data = data.Replace("சட்டமன்றத் தொகுதி எண் மற்றும் பெயர்", "*");
                 data = data.Replace("பிரிவு எண் மற்றும் பெயர்", "*");
@@ -658,6 +668,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                             .Replace("வீட்டு தன்", "$ADDRESS-D")
                             .Replace("வீட்டு பண்", "$ADDRESS-D")
                             .Replace("வீட்டு கண்", "$ADDRESS-D")
+                            .Replace("வீட்டு தடை", "$ADDRESS-D")
                            //.Replace("வீட்டு", "$ADDRESS:D")
 
                            .Replace("வயது", "$AGE")
@@ -716,26 +727,45 @@ namespace CenturyFinCorpApp.UsrCtrl
                 var isAgeIssue = (age.Count != recordCount);
                 var isSexIssue = (sex.Count != recordCount);
 
-                if (isReProcess)
-                {
-                    if (isNameIssue) names.Insert(insertIndex, "NN");
-                    if (isFNameIssue) fatherOrHusband.Insert(insertIndex, "NF");
-                    if (isAddressIssue) address.Insert(insertIndex, "ND");
-                    if (isAgeIssue) age.Insert(insertIndex, "NG");
-                    if (isSexIssue) sex.Insert(insertIndex, "NS");
+                //if (isReProcess)
+                //{
+                //    if (isNameIssue) names.Insert(insertIndex, "NN");
+                //    if (isFNameIssue) fatherOrHusband.Insert(insertIndex, "NF");
+                //    if (isAddressIssue) address.Insert(insertIndex, "ND");
+                //    if (isAgeIssue) age.Insert(insertIndex, "NG");
+                //    if (isSexIssue) sex.Insert(insertIndex, "NS");
 
-                    isNameIssue = (names.Count != recordCount);
-                    isFNameIssue = (fatherOrHusband.Count != recordCount);
-                    isAddressIssue = (address.Count != recordCount);
-                    isAgeIssue = (age.Count != recordCount);
-                    isSexIssue = (sex.Count != recordCount);
-                }
+                //    isNameIssue = (names.Count != recordCount);
+                //    isFNameIssue = (fatherOrHusband.Count != recordCount);
+                //    isAddressIssue = (address.Count != recordCount);
+                //    isAgeIssue = (age.Count != recordCount);
+                //    isSexIssue = (sex.Count != recordCount);
+                //}
+
+                if (isNameIssue)
+                    General.WriteLog("Error in Names", assNum, partNum, pageNumber);
+                if (isFNameIssue)
+                    General.WriteLog("Error in FatherNames", assNum, partNum, pageNumber);
+                if (isAddressIssue)
+                    General.WriteLog("Error in Address", assNum, partNum, pageNumber);
+                if (isAgeIssue)
+                    General.WriteLog("Error in Age", assNum, partNum, pageNumber);
+                if (isSexIssue)
+                    General.WriteLog("Error in Gender", assNum, partNum, pageNumber);
 
 
                 /* NAME */
                 if (isNameIssue || isFNameIssue || isAddressIssue || isAgeIssue || isSexIssue)
                 {
                     mayHaveError = true;
+                    var jsonFile = Path.Combine(docPath, bd.AssemblyNo, bd.PartNo, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}-Data.txt");
+                    var jsonFileCon = Path.Combine(docPath, bd.AssemblyNo, bd.PartNo, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}-Content.txt");
+
+
+                    //var fd = JsonConvert.SerializeObject(voterList, Formatting.Indented);
+                    General.CreateFolderIfNotExist(new FileInfo(jsonFile).DirectoryName);
+                    General.WriteToFile(jsonFile, data);
+                    General.WriteToFile(jsonFileCon, pageContent);
                     return false;
                 }
 
@@ -910,13 +940,13 @@ namespace CenturyFinCorpApp.UsrCtrl
                     BoothDetail.UpdateNewVoters(bd, boothDetailPath);
                 }
 
-                if (errorRowNumber > 0)
-                {
-                    var jsonFile = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}-ReRun.json");
-                    var fd = JsonConvert.SerializeObject(voterList, Formatting.Indented);
-                    General.WriteToFile(jsonFile, fd);
-                    logs.Clear();
-                }
+                //if (errorRowNumber > 0)
+                //{
+                //    var jsonFile = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}-ReRun.json");
+                //    var fd = JsonConvert.SerializeObject(voterList, Formatting.Indented);
+                //    General.WriteToFile(jsonFile, fd);
+                //    logs.Clear();
+                //}
 
 
                 //if (voterList.Any(a => a.MayError))
