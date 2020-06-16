@@ -1252,10 +1252,11 @@ namespace CenturyFinCorpApp.UsrCtrl
         private void LoadBooths()
         {
             var allAssFiles = (from f in Directory.GetDirectories(AppConfiguration.AssemblyVotersFolder).ToList()
-                              select new KeyValuePair<string, string>(new DirectoryInfo(f).Name, f)).ToList();
+                               select new KeyValuePair<string, string>(new DirectoryInfo(f).Name, f)).ToList();
 
 
             allAssFiles.Insert(0, new KeyValuePair<string, string>("0", "--select--"));
+            //allAssFiles.Insert(1, new KeyValuePair<string, string>("1", "--ALL--"));
             cmbAss.DataSource = allAssFiles;
             cmbAss.ValueMember = "Value";
             cmbAss.DisplayMember = "Key";
@@ -1265,15 +1266,16 @@ namespace CenturyFinCorpApp.UsrCtrl
         private void cmbAss_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbAss.SelectedIndex == 0) return;
-            
+
             var values = cmbAss.SelectedItem;
 
             var fol = (KeyValuePair<string, string>)values;
 
             var allBoothFiles = (from f in Directory.GetFiles(fol.Value).ToList()
-                                select new KeyValuePair<string, string>(new FileInfo(f).Name, f)).ToList();
+                                 select new KeyValuePair<string, string>(new FileInfo(f).Name, f)).ToList();
 
             allBoothFiles.Insert(0, new KeyValuePair<string, string>("0", "--select--"));
+            allBoothFiles.Insert(1, new KeyValuePair<string, string>("ALL", fol.Value));
 
             cmbBooths.DataSource = allBoothFiles;
             cmbBooths.ValueMember = "Value";
@@ -1285,35 +1287,102 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             if (cmbBooths.SelectedIndex == 0) return;
 
-            var values = cmbBooths.SelectedItem;
+            //var values = cmbBooths.SelectedItem;
+            var keyValue = (KeyValuePair<string, string>)cmbBooths.SelectedItem;
+            //
+            List<VoterList> da = new List<VoterList>();
 
-            var fol = (KeyValuePair<string, string>)values;
+            if (keyValue.Key.Trim()== "ALL")
+            {
 
-            var da = VoterList.GetAll(fol.Value);
+                var allAssFiles = (from f in Directory.GetFiles(keyValue.Value).ToList()
+                                   select new KeyValuePair<string, string>(new DirectoryInfo(f).Name, f))
+                                   .Where(w => w.Key.Contains("BoothDetail") == false)
+                                   .ToList();
 
-            dataGridView1.DataSource = da;
+                //allAssFiles = allAssFiles.Where(w => w.Key.Contains("BoothDetail") == false).ToList();
+                allAssFiles.ForEach(fe =>
+                {
+                    da.AddRange(VoterList.GetAll(fe.Value));
+                });
+            }
+            else
+            {
+               
+                da = VoterList.GetAll(keyValue.Value);
+            }
 
-           
+
+            var dataSou = new List<KeyValuePair<string, string>>();
+
+
+            //dataGridView1.DataSource = da;
 
             var maleCount = da.Where(w => w.Sex.Trim().Split(' ')[0].Trim() == "ஆண்").Count();
             var femaleCount = da.Where(w => w.Sex.Trim().Split(' ')[0].Trim() == "பெண்").Count();
 
             var allAges = da.Select(s => s.Age).ToList();
+            var allC = da.Select(s => s.Age).ToList().Count();
 
-            var twenty = allAges.Count(c => c <= 20);
-            var thirty = allAges.Count(c => c >= 21 && c <= 30);
-            var forty = allAges.Count(c => c >= 31 && c <= 40);
-            var fifty = allAges.Count(c => c >= 41 && c <= 50);
-            var sixty = allAges.Count(c => c >= 51 && c <= 60);
-            var aboveSixty = allAges.Count(c => c >= 61);
+            var twenty = GetLessAgeCOunt(allAges, 20);
+            var thirty = GetAgeCOunt(allAges, 21, 30);
+            var forty = GetAgeCOunt(allAges, 31, 40);
+            var fifty = GetAgeCOunt(allAges, 41, 50);
+            var sixty = GetAgeCOunt(allAges, 51, 60);
+            var aboveSixty = GetMoreAgeCOunt(allAges, 61);
 
             lblDetails.Text = $"Total: {da.Count}{Environment.NewLine}ஆண்: {maleCount}{Environment.NewLine}பெண்: {femaleCount}{Environment.NewLine}";
 
-            lblDetails.Text += $"18-20: {twenty}{Environment.NewLine}21-30: {thirty}{Environment.NewLine}" +
-                $"31-40: {forty}{Environment.NewLine}41-50: {fifty}{Environment.NewLine}51-60: {sixty}{Environment.NewLine}Above 60: {aboveSixty}{Environment.NewLine}";
+            lblDetails.Text += $"18-20: {twenty}({Perc(twenty, allC)}){Environment.NewLine}21-30: {thirty}({Perc(thirty, allC)}){Environment.NewLine}" +
+                $"31-40: {forty}({Perc(forty, allC)}){Environment.NewLine}41-50: {fifty}({Perc(fifty, allC)}){Environment.NewLine}" +
+                $"51-60: {sixty}({Perc(sixty, allC)}){Environment.NewLine}Above 60: {aboveSixty}({Perc(aboveSixty, allC)}){Environment.NewLine}";
 
+            //dataSou.Add(new KeyValuePair<string, string>("Total", da.Count.ToString()));
+            //dataSou.Add(new KeyValuePair<string, string>("ஆண்", Perc(maleCount, allC)));
+            //dataSou.Add(new KeyValuePair<string, string>("பெண்", Perc(femaleCount, allC)));
 
+            dataSou.Add(new KeyValuePair<string, string>("18-20", Perc(twenty, allC)));
+            dataSou.Add(new KeyValuePair<string, string>("21-30", Perc(thirty, allC)));
+            dataSou.Add(new KeyValuePair<string, string>("31-40", Perc(fifty, allC)));
+            dataSou.Add(new KeyValuePair<string, string>("41-50", Perc(sixty, allC)));
+            dataSou.Add(new KeyValuePair<string, string>("51-60", Perc(aboveSixty, allC)));
+
+            //dataGridView1.DataSource = dataSou;
+
+            var t1 = dataSou.OrderByDescending(o =>
+            Convert.ToDecimal(o.Value.Split(' ')[1].Replace("(", "").Replace(")", "").Replace("%", ""))
+            ).ToList();
+
+            t1.Insert(0, new KeyValuePair<string, string>("பெண்", Perc(femaleCount, allC)));
+            t1.Insert(0, new KeyValuePair<string, string>("ஆண்", Perc(maleCount, allC)));
+            t1.Insert(0, new KeyValuePair<string, string>("Total", da.Count.ToString()));
+
+            dataGridView1.DataSource = t1;
+
+            
 
         }
+
+        private int GetAgeCOunt(List<int> ages, int st, int en)
+        {
+            return ages.Count(c => c >= st && c <= en);
+        }
+
+        private int GetLessAgeCOunt(List<int> ages, int age)
+        {
+            return ages.Count(c => c <= age);
+        }
+
+        private int GetMoreAgeCOunt(List<int> ages, int age)
+        {
+            return ages.Count(c => c >= age);
+        }
+
+        private string Perc(int den, int nom)
+        {
+            return den + " (" + (Math.Round((Convert.ToDecimal(den) / Convert.ToDecimal(nom)) * 100, 1)).ToString() + "%" + ")";
+        }
     }
+
+
 }
