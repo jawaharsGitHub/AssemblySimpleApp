@@ -48,6 +48,8 @@
             this.lblDetails = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.cmbAss = new System.Windows.Forms.ComboBox();
+            this.cmbBooths = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -153,21 +155,21 @@
             // 
             // txtFIlterPn
             // 
-            this.txtFIlterPn.Location = new System.Drawing.Point(238, 76);
+            this.txtFIlterPn.Location = new System.Drawing.Point(295, 76);
             this.txtFIlterPn.Name = "txtFIlterPn";
             this.txtFIlterPn.Size = new System.Drawing.Size(42, 20);
             this.txtFIlterPn.TabIndex = 11;
             // 
             // txtFIlterRn
             // 
-            this.txtFIlterRn.Location = new System.Drawing.Point(338, 73);
+            this.txtFIlterRn.Location = new System.Drawing.Point(365, 73);
             this.txtFIlterRn.Name = "txtFIlterRn";
             this.txtFIlterRn.Size = new System.Drawing.Size(43, 20);
             this.txtFIlterRn.TabIndex = 12;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(420, 71);
+            this.button3.Location = new System.Drawing.Point(423, 71);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(125, 23);
             this.button3.TabIndex = 13;
@@ -179,7 +181,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Yellow;
-            this.label3.Location = new System.Drawing.Point(198, 80);
+            this.label3.Location = new System.Drawing.Point(270, 79);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(19, 13);
             this.label3.TabIndex = 14;
@@ -189,7 +191,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Yellow;
-            this.label4.Location = new System.Drawing.Point(313, 79);
+            this.label4.Location = new System.Drawing.Point(343, 79);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(16, 13);
             this.label4.TabIndex = 15;
@@ -209,7 +211,7 @@
             this.lblDetails.AutoSize = true;
             this.lblDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDetails.ForeColor = System.Drawing.Color.Yellow;
-            this.lblDetails.Location = new System.Drawing.Point(919, 15);
+            this.lblDetails.Location = new System.Drawing.Point(1089, 11);
             this.lblDetails.Name = "lblDetails";
             this.lblDetails.Size = new System.Drawing.Size(83, 25);
             this.lblDetails.TabIndex = 17;
@@ -235,11 +237,33 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // cmbAss
+            // 
+            this.cmbAss.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAss.FormattingEnabled = true;
+            this.cmbAss.Location = new System.Drawing.Point(33, 79);
+            this.cmbAss.Name = "cmbAss";
+            this.cmbAss.Size = new System.Drawing.Size(90, 21);
+            this.cmbAss.TabIndex = 20;
+            this.cmbAss.SelectedIndexChanged += new System.EventHandler(this.cmbAss_SelectedIndexChanged);
+            // 
+            // cmbBooths
+            // 
+            this.cmbBooths.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBooths.FormattingEnabled = true;
+            this.cmbBooths.Location = new System.Drawing.Point(149, 79);
+            this.cmbBooths.Name = "cmbBooths";
+            this.cmbBooths.Size = new System.Drawing.Size(79, 21);
+            this.cmbBooths.TabIndex = 21;
+            this.cmbBooths.SelectedIndexChanged += new System.EventHandler(this.cmbBooths_SelectedIndexChanged);
+            // 
             // ucVoterAnalysis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
+            this.Controls.Add(this.cmbBooths);
+            this.Controls.Add(this.cmbAss);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.lblDetails);
@@ -290,5 +314,7 @@
         private System.Windows.Forms.Label lblDetails;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ComboBox cmbAss;
+        private System.Windows.Forms.ComboBox cmbBooths;
     }
 }

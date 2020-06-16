@@ -26,15 +26,18 @@ namespace CenturyFinCorpApp.UsrCtrl
         bool haveErrorinFile = false;
         int lastPageNumberToProcess;
         List<string> logs;
+        string voterFilePath = "";
+        string boothDetailPath = "";
 
 
         public ucVoterAnalysis()
         {
             InitializeComponent();
+            LoadBooths();
         }
 
-        string voterFilePath = "";
-        string boothDetailPath = "";
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -1242,6 +1245,74 @@ namespace CenturyFinCorpApp.UsrCtrl
                 }
 
             }
+
+        }
+
+
+        private void LoadBooths()
+        {
+            var allAssFiles = (from f in Directory.GetDirectories(AppConfiguration.AssemblyVotersFolder).ToList()
+                              select new KeyValuePair<string, string>(new DirectoryInfo(f).Name, f)).ToList();
+
+
+            allAssFiles.Insert(0, new KeyValuePair<string, string>("0", "--select--"));
+            cmbAss.DataSource = allAssFiles;
+            cmbAss.ValueMember = "Value";
+            cmbAss.DisplayMember = "Key";
+        }
+
+
+        private void cmbAss_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbAss.SelectedIndex == 0) return;
+            
+            var values = cmbAss.SelectedItem;
+
+            var fol = (KeyValuePair<string, string>)values;
+
+            var allBoothFiles = (from f in Directory.GetFiles(fol.Value).ToList()
+                                select new KeyValuePair<string, string>(new FileInfo(f).Name, f)).ToList();
+
+            allBoothFiles.Insert(0, new KeyValuePair<string, string>("0", "--select--"));
+
+            cmbBooths.DataSource = allBoothFiles;
+            cmbBooths.ValueMember = "Value";
+            cmbBooths.DisplayMember = "Key";
+
+        }
+
+        private void cmbBooths_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbBooths.SelectedIndex == 0) return;
+
+            var values = cmbBooths.SelectedItem;
+
+            var fol = (KeyValuePair<string, string>)values;
+
+            var da = VoterList.GetAll(fol.Value);
+
+            dataGridView1.DataSource = da;
+
+           
+
+            var maleCount = da.Where(w => w.Sex.Trim().Split(' ')[0].Trim() == "ஆண்").Count();
+            var femaleCount = da.Where(w => w.Sex.Trim().Split(' ')[0].Trim() == "பெண்").Count();
+
+            var allAges = da.Select(s => s.Age).ToList();
+
+            var twenty = allAges.Count(c => c <= 20);
+            var thirty = allAges.Count(c => c >= 21 && c <= 30);
+            var forty = allAges.Count(c => c >= 31 && c <= 40);
+            var fifty = allAges.Count(c => c >= 41 && c <= 50);
+            var sixty = allAges.Count(c => c >= 51 && c <= 60);
+            var aboveSixty = allAges.Count(c => c >= 61);
+
+            lblDetails.Text = $"Total: {da.Count}{Environment.NewLine}ஆண்: {maleCount}{Environment.NewLine}பெண்: {femaleCount}{Environment.NewLine}";
+
+            lblDetails.Text += $"18-20: {twenty}{Environment.NewLine}21-30: {thirty}{Environment.NewLine}" +
+                $"31-40: {forty}{Environment.NewLine}41-50: {fifty}{Environment.NewLine}51-60: {sixty}{Environment.NewLine}Above 60: {aboveSixty}{Environment.NewLine}";
+
+
 
         }
     }
