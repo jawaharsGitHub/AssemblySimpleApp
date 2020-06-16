@@ -116,9 +116,11 @@ namespace DataAccess.PrimaryTypes
                     u.Female = bd.Female;
                     u.ThirdGender = bd.ThirdGender;
                     u.TotalVoters = bd.TotalVoters;
+
+                    WriteObjectsToFile(list, jsonFilePath);
                 }
 
-                WriteObjectsToFile(list, jsonFilePath);
+                
 
 
             }

@@ -52,40 +52,47 @@ namespace CenturyFinCorpApp.UsrCtrl
             foreach (var item in allFiles)
             {
                 string partNo = "";
+                string assNo = "";
 
                 var filePath = item; // $@"{folderPath}ac211200.txt";
 
                 try
                 {
                     var ufn = (new FileInfo(filePath)).Name.Split('.')[0];
-                    voterFilePath = Path.Combine(AppConfiguration.AssemblyVotersFolder, $"{ufn.Substring(2, 3)}");
 
+                    assNo = ufn.Substring(2, 3);
                     partNo = ufn.Substring(5, 3);
-                    boothDetailPath = Path.Combine(voterFilePath, $"{ufn.Substring(5, 3)}-BoothDetail.json");
+                  
+
+                    voterFilePath = Path.Combine(AppConfiguration.AssemblyVotersFolder, $"{assNo}");
+
+                    
+                    boothDetailPath = Path.Combine(voterFilePath, $"{assNo}-BoothDetail.json");
 
                     General.CreateFileIfNotExist(boothDetailPath);
-                    voterFilePath = Path.Combine(voterFilePath, $"{ufn.Substring(2, 3)}-{ufn.Substring(5, 3)}.json");
+
+                    voterFilePath = Path.Combine(voterFilePath, $"{assNo}-{partNo}.json");
 
                     this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
 
-                    if (File.Exists(voterFilePath) == false)
-                    {
-                        //File.Create(voterFilePath);
-                    }
-                    else
-                    {
-                        if (chkDebugMode.Checked == false)
-                        {
-                            MessageBox.Show("Willload an existing data!!");
-                            // Load and exit
-                            fullList = VoterList.GetAll(voterFilePath);
-                            dataGridView1.DataSource = fullList;
-                            //this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
-                            this.cmbFIlter.SelectedIndex = 8; // may error.
-                            SetErrorDetail();
-                            return;
-                        }
-                    }
+                    //if (File.Exists(voterFilePath) == false)
+                    //{
+                    //    //File.Create(voterFilePath);
+                    //}
+                    //else
+                    //{
+                    //    if (chkDebugMode.Checked == false)
+                    //    {
+                    //        MessageBox.Show("Willload an existing data!!");
+                    //        // Load and exit
+                    //        fullList = VoterList.GetAll(voterFilePath);
+                    //        dataGridView1.DataSource = fullList;
+                    //        //this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
+                    //        this.cmbFIlter.SelectedIndex = 8; // may error.
+                    //        SetErrorDetail();
+                    //        return;
+                    //    }
+                    //}
 
                 }
                 catch (Exception ex)
@@ -177,7 +184,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                     if (fpSPlitted[8].Split('-').Count() > 2)
                     {
                         bd.PartPlaceName = fpSPlitted[8].Split('-')[2].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Trim();
-                        }
+                    }
                     else
                     {
                         bd.PartPlaceName = fpSPlitted[8].Split('-')[0].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Replace("999. அயல்நாடு வாழ் வாக்காளர்கள்", "$").Split('$')[0];
@@ -189,36 +196,56 @@ namespace CenturyFinCorpApp.UsrCtrl
                 }
 
 
+                var colonCount = fpSPlitted[8].Count(c => c == ':');
 
-                var otherDetails = fpSPlitted[8].Split('-')[5].Split(' ');
+                
+                try
+                {
+                    var otherDetails = fpSPlitted[8].Split('-')[5].Split(' ');
+                    if (year == 2020)
+                    {
+                        bd.MainCityOrVillage = otherDetails[2];
+                        bd.Zone = otherDetails[3].Trim();
+                        bd.Birga = otherDetails[5];
+                        bd.PoliceStation = otherDetails[6];
+                        bd.Taluk = otherDetails[7];
+                        bd.District = fpSPlitted[8].Split('-')[6].Trim();
+                        bd.Pincode = fpSPlitted[8].Split('-')[12].Split(' ')[2].ToInt32();
+                    }
+                    else
+                    {
+                        bd.MainCityOrVillage = fpSPlitted[8].Split('-')[2].Split(' ')[10].Trim();
+                        bd.Zone = fpSPlitted[8].Split('-')[3].Trim();
+                        bd.Birga = fpSPlitted[8].Split('-')[4].Trim();
+                        bd.PoliceStation = fpSPlitted[8].Split('-')[5].Split(' ')[1];
+                        bd.Taluk = fpSPlitted[8].Split('-')[5].Split(' ')[2].Trim();
+                        bd.District = fpSPlitted[8].Split('-')[5].Split(' ')[3].Trim();
+                        bd.Pincode = fpSPlitted[8].Split('-')[5].Split(' ')[4].Trim().ToInt32();
+                    }
 
-                if (year == 2020)
-                {
-                    bd.MainCityOrVillage = otherDetails[2];
-                    bd.Zone = otherDetails[3].Trim();
-                    bd.Birga = otherDetails[5];
-                    bd.PoliceStation = otherDetails[6];
-                    bd.Taluk = otherDetails[7];
-                    bd.District = fpSPlitted[8].Split('-')[6].Trim();
-                    bd.Pincode = fpSPlitted[8].Split('-')[12].Split(' ')[2].ToInt32();
                 }
-                else
+                catch (Exception)
                 {
-                    bd.MainCityOrVillage = fpSPlitted[8].Split('-')[2].Split(' ')[10].Trim();
-                    bd.Zone = fpSPlitted[8].Split('-')[3].Trim();
-                    bd.Birga = fpSPlitted[8].Split('-')[4].Trim();
-                    bd.PoliceStation = fpSPlitted[8].Split('-')[5].Split(' ')[1];
-                    bd.Taluk = fpSPlitted[8].Split('-')[5].Split(' ')[2].Trim();
-                    bd.District = fpSPlitted[8].Split('-')[5].Split(' ')[3].Trim();
-                    bd.Pincode = fpSPlitted[8].Split('-')[5].Split(' ')[4].Trim().ToInt32();
+
+                   
                 }
+                
 
 
                 bd.Type = fpSPlitted[9].Replace("வாக்குச் சாவடியின் விவரங்கள்", "").Trim();
 
-                bd.PartLocationAddress = fpSPlitted[11].Replace("எண்ணிக்கை", "$").Split('$')[1].Split('4')[0].Trim();
+                //bd.PartLocationAddress = fpSPlitted[11].Replace("எண்ணிக்கை", "$").Split('$')[1].Split('4')[0].Trim();
 
-                bd.StartNo = fpSPlitted[12].Replace("தொடங்கும் வரிசை எண்", "").Trim().ToInt32();
+                try
+                {
+                    bd.StartNo = fpSPlitted[12].Replace("தொடங்கும் வரிசை எண்", "").Trim().ToInt32();
+                }
+                catch (Exception)
+                {
+
+                    bd.StartNo = 1;
+                }
+               
 
                 var voteDetails = fpSPlitted[13];
 
@@ -242,7 +269,16 @@ namespace CenturyFinCorpApp.UsrCtrl
                 bd.EndNo = forNo[1].Trim().ToInt32();
 
                 if (year == 2020)
-                    bd.Male = forNo[4].ToInt32();
+                    try
+                    {
+                        bd.Male = forNo[4].ToInt32();
+                    }
+                    catch (Exception)
+                    {
+
+                        bd.Male = forNo[3].ToInt32();
+                    }
+                   
                 else
                     bd.Male = forNo[3].ToInt32();
 
@@ -711,6 +747,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 if (vl.MayError)
                     AddNameLog(pageNumber, $"NAME ERROR @ {voterList.Count + 1}");
+
                 voterList.Add(vl);
             });
 

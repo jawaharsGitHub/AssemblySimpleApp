@@ -62,7 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\AssemblyVoters\211\200-BoothDetail.json" />
+    <None Include="Data\AssemblyVoters\211\211-BoothDetail.json" />
     <None Include="Data\BaseData - WIthoutPanchayat.json" />
     <None Include="Data\BaseData.json" />
     <None Include="Data\voter-Panchayat.json" />
