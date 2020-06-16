@@ -48,10 +48,8 @@ namespace Common
         {
             if (File.Exists(path) == false)
             {
-                using (var stream = File.Create(path))
-                {
-                    File.Create(path);
-                }
+                var myFile = File.Create(path);
+                myFile.Close();
             }
 
         }

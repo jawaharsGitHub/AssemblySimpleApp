@@ -44,37 +44,25 @@ namespace NTK_Support
 
                     try
                     {
-                        //if (btnProgress.InvokeRequired)
                         btnProgress.BeginInvoke(new Action(() => btnProgress.Text = $"Processing {fileName}"));
-                        //else
-                        //btnProgress.Invoke(new Action(() => btnProgress.Text = $"Processing {assNo}-i"));
-
 
                         WebClient webClient = new WebClient();
                         webClient.DownloadFile($"https://www.elections.tn.gov.in/SSR2020_14022020/dt27/ac{assNo}/{fileName}",
                             $"{folderPath}/{fileName}");
 
-                        //if (btnProgress.InvokeRequired)
                         btnProgress.BeginInvoke(new Action(() => btnProgress.Text = $"Done {fileName}"));
-                        //else
-                        //btnProgress.Invoke(new Action(() => btnProgress.Text = $"Done {assNo}-i"));
-
-
-                        //btnProgress.Text = $"Done {assNo}-i";
 
                     }
                     catch (Exception ex)
                     {
-                        sbDbError.AppendLine(fileName + ":" + ex.ToString());
-
-                        //if (label1.InvokeRequired)
+                        // sbDbError.AppendLine(fileName + ":" + ex.ToString());
+                        sbDbError.AppendLine("FAILED:" + fileName);
                         label1.BeginInvoke(new Action(() => lblError.Text = sbDbError.ToString()));
-                        //else
-                        //label1.Invoke(new Action(() => lblError.Text = sbDbError.ToString()));
-
                     }
 
                 }
+
+                MessageBox.Show("Completed!");
             };
 
             bw.RunWorkerAsync();

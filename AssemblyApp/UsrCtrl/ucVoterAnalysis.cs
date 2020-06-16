@@ -18,6 +18,8 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         List<VoterList> fullList = new List<VoterList>();
         string folderPath = @"F:\NTK\VotersAnalysis\";
+        string docPath = @"F:\NTK\VotersAnalysis\VoterList\doc";
+
         string reProcessFile = "";
         BoothDetail bd;
         bool haveErrorinFile = false;
@@ -41,55 +43,64 @@ namespace CenturyFinCorpApp.UsrCtrl
             //int year = 2019;
             //var filePath = $@"{folderPath}ac210333.txt";
 
+            var allFiles = Directory.GetFiles(docPath).ToList();
+
+
             int year = 2020;
-            var filePath = $@"{folderPath}ac211200.txt";
 
-            try
+
+            foreach (var item in allFiles)
             {
-                var ufn = (new FileInfo(filePath)).Name.Split('.')[0];
-                voterFilePath = Path.Combine(AppConfiguration.AssemblyVotersFolder, $"{ufn.Substring(2, 3)}");
-                
+                string partNo = "";
 
-                boothDetailPath = Path.Combine(voterFilePath, $"{ufn.Substring(5, 3)}-BoothDetail.json");
+                var filePath = item; // $@"{folderPath}ac211200.txt";
 
-                General.CreateFileIfNotExist(boothDetailPath);
-                voterFilePath = Path.Combine(voterFilePath, $"{ufn.Substring(2, 3)}-{ufn.Substring(5, 3)}.json");
-
-                this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
-
-                if (File.Exists(voterFilePath) == false)
+                try
                 {
-                    //File.Create(voterFilePath);
-                }
-                else
-                {
-                    if (chkDebugMode.Checked == false)
+                    var ufn = (new FileInfo(filePath)).Name.Split('.')[0];
+                    voterFilePath = Path.Combine(AppConfiguration.AssemblyVotersFolder, $"{ufn.Substring(2, 3)}");
+
+                    partNo = ufn.Substring(5, 3);
+                    boothDetailPath = Path.Combine(voterFilePath, $"{ufn.Substring(5, 3)}-BoothDetail.json");
+
+                    General.CreateFileIfNotExist(boothDetailPath);
+                    voterFilePath = Path.Combine(voterFilePath, $"{ufn.Substring(2, 3)}-{ufn.Substring(5, 3)}.json");
+
+                    this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
+
+                    if (File.Exists(voterFilePath) == false)
                     {
-                        MessageBox.Show("Willload an existing data!!");
-                        // Load and exit
-                        fullList = VoterList.GetAll(voterFilePath);
-                        dataGridView1.DataSource = fullList;
-                        //this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
-                        this.cmbFIlter.SelectedIndex = 8; // may error.
-                        SetErrorDetail();
-                        return;
+                        //File.Create(voterFilePath);
                     }
+                    else
+                    {
+                        if (chkDebugMode.Checked == false)
+                        {
+                            MessageBox.Show("Willload an existing data!!");
+                            // Load and exit
+                            fullList = VoterList.GetAll(voterFilePath);
+                            dataGridView1.DataSource = fullList;
+                            //this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
+                            this.cmbFIlter.SelectedIndex = 8; // may error.
+                            SetErrorDetail();
+                            return;
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Invalid file name");
                 }
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Invalid file name");
-            }
 
+                var allPageContent = File.ReadAllText(filePath);
 
-            var allPageContent = File.ReadAllText(filePath);
+                //Process First page
+                var firstPage = allPageContent.Substring(0, allPageContent.IndexOf("சட்டமன்றத் தொகுதி எண் மற்றும் பெயர்"));
 
-            //Process First page
-            var firstPage = allPageContent.Substring(0, allPageContent.IndexOf("சட்டமன்றத் தொகுதி எண் மற்றும் பெயர்"));
-
-            // First Page Details
-            List<string> toReplace = new List<string>()
+                // First Page Details
+                List<string> toReplace = new List<string>()
             {
                 "வாக்காளர் பட்டியல்",
                 "சட்டமன்றத் தொகுதி எண்",
@@ -106,88 +117,112 @@ namespace CenturyFinCorpApp.UsrCtrl
                 "முடியும் வரிசை எண்"
             };
 
-            toReplace.ForEach(fe =>
-              {
-                  firstPage = firstPage.Replace(fe, $"${fe}");
-              });
+                toReplace.ForEach(fe =>
+                  {
+                      firstPage = firstPage.Replace(fe, $"${fe}");
+                  });
 
 
-            var fpSPlitted = firstPage.Split('$');
+                var fpSPlitted = firstPage.Split('$');
 
-            bd = new BoothDetail();
+                bd = new BoothDetail();
 
-            if (year == 2020)
-            {
-                var assembly2020 = fpSPlitted[2].Split(':')[1].Trim().Split('-');
-                bd.AssemblyNo = assembly2020[0].Trim();
-                bd.AssemblyName = assembly2020[1];
-            }
-            else
-            {
-                var assembly2019 = fpSPlitted[2].Split('-');
-                bd.AssemblyNo = assembly2019[1].Trim();
-                bd.AssemblyName = assembly2019[2];
-            }
+                if (year == 2020)
+                {
+                    if (fpSPlitted[2].Split(':').Count() > 1)
+                    {
+                        var assembly2020 = fpSPlitted[2].Split(':')[1].Trim().Split('-');
+                        bd.AssemblyNo = assembly2020[0].Trim();
+                        bd.AssemblyName = assembly2020[1];
+                    }
+                    else
+                    {
+                        var assembly2020 = fpSPlitted[2].Split('-');
+                        bd.AssemblyNo = assembly2020[1].Trim();
+                        bd.AssemblyName = assembly2020[2].Trim();
 
+                    }
 
-            bd.PartNo = fpSPlitted[3].Split(' ')[2].Trim();
-
-            if (year == 2020)
-            {
-                var parliment = fpSPlitted[4].Split('-');
-                bd.ParlimentNo = parliment[1];
-                bd.ParlimentName = parliment[2].Trim().Split('1')[0].Trim();
-            }
-            else
-            {
-                var parliment2019 = fpSPlitted[4].Split(':')[1].Trim().Split('-');
-                bd.ParlimentNo = parliment2019[0].Trim();
-                bd.ParlimentName = parliment2019[1].Trim().Split('1')[0].Trim();
-            }
-
-            bd.EligibilityDay = fpSPlitted[6].Split(' ')[2].Trim();
-            bd.ReleaseDate = fpSPlitted[7].Replace("பட்டியல் வெளியிடப்பட்ட நாள்", "$").Split('$')[1].Split(' ')[1];
-
-            if (year == 2020)
-                bd.PartPlaceName = fpSPlitted[8].Split('-')[2].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Trim();
-            else
-                bd.PartPlaceName = fpSPlitted[8].Split('-')[0].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Trim();
+                }
+                else
+                {
+                    var assembly2019 = fpSPlitted[2].Split('-');
+                    bd.AssemblyNo = assembly2019[1].Trim();
+                    bd.AssemblyName = assembly2019[2];
+                }
 
 
+                bd.PartNo = fpSPlitted[3].Split(' ')[2].Trim();
 
-            var otherDetails = fpSPlitted[8].Split('-')[5].Split(' ');
+                if (string.IsNullOrEmpty(bd.PartNo)) bd.PartNo = partNo;
 
-            if (year == 2020)
-            {
-                bd.MainCityOrVillage = otherDetails[2];
-                bd.Zone = otherDetails[3].Trim();
-                bd.Birga = otherDetails[5];
-                bd.PoliceStation = otherDetails[6];
-                bd.Taluk = otherDetails[7];
-                bd.District = fpSPlitted[8].Split('-')[6].Trim();
-                bd.Pincode = fpSPlitted[8].Split('-')[12].Split(' ')[2].ToInt32();
-            }
-            else
-            {
-                bd.MainCityOrVillage = fpSPlitted[8].Split('-')[2].Split(' ')[10].Trim();
-                bd.Zone = fpSPlitted[8].Split('-')[3].Trim();
-                bd.Birga = fpSPlitted[8].Split('-')[4].Trim();
-                bd.PoliceStation = fpSPlitted[8].Split('-')[5].Split(' ')[1];
-                bd.Taluk = fpSPlitted[8].Split('-')[5].Split(' ')[2].Trim();
-                bd.District = fpSPlitted[8].Split('-')[5].Split(' ')[3].Trim();
-                bd.Pincode = fpSPlitted[8].Split('-')[5].Split(' ')[4].Trim().ToInt32();
-            }
+                if (year == 2020)
+                {
+                    var parliment = fpSPlitted[4].Split('-');
+                    bd.ParlimentNo = parliment[1];
+                    bd.ParlimentName = parliment[2].Trim().Split('1')[0].Trim();
+                }
+                else
+                {
+                    var parliment2019 = fpSPlitted[4].Split(':')[1].Trim().Split('-');
+                    bd.ParlimentNo = parliment2019[0].Trim();
+                    bd.ParlimentName = parliment2019[1].Trim().Split('1')[0].Trim();
+                }
+
+                bd.EligibilityDay = fpSPlitted[6].Split(' ')[2].Trim();
+                bd.ReleaseDate = fpSPlitted[7].Replace("பட்டியல் வெளியிடப்பட்ட நாள்", "$").Split('$')[1].Split(' ')[1];
+
+                if (year == 2020)
+                {
+                    if (fpSPlitted[8].Split('-').Count() > 2)
+                    {
+                        bd.PartPlaceName = fpSPlitted[8].Split('-')[2].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Trim();
+                        }
+                    else
+                    {
+                        bd.PartPlaceName = fpSPlitted[8].Split('-')[0].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Replace("999. அயல்நாடு வாழ் வாக்காளர்கள்", "$").Split('$')[0];
+                    }
+                }
+                else
+                {
+                    bd.PartPlaceName = fpSPlitted[8].Split('-')[0].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Trim();
+                }
 
 
-            bd.Type = fpSPlitted[9].Replace("வாக்குச் சாவடியின் விவரங்கள்", "").Trim();
 
-            bd.PartLocationAddress = fpSPlitted[11].Replace("எண்ணிக்கை", "$").Split('$')[1].Split('4')[0].Trim();
+                var otherDetails = fpSPlitted[8].Split('-')[5].Split(' ');
 
-            bd.StartNo = fpSPlitted[12].Replace("தொடங்கும் வரிசை எண்", "").Trim().ToInt32();
+                if (year == 2020)
+                {
+                    bd.MainCityOrVillage = otherDetails[2];
+                    bd.Zone = otherDetails[3].Trim();
+                    bd.Birga = otherDetails[5];
+                    bd.PoliceStation = otherDetails[6];
+                    bd.Taluk = otherDetails[7];
+                    bd.District = fpSPlitted[8].Split('-')[6].Trim();
+                    bd.Pincode = fpSPlitted[8].Split('-')[12].Split(' ')[2].ToInt32();
+                }
+                else
+                {
+                    bd.MainCityOrVillage = fpSPlitted[8].Split('-')[2].Split(' ')[10].Trim();
+                    bd.Zone = fpSPlitted[8].Split('-')[3].Trim();
+                    bd.Birga = fpSPlitted[8].Split('-')[4].Trim();
+                    bd.PoliceStation = fpSPlitted[8].Split('-')[5].Split(' ')[1];
+                    bd.Taluk = fpSPlitted[8].Split('-')[5].Split(' ')[2].Trim();
+                    bd.District = fpSPlitted[8].Split('-')[5].Split(' ')[3].Trim();
+                    bd.Pincode = fpSPlitted[8].Split('-')[5].Split(' ')[4].Trim().ToInt32();
+                }
 
-            var voteDetails = fpSPlitted[13];
 
-            List<string> toReplaceVoteDetail = new List<string>()
+                bd.Type = fpSPlitted[9].Replace("வாக்குச் சாவடியின் விவரங்கள்", "").Trim();
+
+                bd.PartLocationAddress = fpSPlitted[11].Replace("எண்ணிக்கை", "$").Split('$')[1].Split('4')[0].Trim();
+
+                bd.StartNo = fpSPlitted[12].Replace("தொடங்கும் வரிசை எண்", "").Trim().ToInt32();
+
+                var voteDetails = fpSPlitted[13];
+
+                List<string> toReplaceVoteDetail = new List<string>()
             {
                 "முடியும் வரிசை எண்",
                 "நிகர வாக்காளர்களின் எண்ணிக்கை",
@@ -195,131 +230,133 @@ namespace CenturyFinCorpApp.UsrCtrl
                 "மொத்தம்"
             };
 
-            toReplaceVoteDetail.ForEach(fe =>
+                toReplaceVoteDetail.ForEach(fe =>
+                            {
+                                voteDetails = voteDetails.Replace(fe, $"$");
+
+                            });
+
+                var splitVoter = voteDetails.Split('$');
+                var forNo = splitVoter[1].Split(' ');
+
+                bd.EndNo = forNo[1].Trim().ToInt32();
+
+                if (year == 2020)
+                    bd.Male = forNo[4].ToInt32();
+                else
+                    bd.Male = forNo[3].ToInt32();
+
+                if (year == 2020)
+                {
+                    var genderVotes = splitVoter[3].Split(' ');
+                    bd.TotalVoters = splitVoter[4].Split(' ')[1].Trim().ToInt32();
+                    bd.Female = genderVotes[1].Trim().ToInt32();
+                    bd.ThirdGender = genderVotes[2].Trim().ToInt32();
+                }
+                else
+                {
+                    var genderVotes = splitVoter[4].Split(' ');
+                    bd.TotalVoters = splitVoter[1].Split(' ')[1].Trim().ToInt32();
+                    bd.Female = genderVotes[1].Trim().ToInt32();
+                    bd.ThirdGender = genderVotes[2].Trim().ToInt32();
+                }
+
+                /*************************************************************/
+
+                BoothDetail.Save(bd, boothDetailPath);
+
+                /*************************************************************/
+
+                reProcessFile = $"{folderPath}{bd.AssemblyNo}\\{bd.PartNo}";
+
+                var lastPage = allPageContent.Substring(allPageContent.IndexOf("வாக்காளர்களின் தொகுப்பு"));
+
+                var onlyVotersPages = allPageContent.Substring(allPageContent.IndexOf("பக்கம் 2"), allPageContent.IndexOf("வாக்காளர்களின் தொகுப்பு") - allPageContent.IndexOf("பக்கம் 2"));
+
+                var totalPages = firstPage.Substring(firstPage.IndexOf("மொத்த பக்கங்கள்"), firstPage.IndexOf("பக்கம்") - firstPage.IndexOf("மொத்த பக்கங்கள்"));
+
+                var NoOfpagesToProcess = totalPages.Replace("மொத்த பக்கங்கள்", "").Replace("-", "").Trim().ToInt32() - 3; // -3 means - not consider page 1, page 2 and last page
+
+                lastPageNumberToProcess = NoOfpagesToProcess + 2;
+
+                logs = new List<string>();
+
+                for (int i = 0; i < NoOfpagesToProcess; i++)
+                {
+
+                    // processing page number
+                    var pageNumber = i + 3;
+
+                    if (chkDebugMode.Checked)
+                    {
+                        if (pageNumber != txtPage.Text.ToInt32())
                         {
-                            voteDetails = voteDetails.Replace(fe, $"$");
+                            continue;
+                        }
+                    }
 
-                        });
+                    var startIndex = IndexOf(onlyVotersPages, pageNumber - 1); //onlyVotersPages.IndexOf($"பக்கம் {i + 2}");
+                    var lastIndex = IndexOf(onlyVotersPages, pageNumber) - startIndex;
 
-            var splitVoter = voteDetails.Split('$');
-            var forNo = splitVoter[1].Split(' ');
+                    var pageContent = onlyVotersPages.Substring(startIndex, lastIndex);
 
-            bd.EndNo = forNo[1].Trim().ToInt32();
-
-            if (year == 2020)
-                bd.Male = forNo[4].ToInt32();
-            else
-                bd.Male = forNo[3].ToInt32();
-
-            if (year == 2020)
-            {
-                var genderVotes = splitVoter[3].Split(' ');
-                bd.TotalVoters = splitVoter[4].Split(' ')[1].Trim().ToInt32();
-                bd.Female = genderVotes[1].Trim().ToInt32();
-                bd.ThirdGender = genderVotes[2].Trim().ToInt32();
-            }
-            else
-            {
-                var genderVotes = splitVoter[4].Split(' ');
-                bd.TotalVoters = splitVoter[1].Split(' ')[1].Trim().ToInt32();
-                bd.Female = genderVotes[1].Trim().ToInt32();
-                bd.ThirdGender = genderVotes[2].Trim().ToInt32();
-            }
-
-            /*************************************************************/
-
-            BoothDetail.Save(bd, boothDetailPath);
-
-            /*************************************************************/
-
-            reProcessFile = $"{folderPath}{bd.AssemblyNo}\\{bd.PartNo}";
-
-            var lastPage = allPageContent.Substring(allPageContent.IndexOf("வாக்காளர்களின் தொகுப்பு"));
-
-            var onlyVotersPages = allPageContent.Substring(allPageContent.IndexOf("பக்கம் 2"), allPageContent.IndexOf("வாக்காளர்களின் தொகுப்பு") - allPageContent.IndexOf("பக்கம் 2"));
-
-            var totalPages = firstPage.Substring(firstPage.IndexOf("மொத்த பக்கங்கள்"), firstPage.IndexOf("பக்கம்") - firstPage.IndexOf("மொத்த பக்கங்கள்"));
-
-            var NoOfpagesToProcess = totalPages.Replace("மொத்த பக்கங்கள்", "").Replace("-", "").Trim().ToInt32() - 3; // -3 means - not consider page 1, page 2 and last page
-
-            lastPageNumberToProcess = NoOfpagesToProcess + 2;
-
-            logs = new List<string>();
-
-            for (int i = 0; i < NoOfpagesToProcess; i++)
-            {
-
-                // processing page number
-                var pageNumber = i + 3;
-
-                if (chkDebugMode.Checked)
-                {
-                    if (pageNumber != txtPage.Text.ToInt32())
+                    if (ProcessPage(pageNumber, pageContent) == true)
                     {
-                        continue;
+                        haveErrorinFile = true;
                     }
                 }
 
-                var startIndex = IndexOf(onlyVotersPages, pageNumber - 1); //onlyVotersPages.IndexOf($"பக்கம் {i + 2}");
-                var lastIndex = IndexOf(onlyVotersPages, pageNumber) - startIndex;
 
-                var pageContent = onlyVotersPages.Substring(startIndex, lastIndex);
 
-                if (ProcessPage(pageNumber, pageContent) == true)
+                string flag = "OK";
+                //LOG FILE IF EXCEPTION OCCURS
+                if (logs.Count > 0 || haveErrorinFile)
                 {
-                    haveErrorinFile = true;
+                    var file = Path.Combine(reProcessFile, $"Log-{bd.AssemblyNo}-{bd.PartNo}-Exception.txt");
+
+                    var delData = logs.Where(w => w.StartsWith("DEL-")).Distinct().Reverse().ToList();
+                    var errData = logs.Where(w => w.StartsWith("DEL-") == false).ToList();
+
+                    StringBuilder logText = new StringBuilder();
+                    logText.AppendLine("==================DELETED RECORD========================================");
+                    delData.ForEach(fe => logText.AppendLine(fe.Trim()));
+                    logText.AppendLine("==================ERROR RECORD========================================");
+                    errData.ForEach(fe => logText.AppendLine(fe));
+
+
+                    General.WriteToFile(file, logText.ToString());
+                    flag = "ERRORFILE";
                 }
-            }
 
+                var file4 = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{DateTime.Now.ToLocalTime().ToString().Replace(":", "~")}-{flag}.txt");
+                General.WriteToFile(file4, onlyVotersPages);
 
-
-            string flag = "OK";
-            //LOG FILE IF EXCEPTION OCCURS
-            if (logs.Count > 0 || haveErrorinFile)
-            {
-                var file = Path.Combine(reProcessFile, $"Log-{bd.AssemblyNo}-{bd.PartNo}-Exception.txt");
-
-                var delData = logs.Where(w => w.StartsWith("DEL-")).Distinct().Reverse().ToList();
-                var errData = logs.Where(w => w.StartsWith("DEL-") == false).ToList();
-
-                StringBuilder logText = new StringBuilder();
-                logText.AppendLine("==================DELETED RECORD========================================");
-                delData.ForEach(fe => logText.AppendLine(fe.Trim()));
-                logText.AppendLine("==================ERROR RECORD========================================");
-                errData.ForEach(fe => logText.AppendLine(fe));
-
-
-                General.WriteToFile(file, logText.ToString());
-                flag = "ERRORFILE";
-            }
-
-            var file4 = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{DateTime.Now.ToLocalTime().ToString().Replace(":", "~")}-{flag}.txt");
-            General.WriteToFile(file4, onlyVotersPages);
-
-            if (chkDebugMode.Checked == false) // We should save ony in run modeNOT IN DEBUG MODE.
-            {
-                if (DialogResult.Yes == MessageBox.Show("You want Save? ", "", MessageBoxButtons.YesNo))
+                if (chkDebugMode.Checked == false) // We should save ony in run modeNOT IN DEBUG MODE.
                 {
-                  
-
-                    if (File.Exists(voterFilePath) == false)
+                    if (DialogResult.Yes == MessageBox.Show("You want Save? ", "", MessageBoxButtons.YesNo))
                     {
-                        var myFile = File.Create(voterFilePath);
-                        myFile.Close();
 
-                        VoterList.Save(fullList, voterFilePath);
+
+                        if (File.Exists(voterFilePath) == false)
+                        {
+                            var myFile = File.Create(voterFilePath);
+                            myFile.Close();
+
+                            VoterList.Save(fullList, voterFilePath);
+                        }
+
+
                     }
-
-                   
                 }
+
+                logs.Clear();
+
+                // PROCESSED WHOLE JSON FILE.
+                var fd = JsonConvert.SerializeObject(fullList, Formatting.Indented);
+                var file3 = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{DateTime.Now.ToLocalTime().ToString().Replace(":", "~")}.json");
+                General.WriteToFile(file3, fd);
+
             }
-
-            logs.Clear();
-
-            // PROCESSED WHOLE JSON FILE.
-            var fd = JsonConvert.SerializeObject(fullList, Formatting.Indented);
-            var file3 = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{DateTime.Now.ToLocalTime().ToString().Replace(":", "~")}.json");
-            General.WriteToFile(file3, fd);
 
             MessageBox.Show("DONE!");
 
