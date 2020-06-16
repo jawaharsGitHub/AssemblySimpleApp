@@ -47,6 +47,7 @@
             this.cmbFIlter = new System.Windows.Forms.ComboBox();
             this.lblDetails = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -202,7 +203,6 @@
             this.cmbFIlter.Name = "cmbFIlter";
             this.cmbFIlter.Size = new System.Drawing.Size(133, 21);
             this.cmbFIlter.TabIndex = 16;
-            //this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
             // 
             // lblDetails
             // 
@@ -225,11 +225,22 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(843, 76);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(125, 23);
+            this.button5.TabIndex = 19;
+            this.button5.Text = "Download FIle";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // ucVoterAnalysis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.lblDetails);
             this.Controls.Add(this.cmbFIlter);
@@ -278,5 +289,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblDetails;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }

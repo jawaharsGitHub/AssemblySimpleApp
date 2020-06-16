@@ -1,0 +1,8 @@
+F:\AssemblySimpleApp\NTK_Support\bin\Debug\NTK_Support.exe.config
+F:\AssemblySimpleApp\NTK_Support\bin\Debug\NTK_Support.exe
+F:\AssemblySimpleApp\NTK_Support\bin\Debug\NTK_Support.pdb
+F:\AssemblySimpleApp\NTK_Support\obj\Debug\NTK_Support.Form1.resources
+F:\AssemblySimpleApp\NTK_Support\obj\Debug\NTK_Support.Properties.Resources.resources
+F:\AssemblySimpleApp\NTK_Support\obj\Debug\NTK_Support.csproj.GenerateResource.cache
+F:\AssemblySimpleApp\NTK_Support\obj\Debug\NTK_Support.exe
+F:\AssemblySimpleApp\NTK_Support\obj\Debug\NTK_Support.pdb

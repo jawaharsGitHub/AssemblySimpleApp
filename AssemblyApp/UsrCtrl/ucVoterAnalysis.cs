@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 
@@ -47,28 +48,18 @@ namespace CenturyFinCorpApp.UsrCtrl
             {
                 var ufn = (new FileInfo(filePath)).Name.Split('.')[0];
                 voterFilePath = Path.Combine(AppConfiguration.AssemblyVotersFolder, $"{ufn.Substring(2, 3)}");
+                
 
                 boothDetailPath = Path.Combine(voterFilePath, $"{ufn.Substring(5, 3)}-BoothDetail.json");
 
+                General.CreateFileIfNotExist(boothDetailPath);
+                voterFilePath = Path.Combine(voterFilePath, $"{ufn.Substring(2, 3)}-{ufn.Substring(5, 3)}.json");
 
-                //if (File.Exists(boothDetailPath) == false)
-                //{
-                //    File.Create(boothDetailPath);
-                //}
-
-                //    File.Create(boothDetailPath);
-                General.CreateFile(boothDetailPath);
-
-                voterFilePath = Path.Combine(voterFilePath, $"{ufn.Substring(5, 3)}.json");
                 this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
 
                 if (File.Exists(voterFilePath) == false)
                 {
-                    // File.Create(voterFilePath);
-                    //using (var stream = File.Create(voterFilePath))
-                    //{
-                    //    File.Create(voterFilePath);
-                    //}
+                    //File.Create(voterFilePath);
                 }
                 else
                 {
@@ -307,8 +298,20 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             if (chkDebugMode.Checked == false) // We should save ony in run modeNOT IN DEBUG MODE.
             {
-                //if (DialogResult.Yes == MessageBox.Show("You want Save? ", "", MessageBoxButtons.YesNo))
-                //VoterList.Save(fullList, voterFilePath);
+                if (DialogResult.Yes == MessageBox.Show("You want Save? ", "", MessageBoxButtons.YesNo))
+                {
+                  
+
+                    if (File.Exists(voterFilePath) == false)
+                    {
+                        var myFile = File.Create(voterFilePath);
+                        myFile.Close();
+
+                        VoterList.Save(fullList, voterFilePath);
+                    }
+
+                   
+                }
             }
 
             logs.Clear();
@@ -321,6 +324,24 @@ namespace CenturyFinCorpApp.UsrCtrl
             MessageBox.Show("DONE!");
 
             dataGridView1.DataSource = fullList;
+
+            var st = new StringBuilder();
+
+            var er = (from f in fullList.Where(w => w.NameError || w.GenderError).ToList()
+                      group f by $"{f.PageNo}-{f.RowNo}" into ng
+                      select ng.Key).ToList();
+
+
+
+            // fullList.ForEach(fe => st.AppendLine(fe.ToString()));
+
+
+            //fullList.Where(w => w.ErrorType == ErrorType.BREAK1).ToList().ForEach(fe => st.AppendLine(fe.ToString()));
+
+
+
+            //fullList.Where(w => er.Contains($"{w.PageNo}-{w.RowNo}")).ToList().ForEach(fe => st.AppendLine(fe.ToString()));
+
 
             var errorPages = (from fl in fullList
                               where fl.MayError
@@ -362,7 +383,21 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 var isEmpty = string.IsNullOrEmpty(d);
 
-                return (true, d, isEmpty);
+                return (true, d.Replace("\r\n", "*"), isEmpty);
+            }
+            catch (Exception ex)
+            {
+                return (false, ex.ToString(), false);
+            }
+        }
+
+        public (bool, string, bool) GetFNname(string content)
+        {
+            try
+            {
+                string d = content.Contains(":") ? content.Split(':')[1] : content.Split(' ')[1];
+                var isEmpty = string.IsNullOrEmpty(d.Trim()); // || !d.Contains('-');
+                return (true, d.Replace("\r\n", "*"), isEmpty);
             }
             catch (Exception ex)
             {
@@ -384,37 +419,6 @@ namespace CenturyFinCorpApp.UsrCtrl
             }
         }
 
-
-
-        public (bool, string, bool) GetFNname(string content)
-        {
-            try
-            {
-                string d = content.Contains(":") ? content.Split(':')[1] : content.Split(' ')[1];
-                var isEmpty = string.IsNullOrEmpty(d.Trim()); // || !d.Contains('-');
-                return (true, d, isEmpty);
-            }
-            catch (Exception ex)
-            {
-                return (false, ex.ToString(), false);
-            }
-        }
-
-        public (bool, string, bool) GetGender(string content)
-        {
-            try
-            {
-                var d = content.Contains(":") ?
-                        content.Split(':')[1].TrimStart().Split(' ')[0] : content.Split(' ')[1];
-                var isEmpty = string.IsNullOrEmpty(d);
-                return (true, d, isEmpty);
-            }
-            catch (Exception ex)
-            {
-                return (false, ex.ToString(), false);
-            }
-        }
-
         public (bool, string, bool, bool) GetAddress(string content)
         {
             bool isDel = false;
@@ -425,13 +429,35 @@ namespace CenturyFinCorpApp.UsrCtrl
                 isDel = content.Contains("ADDRESS-D");
 
                 var isEmpty = string.IsNullOrEmpty(d);
-                return (true, d, isEmpty, isDel);
+                return (true, d.Replace("\r\n", "*"), isEmpty, isDel);
             }
             catch (Exception ex)
             {
                 return (false, ex.ToString(), false, isDel);
             }
         }
+
+        public (bool, string, bool) GetGender(string content)
+        {
+            try
+            {
+                //var d = content.Contains(":") ?
+                //        content.Split(':')[1].TrimStart().Split(' ')[0] : content.Split(' ')[1];
+
+                var d = content.Contains(":") ?
+                        content.Split(':')[1] : content.Split(' ')[1];
+
+
+                var isEmpty = string.IsNullOrEmpty(d);
+                return (true, d.Replace("\r\n", "*"), isEmpty);
+            }
+            catch (Exception ex)
+            {
+                return (false, ex.ToString(), false);
+            }
+        }
+
+
 
         private string AddNameLog(int pn, string name)
         {
@@ -709,6 +735,73 @@ namespace CenturyFinCorpApp.UsrCtrl
             }
 
             //Append to final list
+
+
+            var groupByRow = (from v in voterList
+                              group v by v.RowNo into ng
+                              select ng).ToList();
+
+
+            groupByRow.ForEach(fe =>
+            {
+                var threeRec = fe.ToList();
+                //var E = false;
+                if (threeRec[0].HorFName.Contains('-') == false && threeRec[1].HorFName.Contains('-') == true && threeRec[2].HorFName.Contains('-') == true)
+                {
+                    if (threeRec[0].HorFName.Count(c => c == '*') <= 1)
+                    {
+
+                        if ((threeRec[0].HorFName.Count(c => c == '*') == threeRec[0].Name.Count(c => c == '*')) == false)
+                        {
+
+                            if ((threeRec[0].HorFName.Contains("-") == false && threeRec[0].Name.Contains("-") == false) == false)
+                            {
+                                //if(threeRec[0].HorFName)
+                                if (threeRec[0].HorFName.Trim() == string.Empty)
+                                {
+                                    threeRec[0].ErrorType = ErrorType.BREAK1EMPTY;
+                                }
+                                else
+                                {
+                                    threeRec[0].ErrorType = ErrorType.BREAK1;
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+
+
+
+                //if(threeRec.Count == 3)
+                //{
+                //    if (!threeRec[0].HorFName.Contains('-') 
+                //    && threeRec[1].HorFName.Contains('-') 
+                //    && threeRec[2].HorFName.Contains('-') 
+                //    && threeRec[0].HorFName.Count(c => c == '*') == threeRec[1].HorFName.Count(c => c == '*'))
+                //    {
+                //        threeRec[0].Err = true;
+                //    }
+
+                //}
+                //for (int ff = 0; ff < threeRec.Count; ff++)
+                //{
+                //    threeRec[ff].Index = ff + 1;
+
+                //    var nec = threeRec[ff].HorFName.Count(c => c == '*');
+                //    threeRec[ff].NameErrorCount = nec;
+                //    if (nec > 1)
+                //        threeRec[ff].NameError = true;
+
+                //    var gec = threeRec[ff].Sex.Split(' ').Where(w => w == "*").Count();
+                //    threeRec[ff].GenderErrorCount = gec;
+                //    if (ff != 2 && threeRec.Count > 2 && gec > 1)
+                //        threeRec[ff].GenderError = true;
+                //}
+
+            });
+
             fullList.AddRange(voterList);
 
             if (lastPageNumberToProcess == pageNumber)
@@ -803,6 +896,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             var nm = GetGender(gender);
             vl.Sex = nm.Item1 ? nm.Item2 : AddLog(pn, vl);
+
             if (vl.MayError)
                 AddNameLog(pn, $"SEX ERROR @ {ind + 1}");
 
@@ -988,6 +1082,30 @@ namespace CenturyFinCorpApp.UsrCtrl
         private void button4_Click(object sender, EventArgs e)
         {
             cmbFIlter_SelectedIndexChanged(null, null);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var sbDbError = new StringBuilder();
+
+            for (int i = 10; i <= 336; i++)
+            {
+                var fileName = $"ac211{i:D3}.pdf";
+
+                try
+                {
+
+                    WebClient webClient = new WebClient();
+                    webClient.DownloadFile($"https://www.elections.tn.gov.in/SSR2020_14022020/dt27/ac211/{fileName}", $@"F:\NTK\VotersAnalysis\VoterList\{fileName}");
+                }
+                catch (Exception)
+                {
+                    sbDbError.AppendLine(fileName);
+
+                }
+
+            }
+
         }
     }
 }

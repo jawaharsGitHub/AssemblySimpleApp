@@ -1,4 +1,5 @@
 ﻿using Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,18 +23,37 @@ namespace DataAccess.PrimaryTypes
         public int Age { get; set; }
 
         public string Sex { get; set; }
-
-
-
         public bool IsDeleted { get; set; }
 
         public bool MayError { get; set; }
 
         public bool IsManualEdit { get; set; }
 
+        public ErrorType ErrorType { get; set; }
+
+        [JsonIgnore]
+        public bool GenderError { get; set; }
+
+        [JsonIgnore]
+        public bool NameError { get; set; }
+
+        [JsonIgnore]
+        public int GenderErrorCount { get; set; }
+
+        [JsonIgnore]
+        public int NameErrorCount { get; set; }
+
+        [JsonIgnore]
+        public int Index { get; set; }
+
+        [JsonIgnore]
+        public bool Err { get; set; }
+
         public override string ToString()
         {
-            return $"{PageNo}#{RowNo}#{Name}#{HorFName}#{HomeAddress}#{Age}#{Sex}";
+            //return $"{PageNo}#{RowNo}#{Name}#{HorFName}#{HomeAddress}#{Age}#{Sex}";
+
+            return $"{PageNo}#{RowNo}#{Index}#{NameError}#FN:{Name}${HorFName}#{GenderError}#GENDER:{Sex}#AGE:{Age}^^^^^<{Index}>[{NameErrorCount}]>>[{GenderErrorCount}]";
         }
 
 
@@ -111,5 +131,14 @@ namespace DataAccess.PrimaryTypes
         }
 
 
+    }
+
+    public enum ErrorType
+    {
+        OK,
+        BREAK1,
+        BREAK1EMPTY,
+        BREAK12,
+        
     }
 }

@@ -42,8 +42,6 @@ namespace Common
 
         public static List<T> ReadFileAsObjects<T>(string filePath)
         {
-            
-            
             var jsonText = File.ReadAllText(filePath);
             List<T> list = JsonConvert.DeserializeObject<List<T>>(jsonText) ?? new List<T>();
             return list;
@@ -53,14 +51,6 @@ namespace Common
         {
             string jsonString = JsonConvert.SerializeObject(listObject, Formatting.Indented);
             File.WriteAllText(filePath, jsonString);
-
-
-            //using (var stream = File.Open(filePath, FileMode.Open))
-            //{
-            //    // Use stream
-            //}
-
-           
         }
 
 

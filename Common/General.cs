@@ -44,7 +44,7 @@ namespace Common
 
         }
 
-        public static void CreateFile(string path)
+        public static void CreateFileIfNotExist(string path)
         {
             if (File.Exists(path) == false)
             {
