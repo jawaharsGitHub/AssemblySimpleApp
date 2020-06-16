@@ -20,6 +20,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         string folderPath = @"F:\NTK\VotersAnalysis\";
         string docPath = @"F:\NTK\VotersAnalysis\VoterList\doc";
 
+
         string reProcessFile = "";
         BoothDetail bd;
         bool haveErrorinFile = false;
@@ -45,9 +46,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             var allFiles = Directory.GetFiles(docPath).ToList();
 
-
             int year = 2020;
-
 
             foreach (var item in allFiles)
             {
@@ -62,14 +61,12 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                     assNo = ufn.Substring(2, 3);
                     partNo = ufn.Substring(5, 3);
-                  
 
                     voterFilePath = Path.Combine(AppConfiguration.AssemblyVotersFolder, $"{assNo}");
 
-                    
                     boothDetailPath = Path.Combine(voterFilePath, $"{assNo}-BoothDetail.json");
 
-                    General.CreateFileIfNotExist(boothDetailPath);
+
 
                     voterFilePath = Path.Combine(voterFilePath, $"{assNo}-{partNo}.json");
 
@@ -97,8 +94,10 @@ namespace CenturyFinCorpApp.UsrCtrl
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Invalid file name");
+                    General.WriteLog($"Error in FileName - {ex.ToString()}", assNo, partNo);
+                    //MessageBox.Show("Invalid file name");
                 }
+
 
 
                 var allPageContent = File.ReadAllText(filePath);
@@ -106,8 +105,13 @@ namespace CenturyFinCorpApp.UsrCtrl
                 //Process First page
                 var firstPage = allPageContent.Substring(0, allPageContent.IndexOf("சட்டமன்றத் தொகுதி எண் மற்றும் பெயர்"));
 
-                // First Page Details
-                List<string> toReplace = new List<string>()
+
+                try
+                {
+
+
+                    // First Page Details
+                    List<string> toReplace = new List<string>()
             {
                 "வாக்காளர் பட்டியல்",
                 "சட்டமன்றத் தொகுதி எண்",
@@ -124,132 +128,131 @@ namespace CenturyFinCorpApp.UsrCtrl
                 "முடியும் வரிசை எண்"
             };
 
-                toReplace.ForEach(fe =>
-                  {
-                      firstPage = firstPage.Replace(fe, $"${fe}");
-                  });
+                    toReplace.ForEach(fe =>
+                      {
+                          firstPage = firstPage.Replace(fe, $"${fe}");
+                      });
 
 
-                var fpSPlitted = firstPage.Split('$');
+                    var fpSPlitted = firstPage.Split('$');
 
-                bd = new BoothDetail();
+                    bd = new BoothDetail();
 
-                if (year == 2020)
-                {
-                    if (fpSPlitted[2].Split(':').Count() > 1)
-                    {
-                        var assembly2020 = fpSPlitted[2].Split(':')[1].Trim().Split('-');
-                        bd.AssemblyNo = assembly2020[0].Trim();
-                        bd.AssemblyName = assembly2020[1];
-                    }
-                    else
-                    {
-                        var assembly2020 = fpSPlitted[2].Split('-');
-                        bd.AssemblyNo = assembly2020[1].Trim();
-                        bd.AssemblyName = assembly2020[2].Trim();
-
-                    }
-
-                }
-                else
-                {
-                    var assembly2019 = fpSPlitted[2].Split('-');
-                    bd.AssemblyNo = assembly2019[1].Trim();
-                    bd.AssemblyName = assembly2019[2];
-                }
-
-
-                bd.PartNo = fpSPlitted[3].Split(' ')[2].Trim();
-
-                if (string.IsNullOrEmpty(bd.PartNo)) bd.PartNo = partNo;
-
-                if (year == 2020)
-                {
-                    var parliment = fpSPlitted[4].Split('-');
-                    bd.ParlimentNo = parliment[1];
-                    bd.ParlimentName = parliment[2].Trim().Split('1')[0].Trim();
-                }
-                else
-                {
-                    var parliment2019 = fpSPlitted[4].Split(':')[1].Trim().Split('-');
-                    bd.ParlimentNo = parliment2019[0].Trim();
-                    bd.ParlimentName = parliment2019[1].Trim().Split('1')[0].Trim();
-                }
-
-                bd.EligibilityDay = fpSPlitted[6].Split(' ')[2].Trim();
-                bd.ReleaseDate = fpSPlitted[7].Replace("பட்டியல் வெளியிடப்பட்ட நாள்", "$").Split('$')[1].Split(' ')[1];
-
-                if (year == 2020)
-                {
-                    if (fpSPlitted[8].Split('-').Count() > 2)
-                    {
-                        bd.PartPlaceName = fpSPlitted[8].Split('-')[2].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Trim();
-                    }
-                    else
-                    {
-                        bd.PartPlaceName = fpSPlitted[8].Split('-')[0].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Replace("999. அயல்நாடு வாழ் வாக்காளர்கள்", "$").Split('$')[0];
-                    }
-                }
-                else
-                {
-                    bd.PartPlaceName = fpSPlitted[8].Split('-')[0].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Trim();
-                }
-
-
-                var colonCount = fpSPlitted[8].Count(c => c == ':');
-
-                
-                try
-                {
-                    var otherDetails = fpSPlitted[8].Split('-')[5].Split(' ');
                     if (year == 2020)
                     {
-                        bd.MainCityOrVillage = otherDetails[2];
-                        bd.Zone = otherDetails[3].Trim();
-                        bd.Birga = otherDetails[5];
-                        bd.PoliceStation = otherDetails[6];
-                        bd.Taluk = otherDetails[7];
-                        bd.District = fpSPlitted[8].Split('-')[6].Trim();
-                        bd.Pincode = fpSPlitted[8].Split('-')[12].Split(' ')[2].ToInt32();
+                        if (fpSPlitted[2].Split(':').Count() > 1)
+                        {
+                            var assembly2020 = fpSPlitted[2].Split(':')[1].Trim().Split('-');
+                            bd.AssemblyNo = assembly2020[0].Trim();
+                            bd.AssemblyName = assembly2020[1];
+                        }
+                        else
+                        {
+                            var assembly2020 = fpSPlitted[2].Split('-');
+                            bd.AssemblyNo = assembly2020[1].Trim();
+                            bd.AssemblyName = assembly2020[2].Trim();
+
+                        }
+
                     }
                     else
                     {
-                        bd.MainCityOrVillage = fpSPlitted[8].Split('-')[2].Split(' ')[10].Trim();
-                        bd.Zone = fpSPlitted[8].Split('-')[3].Trim();
-                        bd.Birga = fpSPlitted[8].Split('-')[4].Trim();
-                        bd.PoliceStation = fpSPlitted[8].Split('-')[5].Split(' ')[1];
-                        bd.Taluk = fpSPlitted[8].Split('-')[5].Split(' ')[2].Trim();
-                        bd.District = fpSPlitted[8].Split('-')[5].Split(' ')[3].Trim();
-                        bd.Pincode = fpSPlitted[8].Split('-')[5].Split(' ')[4].Trim().ToInt32();
+                        var assembly2019 = fpSPlitted[2].Split('-');
+                        bd.AssemblyNo = assembly2019[1].Trim();
+                        bd.AssemblyName = assembly2019[2];
                     }
 
-                }
-                catch (Exception)
-                {
 
-                   
-                }
-                
+                    bd.PartNo = fpSPlitted[3].Split(' ')[2].Trim();
+
+                    if (string.IsNullOrEmpty(bd.PartNo)) bd.PartNo = partNo;
+
+                    if (year == 2020)
+                    {
+                        var parliment = fpSPlitted[4].Split('-');
+                        bd.ParlimentNo = parliment[1];
+                        bd.ParlimentName = parliment[2].Trim().Split('1')[0].Trim();
+                    }
+                    else
+                    {
+                        var parliment2019 = fpSPlitted[4].Split(':')[1].Trim().Split('-');
+                        bd.ParlimentNo = parliment2019[0].Trim();
+                        bd.ParlimentName = parliment2019[1].Trim().Split('1')[0].Trim();
+                    }
+
+                    bd.EligibilityDay = fpSPlitted[6].Split(' ')[2].Trim();
+                    bd.ReleaseDate = fpSPlitted[7].Replace("பட்டியல் வெளியிடப்பட்ட நாள்", "$").Split('$')[1].Split(' ')[1];
+
+                    if (year == 2020)
+                    {
+                        if (fpSPlitted[8].Split('-').Count() > 2)
+                        {
+                            bd.PartPlaceName = fpSPlitted[8].Split('-')[2].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Trim();
+                        }
+                        else
+                        {
+                            bd.PartPlaceName = fpSPlitted[8].Split('-')[0].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Replace("999. அயல்நாடு வாழ் வாக்காளர்கள்", "$").Split('$')[0];
+                        }
+                    }
+                    else
+                    {
+                        bd.PartPlaceName = fpSPlitted[8].Split('-')[0].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Trim();
+                    }
 
 
-                bd.Type = fpSPlitted[9].Replace("வாக்குச் சாவடியின் விவரங்கள்", "").Trim();
+                    var colonCount = fpSPlitted[8].Count(c => c == ':');
 
-                //bd.PartLocationAddress = fpSPlitted[11].Replace("எண்ணிக்கை", "$").Split('$')[1].Split('4')[0].Trim();
 
-                try
-                {
-                    bd.StartNo = fpSPlitted[12].Replace("தொடங்கும் வரிசை எண்", "").Trim().ToInt32();
-                }
-                catch (Exception)
-                {
+                    try
+                    {
+                        var otherDetails = fpSPlitted[8].Split('-')[5].Split(' ');
+                        if (year == 2020)
+                        {
+                            bd.MainCityOrVillage = otherDetails[2];
+                            bd.Zone = otherDetails[3].Trim();
+                            bd.Birga = otherDetails[5];
+                            bd.PoliceStation = otherDetails[6];
+                            bd.Taluk = otherDetails[7];
+                            bd.District = fpSPlitted[8].Split('-')[6].Trim();
+                            bd.Pincode = fpSPlitted[8].Split('-')[12].Split(' ')[2].ToInt32();
+                        }
+                        else
+                        {
+                            bd.MainCityOrVillage = fpSPlitted[8].Split('-')[2].Split(' ')[10].Trim();
+                            bd.Zone = fpSPlitted[8].Split('-')[3].Trim();
+                            bd.Birga = fpSPlitted[8].Split('-')[4].Trim();
+                            bd.PoliceStation = fpSPlitted[8].Split('-')[5].Split(' ')[1];
+                            bd.Taluk = fpSPlitted[8].Split('-')[5].Split(' ')[2].Trim();
+                            bd.District = fpSPlitted[8].Split('-')[5].Split(' ')[3].Trim();
+                            bd.Pincode = fpSPlitted[8].Split('-')[5].Split(' ')[4].Trim().ToInt32();
+                        }
 
-                    bd.StartNo = 1;
-                }
-               
+                    }
+                    catch (Exception ex)
+                    {
 
-                var voteDetails = fpSPlitted[13];
+                    }
 
-                List<string> toReplaceVoteDetail = new List<string>()
+
+
+                    bd.Type = fpSPlitted[9].Replace("வாக்குச் சாவடியின் விவரங்கள்", "").Trim();
+
+                    //bd.PartLocationAddress = fpSPlitted[11].Replace("எண்ணிக்கை", "$").Split('$')[1].Split('4')[0].Trim();
+
+                    try
+                    {
+                        bd.StartNo = fpSPlitted[12].Replace("தொடங்கும் வரிசை எண்", "").Trim().ToInt32();
+                    }
+                    catch (Exception)
+                    {
+
+                        bd.StartNo = 1;
+                    }
+
+
+                    var voteDetails = fpSPlitted[13];
+
+                    List<string> toReplaceVoteDetail = new List<string>()
             {
                 "முடியும் வரிசை எண்",
                 "நிகர வாக்காளர்களின் எண்ணிக்கை",
@@ -257,55 +260,64 @@ namespace CenturyFinCorpApp.UsrCtrl
                 "மொத்தம்"
             };
 
-                toReplaceVoteDetail.ForEach(fe =>
-                            {
-                                voteDetails = voteDetails.Replace(fe, $"$");
+                    toReplaceVoteDetail.ForEach(fe =>
+                                {
+                                    voteDetails = voteDetails.Replace(fe, $"$");
 
-                            });
+                                });
 
-                var splitVoter = voteDetails.Split('$');
-                var forNo = splitVoter[1].Split(' ');
+                    var splitVoter = voteDetails.Split('$');
+                    var forNo = splitVoter[1].Split(' ');
 
-                bd.EndNo = forNo[1].Trim().ToInt32();
+                    bd.EndNo = forNo[1].Trim().ToInt32();
 
-                if (year == 2020)
-                    try
-                    {
-                        bd.Male = forNo[4].ToInt32();
-                    }
-                    catch (Exception)
-                    {
+                    if (year == 2020)
+                        try
+                        {
+                            bd.Male = forNo[4].ToInt32();
+                        }
+                        catch (Exception)
+                        {
 
+                            bd.Male = forNo[3].ToInt32();
+                        }
+
+                    else
                         bd.Male = forNo[3].ToInt32();
+
+                    if (year == 2020)
+                    {
+                        var genderVotes = splitVoter[3].Split(' ');
+                        bd.TotalVoters = splitVoter[4].Split(' ')[1].Trim().ToInt32();
+                        bd.Female = genderVotes[1].Trim().ToInt32();
+                        bd.ThirdGender = genderVotes[2].Trim().ToInt32();
                     }
-                   
-                else
-                    bd.Male = forNo[3].ToInt32();
+                    else
+                    {
+                        var genderVotes = splitVoter[4].Split(' ');
+                        bd.TotalVoters = splitVoter[1].Split(' ')[1].Trim().ToInt32();
+                        bd.Female = genderVotes[1].Trim().ToInt32();
+                        bd.ThirdGender = genderVotes[2].Trim().ToInt32();
+                    }
 
-                if (year == 2020)
-                {
-                    var genderVotes = splitVoter[3].Split(' ');
-                    bd.TotalVoters = splitVoter[4].Split(' ')[1].Trim().ToInt32();
-                    bd.Female = genderVotes[1].Trim().ToInt32();
-                    bd.ThirdGender = genderVotes[2].Trim().ToInt32();
+                    /*************************************************************/
+
+                    General.CreateFileIfNotExist(boothDetailPath);
+                    BoothDetail.Save(bd, boothDetailPath);
+
+                    /*************************************************************/
+
                 }
-                else
+                catch (Exception ex)
                 {
-                    var genderVotes = splitVoter[4].Split(' ');
-                    bd.TotalVoters = splitVoter[1].Split(' ')[1].Trim().ToInt32();
-                    bd.Female = genderVotes[1].Trim().ToInt32();
-                    bd.ThirdGender = genderVotes[2].Trim().ToInt32();
+                    General.WriteLog($"Error in First Page", assNo, partNo);
                 }
 
-                /*************************************************************/
 
-                BoothDetail.Save(bd, boothDetailPath);
 
-                /*************************************************************/
+                //reProcessFile = $"{folderPath}{bd.AssemblyNo}\\{bd.PartNo}";
 
-                reProcessFile = $"{folderPath}{bd.AssemblyNo}\\{bd.PartNo}";
-
-                var lastPage = allPageContent.Substring(allPageContent.IndexOf("வாக்காளர்களின் தொகுப்பு"));
+                //var lastPage = allPageContent.Substring(allPageContent.IndexOf("வாக்காளர்களின் தொகுப்பு"));
 
                 var onlyVotersPages = allPageContent.Substring(allPageContent.IndexOf("பக்கம் 2"), allPageContent.IndexOf("வாக்காளர்களின் தொகுப்பு") - allPageContent.IndexOf("பக்கம் 2"));
 
@@ -317,6 +329,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 logs = new List<string>();
 
+                bool isProcessed = true;
                 for (int i = 0; i < NoOfpagesToProcess; i++)
                 {
 
@@ -336,40 +349,50 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                     var pageContent = onlyVotersPages.Substring(startIndex, lastIndex);
 
+
                     if (ProcessPage(pageNumber, pageContent) == true)
                     {
                         haveErrorinFile = true;
                     }
+                    else
+                    {
+                        General.WriteLog($"Error in PageProcess", assNo, partNo);
+                        isProcessed = false;
+                        break;
+                    }
+
+
                 }
 
+                if (isProcessed == false) continue;
 
 
                 string flag = "OK";
                 //LOG FILE IF EXCEPTION OCCURS
-                if (logs.Count > 0 || haveErrorinFile)
-                {
-                    var file = Path.Combine(reProcessFile, $"Log-{bd.AssemblyNo}-{bd.PartNo}-Exception.txt");
+                //if (logs.Count > 0 || haveErrorinFile)
+                //{
+                //    var file = Path.Combine(reProcessFile, $"Log-{bd.AssemblyNo}-{bd.PartNo}-Exception.txt");
 
-                    var delData = logs.Where(w => w.StartsWith("DEL-")).Distinct().Reverse().ToList();
-                    var errData = logs.Where(w => w.StartsWith("DEL-") == false).ToList();
+                //    var delData = logs.Where(w => w.StartsWith("DEL-")).Distinct().Reverse().ToList();
+                //    var errData = logs.Where(w => w.StartsWith("DEL-") == false).ToList();
 
-                    StringBuilder logText = new StringBuilder();
-                    logText.AppendLine("==================DELETED RECORD========================================");
-                    delData.ForEach(fe => logText.AppendLine(fe.Trim()));
-                    logText.AppendLine("==================ERROR RECORD========================================");
-                    errData.ForEach(fe => logText.AppendLine(fe));
+                //    StringBuilder logText = new StringBuilder();
+                //    logText.AppendLine("==================DELETED RECORD========================================");
+                //    delData.ForEach(fe => logText.AppendLine(fe.Trim()));
+                //    logText.AppendLine("==================ERROR RECORD========================================");
+                //    errData.ForEach(fe => logText.AppendLine(fe));
 
 
-                    General.WriteToFile(file, logText.ToString());
-                    flag = "ERRORFILE";
-                }
+                //    General.WriteToFile(file, logText.ToString());
+                //    flag = "ERRORFILE";
+                //}
 
                 var file4 = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{DateTime.Now.ToLocalTime().ToString().Replace(":", "~")}-{flag}.txt");
                 General.WriteToFile(file4, onlyVotersPages);
 
                 if (chkDebugMode.Checked == false) // We should save ony in run modeNOT IN DEBUG MODE.
                 {
-                    if (DialogResult.Yes == MessageBox.Show("You want Save? ", "", MessageBoxButtons.YesNo))
+                    if (DialogResult.Yes == MessageBox.Show($"You want Save for {assNo}-{partNo}", "", MessageBoxButtons.YesNo))
                     {
 
 
@@ -377,10 +400,9 @@ namespace CenturyFinCorpApp.UsrCtrl
                         {
                             var myFile = File.Create(voterFilePath);
                             myFile.Close();
-
-                            VoterList.Save(fullList, voterFilePath);
                         }
 
+                        VoterList.Save(fullList, voterFilePath);
 
                     }
                 }
@@ -394,24 +416,20 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             }
 
-            MessageBox.Show("DONE!");
+            MessageBox.Show("ALL DONE!");
 
             dataGridView1.DataSource = fullList;
 
-            var st = new StringBuilder();
+            //var st = new StringBuilder();
 
-            var er = (from f in fullList.Where(w => w.NameError || w.GenderError).ToList()
-                      group f by $"{f.PageNo}-{f.RowNo}" into ng
-                      select ng.Key).ToList();
+            //var er = (from f in fullList.Where(w => w.NameError || w.GenderError).ToList()
+            //          group f by $"{f.PageNo}-{f.RowNo}" into ng
+            //          select ng.Key).ToList();
 
 
 
             // fullList.ForEach(fe => st.AppendLine(fe.ToString()));
-
-
             //fullList.Where(w => w.ErrorType == ErrorType.BREAK1).ToList().ForEach(fe => st.AppendLine(fe.ToString()));
-
-
 
             //fullList.Where(w => er.Contains($"{w.PageNo}-{w.RowNo}")).ToList().ForEach(fe => st.AppendLine(fe.ToString()));
 
@@ -565,349 +583,364 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (chkPageList.SelectedIndex == 0)
-            {
-                MessageBox.Show("Select page to reprocess");
-                return;
-            }
+            //if (chkPageList.SelectedIndex == 0)
+            //{
+            //    MessageBox.Show("Select page to reprocess");
+            //    return;
+            //}
 
-            if (string.IsNullOrEmpty(txtMissingRow.Text.Trim()))
-            {
-                MessageBox.Show("Provide the deleted row number");
-                return;
-            }
+            //if (string.IsNullOrEmpty(txtMissingRow.Text.Trim()))
+            //{
+            //    MessageBox.Show("Provide the deleted row number");
+            //    return;
+            //}
 
-            var selectedPage = chkPageList.SelectedValue.ToString().Split('-')[1].Trim().ToInt32();
-            //Page - 6
-            if (DialogResult.Yes ==
-            MessageBox.Show($"You want to reprocess for Assembly - {bd.AssemblyName} Booth - {bd.PartNo} PageNo {selectedPage}", "", MessageBoxButtons.YesNoCancel))
-            {
-                var pageText = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{selectedPage}-{31}.txt");
+            //var selectedPage = chkPageList.SelectedValue.ToString().Split('-')[1].Trim().ToInt32();
+            ////Page - 6
+            //if (DialogResult.Yes ==
+            //MessageBox.Show($"You want to reprocess for Assembly - {bd.AssemblyName} Booth - {bd.PartNo} PageNo {selectedPage}", "", MessageBoxButtons.YesNoCancel))
+            //{
+            //    var pageText = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{selectedPage}-{31}.txt");
 
-                var text = File.ReadAllText(pageText);
+            //    var text = File.ReadAllText(pageText);
 
-                //if(ProcessPage(selectedPage, text, txtMissingRow.Text.ToInt32()))
-                //{
-                //    var jsonFile = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{selectedPage}-{lastPageNumberToProcess}-ReRun-Failed.json");
-                //    var fd = JsonConvert.SerializeObject(voterList, Formatting.Indented);
-                //    WriteToFile(jsonFile, fd);
-                //}
-                ProcessPage(selectedPage, text, txtMissingRow.Text.ToInt32());
+            //    //if(ProcessPage(selectedPage, text, txtMissingRow.Text.ToInt32()))
+            //    //{
+            //    //    var jsonFile = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{selectedPage}-{lastPageNumberToProcess}-ReRun-Failed.json");
+            //    //    var fd = JsonConvert.SerializeObject(voterList, Formatting.Indented);
+            //    //    WriteToFile(jsonFile, fd);
+            //    //}
+            //    ProcessPage(selectedPage, text, txtMissingRow.Text.ToInt32());
 
-            }
+            //}
 
         }
 
         private bool ProcessPage(int pageNumber, string pageContent, int errorRowNumber = 0)
         {
-            // processing page number
 
-            /*
-             * ONE DELETE
-             * NO DELETE BUT DATA SWAPPED OR MISARRANGED
-             * MORE THAN ONE DELETE? not yet done.
-             */
-
-
-            var data = pageContent;
-
-            data = data.Replace("சட்டமன்றத் தொகுதி எண் மற்றும் பெயர்", "*");
-            data = data.Replace("பிரிவு எண் மற்றும் பெயர்", "*");
-
-            bool mayHaveError = false;
-
-            var recordCount = (from p in data.Split(' ').ToList()
-                               where p.Contains("Photo")
-                               select p).ToList().Count;
-
-            data = data.Replace("Photo", "").Replace("is", "").Replace("Available", "");  // Rempve Photo is AVailable.
-
-            data = data.Replace("தந்தை பெயர்", "$FATHER")
-                       .Replace("கணவர் பெயர்", "$FATHER")
-                       //.Replace("கணவர் பெய", "$HUSBAND-1:") // scenerio 1
-                       .Replace("தாய் பெயர்", "$FATHER")
-                       .Replace("இதரர் பெயர்", "$FATHER")
-                       // NOTE: dont change this order of Replace
-                       .Replace("பெயர்", "$NAME")  // Rempoe Photo is AVailable.
-
-                       .Replace("வீட்டு எண்", "$ADDRESS")
-                       .Replace("வீட்டு என்", "$ADDRESS-D")
-                        .Replace("வீட்டு தன்", "$ADDRESS-D")
-                        .Replace("வீட்டு பண்", "$ADDRESS-D")
-                        .Replace("வீட்டு கண்", "$ADDRESS-D")
-                       //.Replace("வீட்டு", "$ADDRESS:D")
-
-                       .Replace("வயது", "$AGE")
-
-                       .Replace("பாலினம்", "$SEX");
-
-
-            //data = data.Replace("தந்தை பெயர்", "$F")
-            //           .Replace("கணவர் பெயர்", "$F")
-            //           //.Replace("கணவர் பெய", "$HUSBAND-1:") // scenerio 1
-            //           .Replace("தாய் பெயர்", "$F")
-            //           .Replace("இதரர் பெயர்", "$F")
-            //           // NOTE: dont change this order of Replace
-            //           .Replace("பெயர்", "$N")  // Rempoe Photo is AVailable.
-
-            //           .Replace("வீட்டு எண்", "$A")
-            //           .Replace("வீட்டு என்", "$A")
-            //            .Replace("வீட்டு தன்", "$A")
-            //            .Replace("வீட்டு பண்", "$A")
-            //            .Replace("வீட்டு கண்", "$A")
-            //            .Replace("வீட்டு கண்", "$A")
-            //           //.Replace("வீட்டு", "$ADDRESS:D")
-
-            //           .Replace("வயது", "$G")
-
-            //           .Replace("பாலினம்", "$X");
-
-            var splittedData = data.Split('$').ToList();
-
-            splittedData.RemoveRange(0, 1);
-
-            // no of voters in a page
-            var pageRecordCount = splittedData.Count; //
-
-
-            var names = splittedData.Where(w => w.StartsWith("NAME")).ToList();
-
-            var fatherOrHusband = splittedData.Where(
-                                       w => w.StartsWith("FATHER") ||
-                                       w.StartsWith("MOTHER") || w.StartsWith("HUSBAND") ||
-                                       w.StartsWith("OTHERS")).ToList();
-
-            var address = splittedData.Where(w => w.StartsWith("ADDRESS")).ToList();
-
-            var age = splittedData.Where(w => w.StartsWith("AGE")).ToList();
-            age.RemoveAt(age.Count - 1);
-
-            var sex = splittedData.Where(w => w.StartsWith("SEX")).ToList();
-
-            var isReProcess = (errorRowNumber > 0);
-            var insertIndex = (errorRowNumber - 1);
-
-            var isNameIssue = (names.Count != recordCount);
-            var isFNameIssue = (fatherOrHusband.Count != recordCount);
-            var isAddressIssue = (address.Count != recordCount);
-            var isAgeIssue = (age.Count != recordCount);
-            var isSexIssue = (sex.Count != recordCount);
-
-            if (isReProcess)
+            try
             {
-                if (isNameIssue) names.Insert(insertIndex, "NN");
-                if (isFNameIssue) fatherOrHusband.Insert(insertIndex, "NF");
-                if (isAddressIssue) address.Insert(insertIndex, "ND");
-                if (isAgeIssue) age.Insert(insertIndex, "NG");
-                if (isSexIssue) sex.Insert(insertIndex, "NS");
-
-                isNameIssue = (names.Count != recordCount);
-                isFNameIssue = (fatherOrHusband.Count != recordCount);
-                isAddressIssue = (address.Count != recordCount);
-                isAgeIssue = (age.Count != recordCount);
-                isSexIssue = (sex.Count != recordCount);
-            }
 
 
-            /* NAME */
-            if (isNameIssue || isFNameIssue || isAddressIssue || isAgeIssue || isSexIssue)
-                mayHaveError = true;
+                // processing page number
 
-            if (isNameIssue)
-                AddNameLog(pageNumber, $"NAME COUNT MISMATCH - recordCount:{names.Count} - NAME:{recordCount}");
+                /*
+                 * ONE DELETE
+                 * NO DELETE BUT DATA SWAPPED OR MISARRANGED
+                 * MORE THAN ONE DELETE? not yet done.
+                 */
 
-            /* FATHER-NAME */
-            if (isFNameIssue)
-                AddNameLog(pageNumber, $"FATHER COUNT MISMATCH - recordCount:{names.Count} - FATHER:{fatherOrHusband.Count}");
 
-            /* ADDRESS */
-            if (isAddressIssue)
-                AddNameLog(pageNumber, $"ADDRESS COUNT MISMATCH - recordCount:{names.Count} - ADDRESS:{address.Count}");
+                var data = pageContent;
 
-            /* AGE */
-            if (isAgeIssue)
-                AddNameLog(pageNumber, $"AGE COUNT MISMATCH - recordCount:{recordCount} - AGE:{age.Count}");
+                data = data.Replace("சட்டமன்றத் தொகுதி எண் மற்றும் பெயர்", "*");
+                data = data.Replace("பிரிவு எண் மற்றும் பெயர்", "*");
 
-            /* SEX */
-            if (isSexIssue)
-                AddNameLog(pageNumber, $"SEX COUNT MISMATCH - recordCount:{recordCount} - SEX:{sex.Count}");
+                bool mayHaveError = false;
 
-            var voterList = new List<VoterList>();
+                var recordCount = (from p in data.Split(' ').ToList()
+                                   where p.Contains("Photo")
+                                   select p).ToList().Count;
 
-            // 1. Name
-            names.ForEach(fe =>
-            {
-                var nm = GetName(fe);
-                var vl = new VoterList()
+                data = data.Replace("Photo", "").Replace("is", "").Replace("Available", "");  // Rempve Photo is AVailable.
+
+                data = data.Replace("தந்தை பெயர்", "$FATHER")
+                           .Replace("கணவர் பெயர்", "$FATHER")
+                           //.Replace("கணவர் பெய", "$HUSBAND-1:") // scenerio 1
+                           .Replace("தாய் பெயர்", "$FATHER")
+                           .Replace("இதரர் பெயர்", "$FATHER")
+                           // NOTE: dont change this order of Replace
+                           .Replace("பெயர்", "$NAME")  // Rempoe Photo is AVailable.
+
+                           .Replace("வீட்டு எண்", "$ADDRESS")
+                           .Replace("வீட்டு என்", "$ADDRESS-D")
+                            .Replace("வீட்டு தன்", "$ADDRESS-D")
+                            .Replace("வீட்டு பண்", "$ADDRESS-D")
+                            .Replace("வீட்டு கண்", "$ADDRESS-D")
+                           //.Replace("வீட்டு", "$ADDRESS:D")
+
+                           .Replace("வயது", "$AGE")
+
+                           .Replace("பாலினம்", "$SEX");
+
+
+                //data = data.Replace("தந்தை பெயர்", "$F")
+                //           .Replace("கணவர் பெயர்", "$F")
+                //           //.Replace("கணவர் பெய", "$HUSBAND-1:") // scenerio 1
+                //           .Replace("தாய் பெயர்", "$F")
+                //           .Replace("இதரர் பெயர்", "$F")
+                //           // NOTE: dont change this order of Replace
+                //           .Replace("பெயர்", "$N")  // Rempoe Photo is AVailable.
+
+                //           .Replace("வீட்டு எண்", "$A")
+                //           .Replace("வீட்டு என்", "$A")
+                //            .Replace("வீட்டு தன்", "$A")
+                //            .Replace("வீட்டு பண்", "$A")
+                //            .Replace("வீட்டு கண்", "$A")
+                //            .Replace("வீட்டு கண்", "$A")
+                //           //.Replace("வீட்டு", "$ADDRESS:D")
+
+                //           .Replace("வயது", "$G")
+
+                //           .Replace("பாலினம்", "$X");
+
+                var splittedData = data.Split('$').ToList();
+
+                splittedData.RemoveRange(0, 1);
+
+                // no of voters in a page
+                var pageRecordCount = splittedData.Count; //
+
+
+                var names = splittedData.Where(w => w.StartsWith("NAME")).ToList();
+
+                var fatherOrHusband = splittedData.Where(
+                                           w => w.StartsWith("FATHER") ||
+                                           w.StartsWith("MOTHER") || w.StartsWith("HUSBAND") ||
+                                           w.StartsWith("OTHERS")).ToList();
+
+                var address = splittedData.Where(w => w.StartsWith("ADDRESS")).ToList();
+
+                var age = splittedData.Where(w => w.StartsWith("AGE")).ToList();
+                age.RemoveAt(age.Count - 1);
+
+                var sex = splittedData.Where(w => w.StartsWith("SEX")).ToList();
+
+                var isReProcess = (errorRowNumber > 0);
+                var insertIndex = (errorRowNumber - 1);
+
+                var isNameIssue = (names.Count != recordCount);
+                var isFNameIssue = (fatherOrHusband.Count != recordCount);
+                var isAddressIssue = (address.Count != recordCount);
+                var isAgeIssue = (age.Count != recordCount);
+                var isSexIssue = (sex.Count != recordCount);
+
+                if (isReProcess)
                 {
-                    Name = nm.Item1 ? nm.Item2 : AddNameLog(pageNumber, "#NERROR#"),
-                    MayError = mayHaveError ? mayHaveError : (nm.Item3)
+                    if (isNameIssue) names.Insert(insertIndex, "NN");
+                    if (isFNameIssue) fatherOrHusband.Insert(insertIndex, "NF");
+                    if (isAddressIssue) address.Insert(insertIndex, "ND");
+                    if (isAgeIssue) age.Insert(insertIndex, "NG");
+                    if (isSexIssue) sex.Insert(insertIndex, "NS");
 
-                };
-
-                if (vl.MayError)
-                    AddNameLog(pageNumber, $"NAME ERROR @ {voterList.Count + 1}");
-
-                voterList.Add(vl);
-            });
-
-            sb2.AppendLine($"------------{pageNumber}------------");
-
-            for (int index = 0; index < voterList.Count; index++)
-            {
-
-                voterList[index].PageNo = pageNumber;
-                voterList[index].RowNo = (index / 3) + 1;
-                voterList[index].SNo = index + 1;
-                if (voterList[index].RowNo.ToString() == txtRow.Text.Trim())
-                {
-
+                    isNameIssue = (names.Count != recordCount);
+                    isFNameIssue = (fatherOrHusband.Count != recordCount);
+                    isAddressIssue = (address.Count != recordCount);
+                    isAgeIssue = (age.Count != recordCount);
+                    isSexIssue = (sex.Count != recordCount);
                 }
-                // Process record by record 
-                DoHFname(fatherOrHusband[index], pageNumber, voterList[index], index);
-                DoAddress(address[index], pageNumber, voterList[index], index);
-                DoAge(age[index], pageNumber, voterList[index], index);
-                DoGender(sex[index], pageNumber, voterList[index], index);
-
-            }
 
 
-            // 1.1 add pageNo and index
-            for (int index = 0; index < voterList.Count; index++)
-            {
-                voterList[index].PageNo = pageNumber;
-                voterList[index].RowNo = (index / 3) + 1;
-                voterList[index].SNo = index + 1;
-            }
-
-            // 2. HorFName
-            for (int index = 0; index < fatherOrHusband.Count; index++)
-            {
-                //DoHFname(fatherOrHusband[index], pageNumber, voterList[index], index);
-
-                //if (voterList[index].MayError)
-                //    voterList.Where(w => w.RowNo == voterList[index].RowNo).ToList().ForEach(fe => fe.MayError = true);
-            }
-
-
-            // 3. HomeAddress
-            for (int index = 0; index < address.Count; index++)
-            {
-                DoAddress(address[index], pageNumber, voterList[index], index);
-            }
-
-            // 4. Age
-            for (int index = 0; index < age.Count; index++)
-            {
-                DoAge(age[index], pageNumber, voterList[index], index);
-            }
-
-            // 5. Sex
-            for (int index = 0; index < sex.Count; index++)
-            {
-                DoGender(sex[index], pageNumber, voterList[index], index);
-            }
-
-            //Append to final list
-
-
-            var groupByRow = (from v in voterList
-                              group v by v.RowNo into ng
-                              select ng).ToList();
-
-
-            groupByRow.ForEach(fe =>
-            {
-                var threeRec = fe.ToList();
-                //var E = false;
-                if (threeRec[0].HorFName.Contains('-') == false && threeRec[1].HorFName.Contains('-') == true && threeRec[2].HorFName.Contains('-') == true)
+                /* NAME */
+                if (isNameIssue || isFNameIssue || isAddressIssue || isAgeIssue || isSexIssue)
                 {
-                    if (threeRec[0].HorFName.Count(c => c == '*') <= 1)
+                    mayHaveError = true;
+                    return false;
+                }
+
+                if (isNameIssue)
+                    AddNameLog(pageNumber, $"NAME COUNT MISMATCH - recordCount:{names.Count} - NAME:{recordCount}");
+
+                /* FATHER-NAME */
+                if (isFNameIssue)
+                    AddNameLog(pageNumber, $"FATHER COUNT MISMATCH - recordCount:{names.Count} - FATHER:{fatherOrHusband.Count}");
+
+                /* ADDRESS */
+                if (isAddressIssue)
+                    AddNameLog(pageNumber, $"ADDRESS COUNT MISMATCH - recordCount:{names.Count} - ADDRESS:{address.Count}");
+
+                /* AGE */
+                if (isAgeIssue)
+                    AddNameLog(pageNumber, $"AGE COUNT MISMATCH - recordCount:{recordCount} - AGE:{age.Count}");
+
+                /* SEX */
+                if (isSexIssue)
+                    AddNameLog(pageNumber, $"SEX COUNT MISMATCH - recordCount:{recordCount} - SEX:{sex.Count}");
+
+                var voterList = new List<VoterList>();
+
+                // 1. Name
+                names.ForEach(fe =>
+                {
+                    var nm = GetName(fe);
+                    var vl = new VoterList()
+                    {
+                        Name = nm.Item1 ? nm.Item2 : AddNameLog(pageNumber, "#NERROR#"),
+                        MayError = mayHaveError ? mayHaveError : (nm.Item3)
+
+                    };
+
+                    if (vl.MayError)
+                        AddNameLog(pageNumber, $"NAME ERROR @ {voterList.Count + 1}");
+
+                    voterList.Add(vl);
+                });
+
+                sb2.AppendLine($"------------{pageNumber}------------");
+
+                for (int index = 0; index < voterList.Count; index++)
+                {
+
+                    voterList[index].PageNo = pageNumber;
+                    voterList[index].RowNo = (index / 3) + 1;
+                    voterList[index].SNo = index + 1;
+                    if (voterList[index].RowNo.ToString() == txtRow.Text.Trim())
                     {
 
-                        if ((threeRec[0].HorFName.Count(c => c == '*') == threeRec[0].Name.Count(c => c == '*')) == false)
-                        {
-
-                            if ((threeRec[0].HorFName.Contains("-") == false && threeRec[0].Name.Contains("-") == false) == false)
-                            {
-                                //if(threeRec[0].HorFName)
-                                if (threeRec[0].HorFName.Trim() == string.Empty)
-                                {
-                                    threeRec[0].ErrorType = ErrorType.BREAK1EMPTY;
-                                }
-                                else
-                                {
-                                    threeRec[0].ErrorType = ErrorType.BREAK1;
-                                }
-
-                            }
-                        }
                     }
+                    // Process record by record 
+                    DoHFname(fatherOrHusband[index], pageNumber, voterList[index], index);
+                    DoAddress(address[index], pageNumber, voterList[index], index);
+                    DoAge(age[index], pageNumber, voterList[index], index);
+                    DoGender(sex[index], pageNumber, voterList[index], index);
+
                 }
 
 
+                // 1.1 add pageNo and index
+                for (int index = 0; index < voterList.Count; index++)
+                {
+                    voterList[index].PageNo = pageNumber;
+                    voterList[index].RowNo = (index / 3) + 1;
+                    voterList[index].SNo = index + 1;
+                }
+
+                // 2. HorFName
+                for (int index = 0; index < fatherOrHusband.Count; index++)
+                {
+                    //DoHFname(fatherOrHusband[index], pageNumber, voterList[index], index);
+
+                    //if (voterList[index].MayError)
+                    //    voterList.Where(w => w.RowNo == voterList[index].RowNo).ToList().ForEach(fe => fe.MayError = true);
+                }
 
 
-                //if(threeRec.Count == 3)
+                // 3. HomeAddress
+                for (int index = 0; index < address.Count; index++)
+                {
+                    DoAddress(address[index], pageNumber, voterList[index], index);
+                }
+
+                // 4. Age
+                for (int index = 0; index < age.Count; index++)
+                {
+                    DoAge(age[index], pageNumber, voterList[index], index);
+                }
+
+                // 5. Sex
+                for (int index = 0; index < sex.Count; index++)
+                {
+                    DoGender(sex[index], pageNumber, voterList[index], index);
+                }
+
+                //Append to final list
+
+
+                var groupByRow = (from v in voterList
+                                  group v by v.RowNo into ng
+                                  select ng).ToList();
+
+
+                //groupByRow.ForEach(fe =>
                 //{
-                //    if (!threeRec[0].HorFName.Contains('-') 
-                //    && threeRec[1].HorFName.Contains('-') 
-                //    && threeRec[2].HorFName.Contains('-') 
-                //    && threeRec[0].HorFName.Count(c => c == '*') == threeRec[1].HorFName.Count(c => c == '*'))
+                //    var threeRec = fe.ToList();
+                //    //var E = false;
+                //    if (threeRec[0].HorFName.Contains('-') == false && threeRec[1].HorFName.Contains('-') == true && threeRec[2].HorFName.Contains('-') == true)
                 //    {
-                //        threeRec[0].Err = true;
+                //        if (threeRec[0].HorFName.Count(c => c == '*') <= 1)
+                //        {
+
+                //            if ((threeRec[0].HorFName.Count(c => c == '*') == threeRec[0].Name.Count(c => c == '*')) == false)
+                //            {
+
+                //                if ((threeRec[0].HorFName.Contains("-") == false && threeRec[0].Name.Contains("-") == false) == false)
+                //                {
+                //                    //if(threeRec[0].HorFName)
+                //                    if (threeRec[0].HorFName.Trim() == string.Empty)
+                //                    {
+                //                        threeRec[0].ErrorType = ErrorType.BREAK1EMPTY;
+                //                    }
+                //                    else
+                //                    {
+                //                        threeRec[0].ErrorType = ErrorType.BREAK1;
+                //                    }
+
+                //                }
+                //            }
+                //        }
                 //    }
 
-                //}
-                //for (int ff = 0; ff < threeRec.Count; ff++)
+
+
+
+                //    //if(threeRec.Count == 3)
+                //    //{
+                //    //    if (!threeRec[0].HorFName.Contains('-') 
+                //    //    && threeRec[1].HorFName.Contains('-') 
+                //    //    && threeRec[2].HorFName.Contains('-') 
+                //    //    && threeRec[0].HorFName.Count(c => c == '*') == threeRec[1].HorFName.Count(c => c == '*'))
+                //    //    {
+                //    //        threeRec[0].Err = true;
+                //    //    }
+
+                //    //}
+                //    //for (int ff = 0; ff < threeRec.Count; ff++)
+                //    //{
+                //    //    threeRec[ff].Index = ff + 1;
+
+                //    //    var nec = threeRec[ff].HorFName.Count(c => c == '*');
+                //    //    threeRec[ff].NameErrorCount = nec;
+                //    //    if (nec > 1)
+                //    //        threeRec[ff].NameError = true;
+
+                //    //    var gec = threeRec[ff].Sex.Split(' ').Where(w => w == "*").Count();
+                //    //    threeRec[ff].GenderErrorCount = gec;
+                //    //    if (ff != 2 && threeRec.Count > 2 && gec > 1)
+                //    //        threeRec[ff].GenderError = true;
+                //    //}
+
+                //});
+
+                fullList.AddRange(voterList);
+
+                if (lastPageNumberToProcess == pageNumber)
+                {
+                    bd.NewVoters = voterList.Count;
+                    BoothDetail.UpdateNewVoters(bd, boothDetailPath);
+                }
+
+                if (errorRowNumber > 0)
+                {
+                    var jsonFile = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}-ReRun.json");
+                    var fd = JsonConvert.SerializeObject(voterList, Formatting.Indented);
+                    General.WriteToFile(jsonFile, fd);
+                    logs.Clear();
+                }
+
+
+                //if (voterList.Any(a => a.MayError))
                 //{
-                //    threeRec[ff].Index = ff + 1;
+                //    if (Directory.Exists(reProcessFile) == false)
+                //        Directory.CreateDirectory(reProcessFile);
 
-                //    var nec = threeRec[ff].HorFName.Count(c => c == '*');
-                //    threeRec[ff].NameErrorCount = nec;
-                //    if (nec > 1)
-                //        threeRec[ff].NameError = true;
+                //    var file = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}.txt");
+                //    General.WriteToFile(file, pageContent);
 
-                //    var gec = threeRec[ff].Sex.Split(' ').Where(w => w == "*").Count();
-                //    threeRec[ff].GenderErrorCount = gec;
-                //    if (ff != 2 && threeRec.Count > 2 && gec > 1)
-                //        threeRec[ff].GenderError = true;
+                //    //write as json
+                //    var jsonFile = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}-Error.json");
+                //    var fd = JsonConvert.SerializeObject(voterList, Formatting.Indented);
+                //    General.WriteToFile(jsonFile, fd);
                 //}
 
-            });
+                return true;//voterList.Any(a => a.MayError);
 
-            fullList.AddRange(voterList);
-
-            if (lastPageNumberToProcess == pageNumber)
-            {
-                bd.NewVoters = voterList.Count;
-                BoothDetail.UpdateNewVoters(bd, boothDetailPath);
             }
-
-            if (errorRowNumber > 0)
+            catch (Exception ex)
             {
-                var jsonFile = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}-ReRun.json");
-                var fd = JsonConvert.SerializeObject(voterList, Formatting.Indented);
-                General.WriteToFile(jsonFile, fd);
-                logs.Clear();
+
+                return false;
             }
-
-
-            if (voterList.Any(a => a.MayError))
-            {
-                if (Directory.Exists(reProcessFile) == false)
-                    Directory.CreateDirectory(reProcessFile);
-
-                var file = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}.txt");
-                General.WriteToFile(file, pageContent);
-
-                //write as json
-                var jsonFile = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}-Error.json");
-                var fd = JsonConvert.SerializeObject(voterList, Formatting.Indented);
-                General.WriteToFile(jsonFile, fd);
-            }
-
-            return voterList.Any(a => a.MayError);
 
 
         }

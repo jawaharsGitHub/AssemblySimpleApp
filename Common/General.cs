@@ -54,5 +54,13 @@ namespace Common
 
         }
 
+        static string LogPath = $@"F:\NTK\VotersAnalysis\VoterList\Log-{DateTime.Now.ToLongTimeString().Replace(":", "-")}";
+
+        public static void WriteLog(string content, string assNo, string partNo)
+        {
+            CreateFileIfNotExist(LogPath);
+            File.AppendAllText(LogPath, $"{assNo}-{partNo} : {content}{Environment.NewLine}");
+        }
+
     }
 }
