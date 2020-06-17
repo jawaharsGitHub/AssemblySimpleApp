@@ -65,8 +65,10 @@
     <None Include="Data\AssemblyVoters\211\211-BoothDetail.json" />
     <None Include="Data\BaseData - WIthoutPanchayat.json" />
     <None Include="Data\BaseData.json" />
+    <None Include="Data\VotePercDetail.json" />
     <None Include="Data\voter-Panchayat.json" />
     <None Include="Data\assembly.json" />
+    <Compile Include="PrimaryTypes\VotePercDetail.cs" />
     <Compile Include="ExtendedTypes\AssemblyAndVotes.cs" />
     <Compile Include="ExtendedTypes\CreditReport.cs" />
     <Compile Include="ExtendedTypes\CustomerDailyTxn.cs" />

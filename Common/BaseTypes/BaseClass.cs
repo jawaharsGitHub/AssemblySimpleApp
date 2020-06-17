@@ -19,14 +19,6 @@ namespace Common
 
         }
 
-        //public static void Update<T>(List<BoothDetail> items, T newItem)
-        //{
-        //    var childList = items as List<T>;
-        //    var newChildItem = newItem as T;
-        //    var matches = childList.Wher(x => x.TrackingNumber == newChildItem.TrackingNumber).ToList();
-        //    matches.ForEach(x => childList[childList.IndexOf(x)] = newChildItem);
-        //}
-
         public static void InsertSingleObjectToListJson<T>(string filePath, T singleObject)
         {
             List<T> list = new List<T>() { singleObject };
@@ -42,6 +34,8 @@ namespace Common
 
         public static List<T> ReadFileAsObjects<T>(string filePath)
         {
+            General.CreateFileIfNotExist(filePath);
+
             var jsonText = File.ReadAllText(filePath);
             List<T> list = JsonConvert.DeserializeObject<List<T>>(jsonText) ?? new List<T>();
             return list;
