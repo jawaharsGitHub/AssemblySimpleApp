@@ -42,6 +42,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnUpdateBooth = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -96,7 +97,7 @@
             // 
             this.cmbOndrium.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOndrium.FormattingEnabled = true;
-            this.cmbOndrium.Location = new System.Drawing.Point(356, 102);
+            this.cmbOndrium.Location = new System.Drawing.Point(356, 122);
             this.cmbOndrium.Name = "cmbOndrium";
             this.cmbOndrium.Size = new System.Drawing.Size(121, 21);
             this.cmbOndrium.TabIndex = 3;
@@ -129,14 +130,14 @@
             // 
             this.cmbPanchayat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPanchayat.FormattingEnabled = true;
-            this.cmbPanchayat.Location = new System.Drawing.Point(356, 146);
+            this.cmbPanchayat.Location = new System.Drawing.Point(356, 221);
             this.cmbPanchayat.Name = "cmbPanchayat";
             this.cmbPanchayat.Size = new System.Drawing.Size(121, 21);
             this.cmbPanchayat.TabIndex = 9;
             // 
             // btnPSProcess
             // 
-            this.btnPSProcess.Location = new System.Drawing.Point(477, 286);
+            this.btnPSProcess.Location = new System.Drawing.Point(663, 287);
             this.btnPSProcess.Name = "btnPSProcess";
             this.btnPSProcess.Size = new System.Drawing.Size(108, 50);
             this.btnPSProcess.TabIndex = 10;
@@ -148,14 +149,14 @@
             // 
             this.cmbAssembly.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAssembly.FormattingEnabled = true;
-            this.cmbAssembly.Location = new System.Drawing.Point(464, 243);
+            this.cmbAssembly.Location = new System.Drawing.Point(650, 240);
             this.cmbAssembly.Name = "cmbAssembly";
             this.cmbAssembly.Size = new System.Drawing.Size(121, 21);
             this.cmbAssembly.TabIndex = 11;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(477, 371);
+            this.button1.Location = new System.Drawing.Point(663, 372);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(108, 50);
             this.button1.TabIndex = 12;
@@ -165,7 +166,7 @@
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(437, 36);
+            this.webBrowser1.Location = new System.Drawing.Point(596, 23);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.Size = new System.Drawing.Size(213, 189);
@@ -173,15 +174,26 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(477, 446);
+            this.textBox1.Location = new System.Drawing.Point(663, 447);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 14;
+            // 
+            // btnUpdateBooth
+            // 
+            this.btnUpdateBooth.Location = new System.Drawing.Point(356, 383);
+            this.btnUpdateBooth.Name = "btnUpdateBooth";
+            this.btnUpdateBooth.Size = new System.Drawing.Size(85, 29);
+            this.btnUpdateBooth.TabIndex = 15;
+            this.btnUpdateBooth.Text = "Update Booth Links";
+            this.btnUpdateBooth.UseVisualStyleBackColor = true;
+            this.btnUpdateBooth.Click += new System.EventHandler(this.btnUpdateBooth_Click);
             // 
             // ucLocalBody
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnUpdateBooth);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.button1);
@@ -197,7 +209,7 @@
             this.Controls.Add(this.txtData);
             this.Controls.Add(this.label1);
             this.Name = "ucLocalBody";
-            this.Size = new System.Drawing.Size(703, 495);
+            this.Size = new System.Drawing.Size(878, 495);
             this.Load += new System.EventHandler(this.ucLocalBody_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -220,5 +232,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnUpdateBooth;
     }
 }

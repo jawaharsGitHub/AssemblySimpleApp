@@ -696,7 +696,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             try
             {
 
-                if(pageNumber == 43)
+                if (pageNumber == 43)
                 {
                     var s = "";
                 }
@@ -1401,67 +1401,61 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             if (cmbBooths.SelectedIndex == 0) return;
 
+            var result = new List<VotePercDetail>();
+
             var keyValue = (KeyValuePair<string, string>)cmbBooths.SelectedItem;
-            //
-            List<VoterList> da = new List<VoterList>();
+
 
             if (keyValue.Key.Trim() == "ALL")
             {
-
-                var allAssFiles = (from f in Directory.GetFiles(keyValue.Value).ToList()
-                                   select new KeyValuePair<string, string>(new DirectoryInfo(f).Name, f))
-                                   .Where(w => w.Key.Contains("BoothDetail") == false)
-                                   .ToList();
-
-                allAssFiles.ForEach(fe =>
-                {
-                    da.AddRange(VoterList.GetAll(fe.Value));
-                });
+                var assNo = new DirectoryInfo(keyValue.Value).Name.ToInt32();
+                result = VotePercDetail.GetForAssembly(assNo);
             }
             else
             {
-
-                da = VoterList.GetAll(keyValue.Value);
+                var boothNo = keyValue.Key.Split('-')[1].Split('.')[0].ToInt32();
+                result = VotePercDetail.GetForBooth(boothNo);
             }
 
+            dataGridView1.DataSource = result;
 
-            var dataSou = new List<KeyValuePair<string, string>>();
+            //var dataSou = new List<KeyValuePair<string, string>>();
 
-            var maleCount = da.Where(w => w.Sex.Trim().Split(' ')[0].Trim() == "ஆண்").Count();
-            var femaleCount = da.Where(w => w.Sex.Trim().Split(' ')[0].Trim() == "பெண்").Count();
+            //var maleCount = da.Where(w => w.Sex.Trim().Split(' ')[0].Trim() == "ஆண்").Count();
+            //var femaleCount = da.Where(w => w.Sex.Trim().Split(' ')[0].Trim() == "பெண்").Count();
 
-            var allAges = da.Select(s => s.Age).ToList();
-            var allC = da.Select(s => s.Age).ToList().Count();
+            //var allAges = da.Select(s => s.Age).ToList();
+            //var allC = da.Select(s => s.Age).ToList().Count();
 
-            var twenty = GetLessAgeCOunt(allAges, 20);
-            var thirty = GetAgeCOunt(allAges, 21, 30);
-            var forty = GetAgeCOunt(allAges, 31, 40);
-            var fifty = GetAgeCOunt(allAges, 41, 50);
-            var sixty = GetAgeCOunt(allAges, 51, 60);
-            var aboveSixty = GetMoreAgeCOunt(allAges, 61);
+            //var twenty = GetLessAgeCOunt(allAges, 20);
+            //var thirty = GetAgeCOunt(allAges, 21, 30);
+            //var forty = GetAgeCOunt(allAges, 31, 40);
+            //var fifty = GetAgeCOunt(allAges, 41, 50);
+            //var sixty = GetAgeCOunt(allAges, 51, 60);
+            //var aboveSixty = GetMoreAgeCOunt(allAges, 61);
 
-            lblDetails.Text = $"Total: {da.Count}{Environment.NewLine}ஆண்: {maleCount}{Environment.NewLine}பெண்: {femaleCount}{Environment.NewLine}";
+            //lblDetails.Text = $"Total: {da.Count}{Environment.NewLine}ஆண்: {maleCount}{Environment.NewLine}பெண்: {femaleCount}{Environment.NewLine}";
 
-            lblDetails.Text += $"18-20: {twenty}({Perc(twenty, allC)}){Environment.NewLine}21-30: {thirty}({Perc(thirty, allC)}){Environment.NewLine}" +
-                $"31-40: {forty}({Perc(forty, allC)}){Environment.NewLine}41-50: {fifty}({Perc(fifty, allC)}){Environment.NewLine}" +
-                $"51-60: {sixty}({Perc(sixty, allC)}){Environment.NewLine}Above 60: {aboveSixty}({Perc(aboveSixty, allC)}){Environment.NewLine}";
+            //lblDetails.Text += $"18-20: {twenty}({Perc(twenty, allC)}){Environment.NewLine}21-30: {thirty}({Perc(thirty, allC)}){Environment.NewLine}" +
+            //    $"31-40: {forty}({Perc(forty, allC)}){Environment.NewLine}41-50: {fifty}({Perc(fifty, allC)}){Environment.NewLine}" +
+            //    $"51-60: {sixty}({Perc(sixty, allC)}){Environment.NewLine}Above 60: {aboveSixty}({Perc(aboveSixty, allC)}){Environment.NewLine}";
 
-            dataSou.Add(new KeyValuePair<string, string>("18-20", Perc(twenty, allC)));
-            dataSou.Add(new KeyValuePair<string, string>("21-30", Perc(thirty, allC)));
-            dataSou.Add(new KeyValuePair<string, string>("31-40", Perc(forty, allC)));
-            dataSou.Add(new KeyValuePair<string, string>("41-50", Perc(fifty, allC)));
-            dataSou.Add(new KeyValuePair<string, string>("51-60", Perc(sixty, allC)));
-            dataSou.Add(new KeyValuePair<string, string>("Above60", Perc(aboveSixty, allC)));
+            //dataSou.Add(new KeyValuePair<string, string>("18-20", Perc(twenty, allC)));
+            //dataSou.Add(new KeyValuePair<string, string>("21-30", Perc(thirty, allC)));
+            //dataSou.Add(new KeyValuePair<string, string>("31-40", Perc(forty, allC)));
+            //dataSou.Add(new KeyValuePair<string, string>("41-50", Perc(fifty, allC)));
+            //dataSou.Add(new KeyValuePair<string, string>("51-60", Perc(sixty, allC)));
+            //dataSou.Add(new KeyValuePair<string, string>("Above60", Perc(aboveSixty, allC)));
 
-            var t1 = dataSou.OrderByDescending(o =>
-            Convert.ToDecimal(o.Value.Split(' ')[1].Replace("(", "").Replace(")", "").Replace("%", ""))
-            ).ToList();
+            //var t1 = dataSou.OrderByDescending(o =>
+            //Convert.ToDecimal(o.Value.Split(' ')[1].Replace("(", "").Replace(")", "").Replace("%", ""))
+            //).ToList();
 
-            t1.Insert(0, new KeyValuePair<string, string>("பெண்", Perc(femaleCount, allC)));
-            t1.Insert(0, new KeyValuePair<string, string>("ஆண்", Perc(maleCount, allC)));
-            t1.Insert(0, new KeyValuePair<string, string>("Total", da.Count.ToString()));
+            //t1.Insert(0, new KeyValuePair<string, string>("பெண்", Perc(femaleCount, allC)));
+            //t1.Insert(0, new KeyValuePair<string, string>("ஆண்", Perc(maleCount, allC)));
+            //t1.Insert(0, new KeyValuePair<string, string>("Total", da.Count.ToString()));
 
-            dataGridView1.DataSource = t1;
+            //dataGridView1.DataSource = t1;
 
 
 

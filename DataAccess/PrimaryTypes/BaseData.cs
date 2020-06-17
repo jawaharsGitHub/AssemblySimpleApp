@@ -12,8 +12,6 @@ namespace DataAccess.PrimaryTypes
 
         private static List<BaseData> OndriumForDistrict;
         //private static List<BaseData> PanchayatForOndrium;
-
-
         public int DistrictId { get; set; }
 
         public string DistrictName { get; set; }
@@ -26,6 +24,12 @@ namespace DataAccess.PrimaryTypes
 
         public string PanchayatName { get; set; }
 
+        public AreaType Type { get; set; }
+
+        public int AssemblyId { get; set; }
+
+        public int BoothId { get; set; }
+
         [JsonIgnore]
         public string OndriumFullName { get { return $"{OndriumId}-{OndriumName}"; } }
 
@@ -33,17 +37,17 @@ namespace DataAccess.PrimaryTypes
         {
             OndriumForDistrict = GetAll().Where(w => w.DistrictId == districtId).ToList();
 
-             var result = (from bd in OndriumForDistrict
-                           where bd.DistrictId == districtId
-                                  group bd by bd.OndriumId into newGrp
-                                  select new BaseData()
-                                  {
-                                      OndriumId = newGrp.Key,
-                                      OndriumName = newGrp.First().OndriumName
-                                  }).ToList();
+            var result = (from bd in OndriumForDistrict
+                          where bd.DistrictId == districtId
+                          group bd by bd.OndriumId into newGrp
+                          select new BaseData()
+                          {
+                              OndriumId = newGrp.Key,
+                              OndriumName = newGrp.First().OndriumName
+                          }).ToList();
 
-            
-            
+
+
             return result;
         }
 
@@ -57,6 +61,23 @@ namespace DataAccess.PrimaryTypes
             return ReadFileAsObjects<BaseData>(JsonFilePath);
         }
 
+        public static void SaveAll()
+        {
+            var data =  ReadFileAsObjects<BaseData>(JsonFilePath);
+            WriteObjectsToFile<BaseData>(data, JsonFilePath);
 
+        }
+
+
+    }
+
+
+    public enum AreaType
+    {
+        O,   // Ondrium
+        P,  // Perooratchi
+        N,  // Nagaratchi
+        M,  // Managaratchi
+        
     }
 }

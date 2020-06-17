@@ -61,9 +61,11 @@ namespace CenturyFinCorpApp.UsrCtrl
 
 
 
-            ProcessPanchayat();
+            //ProcessPanchayat();
 
             //ProcessOndrium();
+
+            ProcessNagaratchi();
 
             txtData.Text = "";
             txtData.SelectAll();
@@ -217,6 +219,95 @@ namespace CenturyFinCorpApp.UsrCtrl
 
 
             MessageBox.Show($"{selectedDisName} done!", "DONE!");
+
+
+        }
+
+        private void ProcessNagaratchi()
+        {
+
+            BaseData.SaveAll();
+
+            var value = ((KeyValuePair<int, string>)cmbSubItems.SelectedItem).Key;
+
+            if (value == 0)
+            {
+                MessageBox.Show("pls select sub items");
+                return;
+            }
+
+            var data = txtData.Text;
+
+            var allLines = data.Split('=').ToList();
+
+            allLines.RemoveRange(0, 2);
+
+            var fnalData = new StringBuilder();
+            var d = new List<BaseData>();
+
+            allLines.ForEach(fe =>
+            {
+
+                var NeededData = fe.Split('<')[0].Split('>');
+
+                var id = NeededData[0].Replace("\"", "");
+                var name = NeededData[1];
+
+                d.Add(new BaseData()
+                {
+
+                    DistrictId = selectedDisId,
+                    DistrictName = selectedDisName.Trim(),
+                    OndriumId = selectedOndId,
+                    OndriumName = selectedOndName,
+                    PanchayatId = Convert.ToInt32(id),
+                    PanchayatName = name
+                });
+            });
+
+
+            string path = @"e:\json\PanchayatData.json";
+
+            if (!File.Exists(path))
+            {
+                // Create a file to write to.
+                using (StreamWriter sw = File.CreateText(path))
+                {
+
+                }
+            }
+
+            // This text is always added, making the file longer over time
+            // if it is not deleted.
+            using (StreamWriter sw = File.AppendText(path))
+            {
+                sw.WriteLine(JsonConvert.SerializeObject(d, Formatting.Indented).Replace("[", "").Replace("]", "") + ",");
+            }
+
+
+
+            MessageBox.Show($"{selectedOndName}-{selectedDisName} done!", "DONE!");
+
+
+            if (cmbOndrium.SelectedIndex + 1 <= cmbOndrium.Items.Count - 1)
+            {
+                cmbOndrium.SelectedIndex += 1;
+            }
+            else
+            {
+                MessageBox.Show("COMPLETE DONE!!!!!");
+
+                if (cmbZonal.SelectedIndex + 1 <= cmbZonal.Items.Count - 1)
+                {
+                    cmbZonal.SelectedIndex += 1;
+                }
+                else
+                {
+                    MessageBox.Show("ALL DONE!!!!!");
+
+                }
+
+            }
 
 
         }
@@ -536,7 +627,18 @@ namespace CenturyFinCorpApp.UsrCtrl
             }
         }
 
+        private void btnUpdateBooth_Click(object sender, EventArgs e)
+        {
+            if (cmbZonal.SelectedIndex == 0 || cmbZonal.SelectedIndex == 0 ||
+                cmbZonal.SelectedIndex == 0 || cmbZonal.SelectedIndex == 0)
+            {
+                MessageBox.Show("Select all fields");
+                return;
+            }
 
+
+
+        }
     }
 
     public class VoterData
