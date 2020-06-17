@@ -226,7 +226,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         private void ProcessNagaratchi()
         {
 
-            //BaseData.SaveAll();
+            BaseData.SaveAll();
 
             var value = ((KeyValuePair<int, string>)cmbSubItems.SelectedItem).Key;
 

@@ -61,12 +61,11 @@ namespace DataAccess.PrimaryTypes
             return ReadFileAsObjects<BaseData>(JsonFilePath);
         }
 
-        //public static void SaveAll()
-        //{
-        //    var data =  ReadFileAsObjects<BaseData>(JsonFilePath);
-        //    WriteObjectsToFile<BaseData>(data, JsonFilePath);
-
-        //}
+        public static void SaveAll()
+        {
+            var data = ReadFileAsObjects<BaseData>(JsonFilePath);
+            WriteObjectsToFile<BaseData>(data, JsonFilePath);
+        }
 
         public static void UpdateBooth(int districtNo, int assemblyNo, int ondriumNo, List<int> panchayatNo)
         {
