@@ -17,8 +17,8 @@ namespace CenturyFinCorpApp.UsrCtrl
     {
 
         List<VoterList> fullList = new List<VoterList>();
-        string folderPath = @"F:\NTK\VotersAnalysis\";
-        string docPath = @"F:\NTK\VotersAnalysis\VoterList\doc";
+        //string folderPath = @"F:\NTK\VotersAnalysis\";
+        string txtPath = ""; //@"F:\NTK\VotersAnalysis\VoterList\doc";
 
 
         string reProcessFile = "";
@@ -28,6 +28,8 @@ namespace CenturyFinCorpApp.UsrCtrl
         List<string> logs;
         string voterFilePath = "";
         string boothDetailPath = "";
+        string errorFolder = "";
+        string DoneFolder = "";
 
 
         public ucVoterAnalysis()
@@ -44,12 +46,27 @@ namespace CenturyFinCorpApp.UsrCtrl
             cmbFIlter.DataSource = GetOptions();
             reProcessFile = "";
 
+
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+
+            //string folderPath = "";
+            if (DialogResult.OK == fbd.ShowDialog())
+            {
+                txtPath = fbd.SelectedPath;
+            }
+
             //int year = 2019;
             //var filePath = $@"{folderPath}ac210333.txt";
 
-            var allFiles = Directory.GetFiles(docPath).ToList();
+            var allFiles = Directory.GetFiles(txtPath).ToList();
 
             int year = 2020;
+
+            errorFolder = Path.Combine(Directory.GetParent(txtPath).FullName, "ErrorFile");
+            DoneFolder = Path.Combine(Directory.GetParent(txtPath).FullName, "Done");
+
+            General.CreateFolderIfNotExist(errorFolder);
+            General.CreateFolderIfNotExist(DoneFolder);
 
             foreach (var item in allFiles)
             {
@@ -65,13 +82,10 @@ namespace CenturyFinCorpApp.UsrCtrl
                     assNo = ufn.Substring(2, 3);
                     partNo = ufn.Substring(5, 3);
 
-                    voterFilePath = Path.Combine(AppConfiguration.AssemblyVotersFolder, $"{assNo}");
+                    var basePath = Path.Combine(AppConfiguration.AssemblyVotersFolder, $"{assNo}");
 
-                    boothDetailPath = Path.Combine(voterFilePath, $"{assNo}-BoothDetail.json");
-
-
-
-                    voterFilePath = Path.Combine(voterFilePath, $"{assNo}-{partNo}.json");
+                    boothDetailPath = Path.Combine(basePath, $"{assNo}-BoothDetail.json");
+                    voterFilePath = Path.Combine(basePath, $"{assNo}-{partNo}.json");
 
                     this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
 
@@ -256,12 +270,12 @@ namespace CenturyFinCorpApp.UsrCtrl
                     var voteDetails = fpSPlitted[13];
 
                     List<string> toReplaceVoteDetail = new List<string>()
-            {
-                "முடியும் வரிசை எண்",
-                "நிகர வாக்காளர்களின் எண்ணிக்கை",
-                "பெண் மூன்றாம் பாலினம்",
-                "மொத்தம்"
-            };
+                        {
+                            "முடியும் வரிசை எண்",
+                            "நிகர வாக்காளர்களின் எண்ணிக்கை",
+                            "பெண் மூன்றாம் பாலினம்",
+                            "மொத்தம்"
+                        };
 
                     toReplaceVoteDetail.ForEach(fe =>
                                 {
@@ -424,7 +438,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 //var file3 = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{DateTime.Now.ToLocalTime().ToString().Replace(":", "~")}.json");
                 //General.WriteToFile(file3, fd);
 
-                
+
 
                 // Save into voter perc File
                 // var dataSou = new List<KeyValuePair<string, string>>();
@@ -462,13 +476,16 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 VotePercDetail.Save(newBoothPerc);
 
+
+                File.Move(item, Path.Combine(DoneFolder, new FileInfo(item).Name));
+
                 fullList.Clear();
 
             }
 
             MessageBox.Show("ALL DONE!");
 
-            dataGridView1.DataSource = fullList;
+            //dataGridView1.DataSource = fullList;
 
             //var st = new StringBuilder();
 
@@ -484,15 +501,15 @@ namespace CenturyFinCorpApp.UsrCtrl
             //fullList.Where(w => er.Contains($"{w.PageNo}-{w.RowNo}")).ToList().ForEach(fe => st.AppendLine(fe.ToString()));
 
 
-            var errorPages = (from fl in fullList
-                              where fl.MayError
-                              group fl by fl.PageNo into ng
-                              select "Page-" + ng.Key.ToString()).ToList();
+            //var errorPages = (from fl in fullList
+            //                  where fl.MayError
+            //                  group fl by fl.PageNo into ng
+            //                  select "Page-" + ng.Key.ToString()).ToList();
 
-            errorPages.Insert(0, "--SELECT PAGE--");
+            //errorPages.Insert(0, "--SELECT PAGE--");
 
-            chkPageList.DataSource = errorPages;
-            SetErrorDetail();
+            //chkPageList.DataSource = errorPages;
+            //SetErrorDetail();
 
         }
 
@@ -799,8 +816,10 @@ namespace CenturyFinCorpApp.UsrCtrl
                 if (isNameIssue || isFNameIssue || isAddressIssue || isAgeIssue || isSexIssue)
                 {
                     mayHaveError = true;
-                    var jsonFile = Path.Combine(docPath, bd.AssemblyNo, bd.PartNo, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}-Data.txt");
-                    var jsonFileCon = Path.Combine(docPath, bd.AssemblyNo, bd.PartNo, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}-Content.txt");
+
+
+                    var jsonFile = Path.Combine(errorFolder, bd.AssemblyNo, bd.PartNo, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}-Data.txt");
+                    var jsonFileCon = Path.Combine(errorFolder, bd.AssemblyNo, bd.PartNo, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}-Content.txt");
 
 
                     //var fd = JsonConvert.SerializeObject(voterList, Formatting.Indented);
@@ -1416,7 +1435,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         }
     }
 
-    
+
 
 
 }
