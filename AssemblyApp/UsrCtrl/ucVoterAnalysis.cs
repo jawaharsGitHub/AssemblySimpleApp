@@ -30,6 +30,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         string boothDetailPath = "";
         string errorFolder = "";
         string DoneFolder = "";
+        string logErrorPath = "";
 
 
         public ucVoterAnalysis()
@@ -47,13 +48,17 @@ namespace CenturyFinCorpApp.UsrCtrl
             reProcessFile = "";
 
 
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            //FolderBrowserDialog fbd = new FolderBrowserDialog();
 
-            //string folderPath = "";
-            if (DialogResult.OK == fbd.ShowDialog())
-            {
-                txtPath = fbd.SelectedPath;
-            }
+            ////string folderPath = "";
+            //if (DialogResult.OK == fbd.ShowDialog())
+            //{
+            //    txtPath = fbd.SelectedPath;
+            //}
+
+
+            txtPath = @"F:\NTK\VotersAnalysis\VoterList - Copy\211\txt";
+
 
             //int year = 2019;
             //var filePath = $@"{folderPath}ac210333.txt";
@@ -64,6 +69,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             errorFolder = Path.Combine(Directory.GetParent(txtPath).FullName, "ErrorFile");
             DoneFolder = Path.Combine(Directory.GetParent(txtPath).FullName, "Done");
+            logErrorPath = Path.Combine(Directory.GetParent(txtPath).FullName, $"Log -{DateTime.Now.ToLongTimeString().Replace(":", "-")}");  //$@"F:\NTK\VotersAnalysis\VoterList\Log-{DateTime.Now.ToLongTimeString().Replace(":", "-")}";
 
             General.CreateFolderIfNotExist(errorFolder);
             General.CreateFolderIfNotExist(DoneFolder);
@@ -111,7 +117,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 }
                 catch (Exception ex)
                 {
-                    General.WriteLog($"Error in FileName - {ex.ToString()}", assNo, partNo, 0);
+                    General.WriteLog(logErrorPath, $"Error in FileName - {ex.ToString()}", assNo, partNo, 0);
                     //MessageBox.Show("Invalid file name");
                 }
 
@@ -327,7 +333,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 }
                 catch (Exception ex)
                 {
-                    General.WriteLog($"Error in First Page", assNo, partNo, 1);
+                    General.WriteLog(logErrorPath, $"Error in First Page", assNo, partNo, 1);
                 }
 
 
@@ -373,7 +379,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                     }
                     else
                     {
-                        General.WriteLog($"Error in PageProcess", assNo, partNo, pageNumber);
+                        General.WriteLog(logErrorPath, $"Error in PageProcess", assNo, partNo, pageNumber);
                         isProcessed = false;
                         break;
                     }
@@ -690,7 +696,10 @@ namespace CenturyFinCorpApp.UsrCtrl
             try
             {
 
-
+                if(pageNumber == 43)
+                {
+                    var s = "";
+                }
                 // processing page number
 
                 /*
@@ -801,32 +810,81 @@ namespace CenturyFinCorpApp.UsrCtrl
                 //}
 
                 if (isNameIssue)
-                    General.WriteLog("Error in Names", assNum, partNum, pageNumber);
+                {
+                    var missedNames = new List<string>();
+                    var missedCount = (recordCount - names.Count);
+
+                    for (int i = 0; i < missedCount; i++)
+                    {
+                        missedNames.Add("Name:MISSED");
+                    }
+                    names.InsertRange(names.Count, missedNames);
+                    General.WriteLog(logErrorPath, "Error in Names", assNum, partNum, pageNumber);
+                }
                 if (isFNameIssue)
-                    General.WriteLog("Error in FatherNames", assNum, partNum, pageNumber);
+                {
+                    var missedNames = new List<string>();
+                    var missedCount = (recordCount - fatherOrHusband.Count);
+
+                    for (int i = 0; i < missedCount; i++)
+                    {
+                        missedNames.Add("FATHER:MISSED");
+                    }
+                    fatherOrHusband.InsertRange(names.Count, missedNames);
+                    General.WriteLog(logErrorPath, "Error in FatherNames", assNum, partNum, pageNumber);
+                }
                 if (isAddressIssue)
-                    General.WriteLog("Error in Address", assNum, partNum, pageNumber);
+                {
+                    var missedNames = new List<string>();
+                    var missedCount = (recordCount - address.Count);
+
+                    for (int i = 0; i < missedCount; i++)
+                    {
+                        address.Add("ADDRESS:MISSED");
+                    }
+                    address.InsertRange(address.Count, missedNames);
+                    General.WriteLog(logErrorPath, "Error in Address", assNum, partNum, pageNumber);
+                }
                 if (isAgeIssue)
-                    General.WriteLog("Error in Age", assNum, partNum, pageNumber);
+                {
+                    var missedNames = new List<string>();
+                    var missedCount = (recordCount - age.Count);
+
+                    for (int i = 0; i < missedCount; i++)
+                    {
+                        age.Add("AGE:MISSED");
+                    }
+                    age.InsertRange(age.Count, missedNames);
+                    General.WriteLog(logErrorPath, "Error in Age", assNum, partNum, pageNumber);
+                }
                 if (isSexIssue)
-                    General.WriteLog("Error in Gender", assNum, partNum, pageNumber);
+                {
+                    var missedNames = new List<string>();
+                    var missedCount = (recordCount - sex.Count);
+
+                    for (int i = 0; i < missedCount; i++)
+                    {
+                        sex.Add("SEX:MISSED");
+                    }
+                    sex.InsertRange(sex.Count, missedNames);
+                    General.WriteLog(logErrorPath, "Error in Gender", assNum, partNum, pageNumber);
+                }
 
 
-                /* NAME */
-                if (isNameIssue || isFNameIssue || isAddressIssue || isAgeIssue || isSexIssue)
+                //if (isNameIssue || isFNameIssue || isAddressIssue || isAgeIssue || isSexIssue)
+                if (isAgeIssue || isSexIssue)
                 {
                     mayHaveError = true;
 
 
-                    var jsonFile = Path.Combine(errorFolder, bd.AssemblyNo, bd.PartNo, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}-Data.txt");
-                    var jsonFileCon = Path.Combine(errorFolder, bd.AssemblyNo, bd.PartNo, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}-Content.txt");
-
+                    var jsonFile = Path.Combine(errorFolder, bd.PartNo, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}-Data.txt");
+                    var jsonFileCon = Path.Combine(errorFolder, bd.PartNo, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}-Content.txt");
 
                     //var fd = JsonConvert.SerializeObject(voterList, Formatting.Indented);
                     General.CreateFolderIfNotExist(new FileInfo(jsonFile).DirectoryName);
                     General.WriteToFile(jsonFile, data);
                     General.WriteToFile(jsonFileCon, pageContent);
-                    return false;
+                    //return false;
                 }
 
                 if (isNameIssue)
@@ -869,23 +927,23 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 sb2.AppendLine($"------------{pageNumber}------------");
 
-                for (int index = 0; index < voterList.Count; index++)
-                {
+                //for (int index = 0; index < voterList.Count; index++)
+                //{
 
-                    voterList[index].PageNo = pageNumber;
-                    voterList[index].RowNo = (index / 3) + 1;
-                    voterList[index].SNo = index + 1;
-                    if (voterList[index].RowNo.ToString() == txtRow.Text.Trim())
-                    {
+                //    voterList[index].PageNo = pageNumber;
+                //    voterList[index].RowNo = (index / 3) + 1;
+                //    voterList[index].SNo = index + 1;
+                //    if (voterList[index].RowNo.ToString() == txtRow.Text.Trim())
+                //    {
 
-                    }
-                    // Process record by record 
-                    DoHFname(fatherOrHusband[index], pageNumber, voterList[index], index);
-                    DoAddress(address[index], pageNumber, voterList[index], index);
-                    DoAge(age[index], pageNumber, voterList[index], index);
-                    DoGender(sex[index], pageNumber, voterList[index], index);
+                //    }
+                //    // Process record by record 
+                //    DoHFname(fatherOrHusband[index], pageNumber, voterList[index], index);
+                //    DoAddress(address[index], pageNumber, voterList[index], index);
+                //    DoAge(age[index], pageNumber, voterList[index], index);
+                //    DoGender(sex[index], pageNumber, voterList[index], index);
 
-                }
+                //}
 
 
                 // 1.1 add pageNo and index
@@ -899,7 +957,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 // 2. HorFName
                 for (int index = 0; index < fatherOrHusband.Count; index++)
                 {
-                    //DoHFname(fatherOrHusband[index], pageNumber, voterList[index], index);
+                    DoHFname(fatherOrHusband[index], pageNumber, voterList[index], index);
 
                     //if (voterList[index].MayError)
                     //    voterList.Where(w => w.RowNo == voterList[index].RowNo).ToList().ForEach(fe => fe.MayError = true);
@@ -927,9 +985,9 @@ namespace CenturyFinCorpApp.UsrCtrl
                 //Append to final list
 
 
-                var groupByRow = (from v in voterList
-                                  group v by v.RowNo into ng
-                                  select ng).ToList();
+                //var groupByRow = (from v in voterList
+                //                  group v by v.RowNo into ng
+                //                  select ng).ToList();
 
 
                 //groupByRow.ForEach(fe =>

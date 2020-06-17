@@ -78,5 +78,25 @@
     "to50": 23.5,
     "to60": 16.6,
     "Above60": 18.6
+  },
+  {
+    "AssemblyNo": 211,
+    "OndriumNo": 0,
+    "PanchayatNo": 0,
+    "PaguthiType": 0,
+    "BoothNo": 5,
+    "Total": 0,
+    "Male": 589,
+    "Female": 589,
+    "Third": 0,
+    "MaleP": 50.0,
+    "FemaleP": 50.0,
+    "ThirdP": 0.0,
+    "to20": 3.2,
+    "to30": 20.0,
+    "to40": 20.3,
+    "to50": 26.0,
+    "to60": 14.2,
+    "Above60": 16.4
   }
 ]

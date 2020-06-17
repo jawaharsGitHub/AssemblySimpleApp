@@ -64,12 +64,12 @@ namespace Common
 
         }
 
-        static string LogPath = $@"F:\NTK\VotersAnalysis\VoterList\Log-{DateTime.Now.ToLongTimeString().Replace(":", "-")}";
+        
 
-        public static void WriteLog(string content, string assNo, string partNo, int pn)
+        public static void WriteLog(string path, string content, string assNo, string partNo, int pn)
         {
-            CreateFileIfNotExist(LogPath);
-            File.AppendAllText(LogPath, $"{assNo}-{partNo}-{pn} : {content}{Environment.NewLine}");
+            CreateFileIfNotExist(path);
+            File.AppendAllText(path, $"{assNo}-{partNo}-{pn} : {content}{Environment.NewLine}");
         }
 
     }

@@ -137,10 +137,15 @@ namespace DataAccess.PrimaryTypes
             {
                 List<BoothDetail> list = ReadFileAsObjects<BoothDetail>(jsonFilePath);
 
-                var u = list.Where(c => c.PartNo == bd.PartNo).First();
-                u.NewVoters = bd.NewVoters;
+                var u = list.Where(c => c.PartNo == bd.PartNo).FirstOrDefault();
 
-                WriteObjectsToFile(list, jsonFilePath);
+                if(u != null)
+                {
+                    u.NewVoters = bd.NewVoters;
+
+                    WriteObjectsToFile(list, jsonFilePath);
+                }
+                
 
             }
             catch (Exception ex)
