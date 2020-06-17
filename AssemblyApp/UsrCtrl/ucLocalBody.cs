@@ -137,9 +137,9 @@ namespace CenturyFinCorpApp.UsrCtrl
             MessageBox.Show($"{selectedOndName}-{selectedDisName} done!", "DONE!");
 
 
-            if (cmbOndrium.SelectedIndex + 1 <= cmbOndrium.Items.Count - 1)
+            if (lstOndrium.SelectedIndex + 1 <= lstOndrium.Items.Count - 1)
             {
-                cmbOndrium.SelectedIndex += 1;
+                lstOndrium.SelectedIndex += 1;
             }
             else
             {
@@ -226,7 +226,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         private void ProcessNagaratchi()
         {
 
-            BaseData.SaveAll();
+            //BaseData.SaveAll();
 
             var value = ((KeyValuePair<int, string>)cmbSubItems.SelectedItem).Key;
 
@@ -289,9 +289,9 @@ namespace CenturyFinCorpApp.UsrCtrl
             MessageBox.Show($"{selectedOndName}-{selectedDisName} done!", "DONE!");
 
 
-            if (cmbOndrium.SelectedIndex + 1 <= cmbOndrium.Items.Count - 1)
+            if (lstOndrium.SelectedIndex + 1 <= lstOndrium.Items.Count - 1)
             {
-                cmbOndrium.SelectedIndex += 1;
+                lstOndrium.SelectedIndex += 1;
             }
             else
             {
@@ -355,21 +355,22 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             var ondriums = BaseData.GetOndrium(disId);
 
-            cmbOndrium.DataSource = ondriums;
+            //cmbOndrium.DataSource = ondriums;
+            lstOndrium.DataSource = ondriums;
 
             lblCount.Text = $"{ondriums.Count} in {selectedDisName}";
 
-            cmbOndrium.DisplayMember = "OndriumFullName";
-            cmbOndrium.ValueMember = "OndriumId";
-            this.cmbOndrium.SelectedIndexChanged += CmbOndrium_SelectedIndexChanged;
+            lstOndrium.DisplayMember = "OndriumFullName";
+            lstOndrium.ValueMember = "OndriumId";
+            this.lstOndrium.SelectedIndexChanged += CmbOndrium_SelectedIndexChanged;
         }
 
         private void CmbOndrium_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbOndrium.SelectedValue.ToInt32() > 0)
+            if (lstOndrium.SelectedValue.ToInt32() > 0)
             {
-                selectedOndId = (cmbOndrium.SelectedItem as BaseData).OndriumId;
-                selectedOndName = (cmbOndrium.SelectedItem as BaseData).OndriumName;
+                selectedOndId = (lstOndrium.SelectedItem as BaseData).OndriumId;
+                selectedOndName = (lstOndrium.SelectedItem as BaseData).OndriumName;
 
                 LoadPanchayat(selectedOndId);
                 //lblDone.Text = $"{cmbOndrium.SelectedIndex} done";
@@ -381,12 +382,12 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             var panchayats = BaseData.GetPanchayat(ondriumId);
 
-            cmbPanchayat.DataSource = panchayats;
+            lstPanchayat.DataSource = panchayats;
 
             lblCount.Text = $"{panchayats.Count} in {selectedOndName}";
 
-            cmbPanchayat.DisplayMember = "PanchayatName";
-            cmbPanchayat.ValueMember = "PanchayatId";
+            lstPanchayat.DisplayMember = "PanchayatName";
+            lstPanchayat.ValueMember = "PanchayatId";
             //this.cmbOndrium.SelectedIndexChanged += CmbOndrium_SelectedIndexChanged;
         }
 
@@ -629,12 +630,22 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void btnUpdateBooth_Click(object sender, EventArgs e)
         {
-            if (cmbZonal.SelectedIndex == 0 || cmbZonal.SelectedIndex == 0 ||
-                cmbZonal.SelectedIndex == 0 || cmbZonal.SelectedIndex == 0)
+            if (cmbZonal.SelectedIndex == 0 || cmbAssembly.SelectedIndex == 0 ||
+                lstOndrium.SelectedIndices.Count == 0 || lstPanchayat.SelectedIndices.Count == 0)
             {
                 MessageBox.Show("Select all fields");
                 return;
             }
+
+            var selectedPanchayats = lstPanchayat.SelectedItems.Cast<BaseData>().Select(s => s.PanchayatId).ToList();
+
+            
+            //selectedPanchayats.Cast<BaseData>().ToList()
+
+            BaseData.UpdateBooth(cmbZonal.SelectedValue.ToInt32(), 
+                                cmbAssembly.SelectedValue.ToInt32(), 
+                                lstOndrium.SelectedValue.ToInt32(),
+                                selectedPanchayats);
 
 
 

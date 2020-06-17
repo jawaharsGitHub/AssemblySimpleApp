@@ -33,16 +33,16 @@
             this.btnProcess = new System.Windows.Forms.Button();
             this.cmbSubItems = new System.Windows.Forms.ComboBox();
             this.cmbZonal = new System.Windows.Forms.ComboBox();
-            this.cmbOndrium = new System.Windows.Forms.ComboBox();
             this.lblCount = new System.Windows.Forms.Label();
             this.lblDone = new System.Windows.Forms.Label();
-            this.cmbPanchayat = new System.Windows.Forms.ComboBox();
             this.btnPSProcess = new System.Windows.Forms.Button();
             this.cmbAssembly = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnUpdateBooth = new System.Windows.Forms.Button();
+            this.lstOndrium = new System.Windows.Forms.ListBox();
+            this.lstPanchayat = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -93,15 +93,6 @@
             this.cmbZonal.TabIndex = 2;
             this.cmbZonal.SelectedIndexChanged += new System.EventHandler(this.cmbZonal_SelectedIndexChanged);
             // 
-            // cmbOndrium
-            // 
-            this.cmbOndrium.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbOndrium.FormattingEnabled = true;
-            this.cmbOndrium.Location = new System.Drawing.Point(356, 122);
-            this.cmbOndrium.Name = "cmbOndrium";
-            this.cmbOndrium.Size = new System.Drawing.Size(121, 21);
-            this.cmbOndrium.TabIndex = 3;
-            // 
             // lblCount
             // 
             this.lblCount.AutoSize = true;
@@ -125,15 +116,6 @@
             this.lblDone.Size = new System.Drawing.Size(37, 39);
             this.lblDone.TabIndex = 8;
             this.lblDone.Text = "[]";
-            // 
-            // cmbPanchayat
-            // 
-            this.cmbPanchayat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPanchayat.FormattingEnabled = true;
-            this.cmbPanchayat.Location = new System.Drawing.Point(356, 221);
-            this.cmbPanchayat.Name = "cmbPanchayat";
-            this.cmbPanchayat.Size = new System.Drawing.Size(121, 21);
-            this.cmbPanchayat.TabIndex = 9;
             // 
             // btnPSProcess
             // 
@@ -181,7 +163,7 @@
             // 
             // btnUpdateBooth
             // 
-            this.btnUpdateBooth.Location = new System.Drawing.Point(356, 383);
+            this.btnUpdateBooth.Location = new System.Drawing.Point(483, 172);
             this.btnUpdateBooth.Name = "btnUpdateBooth";
             this.btnUpdateBooth.Size = new System.Drawing.Size(85, 29);
             this.btnUpdateBooth.TabIndex = 15;
@@ -189,20 +171,38 @@
             this.btnUpdateBooth.UseVisualStyleBackColor = true;
             this.btnUpdateBooth.Click += new System.EventHandler(this.btnUpdateBooth_Click);
             // 
+            // lstOndrium
+            // 
+            this.lstOndrium.FormattingEnabled = true;
+            this.lstOndrium.Location = new System.Drawing.Point(321, 117);
+            this.lstOndrium.Name = "lstOndrium";
+            this.lstOndrium.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lstOndrium.Size = new System.Drawing.Size(156, 134);
+            this.lstOndrium.TabIndex = 16;
+            // 
+            // lstPanchayat
+            // 
+            this.lstPanchayat.FormattingEnabled = true;
+            this.lstPanchayat.Location = new System.Drawing.Point(321, 287);
+            this.lstPanchayat.Name = "lstPanchayat";
+            this.lstPanchayat.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lstPanchayat.Size = new System.Drawing.Size(167, 199);
+            this.lstPanchayat.TabIndex = 17;
+            // 
             // ucLocalBody
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lstPanchayat);
+            this.Controls.Add(this.lstOndrium);
             this.Controls.Add(this.btnUpdateBooth);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cmbAssembly);
             this.Controls.Add(this.btnPSProcess);
-            this.Controls.Add(this.cmbPanchayat);
             this.Controls.Add(this.lblDone);
             this.Controls.Add(this.lblCount);
-            this.Controls.Add(this.cmbOndrium);
             this.Controls.Add(this.cmbZonal);
             this.Controls.Add(this.cmbSubItems);
             this.Controls.Add(this.btnProcess);
@@ -223,15 +223,15 @@
         private System.Windows.Forms.Button btnProcess;
         private System.Windows.Forms.ComboBox cmbSubItems;
         private System.Windows.Forms.ComboBox cmbZonal;
-        private System.Windows.Forms.ComboBox cmbOndrium;
         private System.Windows.Forms.Label lblCount;
         private System.Windows.Forms.Label lblDone;
-        private System.Windows.Forms.ComboBox cmbPanchayat;
         private System.Windows.Forms.Button btnPSProcess;
         private System.Windows.Forms.ComboBox cmbAssembly;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnUpdateBooth;
+        private System.Windows.Forms.ListBox lstOndrium;
+        private System.Windows.Forms.ListBox lstPanchayat;
     }
 }

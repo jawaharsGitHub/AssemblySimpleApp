@@ -28,7 +28,7 @@ namespace DataAccess.PrimaryTypes
 
         public int AssemblyId { get; set; }
 
-        public int BoothId { get; set; }
+        //public int BoothId { get; set; }
 
         [JsonIgnore]
         public string OndriumFullName { get { return $"{OndriumId}-{OndriumName}"; } }
@@ -61,10 +61,23 @@ namespace DataAccess.PrimaryTypes
             return ReadFileAsObjects<BaseData>(JsonFilePath);
         }
 
-        public static void SaveAll()
+        //public static void SaveAll()
+        //{
+        //    var data =  ReadFileAsObjects<BaseData>(JsonFilePath);
+        //    WriteObjectsToFile<BaseData>(data, JsonFilePath);
+
+        //}
+
+        public static void UpdateBooth(int districtNo, int assemblyNo, int ondriumNo, List<int> panchayatNo)
         {
-            var data =  ReadFileAsObjects<BaseData>(JsonFilePath);
-            WriteObjectsToFile<BaseData>(data, JsonFilePath);
+            var allData = GetAll();
+
+            allData
+                .Where(w => w.DistrictId == districtNo &&  w.OndriumId == ondriumNo && panchayatNo.Contains(w.PanchayatId)).ToList()
+                .ForEach(a => a.AssemblyId = assemblyNo);
+
+            WriteObjectsToFile<BaseData>(allData, JsonFilePath);
+
 
         }
 
@@ -78,6 +91,6 @@ namespace DataAccess.PrimaryTypes
         P,  // Perooratchi
         N,  // Nagaratchi
         M,  // Managaratchi
-        
+
     }
 }
