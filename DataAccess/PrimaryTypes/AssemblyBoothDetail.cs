@@ -13,7 +13,7 @@ namespace DataAccess.PrimaryTypes
         public string PartPlaceName { get; set; }
         public string PartLocationAddress { get; set; }
 
-        public string PaguthiType { get; set; }
+        public string BoothType { get; set; }
 
         public string AssemblyName { get; set; }
 
@@ -96,7 +96,7 @@ namespace DataAccess.PrimaryTypes
                     u.PartNo = bd.PartNo;
                     u.PartPlaceName = bd.PartPlaceName;
                     u.PartLocationAddress = bd.PartLocationAddress;
-                    u.PaguthiType = bd.PaguthiType;
+                    u.BoothType = bd.BoothType;
                     u.AssemblyName = bd.AssemblyName;
                     u.ParlimentNo = bd.ParlimentNo;
                     u.ParlimentName = bd.ParlimentName;

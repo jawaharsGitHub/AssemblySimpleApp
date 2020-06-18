@@ -24,7 +24,7 @@ namespace DataAccess.PrimaryTypes
 
         public string PanchayatName { get; set; }
 
-        public AreaType Type { get; set; }
+        //public AreaType AreaType { get; set; }
 
         public int AssemblyId { get; set; }
 
