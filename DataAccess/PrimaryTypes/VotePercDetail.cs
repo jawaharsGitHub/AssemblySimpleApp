@@ -18,7 +18,9 @@ namespace DataAccess.PrimaryTypes
 
         public int PanchayatNo { get; set; }
 
-        public Paguthi PaguthiType { get; set; }
+        public PaguthiType PaguthiType { get; set; }
+
+        //public int PaguthiTypeId { get; set; }
 
         public int BoothNo { get; set; }
 
@@ -34,7 +36,7 @@ namespace DataAccess.PrimaryTypes
         public decimal to20 { get; set; }
         public decimal to30 { get; set; }
         public decimal to40 { get; set; }
-               
+
         public decimal to50 { get; set; }
         public decimal to60 { get; set; }
         public decimal Above60 { get; set; }
@@ -63,18 +65,23 @@ namespace DataAccess.PrimaryTypes
             return allData.Where(w => w.BoothNo == boothId).ToList();
         }
 
-        public static void UpdatePaguthiDetails(VotePercDetail vpd)
+        public static void UpdatePaguthiDetails(int assemblyId, int ondriumId, int panchayatId, PaguthiType pt, List<int> boothNos)
         {
 
             try
             {
                 List<VotePercDetail> list = ReadFileAsObjects<VotePercDetail>(JsonFilePath);
-                var u = list.Where(c => c.AssemblyNo == vpd.AssemblyNo && c.BoothNo == vpd.BoothNo).First();
+                var data = list.Where(c => c.AssemblyNo == assemblyId && boothNos.Contains(c.BoothNo)).ToList();
 
 
-                u.PaguthiType = vpd.PaguthiType;
-                u.OndriumNo = vpd.OndriumNo;
-                u.PanchayatNo = vpd.PanchayatNo;
+                data.ForEach(u => {
+
+                    u.PaguthiType = pt;
+                    u.OndriumNo = ondriumId;
+                    u.PanchayatNo = panchayatId;
+
+                });
+
 
                 WriteObjectsToFile(list, JsonFilePath);
             }
@@ -124,11 +131,21 @@ namespace DataAccess.PrimaryTypes
 
     }
 
-    public enum Paguthi
+    //public enum Paguthi
+    //{
+    //    Nagaratchi,
+    //    Perooratchi,
+    //    Ondrium,
+
+    //}
+
+    public enum PaguthiType
     {
-        Nagaratchi,
-        Perooratchi,
-        Ondrium,
+        O,   // Ondrium
+        P,  // Perooratchi
+        N,  // Nagaratchi
+        M,  // Managaratchi
 
     }
+
 }

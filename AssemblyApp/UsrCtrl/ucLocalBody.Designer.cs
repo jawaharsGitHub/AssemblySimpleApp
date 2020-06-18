@@ -43,6 +43,10 @@
             this.btnUpdateBooth = new System.Windows.Forms.Button();
             this.lstOndrium = new System.Windows.Forms.ListBox();
             this.lstPanchayat = new System.Windows.Forms.ListBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lstBooths = new System.Windows.Forms.ListBox();
+            this.btnAssignBooth = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -119,7 +123,7 @@
             // 
             // btnPSProcess
             // 
-            this.btnPSProcess.Location = new System.Drawing.Point(663, 287);
+            this.btnPSProcess.Location = new System.Drawing.Point(715, 284);
             this.btnPSProcess.Name = "btnPSProcess";
             this.btnPSProcess.Size = new System.Drawing.Size(108, 50);
             this.btnPSProcess.TabIndex = 10;
@@ -131,14 +135,14 @@
             // 
             this.cmbAssembly.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAssembly.FormattingEnabled = true;
-            this.cmbAssembly.Location = new System.Drawing.Point(650, 240);
+            this.cmbAssembly.Location = new System.Drawing.Point(702, 237);
             this.cmbAssembly.Name = "cmbAssembly";
             this.cmbAssembly.Size = new System.Drawing.Size(121, 21);
             this.cmbAssembly.TabIndex = 11;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(663, 372);
+            this.button1.Location = new System.Drawing.Point(715, 369);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(108, 50);
             this.button1.TabIndex = 12;
@@ -156,7 +160,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(663, 428);
+            this.textBox1.Location = new System.Drawing.Point(715, 425);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 14;
@@ -189,10 +193,50 @@
             this.lstPanchayat.Size = new System.Drawing.Size(167, 199);
             this.lstPanchayat.TabIndex = 17;
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(501, 261);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(80, 20);
+            this.textBox2.TabIndex = 18;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(501, 245);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Total Booths";
+            // 
+            // lstBooths
+            // 
+            this.lstBooths.FormattingEnabled = true;
+            this.lstBooths.Location = new System.Drawing.Point(501, 287);
+            this.lstBooths.Name = "lstBooths";
+            this.lstBooths.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lstBooths.Size = new System.Drawing.Size(74, 199);
+            this.lstBooths.TabIndex = 20;
+            // 
+            // btnAssignBooth
+            // 
+            this.btnAssignBooth.Location = new System.Drawing.Point(581, 287);
+            this.btnAssignBooth.Name = "btnAssignBooth";
+            this.btnAssignBooth.Size = new System.Drawing.Size(85, 29);
+            this.btnAssignBooth.TabIndex = 21;
+            this.btnAssignBooth.Text = "Assign Booth";
+            this.btnAssignBooth.UseVisualStyleBackColor = true;
+            this.btnAssignBooth.Click += new System.EventHandler(this.btnAssignBooth_Click);
+            // 
             // ucLocalBody
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnAssignBooth);
+            this.Controls.Add(this.lstBooths);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.lstPanchayat);
             this.Controls.Add(this.lstOndrium);
             this.Controls.Add(this.btnUpdateBooth);
@@ -233,5 +277,9 @@
         private System.Windows.Forms.Button btnUpdateBooth;
         private System.Windows.Forms.ListBox lstOndrium;
         private System.Windows.Forms.ListBox lstPanchayat;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListBox lstBooths;
+        private System.Windows.Forms.Button btnAssignBooth;
     }
 }

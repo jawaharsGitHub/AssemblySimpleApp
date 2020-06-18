@@ -650,6 +650,45 @@ namespace CenturyFinCorpApp.UsrCtrl
 
 
         }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            var numberOfBooths = textBox2.Text.ToInt32();
+            lstBooths.Items.Clear();
+
+            for (int i = 1; i <= numberOfBooths; i++)
+            {
+                lstBooths.Items.Add(i);
+
+            }
+        }
+
+        private void btnAssignBooth_Click(object sender, EventArgs e)
+        {
+
+            if (cmbZonal.SelectedIndex == 0 || cmbAssembly.SelectedIndex == 0 ||
+                lstOndrium.SelectedIndices.Count == 0 || lstPanchayat.SelectedIndices.Count == 0 ||
+                lstBooths.SelectedIndices.Count == 0)
+            {
+                MessageBox.Show("Select all fields");
+                return;
+            }
+
+            var ondriumId = lstOndrium.SelectedValue.ToInt32();
+            var panchayatId = lstPanchayat.SelectedValue.ToInt32();
+
+            var selectedBoothNos = (lstBooths.SelectedItems.Cast<int>()).ToList();
+
+
+            // var boothDetail = VotePercDetail.GetForBooth()
+
+            var paguthiType = (lstOndrium.SelectedItem as BaseData).PaguthiType;
+
+            VotePercDetail.UpdatePaguthiDetails(cmbAssembly.SelectedValue.ToInt32(),
+                ondriumId, panchayatId, paguthiType,
+                selectedBoothNos);
+
+        }
     }
 
     public class VoterData

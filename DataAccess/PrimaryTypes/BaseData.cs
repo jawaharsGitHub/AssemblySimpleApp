@@ -24,7 +24,7 @@ namespace DataAccess.PrimaryTypes
 
         public string PanchayatName { get; set; }
 
-        //public AreaType AreaType { get; set; }
+        public PaguthiType PaguthiType { get; set; }
 
         public int AssemblyId { get; set; }
 
@@ -43,7 +43,9 @@ namespace DataAccess.PrimaryTypes
                           select new BaseData()
                           {
                               OndriumId = newGrp.Key,
-                              OndriumName = newGrp.First().OndriumName
+                              OndriumName = newGrp.First().OndriumName,
+                              PanchayatId = newGrp.First().PanchayatId,
+                              PanchayatName = newGrp.First().PanchayatName
                           }).ToList();
 
 
@@ -84,12 +86,5 @@ namespace DataAccess.PrimaryTypes
     }
 
 
-    public enum AreaType
-    {
-        O,   // Ondrium
-        P,  // Perooratchi
-        N,  // Nagaratchi
-        M,  // Managaratchi
-
-    }
+    
 }
