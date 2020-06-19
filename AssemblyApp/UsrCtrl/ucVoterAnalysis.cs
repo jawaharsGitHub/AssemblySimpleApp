@@ -8,6 +8,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -31,6 +32,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         string errorFolder = "";
         string DoneFolder = "";
         string logErrorPath = "";
+        string reportPath = "";
 
 
         public ucVoterAnalysis()
@@ -68,6 +70,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             errorFolder = Path.Combine(Directory.GetParent(txtPath).FullName, "ErrorFile");
             DoneFolder = Path.Combine(Directory.GetParent(txtPath).FullName, "Done");
+            reportPath = Path.Combine(Directory.GetParent(txtPath).FullName, "Report");
             logErrorPath = Path.Combine(Directory.GetParent(txtPath).FullName, $"Log -{DateTime.Now.ToLongTimeString().Replace(":", "-")}");  //$@"F:\NTK\VotersAnalysis\VoterList\Log-{DateTime.Now.ToLongTimeString().Replace(":", "-")}";
 
             General.CreateFolderIfNotExist(errorFolder);
@@ -1486,9 +1489,58 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void btnSaveReport_Click(object sender, EventArgs e)
         {
-            var grdiData = (dataGridView1.DataSource as List<VotePercDetail>);
+            try
+            {
+
+                var grdiData = (dataGridView1.DataSource as List<VotePercDetail>);
+
+                var filePath = Path.Combine(reportPath, "file.csv");
+
+                General.CreateFolderIfNotExist(reportPath);
+                General.CreateFileIfNotExist(filePath);
+
+                using (StreamWriter sw = new StreamWriter(filePath))
+                {
+                    CreateHeader(grdiData, sw);
+                    CreateRows(grdiData, sw);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
 
         }
+
+        private static void CreateHeader<T>(List<T> list, StreamWriter sw)
+        {
+            PropertyInfo[] properties = typeof(T).GetProperties();
+            for (int i = 0; i < properties.Length - 1; i++)
+            {
+                sw.Write(properties[i].Name + ",");
+            }
+            var lastProp = properties[properties.Length - 1].Name;
+            sw.Write(lastProp + sw.NewLine);
+        }
+
+        private static void CreateRows<T>(List<T> list, StreamWriter sw)
+        {
+            foreach (var item in list)
+            {
+                PropertyInfo[] properties = typeof(T).GetProperties();
+                for (int i = 0; i < properties.Length - 1; i++)
+                {
+                    var prop = properties[i];
+                    sw.Write(prop.GetValue(item) + ",");
+                }
+                var lastProp = properties[properties.Length - 1];
+                sw.Write(lastProp.GetValue(item) + sw.NewLine);
+            }
+        }
+
+
     }
 
 
