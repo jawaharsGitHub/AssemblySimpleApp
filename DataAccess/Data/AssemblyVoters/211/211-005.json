@@ -5210,20 +5210,6 @@
   {
     "PageNo": 15,
     "RowNo": 5,
-    "SNo": 13,
-    "Name": " சக்திபாண்டி ",
-    "HorFName": "சித்திரவேலு",
-    "HomeAddress": "",
-    "Age": 31,
-    "Sex": "ஆண்",
-    "IsDeleted": true,
-    "MayError": true,
-    "IsManualEdit": false,
-    "ErrorType": 0
-  },
-  {
-    "PageNo": 15,
-    "RowNo": 5,
     "SNo": 14,
     "Name": " நந்தகோபால் - ",
     "HorFName": " செல்லம் - ",
@@ -5452,9 +5438,9 @@
     "Name": " கார்த்திகை பிரியா - ",
     "HorFName": " கோடீஸ்வரன் - *",
     "HomeAddress": " 3-59 * *",
-    "Age": 0,
+    "Age": -1,
     "Sex": "MISSED",
-    "IsDeleted": true,
+    "IsDeleted": false,
     "MayError": true,
     "IsManualEdit": false,
     "ErrorType": 0

@@ -1192,20 +1192,6 @@
   {
     "PageNo": 5,
     "RowNo": 9,
-    "SNo": 26,
-    "Name": " சாவித்திரி - *",
-    "HorFName": "சரேல்குமார்",
-    "HomeAddress": "9",
-    "Age": 1,
-    "Sex": " பெண் *",
-    "IsDeleted": false,
-    "MayError": false,
-    "IsManualEdit": false,
-    "ErrorType": 0
-  },
-  {
-    "PageNo": 5,
-    "RowNo": 9,
     "SNo": 27,
     "Name": " மருதுபாண்டி - ",
     "HorFName": " கணேசன் - ",
@@ -1634,20 +1620,6 @@
     "Sex": " பெண் *  * * * *S118 *JRR4174454 *JRR4174447 *WRM1506872 *",
     "IsDeleted": false,
     "MayError": false,
-    "IsManualEdit": false,
-    "ErrorType": 0
-  },
-  {
-    "PageNo": 6,
-    "RowNo": 10,
-    "SNo": 28,
-    "Name": " சுரேஸ்குமார் ",
-    "HorFName": "சிவலிங்கம்",
-    "HomeAddress": "",
-    "Age": 11,
-    "Sex": " ஆண் *119 ",
-    "IsDeleted": true,
-    "MayError": true,
     "IsManualEdit": false,
     "ErrorType": 0
   },

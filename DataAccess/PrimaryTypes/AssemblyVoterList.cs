@@ -53,7 +53,7 @@ namespace DataAccess.PrimaryTypes
         {
             //return $"{PageNo}#{RowNo}#{Name}#{HorFName}#{HomeAddress}#{Age}#{Sex}";
 
-            return $"{PageNo}#{RowNo}#{Index}#{NameError}#FN:{Name}${HorFName}#{GenderError}#GENDER:{Sex}#AGE:{Age}^^^^^<{Index}>[{NameErrorCount}]>>[{GenderErrorCount}]";
+            return $"{PageNo}#{RowNo}#{SNo}#{NameError}#FN:{Name}${HorFName}#{GenderError}#GENDER:{Sex}#AGE:{Age}^^^^^<{Index}>[{NameErrorCount}]>>[{GenderErrorCount}]";
         }
 
 

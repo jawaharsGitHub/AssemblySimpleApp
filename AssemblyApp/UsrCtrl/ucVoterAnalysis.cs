@@ -47,17 +47,17 @@ namespace CenturyFinCorpApp.UsrCtrl
             //cmbFIlter.DataSource = GetOptions();
             reProcessFile = "";
 
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            //FolderBrowserDialog fbd = new FolderBrowserDialog();
 
-            //string folderPath = "";
-            if (DialogResult.OK == fbd.ShowDialog())
-            {
-                txtPath = fbd.SelectedPath;
-            }
+            ////string folderPath = "";
+            //if (DialogResult.OK == fbd.ShowDialog())
+            //{
+            //    txtPath = fbd.SelectedPath;
+            //}
 
-            /*
-             * txtPath = @"F:\NTK\VotersAnalysis\VoterList - Copy\211\txt";
-             */
+
+            txtPath = @"F:\NTK\VotersAnalysis\VoterList\211\txt";
+
 
             //int year = 2019;
             //var filePath = $@"{folderPath}ac210333.txt";
@@ -576,7 +576,16 @@ namespace CenturyFinCorpApp.UsrCtrl
             try
             {
                 string d = content.Contains(":") ? content.Split(':')[1] : content.Split(' ')[1];
-                var isEmpty = string.IsNullOrEmpty(d);
+
+                var isEmpty = false;
+
+                if (d.Trim().ToLower() == "-1")
+                {
+                }
+                else
+                {
+                    isEmpty = string.IsNullOrEmpty(d);
+                }
                 return (true, d, isEmpty);
             }
             catch (Exception ex)
@@ -698,10 +707,10 @@ namespace CenturyFinCorpApp.UsrCtrl
             try
             {
 
-                if (pageNumber == 43)
-                {
-                    var s = "";
-                }
+                //if (pageNumber == 43)
+                //{
+                //    var s = "";
+                //}
                 // processing page number
 
                 /*
@@ -854,7 +863,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                     for (int i = 0; i < missedCount; i++)
                     {
-                        age.Add("AGE:MISSED");
+                        age.Add("AGE:-1");
                     }
                     age.InsertRange(age.Count, missedNames);
                     General.WriteLog(logErrorPath, "Error in Age", assNum, partNum, pageNumber);
@@ -1052,7 +1061,13 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 //});
 
-                fullList.AddRange(voterList);
+                var vlNonDel = voterList.Where(w => w.IsDeleted == false).ToList();
+
+                //if (vlNonDel.Count != voterList.Count)
+                //{
+                //    var dd = voterList.Where(w => w.IsDeleted == true).ToList();
+                //}
+                fullList.AddRange(vlNonDel);
 
                 if (lastPageNumberToProcess == pageNumber)
                 {
@@ -1140,7 +1155,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             {
 
             }
-            if (a == 0)
+            if (a == 0)    // || a < 18
             {
                 vl.IsDeleted = true;
                 AddDeleteItemLog(pn, vl);
@@ -1340,28 +1355,6 @@ namespace CenturyFinCorpApp.UsrCtrl
             cmbFIlter_SelectedIndexChanged(null, null);
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            var sbDbError = new StringBuilder();
-
-            for (int i = 10; i <= 336; i++)
-            {
-                var fileName = $"ac211{i:D3}.pdf";
-
-                try
-                {
-                    WebClient webClient = new WebClient();
-                    webClient.DownloadFile($"https://www.elections.tn.gov.in/SSR2020_14022020/dt27/ac211/{fileName}", $@"F:\NTK\VotersAnalysis\VoterList\{fileName}");
-                }
-                catch (Exception)
-                {
-                    sbDbError.AppendLine(fileName);
-                }
-
-            }
-
-        }
-
 
         private void LoadBooths()
         {
@@ -1378,7 +1371,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void cmbAss_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbAss.SelectedIndex == 0)
+            if (cmbAss.SelectedIndex <= 0)
             {
                 dataGridView1.DataSource = cmbPaguthi.DataSource = cmbBooths.DataSource = null;
                 cmbPaguthi.Enabled = cmbBooths.Enabled = false;
@@ -1386,26 +1379,26 @@ namespace CenturyFinCorpApp.UsrCtrl
             }
 
             cmbPaguthi.Enabled = cmbBooths.Enabled = true;
-            var values = cmbAss.SelectedItem;
 
+            var fol = (KeyValuePair<string, string>)cmbAss.SelectedItem;
 
-            var fol = (KeyValuePair<string, string>)values;
+            LoadPaguthi(fol.Key.ToInt32());
+            LoadBooths(fol.Value);
+        }
 
-            LoadOndrium(fol.Key.ToInt32());
-
-            var allBoothFiles = (from f in Directory.GetFiles(fol.Value).ToList()
+        private void LoadBooths(string fullPath)
+        {
+            var allBoothFiles = (from f in Directory.GetFiles(fullPath).ToList()
                                  select new KeyValuePair<string, string>(new FileInfo(f).Name, f)).ToList();
 
             allBoothFiles.Insert(0, new KeyValuePair<string, string>("ALL", "--select--"));
-            //allBoothFiles.Insert(1, new KeyValuePair<string, string>("ALL", fol.Value));
 
             cmbBooths.DataSource = allBoothFiles;
             cmbBooths.ValueMember = "Value";
             cmbBooths.DisplayMember = "Key";
-
         }
 
-        private void LoadOndrium(int assemblyId)
+        private void LoadPaguthi(int assemblyId)
         {
             var ondriums = BaseData.GetPaguthiForAssembly(assemblyId);
 
@@ -1429,8 +1422,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             var baseData = (BaseData)cmbPaguthi.SelectedItem;
             var assemblyId = ((KeyValuePair<string, string>)cmbAss.SelectedItem).Key.ToInt32();
 
-            List<VotePercDetail> result = null;
-
+            List<VotePercDetail> result;
             if (cmbPaguthi.SelectedIndex == 1) // ALL
             {
                 result = VotePercDetail.GetForAssembly(assemblyId);
@@ -1449,7 +1441,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             if (cmbBooths.SelectedIndex < 0)
                 return;
 
-            List<VotePercDetail> result = new List<VotePercDetail>();
+            List<VotePercDetail> result;
 
             if (cmbBooths.SelectedIndex == 0)
             {
@@ -1464,46 +1456,6 @@ namespace CenturyFinCorpApp.UsrCtrl
             }
 
             dataGridView1.DataSource = result;
-
-            //var dataSou = new List<KeyValuePair<string, string>>();
-
-            //var maleCount = da.Where(w => w.Sex.Trim().Split(' ')[0].Trim() == "ஆண்").Count();
-            //var femaleCount = da.Where(w => w.Sex.Trim().Split(' ')[0].Trim() == "பெண்").Count();
-
-            //var allAges = da.Select(s => s.Age).ToList();
-            //var allC = da.Select(s => s.Age).ToList().Count();
-
-            //var twenty = GetLessAgeCOunt(allAges, 20);
-            //var thirty = GetAgeCOunt(allAges, 21, 30);
-            //var forty = GetAgeCOunt(allAges, 31, 40);
-            //var fifty = GetAgeCOunt(allAges, 41, 50);
-            //var sixty = GetAgeCOunt(allAges, 51, 60);
-            //var aboveSixty = GetMoreAgeCOunt(allAges, 61);
-
-            //lblDetails.Text = $"Total: {da.Count}{Environment.NewLine}ஆண்: {maleCount}{Environment.NewLine}பெண்: {femaleCount}{Environment.NewLine}";
-
-            //lblDetails.Text += $"18-20: {twenty}({Perc(twenty, allC)}){Environment.NewLine}21-30: {thirty}({Perc(thirty, allC)}){Environment.NewLine}" +
-            //    $"31-40: {forty}({Perc(forty, allC)}){Environment.NewLine}41-50: {fifty}({Perc(fifty, allC)}){Environment.NewLine}" +
-            //    $"51-60: {sixty}({Perc(sixty, allC)}){Environment.NewLine}Above 60: {aboveSixty}({Perc(aboveSixty, allC)}){Environment.NewLine}";
-
-            //dataSou.Add(new KeyValuePair<string, string>("18-20", Perc(twenty, allC)));
-            //dataSou.Add(new KeyValuePair<string, string>("21-30", Perc(thirty, allC)));
-            //dataSou.Add(new KeyValuePair<string, string>("31-40", Perc(forty, allC)));
-            //dataSou.Add(new KeyValuePair<string, string>("41-50", Perc(fifty, allC)));
-            //dataSou.Add(new KeyValuePair<string, string>("51-60", Perc(sixty, allC)));
-            //dataSou.Add(new KeyValuePair<string, string>("Above60", Perc(aboveSixty, allC)));
-
-            //var t1 = dataSou.OrderByDescending(o =>
-            //Convert.ToDecimal(o.Value.Split(' ')[1].Replace("(", "").Replace(")", "").Replace("%", ""))
-            //).ToList();
-
-            //t1.Insert(0, new KeyValuePair<string, string>("பெண்", Perc(femaleCount, allC)));
-            //t1.Insert(0, new KeyValuePair<string, string>("ஆண்", Perc(maleCount, allC)));
-            //t1.Insert(0, new KeyValuePair<string, string>("Total", da.Count.ToString()));
-
-            //dataGridView1.DataSource = t1;
-
-
 
         }
 
@@ -1532,7 +1484,11 @@ namespace CenturyFinCorpApp.UsrCtrl
             return Math.Round((Convert.ToDecimal(den) / Convert.ToDecimal(nom)) * 100, 1);
         }
 
+        private void btnSaveReport_Click(object sender, EventArgs e)
+        {
+            var grdiData = (dataGridView1.DataSource as List<VotePercDetail>);
 
+        }
     }
 
 

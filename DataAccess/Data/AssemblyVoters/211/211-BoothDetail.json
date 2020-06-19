@@ -3,7 +3,7 @@
     "PartNo": "200",
     "PartPlaceName": "1. இரட்டையூரணி (வ.கி) மற்றும் (ஊ), இரட்டையூரணி 999. அயல்நாடு வாழ் வாக்காளர்கள்,",
     "PartLocationAddress": "ஊராட்சி ஒன்றிய தொடக்கப்பள்ளி, கிழக்கு கட்டிடம் இரட்டையூரணி",
-    "Type": "பொது",
+    "BoothType": null,
     "AssemblyName": " இராமநாதபுரம் (பொது)",
     "ParlimentNo": " 35 ",
     "ParlimentName": "ராமநாதபுரம் (பொது)",
@@ -29,13 +29,15 @@
     "OndriumId": 0,
     "OndriumName": null,
     "PanchayatId": 0,
-    "PanchayatName": null
+    "PanchayatName": null,
+    "PaguthiType": 0,
+    "AssemblyId": 0
   },
   {
     "PartNo": "001",
     "PartPlaceName": " \r\n1. மல்லல் (வ.கி) மற்றும் (ஊ), வடக்கு மல்லல் வார்டு 3 ",
     "PartLocationAddress": null,
-    "Type": "பொது",
+    "BoothType": "பொது",
     "AssemblyName": "இராமநாதபுரம் (பொது)",
     "ParlimentNo": " 35 ",
     "ParlimentName": "ராமநாதபுரம் (பொது)",
@@ -61,13 +63,15 @@
     "OndriumId": 0,
     "OndriumName": null,
     "PanchayatId": 0,
-    "PanchayatName": null
+    "PanchayatName": null,
+    "PaguthiType": 0,
+    "AssemblyId": 0
   },
   {
     "PartNo": "2",
     "PartPlaceName": " \r\n1. மல்லல் (வ.கி) மற்றும் (ஊ), முஞ்சான் வார்டு 2 2. மல்லல் (வ.கி) மற்றும் (ஊ), தெற்கு மல்லல் வார்டு 3 ",
     "PartLocationAddress": null,
-    "Type": "",
+    "BoothType": "",
     "AssemblyName": "இராமநாதபுரம் (பொது)",
     "ParlimentNo": " 35 ",
     "ParlimentName": "ராமநாதபுரம் (பொது)",
@@ -93,13 +97,15 @@
     "OndriumId": 0,
     "OndriumName": null,
     "PanchayatId": 0,
-    "PanchayatName": null
+    "PanchayatName": null,
+    "PaguthiType": 0,
+    "AssemblyId": 0
   },
   {
     "PartNo": "3",
     "PartPlaceName": " \r\n1. ஆலங்குளம் (வ.கி) மற்றும் (ஊ), ஆலங்குளம் 2. ஆலங்குளம் (வ.கி) மற்றும் (ஊ), ஆலங்குளம் \r\nமுக்கிய நகரம் (அ) கிராமம் 3. ஆலங்குளம் (வ.கி) மற்றும் (ஊ), பெரியகண்ண ங்குடி \r\nகி.நி.அ மண்ட லம் 4. ஆலங்குளம் (வ.கி) மற்றும் (ஊ), புதுக்குளம் \r\nபிர்கா ",
     "PartLocationAddress": null,
-    "Type": "",
+    "BoothType": "",
     "AssemblyName": "இராமநாதபுரம் (பொது)",
     "ParlimentNo": " 35 ",
     "ParlimentName": "ராமநாதபுரம் (பொது)",
@@ -125,13 +131,15 @@
     "OndriumId": 0,
     "OndriumName": null,
     "PanchayatId": 0,
-    "PanchayatName": null
+    "PanchayatName": null,
+    "PaguthiType": 0,
+    "AssemblyId": 0
   },
   {
     "PartNo": "4",
     "PartPlaceName": " \r\n1. திருஉத்திரகோசமங்கை (வ.கி) மற்றும் (ஊ), திருஉத்தரகோசமங்கை \r\nமுக்கிய நகரம் (அ) கிராமம் 2. திருஉத்திரகோசமங்கை (வ.கி) மற்றும் (ஊ), \r\nகி.நி.அ மண்ட லம் திருஉத்திரகோசமங்கை தெற்கு தெரு \r\nபிர்கா 3. திருஉத்திரகோசமங்கை (வ.கி) மற்றும் (ஊ), சீத்தை \r\nகாவல் நிலையம் ",
     "PartLocationAddress": null,
-    "Type": "",
+    "BoothType": "",
     "AssemblyName": "இராமநாதபுரம் (பொது)",
     "ParlimentNo": " 35 ",
     "ParlimentName": "ராமநாதபுரம் (பொது)",
@@ -157,6 +165,8 @@
     "OndriumId": 0,
     "OndriumName": null,
     "PanchayatId": 0,
-    "PanchayatName": null
+    "PanchayatName": null,
+    "PaguthiType": 0,
+    "AssemblyId": 0
   }
 ]
