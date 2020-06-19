@@ -44,21 +44,20 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void button1_Click(object sender, EventArgs e)
         {
-            cmbFIlter.DataSource = GetOptions();
+            //cmbFIlter.DataSource = GetOptions();
             reProcessFile = "";
 
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
 
-            //FolderBrowserDialog fbd = new FolderBrowserDialog();
+            //string folderPath = "";
+            if (DialogResult.OK == fbd.ShowDialog())
+            {
+                txtPath = fbd.SelectedPath;
+            }
 
-            ////string folderPath = "";
-            //if (DialogResult.OK == fbd.ShowDialog())
-            //{
-            //    txtPath = fbd.SelectedPath;
-            //}
-
-
-            txtPath = @"F:\NTK\VotersAnalysis\VoterList - Copy\211\txt";
-
+            /*
+             * txtPath = @"F:\NTK\VotersAnalysis\VoterList - Copy\211\txt";
+             */
 
             //int year = 2019;
             //var filePath = $@"{folderPath}ac210333.txt";
@@ -93,7 +92,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                     boothDetailPath = Path.Combine(basePath, $"{assNo}-BoothDetail.json");
                     voterFilePath = Path.Combine(basePath, $"{assNo}-{partNo}.json");
 
-                    this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
+                    //this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
 
                     //if (File.Exists(voterFilePath) == false)
                     //{
@@ -127,7 +126,6 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 //Process First page
                 var firstPage = allPageContent.Substring(0, allPageContent.IndexOf("சட்டமன்றத் தொகுதி எண் மற்றும் பெயர்"));
-
 
                 try
                 {
@@ -253,7 +251,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                     }
                     catch (Exception ex)
                     {
-
+                        General.WriteLog(logErrorPath, $"Error in First Page otherDetails Details", assNo, partNo, 1);
                     }
 
 
@@ -268,8 +266,8 @@ namespace CenturyFinCorpApp.UsrCtrl
                     }
                     catch (Exception)
                     {
-
                         bd.StartNo = 1;
+                        General.WriteLog(logErrorPath, $"Error in First Page StartNo", assNo, partNo, 1);
                     }
 
 
@@ -301,8 +299,8 @@ namespace CenturyFinCorpApp.UsrCtrl
                         }
                         catch (Exception)
                         {
-
                             bd.Male = forNo[3].ToInt32();
+                            General.WriteLog(logErrorPath, $"Error in First Page-Male Detail", assNo, partNo, 1);
                         }
 
                     else
@@ -537,7 +535,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
 
 
-        public (bool, string, bool) GetName(string content)
+        public (bool, string, bool) GetName(string content, string assNo, string partNo)
         {
             try
             {
@@ -554,6 +552,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             }
             catch (Exception ex)
             {
+                General.WriteLog(logErrorPath, $"Error in GETNAME", assNo, partNo, 1);
                 return (false, ex.ToString(), false);
             }
         }
@@ -914,7 +913,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 // 1. Name
                 names.ForEach(fe =>
                 {
-                    var nm = GetName(fe);
+                    var nm = GetName(fe, assNum, partNum);
                     var vl = new VoterList()
                     {
                         Name = nm.Item1 ? nm.Item2 : AddNameLog(pageNumber, "#NERROR#"),
@@ -1089,7 +1088,6 @@ namespace CenturyFinCorpApp.UsrCtrl
             }
             catch (Exception ex)
             {
-
                 return false;
             }
 
@@ -1352,14 +1350,12 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 try
                 {
-
                     WebClient webClient = new WebClient();
                     webClient.DownloadFile($"https://www.elections.tn.gov.in/SSR2020_14022020/dt27/ac211/{fileName}", $@"F:\NTK\VotersAnalysis\VoterList\{fileName}");
                 }
                 catch (Exception)
                 {
                     sbDbError.AppendLine(fileName);
-
                 }
 
             }
