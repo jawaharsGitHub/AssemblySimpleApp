@@ -53,6 +53,26 @@ namespace DataAccess.PrimaryTypes
             return result;
         }
 
+        public static List<BaseData> GetPaguthiForAssembly(int assemblyId)
+        {
+            OndriumForDistrict = GetAll().Where(w => w.AssemblyId == assemblyId).ToList();
+
+            var result = (from bd in OndriumForDistrict
+                          where bd.AssemblyId == assemblyId
+                          group bd by bd.OndriumId into newGrp
+                          select new BaseData()
+                          {
+                              OndriumId = newGrp.Key,
+                              OndriumName = newGrp.First().OndriumName,
+                              PanchayatId = newGrp.First().PanchayatId,
+                              PanchayatName = newGrp.First().PanchayatName
+                          }).ToList();
+
+
+
+            return result;
+        }
+
         public static List<BaseData> GetPanchayat(int ondriumId)
         {
             return OndriumForDistrict.Where(w => w.OndriumId == ondriumId).ToList();

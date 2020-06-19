@@ -451,9 +451,10 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 var maleCount = fullList.Where(w => w.Sex.Trim().Split(' ')[0].Trim() == "ஆண்").Count();
                 var femaleCount = fullList.Where(w => w.Sex.Trim().Split(' ')[0].Trim() == "பெண்").Count();
+                //var thirdGenderCount = fullList.Where(w => w.Sex.Trim().Split(' ')[0].Trim() == "பெண்").Count();
 
                 var allAges = fullList.Select(s => s.Age).ToList();
-                var allC = fullList.Select(s => s.Age).ToList().Count();
+                var totalVoters = allAges.Count();
 
                 var twenty = GetLessAgeCOunt(allAges, 20);
                 var thirty = GetAgeCOunt(allAges, 21, 30);
@@ -466,22 +467,22 @@ namespace CenturyFinCorpApp.UsrCtrl
                 {
                     AssemblyNo = assNo.ToInt32(),
                     BoothNo = partNo.ToInt32(),
+                    Total = totalVoters,
                     Male = maleCount,
                     Female = femaleCount,
                     Third = 0,
-                    MaleP = PercInDec(maleCount, allC),
-                    FemaleP = PercInDec(femaleCount, allC),
+                    MaleP = PercInDec(maleCount, totalVoters),
+                    FemaleP = PercInDec(femaleCount, totalVoters),
                     ThirdP = 0,
-                    to20 = PercInDec(twenty, allC),
-                    to30 = PercInDec(thirty, allC),
-                    to40 = PercInDec(forty, allC),
-                    to50 = PercInDec(fifty, allC),
-                    to60 = PercInDec(sixty, allC),
-                    Above60 = PercInDec(aboveSixty, allC)
+                    to20 = PercInDec(twenty, totalVoters),
+                    to30 = PercInDec(thirty, totalVoters),
+                    to40 = PercInDec(forty, totalVoters),
+                    to50 = PercInDec(fifty, totalVoters),
+                    to60 = PercInDec(sixty, totalVoters),
+                    Above60 = PercInDec(aboveSixty, totalVoters)
                 };
 
                 VotePercDetail.Save(newBoothPerc);
-
 
                 File.Move(item, Path.Combine(DoneFolder, new FileInfo(item).Name));
 
@@ -533,6 +534,8 @@ namespace CenturyFinCorpApp.UsrCtrl
                 $"Error Records:{errorPerc} {Environment.NewLine} " +
                 $"Error - {Math.Round((Convert.ToDecimal(errorPerc) / Convert.ToDecimal(fullList.Count) * 100), 2)}%";
         }
+
+
 
         public (bool, string, bool) GetName(string content)
         {
@@ -1379,17 +1382,26 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void cmbAss_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbAss.SelectedIndex == 0) return;
+            if (cmbAss.SelectedIndex == 0)
+            {
+                dataGridView1.DataSource = cmbPaguthi.DataSource = cmbBooths.DataSource = null;
+                cmbPaguthi.Enabled = cmbBooths.Enabled = false;
+                return;
+            }
 
+            cmbPaguthi.Enabled = cmbBooths.Enabled = true;
             var values = cmbAss.SelectedItem;
 
+
             var fol = (KeyValuePair<string, string>)values;
+
+            LoadOndrium(fol.Key.ToInt32());
 
             var allBoothFiles = (from f in Directory.GetFiles(fol.Value).ToList()
                                  select new KeyValuePair<string, string>(new FileInfo(f).Name, f)).ToList();
 
-            allBoothFiles.Insert(0, new KeyValuePair<string, string>("0", "--select--"));
-            allBoothFiles.Insert(1, new KeyValuePair<string, string>("ALL", fol.Value));
+            allBoothFiles.Insert(0, new KeyValuePair<string, string>("ALL", "--select--"));
+            //allBoothFiles.Insert(1, new KeyValuePair<string, string>("ALL", fol.Value));
 
             cmbBooths.DataSource = allBoothFiles;
             cmbBooths.ValueMember = "Value";
@@ -1397,22 +1409,60 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         }
 
-        private void cmbBooths_SelectedIndexChanged(object sender, EventArgs e)
+        private void LoadOndrium(int assemblyId)
         {
-            if (cmbBooths.SelectedIndex == 0) return;
+            var ondriums = BaseData.GetPaguthiForAssembly(assemblyId);
 
-            var result = new List<VotePercDetail>();
+            ondriums.Insert(0, new BaseData() { OndriumId = 0, OndriumName = "--select--" });  //_<string, string>("0", "--select--"));  ;
+            ondriums.Insert(1, new BaseData() { OndriumId = 11111111, OndriumName = "ALL" });  //
 
-            var keyValue = (KeyValuePair<string, string>)cmbBooths.SelectedItem;
+            cmbPaguthi.DataSource = ondriums;
+
+            //lblCount.Text = $"{ondriums.Count} in {selectedDisName}"; 
+
+            cmbPaguthi.DisplayMember = "OndriumFullName";
+            cmbPaguthi.ValueMember = "OndriumId";
+            //this.cmbPaguthi.SelectedIndexChanged += CmbOndrium_SelectedIndexChanged;
+        }
 
 
-            if (keyValue.Key.Trim() == "ALL")
+        private void cmbPaguthi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbPaguthi.SelectedIndex <= 0) return;
+
+            var baseData = (BaseData)cmbPaguthi.SelectedItem;
+            var assemblyId = ((KeyValuePair<string, string>)cmbAss.SelectedItem).Key.ToInt32();
+
+            List<VotePercDetail> result = null;
+
+            if (cmbPaguthi.SelectedIndex == 1) // ALL
             {
-                var assNo = new DirectoryInfo(keyValue.Value).Name.ToInt32();
-                result = VotePercDetail.GetForAssembly(assNo);
+                result = VotePercDetail.GetForAssembly(assemblyId);
             }
             else
             {
+                result = VotePercDetail.GetForOndrium(baseData.OndriumId);
+            }
+
+            dataGridView1.DataSource = result;
+
+        }
+
+        private void cmbBooths_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbBooths.SelectedIndex < 0)
+                return;
+
+            List<VotePercDetail> result = new List<VotePercDetail>();
+
+            if (cmbBooths.SelectedIndex == 0)
+            {
+                var assemblyId = ((KeyValuePair<string, string>)cmbAss.SelectedItem).Key.ToInt32();
+                result = VotePercDetail.GetForAssembly(assemblyId);
+            }
+            else
+            {
+                var keyValue = (KeyValuePair<string, string>)cmbBooths.SelectedItem;
                 var boothNo = keyValue.Key.Split('-')[1].Split('.')[0].ToInt32();
                 result = VotePercDetail.GetForBooth(boothNo);
             }
@@ -1485,6 +1535,8 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             return Math.Round((Convert.ToDecimal(den) / Convert.ToDecimal(nom)) * 100, 1);
         }
+
+
     }
 
 

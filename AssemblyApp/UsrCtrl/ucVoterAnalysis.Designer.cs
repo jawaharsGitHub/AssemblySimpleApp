@@ -50,12 +50,16 @@
             this.button5 = new System.Windows.Forms.Button();
             this.cmbAss = new System.Windows.Forms.ComboBox();
             this.cmbBooths = new System.Windows.Forms.ComboBox();
+            this.cmbPaguthi = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(33, 23);
+            this.button1.Location = new System.Drawing.Point(35, 104);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(125, 23);
             this.button1.TabIndex = 0;
@@ -77,7 +81,7 @@
             // 
             this.chkDebugMode.AutoSize = true;
             this.chkDebugMode.ForeColor = System.Drawing.Color.Yellow;
-            this.chkDebugMode.Location = new System.Drawing.Point(216, 29);
+            this.chkDebugMode.Location = new System.Drawing.Point(183, 104);
             this.chkDebugMode.Name = "chkDebugMode";
             this.chkDebugMode.Size = new System.Drawing.Size(64, 17);
             this.chkDebugMode.TabIndex = 2;
@@ -87,14 +91,14 @@
             // 
             // txtPage
             // 
-            this.txtPage.Location = new System.Drawing.Point(338, 28);
+            this.txtPage.Location = new System.Drawing.Point(756, 27);
             this.txtPage.Name = "txtPage";
             this.txtPage.Size = new System.Drawing.Size(100, 20);
             this.txtPage.TabIndex = 3;
             // 
             // txtRow
             // 
-            this.txtRow.Location = new System.Drawing.Point(531, 28);
+            this.txtRow.Location = new System.Drawing.Point(862, 26);
             this.txtRow.Name = "txtRow";
             this.txtRow.Size = new System.Drawing.Size(100, 20);
             this.txtRow.TabIndex = 4;
@@ -103,7 +107,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Yellow;
-            this.label1.Location = new System.Drawing.Point(286, 28);
+            this.label1.Location = new System.Drawing.Point(753, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 5;
@@ -113,7 +117,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Yellow;
-            this.label2.Location = new System.Drawing.Point(482, 29);
+            this.label2.Location = new System.Drawing.Point(859, 8);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 6;
@@ -122,30 +126,30 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(72, 158);
+            this.dataGridView1.Location = new System.Drawing.Point(5, 202);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1011, 428);
+            this.dataGridView1.Size = new System.Drawing.Size(1211, 428);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             // 
             // chkPageList
             // 
             this.chkPageList.FormattingEnabled = true;
-            this.chkPageList.Location = new System.Drawing.Point(678, 15);
+            this.chkPageList.Location = new System.Drawing.Point(1009, 13);
             this.chkPageList.Name = "chkPageList";
             this.chkPageList.Size = new System.Drawing.Size(133, 21);
             this.chkPageList.TabIndex = 8;
             // 
             // txtMissingRow
             // 
-            this.txtMissingRow.Location = new System.Drawing.Point(826, 15);
+            this.txtMissingRow.Location = new System.Drawing.Point(1157, 13);
             this.txtMissingRow.Name = "txtMissingRow";
             this.txtMissingRow.Size = new System.Drawing.Size(59, 20);
             this.txtMissingRow.TabIndex = 9;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(738, 42);
+            this.button2.Location = new System.Drawing.Point(1069, 40);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(125, 23);
             this.button2.TabIndex = 10;
@@ -155,21 +159,21 @@
             // 
             // txtFIlterPn
             // 
-            this.txtFIlterPn.Location = new System.Drawing.Point(295, 76);
+            this.txtFIlterPn.Location = new System.Drawing.Point(846, 91);
             this.txtFIlterPn.Name = "txtFIlterPn";
             this.txtFIlterPn.Size = new System.Drawing.Size(42, 20);
             this.txtFIlterPn.TabIndex = 11;
             // 
             // txtFIlterRn
             // 
-            this.txtFIlterRn.Location = new System.Drawing.Point(365, 73);
+            this.txtFIlterRn.Location = new System.Drawing.Point(916, 88);
             this.txtFIlterRn.Name = "txtFIlterRn";
             this.txtFIlterRn.Size = new System.Drawing.Size(43, 20);
             this.txtFIlterRn.TabIndex = 12;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(423, 71);
+            this.button3.Location = new System.Drawing.Point(974, 86);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(125, 23);
             this.button3.TabIndex = 13;
@@ -181,7 +185,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Yellow;
-            this.label3.Location = new System.Drawing.Point(270, 79);
+            this.label3.Location = new System.Drawing.Point(821, 94);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(19, 13);
             this.label3.TabIndex = 14;
@@ -191,7 +195,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Yellow;
-            this.label4.Location = new System.Drawing.Point(343, 79);
+            this.label4.Location = new System.Drawing.Point(894, 94);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(16, 13);
             this.label4.TabIndex = 15;
@@ -201,7 +205,7 @@
             // 
             this.cmbFIlter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFIlter.FormattingEnabled = true;
-            this.cmbFIlter.Location = new System.Drawing.Point(563, 76);
+            this.cmbFIlter.Location = new System.Drawing.Point(862, 131);
             this.cmbFIlter.Name = "cmbFIlter";
             this.cmbFIlter.Size = new System.Drawing.Size(133, 21);
             this.cmbFIlter.TabIndex = 16;
@@ -211,7 +215,7 @@
             this.lblDetails.AutoSize = true;
             this.lblDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDetails.ForeColor = System.Drawing.Color.Yellow;
-            this.lblDetails.Location = new System.Drawing.Point(985, 10);
+            this.lblDetails.Location = new System.Drawing.Point(399, 15);
             this.lblDetails.Name = "lblDetails";
             this.lblDetails.Size = new System.Drawing.Size(83, 25);
             this.lblDetails.TabIndex = 17;
@@ -219,7 +223,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(713, 74);
+            this.button4.Location = new System.Drawing.Point(1001, 129);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(98, 23);
             this.button4.TabIndex = 18;
@@ -229,7 +233,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(843, 76);
+            this.button5.Location = new System.Drawing.Point(1105, 86);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(125, 23);
             this.button5.TabIndex = 19;
@@ -241,7 +245,7 @@
             // 
             this.cmbAss.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAss.FormattingEnabled = true;
-            this.cmbAss.Location = new System.Drawing.Point(33, 79);
+            this.cmbAss.Location = new System.Drawing.Point(21, 157);
             this.cmbAss.Name = "cmbAss";
             this.cmbAss.Size = new System.Drawing.Size(90, 21);
             this.cmbAss.TabIndex = 20;
@@ -251,17 +255,61 @@
             // 
             this.cmbBooths.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBooths.FormattingEnabled = true;
-            this.cmbBooths.Location = new System.Drawing.Point(149, 79);
+            this.cmbBooths.Location = new System.Drawing.Point(345, 155);
             this.cmbBooths.Name = "cmbBooths";
-            this.cmbBooths.Size = new System.Drawing.Size(79, 21);
+            this.cmbBooths.Size = new System.Drawing.Size(92, 21);
             this.cmbBooths.TabIndex = 21;
             this.cmbBooths.SelectedIndexChanged += new System.EventHandler(this.cmbBooths_SelectedIndexChanged);
+            // 
+            // cmbPaguthi
+            // 
+            this.cmbPaguthi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPaguthi.FormattingEnabled = true;
+            this.cmbPaguthi.Location = new System.Drawing.Point(135, 157);
+            this.cmbPaguthi.Name = "cmbPaguthi";
+            this.cmbPaguthi.Size = new System.Drawing.Size(186, 21);
+            this.cmbPaguthi.TabIndex = 22;
+            this.cmbPaguthi.SelectedIndexChanged += new System.EventHandler(this.cmbPaguthi_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Yellow;
+            this.label5.Location = new System.Drawing.Point(19, 139);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 13);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "Assembly No";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.Yellow;
+            this.label6.Location = new System.Drawing.Point(132, 139);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 13);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "Paguthi";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Yellow;
+            this.label7.Location = new System.Drawing.Point(342, 139);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(56, 13);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "booth vise";
             // 
             // ucVoterAnalysis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.cmbPaguthi);
             this.Controls.Add(this.cmbBooths);
             this.Controls.Add(this.cmbAss);
             this.Controls.Add(this.button5);
@@ -316,5 +364,9 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.ComboBox cmbAss;
         private System.Windows.Forms.ComboBox cmbBooths;
+        private System.Windows.Forms.ComboBox cmbPaguthi;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }

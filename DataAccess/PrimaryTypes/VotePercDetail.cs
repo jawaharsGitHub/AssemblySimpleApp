@@ -12,34 +12,28 @@ namespace DataAccess.PrimaryTypes
 
         private static string JsonFilePath = AppConfiguration.VotePercDetailFile;
 
-        public int AssemblyNo { get; set; }
-
-        public int OndriumNo { get; set; }
-
-        public int PanchayatNo { get; set; }
-
-        public PaguthiType PaguthiType { get; set; }
+        
 
         //public int PaguthiTypeId { get; set; }
 
         public int BoothNo { get; set; }
-
         public int Total { get; set; }
         public int Male { get; set; }
         public int Female { get; set; }
         public int Third { get; set; }
-
         public decimal MaleP { get; set; }
         public decimal FemaleP { get; set; }
         public decimal ThirdP { get; set; }
-
         public decimal to20 { get; set; }
         public decimal to30 { get; set; }
         public decimal to40 { get; set; }
-
         public decimal to50 { get; set; }
         public decimal to60 { get; set; }
         public decimal Above60 { get; set; }
+        public int AssemblyNo { get; set; }
+        public int OndriumNo { get; set; }
+        public int PanchayatNo { get; set; }
+        public PaguthiType PaguthiType { get; set; }
 
 
         public static List<VotePercDetail> GetAll()
