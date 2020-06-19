@@ -1494,7 +1494,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 var grdiData = (dataGridView1.DataSource as List<VotePercDetail>);
 
-                var filePath = Path.Combine(reportPath, "file.csv");
+                var filePath = Path.Combine(cmbAss.SelectedValue.ToString(), "file.csv");
 
                 General.CreateFolderIfNotExist(reportPath);
                 General.CreateFileIfNotExist(filePath);
@@ -1540,7 +1540,43 @@ namespace CenturyFinCorpApp.UsrCtrl
             }
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (cmbAss.SelectedIndex <= 0)
+            {
+                MessageBox.Show("Select assembly to update.");
+                return;
+            }
 
+            int assemblyNo = ((KeyValuePair<string, string>)cmbAss.SelectedItem).Key.ToInt32();
+
+            var votePerc = VotePercDetail.GetForAssembly(assemblyNo).ToList();
+
+            if(votePerc.Count > 0)
+            {
+
+                var assemblyBoothLink = AssemblyBoothLink.GetForAssembly(assemblyNo).ToList();
+
+                if(assemblyBoothLink.Count == 0)
+                {
+                    MessageBox.Show("Nothing to update.");
+                    return;
+                }
+
+                MessageBox.Show($"{assemblyBoothLink.Count} - booth to update");
+
+                assemblyBoothLink.ForEach(fef => {
+
+                    VotePercDetail.UpdatePaguthiDetails(fef.AssemblyNo, fef.PaguthiNo, fef.PanchayatId, fef.PaguthiType, fef.BoothNo);
+
+                });
+
+
+
+            }
+
+
+        }
     }
 
 

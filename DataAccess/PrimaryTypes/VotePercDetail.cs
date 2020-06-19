@@ -85,6 +85,12 @@ namespace DataAccess.PrimaryTypes
             }
         }
 
+        public static void UpdatePaguthiDetails(int assemblyId, int ondriumId, int panchayatId, PaguthiType pt, int boothNo)
+        {
+
+            UpdatePaguthiDetails(assemblyId, ondriumId, panchayatId, pt, new List<int>() { boothNo });
+        }
+
         public static void Save(VotePercDetail bd)
         {
 

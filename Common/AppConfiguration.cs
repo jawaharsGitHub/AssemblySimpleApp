@@ -13,6 +13,8 @@ namespace Common
 
         public static string VotePercDetailFile { get { return GetFullPath("VotePercDetail"); } }
 
+        public static string AssemblyBoothLinkFile { get { return GetFullPath("AssemblyBoothLink"); } }
+
         public static string BaseDataFile { get; } = GetFullPath("basedata");
 
         public static string VoterFile { get; } = GetFullPath("voter");

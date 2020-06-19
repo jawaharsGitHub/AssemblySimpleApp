@@ -23,15 +23,7 @@
     "Female": 441,
     "ThirdGender": 0,
     "NewVoters": 20,
-    "TotalVoters": 840,
-    "DistrictId": 0,
-    "DistrictName": null,
-    "OndriumId": 0,
-    "OndriumName": null,
-    "PanchayatId": 0,
-    "PanchayatName": null,
-    "PaguthiType": 0,
-    "AssemblyId": 0
+    "TotalVoters": 840
   },
   {
     "PartNo": "001",
@@ -57,15 +49,7 @@
     "Female": 356,
     "ThirdGender": 0,
     "NewVoters": 23,
-    "TotalVoters": 709,
-    "DistrictId": 0,
-    "DistrictName": null,
-    "OndriumId": 0,
-    "OndriumName": null,
-    "PanchayatId": 0,
-    "PanchayatName": null,
-    "PaguthiType": 0,
-    "AssemblyId": 0
+    "TotalVoters": 709
   },
   {
     "PartNo": "2",
@@ -91,15 +75,7 @@
     "Female": 273,
     "ThirdGender": 0,
     "NewVoters": 2,
-    "TotalVoters": 554,
-    "DistrictId": 0,
-    "DistrictName": null,
-    "OndriumId": 0,
-    "OndriumName": null,
-    "PanchayatId": 0,
-    "PanchayatName": null,
-    "PaguthiType": 0,
-    "AssemblyId": 0
+    "TotalVoters": 554
   },
   {
     "PartNo": "3",
@@ -125,15 +101,7 @@
     "Female": 493,
     "ThirdGender": 0,
     "NewVoters": 1,
-    "TotalVoters": 994,
-    "DistrictId": 0,
-    "DistrictName": null,
-    "OndriumId": 0,
-    "OndriumName": null,
-    "PanchayatId": 0,
-    "PanchayatName": null,
-    "PaguthiType": 0,
-    "AssemblyId": 0
+    "TotalVoters": 994
   },
   {
     "PartNo": "4",
@@ -159,14 +127,6 @@
     "Female": 463,
     "ThirdGender": 0,
     "NewVoters": 17,
-    "TotalVoters": 914,
-    "DistrictId": 0,
-    "DistrictName": null,
-    "OndriumId": 0,
-    "OndriumName": null,
-    "PanchayatId": 0,
-    "PanchayatName": null,
-    "PaguthiType": 0,
-    "AssemblyId": 0
+    "TotalVoters": 914
   }
 ]

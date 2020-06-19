@@ -54,6 +54,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btnSaveReport = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -301,11 +302,22 @@
             this.btnSaveReport.UseVisualStyleBackColor = true;
             this.btnSaveReport.Click += new System.EventHandler(this.btnSaveReport_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(35, 17);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(125, 46);
+            this.button5.TabIndex = 27;
+            this.button5.Text = "Update Assembly Booth";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // ucVoterAnalysis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.btnSaveReport);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -368,5 +380,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnSaveReport;
+        private System.Windows.Forms.Button button5;
     }
 }

@@ -676,17 +676,33 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             var ondriumId = lstOndrium.SelectedValue.ToInt32();
             var panchayatId = lstPanchayat.SelectedValue.ToInt32();
+            var assemblyNo = cmbAssembly.SelectedValue.ToInt32();
 
             var selectedBoothNos = (lstBooths.SelectedItems.Cast<int>()).ToList();
 
-
-            // var boothDetail = VotePercDetail.GetForBooth()
-
             var paguthiType = (lstOndrium.SelectedItem as BaseData).PaguthiType;
 
-            VotePercDetail.UpdatePaguthiDetails(cmbAssembly.SelectedValue.ToInt32(),
+            VotePercDetail.UpdatePaguthiDetails(assemblyNo,
                 ondriumId, panchayatId, paguthiType,
                 selectedBoothNos);
+
+            var ablList = new List<AssemblyBoothLink>();
+
+            selectedBoothNos.ForEach(fe => {
+
+                ablList.Add(new AssemblyBoothLink() 
+                {
+                    AssemblyNo = assemblyNo,
+                    BoothNo = fe,
+                    PaguthiNo = ondriumId,
+                    PanchayatId = panchayatId,
+                    PaguthiType = paguthiType
+                });
+
+
+            });
+
+            AssemblyBoothLink.AddBoothForAssembly(ablList);
 
         }
     }

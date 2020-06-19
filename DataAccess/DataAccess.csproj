@@ -73,6 +73,7 @@
     <None Include="Data\VotePercDetail.json" />
     <None Include="Data\voter-Panchayat.json" />
     <None Include="Data\assembly.json" />
+    <Compile Include="PrimaryTypes\AssemblyBoothLink.cs" />
     <Compile Include="PrimaryTypes\VotePercDetail.cs" />
     <Compile Include="ExtendedTypes\AssemblyAndVotes.cs" />
     <Compile Include="ExtendedTypes\CreditReport.cs" />
@@ -82,7 +83,7 @@
     <Compile Include="ExtendedTypes\ExtDailyTxn.cs" />
     <Compile Include="ExtendedTypes\ReturnTypeEnum.cs" />
     <Compile Include="ExtendedTypes\ZonalDistrict.cs" />
-    <Compile Include="PrimaryTypes\AssemblyBoothDetail.cs" />
+    <Compile Include="PrimaryTypes\BoothDetail.cs" />
     <Compile Include="PrimaryTypes\AssemblyVoterList.cs" />
     <Compile Include="PrimaryTypes\BaseData.cs" />
     <Compile Include="PrimaryTypes\block.cs" />
@@ -207,7 +208,7 @@
     <None Include="Data\PollingStation.json" />
     <None Include="Data\votedata.json" />
     <None Include="Data\memberverify.json" />
-    <None Include="Data\AssemblyBoothDetail.json" />
+    <None Include="Data\AssemblyBoothLink.json" />
     <None Include="Data\AssemblyVoterList.json" />
     <None Include="Data\zonal.json" />
     <None Include="packages.config">
