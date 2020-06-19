@@ -32,7 +32,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         string errorFolder = "";
         string DoneFolder = "";
         string logErrorPath = "";
-        string reportPath = "";
+        //string reportPath = "";
 
 
         public ucVoterAnalysis()
@@ -70,7 +70,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             errorFolder = Path.Combine(Directory.GetParent(txtPath).FullName, "ErrorFile");
             DoneFolder = Path.Combine(Directory.GetParent(txtPath).FullName, "Done");
-            reportPath = Path.Combine(Directory.GetParent(txtPath).FullName, "Report");
+
             logErrorPath = Path.Combine(Directory.GetParent(txtPath).FullName, $"Log -{DateTime.Now.ToLongTimeString().Replace(":", "-")}");  //$@"F:\NTK\VotersAnalysis\VoterList\Log-{DateTime.Now.ToLongTimeString().Replace(":", "-")}";
 
             General.CreateFolderIfNotExist(errorFolder);
@@ -1386,7 +1386,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             var fol = (KeyValuePair<string, string>)cmbAss.SelectedItem;
 
             LoadPaguthi(fol.Key.ToInt32());
-            LoadBooths(fol.Value);
+            //LoadBooths(fol.Value);
         }
 
         private void LoadBooths(string fullPath)
@@ -1405,8 +1405,8 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             var ondriums = BaseData.GetPaguthiForAssembly(assemblyId);
 
-            ondriums.Insert(0, new BaseData() { OndriumId = 0, OndriumName = "--select--" });  //_<string, string>("0", "--select--"));  ;
-            ondriums.Insert(1, new BaseData() { OndriumId = 11111111, OndriumName = "ALL" });  //
+            //ondriums.Insert(0, new BaseData() { OndriumId = 0, OndriumName = "--select--" });  //_<string, string>("0", "--select--"));  ;
+            ondriums.Insert(0, new BaseData() { OndriumId = 0, OndriumName = "ALL" });  //
 
             cmbPaguthi.DataSource = ondriums;
 
@@ -1420,45 +1420,49 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void cmbPaguthi_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbPaguthi.SelectedIndex <= 0) return;
+            if (cmbPaguthi.SelectedIndex < 0) return;
 
             var baseData = (BaseData)cmbPaguthi.SelectedItem;
             var assemblyId = ((KeyValuePair<string, string>)cmbAss.SelectedItem).Key.ToInt32();
 
-            List<VotePercDetail> result;
-            if (cmbPaguthi.SelectedIndex == 1) // ALL
+            resultForSearch = VotePercDetail.GetForAssembly(assemblyId);
+
+            List<VotePercDetail> filteredOne;
+            if (cmbPaguthi.SelectedIndex == 0) // ALL
             {
-                result = VotePercDetail.GetForAssembly(assemblyId);
+                filteredOne = resultForSearch;
             }
             else
             {
-                result = VotePercDetail.GetForOndrium(baseData.OndriumId);
+                filteredOne = resultForSearch.Where(w => w.OndriumNo == baseData.OndriumId).ToList(); //VotePercDetail.GetForOndrium(baseData.OndriumId);
             }
 
-            dataGridView1.DataSource = result;
+            dataGridView1.DataSource = filteredOne;
 
         }
 
+        List<VotePercDetail> resultForSearch;
+
         private void cmbBooths_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbBooths.SelectedIndex < 0)
-                return;
+            //if (cmbBooths.SelectedIndex < 0)
+            //    return;
 
-            List<VotePercDetail> result;
 
-            if (cmbBooths.SelectedIndex == 0)
-            {
-                var assemblyId = ((KeyValuePair<string, string>)cmbAss.SelectedItem).Key.ToInt32();
-                result = VotePercDetail.GetForAssembly(assemblyId);
-            }
-            else
-            {
-                var keyValue = (KeyValuePair<string, string>)cmbBooths.SelectedItem;
-                var boothNo = keyValue.Key.Split('-')[1].Split('.')[0].ToInt32();
-                result = VotePercDetail.GetForBooth(boothNo);
-            }
 
-            dataGridView1.DataSource = result;
+            //if (cmbBooths.SelectedIndex == 0)
+            //{
+            //    var assemblyId = ((KeyValuePair<string, string>)cmbAss.SelectedItem).Key.ToInt32();
+            //    resultForSearch = VotePercDetail.GetForAssembly(assemblyId);
+            //}
+            //else
+            //{
+            //    var keyValue = (KeyValuePair<string, string>)cmbBooths.SelectedItem;
+            //    var boothNo = keyValue.Key.Split('-')[1].Split('.')[0].ToInt32();
+            //    resultForSearch = VotePercDetail.GetForBooth(boothNo);
+            //}
+
+            //dataGridView1.DataSource = resultForSearch;
 
         }
 
@@ -1491,19 +1495,72 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             try
             {
+                if (dataGridView1.DataSource == null)
+                {
+                    MessageBox.Show("select assembly first!");
+                    return;
+                }
 
-                var grdiData = (dataGridView1.DataSource as List<VotePercDetail>);
+                if (txtReportName.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("provide file name");
+                    return;
+                }
+                // CSV
+                var gridData = (dataGridView1.DataSource as List<VotePercDetail>);
 
-                var filePath = Path.Combine(cmbAss.SelectedValue.ToString(), "file.csv");
+                var reportName = $"{txtReportName.Text.Trim()}";
 
+
+                var reportPath = Path.Combine(cmbAss.SelectedValue.ToString(), "Report");
                 General.CreateFolderIfNotExist(reportPath);
+
+                var filePath = Path.Combine(cmbAss.SelectedValue.ToString(), $"{reportName}.csv");
                 General.CreateFileIfNotExist(filePath);
 
                 using (StreamWriter sw = new StreamWriter(filePath))
                 {
-                    CreateHeader(grdiData, sw);
-                    CreateRows(grdiData, sw);
+                    CreateHeader(gridData, sw);
+                    CreateRows(gridData, sw);
                 }
+
+                // TXT
+                var sbList = new StringBuilder();
+
+                var assemblyTotalVotes = resultForSearch.Sum(s => s.Total);
+
+                var areaTotalVotes = gridData.Sum(s => s.Total);
+
+                var areaMaleVotes = gridData.Sum(s => s.Male);
+                var areaFemaleVotes = gridData.Sum(s => s.Female);
+                var areaThirdVotes = gridData.Sum(s => s.Third);
+                var maleP = PercInDec(areaMaleVotes, areaTotalVotes) + "%";
+                var femaleP = PercInDec(areaFemaleVotes, areaTotalVotes) + "%";
+                var thirdP = PercInDec(areaThirdVotes, areaTotalVotes) + "%";
+
+                var t20 = gridData.Sum(s => s.to20);
+                var t30 = gridData.Sum(s => s.to30);
+                var t40 = gridData.Sum(s => s.to40);
+                var t50 = gridData.Sum(s => s.to50);
+                var t60 = gridData.Sum(s => s.to60);
+                var above60 = gridData.Sum(s => s.Above60);
+
+                //var t20P = PercInDec(t20, areaTotalVotes) + "%";
+                //var t30P = PercInDec(t30, areaTotalVotes) + "%";
+                //var t40P = PercInDec(areaMaleVotes, areaTotalVotes) + "%";
+                //var t50P = PercInDec(areaMaleVotes, areaTotalVotes) + "%";
+                //var t60P = PercInDec(areaMaleVotes, areaTotalVotes) + "%";
+                //var above60P = PercInDec(areaMaleVotes, areaTotalVotes) + "%";
+
+
+
+                sbList.AppendLine($"TOTAL VOTES: {gridData.Sum(s => s.Total)}{PercInDec(assemblyTotalVotes, gridData.Sum(s => s.Total))}%");
+                sbList.AppendLine($"MALE VOTES: {gridData.Sum(s => s.Male)}");
+                sbList.AppendLine($"FEMALE VOTES: {gridData.Sum(s => s.Female)}");
+                sbList.AppendLine($"THIRD VOTES: {gridData.Sum(s => s.Third)}");
+
+
+
             }
             catch (Exception ex)
             {
@@ -1552,12 +1609,12 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             var votePerc = VotePercDetail.GetForAssembly(assemblyNo).ToList();
 
-            if(votePerc.Count > 0)
+            if (votePerc.Count > 0)
             {
 
                 var assemblyBoothLink = AssemblyBoothLink.GetForAssembly(assemblyNo).ToList();
 
-                if(assemblyBoothLink.Count == 0)
+                if (assemblyBoothLink.Count == 0)
                 {
                     MessageBox.Show("Nothing to update.");
                     return;
@@ -1565,7 +1622,8 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 MessageBox.Show($"{assemblyBoothLink.Count} - booth to update");
 
-                assemblyBoothLink.ForEach(fef => {
+                assemblyBoothLink.ForEach(fef =>
+                {
 
                     VotePercDetail.UpdatePaguthiDetails(fef.AssemblyNo, fef.PaguthiNo, fef.PanchayatId, fef.PaguthiType, fef.BoothNo);
 
@@ -1574,6 +1632,31 @@ namespace CenturyFinCorpApp.UsrCtrl
 
 
             }
+
+
+        }
+
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+            if (resultForSearch == null)
+            {
+                MessageBox.Show("select assembly first!");
+                return;
+            }
+
+            if (txtFromBooth.Text.Trim() == "")
+            {
+                MessageBox.Show("provide both from and to booth numbers.");
+                return;
+            }
+
+            if (txtToBooth.Text.Trim() == "") txtToBooth.Text = txtFromBooth.Text;
+
+            var filtered = resultForSearch.Where(w => w.BoothNo >= txtFromBooth.Text.ToInt32() && w.BoothNo <= txtToBooth.Text.ToInt32()).ToList();
+
+            dataGridView1.DataSource = filtered;
 
 
         }
