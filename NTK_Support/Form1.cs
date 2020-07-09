@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Word;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -23,7 +25,7 @@ namespace NTK_Support
             BackgroundWorker bw = new BackgroundWorker();
 
             FolderBrowserDialog fbd = new FolderBrowserDialog();
-          
+
             string folderPath = "";
             if (DialogResult.OK == fbd.ShowDialog())
             {
@@ -67,6 +69,27 @@ namespace NTK_Support
 
             bw.RunWorkerAsync();
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            object noEncodingDialog = "UTF8";
+            string docPath = @"F:\NTK";
+            string testFile = "ac211240.docx";
+
+            //Document document = new Document();
+            //document.LoadFromFile(@"D:\Work\Stephen\2011.12.05\Sample.doc");
+
+
+            Microsoft.Office.Interop.Word.Application application = new Microsoft.Office.Interop.Word.Application();
+            Document document = application.Documents.Open(Path.Combine(docPath, testFile));
+            application.ActiveDocument.SaveAs(Path.Combine(docPath, "ac211240_ed.txt"), WdSaveFormat.wdFormatUnicodeText); //,  ref noEncodingDialog);
+            ((_Application)application).Quit();
+
+            string readText = File.ReadAllText(Path.Combine(docPath, "ac211240_ed.txt"));
+
+            byte[] bytes = Encoding.UTF8.GetBytes(readText);
+            File.WriteAllBytes(Path.Combine(docPath, "ac211240_decoded.txt"), bytes);
         }
     }
 }

@@ -1,10 +1,12 @@
 ﻿using Common;
 using Common.ExtensionMethod;
 using DataAccess.PrimaryTypes;
+using Microsoft.Office.Interop.Word;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -32,6 +34,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         string errorFolder = "";
         string DoneFolder = "";
         string logErrorPath = "";
+        string voterIdPath = "";
         //string reportPath = "";
 
 
@@ -42,6 +45,28 @@ namespace CenturyFinCorpApp.UsrCtrl
         }
 
 
+
+        public static byte[] ReadFile(string fp)
+        {
+            byte[] buffer;
+            FileStream fileStream = new FileStream(fp, FileMode.Open, FileAccess.Read);
+            try
+            {
+                int length = (int)fileStream.Length;  // get file length    
+                buffer = new byte[length];            // create buffer     
+                int count;                            // actual number of bytes read     
+                int sum = 0;                          // total number of bytes read    
+
+                // read until Read method returns 0 (end of the stream has been reached)    
+                while ((count = fileStream.Read(buffer, sum, length - sum)) > 0)
+                    sum += count;  // sum is a buffer offset for next reading
+            }
+            finally
+            {
+                fileStream.Close();
+            }
+            return buffer;
+        }
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -58,7 +83,9 @@ namespace CenturyFinCorpApp.UsrCtrl
             //}
 
 
-            txtPath = @"F:\NTK\VotersAnalysis\VoterList\211\txt";
+            //txtPath = @"F:\NTK\VotersAnalysis\VoterList\211\txt";
+
+            txtPath = @"F:\NTK\VotersAnalysis\VoterList\211\docx";
 
 
             //int year = 2019;
@@ -71,10 +98,12 @@ namespace CenturyFinCorpApp.UsrCtrl
             errorFolder = Path.Combine(Directory.GetParent(txtPath).FullName, "ErrorFile");
             DoneFolder = Path.Combine(Directory.GetParent(txtPath).FullName, "Done");
 
+
             logErrorPath = Path.Combine(Directory.GetParent(txtPath).FullName, $"Log -{DateTime.Now.ToLongTimeString().Replace(":", "-")}");  //$@"F:\NTK\VotersAnalysis\VoterList\Log-{DateTime.Now.ToLongTimeString().Replace(":", "-")}";
 
             General.CreateFolderIfNotExist(errorFolder);
             General.CreateFolderIfNotExist(DoneFolder);
+
 
             foreach (var item in allFiles)
             {
@@ -82,6 +111,9 @@ namespace CenturyFinCorpApp.UsrCtrl
                 string assNo = "";
 
                 var filePath = item; // $@"{folderPath}ac211200.txt";
+
+
+
 
                 try
                 {
@@ -94,6 +126,8 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                     boothDetailPath = Path.Combine(basePath, $"{assNo}-BoothDetail.json");
                     voterFilePath = Path.Combine(basePath, $"{assNo}-{partNo}.json");
+                    voterIdPath = Path.Combine(Directory.GetParent(txtPath).FullName, "VoterIds", $"{assNo}-{partNo}");
+                    General.CreateFolderIfNotExist(voterIdPath);
 
                     //this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
 
@@ -125,7 +159,119 @@ namespace CenturyFinCorpApp.UsrCtrl
 
 
 
+                //Microsoft.Office.Interop.Word.Application word = new Microsoft.Office.Interop.Word.Application();
+                //object miss = System.Reflection.Missing.Value;
+                //object enc = Microsoft.Office.Core.MsoEncoding.msoEncodingISCIITamil;
+                //object path = filePath;
+                //object readOnly = true;
+                //Microsoft.Office.Interop.Word.Document docs = word.Documents.Open(ref path, ref miss, ref readOnly, ref miss, ref miss,
+                //    ref miss, ref miss, ref miss, ref miss, ref miss, ref enc, ref miss, ref miss, ref miss, ref miss);
+                //string totaltext = "";
+
+                //for (int i = 0; i < docs.Paragraphs.Count; i++)
+                //{
+                //    totaltext += " \r\n " + docs.Paragraphs[i + 1].Range.Text.ToString();
+
+                //    Console.WriteLine(totaltext);
+                //}
+                //// Console.WriteLine(totaltext);
+                //docs.Close();
+                //word.Quit();
+
+
+
+
+                //string unicodeString = File.ReadAllText(filePath, new Encoding(Microsoft.Office.Core.MsoEncoding.msoEncodingISCIITamil)); //"This string contains the unicode character Pi (\u03a0)";
+
+                //// Create two different encodings.
+                //Encoding ascii = Encoding.ASCII;
+                //Encoding unicode = Encoding.Unicode;
+
+                //// Convert the string into a byte array.
+                //byte[] unicodeBytes = unicode.GetBytes(unicodeString);
+
+                //// Perform the conversion from one encoding to the other.
+                //byte[] asciiBytes = Encoding.Convert(unicode, ascii, unicodeBytes);
+
+                //// Convert the new byte[] into a char[] and then into a string.
+                //char[] asciiChars = new char[ascii.GetCharCount(asciiBytes, 0, asciiBytes.Length)];
+                //ascii.GetChars(asciiBytes, 0, asciiBytes.Length, asciiChars, 0);
+                //string asciiString = new string(asciiChars);
+
+                //// Display the strings created before and after the conversion.
+                //Console.WriteLine("Original string: {0}", unicodeString);
+                //Console.W
+                // Create a new empty workbook in a new workbook set.
+
+                //Microsoft.Office.Interop.Word.Application word = new Microsoft.Office.Interop.Word.Application();
+
+                //var sourceFile = new FileInfo(filePath);
+                //var document = word.Documents.Open(sourceFile.FullName);
+
+                //string newFileName = sourceFile.FullName.Replace(".docx", ".txt");
+                //document.SaveAs(newFileName, WdSaveFormat.wdFormatUnicodeText, Encoding: Encoding.UTF8);
+
+                //word.ActiveDocument.Close();
+                //word.Quit();
+
+                //Encoding wind1252 = Encoding.GetEncoding(1252);
+                //Encoding utf8 = Encoding.UTF8;
+                //byte[] wind1252Bytes = File.ReadAllBytes(filePath); // ReadFile(Server.MapPath(HtmlFile));
+                //byte[] utf8Bytes = Encoding.Convert(wind1252, utf8, wind1252Bytes);
+                //string utf8String = Encoding.UTF8.GetString(utf8Bytes);
+
+
+
+
+
                 var allPageContent = File.ReadAllText(filePath);
+
+
+                //            ActiveDocument.SaveAs _
+                //FileName:= "C:\My\Path\Textfile.txt", _
+                // FileFormat:= wdFormatText, _
+                //  Encoding:= 65001
+
+
+                // MemoryStream stream = new MemoryStream();
+                //FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+                MemoryStream stream = new MemoryStream();
+                StreamWriter writer = new StreamWriter(stream);
+                writer.Write(allPageContent);
+                writer.Flush();
+                stream.Position = 0;
+
+
+                // return stream;
+
+
+                StreamReader sreader = new StreamReader(stream);
+                //var dtdt = sreader.ReadToEnd();
+
+                //var dtdt = Encoding.UTF8.GetString(sreader.ToArray());
+
+
+
+                //var a = File.ReadAllText(filePath, Encoding.Default);
+                // a = File.ReadAllText(filePath, Encoding.ASCII);
+                // a = File.ReadAllText(filePath, Encoding.GetEncoding("UTF-8"));
+                // a = File.ReadAllText(filePath, Encoding.Unicode);
+                //a = File.ReadAllText(filePath, Encoding.UTF32);
+                //a = File.ReadAllText(filePath, Encoding.BigEndianUnicode);
+                //a = File.ReadAllText(filePath, Encoding.UTF7);
+                //a = File.ReadAllText(filePath, Encoding.UTF8);
+
+                //  var ttt = XmlEncoder.DecodeString(allPageContent);
+
+                //doc = app.Documents.Open(filePath);
+                //doc.WebOptions.Encoding = Microsoft.Office.Core.MsoEncoding.msoEncodingUTF8;
+                //doc.SaveAs2("C:\\Temp\\Test.htm", MsWord.WdSaveFormat.wdFormatFilteredHTML);
+
+
+
+
+
+
 
                 //Process First page
                 var firstPage = allPageContent.Substring(0, allPageContent.IndexOf("சட்டமன்றத் தொகுதி எண் மற்றும் பெயர்"));
@@ -372,6 +518,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                     var lastIndex = IndexOf(onlyVotersPages, pageNumber) - startIndex;
 
                     var pageContent = onlyVotersPages.Substring(startIndex, lastIndex);
+
 
 
                     if (ProcessPage(pageNumber, pageContent, assNo, partNo) == true)
@@ -710,10 +857,10 @@ namespace CenturyFinCorpApp.UsrCtrl
             try
             {
 
-                //if (pageNumber == 43)
-                //{
-                //    var s = "";
-                //}
+                if (pageNumber == 35)
+                {
+                    var s = "";
+                }
                 // processing page number
 
                 /*
@@ -733,6 +880,33 @@ namespace CenturyFinCorpApp.UsrCtrl
                 var recordCount = (from p in data.Split(' ').ToList()
                                    where p.Contains("Photo")
                                    select p).ToList().Count;
+
+                pageContent = pageContent.Replace("W RM", "WRM");
+                var keyList = new List<string>() { "WRM", "JRR", "XOE", "FXJ", "STG" };
+
+                var allLines = (from f in pageContent.Split(' ').ToList()
+                                where keyList.Any(a => f.Trim().StartsWith(a))
+                                select f.Trim().Substring(0, 10)).ToList();
+
+                var fillFileName = "";
+
+                if (allLines.Count == recordCount)
+                    fillFileName = Path.Combine(voterIdPath, pageNumber + ".txt");
+                else
+                    fillFileName = Path.Combine(voterIdPath, pageNumber + "_ERROR.txt");
+
+
+                var r = new StringBuilder();
+
+                // Save voter Ids.
+                allLines.ForEach(fe =>
+                {
+                    r.AppendLine(fe);
+                });
+
+                General.ReplaceLog(fillFileName, r.ToString());
+
+
 
                 data = data.Replace("Photo", "").Replace("is", "").Replace("Available", "");  // Rempve Photo is AVailable.
 
@@ -960,7 +1134,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 //}
 
 
-                // 1.1 add pageNo and index
+                // 1. add pageNo and index
                 for (int index = 0; index < voterList.Count; index++)
                 {
                     voterList[index].PageNo = pageNumber;
@@ -996,80 +1170,8 @@ namespace CenturyFinCorpApp.UsrCtrl
                     DoGender(sex[index], pageNumber, voterList[index], index);
                 }
 
-                //Append to final list
-
-
-                //var groupByRow = (from v in voterList
-                //                  group v by v.RowNo into ng
-                //                  select ng).ToList();
-
-
-                //groupByRow.ForEach(fe =>
-                //{
-                //    var threeRec = fe.ToList();
-                //    //var E = false;
-                //    if (threeRec[0].HorFName.Contains('-') == false && threeRec[1].HorFName.Contains('-') == true && threeRec[2].HorFName.Contains('-') == true)
-                //    {
-                //        if (threeRec[0].HorFName.Count(c => c == '*') <= 1)
-                //        {
-
-                //            if ((threeRec[0].HorFName.Count(c => c == '*') == threeRec[0].Name.Count(c => c == '*')) == false)
-                //            {
-
-                //                if ((threeRec[0].HorFName.Contains("-") == false && threeRec[0].Name.Contains("-") == false) == false)
-                //                {
-                //                    //if(threeRec[0].HorFName)
-                //                    if (threeRec[0].HorFName.Trim() == string.Empty)
-                //                    {
-                //                        threeRec[0].ErrorType = ErrorType.BREAK1EMPTY;
-                //                    }
-                //                    else
-                //                    {
-                //                        threeRec[0].ErrorType = ErrorType.BREAK1;
-                //                    }
-
-                //                }
-                //            }
-                //        }
-                //    }
-
-
-
-
-                //    //if(threeRec.Count == 3)
-                //    //{
-                //    //    if (!threeRec[0].HorFName.Contains('-') 
-                //    //    && threeRec[1].HorFName.Contains('-') 
-                //    //    && threeRec[2].HorFName.Contains('-') 
-                //    //    && threeRec[0].HorFName.Count(c => c == '*') == threeRec[1].HorFName.Count(c => c == '*'))
-                //    //    {
-                //    //        threeRec[0].Err = true;
-                //    //    }
-
-                //    //}
-                //    //for (int ff = 0; ff < threeRec.Count; ff++)
-                //    //{
-                //    //    threeRec[ff].Index = ff + 1;
-
-                //    //    var nec = threeRec[ff].HorFName.Count(c => c == '*');
-                //    //    threeRec[ff].NameErrorCount = nec;
-                //    //    if (nec > 1)
-                //    //        threeRec[ff].NameError = true;
-
-                //    //    var gec = threeRec[ff].Sex.Split(' ').Where(w => w == "*").Count();
-                //    //    threeRec[ff].GenderErrorCount = gec;
-                //    //    if (ff != 2 && threeRec.Count > 2 && gec > 1)
-                //    //        threeRec[ff].GenderError = true;
-                //    //}
-
-                //});
-
                 var vlNonDel = voterList.Where(w => w.IsDeleted == false).ToList();
 
-                //if (vlNonDel.Count != voterList.Count)
-                //{
-                //    var dd = voterList.Where(w => w.IsDeleted == true).ToList();
-                //}
                 fullList.AddRange(vlNonDel);
 
                 if (lastPageNumberToProcess == pageNumber)
@@ -1077,29 +1179,6 @@ namespace CenturyFinCorpApp.UsrCtrl
                     bd.NewVoters = voterList.Count;
                     BoothDetail.UpdateNewVoters(bd, boothDetailPath);
                 }
-
-                //if (errorRowNumber > 0)
-                //{
-                //    var jsonFile = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}-ReRun.json");
-                //    var fd = JsonConvert.SerializeObject(voterList, Formatting.Indented);
-                //    General.WriteToFile(jsonFile, fd);
-                //    logs.Clear();
-                //}
-
-
-                //if (voterList.Any(a => a.MayError))
-                //{
-                //    if (Directory.Exists(reProcessFile) == false)
-                //        Directory.CreateDirectory(reProcessFile);
-
-                //    var file = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}.txt");
-                //    General.WriteToFile(file, pageContent);
-
-                //    //write as json
-                //    var jsonFile = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{pageNumber}-{lastPageNumberToProcess}-Error.json");
-                //    var fd = JsonConvert.SerializeObject(voterList, Formatting.Indented);
-                //    General.WriteToFile(jsonFile, fd);
-                //}
 
                 return true;//voterList.Any(a => a.MayError);
 

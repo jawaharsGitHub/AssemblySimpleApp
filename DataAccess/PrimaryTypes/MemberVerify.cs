@@ -12,6 +12,7 @@ namespace DataAccess.PrimaryTypes
     {
 
         private static string JsonFilePath = AppConfiguration.MemberVerifyFile;
+        private static string JsonFilePathNonVerify = AppConfiguration.MemberNonVerifyFile;
 
         public string Email { get; set; }
         public string Mid { get; set; }
@@ -20,9 +21,14 @@ namespace DataAccess.PrimaryTypes
         public string ContactNo { get; set; }
         
 
-        public static List<MemberVerify> GetAll()
+        public static List<MemberVerify> GetAllVerified()
         {
             return ReadFileAsObjects<MemberVerify>(JsonFilePath);
+        }
+
+        public static List<MemberVerify> GetAllNonVerified()
+        {
+            return ReadFileAsObjects<MemberVerify>(JsonFilePathNonVerify);
         }
     }
 }

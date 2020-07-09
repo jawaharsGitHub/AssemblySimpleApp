@@ -70,10 +70,12 @@
     <None Include="Data\AssemblyVoters\211\211-BoothDetail.json" />
     <None Include="Data\BaseData - WIthoutPanchayat.json" />
     <None Include="Data\BaseData.json" />
+    <None Include="Data\ntknonApprovalMembers - Copy.json" />
     <None Include="Data\VotePercDetail.json" />
     <None Include="Data\voter-Panchayat.json" />
     <None Include="Data\assembly.json" />
     <Compile Include="PrimaryTypes\AssemblyBoothLink.cs" />
+    <Compile Include="PrimaryTypes\NTKMember.cs" />
     <Compile Include="PrimaryTypes\VotePercDetail.cs" />
     <Compile Include="ExtendedTypes\AssemblyAndVotes.cs" />
     <Compile Include="ExtendedTypes\CreditReport.cs" />
@@ -210,6 +212,7 @@
     <None Include="Data\memberverify.json" />
     <None Include="Data\AssemblyBoothLink.json" />
     <None Include="Data\AssemblyVoterList.json" />
+    <None Include="Data\ntknonApprovalMembers.json" />
     <None Include="Data\zonal.json" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

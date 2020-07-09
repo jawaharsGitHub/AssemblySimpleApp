@@ -51,6 +51,8 @@ namespace Common
 
         public static string MemberVerifyFile { get { return GetFullPath("memberverify"); } }
 
+        public static string MemberNonVerifyFile { get { return GetFullPath("ntknonApprovalMembers"); } }
+
         public static string AssemblyVotersFolder { get { return GetFullPath("AssemblyVotersFolder"); } }
 
         private static string GetFullPath(string configKey)

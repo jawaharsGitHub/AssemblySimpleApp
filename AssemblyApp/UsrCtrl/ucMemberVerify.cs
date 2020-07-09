@@ -26,7 +26,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         public ucMemberVerify()
         {
             InitializeComponent();
-            memberVerify = MemberVerify.GetAll();
+            memberVerify = MemberVerify.GetAllVerified();
             dgvMember.DataSource = memberVerify;
         }
 

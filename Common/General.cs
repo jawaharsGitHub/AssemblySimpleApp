@@ -30,7 +30,7 @@ namespace Common
         {
             string exeFile = (new Uri(Assembly.GetEntryAssembly().CodeBase)).AbsolutePath;
             string exeDir = Path.GetDirectoryName(exeFile);
-            string dataFolder = exeDir.Replace("AssemblyApp\\bin\\Debug", "DataAccess\\Data\\");
+            string dataFolder = exeDir.Replace("AssemblyApp\\bin\\Debug", newValue);
 
             return dataFolder;
         }
@@ -64,12 +64,29 @@ namespace Common
 
         }
 
-        
+        public static void RecreateFolder(string folderPath)
+        {
+            if (Directory.Exists(folderPath))
+            {
+                Directory.Delete(folderPath);
+            }
+
+            Directory.CreateDirectory(folderPath);
+
+        }
+
+
 
         public static void WriteLog(string path, string content, string assNo, string partNo, int pn)
         {
             CreateFileIfNotExist(path);
             File.AppendAllText(path, $"{assNo}-{partNo}-{pn} : {content}{Environment.NewLine}");
+        }
+
+        public static void ReplaceLog(string path, string content)
+        {
+            CreateFileIfNotExist(path);
+            File.WriteAllText(path, $"{content}{Environment.NewLine}");
         }
 
     }
