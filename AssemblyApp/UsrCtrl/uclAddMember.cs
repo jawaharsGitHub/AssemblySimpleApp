@@ -32,32 +32,27 @@ namespace CenturyFinCorpApp.UsrCtrl
 
 
             nonVerified.ForEach(fe => {
-
-                //SendBalanceEmail(fe.Name, fe.Email);
-                SendBalanceEmail(fe.Name, fe.Email);
-
-
+                SendBalanceEmail(fe);
             });
-
-           
 
         }
 
-        public static void SendBalanceEmail(string name, string email)
+        static List<MemberVerify> mvl = new List<MemberVerify>();
+        public static void SendBalanceEmail(MemberVerify mv)
         {
             try
             {
-                var sub = $"உறுப்பினர் அட்டை தொடர்பாக - நாம் தமிழர் கட்சி!!";
-
+                var sub = $"நாம் தமிழர் கட்சி - இராமநாதபுரம் தொகுதி";
                 var mBody = FileContentReader.EmailBodyHtml;
-                mBody = mBody.Replace("[name]", name);
-                var smtp = GetMailMessage(sub, mBody, email);
+                mBody = mBody.Replace("[name]", mv.Name);
+                mBody = mBody.Replace("[phone]", mv.ContactNo);
+                var smtp = GetMailMessage(sub, mBody, mv.Email);
 
                 smtp.Item2.Send(smtp.Item1);
             }
             catch (Exception ex)
             {
-                throw ex;
+                mvl.Add(mv);
             }
         }
 
