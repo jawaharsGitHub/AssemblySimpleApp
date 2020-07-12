@@ -410,8 +410,13 @@ namespace CenturyFinCorpApp.UsrCtrl
                     }
                 }
 
+                var newFileName = Path.Combine(DoneFolder, new FileInfo(filePath).Name);
+
                 if (isProcessed == false)
+                {
+                    General.CreateFileIfNotExist(newFileName);
                     continue;
+                }
 
 
                 string flag = "OK";
@@ -476,16 +481,11 @@ namespace CenturyFinCorpApp.UsrCtrl
                 };
 
                 VotePercDetail.Save(newBoothPerc);
-                try
-                {
-                    File.Copy(filePath, Path.Combine(DoneFolder, new FileInfo(filePath).Name));
-                }
-                catch (Exception ex)
-                {
 
-                    throw ex;
-                }
-                
+                File.Copy(filePath, newFileName);
+                //General.DeleteFile(filePath);
+
+
                 fullList.Clear();
             }
 

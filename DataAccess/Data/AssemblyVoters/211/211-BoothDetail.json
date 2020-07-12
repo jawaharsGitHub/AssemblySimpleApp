@@ -154,5 +154,31 @@
     "ThirdGender": 0,
     "NewVoters": 0,
     "TotalVoters": 1021
+  },
+  {
+    "PartNo": "21",
+    "PartPlaceName": " \r\n\r\n1 . பள்ள மோர்குளம் ( வ . கி ) மற்றும் தில்லையேந்தல் ( ஊ ) , \r\n\r\nகும்பிடாமதுரை \r\n\r\nமுக்கிய நகரம் ( அ ) கிராமம் 999 . அயல்நாடு வாழ் வாக்காளர்கள் , ",
+    "PartLocationAddress": null,
+    "BoothType": "பொது",
+    "AssemblyName": " இராமநாதபுரம் ( பொது)",
+    "ParlimentNo": " 35 ",
+    "ParlimentName": "ராமநாதபுரம் (பொது)",
+    "AssemblyNo": "211",
+    "EligibilityDay": "01-01-",
+    "ReleaseDate": "14",
+    "MainCityOrVillage": null,
+    "Zone": null,
+    "Birga": null,
+    "PoliceStation": null,
+    "Taluk": null,
+    "District": null,
+    "Pincode": 0,
+    "StartNo": 1,
+    "EndNo": 990,
+    "Male": 497,
+    "Female": 493,
+    "ThirdGender": 0,
+    "NewVoters": 6,
+    "TotalVoters": 990
   }
 ]
