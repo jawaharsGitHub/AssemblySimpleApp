@@ -83,7 +83,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             //}
 
 
-           txtPath = @"F:\NTK\VotersAnalysis\VoterList\211\docx";
+            txtPath = @"F:\NTK\VotersAnalysis\VoterList\211\docx";
 
 
             //int year = 2019;
@@ -103,14 +103,12 @@ namespace CenturyFinCorpApp.UsrCtrl
             General.CreateFolderIfNotExist(DoneFolder);
 
 
-            foreach (var item in allFiles)
+            foreach (var filePath in allFiles)
             {
                 string partNo = "";
                 string assNo = "";
 
-                var filePath = item; // $@"{folderPath}ac211200.txt";
-
-
+                //var filePath = $@"{folderPath}ac211200.txt";
 
                 try
                 {
@@ -376,7 +374,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 var onlyVotersPages = allPageContent.Substring(allPageContent.IndexOf("பக்கம் 2"), allPageContent.IndexOf("வாக்காளர்களின் தொகுப்பு") - allPageContent.IndexOf("பக்கம் 2"));
 
-                var totalPages = firstPage.Substring(firstPage.IndexOf("மொத்த பக்கங்கள்"), firstPage.IndexOf("பக்கம்") - firstPage.IndexOf("மொத்த பக்கங்கள்"));
+                var totalPages = firstPage.Substring(firstPage.IndexOf("மொத்த பக்கங்கள்"), firstPage.LastIndexOf("பக்கம்") - firstPage.IndexOf("மொத்த பக்கங்கள்"));
 
                 var NoOfpagesToProcess = totalPages.Replace("மொத்த பக்கங்கள்", "").Replace("-", "").Trim().ToInt32() - 3; // -3 means - not consider page 1, page 2 and last page
 
@@ -404,20 +402,12 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                     var pageContent = onlyVotersPages.Substring(startIndex, lastIndex);
 
-
-
-                    if (ProcessPage(pageNumber, pageContent, assNo, partNo) == true)
-                    {
-                        haveErrorinFile = true;
-                    }
-                    else
+                    if (ProcessPage(pageNumber, pageContent, assNo, partNo) == false)
                     {
                         General.WriteLog(logErrorPath, $"Error in PageProcess", assNo, partNo, pageNumber);
                         isProcessed = false;
                         break;
                     }
-
-
                 }
 
                 if (isProcessed == false)
@@ -425,62 +415,26 @@ namespace CenturyFinCorpApp.UsrCtrl
 
 
                 string flag = "OK";
-                //LOG FILE IF EXCEPTION OCCURS
-                //if (logs.Count > 0 || haveErrorinFile)
-                //{
-                //    var file = Path.Combine(reProcessFile, $"Log-{bd.AssemblyNo}-{bd.PartNo}-Exception.txt");
-
-                //    var delData = logs.Where(w => w.StartsWith("DEL-")).Distinct().Reverse().ToList();
-                //    var errData = logs.Where(w => w.StartsWith("DEL-") == false).ToList();
-
-                //    StringBuilder logText = new StringBuilder();
-                //    logText.AppendLine("==================DELETED RECORD========================================");
-                //    delData.ForEach(fe => logText.AppendLine(fe.Trim()));
-                //    logText.AppendLine("==================ERROR RECORD========================================");
-                //    errData.ForEach(fe => logText.AppendLine(fe));
-
-
-                //    General.WriteToFile(file, logText.ToString());
-                //    flag = "ERRORFILE";
-                //}
 
                 var file4 = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{DateTime.Now.ToLocalTime().ToString().Replace(":", "~")}-{flag}.txt");
                 General.WriteToFile(file4, onlyVotersPages);
 
-                if (chkDebugMode.Checked == false) // We should save ony in run modeNOT IN DEBUG MODE.
-                {
-                    //if (DialogResult.Yes == MessageBox.Show($"You want Save for {assNo}-{partNo}", "", MessageBoxButtons.YesNo))
-                    //{
+                //if (chkDebugMode.Checked == false) // We should save ony in run modeNOT IN DEBUG MODE.
+                //{
+                //    if (File.Exists(voterFilePath) == false)
+                //    {
+                //        var myFile = File.Create(voterFilePath);
+                //        myFile.Close();
+                //    }
+                //    else
+                //    {
+                //        File.Delete(voterFilePath);
+                //    }
 
-
-                    if (File.Exists(voterFilePath) == false)
-                    {
-                        var myFile = File.Create(voterFilePath);
-                        myFile.Close();
-                    }
-                    else
-                    {
-                        File.Delete(voterFilePath);
-                    }
-
-                    VoterList.Save(fullList, voterFilePath);
-
-
-
-                    //}
-                }
+                //    VoterList.Save(fullList, voterFilePath);
+                //}
 
                 logs.Clear();
-
-                // PROCESSED WHOLE JSON FILE.
-                //var fd = JsonConvert.SerializeObject(fullList, Formatting.Indented);
-                //var file3 = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{DateTime.Now.ToLocalTime().ToString().Replace(":", "~")}.json");
-                //General.WriteToFile(file3, fd);
-
-
-
-                // Save into voter perc File
-                // var dataSou = new List<KeyValuePair<string, string>>();
 
                 var maleCount = fullList.Where(w => w.Sex.Trim().Split(' ')[0].Trim() == "ஆண்").Count();
                 var femaleCount = fullList.Where(w => w.Sex.Trim().Split(' ')[0].Trim() == "பெண்").Count();
@@ -504,23 +458,35 @@ namespace CenturyFinCorpApp.UsrCtrl
                     Male = maleCount,
                     Female = femaleCount,
                     Third = 0,
+                    to20 = twenty,
+                    to30 = thirty,
+                    to40 = forty,
+                    to50 = fifty,
+                    to60 = sixty,
+                    Above60 = aboveSixty,
                     MaleP = PercInDec(maleCount, totalVoters),
                     FemaleP = PercInDec(femaleCount, totalVoters),
                     ThirdP = 0,
-                    to20 = PercInDec(twenty, totalVoters),
-                    to30 = PercInDec(thirty, totalVoters),
-                    to40 = PercInDec(forty, totalVoters),
-                    to50 = PercInDec(fifty, totalVoters),
-                    to60 = PercInDec(sixty, totalVoters),
-                    Above60 = PercInDec(aboveSixty, totalVoters)
+                    to20P = PercInDec(twenty, totalVoters),
+                    to30P = PercInDec(thirty, totalVoters),
+                    to40P = PercInDec(forty, totalVoters),
+                    to50P = PercInDec(fifty, totalVoters),
+                    to60P = PercInDec(sixty, totalVoters),
+                    Above60P = PercInDec(aboveSixty, totalVoters)
                 };
 
                 VotePercDetail.Save(newBoothPerc);
+                try
+                {
+                    File.Copy(filePath, Path.Combine(DoneFolder, new FileInfo(filePath).Name));
+                }
+                catch (Exception ex)
+                {
 
-                File.Move(item, Path.Combine(DoneFolder, new FileInfo(item).Name));
-
+                    throw ex;
+                }
+                
                 fullList.Clear();
-
             }
 
             MessageBox.Show("ALL DONE!");
@@ -746,7 +712,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 {
                     var s = "";
                 }
-                
+
                 data = pageContent;
 
                 data = data.Replace("சட்டமன்றத் தொகுதி எண் மற்றும் பெயர்", "*");
@@ -754,35 +720,46 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 bool mayHaveError = false;
 
-                var recordCount = (from p in data.Split(' ').ToList()
+                int recordCount = 0;
+
+
+                try
+                {
+
+                    recordCount = (from p in data.Split(' ').ToList()
                                    where p.Contains("Photo")
                                    select p).ToList().Count;
 
-                pageContent = pageContent.Replace("W RM", "WRM");
-                var keyList = new List<string>() { "WRM", "JRR", "XOE", "FXJ", "STG" };
+                    pageContent = pageContent.Replace("W RM", "WRM");
+                    var keyList = new List<string>() { "WRM", "JRR", "XOE", "FXJ", "STG" };
 
-                var allLines = (from f in pageContent.Split(' ').ToList()
-                                where keyList.Any(a => f.Trim().StartsWith(a))
-                                select f.Trim().Substring(0, 10)).ToList();
+                    var allLines = (from f in pageContent.Split(' ').ToList()
+                                    where keyList.Any(a => f.Trim().StartsWith(a))
+                                    select f.Trim().Substring(0, 10)).ToList();
 
-                var fillFileName = "";
+                    var fillFileName = "";
 
-                if (allLines.Count == recordCount)
-                    fillFileName = Path.Combine(voterIdPath, pageNumber + ".txt");
-                else
-                    fillFileName = Path.Combine(voterIdPath, pageNumber + "_ERROR.txt");
+                    if (allLines.Count == recordCount)
+                        fillFileName = Path.Combine(voterIdPath, pageNumber + ".txt");
+                    else
+                        fillFileName = Path.Combine(voterIdPath, pageNumber + "_ERROR.txt");
 
 
-                var r = new StringBuilder();
+                    var r = new StringBuilder();
 
-                // Save voter Ids.
-                allLines.ForEach(fe =>
+                    // Save voter Ids.
+                    allLines.ForEach(fe =>
+                    {
+                        r.AppendLine(fe);
+                    });
+
+                    General.ReplaceLog(fillFileName, r.ToString());
+                }
+                catch (Exception ex)
                 {
-                    r.AppendLine(fe);
-                });
-
-                General.ReplaceLog(fillFileName, r.ToString());
-
+                    //fillFileName = Path.Combine(voterIdPath, pageNumber + "_ERROR.txt");
+                    General.ReplaceLog(Path.Combine(voterIdPath, pageNumber + "_FULL-ERROR.txt"), "FULL-ERROR");
+                }
 
 
                 data = data.Replace("Photo", "").Replace("is", "").Replace("Available", "");  // Rempve Photo is AVailable.

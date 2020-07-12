@@ -21,6 +21,14 @@ namespace DataAccess.PrimaryTypes
         public int Male { get; set; }
         public int Female { get; set; }
         public int Third { get; set; }
+
+        public decimal to20P { get; set; }
+        public decimal to30P { get; set; }
+        public decimal to40P { get; set; }
+        public decimal to50P { get; set; }
+        public decimal to60P { get; set; }
+        public decimal Above60P { get; set; }
+
         public decimal MaleP { get; set; }
         public decimal FemaleP { get; set; }
         public decimal ThirdP { get; set; }
