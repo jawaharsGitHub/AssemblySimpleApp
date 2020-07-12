@@ -7,3 +7,6 @@ F:\AssemblySimpleApp\NTK_Support\obj\Debug\NTK_Support.csproj.GenerateResource.c
 F:\AssemblySimpleApp\NTK_Support\obj\Debug\NTK_Support.exe
 F:\AssemblySimpleApp\NTK_Support\obj\Debug\NTK_Support.pdb
 F:\AssemblySimpleApp\NTK_Support\obj\Debug\NTK_Support.csprojAssemblyReference.cache
+F:\AssemblySimpleApp\NTK_Support\bin\Debug\ICSharpCode.SharpZipLib.dll
+F:\AssemblySimpleApp\NTK_Support\obj\Debug\NTK_Support.DocxToTxt.resources
+F:\AssemblySimpleApp\NTK_Support\obj\Debug\NTK_Support.csproj.CopyComplete

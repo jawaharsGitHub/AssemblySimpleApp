@@ -42,6 +42,10 @@
     <Reference Include="Ghostscript.NET, Version=1.2.1.0, Culture=neutral, PublicKeyToken=f85051de34525b59, processorArchitecture=MSIL">
       <HintPath>..\packages\Ghostscript.NET.1.2.1\lib\net40\Ghostscript.NET.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.84.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="itext.barcodes, Version=7.1.11.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\itext7.7.1.11\lib\net40\itext.barcodes.dll</HintPath>
     </Reference>
@@ -94,6 +98,7 @@
     <Compile Include="ClosedXML.cs" />
     <Compile Include="DataCorrector.cs" />
     <Compile Include="DateHelper.cs" />
+    <Compile Include="DocxToText.cs" />
     <Compile Include="ExtensionMethod\DataExtension.cs" />
     <Compile Include="ExtensionMethod\TypeExtenstion.cs" />
     <Compile Include="FileContentReader.cs" />
@@ -118,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="HTMLTemplate\EmailBody.htm" />
+    <Content Include="ICSharpCode.SharpZipLib.dll" />
     <Content Include="PL file\balance mismatch.txt" />
     <Content Include="PL file\BT- Credits.txt" />
     <Content Include="PL file\doubts.txt" />

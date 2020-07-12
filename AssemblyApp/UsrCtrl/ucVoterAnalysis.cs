@@ -83,9 +83,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             //}
 
 
-            //txtPath = @"F:\NTK\VotersAnalysis\VoterList\211\txt";
-
-            txtPath = @"F:\NTK\VotersAnalysis\VoterList\211\docx";
+           txtPath = @"F:\NTK\VotersAnalysis\VoterList\211\docx";
 
 
             //int year = 2019;
@@ -111,7 +109,6 @@ namespace CenturyFinCorpApp.UsrCtrl
                 string assNo = "";
 
                 var filePath = item; // $@"{folderPath}ac211200.txt";
-
 
 
 
@@ -157,120 +154,8 @@ namespace CenturyFinCorpApp.UsrCtrl
                     //MessageBox.Show("Invalid file name");
                 }
 
-
-
-                //Microsoft.Office.Interop.Word.Application word = new Microsoft.Office.Interop.Word.Application();
-                //object miss = System.Reflection.Missing.Value;
-                //object enc = Microsoft.Office.Core.MsoEncoding.msoEncodingISCIITamil;
-                //object path = filePath;
-                //object readOnly = true;
-                //Microsoft.Office.Interop.Word.Document docs = word.Documents.Open(ref path, ref miss, ref readOnly, ref miss, ref miss,
-                //    ref miss, ref miss, ref miss, ref miss, ref miss, ref enc, ref miss, ref miss, ref miss, ref miss);
-                //string totaltext = "";
-
-                //for (int i = 0; i < docs.Paragraphs.Count; i++)
-                //{
-                //    totaltext += " \r\n " + docs.Paragraphs[i + 1].Range.Text.ToString();
-
-                //    Console.WriteLine(totaltext);
-                //}
-                //// Console.WriteLine(totaltext);
-                //docs.Close();
-                //word.Quit();
-
-
-
-
-                //string unicodeString = File.ReadAllText(filePath, new Encoding(Microsoft.Office.Core.MsoEncoding.msoEncodingISCIITamil)); //"This string contains the unicode character Pi (\u03a0)";
-
-                //// Create two different encodings.
-                //Encoding ascii = Encoding.ASCII;
-                //Encoding unicode = Encoding.Unicode;
-
-                //// Convert the string into a byte array.
-                //byte[] unicodeBytes = unicode.GetBytes(unicodeString);
-
-                //// Perform the conversion from one encoding to the other.
-                //byte[] asciiBytes = Encoding.Convert(unicode, ascii, unicodeBytes);
-
-                //// Convert the new byte[] into a char[] and then into a string.
-                //char[] asciiChars = new char[ascii.GetCharCount(asciiBytes, 0, asciiBytes.Length)];
-                //ascii.GetChars(asciiBytes, 0, asciiBytes.Length, asciiChars, 0);
-                //string asciiString = new string(asciiChars);
-
-                //// Display the strings created before and after the conversion.
-                //Console.WriteLine("Original string: {0}", unicodeString);
-                //Console.W
-                // Create a new empty workbook in a new workbook set.
-
-                //Microsoft.Office.Interop.Word.Application word = new Microsoft.Office.Interop.Word.Application();
-
-                //var sourceFile = new FileInfo(filePath);
-                //var document = word.Documents.Open(sourceFile.FullName);
-
-                //string newFileName = sourceFile.FullName.Replace(".docx", ".txt");
-                //document.SaveAs(newFileName, WdSaveFormat.wdFormatUnicodeText, Encoding: Encoding.UTF8);
-
-                //word.ActiveDocument.Close();
-                //word.Quit();
-
-                //Encoding wind1252 = Encoding.GetEncoding(1252);
-                //Encoding utf8 = Encoding.UTF8;
-                //byte[] wind1252Bytes = File.ReadAllBytes(filePath); // ReadFile(Server.MapPath(HtmlFile));
-                //byte[] utf8Bytes = Encoding.Convert(wind1252, utf8, wind1252Bytes);
-                //string utf8String = Encoding.UTF8.GetString(utf8Bytes);
-
-
-
-
-
-                var allPageContent = File.ReadAllText(filePath);
-
-
-                //            ActiveDocument.SaveAs _
-                //FileName:= "C:\My\Path\Textfile.txt", _
-                // FileFormat:= wdFormatText, _
-                //  Encoding:= 65001
-
-
-                // MemoryStream stream = new MemoryStream();
-                //FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-                MemoryStream stream = new MemoryStream();
-                StreamWriter writer = new StreamWriter(stream);
-                writer.Write(allPageContent);
-                writer.Flush();
-                stream.Position = 0;
-
-
-                // return stream;
-
-
-                StreamReader sreader = new StreamReader(stream);
-                //var dtdt = sreader.ReadToEnd();
-
-                //var dtdt = Encoding.UTF8.GetString(sreader.ToArray());
-
-
-
-                //var a = File.ReadAllText(filePath, Encoding.Default);
-                // a = File.ReadAllText(filePath, Encoding.ASCII);
-                // a = File.ReadAllText(filePath, Encoding.GetEncoding("UTF-8"));
-                // a = File.ReadAllText(filePath, Encoding.Unicode);
-                //a = File.ReadAllText(filePath, Encoding.UTF32);
-                //a = File.ReadAllText(filePath, Encoding.BigEndianUnicode);
-                //a = File.ReadAllText(filePath, Encoding.UTF7);
-                //a = File.ReadAllText(filePath, Encoding.UTF8);
-
-                //  var ttt = XmlEncoder.DecodeString(allPageContent);
-
-                //doc = app.Documents.Open(filePath);
-                //doc.WebOptions.Encoding = Microsoft.Office.Core.MsoEncoding.msoEncodingUTF8;
-                //doc.SaveAs2("C:\\Temp\\Test.htm", MsWord.WdSaveFormat.wdFormatFilteredHTML);
-
-
-
-
-
+                DocxToText dtt = new DocxToText(filePath);
+                var allPageContent = dtt.ExtractText();
 
 
                 //Process First page
@@ -861,15 +746,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 {
                     var s = "";
                 }
-                // processing page number
-
-                /*
-                 * ONE DELETE
-                 * NO DELETE BUT DATA SWAPPED OR MISARRANGED
-                 * MORE THAN ONE DELETE? not yet done.
-                 */
-
-
+                
                 data = pageContent;
 
                 data = data.Replace("சட்டமன்றத் தொகுதி எண் மற்றும் பெயர்", "*");
@@ -925,31 +802,8 @@ namespace CenturyFinCorpApp.UsrCtrl
                             .Replace("வீட்டு கண்", "$ADDRESS-D")
                             .Replace("வீட்டு தடை", "$ADDRESS-D")
                            //.Replace("வீட்டு", "$ADDRESS:D")
-
                            .Replace("வயது", "$AGE")
-
                            .Replace("பாலினம்", "$SEX");
-
-
-                //data = data.Replace("தந்தை பெயர்", "$F")
-                //           .Replace("கணவர் பெயர்", "$F")
-                //           //.Replace("கணவர் பெய", "$HUSBAND-1:") // scenerio 1
-                //           .Replace("தாய் பெயர்", "$F")
-                //           .Replace("இதரர் பெயர்", "$F")
-                //           // NOTE: dont change this order of Replace
-                //           .Replace("பெயர்", "$N")  // Rempoe Photo is AVailable.
-
-                //           .Replace("வீட்டு எண்", "$A")
-                //           .Replace("வீட்டு என்", "$A")
-                //            .Replace("வீட்டு தன்", "$A")
-                //            .Replace("வீட்டு பண்", "$A")
-                //            .Replace("வீட்டு கண்", "$A")
-                //            .Replace("வீட்டு கண்", "$A")
-                //           //.Replace("வீட்டு", "$ADDRESS:D")
-
-                //           .Replace("வயது", "$G")
-
-                //           .Replace("பாலினம்", "$X");
 
                 var splittedData = data.Split('$').ToList();
 
