@@ -110,9 +110,13 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 //var filePath = $@"{folderPath}ac211200.txt";
 
+                var fileInfo = new FileInfo(filePath);
+
                 try
                 {
-                    var ufn = (new FileInfo(filePath)).Name.Split('.')[0];
+
+
+                    var ufn = fileInfo.Name.Split('.')[0];
 
                     assNo = ufn.Substring(2, 3);
                     partNo = ufn.Substring(5, 3);
@@ -123,45 +127,20 @@ namespace CenturyFinCorpApp.UsrCtrl
                     voterFilePath = Path.Combine(basePath, $"{assNo}-{partNo}.json");
                     voterIdPath = Path.Combine(Directory.GetParent(txtPath).FullName, "VoterIds", $"{assNo}-{partNo}");
                     General.CreateFolderIfNotExist(voterIdPath);
-
-                    //this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
-
-                    //if (File.Exists(voterFilePath) == false)
-                    //{
-                    //    //File.Create(voterFilePath);
-                    //}
-                    //else
-                    //{
-                    //    if (chkDebugMode.Checked == false)
-                    //    {
-                    //        MessageBox.Show("Willload an existing data!!");
-                    //        // Load and exit
-                    //        fullList = VoterList.GetAll(voterFilePath);
-                    //        dataGridView1.DataSource = fullList;
-                    //        //this.cmbFIlter.SelectedIndexChanged += new System.EventHandler(this.cmbFIlter_SelectedIndexChanged);
-                    //        this.cmbFIlter.SelectedIndex = 8; // may error.
-                    //        SetErrorDetail();
-                    //        return;
-                    //    }
-                    //}
-
                 }
                 catch (Exception ex)
                 {
                     General.WriteLog(logErrorPath, $"Error in FileName - {ex.ToString()}", assNo, partNo, 0);
-                    //MessageBox.Show("Invalid file name");
                 }
 
                 DocxToText dtt = new DocxToText(filePath);
                 var allPageContent = dtt.ExtractText();
-
 
                 //Process First page
                 var firstPage = allPageContent.Substring(0, allPageContent.IndexOf("சட்டமன்றத் தொகுதி எண் மற்றும் பெயர்"));
 
                 try
                 {
-
 
                     // First Page Details
                     List<string> toReplace = new List<string>()
@@ -216,7 +195,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                     }
 
 
-                    bd.PartNo = fpSPlitted[3].Split(' ')[2].Trim();
+                    bd.PartNo = fpSPlitted[3].Split(' ')[2].Replace("|", "").Replace("/", "").Trim();
 
                     if (string.IsNullOrEmpty(bd.PartNo)) bd.PartNo = partNo;
 
@@ -366,10 +345,6 @@ namespace CenturyFinCorpApp.UsrCtrl
                     General.WriteLog(logErrorPath, $"Error in First Page", assNo, partNo, 1);
                 }
 
-
-
-                //reProcessFile = $"{folderPath}{bd.AssemblyNo}\\{bd.PartNo}";
-
                 //var lastPage = allPageContent.Substring(allPageContent.IndexOf("வாக்காளர்களின் தொகுப்பு"));
 
                 var onlyVotersPages = allPageContent.Substring(allPageContent.IndexOf("பக்கம் 2"), allPageContent.IndexOf("வாக்காளர்களின் தொகுப்பு") - allPageContent.IndexOf("பக்கம் 2"));
@@ -400,6 +375,10 @@ namespace CenturyFinCorpApp.UsrCtrl
                     var startIndex = IndexOf(onlyVotersPages, pageNumber - 1); //onlyVotersPages.IndexOf($"பக்கம் {i + 2}");
                     var lastIndex = IndexOf(onlyVotersPages, pageNumber) - startIndex;
 
+                    if (pageNumber == 15)
+                    {
+                        var tt = "";
+                    }
                     var pageContent = onlyVotersPages.Substring(startIndex, lastIndex);
 
                     if (ProcessPage(pageNumber, pageContent, assNo, partNo) == false)
@@ -410,7 +389,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                     }
                 }
 
-                var newFileName = Path.Combine(DoneFolder, new FileInfo(filePath).Name);
+                var newFileName = Path.Combine(DoneFolder, fileInfo.Name);
 
                 if (isProcessed == false)
                 {
@@ -424,36 +403,23 @@ namespace CenturyFinCorpApp.UsrCtrl
                 var file4 = Path.Combine(reProcessFile, $"{bd.AssemblyNo}-{bd.PartNo}-{DateTime.Now.ToLocalTime().ToString().Replace(":", "~")}-{flag}.txt");
                 General.WriteToFile(file4, onlyVotersPages);
 
-                //if (chkDebugMode.Checked == false) // We should save ony in run modeNOT IN DEBUG MODE.
-                //{
-                //    if (File.Exists(voterFilePath) == false)
-                //    {
-                //        var myFile = File.Create(voterFilePath);
-                //        myFile.Close();
-                //    }
-                //    else
-                //    {
-                //        File.Delete(voterFilePath);
-                //    }
-
-                //    VoterList.Save(fullList, voterFilePath);
-                //}
-
                 logs.Clear();
+
+                var acData = fullList.Where(w => w.Sex == null);
 
                 var maleCount = fullList.Where(w => w.Sex.Trim().Split(' ')[0].Trim() == "ஆண்").Count();
                 var femaleCount = fullList.Where(w => w.Sex.Trim().Split(' ')[0].Trim() == "பெண்").Count();
-                //var thirdGenderCount = fullList.Where(w => w.Sex.Trim().Split(' ')[0].Trim() == "பெண்").Count();
+                var thirdGenderCount = fullList.Where(w => w.Sex.Trim().Split(' ')[0].Trim() == "திருநங்கை").Count();
 
                 var allAges = fullList.Select(s => s.Age).ToList();
                 var totalVoters = allAges.Count();
 
-                var twenty = GetLessAgeCOunt(allAges, 20);
-                var thirty = GetAgeCOunt(allAges, 21, 30);
-                var forty = GetAgeCOunt(allAges, 31, 40);
-                var fifty = GetAgeCOunt(allAges, 41, 50);
-                var sixty = GetAgeCOunt(allAges, 51, 60);
-                var aboveSixty = GetMoreAgeCOunt(allAges, 61);
+                var twenty = GetLessAgeCount(allAges, 20);
+                var thirty = GetAgeCount(allAges, 21, 30);
+                var forty = GetAgeCount(allAges, 31, 40);
+                var fifty = GetAgeCount(allAges, 41, 50);
+                var sixty = GetAgeCount(allAges, 51, 60);
+                var aboveSixty = GetMoreAgeCount(allAges, 61);
 
                 var newBoothPerc = new VotePercDetail()
                 {
@@ -462,7 +428,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                     Total = totalVoters,
                     Male = maleCount,
                     Female = femaleCount,
-                    Third = 0,
+                    Third = thirdGenderCount,
                     to20 = twenty,
                     to30 = thirty,
                     to40 = forty,
@@ -471,7 +437,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                     Above60 = aboveSixty,
                     MaleP = PercInDec(maleCount, totalVoters),
                     FemaleP = PercInDec(femaleCount, totalVoters),
-                    ThirdP = 0,
+                    ThirdP = PercInDec(thirdGenderCount, totalVoters),
                     to20P = PercInDec(twenty, totalVoters),
                     to30P = PercInDec(thirty, totalVoters),
                     to40P = PercInDec(forty, totalVoters),
@@ -482,40 +448,18 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 VotePercDetail.Save(newBoothPerc);
 
-                File.Copy(filePath, newFileName);
-                //General.DeleteFile(filePath);
-
-
+                try
+                {
+                    //File.Move(filePath, newFileName);
+                    File.Copy(filePath, newFileName);
+                }
+                catch (Exception ex)
+                {
+                }
                 fullList.Clear();
             }
 
             MessageBox.Show("ALL DONE!");
-
-            //dataGridView1.DataSource = fullList;
-
-            //var st = new StringBuilder();
-
-            //var er = (from f in fullList.Where(w => w.NameError || w.GenderError).ToList()
-            //          group f by $"{f.PageNo}-{f.RowNo}" into ng
-            //          select ng.Key).ToList();
-
-
-
-            // fullList.ForEach(fe => st.AppendLine(fe.ToString()));
-            //fullList.Where(w => w.ErrorType == ErrorType.BREAK1).ToList().ForEach(fe => st.AppendLine(fe.ToString()));
-
-            //fullList.Where(w => er.Contains($"{w.PageNo}-{w.RowNo}")).ToList().ForEach(fe => st.AppendLine(fe.ToString()));
-
-
-            //var errorPages = (from fl in fullList
-            //                  where fl.MayError
-            //                  group fl by fl.PageNo into ng
-            //                  select "Page-" + ng.Key.ToString()).ToList();
-
-            //errorPages.Insert(0, "--SELECT PAGE--");
-
-            //chkPageList.DataSource = errorPages;
-            //SetErrorDetail();
 
         }
 
@@ -658,7 +602,19 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private int IndexOf(string allContent, int pageNo)
         {
-            return allContent.IndexOf($"பக்கம் {pageNo}");
+            var searchStr = $"பக்கம் {pageNo}";
+            var pakkam = "பக்கம்";
+
+            var index = allContent.IndexOf(searchStr);
+
+            if (index < 0)
+            {
+                return allContent.IndexOf(pakkam, allContent.IndexOf($"பக்கம் {pageNo - 1}") + 4);
+            }
+            else
+            {
+                return index;
+            }
         }
 
         private void chkDebugMode_CheckedChanged(object sender, EventArgs e)
@@ -708,12 +664,15 @@ namespace CenturyFinCorpApp.UsrCtrl
             try
             {
 
-                if (pageNumber == 35)
+                if (pageNumber == 47)
                 {
                     var s = "";
                 }
 
                 data = pageContent;
+
+                if (data.IndexOf("பெயர்") < data.IndexOf("சட்டமன்றத் தொகுதி எண் மற்றும் பெயர்"))
+                    data = data.Remove(data.IndexOf("பெயர்"), 3);
 
                 data = data.Replace("சட்டமன்றத் தொகுதி எண் மற்றும் பெயர்", "*");
                 data = data.Replace("பிரிவு எண் மற்றும் பெயர்", "*");
@@ -729,6 +688,14 @@ namespace CenturyFinCorpApp.UsrCtrl
                     recordCount = (from p in data.Split(' ').ToList()
                                    where p.Contains("Photo")
                                    select p).ToList().Count;
+
+                    var recordCount2 = (from p in data.Split(' ').ToList()
+                                        where p.Contains("ilable")
+                                        select p).ToList().Count;
+
+                    recordCount = Math.Max(recordCount, recordCount2);
+
+                    recordCount = recordCount > 30 ? 30 : recordCount;
 
                     pageContent = pageContent.Replace("W RM", "WRM");
                     var keyList = new List<string>() { "WRM", "JRR", "XOE", "FXJ", "STG" };
@@ -769,8 +736,21 @@ namespace CenturyFinCorpApp.UsrCtrl
                            //.Replace("கணவர் பெய", "$HUSBAND-1:") // scenerio 1
                            .Replace("தாய் பெயர்", "$FATHER")
                            .Replace("இதரர் பெயர்", "$FATHER")
-                           // NOTE: dont change this order of Replace
-                           .Replace("பெயர்", "$NAME")  // Rempoe Photo is AVailable.
+                            .Replace("மனைவி பெயர்", "$FATHER");
+
+                bool needCorrection = false;
+
+                if (data.Contains("தந்தை") ||
+                    data.Contains("கணவர்") ||
+                    data.Contains("தாய்") ||
+                    data.Contains("இதரர்") ||
+                    data.Contains("மனைவி"))
+                {
+                    needCorrection = true;
+                }
+
+                // NOTE: dont change this order of Replace
+                data = data.Replace("பெயர்", "$NAME")  // Rempoe Photo is AVailable.
 
                            .Replace("வீட்டு எண்", "$ADDRESS")
                            .Replace("வீட்டு என்", "$ADDRESS-D")
@@ -780,6 +760,8 @@ namespace CenturyFinCorpApp.UsrCtrl
                             .Replace("வீட்டு தடை", "$ADDRESS-D")
                            //.Replace("வீட்டு", "$ADDRESS:D")
                            .Replace("வயது", "$AGE")
+                           .Replace("மூன்றாம் பாலினம்", "திருநங்கை")
+                           .Replace("மூன்றாம்", "திருநங்கை")
                            .Replace("பாலினம்", "$SEX");
 
                 var splittedData = data.Split('$').ToList();
@@ -787,8 +769,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 splittedData.RemoveRange(0, 1);
 
                 // no of voters in a page
-                var pageRecordCount = splittedData.Count; //
-
+                var pageRecordCount = splittedData.Count;
 
                 var names = splittedData.Where(w => w.StartsWith("NAME")).ToList();
 
@@ -797,12 +778,75 @@ namespace CenturyFinCorpApp.UsrCtrl
                                            w.StartsWith("MOTHER") || w.StartsWith("HUSBAND") ||
                                            w.StartsWith("OTHERS")).ToList();
 
+                if (fatherOrHusband.Count > recordCount)
+                {
+                    for (int i = 0; i < fatherOrHusband.Count - 1; i++)
+                    {
+                        if (fatherOrHusband[i].Replace("FATHER", "").Replace(":", "").Replace(".", "").Replace("-", "").Trim() == string.Empty)
+                            fatherOrHusband.Remove(fatherOrHusband[i]);
+                    }
+                }
+
                 var address = splittedData.Where(w => w.StartsWith("ADDRESS")).ToList();
 
                 var age = splittedData.Where(w => w.StartsWith("AGE")).ToList();
                 age.RemoveAt(age.Count - 1);
 
+                if (age.Count > recordCount)
+                {
+                    for (int i = 0; i < age.Count - 1; i++)
+                    {
+                        try
+                        {
+                            Convert.ToInt32(GetAge(age[i]).Item2);
+                        }
+                        catch (Exception)
+                        {
+                            age.Remove(age[i]);
+                        }
+                    }
+                }
+
+
+                if (address.Count > recordCount)
+                {
+                    address.RemoveRange(0, address.Count - age.Count);
+                }
+
+
+                if (names.Count > recordCount)
+                {
+                    for (int i = 0; i < names.Count - 1; i++)
+                    {
+                        if (names[i].Replace("NAME", "").Replace(":", "").Trim() == string.Empty)
+                            names.Remove(names[i]);
+                    }
+                }
+
+                if (needCorrection && names.Count != age.Count && names.Count - age.Count >= 0 && names.Count > recordCount)
+                {
+                    names.RemoveRange(0, names.Count - age.Count);
+                    General.WriteLog(logErrorPath, "Error in Name, may be look at the supporter's name (father name)", assNum, partNum, pageNumber);
+                }
+
                 var sex = splittedData.Where(w => w.StartsWith("SEX")).ToList();
+
+                if (sex.Count != recordCount)
+                {
+                    var sexNames = new List<string>() { "திருநங்கை", "ஆண்", "பெண்" };
+
+                    for (int i = 0; i < sex.Count - 1; i++)
+                    {
+                        if (sex[i].Contains(':') && sexNames.Contains(sex[i].Split(':')[1].Trim().Split(' ')[0]))
+                        { }
+                        else if (sex[i].Contains(':') == false && sexNames.Contains(sex[i].Split(' ')[1].Trim().Split(' ')[0]))
+                        { }
+                        else
+                            sex.Remove(sex[i]);
+                    }
+
+
+                }
 
                 var isReProcess = (errorRowNumber > 0);
                 var insertIndex = (errorRowNumber - 1);
@@ -812,21 +856,6 @@ namespace CenturyFinCorpApp.UsrCtrl
                 var isAddressIssue = (address.Count != recordCount);
                 var isAgeIssue = (age.Count != recordCount);
                 var isSexIssue = (sex.Count != recordCount);
-
-                //if (isReProcess)
-                //{
-                //    if (isNameIssue) names.Insert(insertIndex, "NN");
-                //    if (isFNameIssue) fatherOrHusband.Insert(insertIndex, "NF");
-                //    if (isAddressIssue) address.Insert(insertIndex, "ND");
-                //    if (isAgeIssue) age.Insert(insertIndex, "NG");
-                //    if (isSexIssue) sex.Insert(insertIndex, "NS");
-
-                //    isNameIssue = (names.Count != recordCount);
-                //    isFNameIssue = (fatherOrHusband.Count != recordCount);
-                //    isAddressIssue = (address.Count != recordCount);
-                //    isAgeIssue = (age.Count != recordCount);
-                //    isSexIssue = (sex.Count != recordCount);
-                //}
 
                 if (isNameIssue)
                 {
@@ -849,7 +878,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                     {
                         missedNames.Add("FATHER:MISSED");
                     }
-                    fatherOrHusband.InsertRange(names.Count, missedNames);
+                    fatherOrHusband.InsertRange(fatherOrHusband.Count, missedNames);
                     General.WriteLog(logErrorPath, "Error in FatherNames", assNum, partNum, pageNumber);
                 }
                 if (isAddressIssue)
@@ -890,7 +919,6 @@ namespace CenturyFinCorpApp.UsrCtrl
                 }
 
 
-                //if (isNameIssue || isFNameIssue || isAddressIssue || isAgeIssue || isSexIssue)
                 if (isAgeIssue || isSexIssue)
                 {
                     mayHaveError = true;
@@ -928,21 +956,38 @@ namespace CenturyFinCorpApp.UsrCtrl
                 var voterList = new List<VoterList>();
 
                 // 1. Name
-                names.ForEach(fe =>
+
+
+                //names.ForEach(fe =>
+                //{
+                //    var nm = GetName(fe, assNum, partNum);
+                //    var vl = new VoterList()
+                //    {
+                //        Name = nm.Item1 ? nm.Item2 : AddNameLog(pageNumber, "#NERROR#"),
+                //        MayError = mayHaveError ? mayHaveError : (nm.Item3)
+
+                //    };
+
+                //    if (vl.MayError)
+                //        AddNameLog(pageNumber, $"NAME ERROR @ {voterList.Count + 1}");
+
+                //    voterList.Add(vl);
+                //});
+
+                for (int i = 0; i < recordCount; i++)
                 {
-                    var nm = GetName(fe, assNum, partNum);
+                    var nm = GetName(names[i], assNum, partNum);
                     var vl = new VoterList()
                     {
                         Name = nm.Item1 ? nm.Item2 : AddNameLog(pageNumber, "#NERROR#"),
                         MayError = mayHaveError ? mayHaveError : (nm.Item3)
-
                     };
 
                     if (vl.MayError)
                         AddNameLog(pageNumber, $"NAME ERROR @ {voterList.Count + 1}");
 
                     voterList.Add(vl);
-                });
+                }
 
                 sb2.AppendLine($"------------{pageNumber}------------");
 
@@ -974,7 +1019,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 }
 
                 // 2. HorFName
-                for (int index = 0; index < fatherOrHusband.Count; index++)
+                for (int index = 0; index < recordCount; index++)
                 {
                     DoHFname(fatherOrHusband[index], pageNumber, voterList[index], index);
 
@@ -984,19 +1029,19 @@ namespace CenturyFinCorpApp.UsrCtrl
 
 
                 // 3. HomeAddress
-                for (int index = 0; index < address.Count; index++)
+                for (int index = 0; index < recordCount; index++)
                 {
                     DoAddress(address[index], pageNumber, voterList[index], index);
                 }
 
                 // 4. Age
-                for (int index = 0; index < age.Count; index++)
+                for (int index = 0; index < recordCount; index++)
                 {
                     DoAge(age[index], pageNumber, voterList[index], index);
                 }
 
                 // 5. Sex
-                for (int index = 0; index < sex.Count; index++)
+                for (int index = 0; index < recordCount; index++)
                 {
                     DoGender(sex[index], pageNumber, voterList[index], index);
                 }
@@ -1376,17 +1421,17 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         }
 
-        private int GetAgeCOunt(List<int> ages, int st, int en)
+        private int GetAgeCount(List<int> ages, int st, int en)
         {
             return ages.Count(c => c >= st && c <= en);
         }
 
-        private int GetLessAgeCOunt(List<int> ages, int age)
+        private int GetLessAgeCount(List<int> ages, int age)
         {
             return ages.Count(c => c <= age);
         }
 
-        private int GetMoreAgeCOunt(List<int> ages, int age)
+        private int GetMoreAgeCount(List<int> ages, int age)
         {
             return ages.Count(c => c >= age);
         }

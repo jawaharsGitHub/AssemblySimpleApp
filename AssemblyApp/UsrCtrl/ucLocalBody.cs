@@ -656,7 +656,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             var numberOfBooths = textBox2.Text.ToInt32();
             lstBooths.Items.Clear();
 
-            for (int i = 1; i <= numberOfBooths; i++)
+            for (int i = numberOfBooths; i <= numberOfBooths + 30; i++)
             {
                 lstBooths.Items.Add(i);
 
@@ -703,6 +703,8 @@ namespace CenturyFinCorpApp.UsrCtrl
             });
 
             AssemblyBoothLink.AddBoothForAssembly(ablList);
+
+            MessageBox.Show("DONE!");
 
         }
     }

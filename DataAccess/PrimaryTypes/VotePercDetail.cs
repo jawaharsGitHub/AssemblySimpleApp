@@ -55,7 +55,7 @@ namespace DataAccess.PrimaryTypes
         public static List<VotePercDetail> GetForAssembly(int assemblyNo)
         {
             var allData = ReadFileAsObjects<VotePercDetail>(JsonFilePath);
-            return allData.Where(w => w.AssemblyNo == assemblyNo).ToList();
+            return allData.Where(w => w.AssemblyNo == assemblyNo).OrderBy(o => o.BoothNo).ToList();
         }
 
         public static List<VotePercDetail> GetForOndrium(int ondriumId)

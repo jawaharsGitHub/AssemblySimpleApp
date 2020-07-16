@@ -12,5 +12,2329 @@
     "PaguthiNo": 4,
     "PaguthiType": 0,
     "PanchayatId": 7
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 3,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 28
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 4,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 10
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 5,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 10
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 6,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 9
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 7,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 9
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 8,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 19
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 9,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 19
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 10,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 23
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 11,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 25
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 12,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 31
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 13,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 30
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 14,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 30
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 15,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 20
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 16,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 20
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 17,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 3
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 18,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 3
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 19,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 29
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 20,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 3
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 21,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 3
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 22,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 3
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 23,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 3
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 24,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 4
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 25,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 4
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 26,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 4
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 27,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 4
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 28,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 4
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 29,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 4
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 30,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 4
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 31,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 32,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 33,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 34,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 35,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 36,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 37,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 38,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 39,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 40,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 41,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 42,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 43,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 44,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 45,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 46,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 47,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 48,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 49,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 50,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 51,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 52,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 53,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 54,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 55,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 56,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 57,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 58,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 59,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 60,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 61,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 62,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 63,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 64,
+    "PaguthiNo": 9999,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 65,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 2
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 66,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 2
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 67,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 2
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 68,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 2
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 69,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 2
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 70,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 2
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 71,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 2
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 72,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 15
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 73,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 15
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 74,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 13
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 75,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 13
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 76,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 16
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 77,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 16
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 78,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 79,
+    "PaguthiNo": 2,
+    "PaguthiType": 0,
+    "PanchayatId": 6
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 80,
+    "PaguthiNo": 2,
+    "PaguthiType": 0,
+    "PanchayatId": 6
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 81,
+    "PaguthiNo": 2,
+    "PaguthiType": 0,
+    "PanchayatId": 6
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 82,
+    "PaguthiNo": 2,
+    "PaguthiType": 0,
+    "PanchayatId": 6
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 83,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 84,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 85,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 86,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 87,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 88,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 89,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 90,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 91,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 92,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 93,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 94,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 95,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 96,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 97,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 98,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 99,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 100,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 101,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 102,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 103,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 104,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 105,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 106,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 107,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 108,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 109,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 110,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 111,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 112,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 113,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 114,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 115,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 116,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 117,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 118,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 119,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 120,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 121,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 122,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 123,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 124,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 125,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 126,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 127,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 128,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 129,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 130,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 131,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 132,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 133,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 134,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 135,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 136,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 137,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 138,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 139,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 140,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 141,
+    "PaguthiNo": 851,
+    "PaguthiType": 0,
+    "PanchayatId": 33
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 142,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 24
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 143,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 24
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 144,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 12
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 145,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 12
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 146,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 147,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 148,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 32
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 149,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 6
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 150,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 6
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 151,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 6
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 152,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 6
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 153,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 6
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 154,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 8
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 155,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 8
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 156,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 8
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 157,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 8
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 158,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 14
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 159,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 14
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 160,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 30
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 163,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 5
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 164,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 5
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 165,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 5
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 166,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 5
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 167,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 5
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 168,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 5
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 169,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 18
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 170,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 18
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 171,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 172,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 173,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 174,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 175,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 176,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 177,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 178,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 179,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 10
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 180,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 10
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 181,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 10
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 182,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 9
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 183,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 3
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 184,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 3
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 185,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 3
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 186,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 3
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 187,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 3
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 188,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 3
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 189,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 3
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 190,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 11
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 191,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 11
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 192,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 11
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 193,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 11
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 194,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 22
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 195,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 22
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 196,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 19
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 197,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 19
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 198,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 12
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 199,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 12
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 200,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 12
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 201,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 12
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 202,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 26
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 203,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 204,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 205,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 17
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 206,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 17
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 207,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 17
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 208,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 25
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 209,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 13
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 210,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 13
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 211,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 13
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 212,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 15
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 213,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 15
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 214,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 15
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 215,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 15
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 216,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 7
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 217,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 7
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 218,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 7
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 219,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 7
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 220,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 7
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 221,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 7
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 222,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 5
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 223,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 5
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 224,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 5
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 225,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 5
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 226,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 5
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 227,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 5
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 228,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 5
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 229,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 5
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 230,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 5
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 231,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 14
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 232,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 14
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 233,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 14
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 234,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 14
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 235,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 23
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 236,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 20
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 237,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 20
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 238,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 27
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 239,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 18
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 240,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 18
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 241,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 8
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 242,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 8
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 243,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 8
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 244,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 8
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 245,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 8
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 246,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 8
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 247,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 8
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 248,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 24
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 249,
+    "PaguthiNo": 396,
+    "PaguthiType": 0,
+    "PanchayatId": 18
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 250,
+    "PaguthiNo": 396,
+    "PaguthiType": 0,
+    "PanchayatId": 18
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 251,
+    "PaguthiNo": 396,
+    "PaguthiType": 0,
+    "PanchayatId": 18
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 252,
+    "PaguthiNo": 396,
+    "PaguthiType": 0,
+    "PanchayatId": 18
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 253,
+    "PaguthiNo": 396,
+    "PaguthiType": 0,
+    "PanchayatId": 18
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 254,
+    "PaguthiNo": 396,
+    "PaguthiType": 0,
+    "PanchayatId": 18
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 255,
+    "PaguthiNo": 396,
+    "PaguthiType": 0,
+    "PanchayatId": 18
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 256,
+    "PaguthiNo": 396,
+    "PaguthiType": 0,
+    "PanchayatId": 18
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 257,
+    "PaguthiNo": 396,
+    "PaguthiType": 0,
+    "PanchayatId": 18
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 258,
+    "PaguthiNo": 396,
+    "PaguthiType": 0,
+    "PanchayatId": 18
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 259,
+    "PaguthiNo": 396,
+    "PaguthiType": 0,
+    "PanchayatId": 18
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 260,
+    "PaguthiNo": 396,
+    "PaguthiType": 0,
+    "PanchayatId": 18
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 261,
+    "PaguthiNo": 396,
+    "PaguthiType": 0,
+    "PanchayatId": 18
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 262,
+    "PaguthiNo": 396,
+    "PaguthiType": 0,
+    "PanchayatId": 18
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 263,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 2
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 264,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 2
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 265,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 2
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 266,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 2
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 267,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 2
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 268,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 2
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 269,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 2
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 270,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 2
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 271,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 2
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 272,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 2
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 273,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 2
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 274,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 2
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 275,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 2
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 276,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 2
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 277,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 2
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 278,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 279,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 280,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 281,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 282,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 283,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 284,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 285,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 286,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 287,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 288,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 289,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 290,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 291,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 292,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 293,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 294,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 295,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 296,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 297,
+    "PaguthiNo": 1,
+    "PaguthiType": 0,
+    "PanchayatId": 1
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 298,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 299,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 300,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 301,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 302,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 303,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 304,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 305,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 306,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 307,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 308,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 309,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 310,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 311,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 312,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 313,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 314,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 315,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 316,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 317,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 318,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 319,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 320,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 321,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 322,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 323,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 324,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 325,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 326,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 327,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 328,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 329,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 330,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 331,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 332,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 333,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 334,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 335,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 336,
+    "PaguthiNo": 9991,
+    "PaguthiType": 0,
+    "PanchayatId": 21
   }
 ]
