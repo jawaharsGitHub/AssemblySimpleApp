@@ -110,6 +110,7 @@ namespace DataAccess.PrimaryTypes
             }
         }
 
+
         private static string SetGender(string oldsex, string newSex)
         {
             var s = newSex.Trim().ToLower();

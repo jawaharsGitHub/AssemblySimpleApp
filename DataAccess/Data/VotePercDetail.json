@@ -1,6 +1,7 @@
 [
   {
     "BoothNo": 1,
+    "PaguthiEnum": 8,
     "Total": 709,
     "Male": 353,
     "Female": 356,
@@ -27,6 +28,7 @@
   },
   {
     "BoothNo": 2,
+    "PaguthiEnum": 8,
     "Total": 555,
     "Male": 281,
     "Female": 274,
@@ -53,6 +55,7 @@
   },
   {
     "BoothNo": 3,
+    "PaguthiEnum": 8,
     "Total": 994,
     "Male": 501,
     "Female": 493,
@@ -79,6 +82,7 @@
   },
   {
     "BoothNo": 4,
+    "PaguthiEnum": 8,
     "Total": 915,
     "Male": 450,
     "Female": 464,
@@ -105,6 +109,7 @@
   },
   {
     "BoothNo": 5,
+    "PaguthiEnum": 8,
     "Total": 1178,
     "Male": 588,
     "Female": 589,
@@ -131,6 +136,7 @@
   },
   {
     "BoothNo": 6,
+    "PaguthiEnum": 8,
     "Total": 700,
     "Male": 338,
     "Female": 361,
@@ -157,6 +163,7 @@
   },
   {
     "BoothNo": 7,
+    "PaguthiEnum": 8,
     "Total": 834,
     "Male": 402,
     "Female": 432,
@@ -183,6 +190,7 @@
   },
   {
     "BoothNo": 9,
+    "PaguthiEnum": 8,
     "Total": 1443,
     "Male": 712,
     "Female": 731,
@@ -209,6 +217,7 @@
   },
   {
     "BoothNo": 10,
+    "PaguthiEnum": 8,
     "Total": 1119,
     "Male": 581,
     "Female": 538,
@@ -235,6 +244,7 @@
   },
   {
     "BoothNo": 12,
+    "PaguthiEnum": 8,
     "Total": 1198,
     "Male": 606,
     "Female": 592,
@@ -261,6 +271,7 @@
   },
   {
     "BoothNo": 13,
+    "PaguthiEnum": 8,
     "Total": 989,
     "Male": 498,
     "Female": 489,
@@ -287,6 +298,7 @@
   },
   {
     "BoothNo": 14,
+    "PaguthiEnum": 8,
     "Total": 448,
     "Male": 227,
     "Female": 221,
@@ -313,6 +325,7 @@
   },
   {
     "BoothNo": 16,
+    "PaguthiEnum": 8,
     "Total": 1048,
     "Male": 522,
     "Female": 525,
@@ -339,6 +352,7 @@
   },
   {
     "BoothNo": 18,
+    "PaguthiEnum": 8,
     "Total": 727,
     "Male": 357,
     "Female": 370,
@@ -365,6 +379,7 @@
   },
   {
     "BoothNo": 20,
+    "PaguthiEnum": 8,
     "Total": 1027,
     "Male": 495,
     "Female": 532,
@@ -391,6 +406,7 @@
   },
   {
     "BoothNo": 8,
+    "PaguthiEnum": 8,
     "Total": 1021,
     "Male": 503,
     "Female": 518,
@@ -417,6 +433,7 @@
   },
   {
     "BoothNo": 11,
+    "PaguthiEnum": 8,
     "Total": 1140,
     "Male": 568,
     "Female": 571,
@@ -443,6 +460,7 @@
   },
   {
     "BoothNo": 15,
+    "PaguthiEnum": 8,
     "Total": 817,
     "Male": 409,
     "Female": 408,
@@ -469,6 +487,7 @@
   },
   {
     "BoothNo": 17,
+    "PaguthiEnum": 8,
     "Total": 1234,
     "Male": 605,
     "Female": 628,
@@ -495,6 +514,7 @@
   },
   {
     "BoothNo": 19,
+    "PaguthiEnum": 8,
     "Total": 743,
     "Male": 383,
     "Female": 360,
@@ -521,6 +541,7 @@
   },
   {
     "BoothNo": 21,
+    "PaguthiEnum": 8,
     "Total": 990,
     "Male": 497,
     "Female": 493,
@@ -547,6 +568,7 @@
   },
   {
     "BoothNo": 22,
+    "PaguthiEnum": 8,
     "Total": 859,
     "Male": 401,
     "Female": 458,
@@ -573,6 +595,7 @@
   },
   {
     "BoothNo": 23,
+    "PaguthiEnum": 8,
     "Total": 546,
     "Male": 257,
     "Female": 289,
@@ -599,6 +622,7 @@
   },
   {
     "BoothNo": 24,
+    "PaguthiEnum": 8,
     "Total": 713,
     "Male": 366,
     "Female": 347,
@@ -625,6 +649,7 @@
   },
   {
     "BoothNo": 25,
+    "PaguthiEnum": 8,
     "Total": 901,
     "Male": 458,
     "Female": 442,
@@ -651,6 +676,7 @@
   },
   {
     "BoothNo": 26,
+    "PaguthiEnum": 8,
     "Total": 458,
     "Male": 229,
     "Female": 229,
@@ -677,6 +703,7 @@
   },
   {
     "BoothNo": 27,
+    "PaguthiEnum": 8,
     "Total": 1092,
     "Male": 530,
     "Female": 562,
@@ -703,6 +730,7 @@
   },
   {
     "BoothNo": 28,
+    "PaguthiEnum": 8,
     "Total": 976,
     "Male": 477,
     "Female": 499,
@@ -729,6 +757,7 @@
   },
   {
     "BoothNo": 29,
+    "PaguthiEnum": 8,
     "Total": 768,
     "Male": 367,
     "Female": 401,
@@ -755,6 +784,7 @@
   },
   {
     "BoothNo": 30,
+    "PaguthiEnum": 8,
     "Total": 550,
     "Male": 269,
     "Female": 281,
@@ -781,6 +811,7 @@
   },
   {
     "BoothNo": 31,
+    "PaguthiEnum": 3,
     "Total": 701,
     "Male": 360,
     "Female": 341,
@@ -807,6 +838,7 @@
   },
   {
     "BoothNo": 32,
+    "PaguthiEnum": 3,
     "Total": 1230,
     "Male": 630,
     "Female": 600,
@@ -833,6 +865,7 @@
   },
   {
     "BoothNo": 33,
+    "PaguthiEnum": 3,
     "Total": 903,
     "Male": 450,
     "Female": 453,
@@ -859,6 +892,7 @@
   },
   {
     "BoothNo": 34,
+    "PaguthiEnum": 3,
     "Total": 982,
     "Male": 508,
     "Female": 473,
@@ -885,6 +919,7 @@
   },
   {
     "BoothNo": 35,
+    "PaguthiEnum": 3,
     "Total": 594,
     "Male": 281,
     "Female": 313,
@@ -911,6 +946,7 @@
   },
   {
     "BoothNo": 36,
+    "PaguthiEnum": 3,
     "Total": 1070,
     "Male": 521,
     "Female": 549,
@@ -937,6 +973,7 @@
   },
   {
     "BoothNo": 37,
+    "PaguthiEnum": 3,
     "Total": 943,
     "Male": 478,
     "Female": 465,
@@ -963,6 +1000,7 @@
   },
   {
     "BoothNo": 38,
+    "PaguthiEnum": 3,
     "Total": 845,
     "Male": 397,
     "Female": 448,
@@ -989,6 +1027,7 @@
   },
   {
     "BoothNo": 39,
+    "PaguthiEnum": 3,
     "Total": 1367,
     "Male": 684,
     "Female": 681,
@@ -1015,6 +1054,7 @@
   },
   {
     "BoothNo": 40,
+    "PaguthiEnum": 3,
     "Total": 854,
     "Male": 420,
     "Female": 434,
@@ -1041,6 +1081,7 @@
   },
   {
     "BoothNo": 41,
+    "PaguthiEnum": 3,
     "Total": 799,
     "Male": 408,
     "Female": 391,
@@ -1067,6 +1108,7 @@
   },
   {
     "BoothNo": 42,
+    "PaguthiEnum": 3,
     "Total": 813,
     "Male": 381,
     "Female": 432,
@@ -1093,6 +1135,7 @@
   },
   {
     "BoothNo": 43,
+    "PaguthiEnum": 3,
     "Total": 479,
     "Male": 252,
     "Female": 227,
@@ -1119,6 +1162,7 @@
   },
   {
     "BoothNo": 44,
+    "PaguthiEnum": 3,
     "Total": 984,
     "Male": 462,
     "Female": 522,
@@ -1145,6 +1189,7 @@
   },
   {
     "BoothNo": 45,
+    "PaguthiEnum": 3,
     "Total": 1225,
     "Male": 630,
     "Female": 595,
@@ -1171,6 +1216,7 @@
   },
   {
     "BoothNo": 46,
+    "PaguthiEnum": 3,
     "Total": 930,
     "Male": 468,
     "Female": 462,
@@ -1197,6 +1243,7 @@
   },
   {
     "BoothNo": 47,
+    "PaguthiEnum": 3,
     "Total": 919,
     "Male": 451,
     "Female": 468,
@@ -1223,6 +1270,7 @@
   },
   {
     "BoothNo": 48,
+    "PaguthiEnum": 3,
     "Total": 837,
     "Male": 382,
     "Female": 454,
@@ -1249,6 +1297,7 @@
   },
   {
     "BoothNo": 49,
+    "PaguthiEnum": 3,
     "Total": 644,
     "Male": 308,
     "Female": 336,
@@ -1275,6 +1324,7 @@
   },
   {
     "BoothNo": 50,
+    "PaguthiEnum": 3,
     "Total": 996,
     "Male": 504,
     "Female": 492,
@@ -1301,6 +1351,7 @@
   },
   {
     "BoothNo": 51,
+    "PaguthiEnum": 3,
     "Total": 1352,
     "Male": 671,
     "Female": 681,
@@ -1327,6 +1378,7 @@
   },
   {
     "BoothNo": 52,
+    "PaguthiEnum": 3,
     "Total": 852,
     "Male": 385,
     "Female": 467,
@@ -1353,6 +1405,7 @@
   },
   {
     "BoothNo": 53,
+    "PaguthiEnum": 3,
     "Total": 802,
     "Male": 401,
     "Female": 401,
@@ -1379,6 +1432,7 @@
   },
   {
     "BoothNo": 54,
+    "PaguthiEnum": 3,
     "Total": 764,
     "Male": 371,
     "Female": 393,
@@ -1405,6 +1459,7 @@
   },
   {
     "BoothNo": 55,
+    "PaguthiEnum": 3,
     "Total": 1365,
     "Male": 721,
     "Female": 642,
@@ -1431,6 +1486,7 @@
   },
   {
     "BoothNo": 56,
+    "PaguthiEnum": 3,
     "Total": 784,
     "Male": 382,
     "Female": 402,
@@ -1457,6 +1513,7 @@
   },
   {
     "BoothNo": 57,
+    "PaguthiEnum": 3,
     "Total": 1172,
     "Male": 574,
     "Female": 596,
@@ -1483,6 +1540,7 @@
   },
   {
     "BoothNo": 58,
+    "PaguthiEnum": 3,
     "Total": 378,
     "Male": 189,
     "Female": 188,
@@ -1509,6 +1567,7 @@
   },
   {
     "BoothNo": 59,
+    "PaguthiEnum": 3,
     "Total": 964,
     "Male": 514,
     "Female": 450,
@@ -1535,6 +1594,7 @@
   },
   {
     "BoothNo": 60,
+    "PaguthiEnum": 3,
     "Total": 537,
     "Male": 263,
     "Female": 274,
@@ -1561,6 +1621,7 @@
   },
   {
     "BoothNo": 61,
+    "PaguthiEnum": 3,
     "Total": 909,
     "Male": 440,
     "Female": 469,
@@ -1587,6 +1648,7 @@
   },
   {
     "BoothNo": 62,
+    "PaguthiEnum": 3,
     "Total": 1415,
     "Male": 736,
     "Female": 678,
@@ -1613,6 +1675,7 @@
   },
   {
     "BoothNo": 64,
+    "PaguthiEnum": 3,
     "Total": 863,
     "Male": 412,
     "Female": 451,
@@ -1639,6 +1702,7 @@
   },
   {
     "BoothNo": 65,
+    "PaguthiEnum": 7,
     "Total": 1115,
     "Male": 563,
     "Female": 551,
@@ -1665,6 +1729,7 @@
   },
   {
     "BoothNo": 66,
+    "PaguthiEnum": 7,
     "Total": 899,
     "Male": 436,
     "Female": 463,
@@ -1691,6 +1756,7 @@
   },
   {
     "BoothNo": 67,
+    "PaguthiEnum": 7,
     "Total": 1139,
     "Male": 565,
     "Female": 574,
@@ -1717,6 +1783,7 @@
   },
   {
     "BoothNo": 68,
+    "PaguthiEnum": 7,
     "Total": 887,
     "Male": 451,
     "Female": 436,
@@ -1743,6 +1810,7 @@
   },
   {
     "BoothNo": 69,
+    "PaguthiEnum": 7,
     "Total": 998,
     "Male": 509,
     "Female": 489,
@@ -1769,6 +1837,7 @@
   },
   {
     "BoothNo": 70,
+    "PaguthiEnum": 7,
     "Total": 656,
     "Male": 323,
     "Female": 333,
@@ -1795,6 +1864,7 @@
   },
   {
     "BoothNo": 71,
+    "PaguthiEnum": 7,
     "Total": 1198,
     "Male": 580,
     "Female": 617,
@@ -1821,6 +1891,7 @@
   },
   {
     "BoothNo": 72,
+    "PaguthiEnum": 7,
     "Total": 1070,
     "Male": 478,
     "Female": 592,
@@ -1847,6 +1918,7 @@
   },
   {
     "BoothNo": 73,
+    "PaguthiEnum": 7,
     "Total": 739,
     "Male": 371,
     "Female": 368,
@@ -1873,6 +1945,7 @@
   },
   {
     "BoothNo": 74,
+    "PaguthiEnum": 7,
     "Total": 797,
     "Male": 390,
     "Female": 407,
@@ -1899,6 +1972,7 @@
   },
   {
     "BoothNo": 75,
+    "PaguthiEnum": 7,
     "Total": 1137,
     "Male": 575,
     "Female": 562,
@@ -1925,6 +1999,7 @@
   },
   {
     "BoothNo": 76,
+    "PaguthiEnum": 7,
     "Total": 920,
     "Male": 467,
     "Female": 453,
@@ -1951,6 +2026,7 @@
   },
   {
     "BoothNo": 77,
+    "PaguthiEnum": 7,
     "Total": 918,
     "Male": 417,
     "Female": 501,
@@ -1977,6 +2053,7 @@
   },
   {
     "BoothNo": 78,
+    "PaguthiEnum": 7,
     "Total": 306,
     "Male": 148,
     "Female": 157,
@@ -2003,6 +2080,7 @@
   },
   {
     "BoothNo": 79,
+    "PaguthiEnum": 8,
     "Total": 1295,
     "Male": 622,
     "Female": 673,
@@ -2029,6 +2107,7 @@
   },
   {
     "BoothNo": 63,
+    "PaguthiEnum": 3,
     "Total": 1452,
     "Male": 683,
     "Female": 768,
@@ -2055,6 +2134,7 @@
   },
   {
     "BoothNo": 80,
+    "PaguthiEnum": 8,
     "Total": 1235,
     "Male": 620,
     "Female": 615,
@@ -2081,6 +2161,7 @@
   },
   {
     "BoothNo": 81,
+    "PaguthiEnum": 8,
     "Total": 899,
     "Male": 452,
     "Female": 447,
@@ -2107,6 +2188,7 @@
   },
   {
     "BoothNo": 82,
+    "PaguthiEnum": 8,
     "Total": 1037,
     "Male": 523,
     "Female": 513,
@@ -2133,6 +2215,7 @@
   },
   {
     "BoothNo": 83,
+    "PaguthiEnum": 1,
     "Total": 1129,
     "Male": 556,
     "Female": 573,
@@ -2159,6 +2242,7 @@
   },
   {
     "BoothNo": 84,
+    "PaguthiEnum": 1,
     "Total": 551,
     "Male": 255,
     "Female": 296,
@@ -2185,6 +2269,7 @@
   },
   {
     "BoothNo": 85,
+    "PaguthiEnum": 1,
     "Total": 766,
     "Male": 375,
     "Female": 391,
@@ -2211,6 +2296,7 @@
   },
   {
     "BoothNo": 86,
+    "PaguthiEnum": 1,
     "Total": 1349,
     "Male": 671,
     "Female": 677,
@@ -2237,6 +2323,7 @@
   },
   {
     "BoothNo": 87,
+    "PaguthiEnum": 1,
     "Total": 691,
     "Male": 342,
     "Female": 348,
@@ -2263,6 +2350,7 @@
   },
   {
     "BoothNo": 88,
+    "PaguthiEnum": 1,
     "Total": 1236,
     "Male": 611,
     "Female": 624,
@@ -2289,6 +2377,7 @@
   },
   {
     "BoothNo": 89,
+    "PaguthiEnum": 1,
     "Total": 987,
     "Male": 475,
     "Female": 512,
@@ -2315,6 +2404,7 @@
   },
   {
     "BoothNo": 90,
+    "PaguthiEnum": 1,
     "Total": 1305,
     "Male": 630,
     "Female": 674,
@@ -2341,6 +2431,7 @@
   },
   {
     "BoothNo": 92,
+    "PaguthiEnum": 1,
     "Total": 1219,
     "Male": 631,
     "Female": 588,
@@ -2367,6 +2458,7 @@
   },
   {
     "BoothNo": 93,
+    "PaguthiEnum": 1,
     "Total": 1188,
     "Male": 612,
     "Female": 575,
@@ -2393,6 +2485,7 @@
   },
   {
     "BoothNo": 94,
+    "PaguthiEnum": 1,
     "Total": 1130,
     "Male": 546,
     "Female": 584,
@@ -2419,6 +2512,7 @@
   },
   {
     "BoothNo": 95,
+    "PaguthiEnum": 1,
     "Total": 988,
     "Male": 478,
     "Female": 510,
@@ -2445,6 +2539,7 @@
   },
   {
     "BoothNo": 96,
+    "PaguthiEnum": 1,
     "Total": 718,
     "Male": 346,
     "Female": 371,
@@ -2471,6 +2566,7 @@
   },
   {
     "BoothNo": 97,
+    "PaguthiEnum": 1,
     "Total": 1305,
     "Male": 634,
     "Female": 671,
@@ -2497,6 +2593,7 @@
   },
   {
     "BoothNo": 91,
+    "PaguthiEnum": 1,
     "Total": 750,
     "Male": 355,
     "Female": 395,
@@ -2523,6 +2620,7 @@
   },
   {
     "BoothNo": 98,
+    "PaguthiEnum": 1,
     "Total": 994,
     "Male": 456,
     "Female": 538,
@@ -2549,6 +2647,7 @@
   },
   {
     "BoothNo": 99,
+    "PaguthiEnum": 1,
     "Total": 457,
     "Male": 232,
     "Female": 225,
@@ -2575,6 +2674,7 @@
   },
   {
     "BoothNo": 100,
+    "PaguthiEnum": 1,
     "Total": 842,
     "Male": 397,
     "Female": 445,
@@ -2601,6 +2701,7 @@
   },
   {
     "BoothNo": 101,
+    "PaguthiEnum": 1,
     "Total": 706,
     "Male": 356,
     "Female": 350,
@@ -2627,6 +2728,7 @@
   },
   {
     "BoothNo": 102,
+    "PaguthiEnum": 1,
     "Total": 758,
     "Male": 385,
     "Female": 373,
@@ -2653,6 +2755,7 @@
   },
   {
     "BoothNo": 103,
+    "PaguthiEnum": 1,
     "Total": 967,
     "Male": 486,
     "Female": 479,
@@ -2679,6 +2782,7 @@
   },
   {
     "BoothNo": 104,
+    "PaguthiEnum": 1,
     "Total": 949,
     "Male": 483,
     "Female": 465,
@@ -2705,6 +2809,7 @@
   },
   {
     "BoothNo": 105,
+    "PaguthiEnum": 1,
     "Total": 967,
     "Male": 451,
     "Female": 516,
@@ -2731,6 +2836,7 @@
   },
   {
     "BoothNo": 106,
+    "PaguthiEnum": 1,
     "Total": 1306,
     "Male": 672,
     "Female": 634,
@@ -2757,6 +2863,7 @@
   },
   {
     "BoothNo": 107,
+    "PaguthiEnum": 1,
     "Total": 485,
     "Male": 247,
     "Female": 237,
@@ -2783,6 +2890,7 @@
   },
   {
     "BoothNo": 108,
+    "PaguthiEnum": 1,
     "Total": 1123,
     "Male": 569,
     "Female": 553,
@@ -2809,6 +2917,7 @@
   },
   {
     "BoothNo": 109,
+    "PaguthiEnum": 1,
     "Total": 1078,
     "Male": 519,
     "Female": 557,
@@ -2835,6 +2944,7 @@
   },
   {
     "BoothNo": 110,
+    "PaguthiEnum": 1,
     "Total": 828,
     "Male": 415,
     "Female": 412,
@@ -2861,6 +2971,7 @@
   },
   {
     "BoothNo": 111,
+    "PaguthiEnum": 1,
     "Total": 921,
     "Male": 461,
     "Female": 459,
@@ -2887,6 +2998,7 @@
   },
   {
     "BoothNo": 112,
+    "PaguthiEnum": 1,
     "Total": 563,
     "Male": 286,
     "Female": 276,
@@ -2913,6 +3025,7 @@
   },
   {
     "BoothNo": 113,
+    "PaguthiEnum": 1,
     "Total": 1422,
     "Male": 698,
     "Female": 722,
@@ -2939,6 +3052,7 @@
   },
   {
     "BoothNo": 114,
+    "PaguthiEnum": 1,
     "Total": 755,
     "Male": 368,
     "Female": 385,
@@ -2965,6 +3079,7 @@
   },
   {
     "BoothNo": 115,
+    "PaguthiEnum": 1,
     "Total": 1395,
     "Male": 670,
     "Female": 725,
@@ -2991,6 +3106,7 @@
   },
   {
     "BoothNo": 116,
+    "PaguthiEnum": 1,
     "Total": 983,
     "Male": 476,
     "Female": 506,
@@ -3017,6 +3133,7 @@
   },
   {
     "BoothNo": 117,
+    "PaguthiEnum": 1,
     "Total": 1241,
     "Male": 590,
     "Female": 649,
@@ -3043,6 +3160,7 @@
   },
   {
     "BoothNo": 118,
+    "PaguthiEnum": 1,
     "Total": 967,
     "Male": 457,
     "Female": 510,
@@ -3069,6 +3187,7 @@
   },
   {
     "BoothNo": 119,
+    "PaguthiEnum": 1,
     "Total": 1081,
     "Male": 505,
     "Female": 576,
@@ -3095,6 +3214,7 @@
   },
   {
     "BoothNo": 121,
+    "PaguthiEnum": 1,
     "Total": 1059,
     "Male": 512,
     "Female": 547,
@@ -3121,6 +3241,7 @@
   },
   {
     "BoothNo": 122,
+    "PaguthiEnum": 1,
     "Total": 1358,
     "Male": 694,
     "Female": 663,
@@ -3147,6 +3268,7 @@
   },
   {
     "BoothNo": 123,
+    "PaguthiEnum": 1,
     "Total": 742,
     "Male": 354,
     "Female": 388,
@@ -3173,6 +3295,7 @@
   },
   {
     "BoothNo": 124,
+    "PaguthiEnum": 1,
     "Total": 816,
     "Male": 390,
     "Female": 426,
@@ -3199,6 +3322,7 @@
   },
   {
     "BoothNo": 125,
+    "PaguthiEnum": 1,
     "Total": 944,
     "Male": 458,
     "Female": 485,
@@ -3225,6 +3349,7 @@
   },
   {
     "BoothNo": 126,
+    "PaguthiEnum": 1,
     "Total": 852,
     "Male": 413,
     "Female": 439,
@@ -3251,6 +3376,7 @@
   },
   {
     "BoothNo": 120,
+    "PaguthiEnum": 1,
     "Total": 796,
     "Male": 396,
     "Female": 400,
@@ -3277,6 +3403,7 @@
   },
   {
     "BoothNo": 127,
+    "PaguthiEnum": 1,
     "Total": 1082,
     "Male": 516,
     "Female": 566,
@@ -3303,6 +3430,7 @@
   },
   {
     "BoothNo": 128,
+    "PaguthiEnum": 1,
     "Total": 531,
     "Male": 253,
     "Female": 278,
@@ -3329,6 +3457,7 @@
   },
   {
     "BoothNo": 129,
+    "PaguthiEnum": 1,
     "Total": 574,
     "Male": 311,
     "Female": 263,
@@ -3355,6 +3484,7 @@
   },
   {
     "BoothNo": 130,
+    "PaguthiEnum": 1,
     "Total": 648,
     "Male": 319,
     "Female": 329,
@@ -3381,6 +3511,7 @@
   },
   {
     "BoothNo": 131,
+    "PaguthiEnum": 1,
     "Total": 1100,
     "Male": 525,
     "Female": 575,
@@ -3407,6 +3538,7 @@
   },
   {
     "BoothNo": 132,
+    "PaguthiEnum": 1,
     "Total": 896,
     "Male": 432,
     "Female": 463,
@@ -3433,6 +3565,7 @@
   },
   {
     "BoothNo": 133,
+    "PaguthiEnum": 1,
     "Total": 1215,
     "Male": 555,
     "Female": 660,
@@ -3459,6 +3592,7 @@
   },
   {
     "BoothNo": 134,
+    "PaguthiEnum": 1,
     "Total": 804,
     "Male": 387,
     "Female": 417,
@@ -3485,6 +3619,7 @@
   },
   {
     "BoothNo": 135,
+    "PaguthiEnum": 1,
     "Total": 1040,
     "Male": 499,
     "Female": 541,
@@ -3511,6 +3646,7 @@
   },
   {
     "BoothNo": 136,
+    "PaguthiEnum": 1,
     "Total": 930,
     "Male": 439,
     "Female": 491,
@@ -3537,6 +3673,7 @@
   },
   {
     "BoothNo": 137,
+    "PaguthiEnum": 1,
     "Total": 1081,
     "Male": 526,
     "Female": 555,
@@ -3563,6 +3700,7 @@
   },
   {
     "BoothNo": 138,
+    "PaguthiEnum": 1,
     "Total": 1020,
     "Male": 519,
     "Female": 501,
@@ -3589,6 +3727,7 @@
   },
   {
     "BoothNo": 139,
+    "PaguthiEnum": 1,
     "Total": 793,
     "Male": 399,
     "Female": 393,
@@ -3615,6 +3754,7 @@
   },
   {
     "BoothNo": 140,
+    "PaguthiEnum": 1,
     "Total": 784,
     "Male": 376,
     "Female": 408,
@@ -3641,6 +3781,7 @@
   },
   {
     "BoothNo": 141,
+    "PaguthiEnum": 1,
     "Total": 1370,
     "Male": 657,
     "Female": 711,
@@ -3667,6 +3808,7 @@
   },
   {
     "BoothNo": 142,
+    "PaguthiEnum": 7,
     "Total": 850,
     "Male": 430,
     "Female": 420,
@@ -3693,6 +3835,7 @@
   },
   {
     "BoothNo": 143,
+    "PaguthiEnum": 7,
     "Total": 880,
     "Male": 420,
     "Female": 460,
@@ -3719,6 +3862,7 @@
   },
   {
     "BoothNo": 144,
+    "PaguthiEnum": 7,
     "Total": 916,
     "Male": 472,
     "Female": 444,
@@ -3745,6 +3889,7 @@
   },
   {
     "BoothNo": 145,
+    "PaguthiEnum": 7,
     "Total": 929,
     "Male": 454,
     "Female": 475,
@@ -3771,6 +3916,7 @@
   },
   {
     "BoothNo": 146,
+    "PaguthiEnum": 7,
     "Total": 788,
     "Male": 385,
     "Female": 403,
@@ -3797,6 +3943,7 @@
   },
   {
     "BoothNo": 147,
+    "PaguthiEnum": 7,
     "Total": 615,
     "Male": 309,
     "Female": 306,
@@ -3823,6 +3970,7 @@
   },
   {
     "BoothNo": 148,
+    "PaguthiEnum": 7,
     "Total": 1023,
     "Male": 524,
     "Female": 499,
@@ -3849,6 +3997,7 @@
   },
   {
     "BoothNo": 149,
+    "PaguthiEnum": 7,
     "Total": 645,
     "Male": 319,
     "Female": 326,
@@ -3875,6 +4024,7 @@
   },
   {
     "BoothNo": 150,
+    "PaguthiEnum": 7,
     "Total": 682,
     "Male": 306,
     "Female": 376,
@@ -3901,6 +4051,7 @@
   },
   {
     "BoothNo": 151,
+    "PaguthiEnum": 7,
     "Total": 818,
     "Male": 407,
     "Female": 411,
@@ -3927,6 +4078,7 @@
   },
   {
     "BoothNo": 152,
+    "PaguthiEnum": 7,
     "Total": 912,
     "Male": 467,
     "Female": 445,
@@ -3953,6 +4105,7 @@
   },
   {
     "BoothNo": 153,
+    "PaguthiEnum": 7,
     "Total": 970,
     "Male": 476,
     "Female": 494,
@@ -3979,6 +4132,7 @@
   },
   {
     "BoothNo": 154,
+    "PaguthiEnum": 7,
     "Total": 628,
     "Male": 305,
     "Female": 322,
@@ -4005,6 +4159,7 @@
   },
   {
     "BoothNo": 155,
+    "PaguthiEnum": 7,
     "Total": 905,
     "Male": 468,
     "Female": 437,
@@ -4031,6 +4186,7 @@
   },
   {
     "BoothNo": 157,
+    "PaguthiEnum": 7,
     "Total": 660,
     "Male": 347,
     "Female": 313,
@@ -4057,6 +4213,7 @@
   },
   {
     "BoothNo": 158,
+    "PaguthiEnum": 7,
     "Total": 1054,
     "Male": 493,
     "Female": 561,
@@ -4083,6 +4240,7 @@
   },
   {
     "BoothNo": 159,
+    "PaguthiEnum": 7,
     "Total": 792,
     "Male": 397,
     "Female": 395,
@@ -4109,6 +4267,7 @@
   },
   {
     "BoothNo": 160,
+    "PaguthiEnum": 7,
     "Total": 1128,
     "Male": 541,
     "Female": 587,
@@ -4135,6 +4294,7 @@
   },
   {
     "BoothNo": 156,
+    "PaguthiEnum": 7,
     "Total": 1026,
     "Male": 516,
     "Female": 510,
@@ -4161,6 +4321,7 @@
   },
   {
     "BoothNo": 161,
+    "PaguthiEnum": 7,
     "Total": 770,
     "Male": 387,
     "Female": 383,
@@ -4187,6 +4348,7 @@
   },
   {
     "BoothNo": 162,
+    "PaguthiEnum": 7,
     "Total": 848,
     "Male": 427,
     "Female": 421,
@@ -4213,6 +4375,7 @@
   },
   {
     "BoothNo": 163,
+    "PaguthiEnum": 7,
     "Total": 739,
     "Male": 369,
     "Female": 370,
@@ -4239,6 +4402,7 @@
   },
   {
     "BoothNo": 164,
+    "PaguthiEnum": 7,
     "Total": 625,
     "Male": 300,
     "Female": 325,
@@ -4265,6 +4429,7 @@
   },
   {
     "BoothNo": 165,
+    "PaguthiEnum": 7,
     "Total": 593,
     "Male": 291,
     "Female": 301,
@@ -4291,6 +4456,7 @@
   },
   {
     "BoothNo": 166,
+    "PaguthiEnum": 7,
     "Total": 934,
     "Male": 470,
     "Female": 464,
@@ -4317,6 +4483,7 @@
   },
   {
     "BoothNo": 167,
+    "PaguthiEnum": 7,
     "Total": 811,
     "Male": 394,
     "Female": 417,
@@ -4343,6 +4510,7 @@
   },
   {
     "BoothNo": 168,
+    "PaguthiEnum": 7,
     "Total": 685,
     "Male": 364,
     "Female": 321,
@@ -4369,6 +4537,7 @@
   },
   {
     "BoothNo": 169,
+    "PaguthiEnum": 7,
     "Total": 665,
     "Male": 307,
     "Female": 358,
@@ -4395,6 +4564,7 @@
   },
   {
     "BoothNo": 170,
+    "PaguthiEnum": 7,
     "Total": 1102,
     "Male": 539,
     "Female": 562,
@@ -4421,6 +4591,7 @@
   },
   {
     "BoothNo": 171,
+    "PaguthiEnum": 7,
     "Total": 1148,
     "Male": 574,
     "Female": 574,
@@ -4447,6 +4618,7 @@
   },
   {
     "BoothNo": 172,
+    "PaguthiEnum": 7,
     "Total": 802,
     "Male": 420,
     "Female": 379,
@@ -4473,6 +4645,7 @@
   },
   {
     "BoothNo": 173,
+    "PaguthiEnum": 7,
     "Total": 1253,
     "Male": 643,
     "Female": 610,
@@ -4499,6 +4672,7 @@
   },
   {
     "BoothNo": 174,
+    "PaguthiEnum": 7,
     "Total": 850,
     "Male": 433,
     "Female": 417,
@@ -4525,6 +4699,7 @@
   },
   {
     "BoothNo": 175,
+    "PaguthiEnum": 7,
     "Total": 1015,
     "Male": 495,
     "Female": 520,
@@ -4551,6 +4726,7 @@
   },
   {
     "BoothNo": 176,
+    "PaguthiEnum": 7,
     "Total": 1105,
     "Male": 543,
     "Female": 562,
@@ -4577,6 +4753,7 @@
   },
   {
     "BoothNo": 177,
+    "PaguthiEnum": 7,
     "Total": 746,
     "Male": 383,
     "Female": 362,
@@ -4603,6 +4780,7 @@
   },
   {
     "BoothNo": 178,
+    "PaguthiEnum": 7,
     "Total": 745,
     "Male": 376,
     "Female": 369,
@@ -4629,6 +4807,7 @@
   },
   {
     "BoothNo": 179,
+    "PaguthiEnum": 6,
     "Total": 956,
     "Male": 458,
     "Female": 498,
@@ -4655,6 +4834,7 @@
   },
   {
     "BoothNo": 180,
+    "PaguthiEnum": 6,
     "Total": 469,
     "Male": 213,
     "Female": 255,
@@ -4681,6 +4861,7 @@
   },
   {
     "BoothNo": 181,
+    "PaguthiEnum": 6,
     "Total": 1046,
     "Male": 458,
     "Female": 588,
@@ -4707,6 +4888,7 @@
   },
   {
     "BoothNo": 182,
+    "PaguthiEnum": 6,
     "Total": 1151,
     "Male": 544,
     "Female": 607,
@@ -4733,6 +4915,7 @@
   },
   {
     "BoothNo": 183,
+    "PaguthiEnum": 6,
     "Total": 705,
     "Male": 333,
     "Female": 372,
@@ -4759,6 +4942,7 @@
   },
   {
     "BoothNo": 184,
+    "PaguthiEnum": 6,
     "Total": 1085,
     "Male": 520,
     "Female": 564,
@@ -4785,6 +4969,7 @@
   },
   {
     "BoothNo": 185,
+    "PaguthiEnum": 6,
     "Total": 730,
     "Male": 363,
     "Female": 367,
@@ -4811,6 +4996,7 @@
   },
   {
     "BoothNo": 186,
+    "PaguthiEnum": 6,
     "Total": 766,
     "Male": 405,
     "Female": 361,
@@ -4837,6 +5023,7 @@
   },
   {
     "BoothNo": 187,
+    "PaguthiEnum": 6,
     "Total": 1032,
     "Male": 495,
     "Female": 536,
@@ -4863,6 +5050,7 @@
   },
   {
     "BoothNo": 188,
+    "PaguthiEnum": 6,
     "Total": 911,
     "Male": 446,
     "Female": 465,
@@ -4889,6 +5077,7 @@
   },
   {
     "BoothNo": 189,
+    "PaguthiEnum": 6,
     "Total": 852,
     "Male": 421,
     "Female": 431,
@@ -4915,6 +5104,7 @@
   },
   {
     "BoothNo": 190,
+    "PaguthiEnum": 6,
     "Total": 811,
     "Male": 396,
     "Female": 415,
@@ -4941,6 +5131,7 @@
   },
   {
     "BoothNo": 191,
+    "PaguthiEnum": 6,
     "Total": 463,
     "Male": 213,
     "Female": 250,
@@ -4967,6 +5158,7 @@
   },
   {
     "BoothNo": 192,
+    "PaguthiEnum": 6,
     "Total": 911,
     "Male": 452,
     "Female": 459,
@@ -4993,6 +5185,7 @@
   },
   {
     "BoothNo": 193,
+    "PaguthiEnum": 6,
     "Total": 438,
     "Male": 227,
     "Female": 211,
@@ -5019,6 +5212,7 @@
   },
   {
     "BoothNo": 194,
+    "PaguthiEnum": 6,
     "Total": 899,
     "Male": 426,
     "Female": 473,
@@ -5045,6 +5239,7 @@
   },
   {
     "BoothNo": 195,
+    "PaguthiEnum": 6,
     "Total": 557,
     "Male": 289,
     "Female": 268,
@@ -5071,6 +5266,7 @@
   },
   {
     "BoothNo": 196,
+    "PaguthiEnum": 6,
     "Total": 942,
     "Male": 476,
     "Female": 465,
@@ -5097,6 +5293,7 @@
   },
   {
     "BoothNo": 197,
+    "PaguthiEnum": 6,
     "Total": 715,
     "Male": 357,
     "Female": 358,
@@ -5123,6 +5320,7 @@
   },
   {
     "BoothNo": 198,
+    "PaguthiEnum": 6,
     "Total": 932,
     "Male": 467,
     "Female": 465,
@@ -5149,6 +5347,7 @@
   },
   {
     "BoothNo": 199,
+    "PaguthiEnum": 6,
     "Total": 824,
     "Male": 420,
     "Female": 404,
@@ -5175,6 +5374,7 @@
   },
   {
     "BoothNo": 200,
+    "PaguthiEnum": 6,
     "Total": 839,
     "Male": 397,
     "Female": 441,
@@ -5201,6 +5401,7 @@
   },
   {
     "BoothNo": 201,
+    "PaguthiEnum": 6,
     "Total": 412,
     "Male": 203,
     "Female": 209,
@@ -5227,6 +5428,7 @@
   },
   {
     "BoothNo": 202,
+    "PaguthiEnum": 6,
     "Total": 789,
     "Male": 391,
     "Female": 398,
@@ -5253,6 +5455,7 @@
   },
   {
     "BoothNo": 203,
+    "PaguthiEnum": 6,
     "Total": 905,
     "Male": 451,
     "Female": 452,
@@ -5279,6 +5482,7 @@
   },
   {
     "BoothNo": 204,
+    "PaguthiEnum": 6,
     "Total": 1048,
     "Male": 508,
     "Female": 540,
@@ -5305,6 +5509,7 @@
   },
   {
     "BoothNo": 205,
+    "PaguthiEnum": 6,
     "Total": 1136,
     "Male": 558,
     "Female": 578,
@@ -5331,6 +5536,7 @@
   },
   {
     "BoothNo": 206,
+    "PaguthiEnum": 6,
     "Total": 438,
     "Male": 212,
     "Female": 226,
@@ -5357,6 +5563,7 @@
   },
   {
     "BoothNo": 207,
+    "PaguthiEnum": 6,
     "Total": 727,
     "Male": 359,
     "Female": 368,
@@ -5383,6 +5590,7 @@
   },
   {
     "BoothNo": 208,
+    "PaguthiEnum": 6,
     "Total": 871,
     "Male": 428,
     "Female": 443,
@@ -5409,6 +5617,7 @@
   },
   {
     "BoothNo": 209,
+    "PaguthiEnum": 6,
     "Total": 910,
     "Male": 430,
     "Female": 480,
@@ -5435,6 +5644,7 @@
   },
   {
     "BoothNo": 210,
+    "PaguthiEnum": 6,
     "Total": 606,
     "Male": 318,
     "Female": 288,
@@ -5461,6 +5671,7 @@
   },
   {
     "BoothNo": 211,
+    "PaguthiEnum": 6,
     "Total": 902,
     "Male": 453,
     "Female": 449,
@@ -5487,6 +5698,7 @@
   },
   {
     "BoothNo": 212,
+    "PaguthiEnum": 6,
     "Total": 587,
     "Male": 298,
     "Female": 289,
@@ -5513,6 +5725,7 @@
   },
   {
     "BoothNo": 213,
+    "PaguthiEnum": 6,
     "Total": 716,
     "Male": 363,
     "Female": 353,
@@ -5539,6 +5752,7 @@
   },
   {
     "BoothNo": 214,
+    "PaguthiEnum": 6,
     "Total": 862,
     "Male": 440,
     "Female": 422,
@@ -5565,6 +5779,7 @@
   },
   {
     "BoothNo": 215,
+    "PaguthiEnum": 6,
     "Total": 816,
     "Male": 414,
     "Female": 402,
@@ -5591,6 +5806,7 @@
   },
   {
     "BoothNo": 216,
+    "PaguthiEnum": 6,
     "Total": 746,
     "Male": 385,
     "Female": 361,
@@ -5617,6 +5833,7 @@
   },
   {
     "BoothNo": 217,
+    "PaguthiEnum": 6,
     "Total": 1210,
     "Male": 603,
     "Female": 607,
@@ -5643,6 +5860,7 @@
   },
   {
     "BoothNo": 218,
+    "PaguthiEnum": 6,
     "Total": 1154,
     "Male": 570,
     "Female": 584,
@@ -5669,6 +5887,7 @@
   },
   {
     "BoothNo": 219,
+    "PaguthiEnum": 6,
     "Total": 535,
     "Male": 261,
     "Female": 274,
@@ -5695,6 +5914,7 @@
   },
   {
     "BoothNo": 220,
+    "PaguthiEnum": 6,
     "Total": 719,
     "Male": 360,
     "Female": 359,
@@ -5721,6 +5941,7 @@
   },
   {
     "BoothNo": 221,
+    "PaguthiEnum": 6,
     "Total": 1215,
     "Male": 612,
     "Female": 603,
@@ -5747,6 +5968,7 @@
   },
   {
     "BoothNo": 222,
+    "PaguthiEnum": 6,
     "Total": 805,
     "Male": 399,
     "Female": 406,
@@ -5773,6 +5995,7 @@
   },
   {
     "BoothNo": 223,
+    "PaguthiEnum": 6,
     "Total": 600,
     "Male": 300,
     "Female": 299,
@@ -5799,6 +6022,7 @@
   },
   {
     "BoothNo": 224,
+    "PaguthiEnum": 6,
     "Total": 817,
     "Male": 418,
     "Female": 398,
@@ -5825,6 +6049,7 @@
   },
   {
     "BoothNo": 225,
+    "PaguthiEnum": 6,
     "Total": 775,
     "Male": 383,
     "Female": 390,
@@ -5851,6 +6076,7 @@
   },
   {
     "BoothNo": 226,
+    "PaguthiEnum": 6,
     "Total": 1167,
     "Male": 630,
     "Female": 537,
@@ -5877,6 +6103,7 @@
   },
   {
     "BoothNo": 227,
+    "PaguthiEnum": 6,
     "Total": 880,
     "Male": 435,
     "Female": 445,
@@ -5903,6 +6130,7 @@
   },
   {
     "BoothNo": 228,
+    "PaguthiEnum": 6,
     "Total": 953,
     "Male": 507,
     "Female": 446,
@@ -5929,6 +6157,7 @@
   },
   {
     "BoothNo": 229,
+    "PaguthiEnum": 6,
     "Total": 750,
     "Male": 388,
     "Female": 362,
@@ -5955,6 +6184,7 @@
   },
   {
     "BoothNo": 230,
+    "PaguthiEnum": 6,
     "Total": 1279,
     "Male": 634,
     "Female": 645,
@@ -5981,6 +6211,7 @@
   },
   {
     "BoothNo": 231,
+    "PaguthiEnum": 6,
     "Total": 488,
     "Male": 248,
     "Female": 240,
@@ -6007,6 +6238,7 @@
   },
   {
     "BoothNo": 232,
+    "PaguthiEnum": 6,
     "Total": 789,
     "Male": 361,
     "Female": 428,
@@ -6033,6 +6265,7 @@
   },
   {
     "BoothNo": 233,
+    "PaguthiEnum": 6,
     "Total": 1086,
     "Male": 509,
     "Female": 577,
@@ -6059,6 +6292,7 @@
   },
   {
     "BoothNo": 234,
+    "PaguthiEnum": 6,
     "Total": 1123,
     "Male": 563,
     "Female": 560,
@@ -6085,6 +6319,7 @@
   },
   {
     "BoothNo": 235,
+    "PaguthiEnum": 6,
     "Total": 1079,
     "Male": 553,
     "Female": 526,
@@ -6111,6 +6346,7 @@
   },
   {
     "BoothNo": 236,
+    "PaguthiEnum": 6,
     "Total": 792,
     "Male": 405,
     "Female": 385,
@@ -6137,6 +6373,7 @@
   },
   {
     "BoothNo": 237,
+    "PaguthiEnum": 6,
     "Total": 733,
     "Male": 368,
     "Female": 365,
@@ -6163,6 +6400,7 @@
   },
   {
     "BoothNo": 238,
+    "PaguthiEnum": 5,
     "Total": 809,
     "Male": 402,
     "Female": 407,
@@ -6189,6 +6427,7 @@
   },
   {
     "BoothNo": 239,
+    "PaguthiEnum": 5,
     "Total": 1165,
     "Male": 570,
     "Female": 595,
@@ -6215,6 +6454,7 @@
   },
   {
     "BoothNo": 240,
+    "PaguthiEnum": 5,
     "Total": 1019,
     "Male": 514,
     "Female": 505,
@@ -6241,6 +6481,7 @@
   },
   {
     "BoothNo": 241,
+    "PaguthiEnum": 5,
     "Total": 536,
     "Male": 268,
     "Female": 267,
@@ -6267,6 +6508,7 @@
   },
   {
     "BoothNo": 242,
+    "PaguthiEnum": 5,
     "Total": 1139,
     "Male": 549,
     "Female": 590,
@@ -6293,6 +6535,7 @@
   },
   {
     "BoothNo": 243,
+    "PaguthiEnum": 5,
     "Total": 888,
     "Male": 437,
     "Female": 450,
@@ -6319,6 +6562,7 @@
   },
   {
     "BoothNo": 244,
+    "PaguthiEnum": 5,
     "Total": 858,
     "Male": 445,
     "Female": 413,
@@ -6345,6 +6589,7 @@
   },
   {
     "BoothNo": 245,
+    "PaguthiEnum": 5,
     "Total": 570,
     "Male": 285,
     "Female": 285,
@@ -6371,6 +6616,7 @@
   },
   {
     "BoothNo": 246,
+    "PaguthiEnum": 5,
     "Total": 845,
     "Male": 414,
     "Female": 431,
@@ -6397,6 +6643,7 @@
   },
   {
     "BoothNo": 247,
+    "PaguthiEnum": 5,
     "Total": 706,
     "Male": 363,
     "Female": 343,
@@ -6423,6 +6670,7 @@
   },
   {
     "BoothNo": 248,
+    "PaguthiEnum": 5,
     "Total": 1032,
     "Male": 526,
     "Female": 506,
@@ -6449,6 +6697,7 @@
   },
   {
     "BoothNo": 249,
+    "PaguthiEnum": 4,
     "Total": 1322,
     "Male": 644,
     "Female": 678,
@@ -6475,6 +6724,7 @@
   },
   {
     "BoothNo": 250,
+    "PaguthiEnum": 4,
     "Total": 1033,
     "Male": 497,
     "Female": 535,
@@ -6501,6 +6751,7 @@
   },
   {
     "BoothNo": 251,
+    "PaguthiEnum": 4,
     "Total": 740,
     "Male": 365,
     "Female": 373,
@@ -6527,6 +6778,7 @@
   },
   {
     "BoothNo": 252,
+    "PaguthiEnum": 4,
     "Total": 1207,
     "Male": 592,
     "Female": 615,
@@ -6553,6 +6805,7 @@
   },
   {
     "BoothNo": 253,
+    "PaguthiEnum": 4,
     "Total": 1249,
     "Male": 644,
     "Female": 605,
@@ -6579,6 +6832,7 @@
   },
   {
     "BoothNo": 254,
+    "PaguthiEnum": 4,
     "Total": 1305,
     "Male": 684,
     "Female": 616,
@@ -6605,6 +6859,7 @@
   },
   {
     "BoothNo": 255,
+    "PaguthiEnum": 4,
     "Total": 976,
     "Male": 495,
     "Female": 474,
@@ -6631,6 +6886,7 @@
   },
   {
     "BoothNo": 256,
+    "PaguthiEnum": 4,
     "Total": 833,
     "Male": 402,
     "Female": 431,
@@ -6657,6 +6913,7 @@
   },
   {
     "BoothNo": 257,
+    "PaguthiEnum": 4,
     "Total": 1080,
     "Male": 549,
     "Female": 531,
@@ -6683,6 +6940,7 @@
   },
   {
     "BoothNo": 258,
+    "PaguthiEnum": 4,
     "Total": 795,
     "Male": 403,
     "Female": 392,
@@ -6709,6 +6967,7 @@
   },
   {
     "BoothNo": 259,
+    "PaguthiEnum": 4,
     "Total": 935,
     "Male": 453,
     "Female": 480,
@@ -6735,6 +6994,7 @@
   },
   {
     "BoothNo": 260,
+    "PaguthiEnum": 4,
     "Total": 1039,
     "Male": 508,
     "Female": 529,
@@ -6761,6 +7021,7 @@
   },
   {
     "BoothNo": 261,
+    "PaguthiEnum": 4,
     "Total": 704,
     "Male": 344,
     "Female": 359,
@@ -6787,6 +7048,7 @@
   },
   {
     "BoothNo": 262,
+    "PaguthiEnum": 4,
     "Total": 1060,
     "Male": 545,
     "Female": 514,
@@ -6813,6 +7075,7 @@
   },
   {
     "BoothNo": 263,
+    "PaguthiEnum": 5,
     "Total": 728,
     "Male": 383,
     "Female": 345,
@@ -6839,6 +7102,7 @@
   },
   {
     "BoothNo": 264,
+    "PaguthiEnum": 5,
     "Total": 802,
     "Male": 412,
     "Female": 390,
@@ -6865,6 +7129,7 @@
   },
   {
     "BoothNo": 265,
+    "PaguthiEnum": 5,
     "Total": 1153,
     "Male": 608,
     "Female": 545,
@@ -6891,6 +7156,7 @@
   },
   {
     "BoothNo": 266,
+    "PaguthiEnum": 5,
     "Total": 842,
     "Male": 443,
     "Female": 398,
@@ -6917,6 +7183,7 @@
   },
   {
     "BoothNo": 267,
+    "PaguthiEnum": 5,
     "Total": 772,
     "Male": 402,
     "Female": 370,
@@ -6943,6 +7210,7 @@
   },
   {
     "BoothNo": 268,
+    "PaguthiEnum": 5,
     "Total": 775,
     "Male": 393,
     "Female": 381,
@@ -6969,6 +7237,7 @@
   },
   {
     "BoothNo": 269,
+    "PaguthiEnum": 5,
     "Total": 613,
     "Male": 312,
     "Female": 301,
@@ -6995,6 +7264,7 @@
   },
   {
     "BoothNo": 270,
+    "PaguthiEnum": 5,
     "Total": 902,
     "Male": 448,
     "Female": 454,
@@ -7021,6 +7291,7 @@
   },
   {
     "BoothNo": 271,
+    "PaguthiEnum": 5,
     "Total": 816,
     "Male": 410,
     "Female": 406,
@@ -7047,6 +7318,7 @@
   },
   {
     "BoothNo": 272,
+    "PaguthiEnum": 5,
     "Total": 999,
     "Male": 508,
     "Female": 491,
@@ -7073,6 +7345,7 @@
   },
   {
     "BoothNo": 273,
+    "PaguthiEnum": 5,
     "Total": 958,
     "Male": 498,
     "Female": 460,
@@ -7099,6 +7372,7 @@
   },
   {
     "BoothNo": 274,
+    "PaguthiEnum": 5,
     "Total": 930,
     "Male": 460,
     "Female": 468,
@@ -7125,6 +7399,7 @@
   },
   {
     "BoothNo": 275,
+    "PaguthiEnum": 5,
     "Total": 882,
     "Male": 405,
     "Female": 477,
@@ -7151,6 +7426,7 @@
   },
   {
     "BoothNo": 276,
+    "PaguthiEnum": 5,
     "Total": 1043,
     "Male": 519,
     "Female": 523,
@@ -7177,6 +7453,7 @@
   },
   {
     "BoothNo": 277,
+    "PaguthiEnum": 5,
     "Total": 855,
     "Male": 417,
     "Female": 437,
@@ -7203,6 +7480,7 @@
   },
   {
     "BoothNo": 278,
+    "PaguthiEnum": 5,
     "Total": 1091,
     "Male": 581,
     "Female": 510,
@@ -7229,6 +7507,7 @@
   },
   {
     "BoothNo": 279,
+    "PaguthiEnum": 5,
     "Total": 1134,
     "Male": 590,
     "Female": 543,
@@ -7255,6 +7534,7 @@
   },
   {
     "BoothNo": 280,
+    "PaguthiEnum": 5,
     "Total": 534,
     "Male": 286,
     "Female": 248,
@@ -7281,6 +7561,7 @@
   },
   {
     "BoothNo": 281,
+    "PaguthiEnum": 5,
     "Total": 842,
     "Male": 424,
     "Female": 418,
@@ -7307,6 +7588,7 @@
   },
   {
     "BoothNo": 282,
+    "PaguthiEnum": 5,
     "Total": 561,
     "Male": 281,
     "Female": 280,
@@ -7333,6 +7615,7 @@
   },
   {
     "BoothNo": 283,
+    "PaguthiEnum": 5,
     "Total": 340,
     "Male": 168,
     "Female": 172,
@@ -7359,6 +7642,7 @@
   },
   {
     "BoothNo": 284,
+    "PaguthiEnum": 5,
     "Total": 757,
     "Male": 360,
     "Female": 395,
@@ -7385,6 +7669,7 @@
   },
   {
     "BoothNo": 285,
+    "PaguthiEnum": 5,
     "Total": 1132,
     "Male": 577,
     "Female": 554,
@@ -7411,6 +7696,7 @@
   },
   {
     "BoothNo": 286,
+    "PaguthiEnum": 5,
     "Total": 636,
     "Male": 299,
     "Female": 337,
@@ -7437,6 +7723,7 @@
   },
   {
     "BoothNo": 287,
+    "PaguthiEnum": 5,
     "Total": 790,
     "Male": 382,
     "Female": 407,
@@ -7463,6 +7750,7 @@
   },
   {
     "BoothNo": 288,
+    "PaguthiEnum": 5,
     "Total": 671,
     "Male": 324,
     "Female": 347,
@@ -7489,6 +7777,7 @@
   },
   {
     "BoothNo": 289,
+    "PaguthiEnum": 5,
     "Total": 787,
     "Male": 397,
     "Female": 389,
@@ -7515,6 +7804,7 @@
   },
   {
     "BoothNo": 290,
+    "PaguthiEnum": 5,
     "Total": 980,
     "Male": 492,
     "Female": 486,
@@ -7541,6 +7831,7 @@
   },
   {
     "BoothNo": 291,
+    "PaguthiEnum": 5,
     "Total": 593,
     "Male": 305,
     "Female": 288,
@@ -7567,6 +7858,7 @@
   },
   {
     "BoothNo": 292,
+    "PaguthiEnum": 5,
     "Total": 651,
     "Male": 347,
     "Female": 303,
@@ -7593,6 +7885,7 @@
   },
   {
     "BoothNo": 293,
+    "PaguthiEnum": 5,
     "Total": 594,
     "Male": 315,
     "Female": 279,
@@ -7619,6 +7912,7 @@
   },
   {
     "BoothNo": 294,
+    "PaguthiEnum": 5,
     "Total": 1037,
     "Male": 541,
     "Female": 495,
@@ -7645,6 +7939,7 @@
   },
   {
     "BoothNo": 295,
+    "PaguthiEnum": 5,
     "Total": 709,
     "Male": 367,
     "Female": 342,
@@ -7671,6 +7966,7 @@
   },
   {
     "BoothNo": 296,
+    "PaguthiEnum": 5,
     "Total": 1108,
     "Male": 574,
     "Female": 534,
@@ -7697,6 +7993,7 @@
   },
   {
     "BoothNo": 297,
+    "PaguthiEnum": 6,
     "Total": 957,
     "Male": 509,
     "Female": 448,
@@ -7723,6 +8020,7 @@
   },
   {
     "BoothNo": 298,
+    "PaguthiEnum": 2,
     "Total": 912,
     "Male": 493,
     "Female": 419,
@@ -7749,6 +8047,7 @@
   },
   {
     "BoothNo": 299,
+    "PaguthiEnum": 2,
     "Total": 1025,
     "Male": 496,
     "Female": 529,
@@ -7775,6 +8074,7 @@
   },
   {
     "BoothNo": 300,
+    "PaguthiEnum": 2,
     "Total": 1094,
     "Male": 568,
     "Female": 526,
@@ -7801,6 +8101,7 @@
   },
   {
     "BoothNo": 301,
+    "PaguthiEnum": 2,
     "Total": 419,
     "Male": 214,
     "Female": 205,
@@ -7827,6 +8128,7 @@
   },
   {
     "BoothNo": 302,
+    "PaguthiEnum": 2,
     "Total": 853,
     "Male": 424,
     "Female": 429,
@@ -7853,6 +8155,7 @@
   },
   {
     "BoothNo": 303,
+    "PaguthiEnum": 2,
     "Total": 1446,
     "Male": 748,
     "Female": 698,
@@ -7879,6 +8182,7 @@
   },
   {
     "BoothNo": 304,
+    "PaguthiEnum": 2,
     "Total": 797,
     "Male": 376,
     "Female": 420,
@@ -7905,6 +8209,7 @@
   },
   {
     "BoothNo": 305,
+    "PaguthiEnum": 2,
     "Total": 714,
     "Male": 364,
     "Female": 349,
@@ -7931,6 +8236,7 @@
   },
   {
     "BoothNo": 306,
+    "PaguthiEnum": 2,
     "Total": 1010,
     "Male": 499,
     "Female": 511,
@@ -7957,6 +8263,7 @@
   },
   {
     "BoothNo": 307,
+    "PaguthiEnum": 2,
     "Total": 1339,
     "Male": 677,
     "Female": 661,
@@ -7983,6 +8290,7 @@
   },
   {
     "BoothNo": 308,
+    "PaguthiEnum": 2,
     "Total": 1062,
     "Male": 555,
     "Female": 503,
@@ -8009,6 +8317,7 @@
   },
   {
     "BoothNo": 309,
+    "PaguthiEnum": 2,
     "Total": 1038,
     "Male": 518,
     "Female": 520,
@@ -8035,6 +8344,7 @@
   },
   {
     "BoothNo": 310,
+    "PaguthiEnum": 2,
     "Total": 1322,
     "Male": 664,
     "Female": 658,
@@ -8061,6 +8371,7 @@
   },
   {
     "BoothNo": 311,
+    "PaguthiEnum": 2,
     "Total": 763,
     "Male": 401,
     "Female": 361,
@@ -8087,6 +8398,7 @@
   },
   {
     "BoothNo": 312,
+    "PaguthiEnum": 2,
     "Total": 893,
     "Male": 442,
     "Female": 451,
@@ -8113,6 +8425,7 @@
   },
   {
     "BoothNo": 313,
+    "PaguthiEnum": 2,
     "Total": 643,
     "Male": 312,
     "Female": 331,
@@ -8139,6 +8452,7 @@
   },
   {
     "BoothNo": 314,
+    "PaguthiEnum": 2,
     "Total": 848,
     "Male": 405,
     "Female": 443,
@@ -8165,6 +8479,7 @@
   },
   {
     "BoothNo": 315,
+    "PaguthiEnum": 2,
     "Total": 763,
     "Male": 378,
     "Female": 385,
@@ -8191,6 +8506,7 @@
   },
   {
     "BoothNo": 316,
+    "PaguthiEnum": 2,
     "Total": 612,
     "Male": 329,
     "Female": 283,
@@ -8217,6 +8533,7 @@
   },
   {
     "BoothNo": 317,
+    "PaguthiEnum": 2,
     "Total": 865,
     "Male": 428,
     "Female": 436,
@@ -8243,6 +8560,7 @@
   },
   {
     "BoothNo": 318,
+    "PaguthiEnum": 2,
     "Total": 1038,
     "Male": 513,
     "Female": 525,
@@ -8269,6 +8587,7 @@
   },
   {
     "BoothNo": 319,
+    "PaguthiEnum": 2,
     "Total": 829,
     "Male": 404,
     "Female": 423,
@@ -8295,6 +8614,7 @@
   },
   {
     "BoothNo": 320,
+    "PaguthiEnum": 2,
     "Total": 632,
     "Male": 312,
     "Female": 318,
@@ -8321,6 +8641,7 @@
   },
   {
     "BoothNo": 321,
+    "PaguthiEnum": 2,
     "Total": 765,
     "Male": 387,
     "Female": 378,
@@ -8347,6 +8668,7 @@
   },
   {
     "BoothNo": 322,
+    "PaguthiEnum": 2,
     "Total": 916,
     "Male": 449,
     "Female": 466,
@@ -8373,6 +8695,7 @@
   },
   {
     "BoothNo": 323,
+    "PaguthiEnum": 2,
     "Total": 1045,
     "Male": 527,
     "Female": 517,
@@ -8399,6 +8722,7 @@
   },
   {
     "BoothNo": 324,
+    "PaguthiEnum": 2,
     "Total": 1176,
     "Male": 599,
     "Female": 573,
@@ -8425,6 +8749,7 @@
   },
   {
     "BoothNo": 325,
+    "PaguthiEnum": 2,
     "Total": 1128,
     "Male": 564,
     "Female": 564,
@@ -8451,6 +8776,7 @@
   },
   {
     "BoothNo": 326,
+    "PaguthiEnum": 2,
     "Total": 1105,
     "Male": 554,
     "Female": 551,
@@ -8477,6 +8803,7 @@
   },
   {
     "BoothNo": 327,
+    "PaguthiEnum": 2,
     "Total": 766,
     "Male": 385,
     "Female": 381,
@@ -8503,6 +8830,7 @@
   },
   {
     "BoothNo": 328,
+    "PaguthiEnum": 2,
     "Total": 885,
     "Male": 419,
     "Female": 466,
@@ -8529,6 +8857,7 @@
   },
   {
     "BoothNo": 329,
+    "PaguthiEnum": 2,
     "Total": 1191,
     "Male": 588,
     "Female": 602,
@@ -8555,6 +8884,7 @@
   },
   {
     "BoothNo": 330,
+    "PaguthiEnum": 2,
     "Total": 765,
     "Male": 382,
     "Female": 382,
@@ -8581,6 +8911,7 @@
   },
   {
     "BoothNo": 331,
+    "PaguthiEnum": 2,
     "Total": 478,
     "Male": 236,
     "Female": 242,
@@ -8607,6 +8938,7 @@
   },
   {
     "BoothNo": 332,
+    "PaguthiEnum": 2,
     "Total": 783,
     "Male": 394,
     "Female": 386,
@@ -8633,6 +8965,7 @@
   },
   {
     "BoothNo": 333,
+    "PaguthiEnum": 2,
     "Total": 828,
     "Male": 411,
     "Female": 417,
@@ -8659,6 +8992,7 @@
   },
   {
     "BoothNo": 334,
+    "PaguthiEnum": 2,
     "Total": 628,
     "Male": 323,
     "Female": 305,
@@ -8685,6 +9019,7 @@
   },
   {
     "BoothNo": 335,
+    "PaguthiEnum": 2,
     "Total": 908,
     "Male": 464,
     "Female": 444,
@@ -8711,6 +9046,7 @@
   },
   {
     "BoothNo": 336,
+    "PaguthiEnum": 2,
     "Total": 700,
     "Male": 346,
     "Female": 354,

@@ -12,11 +12,13 @@ namespace DataAccess.PrimaryTypes
 
         private static string JsonFilePath = AppConfiguration.VotePercDetailFile;
 
-        
+
 
         //public int PaguthiTypeId { get; set; }
 
         public int BoothNo { get; set; }
+
+        public PaguthiEnum PaguthiEnum { get; set; }
         public int Total { get; set; }
         public int Male { get; set; }
         public int Female { get; set; }
@@ -40,7 +42,7 @@ namespace DataAccess.PrimaryTypes
         public decimal to50P { get; set; }
         public decimal to60P { get; set; }
         public decimal Above60P { get; set; }
-       
+
         public int AssemblyNo { get; set; }
         public int OndriumNo { get; set; }
         public int PanchayatNo { get; set; }
@@ -79,7 +81,8 @@ namespace DataAccess.PrimaryTypes
                 var data = list.Where(c => c.AssemblyNo == assemblyId && boothNos.Contains(c.BoothNo)).ToList();
 
 
-                data.ForEach(u => {
+                data.ForEach(u =>
+                {
 
                     u.PaguthiType = pt;
                     u.OndriumNo = ondriumId;
@@ -87,6 +90,28 @@ namespace DataAccess.PrimaryTypes
 
                 });
 
+
+                WriteObjectsToFile(list, JsonFilePath);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+        public static void UpdatePaguthiEnum(VotePercDetail vpd, string cellValue)
+        {
+
+            try
+            {
+
+                var pe = (PaguthiEnum)Enum.Parse(typeof(PaguthiEnum), cellValue);
+
+                List<VotePercDetail> list = ReadFileAsObjects<VotePercDetail>(JsonFilePath);
+                var data = list.Where(c => c.AssemblyNo == vpd.AssemblyNo && c.BoothNo == vpd.BoothNo).First();
+
+                data.PaguthiEnum = pe;
 
                 WriteObjectsToFile(list, JsonFilePath);
             }
@@ -142,13 +167,18 @@ namespace DataAccess.PrimaryTypes
 
     }
 
-    //public enum Paguthi
-    //{
-    //    Nagaratchi,
-    //    Perooratchi,
-    //    Ondrium,
-
-    //}
+    public enum PaguthiEnum
+    {
+        NONE = 0,
+        RMD = 1,
+        RMM = 2,
+        KEE = 3,
+        MANP = 4,
+        MK = 5,
+        MM = 6,
+        TK = 7,
+        TM = 8
+    }
 
     public enum PaguthiType
     {

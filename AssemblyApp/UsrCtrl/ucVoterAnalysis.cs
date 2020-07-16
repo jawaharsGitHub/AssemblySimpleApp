@@ -1299,12 +1299,14 @@ namespace CenturyFinCorpApp.UsrCtrl
             int rowIndex = grid.CurrentCell.RowIndex;
             string owningColumnName = grid.CurrentCell.OwningColumn.Name;
             string cellValue = FormGeneral.GetGridCellValue(grid, rowIndex, owningColumnName);
-            VoterList cus = grid.Rows[grid.CurrentCell.RowIndex].DataBoundItem as VoterList;
+            VotePercDetail cus = grid.Rows[grid.CurrentCell.RowIndex].DataBoundItem as VotePercDetail;
             //Update data
 
-            VoterList.UpdateVoterDetails(cus, voterFilePath);
-
-            SetErrorDetail();
+            if (owningColumnName == "PaguthiEnum")
+            {
+                VotePercDetail.UpdatePaguthiEnum(cus, cellValue);
+                // SetErrorDetail();
+            }
 
         }
 
