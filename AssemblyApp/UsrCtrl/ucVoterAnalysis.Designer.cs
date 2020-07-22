@@ -61,6 +61,7 @@
             this.txtFromBooth = new System.Windows.Forms.TextBox();
             this.txtReportName = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -369,11 +370,22 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(713, 157);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(131, 23);
+            this.button6.TabIndex = 34;
+            this.button6.Text = "Booth Not Assigned";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // ucVoterAnalysis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtReportName);
             this.Controls.Add(this.label8);
@@ -450,5 +462,6 @@
         private System.Windows.Forms.TextBox txtFromBooth;
         private System.Windows.Forms.TextBox txtReportName;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button button6;
     }
 }

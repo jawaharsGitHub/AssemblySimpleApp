@@ -1484,7 +1484,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 // TXT
                 var sbList = new StringBuilder();
 
-                var assemblyTotalVotes = resultForSearch.Sum(s => s.Total);
+                //var assemblyTotalVotes = resultForSearch.Sum(s => s.Total);
 
                 var areaTotalVotes = gridData.Sum(s => s.Total);
 
@@ -1502,19 +1502,58 @@ namespace CenturyFinCorpApp.UsrCtrl
                 var t60 = gridData.Sum(s => s.to60);
                 var above60 = gridData.Sum(s => s.Above60);
 
-                //var t20P = PercInDec(t20, areaTotalVotes) + "%";
-                //var t30P = PercInDec(t30, areaTotalVotes) + "%";
-                //var t40P = PercInDec(areaMaleVotes, areaTotalVotes) + "%";
-                //var t50P = PercInDec(areaMaleVotes, areaTotalVotes) + "%";
-                //var t60P = PercInDec(areaMaleVotes, areaTotalVotes) + "%";
-                //var above60P = PercInDec(areaMaleVotes, areaTotalVotes) + "%";
+
+                sbList.AppendLine($"TOTAL VOTES: {areaTotalVotes.TokFormat()} (100%)");
+                sbList.AppendLine($"MALE VOTES: {areaMaleVotes.TokFormat()} ({PercInDec(areaMaleVotes, areaTotalVotes)}%)");
+                sbList.AppendLine($"FEMALE VOTES: {areaFemaleVotes.TokFormat()} ({PercInDec(areaFemaleVotes, areaTotalVotes)}%)");
+                //sbList.AppendLine($"THIRD VOTES: {areaThirdVotes.TokFormat()} ({PercInDec(areaThirdVotes, areaTotalVotes)}%)");
 
 
 
-                sbList.AppendLine($"TOTAL VOTES: {gridData.Sum(s => s.Total)}{PercInDec(assemblyTotalVotes, gridData.Sum(s => s.Total))}%");
-                sbList.AppendLine($"MALE VOTES: {gridData.Sum(s => s.Male)}");
-                sbList.AppendLine($"FEMALE VOTES: {gridData.Sum(s => s.Female)}");
-                sbList.AppendLine($"THIRD VOTES: {gridData.Sum(s => s.Third)}");
+                foreach (int i in Enum.GetValues(typeof(PaguthiEnum)))
+                {
+                    if (i == 0) continue;
+
+                    var d = gridData.Where(w => w.PaguthiEnum == (PaguthiEnum)i).Sum(s => s.Total);
+
+                    sbList.AppendLine($"{(PaguthiEnum)i}: {d.TokFormat()} ({PercInDec(d, areaTotalVotes)}%)");
+                }
+
+                var Odata = (from gd in gridData
+                             group gd by gd.PaguthiEnum into ng
+                             select ng).OrderBy(o => o.Key).ToList();
+
+                Odata.ForEach(pe =>
+                {
+                    var ondriumVoteCount = pe.ToList().Where(w => w.OndriumNo == w.OndriumNo).Sum(s => s.Total);
+                    sbList.AppendLine($"{pe.Key.ToString()} ({PercInDec(ondriumVoteCount, areaTotalVotes)}%)");
+                    sbList.AppendLine($"-----------------------");
+                    var pData = pe.DistinctBy(d => d.PanchayatNo).ToList();
+
+
+
+                    pData.ToList().ForEach(o =>
+                    {
+                        if (o.OndriumNo == 2 && o.OndriumNo == 6)
+                        {
+
+
+                        }
+
+                        try
+                        {
+                            var pName = BaseData.GetPanchayatName(o.OndriumNo, o.PanchayatNo);
+                            var voteCount = pe.ToList().Where(w => w.PanchayatNo == o.PanchayatNo).Sum(s => s.Total);
+                            sbList.AppendLine($"{pName} ({voteCount} - {PercInDec(voteCount, areaTotalVotes)}%)");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"{o.OndriumNo}-{o.PanchayatNo}");
+                            throw ex;
+                        }
+                    });
+                });
+
 
 
 
@@ -1616,6 +1655,11 @@ namespace CenturyFinCorpApp.UsrCtrl
             dataGridView1.DataSource = filtered;
 
 
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = ((List<VotePercDetail>)dataGridView1.DataSource).Where(w => w.BoothNo == 0).ToList();
         }
     }
 

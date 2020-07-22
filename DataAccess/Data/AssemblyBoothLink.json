@@ -2336,5 +2336,19 @@
     "PaguthiNo": 9991,
     "PaguthiType": 0,
     "PanchayatId": 21
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 161,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 17
+  },
+  {
+    "AssemblyNo": 211,
+    "BoothNo": 162,
+    "PaguthiNo": 4,
+    "PaguthiType": 0,
+    "PanchayatId": 17
   }
 ]
