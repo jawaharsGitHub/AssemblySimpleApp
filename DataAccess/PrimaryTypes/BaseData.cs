@@ -65,7 +65,8 @@ namespace DataAccess.PrimaryTypes
                               OndriumId = newGrp.Key,
                               OndriumName = newGrp.First().OndriumName,
                               PanchayatId = newGrp.First().PanchayatId,
-                              PanchayatName = newGrp.First().PanchayatName
+                              PanchayatName = newGrp.First().PanchayatName,
+                              PaguthiType = newGrp.First().PaguthiType,
                           }).ToList();
 
 

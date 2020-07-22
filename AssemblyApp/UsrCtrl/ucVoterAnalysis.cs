@@ -1307,6 +1307,12 @@ namespace CenturyFinCorpApp.UsrCtrl
                 VotePercDetail.UpdatePaguthiEnum(cus, cellValue);
                 // SetErrorDetail();
             }
+            else if (owningColumnName == "PaguthiType")
+            {
+                VotePercDetail.UpdatePaguthiEnum(cus, cellValue);
+                // SetErrorDetail();
+            }
+            
 
         }
 
@@ -1525,34 +1531,32 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 Odata.ForEach(pe =>
                 {
+
+                    if(pe.First().PaguthiType == PaguthiType.N || pe.First().PaguthiType == PaguthiType.P)
+                    {
+                        var ondriumVoteCount = pe.ToList().Where(w => w.OndriumNo == w.OndriumNo).Sum(s => s.Total);
+                        sbList.AppendLine($"{pe.Key.GetStringValue()} ({ondriumVoteCount} - {PercInDec(ondriumVoteCount, areaTotalVotes)}%)");
+                        sbList.AppendLine($"-----------------------");
+                    }
+                    else
+                    { 
                     var ondriumVoteCount = pe.ToList().Where(w => w.OndriumNo == w.OndriumNo).Sum(s => s.Total);
-                    sbList.AppendLine($"{pe.Key.ToString()} ({PercInDec(ondriumVoteCount, areaTotalVotes)}%)");
+                    sbList.AppendLine($"{pe.Key.GetStringValue()} ({ondriumVoteCount} - {PercInDec(ondriumVoteCount, areaTotalVotes)}%)");
                     sbList.AppendLine($"-----------------------");
+
                     var pData = pe.DistinctBy(d => d.PanchayatNo).ToList();
-
-
 
                     pData.ToList().ForEach(o =>
                     {
-                        if (o.OndriumNo == 2 && o.OndriumNo == 6)
-                        {
-
-
-                        }
-
-                        try
-                        {
+                      
                             var pName = BaseData.GetPanchayatName(o.OndriumNo, o.PanchayatNo);
                             var voteCount = pe.ToList().Where(w => w.PanchayatNo == o.PanchayatNo).Sum(s => s.Total);
                             sbList.AppendLine($"{pName} ({voteCount} - {PercInDec(voteCount, areaTotalVotes)}%)");
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show($"{o.OndriumNo}-{o.PanchayatNo}");
-                            throw ex;
-                        }
+                        
                     });
+                    }
                 });
+
 
 
 
@@ -1659,7 +1663,12 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void button6_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = ((List<VotePercDetail>)dataGridView1.DataSource).Where(w => w.BoothNo == 0).ToList();
+            var pt = (cmbPaguthi.SelectedItem as BaseData);
+
+            //pt.PaguthiType
+
+            VotePercDetail.UpdatePaguthiType(pt, PaguthiEnum.MANP);
+
         }
     }
 

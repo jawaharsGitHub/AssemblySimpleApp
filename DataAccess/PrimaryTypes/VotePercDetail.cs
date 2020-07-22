@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -121,6 +122,28 @@ namespace DataAccess.PrimaryTypes
             }
         }
 
+        public static void UpdatePaguthiType(BaseData bd, PaguthiEnum pe)
+        {
+            try
+            {
+                //var pt = (PaguthiType)Enum.Parse(typeof(PaguthiType), cellValue);
+
+                List<VotePercDetail> list = ReadFileAsObjects<VotePercDetail>(JsonFilePath);
+                var data = list.Where(c => c.AssemblyNo == 211 && c.PaguthiEnum  == pe).ToList();
+
+                data.ForEach(fe => {
+                  fe.PaguthiType = PaguthiType.P;
+                });
+                
+
+                WriteObjectsToFile(list, JsonFilePath);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public static void UpdatePaguthiDetails(int assemblyId, int ondriumId, int panchayatId, PaguthiType pt, int boothNo)
         {
 
@@ -170,13 +193,21 @@ namespace DataAccess.PrimaryTypes
     public enum PaguthiEnum
     {
         NONE = 0,
+        [StringValue("இராமநாதபுரம் நகர்")]
         RMD = 1,
+        [StringValue("இராமேஸ்வரம் நகர்")]
         RMM = 2,
+        [StringValue("கீழக்கரை நகர்")]
         KEE = 3,
+        [StringValue("மண்டபம் பேரூர்")]
         MANP = 4,
+        [StringValue("மண்டபம் கிழக்கு")]
         MK = 5,
+        [StringValue("மண்டபம் மேற்கு")]
         MM = 6,
+        [StringValue("திருப்புல்லாணி கிழக்கு")]
         TK = 7,
+        [StringValue("திருப்புல்லாணி மேற்கு")]
         TM = 8
     }
 

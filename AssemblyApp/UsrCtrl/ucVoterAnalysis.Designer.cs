@@ -372,11 +372,11 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(713, 157);
+            this.button6.Location = new System.Drawing.Point(682, 150);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(131, 23);
             this.button6.TabIndex = 34;
-            this.button6.Text = "Booth Not Assigned";
+            this.button6.Text = "Update Paguthi Type";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 

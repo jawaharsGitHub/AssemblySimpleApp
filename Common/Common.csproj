@@ -94,12 +94,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppConfiguration.cs" />
+    <Compile Include="Attributes\StringValueAttribute.cs" />
     <Compile Include="BaseTypes\BaseClass.cs" />
     <Compile Include="ClosedXML.cs" />
     <Compile Include="DataCorrector.cs" />
     <Compile Include="DateHelper.cs" />
     <Compile Include="DocxToText.cs" />
     <Compile Include="ExtensionMethod\DataExtension.cs" />
+    <Compile Include="ExtensionMethod\EnumExtension.cs" />
     <Compile Include="ExtensionMethod\TypeExtenstion.cs" />
     <Compile Include="FileContentReader.cs" />
     <Compile Include="General.cs" />
