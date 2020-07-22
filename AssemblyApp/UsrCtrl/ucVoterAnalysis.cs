@@ -71,7 +71,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //cmbFIlter.DataSource = GetOptions();
+
             reProcessFile = "";
 
             //FolderBrowserDialog fbd = new FolderBrowserDialog();
@@ -1148,25 +1148,55 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         public static List<KeyValuePair<int, string>> GetOptions()
         {
+
             var myKeyValuePair = new List<KeyValuePair<int, string>>()
                {
 
-                   new KeyValuePair<int, string>(1, "Any Null?"),
-                   new KeyValuePair<int, string>(2, "Name Null?"),
-                   new KeyValuePair<int, string>(3, "FNAME Null?"),
-                   new KeyValuePair<int, string>(4, "Address Null?"),
-                   new KeyValuePair<int, string>(5, "Age Null?"),
-                   new KeyValuePair<int, string>(6, "Gender Null?"),
-                   new KeyValuePair<int, string>(7, "Delete Page"),
-                   new KeyValuePair<int, string>(8, "> 1 Deleted Page"),
-                   new KeyValuePair<int, string>(9, "May Error Page"),
-                   new KeyValuePair<int, string>(10, "Name Issue"),
-                   new KeyValuePair<int, string>(11, "FNAME Issue"),
-                   new KeyValuePair<int, string>(12, "Address Issue"),
-                   new KeyValuePair<int, string>(13, "Age Issue"),
-                   new KeyValuePair<int, string>(14, "Gender Issue"),
-                   new KeyValuePair<int, string>(15, "Manual Edit"),
+                   new KeyValuePair<int, string>(1, "Booth Wise"),
+                   new KeyValuePair<int, string>(2, "Paguthi Wise"),
+                   new KeyValuePair<int, string>(3, "Panchayat Wise"),
+                   new KeyValuePair<int, string>(4, "By Voters"),
+                   new KeyValuePair<int, string>(5, "By Male"),
+                   new KeyValuePair<int, string>(6, "By Female"),
+                   new KeyValuePair<int, string>(7, "By 20"),
+                    new KeyValuePair<int, string>(8, "By 30"),
+                     new KeyValuePair<int, string>(9, "By 40"),
+                      new KeyValuePair<int, string>(10, "By 50"),
+                       new KeyValuePair<int, string>(11, "By 60"),
+                       new KeyValuePair<int, string>(12, "By Above60"),
+                       new KeyValuePair<int, string>(13, "By AgeWisePerc"),
+                   //new KeyValuePair<int, string>(7, "By 20"),
+                   //new KeyValuePair<int, string>(7, "Delete Page"),
+                   //new KeyValuePair<int, string>(8, "> 1 Deleted Page"),
+                   //new KeyValuePair<int, string>(9, "May Error Page"),
+                   //new KeyValuePair<int, string>(10, "Name Issue"),
+                   //new KeyValuePair<int, string>(11, "FNAME Issue"),
+                   //new KeyValuePair<int, string>(12, "Address Issue"),
+                   //new KeyValuePair<int, string>(13, "Age Issue"),
+                   //new KeyValuePair<int, string>(14, "Gender Issue"),
+                   //new KeyValuePair<int, string>(15, "Manual Edit"),
                };
+
+
+            //var myKeyValuePair = new List<KeyValuePair<int, string>>()
+            //   {
+
+            //       new KeyValuePair<int, string>(1, "Any Null?"),
+            //       new KeyValuePair<int, string>(2, "Name Null?"),
+            //       new KeyValuePair<int, string>(3, "FNAME Null?"),
+            //       new KeyValuePair<int, string>(4, "Address Null?"),
+            //       new KeyValuePair<int, string>(5, "Age Null?"),
+            //       new KeyValuePair<int, string>(6, "Gender Null?"),
+            //       new KeyValuePair<int, string>(7, "Delete Page"),
+            //       new KeyValuePair<int, string>(8, "> 1 Deleted Page"),
+            //       new KeyValuePair<int, string>(9, "May Error Page"),
+            //       new KeyValuePair<int, string>(10, "Name Issue"),
+            //       new KeyValuePair<int, string>(11, "FNAME Issue"),
+            //       new KeyValuePair<int, string>(12, "Address Issue"),
+            //       new KeyValuePair<int, string>(13, "Age Issue"),
+            //       new KeyValuePair<int, string>(14, "Gender Issue"),
+            //       new KeyValuePair<int, string>(15, "Manual Edit"),
+            //   };
 
             return myKeyValuePair;
 
@@ -1312,7 +1342,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 VotePercDetail.UpdatePaguthiEnum(cus, cellValue);
                 // SetErrorDetail();
             }
-            
+
 
         }
 
@@ -1350,6 +1380,8 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             LoadPaguthi(fol.Key.ToInt32());
             //LoadBooths(fol.Value);
+
+            cmbFIlter.DataSource = GetOptions();
         }
 
         private void LoadBooths(string fullPath)
@@ -1532,28 +1564,26 @@ namespace CenturyFinCorpApp.UsrCtrl
                 Odata.ForEach(pe =>
                 {
 
-                    if(pe.First().PaguthiType == PaguthiType.N || pe.First().PaguthiType == PaguthiType.P)
+                    if (pe.First().PaguthiType == PaguthiType.N || pe.First().PaguthiType == PaguthiType.P)
                     {
                         var ondriumVoteCount = pe.ToList().Where(w => w.OndriumNo == w.OndriumNo).Sum(s => s.Total);
                         sbList.AppendLine($"{pe.Key.GetStringValue()} ({ondriumVoteCount} - {PercInDec(ondriumVoteCount, areaTotalVotes)}%)");
                         sbList.AppendLine($"-----------------------");
                     }
                     else
-                    { 
-                    var ondriumVoteCount = pe.ToList().Where(w => w.OndriumNo == w.OndriumNo).Sum(s => s.Total);
-                    sbList.AppendLine($"{pe.Key.GetStringValue()} ({ondriumVoteCount} - {PercInDec(ondriumVoteCount, areaTotalVotes)}%)");
-                    sbList.AppendLine($"-----------------------");
-
-                    var pData = pe.DistinctBy(d => d.PanchayatNo).ToList();
-
-                    pData.ToList().ForEach(o =>
                     {
-                      
+                        var ondriumVoteCount = pe.ToList().Where(w => w.OndriumNo == w.OndriumNo).Sum(s => s.Total);
+                        sbList.AppendLine($"{pe.Key.GetStringValue()} ({ondriumVoteCount} - {PercInDec(ondriumVoteCount, areaTotalVotes)}%)");
+                        sbList.AppendLine($"-----------------------");
+
+                        var pData = pe.DistinctBy(d => d.PanchayatNo).ToList();
+
+                        pData.ToList().ForEach(o =>
+                        {
                             var pName = BaseData.GetPanchayatName(o.OndriumNo, o.PanchayatNo);
                             var voteCount = pe.ToList().Where(w => w.PanchayatNo == o.PanchayatNo).Sum(s => s.Total);
                             sbList.AppendLine($"{pName} ({voteCount} - {PercInDec(voteCount, areaTotalVotes)}%)");
-                        
-                    });
+                        });
                     }
                 });
 
@@ -1670,6 +1700,103 @@ namespace CenturyFinCorpApp.UsrCtrl
             VotePercDetail.UpdatePaguthiType(pt, PaguthiEnum.MANP);
 
         }
+
+        private void cmbFIlter_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            //if (fullList.Count == 0) return;
+
+            var totalVotes = resultForSearch.Sum(s => s.Total);
+
+            var value = ((KeyValuePair<int, string>)cmbFIlter.SelectedItem).Key;
+
+            if (value == 1)
+            {
+                dataGridView1.DataSource = resultForSearch.OrderByDescending(o => o.Total).ToList();
+            }
+            if (value == 2)
+            {
+                dataGridView1.DataSource = (from r in resultForSearch
+                                            group r by r.PaguthiEnum into ng
+                                            select new {
+                                                Paguthi = ng.Key,
+                                                Vote = ng.Sum(s => s.Total).TokFormat(),
+                                                Perc = Perc(ng.Sum(s => s.Total), totalVotes)
+                                            }).OrderByDescending(o => o.Perc).ToList();
+
+
+            }
+            if (value == 3)
+            {
+                dataGridView1.DataSource = (from r in resultForSearch
+                                            group r by r.PanchayatNo into ng
+                                            select new
+                                            {
+                                                Panchayat = BaseData.GetPanchayatName(ng.First().OndriumNo, ng.Key),
+                                                Vote = ng.Sum(s => s.Total).TokFormat(),
+                                                Perc = Perc(ng.Sum(s => s.Total), totalVotes)
+                                            }).OrderByDescending(o => o.Perc).ToList();
+            }
+            if (value == 4)
+            {
+                //dataGridView1.DataSource = resultForSearch.OrderBy(o => o.Male).ToList();
+            }
+            if (value == 5)
+            {
+                dataGridView1.DataSource = resultForSearch.OrderByDescending(o => o.Male).ToList();
+            }
+            if (value == 6)
+            {
+                dataGridView1.DataSource = resultForSearch.OrderByDescending(o => o.Female).ToList();
+            }
+            if (value == 7)
+            {
+                dataGridView1.DataSource = resultForSearch.OrderByDescending(o => o.to20).ToList();
+            }
+            if (value == 8)
+            {
+                dataGridView1.DataSource = resultForSearch.OrderByDescending(o => o.to30).ToList();
+            }
+            if (value == 9)
+            {
+                dataGridView1.DataSource = resultForSearch.OrderByDescending(o => o.to40).ToList();
+            }
+            if (value == 10)
+            {
+                dataGridView1.DataSource = resultForSearch.OrderByDescending(o => o.to50).ToList();
+            }
+            if (value == 11)
+            {
+                dataGridView1.DataSource = resultForSearch.OrderByDescending(o => o.to60).ToList();
+            }
+            if (value == 12)
+            {
+                dataGridView1.DataSource = resultForSearch.OrderByDescending(o => o.Above60).ToList();
+            }
+            if (value == 13)
+            {
+
+               
+                var d =
+                          new List<MyList>
+                          {
+                              new MyList() { Key = "18-20", Value = resultForSearch.Sum(s => s.to20).TokFormat(), Perc = Perc(resultForSearch.Sum(s => s.to20),totalVotes) },
+                              new MyList() { Key = "21-30", Value = resultForSearch.Sum(s => s.to30).TokFormat(), Perc = Perc(resultForSearch.Sum(s => s.to30),totalVotes) },
+                              new MyList() { Key = "31-40", Value = resultForSearch.Sum(s => s.to40).TokFormat(), Perc = Perc(resultForSearch.Sum(s => s.to40),totalVotes) },
+                              new MyList() { Key = "41-50", Value = resultForSearch.Sum(s => s.to50).TokFormat(), Perc = Perc(resultForSearch.Sum(s => s.to50),totalVotes) },
+                              new MyList() { Key = "51-60", Value = resultForSearch.Sum(s => s.to60).TokFormat(), Perc = Perc(resultForSearch.Sum(s => s.to60),totalVotes) },
+                              new MyList() { Key = "60-க்கு மேல்", Value = resultForSearch.Sum(s => s.Above60).TokFormat(), Perc = Perc(resultForSearch.Sum(s => s.Above60),totalVotes) },
+                          };
+
+                dataGridView1.DataSource = d.OrderByDescending(o => o.Value).ToList();
+            }
+        }
+    }
+
+    public class MyList
+    {
+        public string Key { get; set; }
+        public string Value { get; set; }
+        public string Perc { get; set; }
     }
 
 
