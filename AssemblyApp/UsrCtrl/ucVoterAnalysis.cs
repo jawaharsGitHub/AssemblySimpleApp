@@ -1151,7 +1151,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             var myKeyValuePair = new List<KeyValuePair<int, string>>()
                {
-
+                    new KeyValuePair<int, string>(0, "By Booth No"),
                    new KeyValuePair<int, string>(1, "Booth Wise"),
                    new KeyValuePair<int, string>(2, "Paguthi Wise"),
                    new KeyValuePair<int, string>(3, "Panchayat Wise"),
@@ -1710,11 +1710,15 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             var value = ((KeyValuePair<int, string>)cmbFIlter.SelectedItem).Key;
 
-            if (value == 1)
+            if (value == 0)
+            {
+                dataGridView1.DataSource = resultForSearch.OrderBy(o => o.BoothNo).ToList();
+            }
+            else if (value == 1)
             {
                 dataGridView1.DataSource = resultForSearch.OrderByDescending(o => o.Total).ToList();
             }
-            if (value == 2)
+            else if (value == 2)
             {
                 int sNo = 1;
                 dataGridView1.DataSource = (from r in resultForSearch
@@ -1735,7 +1739,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
 
             }
-            if (value == 3)
+            else if (value == 3)
             {
                 int sNo = 1;
                 var d = (from r in resultForSearch
@@ -1762,46 +1766,44 @@ namespace CenturyFinCorpApp.UsrCtrl
                 dataGridView1.DataSource = d.ToList();
 
             }
-            if (value == 4)
+            else if (value == 4)
             {
                 dataGridView1.DataSource = resultForSearch.OrderByDescending(o => o.Total).ToList();
             }
-            if (value == 5)
+            else if (value == 5)
             {
                 dataGridView1.DataSource = resultForSearch.OrderByDescending(o => o.Male).ToList();
             }
-            if (value == 6)
+            else if (value == 6)
             {
                 dataGridView1.DataSource = resultForSearch.OrderByDescending(o => o.Female).ToList();
             }
-            if (value == 7)
+            else if (value == 7)
             {
                 dataGridView1.DataSource = resultForSearch.OrderByDescending(o => o.to20).ToList();
             }
-            if (value == 8)
+            else if (value == 8)
             {
                 dataGridView1.DataSource = resultForSearch.OrderByDescending(o => o.to30).ToList();
             }
-            if (value == 9)
+            else if (value == 9)
             {
                 dataGridView1.DataSource = resultForSearch.OrderByDescending(o => o.to40).ToList();
             }
-            if (value == 10)
+            else if (value == 10)
             {
                 dataGridView1.DataSource = resultForSearch.OrderByDescending(o => o.to50).ToList();
             }
-            if (value == 11)
+            else if (value == 11)
             {
                 dataGridView1.DataSource = resultForSearch.OrderByDescending(o => o.to60).ToList();
             }
-            if (value == 12)
+            else if (value == 12)
             {
                 dataGridView1.DataSource = resultForSearch.OrderByDescending(o => o.Above60).ToList();
             }
-            if (value == 13)
+            else if (value == 13)
             {
-
-
                 var d =
                           new List<MyList>
                           {
