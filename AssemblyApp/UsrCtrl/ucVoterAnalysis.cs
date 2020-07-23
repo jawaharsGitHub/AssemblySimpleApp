@@ -1486,6 +1486,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             return Math.Round((Convert.ToDecimal(den) / Convert.ToDecimal(nom)) * 100, 1);
         }
 
+
         private void btnSaveReport_Click(object sender, EventArgs e)
         {
             try
@@ -1715,30 +1716,55 @@ namespace CenturyFinCorpApp.UsrCtrl
             }
             if (value == 2)
             {
+                int sNo = 1;
                 dataGridView1.DataSource = (from r in resultForSearch
                                             group r by r.PaguthiEnum into ng
-                                            select new {
+                                            select new
+                                            {
+                                                SerailNo = 0,
                                                 Paguthi = ng.Key,
                                                 Vote = ng.Sum(s => s.Total).TokFormat(),
-                                                Perc = Perc(ng.Sum(s => s.Total), totalVotes)
-                                            }).OrderByDescending(o => o.Perc).ToList();
+                                                Perc = PercInDec(ng.Sum(s => s.Total), totalVotes)
+                                            }).OrderByDescending(o => o.Perc).ToList().Select(s => new
+                                            {
+                                                SerailNo = sNo++,
+                                                s.Paguthi,
+                                                s.Vote,
+                                                s.Perc
+                                            }).ToList(); ;
 
 
             }
             if (value == 3)
             {
-                dataGridView1.DataSource = (from r in resultForSearch
-                                            group r by r.PanchayatNo into ng
-                                            select new
-                                            {
-                                                Panchayat = BaseData.GetPanchayatName(ng.First().OndriumNo, ng.Key),
-                                                Vote = ng.Sum(s => s.Total).TokFormat(),
-                                                Perc = Perc(ng.Sum(s => s.Total), totalVotes)
-                                            }).OrderByDescending(o => o.Perc).ToList();
+                int sNo = 1;
+                var d = (from r in resultForSearch
+                         group r by new { r.OndriumNo, r.PanchayatNo } into ng
+                         select new
+                         {
+                             SerailNo = 0,
+                             Ondrium = ng.First().PaguthiEnum,
+                             Panchayat = BaseData.GetPanchayatName(ng.Key.OndriumNo, ng.Key.PanchayatNo),
+                             Vote = ng.Sum(s => s.Total).TokFormat(),
+                             Perc = PercInDec(ng.Sum(s => s.Total), totalVotes)
+                         }).OrderByDescending(o => o.Perc).ToList().Select(s => new
+                         {
+                             SerailNo = sNo++,
+                             s.Ondrium,
+                             s.Panchayat,
+                             s.Vote,
+                             s.Perc
+                         }).ToList();
+
+
+                //d.ForEach(fe => fe.SerailNo = );
+
+                dataGridView1.DataSource = d.ToList();
+
             }
             if (value == 4)
             {
-                //dataGridView1.DataSource = resultForSearch.OrderBy(o => o.Male).ToList();
+                dataGridView1.DataSource = resultForSearch.OrderByDescending(o => o.Total).ToList();
             }
             if (value == 5)
             {
@@ -1775,7 +1801,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             if (value == 13)
             {
 
-               
+
                 var d =
                           new List<MyList>
                           {

@@ -19,6 +19,9 @@ namespace DataAccess.PrimaryTypes
 
         public int BoothNo { get; set; }
 
+        /// <summary>
+        /// நமது  ஒன்றியத்தின் பிரிவுகள் - எ.கா. RMD, TK, TM
+        /// </summary>
         public PaguthiEnum PaguthiEnum { get; set; }
         public int Total { get; set; }
         public int Male { get; set; }

@@ -81,7 +81,7 @@ namespace DataAccess.PrimaryTypes
 
         public static string GetPanchayatName(int ondriumId, int panchayatId)
         {
-            var df = OndriumForDistrict.Where(w => w.OndriumId == 2 && w.PanchayatId == 6).ToList();
+            //var df = OndriumForDistrict.Where(w => w.OndriumId == ondriumId && w.PanchayatId == panchayatId).ToList();
             return OndriumForDistrict.Where(w => w.OndriumId == ondriumId && w.PanchayatId == panchayatId).First().PanchayatName;
         }
 

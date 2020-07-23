@@ -639,11 +639,11 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             var selectedPanchayats = lstPanchayat.SelectedItems.Cast<BaseData>().Select(s => s.PanchayatId).ToList();
 
-            
+
             //selectedPanchayats.Cast<BaseData>().ToList()
 
-            BaseData.UpdateBooth(cmbZonal.SelectedValue.ToInt32(), 
-                                cmbAssembly.SelectedValue.ToInt32(), 
+            BaseData.UpdateBooth(cmbZonal.SelectedValue.ToInt32(),
+                                cmbAssembly.SelectedValue.ToInt32(),
                                 lstOndrium.SelectedValue.ToInt32(),
                                 selectedPanchayats);
 
@@ -688,9 +688,10 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             var ablList = new List<AssemblyBoothLink>();
 
-            selectedBoothNos.ForEach(fe => {
+            selectedBoothNos.ForEach(fe =>
+            {
 
-                ablList.Add(new AssemblyBoothLink() 
+                ablList.Add(new AssemblyBoothLink()
                 {
                     AssemblyNo = assemblyNo,
                     BoothNo = fe,
