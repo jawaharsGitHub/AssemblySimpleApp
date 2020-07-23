@@ -1155,6 +1155,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                    new KeyValuePair<int, string>(1, "Booth Wise"),
                    new KeyValuePair<int, string>(2, "Paguthi Wise"),
                    new KeyValuePair<int, string>(3, "Panchayat Wise"),
+                   new KeyValuePair<int, string>(33, "Order By Paguthi Type"),
                    new KeyValuePair<int, string>(4, "By Voters"),
                    new KeyValuePair<int, string>(5, "By Male"),
                    new KeyValuePair<int, string>(6, "By Female"),
@@ -1695,16 +1696,11 @@ namespace CenturyFinCorpApp.UsrCtrl
         private void button6_Click(object sender, EventArgs e)
         {
             var pt = (cmbPaguthi.SelectedItem as BaseData);
-
-            //pt.PaguthiType
-
             VotePercDetail.UpdatePaguthiType(pt, PaguthiEnum.MANP);
-
         }
 
         private void cmbFIlter_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            //if (fullList.Count == 0) return;
 
             var totalVotes = resultForSearch.Sum(s => s.Total);
 
@@ -1735,9 +1731,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                                                 s.Paguthi,
                                                 s.Vote,
                                                 s.Perc
-                                            }).ToList(); ;
-
-
+                                            }).ToList();
             }
             else if (value == 3)
             {
@@ -1760,8 +1754,32 @@ namespace CenturyFinCorpApp.UsrCtrl
                              s.Perc
                          }).ToList();
 
+                dataGridView1.DataSource = d.ToList();
 
-                //d.ForEach(fe => fe.SerailNo = );
+            }
+
+            else if (value == 33)
+            {
+                int sNo = 1;
+                var d = (from r in resultForSearch
+                         group r by new { r.OndriumNo, r.PanchayatNo } into ng
+                         select new
+                         {
+                             SerailNo = 0,
+                             Ondrium = ng.First().PaguthiEnum,
+                             Panchayat = BaseData.GetPanchayatName(ng.First().OndriumNo, ng.First().PanchayatNo) + "  ",
+                             Vote = ng.Sum(s => s.Total).TokFormat(),
+                             Perc = PercInDec(ng.Sum(s => s.Total), totalVotes)
+                         }).ToList();
+
+                d = d.Select(s => new
+                {
+                    SerailNo = sNo++,
+                    s.Ondrium,
+                    s.Panchayat,
+                    s.Vote,
+                    s.Perc
+                }).OrderBy(o => o.Ondrium).ToList();
 
                 dataGridView1.DataSource = d.ToList();
 
