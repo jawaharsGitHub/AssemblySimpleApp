@@ -30,15 +30,20 @@ namespace CenturyFinCorpApp.UsrCtrl
             nonVerified = nonVerified.Where(w => string.IsNullOrEmpty(w.Email) == false).ToList();
             var noemail = nonVerified.Where(w => string.IsNullOrEmpty(w.Email) == true).ToList();
 
+            string pwd = Microsoft.VisualBasic.Interaction.InputBox("Password?", "password");
 
-            nonVerified.ForEach(fe => {
-                SendBalanceEmail(fe);
+            nonVerified.ForEach(fe =>
+            {
+                SendBalanceEmail(fe, pwd);
             });
+
+            MessageBox.Show("Done");
+
 
         }
 
         static List<MemberVerify> mvl = new List<MemberVerify>();
-        public static void SendBalanceEmail(MemberVerify mv)
+        public static void SendBalanceEmail(MemberVerify mv, string pwd)
         {
             try
             {
@@ -46,9 +51,11 @@ namespace CenturyFinCorpApp.UsrCtrl
                 var mBody = FileContentReader.EmailBodyHtml;
                 mBody = mBody.Replace("[name]", mv.Name);
                 mBody = mBody.Replace("[phone]", mv.ContactNo);
-                var smtp = GetMailMessage(sub, mBody, mv.Email);
+
+                var smtp = GetMailMessage(sub, mBody, mv.Email, pwd);
 
                 smtp.Item2.Send(smtp.Item1);
+                //Thread
             }
             catch (Exception ex)
             {
@@ -74,7 +81,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             smtp.Host = "smtp.gmail.com"; //for gmail host  
             smtp.EnableSsl = true;
             smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new NetworkCredential(myEmail, "Ramnadntk@211");
+            smtp.Credentials = new NetworkCredential(myEmail, pwd);
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
 
             return (message, smtp);

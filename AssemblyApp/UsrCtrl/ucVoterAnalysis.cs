@@ -108,14 +108,10 @@ namespace CenturyFinCorpApp.UsrCtrl
                 string partNo = "";
                 string assNo = "";
 
-                //var filePath = $@"{folderPath}ac211200.txt";
-
                 var fileInfo = new FileInfo(filePath);
 
                 try
                 {
-
-
                     var ufn = fileInfo.Name.Split('.')[0];
 
                     assNo = ufn.Substring(2, 3);
@@ -414,12 +410,19 @@ namespace CenturyFinCorpApp.UsrCtrl
                 var allAges = fullList.Select(s => s.Age).ToList();
                 var totalVoters = allAges.Count();
 
-                var twenty = GetLessAgeCount(allAges, 20);
-                var thirty = GetAgeCount(allAges, 21, 30);
-                var forty = GetAgeCount(allAges, 31, 40);
-                var fifty = GetAgeCount(allAges, 41, 50);
-                var sixty = GetAgeCount(allAges, 51, 60);
-                var aboveSixty = GetMoreAgeCount(allAges, 61);
+                //var twenty = GetLessAgeCount(allAges, 20);
+                //var thirty = GetAgeCount(allAges, 21, 30);
+                //var forty = GetAgeCount(allAges, 31, 40);
+                //var fifty = GetAgeCount(allAges, 41, 50);
+                //var sixty = GetAgeCount(allAges, 51, 60);
+                //var aboveSixty = GetMoreAgeCount(allAges, 61);
+
+                var twenty = GetLessAgeCount(allAges, 35);
+                var thirty = GetAgeCount(allAges, 36, 45);
+                var forty = GetAgeCount(allAges, 46, 55);
+                var fifty = GetAgeCount(allAges, 56, 65);
+                var sixty = 0; // GetAgeCount(allAges, 51, 60);
+                var aboveSixty = GetMoreAgeCount(allAges, 66);
 
                 var newBoothPerc = new VotePercDetail()
                 {
@@ -664,10 +667,10 @@ namespace CenturyFinCorpApp.UsrCtrl
             try
             {
 
-                if (pageNumber == 47)
-                {
-                    var s = "";
-                }
+                //if (pageNumber == 47)
+                //{
+                //    var s = "";
+                //}
 
                 data = pageContent;
 

@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlphaNumericSort.cs" />
     <Compile Include="DocxToText.cs" />
     <Compile Include="DocxToTxt.cs">
       <SubType>Form</SubType>
@@ -68,6 +69,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="vao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vao.Designer.cs">
+      <DependentUpon>vao.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DocxToTxt.resx">
       <DependentUpon>DocxToTxt.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,6 +90,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="vao.resx">
+      <DependentUpon>vao.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -99,6 +109,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Initial Notes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{3B50D786-0B24-4845-889E-9439E55B8D91}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

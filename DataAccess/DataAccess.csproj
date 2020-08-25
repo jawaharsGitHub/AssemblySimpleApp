@@ -62,15 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\AssemblyVoters\211\211-001.json" />
-    <None Include="Data\AssemblyVoters\211\211-002.json" />
-    <None Include="Data\AssemblyVoters\211\211-003.json" />
-    <None Include="Data\AssemblyVoters\211\211-004.json" />
-    <None Include="Data\AssemblyVoters\211\211-005.json" />
     <None Include="Data\AssemblyVoters\211\211-BoothDetail.json" />
     <None Include="Data\BaseData - WIthoutPanchayat.json" />
     <None Include="Data\BaseData.json" />
-    <None Include="Data\ntknonApprovalMembers - Copy.json" />
+    <None Include="Data\ntkmemberwithemail.json" />
+    <None Include="Data\ntknonApprovalMembers.json" />
+    <None Include="Data\VotePercDetail - Copy.json" />
     <None Include="Data\VotePercDetail.json" />
     <None Include="Data\voter-Panchayat.json" />
     <None Include="Data\assembly.json" />
@@ -212,7 +209,7 @@
     <None Include="Data\memberverify.json" />
     <None Include="Data\AssemblyBoothLink.json" />
     <None Include="Data\AssemblyVoterList.json" />
-    <None Include="Data\ntknonApprovalMembers.json" />
+    <None Include="Data\ntknonApprovalMembers-test.json" />
     <None Include="Data\zonal.json" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
