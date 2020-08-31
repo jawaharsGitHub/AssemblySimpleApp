@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlphaNumericSort.cs" />
+    <Content Include="Class1.txt" />
     <Compile Include="DocxToText.cs" />
     <Compile Include="DocxToTxt.cs">
       <SubType>Form</SubType>

@@ -203,9 +203,82 @@ namespace NTK_Support
                 html = html.Replace("[data]", dataRows);
 
 
+                temData.Add(new ChittaData()
+                {
+                    Parappu = GetSumThreeDotNo(temData.Select(s => s.Parappu).ToList(), filter, i + 1),
+                    Theervai = temData.Sum(s => s.Theervai),
+                    PageNumber = i + 1
+                });
+
+
+                var MyList = new List<ChittaData>();
+
+                if (forPageList == false)
+                {
+                    for (int j = 0; j < temData.Count - 1; j++)
+                    {
+                        //
+                        temData[j].PageIndex = (j + 1).ToString();
+                        temData[j].PageNumber = i + 1;
+
+                        MyList.Add(temData[j]);
+                        MyList.Add(new ChittaData() { PageNumber = i + 1 });
+                        MyList.Add(new ChittaData() { PageNumber = i + 1, index = index });
+
+                        //
+                        temData[j].PageIndex = (j + 1).ToString();
+                        temData[j].PageNumber = i + 1;
+
+                        finalList.Add(temData[j]);
+                        finalList.Add(new ChittaData() { PageNumber = i + 1 });
+                        finalList.Add(new ChittaData() { PageNumber = i + 1, index = index });
+
+                        // page list
+                        temData[j].PageIndex = (j + 1).ToString();
+                        temData[j].PageNumber = i + 1;
+
+                        //MyPagesList.Add(temData[j]);
+                        //MyPagesList.Add(new ChittaData() { PageNumber = i + 1 });
+                        //finalList.Add(new ChittaData() { PageNumber = i + 1, index = index });
+                    }
+                    finalList.Add(temData.Last());
+                    MyList.Add(temData.Last());
+                    MyList.ForEach(td => { sb.Append(td); });
+                    MyList.ForEach(f => { File.AppendAllText(filePath, f.ToString()); });
+
+                }
+                else
+                {
+                    MyPagesList.Add(temData.Last());
+                    //Clipboard.SetText(temData.Last().ToString());
+                }
+
+                ////Clipboard.SetText(sb.ToString());
+
+
+                //if (MessageBox.Show($"Copied PageList-Data {filter} for page : {temData[0].PageNumber} out of {pageCount}") == DialogResult.OK)
+                //{
+
+                //}
+
+                //if (MessageBox.Show($"Copied Data {filter} for page : {temData[0].PageNumber} out of {pageCount}") == DialogResult.OK)
+                //{
+
+                //}
+
+
+
+                //if (temData[0].PageNumber == 34)
+                //{
+                //    Clipboard.SetText(sb.ToString());
+
+                //    if (MessageBox.Show($"Copied Data {filter} for page : {temData[0].PageNumber} out of {pageCount}") == DialogResult.OK)
+                //    {
+
+                //    }
+                //}
+
             }
-
-
 
 
             int pageListRowNo = 22;
