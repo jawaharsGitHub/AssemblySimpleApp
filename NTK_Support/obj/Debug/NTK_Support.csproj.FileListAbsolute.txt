@@ -19,3 +19,5 @@ F:\AssemblySimpleApp\NTK_Support\bin\Debug\Common.pdb
 F:\AssemblySimpleApp\NTK_Support\bin\Debug\log4net.xml
 F:\AssemblySimpleApp\NTK_Support\bin\Debug\System.ValueTuple.xml
 F:\AssemblySimpleApp\NTK_Support\bin\Debug\Newtonsoft.Json.xml
+F:\AssemblySimpleApp\NTK_Support\bin\Debug\Aspose.PDF.dll
+F:\AssemblySimpleApp\NTK_Support\bin\Debug\Aspose.PDF.xml

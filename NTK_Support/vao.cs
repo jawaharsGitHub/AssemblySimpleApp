@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Aspose.Pdf;
 
 namespace NTK_Support
 {
@@ -140,7 +141,7 @@ namespace NTK_Support
             string Punsaipath = @"F:\2M-10.csv";
             string Maanaavaaripath = @"F:\3P-11.csv";
 
-            WriteData(cds, "1N", Nansaipath);
+            //WriteData(cds, "1N", Nansaipath);
             //WriteData(cds, "2P", Punsaipath);
             //WriteData(cds, "3M", Maanaavaaripath);
 
@@ -149,8 +150,13 @@ namespace NTK_Support
         bool forPageList = true;
         public void WriteData(List<ChittaData> data, string filter, string filePath)
         {
+            string landType = "";
 
-            var html = FileContentReader.DataPageHtml;
+            if (filter == "1N") landType = "( நன்செய் )";
+            else if (filter == "2P") landType = "( புன்செய் )";
+            else if (filter == "3M") landType = "( மானாவாரி )";
+            else if (filter == "4P") landType = "( புறம்போக்கு )";
+
 
 
             var filteredList = data.Where(w => w.LandType == filter).OrderBy(o => o.LandType).ThenBy(t => t.SurveyNo).ThenBy(t => t.SubDivNo, new AlphanumericComparer()).ToList();
@@ -171,6 +177,8 @@ namespace NTK_Support
 
             for (int i = 0; i <= pageCount - 1; i++)
             {
+                var html = FileContentReader.DataPageHtml;
+
                 StringBuilder sb = new StringBuilder();
 
                 var temData = filteredList.Skip(i * 7).Take(7).ToList();
@@ -187,9 +195,9 @@ namespace NTK_Support
 
                 temData.ForEach(ff => {
                     
-                    dataRows += $@"<tr><td class='datahgt' style='min-width:35px;'>{ff.SurveyNoStr}</td><td style='min-width:50px;'>{ff.SubDivNo}</td>
- <td style='min-width:50px;'>{ff.Parappu}</td><td style='min-width:20px;'>{ff.TheervaiStr}</td>
- <td style='min-width:20px;'></td><td style='min-width:200px;word-break:break-word;'>{ff.OwnerName}</td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    dataRows += $@"<tr><td class='datahgt' style='min-width:35px;font-weight: bold;'>{ff.SurveyNoStr}</td><td style='min-width:50px;font-weight: bold;'>{ff.SubDivNo}</td>
+ <td style='min-width:50px;font-weight: bold;'>{ff.Parappu}</td><td style='min-width:20px;font-weight: bold;'>{ff.TheervaiStr}</td>
+ <td style='min-width:20px;'></td><td style='min-width:200px;word-break:break-word;font-weight: bold;'>{ff.OwnerName}</td><td></td><td></td><td></td><td></td><td></td><td></td>
   </tr>
   <tr>
   <td class='datahgt'></td><td></td><td></td><td>
@@ -200,8 +208,17 @@ namespace NTK_Support
                 dataRows += $@"<td class='datahgt'></td><td></td><td class='footer'>{totalData.Parappu}</td><td class='footer'>{totalData.TheervaiStr}</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
   </ tr > ";
 
-                html = html.Replace("[data]", dataRows);
+                html = html.Replace("[data]", dataRows).Replace("[landtype]", landType);
 
+                
+
+                File.WriteAllText($@"F:\vanitha - vao\achunthavayal\v-3\DataPages\DP-{filter}{totalData.PageNumber + 108}.htm", html);
+
+                //HtmlLoadOptions htmloptions = new HtmlLoadOptions();
+                // Load HTML file
+                //Document doc = new Document(@"F:\vanitha - vao\achunthavayal\v-3\1.htm", htmloptions);
+                // Convert HTML file to PDF
+                //doc.Save(@"F:\vanitha - vao\achunthavayal\v-3\HTML-to-PDF.pdf");
 
             }
 
