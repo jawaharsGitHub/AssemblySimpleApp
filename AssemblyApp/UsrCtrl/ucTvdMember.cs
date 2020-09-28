@@ -22,16 +22,11 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             InitializeComponent();
 
-            var assemblies = TvdMember.GetAll().ToList();
+            LoadGrid();
+
             paguthiList = GetPaguthi();
             utPaguthiList = GetUtPaguthi();
 
-
-            int i = 1;
-
-            assemblies.ForEach(f => f.Sno = i++);
-
-            dataGridView1.DataSource = assemblies;
 
             dataGridView1.Columns["State"].Visible = false;
             dataGridView1.Columns["District"].Visible = false;
@@ -45,31 +40,28 @@ namespace CenturyFinCorpApp.UsrCtrl
             dataGridView1.Columns["UtPaguthi"].Visible = false;
 
             dataGridView1.Columns["PaguthiEng"].Visible = false;
-            dataGridView1.Columns["UtPaguthiEng"].Visible = false;
+            //dataGridView1.Columns["UtPaguthiEng"].Visible = false;
+            //dataGridView1.Columns["UtPaguthiEng"].DisplayIndex = 3;
 
             dataGridView1.Columns["Country"].Visible = false;
 
+            dataGridView1.Columns["Address"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            //var paguthi = GetPaguthi();
 
-            //DataGridViewComboBoxColumn dgvCboColumn = new DataGridViewComboBoxColumn();
-            //dgvCboColumn.Name = "Paguthi-1";
-            //dgvCboColumn.DataSource = paguthi; //DataTable that contains contact details
-            //dgvCboColumn.DisplayMember = "Display";
-            //dgvCboColumn.ValueMember = "Value";
-            //dataGridView1.Columns.Add(dgvCboColumn);
-
-            //var utpaguthi = GetUtPaguthi();
-
-            DataGridViewComboBoxColumn dgvCboColumn2 = new DataGridViewComboBoxColumn();
-            dgvCboColumn2.Name = "utPaguthi-1";
-            dgvCboColumn2.DataSource = utPaguthiList; //DataTable that contains contact details
-            dgvCboColumn2.DisplayMember = "Display";
-            dgvCboColumn2.ValueMember = "Value";
-            dataGridView1.Columns.Add(dgvCboColumn2);
+            comboBox1.DataSource = GetUtPaguthi();
+            comboBox1.DisplayMember = "Display";
+            comboBox1.ValueMember = "DisplayTamil";
 
         }
 
+
+        private void LoadGrid()
+        {
+            assemblies = TvdMember.GetAll().ToList();
+            int i = 1;
+            assemblies.ForEach(f => f.Sno = i++);
+            dataGridView1.DataSource = assemblies;
+        }
         private List<Pair> GetPaguthi()
         {
 
@@ -79,7 +71,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 new Pair(2,"Rsm-M", "ஆர்.எஸ்.மங்களம் - மேற்கு"),
                 new Pair(3,"Tvd-T","திருவாடானை - தெற்கு"),
                 new Pair(4,"Tvd-K", "திருவாடானை - கிழக்கு"),
-                new Pair(5,"Tvd-M", "திருவாடானை - மேற்கு"),                
+                new Pair(5,"Tvd-M", "திருவாடானை - மேற்கு"),
                 new Pair(6,"Tvd-V", "திருவாடானை - வடக்கு"),
                 new Pair(7,"Rmd-K", "இராம்நாடு - கிழக்கு"),
                 new Pair(8,"Rmd-m", "இராம்நாடு - மேற்கு"),
@@ -97,8 +89,8 @@ namespace CenturyFinCorpApp.UsrCtrl
             List<Pair> utpaguthi = new List<Pair>()
             {
 
-                new Pair(9,"RSM-Nagar","RSM-Nagar"),
-                new Pair(10,"Thondi","Thondi"),
+                new Pair(9,"RSM-Nagar","ஆர்.எஸ்.மங்களம் நகர்"),
+                new Pair(10,"Thondi","தொண்டி"),
 
 
                 new Pair(1,"Manakkudi", "அ.மணக்குடி"),
@@ -232,46 +224,65 @@ namespace CenturyFinCorpApp.UsrCtrl
                 new Pair(8,"Karenthal","காரேந்தல் "),
                 new Pair(8,"Pullangudi","புல்லங்குடி "),
 
-                
+
             };
 
-            return utpaguthi.OrderBy(o=> o.Display).ToList();
+            return utpaguthi.OrderBy(o => o.Display).ToList();
         }
 
-        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            var grid = (sender as DataGridView);
-            var rowIndex = grid.CurrentCell.RowIndex;
+            foreach (DataGridViewRow r in dataGridView1.SelectedRows)
+            {
+                var memberId = (r.DataBoundItem as TvdMember).MemberId;
 
-            var selectedData = (grid.Rows[rowIndex].DataBoundItem as TvdMember);
-            var selectedData22 = (grid.Rows[rowIndex].Cells[0].Value as DataGridViewComboBoxColumn);
+                var utp = (comboBox1.SelectedItem as Pair);
 
-            var memberId = GetGridCellValue(grid, rowIndex, "MemberId");
+                var utPagu = (from t in utPaguthiList
+                              where t.Display == utp.Display
+                              select t).FirstOrDefault();
 
-            var Pagu = (from t in paguthiList
-                        where t.Value == GetGridCellValueInt(grid, rowIndex, "utPaguthi-1")
-                        select t).First();
+                var Pagu = (from t in paguthiList
+                            where t.Value == utp.Value
+                            select t).FirstOrDefault();
 
-            var utPagu = (from t in utPaguthiList
-                          where t.Display == GetGridCellText(grid, rowIndex, "utPaguthi-1")
-                          select t).First();
+                if (Pagu != null && utPagu != null)
+                {
+                    TvdMember.UpdateMemberDetails(memberId, Pagu.DisplayTamil, utPagu.DisplayTamil, Pagu.Display, utPagu.Display);
+                }
 
-            TvdMember.UpdateMemberDetails(memberId, Pagu.DisplayTamil, utPagu.DisplayTamil, Pagu.Display, utPagu.Display);
+            }
+            
+            LoadGrid();
+            MessageBox.Show("Done");
+
         }
 
-        private string GetGridCellValue(DataGridView grid, int rowIndex, string columnName)
+        private void button2_Click(object sender, EventArgs e)
         {
-            return Convert.ToString(grid.Rows[rowIndex].Cells[columnName].Value);
+            //var utp = (comboBox1.SelectedItem as Pair);
+
+            //dataGridView1.DataSource = assemblies.Where(w => w.Address.Contains(utp.DisplayTamil.Trim())).ToList();
+
+            //dataGridView1.SelectAll();
+
+            //dataGridView1.DataSource = assemblies.Where(w => w.Address.Contains(textBox1.Text.Trim())).ToList();
+
         }
 
-        private int GetGridCellValueInt(DataGridView grid, int rowIndex, string columnName)
+        private void button3_Click(object sender, EventArgs e)
         {
-            return Convert.ToInt32(grid.Rows[rowIndex].Cells[columnName].Value);
+            comboBox1.SelectedIndex = comboBox1.SelectedIndex + 1;
+            var utp = (comboBox1.SelectedItem as Pair);
+
+            dataGridView1.DataSource = assemblies.Where(w => w.Address.Contains(utp.DisplayTamil.Trim())).ToList();
+
+            dataGridView1.SelectAll();
         }
 
-        private string GetGridCellText(DataGridView grid, int rowIndex, string columnName)
+        private void button4_Click(object sender, EventArgs e)
         {
-            return Convert.ToString(grid.Rows[rowIndex].Cells[columnName].FormattedValue);
+            TvdMember.ClearAllUpdate();
         }
     }
 
@@ -295,5 +306,10 @@ namespace CenturyFinCorpApp.UsrCtrl
         public string Display { get; set; }
 
         public string DisplayTamil { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Value}-{Display}-{DisplayTamil}";
+        }
     }
 }

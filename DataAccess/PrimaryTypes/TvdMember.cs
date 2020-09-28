@@ -56,5 +56,33 @@ namespace DataAccess.PrimaryTypes
                 throw ex;
             }
         }
+
+        public static void ClearAllUpdate()
+        {
+            try
+            {
+
+                List<TvdMember> list = ReadFileAsObjects<TvdMember>(JsonFilePath);
+
+                list.ForEach(u => {
+
+                    u.Paguthi = "";
+                    u.UtPaguthi = "";
+                    u.PaguthiEng = "";
+                    u.UtPaguthiEng = "";
+
+                });
+
+
+                
+
+                WriteObjectsToFile(list, JsonFilePath);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
