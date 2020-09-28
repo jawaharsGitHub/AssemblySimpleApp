@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataAccess.PrimaryTypes;
+using System.Threading;
 
 namespace CenturyFinCorpApp.UsrCtrl
 {
@@ -219,7 +220,9 @@ namespace CenturyFinCorpApp.UsrCtrl
                 new Pair(8,"Peruvayal","பெறுவயல் "),
                 new Pair(8,"Karenthal","காரேந்தல் "),
                 new Pair(8,"Pullangudi","புல்லங்குடி "),
-                new Pair(9,"RSM-Nagar","ஆர்.எஸ்.மங்களம் நகர்"),
+
+                new Pair(9,"RSM-Nagar","ஆர்.எஸ்.மங்களம்"),
+
                 new Pair(10,"Thondi","தொண்டி"),
 
 
@@ -286,17 +289,13 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void button5_Click(object sender, EventArgs e)
         {
+            int i = 0;
             utPaguthiList.ForEach(fe => {
 
                 var dataToUpdate = assemblies.Where(w => w.Address.Contains(fe.DisplayTamil.Trim())).Select(s => s.MemberId).ToList();
 
-
                 foreach (string memberId in dataToUpdate)
                 {
-                    //var memberId = (r.DataBoundItem as TvdMember).MemberId;
-
-                    //var utp = (comboBox1.SelectedItem as Pair);
-
                     var utPagu = (from t in utPaguthiList
                                   where t.Display == fe.Display
                                   select t).FirstOrDefault();
@@ -306,15 +305,20 @@ namespace CenturyFinCorpApp.UsrCtrl
                                 select t).FirstOrDefault();
 
                     if (Pagu != null && utPagu != null)
-                    {
                         TvdMember.UpdateMemberDetails(memberId, Pagu.DisplayTamil, utPagu.DisplayTamil, Pagu.Display, utPagu.Display);
-                    }
 
                 }
+                i = i + 1;
 
-
+                label1.Invoke((MethodInvoker)delegate {
+                    // Running on the UI thread
+                    label1.Text = $"{i} - {fe.DisplayTamil.Trim()}";
+                });
+                Thread.Sleep(500);
 
             });
+
+            MessageBox.Show("ALL DONE");
         }
     }
 

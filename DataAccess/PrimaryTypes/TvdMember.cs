@@ -58,6 +58,7 @@ namespace DataAccess.PrimaryTypes
                     u.UtPaguthi = $"{u.UtPaguthi},{utPaguthi}";
                     u.PaguthiEng = pagEng;
                     u.UtPaguthiEng = $"{u.UtPaguthiEng},{utPagEng}";
+                    u.MultiplePlace = true;
                 }
 
                 WriteObjectsToFile(list, JsonFilePath);
