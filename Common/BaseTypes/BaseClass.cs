@@ -34,7 +34,7 @@ namespace Common
 
         public static List<T> ReadFileAsObjects<T>(string filePath)
         {
-            General.CreateFileIfNotExist(filePath);
+            //General.CreateFileIfNotExist(filePath);
 
             var jsonText = File.ReadAllText(filePath);
             List<T> list = JsonConvert.DeserializeObject<List<T>>(jsonText) ?? new List<T>();

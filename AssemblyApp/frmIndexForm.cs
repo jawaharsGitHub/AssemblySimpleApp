@@ -34,7 +34,7 @@ namespace CenturyFinCorpApp
             panel1.Width = 1300;
             panel1.Height = this.Height;
 
-            ShowForm<ucVoterAnalysis>(); // initial form to be loaded
+            ShowForm<ucTvdMember>(); // initial form to be loaded
         }
 
         private void CreateMenu()
@@ -105,6 +105,11 @@ namespace CenturyFinCorpApp
             var mnuVoters = new ToolStripMenuItem() { Name = "voters", Text = "VOTERS-Rmm" };
             mnuVoters.Click += (s, e) => ShowForm<ucVoters>(); ;
             menuStrip.Items.Add(mnuVoters);
+
+
+            var mnuTvd = new ToolStripMenuItem() { Name = "TVD", Text = "TVD" };
+            mnuTvd.Click += (s, e) => ShowForm<ucTvdMember>(); ;
+            menuStrip.Items.Add(mnuTvd);
 
             var mnuReports = new ToolStripMenuItem() { Name = "reports", Text = "Reports" };
             mnuReports.Click += (s, e) => ShowForm<ucReports>(); ;
@@ -204,6 +209,12 @@ namespace CenturyFinCorpApp
             else if (typeof(T) == typeof(ucVoterAnalysis))
             {
                 var ucd = new ucVoterAnalysis();
+                panel1.Controls.Add(ucd);
+            }
+
+            else if (typeof(T) == typeof(ucTvdMember))
+            {
+                var ucd = new ucTvdMember();
                 panel1.Controls.Add(ucd);
             }
         }

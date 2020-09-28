@@ -67,12 +67,14 @@
     <None Include="Data\BaseData.json" />
     <None Include="Data\ntkmemberwithemail.json" />
     <None Include="Data\ntknonApprovalMembers.json" />
+    <None Include="Data\tvdmember.json" />
     <None Include="Data\VotePercDetail - Copy.json" />
     <None Include="Data\VotePercDetail.json" />
     <None Include="Data\voter-Panchayat.json" />
     <None Include="Data\assembly.json" />
     <Compile Include="PrimaryTypes\AssemblyBoothLink.cs" />
     <Compile Include="PrimaryTypes\NTKMember.cs" />
+    <Compile Include="PrimaryTypes\TvdMember.cs" />
     <Compile Include="PrimaryTypes\VotePercDetail.cs" />
     <Compile Include="ExtendedTypes\AssemblyAndVotes.cs" />
     <Compile Include="ExtendedTypes\CreditReport.cs" />

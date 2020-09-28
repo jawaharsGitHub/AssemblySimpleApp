@@ -10,15 +10,7 @@ using System.Windows.Forms;
 
 namespace CenturyFinCorpApp.UsrCtrl
 {
-
-    public class DuplicateByPhone
-    {
-        public string Name { get; set; }
-
-        public int NameCount { get; set; }
-
-        public string PhNo { get; set; }
-    }
+        
     public partial class ucMemberVerify : UserControl
     {
 
@@ -156,5 +148,14 @@ namespace CenturyFinCorpApp.UsrCtrl
 
 
         }
+    }
+
+    public class DuplicateByPhone
+    {
+        public string Name { get; set; }
+
+        public int NameCount { get; set; }
+
+        public string PhNo { get; set; }
     }
 }

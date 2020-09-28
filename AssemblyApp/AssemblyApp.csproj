@@ -112,6 +112,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ToDo.cs" />
+    <Compile Include="UsrCtrl\ucTvdMember.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsrCtrl\ucTvdMember.Designer.cs">
+      <DependentUpon>ucTvdMember.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsrCtrl\ucVoterAnalysis.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -204,6 +210,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UsrCtrl\ucTvdMember.resx">
+      <DependentUpon>ucTvdMember.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UsrCtrl\ucVoterAnalysis.resx">
       <DependentUpon>ucVoterAnalysis.cs</DependentUpon>
     </EmbeddedResource>

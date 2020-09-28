@@ -3,29 +3,34 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Aspose.Pdf;
 
 namespace NTK_Support
 {
     public partial class vao : Form
     {
+
+        string myFile = @"F:\vanitha - vao\achunthavayal\v-3\chitta-achunthavayal.txt";
+        string empty = "";
+        int pageListRowNo = 24;
+        bool forPageList = true;
+        int rightPageNo = 6;
+        int startPno = 284;
+
         public vao()
         {
             InitializeComponent();
             ProcessChittaFile();
         }
 
-
-        int index = 0;
-
-        string myFile = @"F:\vanitha - vao\achunthavayal\v-3\chitta-achunthavayal.txt";
-        string empty = "";
+        
         private void ProcessChittaFile()
         {
 
@@ -71,11 +76,6 @@ namespace NTK_Support
                     int pattaNo = 0;
                     pattaNo = Convert.ToInt32(d3[0].Replace(":", "").Trim());
 
-                    //if (pattaNo == 1235)
-                    //{
-
-                    //}
-
                     var names = d3[1].Split('$');
 
                     if (isVagai)
@@ -84,7 +84,10 @@ namespace NTK_Support
                     {
                         string initial = "";
 
-                        if (Convert.ToInt32(names[2][1]).ToString()[0] == '3')
+
+                        if (names[2].Trim().StartsWith("இரா"))
+                            initial = "இரா";
+                        else if (Convert.ToInt32(names[2][1]).ToString()[0] == '3')
                             initial = $"{names[2][0]}{names[2][1]}";
                         else
                             initial = $"{names[2][0]}";
@@ -127,47 +130,77 @@ namespace NTK_Support
                             d.Theervai = Convert.ToDecimal(nums[7]);
                         }
 
-                        //index = (index + 1);
-                        //d.index = index;
-
                         cds.Add(d);
                     }
                 }
             }
             );
 
+            CreateInitialPages(); // 10 pages
+            WriteData(cds, "1N"); // from chitta
+            WriteData(cds, "2P");  // from chitta
+            WriteData(cds, "3M");  // from chitta
+            WriteData(cds, "4P");  // from a-reg
 
-            string Nansaipath = @"F:\1N-10.csv";
-            string Punsaipath = @"F:\2M-10.csv";
-            string Maanaavaaripath = @"F:\3P-11.csv";
-
-            //WriteData(cds, "1N", Nansaipath);
-            //WriteData(cds, "2P", Punsaipath);
-            //WriteData(cds, "3M", Maanaavaaripath);
 
         }
 
-        bool forPageList = true;
-        public void WriteData(List<ChittaData> data, string filter, string filePath)
+        private void CreateInitialPages()
         {
+
+
+        }
+
+
+
+
+
+
+        public void WriteData(List<ChittaData> data, string filter)
+        {
+            List<ChittaData> PageTotalList = new List<ChittaData>();
             string landType = "";
 
             if (filter == "1N") landType = "( நன்செய் )";
-            else if (filter == "2P") landType = "( புன்செய் )";
+            else if (filter == "2P")
+            { 
+                landType = "( புன்செய் )";
+                rightPageNo = rightPageNo - 1;
+            }
             else if (filter == "3M") landType = "( மானாவாரி )";
             else if (filter == "4P") landType = "( புறம்போக்கு )";
 
+            var filteredList = new List<ChittaData>();
+
+            if (filter == "4P")
+            {
+                var csvLines = File.ReadAllLines(@"F:\vanitha - vao\achunthavayal\v-3\DataPages/puram.txt");
+
+                csvLines.ToList().ForEach(fe =>
+                {
+                    var dt = fe.Split(',').ToList();
+
+                    filteredList.Add(new ChittaData
+                    {
+                        SurveyNo = Convert.ToInt32(dt[0].Trim()),
+                        SubDivNo = dt[1].Trim(),
+                        Parappu = dt[2].Trim(),
+                        OwnerName = dt[3].Trim()
+                    }) ;
+                });
 
 
-            var filteredList = data.Where(w => w.LandType == filter).OrderBy(o => o.LandType).ThenBy(t => t.SurveyNo).ThenBy(t => t.SubDivNo, new AlphanumericComparer()).ToList();
+            }
+            else
+            {
+                filteredList = data.Where(w => w.LandType == filter).OrderBy(o => o.LandType).ThenBy(t => t.SurveyNo).ThenBy(t => t.SubDivNo, new AlphanumericComparer()).ToList();
+
+            }
+
             var finalList = new List<ChittaData>();
             int index = 0;
-
             var MyPagesList = new List<ChittaData>();
-
-
             var fList = new List<ChittaData>();
-
             var pageCount = filteredList.Count / 7;
 
             if (filteredList.Count % 7 > 0)
@@ -178,11 +211,9 @@ namespace NTK_Support
             for (int i = 0; i <= pageCount - 1; i++)
             {
                 var html = FileContentReader.DataPageHtml;
-
                 StringBuilder sb = new StringBuilder();
-
                 var temData = filteredList.Skip(i * 7).Take(7).ToList();
-
+                string dataRows = "";
 
                 var totalData = new ChittaData()
                 {
@@ -191,7 +222,7 @@ namespace NTK_Support
                     PageNumber = i + 1
                 };
 
-                string dataRows = "";
+                PageTotalList.Add(totalData);                
 
                 temData.ForEach(ff => {
                     
@@ -209,61 +240,63 @@ namespace NTK_Support
   </ tr > ";
 
                 html = html.Replace("[data]", dataRows).Replace("[landtype]", landType);
-
-                
-
-                File.WriteAllText($@"F:\vanitha - vao\achunthavayal\v-3\DataPages\DP-{filter}{totalData.PageNumber + 108}.htm", html);
-
-                //HtmlLoadOptions htmloptions = new HtmlLoadOptions();
-                // Load HTML file
-                //Document doc = new Document(@"F:\vanitha - vao\achunthavayal\v-3\1.htm", htmloptions);
-                // Convert HTML file to PDF
-                //doc.Save(@"F:\vanitha - vao\achunthavayal\v-3\HTML-to-PDF.pdf");
-
+                // Data Pages html.
+                File.WriteAllText($@"F:\vanitha - vao\achunthavayal\v-3\DataPages\DP-{filter}{totalData.PageNumber + 0}.htm", html);
             }
 
+            var pageListCount = PageTotalList.Count / pageListRowNo;
 
-
-
-            int pageListRowNo = 22;
-
-            var pageListCount = MyPagesList.Count / pageListRowNo;
-
-            if (MyPagesList.Count % pageListRowNo > 0)
-            {
-                pageListCount = pageListCount + 1;
-            }
-
-
-            
+            if (PageTotalList.Count % pageListRowNo > 0) pageListCount = pageListCount + 1;
 
             for (int i = 0; i <= pageListCount - 1; i++)
             {
+                var html2 = FileContentReader.pageListHtml;
+                string dataRows2 = "";
                 StringBuilder sb2 = new StringBuilder();
                 var PageCountFinal = new List<ChittaData>();
 
-                var pageListtemData = MyPagesList.Skip(i * pageListRowNo).Take(pageListRowNo).ToList();
+                var pageListtemData = PageTotalList.Skip(i * pageListRowNo).Take(pageListRowNo).ToList();
 
-                // String.Format("{0}\t{1}\t{2}{3}", PageNumberStr, Parappu, TheervaiStr, Environment.NewLine);
-                //PageCountFinal.Add(new ChittaData() { PageNumberStr = "பக்கம் எண்." });
-                for (int jj = 0; jj < pageListtemData.Count; jj++)
+                pageListtemData.ForEach(ff => {
+
+                    rightPageNo = rightPageNo + 1;
+
+                    dataRows2 += $@" <tr class='head'>
+ <td>{rightPageNo}</td>
+ <td>{ff.Parappu}</td>
+ <td></td>
+ <td></td>
+ </tr>";
+                });
+
+                if(pageListtemData.Count < pageListRowNo)
                 {
-                    PageCountFinal.Add(pageListtemData[jj]);
-                    //PageCountFinal.Add(new ChittaData());
+                    int diff = pageListRowNo - pageListtemData.Count;
+
+                    for (int di = 1; di <= diff; di++)
+                    {
+
+                        dataRows2 += $@" <tr class='head'>
+                                         <td></td>
+                                         <td></td>
+                                         <td></td>
+                                         <td></td>
+                                         </tr>";
+
+                    }
 
                 }
+                
+                startPno = startPno + 1;
+                html2 = html2.Replace("[data]", dataRows2).Replace("[landtype]", landType.Replace("(","").Replace(")", "")).Replace("[pn]","");
+                // Write to page total list.
+                File.WriteAllText($@"F:\vanitha - vao\achunthavayal\v-3\DataPages\TP-{filter}{startPno}.htm", html2);
 
-                PageCountFinal.ForEach(td => { sb2.Append(td); });
-                Clipboard.SetText(sb2.ToString());
-
-
-                if (MessageBox.Show($"Copied PageList-Data {filter} for page : {i + 1} out of {pageListCount}") == DialogResult.OK)
-                {
-
-                }
             }
 
         }
+        
+       
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -332,16 +365,6 @@ namespace NTK_Support
     public class ChittaData
     {
 
-        //public ChittaData()
-        //{
-
-        //}
-
-        //public ChittaData(string pageNo, string parappu, string theervai)
-        //{
-        //    PageNumberStr = pageNo;
-
-        //}
         public int index { get; set; }
 
         public int SurveyNo { get; set; }
@@ -364,7 +387,6 @@ namespace NTK_Support
         public int PageNumber { get; set; }
 
 
-
         public string PageNumberStr
         {
             get
@@ -373,32 +395,13 @@ namespace NTK_Support
             }
         }
 
-        //string pn;
-        //public string PageNumberStr {
-            
-        //   get 
-        //    {
-        //        return PageNumber == 0 ? "" : PageNumber.ToString(); 
-        //    }
-
-        //    set
-        //    {
-        //        this.pn = value;
-        //    }
-        //}
-
         public string PageIndex { get; set; }
        
 
         public override string ToString()
         {
-            // main data 
-            //return String.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}{6}", SurveyNoStr, SubDivNo, Parappu, TheervaiStr, "", OwnerName, Environment.NewLine);
-
             return String.Format("{0}\t{1}\t{2}{3}", PageNumberStr, Parappu, TheervaiStr, Environment.NewLine);
-
         }
-
 
     }
 }

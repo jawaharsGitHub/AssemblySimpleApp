@@ -125,7 +125,8 @@
     <None Include="PL file\RUNNING NOTES.ods" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="HTMLTemplate\adangal-DataPage.htm" />
+    <Content Include="HTMLTemplate\adangal-DataPage - Copy.htm" />
+    <Content Include="HTMLTemplate\adangal-PageList.htm" />
     <Content Include="HTMLTemplate\EmailBody.htm" />
     <Content Include="ICSharpCode.SharpZipLib.dll" />
     <Content Include="PL file\balance mismatch.txt" />
