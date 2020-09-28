@@ -29,6 +29,8 @@ namespace DataAccess.PrimaryTypes
         public string Phone { get; set; }
         public string Email { get; set; }
 
+        public bool MultiplePlace { get; set; }
+
         public static List<TvdMember> GetAll()
         {
             return ReadFileAsObjects<TvdMember>(JsonFilePath);
@@ -43,10 +45,20 @@ namespace DataAccess.PrimaryTypes
 
                 var u = list.Where(c => c.MemberId == memberId).First();
 
-                u.Paguthi = Paguthi;
-                u.UtPaguthi = utPaguthi;
-                u.PaguthiEng = pagEng;
-                u.UtPaguthiEng = utPagEng;
+                if (utPaguthi.Trim() == string.Empty)
+                {
+                    u.Paguthi = Paguthi;
+                    u.UtPaguthi = utPaguthi;
+                    u.PaguthiEng = pagEng;
+                    u.UtPaguthiEng = utPagEng;
+                }
+                else
+                {
+                    u.Paguthi = Paguthi;
+                    u.UtPaguthi = $"{u.UtPaguthi},{utPaguthi}";
+                    u.PaguthiEng = pagEng;
+                    u.UtPaguthiEng = $"{u.UtPaguthiEng},{utPagEng}";
+                }
 
                 WriteObjectsToFile(list, JsonFilePath);
 

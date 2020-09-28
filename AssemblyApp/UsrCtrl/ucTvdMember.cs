@@ -89,10 +89,6 @@ namespace CenturyFinCorpApp.UsrCtrl
             List<Pair> utpaguthi = new List<Pair>()
             {
 
-                new Pair(9,"RSM-Nagar","ஆர்.எஸ்.மங்களம் நகர்"),
-                new Pair(10,"Thondi","தொண்டி"),
-
-
                 new Pair(1,"Manakkudi", "அ.மணக்குடி"),
                 new Pair(1,"Alagarthevankottai","அழகர்தேவன்கோட்டை "),
                 new Pair(1,"Siththoorvaadi","சித்தூர்வாடி "),
@@ -223,6 +219,8 @@ namespace CenturyFinCorpApp.UsrCtrl
                 new Pair(8,"Peruvayal","பெறுவயல் "),
                 new Pair(8,"Karenthal","காரேந்தல் "),
                 new Pair(8,"Pullangudi","புல்லங்குடி "),
+                new Pair(9,"RSM-Nagar","ஆர்.எஸ்.மங்களம் நகர்"),
+                new Pair(10,"Thondi","தொண்டி"),
 
 
             };
@@ -260,13 +258,13 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //var utp = (comboBox1.SelectedItem as Pair);
+            var utp = (comboBox1.SelectedItem as Pair);
 
-            //dataGridView1.DataSource = assemblies.Where(w => w.Address.Contains(utp.DisplayTamil.Trim())).ToList();
+            dataGridView1.DataSource = assemblies.Where(w => w.Address.Contains(utp.DisplayTamil.Trim())).ToList();
 
-            //dataGridView1.SelectAll();
+            dataGridView1.SelectAll();
 
-            //dataGridView1.DataSource = assemblies.Where(w => w.Address.Contains(textBox1.Text.Trim())).ToList();
+            dataGridView1.DataSource = assemblies.Where(w => w.Address.Contains(textBox1.Text.Trim())).ToList();
 
         }
 
@@ -283,6 +281,40 @@ namespace CenturyFinCorpApp.UsrCtrl
         private void button4_Click(object sender, EventArgs e)
         {
             TvdMember.ClearAllUpdate();
+            LoadGrid();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            utPaguthiList.ForEach(fe => {
+
+                var dataToUpdate = assemblies.Where(w => w.Address.Contains(fe.DisplayTamil.Trim())).Select(s => s.MemberId).ToList();
+
+
+                foreach (string memberId in dataToUpdate)
+                {
+                    //var memberId = (r.DataBoundItem as TvdMember).MemberId;
+
+                    //var utp = (comboBox1.SelectedItem as Pair);
+
+                    var utPagu = (from t in utPaguthiList
+                                  where t.Display == fe.Display
+                                  select t).FirstOrDefault();
+
+                    var Pagu = (from t in paguthiList
+                                where t.Value == fe.Value
+                                select t).FirstOrDefault();
+
+                    if (Pagu != null && utPagu != null)
+                    {
+                        TvdMember.UpdateMemberDetails(memberId, Pagu.DisplayTamil, utPagu.DisplayTamil, Pagu.Display, utPagu.Display);
+                    }
+
+                }
+
+
+
+            });
         }
     }
 
