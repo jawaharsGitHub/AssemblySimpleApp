@@ -289,36 +289,49 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void button5_Click(object sender, EventArgs e)
         {
-            int i = 0;
-            utPaguthiList.ForEach(fe => {
+            BackgroundWorker bw = new BackgroundWorker();
 
-                var dataToUpdate = assemblies.Where(w => w.Address.Contains(fe.DisplayTamil.Trim())).Select(s => s.MemberId).ToList();
-
-                foreach (string memberId in dataToUpdate)
+            bw.DoWork += (s, o) =>
+            {
+                int i = 0;
+                utPaguthiList.ForEach(fe =>
                 {
-                    var utPagu = (from t in utPaguthiList
-                                  where t.Display == fe.Display
-                                  select t).FirstOrDefault();
 
-                    var Pagu = (from t in paguthiList
-                                where t.Value == fe.Value
-                                select t).FirstOrDefault();
+                    var dataToUpdate = assemblies.Where(w => w.Address.Contains(fe.DisplayTamil.Trim())).Select(ss => ss.MemberId).ToList();
 
-                    if (Pagu != null && utPagu != null)
-                        TvdMember.UpdateMemberDetails(memberId, Pagu.DisplayTamil, utPagu.DisplayTamil, Pagu.Display, utPagu.Display);
+                    if (dataToUpdate.Count > 0)
+                    {
 
-                }
-                i = i + 1;
+                        var utPagu = (from t in utPaguthiList
+                                      where t.Display == fe.Display
+                                      select t).FirstOrDefault();
 
-                label1.Invoke((MethodInvoker)delegate {
-                    // Running on the UI thread
-                    label1.Text = $"{i} - {fe.DisplayTamil.Trim()}";
+                        var Pagu = (from t in paguthiList
+                                    where t.Value == fe.Value
+                                    select t).FirstOrDefault();
+
+                        if (Pagu != null && utPagu != null)
+                        {
+                            foreach (string memberId in dataToUpdate)
+                            {
+                                TvdMember.UpdateMemberDetails(memberId, Pagu.DisplayTamil, utPagu.DisplayTamil, Pagu.Display, utPagu.Display);
+                                Thread.Sleep(500);
+                            }
+                        }
+                    }
+
+
+                    i = i + 1;
+
+                    label1.BeginInvoke(new Action(() => label1.Text = $"{i} - {fe.DisplayTamil.Trim()}"));
                 });
-                Thread.Sleep(500);
 
-            });
+                MessageBox.Show("ALL DONE");
+            };
 
-            MessageBox.Show("ALL DONE");
+            
+
+            bw.RunWorkerAsync();
         }
     }
 
