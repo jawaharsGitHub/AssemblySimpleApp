@@ -63,6 +63,11 @@ namespace CenturyFinCorpApp.UsrCtrl
             assemblies.ForEach(f => f.Sno = i++);
             dataGridView1.DataSource = assemblies;
         }
+
+        private void LoadRec()
+        {
+            lblRecCounts.Text = TvdMember.GetCount();
+        }
         private List<Pair> GetPaguthi()
         {
 
@@ -185,16 +190,16 @@ namespace CenturyFinCorpApp.UsrCtrl
                
 
                 // RMD-Kilakku
-                new Pair(7,"Alagankulam-MDB", "அழகன்குளம் (மண்டபம் ஒன்றியம்)"),
-                new Pair(7,"Panaikulam-MDB","பனைக்குளம் (மண்டபம் ஒன்றியம்)"),
-                new Pair(7,"Puthuvalasai-MDB","புதுவலசை (மண்டபம் ஒன்றியம்)"),
-                new Pair(7,"Therbogi-MDB","தேர்போகி (மண்டபம் ஒன்றியம்)"),
+                new Pair(7,"Alagankulam", "அழகன்குளம்"),
+                new Pair(7,"Panaikulam","பனைக்குளம்"),
+                new Pair(7,"Puthuvalasai","புதுவலசை"),
+                new Pair(7,"Therbogi","தேர்போகி"),
                 new Pair(7,"Athiyuthu","அத்தியூத்து "),
                 new Pair(7,"Siththaarkottai","சித்தார்க்கோட்டை "),
                 new Pair(7,"Devipattinam","தேவிப்பட்டிணம் "),
                 new Pair(7,"Kalanikudi","கழினிக்குடி "),
                 new Pair(7,"Vennathoor","வெண்ணத்தூர் "),
-                new Pair(7,"Nafranamangalam","நாரணமங்கலம் "),
+                new Pair(7,"Naranamangalam","நாரணமங்கலம் "),
                 new Pair(7,"Pandamangalam","பாண்டமங்களம் "),
                 new Pair(7,"Maathavanur","மாதவனூர் "),
                 new Pair(7,"Peravoor","பேராவூர் "),
@@ -203,23 +208,24 @@ namespace CenturyFinCorpApp.UsrCtrl
                 new Pair(7,"Madakottan","மாடகொட்டான் "),
 
                 // RMD-Merku
-                new Pair(8,"Kavanur-RMD", "காவனூர் "),
+                new Pair(8,"Kavanur", "காவனூர் "),
                 new Pair(8,"Karukudi","காருகுடி "),
                 new Pair(8,"Thoruvalur","தொருவலூர் "),
                 new Pair(8,"Siththoor","சித்தூர் "),
-                new Pair(8,"Kallikkudi","சூரங்கோட்டை "),
-                new Pair(8,"Soorankottai","அச்சுந்தவயல் "),
+                new Pair(8,"Kallikkudi","கள்ளிக்குடி"),
+                new Pair(8,"Soorankottai","சூரங்கோட்டை "),
                 new Pair(8,"Puththenthal","புத்தேந்தல் "),
-                new Pair(8,"PattinamKathanb-MDP","பட்டிணம்காத்தான்(மண்டபம் ஒன்றியம்)"),
+                new Pair(8,"PattinamKathan","பட்டிணம்காத்தான்"),
                 new Pair(8,"Sakkarakottai","சக்கரக்கோட்டை"),
                 new Pair(8,"Therkutharavai","தெற்குதாரவை "),
-                new Pair(8,"Lanthai-TPL","லாந்தை (திருப்புல்லாணி ஒன்றியம்)"),
-                new Pair(8,"Ekkakudi-TPL","எக்கக்குடி (திருப்புல்லாணி ஒன்றியம்)"),
-                new Pair(8,"Panaikulam-TPL","பனைக்குளம் (திருப்புல்லாணி ஒன்றியம்)"),
-                new Pair(8,"Mallal-TPL","மல்லல் (திருப்புல்லாணி ஒன்றியம்)"),
+                new Pair(8,"Lanthai","லாந்தை"),
+                new Pair(8,"Ekkakudi","எக்கக்குடி"),
+                new Pair(8,"Panaikulam-TPL","பனைக்குளம்"),
+                new Pair(8,"Mallal","மல்லல்"),
                 new Pair(8,"Peruvayal","பெறுவயல் "),
                 new Pair(8,"Karenthal","காரேந்தல் "),
                 new Pair(8,"Pullangudi","புல்லங்குடி "),
+                new Pair(8,"Achunthavayal","அச்சுந்தவயல்"),
 
                 new Pair(9,"RSM-Nagar","ஆர்.எஸ்.மங்களம்"),
 
@@ -255,19 +261,31 @@ namespace CenturyFinCorpApp.UsrCtrl
             }
             
             LoadGrid();
+            LoadRec();
+            
             MessageBox.Show("Done");
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var utp = (comboBox1.SelectedItem as Pair);
-
-            dataGridView1.DataSource = assemblies.Where(w => w.Address.Contains(utp.DisplayTamil.Trim())).ToList();
+            
+            if (textBox1.Text.Trim() == string.Empty)
+            {
+                var utp = (comboBox1.SelectedItem as Pair);
+                dataGridView1.DataSource = assemblies.Where(w =>
+                w.Address.Contains(utp.DisplayTamil.Trim()) ||
+                w.Address.Contains(utp.Display.Trim())).ToList();
+            }
+            else
+            {
+                dataGridView1.DataSource = assemblies.Where(w =>
+                w.Address.Contains(textBox1.Text.Trim())).ToList();
+            }
 
             dataGridView1.SelectAll();
 
-            dataGridView1.DataSource = assemblies.Where(w => w.Address.Contains(textBox1.Text.Trim())).ToList();
+            //dataGridView1.DataSource = assemblies.Where(w => w.Address.Contains(textBox1.Text.Trim())).ToList();
 
         }
 
@@ -315,7 +333,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                             foreach (string memberId in dataToUpdate)
                             {
                                 TvdMember.UpdateMemberDetails(memberId, Pagu.DisplayTamil, utPagu.DisplayTamil, Pagu.Display, utPagu.Display);
-                                Thread.Sleep(500);
+                                // Thread.Sleep(500);
                             }
                         }
                     }
@@ -332,6 +350,25 @@ namespace CenturyFinCorpApp.UsrCtrl
             
 
             bw.RunWorkerAsync();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = assemblies.Where(w => w.UtPaguthi.Trim() == string.Empty).ToList();
+            LoadRec();
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = assemblies.Where(w => w.UtPaguthi.Trim().Contains(",")).ToList();
+            LoadRec();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = assemblies;
+            LoadRec();
         }
     }
 

@@ -22,7 +22,7 @@ namespace DataAccess.PrimaryTypes
         public string State { get; set; }
         public string District { get; set; }
         public string Assembly { get; set; }
-       
+
 
         public string MemberId { get; set; }
         public string Name { get; set; }
@@ -45,23 +45,56 @@ namespace DataAccess.PrimaryTypes
 
                 var u = list.Where(c => c.MemberId == memberId).First();
 
-                if (utPaguthi.Trim() == string.Empty)
+                if (u.UtPaguthi.Trim() == string.Empty)
                 {
                     u.Paguthi = Paguthi;
                     u.UtPaguthi = utPaguthi;
                     u.PaguthiEng = pagEng;
                     u.UtPaguthiEng = utPagEng;
-                }
-                else
-                {
-                    u.Paguthi = Paguthi;
-                    u.UtPaguthi = $"{u.UtPaguthi},{utPaguthi}";
-                    u.PaguthiEng = pagEng;
-                    u.UtPaguthiEng = $"{u.UtPaguthiEng},{utPagEng}";
-                    u.MultiplePlace = true;
+
+                    WriteObjectsToFile(list, JsonFilePath);
                 }
 
-                WriteObjectsToFile(list, JsonFilePath);
+
+                //if (u.UtPaguthi.Trim() == string.Empty)
+                //{
+                //    u.Paguthi = Paguthi;
+                //    u.UtPaguthi = utPaguthi;
+                //    u.PaguthiEng = pagEng;
+                //    u.UtPaguthiEng = utPagEng;
+                //}
+                //else
+                //{
+                //    u.Paguthi = Paguthi;
+                //    u.UtPaguthi = $"{u.UtPaguthi},{utPaguthi}";
+                //    u.PaguthiEng = pagEng;
+                //    u.UtPaguthiEng = $"{u.UtPaguthiEng},{utPagEng}";
+                //    u.MultiplePlace = true;
+                //}
+
+                
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static string GetCount()
+        {
+            try
+            {
+
+                List<TvdMember> list = ReadFileAsObjects<TvdMember>(JsonFilePath);
+
+                var tr = list.Count();
+
+                var erc = list.Where(c => c.UtPaguthi.Trim() == string.Empty).Count();
+
+                return $"TR: {tr} ERC: {erc}";
+
+                //WriteObjectsToFile(list, JsonFilePath);
 
             }
             catch (Exception ex)
@@ -77,7 +110,8 @@ namespace DataAccess.PrimaryTypes
 
                 List<TvdMember> list = ReadFileAsObjects<TvdMember>(JsonFilePath);
 
-                list.ForEach(u => {
+                list.ForEach(u =>
+                {
 
                     u.Paguthi = "";
                     u.UtPaguthi = "";
@@ -87,7 +121,7 @@ namespace DataAccess.PrimaryTypes
                 });
 
 
-                
+
 
                 WriteObjectsToFile(list, JsonFilePath);
 
