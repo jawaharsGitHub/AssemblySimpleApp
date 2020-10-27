@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataAccess.PrimaryTypes;
 using System.Threading;
+using System.IO;
 
 namespace CenturyFinCorpApp.UsrCtrl
 {
@@ -369,6 +370,43 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             dataGridView1.DataSource = assemblies;
             LoadRec();
+        }
+
+        List<TvdMember> fData;
+        string selectedPan = "";
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            selectedPan = (comboBox1.SelectedItem as Pair).Display;
+
+             var data = assemblies.Where(w => w.UtPaguthiEng.Contains(selectedPan)).ToList();
+
+            dataGridView1.DataSource = data;
+
+            fData = new List<TvdMember>();
+            fData = data;
+
+            lblRecCounts.Text = $"{data.Count} உறுப்பினர்கள்";
+
+
+
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            int i = 0;
+
+            fData.ForEach(fe => {
+                i = i + 1;
+                sb.Append($"({i}){fe.Name}-- {fe.Phone}--{fe.Address}");
+                sb.Append(Environment.NewLine);
+                sb.Append(Environment.NewLine);
+            });
+
+            File.WriteAllText($@"F:\NTK\jawa - 2021\members\{selectedPan}.txt", sb.ToString());
+
+
         }
     }
 
