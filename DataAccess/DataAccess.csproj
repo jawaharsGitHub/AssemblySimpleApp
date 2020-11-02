@@ -62,12 +62,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\AssemblyVoters\210\210-BoothDetail.json" />
     <None Include="Data\AssemblyVoters\211\211-BoothDetail.json" />
     <None Include="Data\BaseData - WIthoutPanchayat.json" />
     <None Include="Data\BaseData.json" />
     <None Include="Data\ntkmemberwithemail.json" />
     <None Include="Data\ntknonApprovalMembers.json" />
     <None Include="Data\tvdmember.json" />
+    <None Include="Data\VotePercDetail - Copy %282%29.json" />
     <None Include="Data\VotePercDetail - Copy.json" />
     <None Include="Data\VotePercDetail.json" />
     <None Include="Data\voter-Panchayat.json" />

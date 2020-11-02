@@ -83,7 +83,10 @@ namespace CenturyFinCorpApp.UsrCtrl
             //}
 
 
-            txtPath = @"F:\NTK\VotersAnalysis\VoterList\211\docx";
+            // txtPath = @"F:\NTK\VotersAnalysis\VoterList\211\docx";
+
+            txtPath = @"F:\NTK\VotersAnalysis\VoterList\210\docx";
+
 
 
             //int year = 2019;
@@ -195,138 +198,141 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                     if (string.IsNullOrEmpty(bd.PartNo)) bd.PartNo = partNo;
 
-                    if (year == 2020)
-                    {
-                        var parliment = fpSPlitted[4].Split('-');
-                        bd.ParlimentNo = parliment[1];
-                        bd.ParlimentName = parliment[2].Trim().Split('1')[0].Trim();
-                    }
-                    else
-                    {
-                        var parliment2019 = fpSPlitted[4].Split(':')[1].Trim().Split('-');
-                        bd.ParlimentNo = parliment2019[0].Trim();
-                        bd.ParlimentName = parliment2019[1].Trim().Split('1')[0].Trim();
-                    }
+                    bd.ParlimentNo = "35"; // parliment[1];
+                    bd.ParlimentName = "இராமநாதபுரம்"; // parliment[2].Trim().Split('1')[0].Trim();
 
-                    bd.EligibilityDay = fpSPlitted[6].Split(' ')[2].Trim();
-                    bd.ReleaseDate = fpSPlitted[7].Replace("பட்டியல் வெளியிடப்பட்ட நாள்", "$").Split('$')[1].Split(' ')[1];
+                    //if (year == 2020)
+                    //{
+                    //    var parliment = fpSPlitted[4].Split('-');
+                    //    bd.ParlimentNo = "35"; // parliment[1];
+                    //    bd.ParlimentName = "இராமநாதபுரம்"; // parliment[2].Trim().Split('1')[0].Trim();
+                    //}
+                    //else
+                    //{
+                    //    var parliment2019 = fpSPlitted[4].Split(':')[1].Trim().Split('-');
+                    //    bd.ParlimentNo = parliment2019[0].Trim();
+                    //    bd.ParlimentName = parliment2019[1].Trim().Split('1')[0].Trim();
+                    //}
 
-                    if (year == 2020)
-                    {
-                        if (fpSPlitted[8].Split('-').Count() > 2)
-                        {
-                            bd.PartPlaceName = fpSPlitted[8].Split('-')[2].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Trim();
-                        }
-                        else
-                        {
-                            bd.PartPlaceName = fpSPlitted[8].Split('-')[0].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Replace("999. அயல்நாடு வாழ் வாக்காளர்கள்", "$").Split('$')[0];
-                        }
-                    }
-                    else
-                    {
-                        bd.PartPlaceName = fpSPlitted[8].Split('-')[0].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Trim();
-                    }
+                    //bd.EligibilityDay = fpSPlitted[6].Split(' ')[2].Trim();
+                    //bd.ReleaseDate = fpSPlitted[7].Replace("பட்டியல் வெளியிடப்பட்ட நாள்", "$").Split('$')[1].Split(' ')[1];
 
-
-                    var colonCount = fpSPlitted[8].Count(c => c == ':');
-
-
-                    try
-                    {
-                        var otherDetails = fpSPlitted[8].Split('-')[5].Split(' ');
-                        if (year == 2020)
-                        {
-                            bd.MainCityOrVillage = otherDetails[2];
-                            bd.Zone = otherDetails[3].Trim();
-                            bd.Birga = otherDetails[5];
-                            bd.PoliceStation = otherDetails[6];
-                            bd.Taluk = otherDetails[7];
-                            bd.District = fpSPlitted[8].Split('-')[6].Trim();
-                            bd.Pincode = fpSPlitted[8].Split('-')[12].Split(' ')[2].ToInt32();
-                        }
-                        else
-                        {
-                            bd.MainCityOrVillage = fpSPlitted[8].Split('-')[2].Split(' ')[10].Trim();
-                            bd.Zone = fpSPlitted[8].Split('-')[3].Trim();
-                            bd.Birga = fpSPlitted[8].Split('-')[4].Trim();
-                            bd.PoliceStation = fpSPlitted[8].Split('-')[5].Split(' ')[1];
-                            bd.Taluk = fpSPlitted[8].Split('-')[5].Split(' ')[2].Trim();
-                            bd.District = fpSPlitted[8].Split('-')[5].Split(' ')[3].Trim();
-                            bd.Pincode = fpSPlitted[8].Split('-')[5].Split(' ')[4].Trim().ToInt32();
-                        }
-
-                    }
-                    catch (Exception ex)
-                    {
-                        General.WriteLog(logErrorPath, $"Error in First Page otherDetails Details", assNo, partNo, 1);
-                    }
+                    //if (year == 2020)
+                    //{
+                    //    if (fpSPlitted[8].Split('-').Count() > 2)
+                    //    {
+                    //        bd.PartPlaceName = fpSPlitted[8].Split('-')[2].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Trim();
+                    //    }
+                    //    else
+                    //    {
+                    //        bd.PartPlaceName = fpSPlitted[8].Split('-')[0].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Replace("999. அயல்நாடு வாழ் வாக்காளர்கள்", "$").Split('$')[0];
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    bd.PartPlaceName = fpSPlitted[8].Split('-')[0].Replace("பிரிவின் எண் மற்றும் பெயர்", "$").Split('$')[1].Trim();
+                    //}
 
 
+                    //var colonCount = fpSPlitted[8].Count(c => c == ':');
 
+
+                    //try
+                    //{
+                    //    var otherDetails = fpSPlitted[8].Split('-')[5].Split(' ');
+                    //    if (year == 2020)
+                    //    {
+                    //        bd.MainCityOrVillage = otherDetails[2];
+                    //        bd.Zone = otherDetails[3].Trim();
+                    //        bd.Birga = otherDetails[5];
+                    //        bd.PoliceStation = otherDetails[6];
+                    //        bd.Taluk = otherDetails[7];
+                    //        bd.District = fpSPlitted[8].Split('-')[6].Trim();
+                    //        bd.Pincode = fpSPlitted[8].Split('-')[12].Split(' ')[2].ToInt32();
+                    //    }
+                    //    else
+                    //    {
+                    //        bd.MainCityOrVillage = fpSPlitted[8].Split('-')[2].Split(' ')[10].Trim();
+                    //        bd.Zone = fpSPlitted[8].Split('-')[3].Trim();
+                    //        bd.Birga = fpSPlitted[8].Split('-')[4].Trim();
+                    //        bd.PoliceStation = fpSPlitted[8].Split('-')[5].Split(' ')[1];
+                    //        bd.Taluk = fpSPlitted[8].Split('-')[5].Split(' ')[2].Trim();
+                    //        bd.District = fpSPlitted[8].Split('-')[5].Split(' ')[3].Trim();
+                    //        bd.Pincode = fpSPlitted[8].Split('-')[5].Split(' ')[4].Trim().ToInt32();
+                    //    }
+
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    General.WriteLog(logErrorPath, $"Error in First Page otherDetails Details", assNo, partNo, 1);
+                    //}
+
+
+                
                     bd.BoothType = fpSPlitted[9].Replace("வாக்குச் சாவடியின் விவரங்கள்", "").Trim();
 
                     //bd.PartLocationAddress = fpSPlitted[11].Replace("எண்ணிக்கை", "$").Split('$')[1].Split('4')[0].Trim();
 
-                    try
-                    {
-                        bd.StartNo = fpSPlitted[12].Replace("தொடங்கும் வரிசை எண்", "").Trim().ToInt32();
-                    }
-                    catch (Exception)
-                    {
-                        bd.StartNo = 1;
-                        General.WriteLog(logErrorPath, $"Error in First Page StartNo", assNo, partNo, 1);
-                    }
+                    //try
+                    //{
+                    //    bd.StartNo = fpSPlitted[12].Replace("தொடங்கும் வரிசை எண்", "").Trim().ToInt32();
+                    //}
+                    //catch (Exception)
+                    //{
+                    //    bd.StartNo = 1;
+                    //    General.WriteLog(logErrorPath, $"Error in First Page StartNo", assNo, partNo, 1);
+                    //}
 
 
-                    var voteDetails = fpSPlitted[13];
+                    //var voteDetails = fpSPlitted[13];
 
-                    List<string> toReplaceVoteDetail = new List<string>()
-                        {
-                            "முடியும் வரிசை எண்",
-                            "நிகர வாக்காளர்களின் எண்ணிக்கை",
-                            "பெண் மூன்றாம் பாலினம்",
-                            "மொத்தம்"
-                        };
+                    //List<string> toReplaceVoteDetail = new List<string>()
+                    //    {
+                    //        "முடியும் வரிசை எண்",
+                    //        "நிகர வாக்காளர்களின் எண்ணிக்கை",
+                    //        "பெண் மூன்றாம் பாலினம்",
+                    //        "மொத்தம்"
+                    //    };
 
-                    toReplaceVoteDetail.ForEach(fe =>
-                                {
-                                    voteDetails = voteDetails.Replace(fe, $"$");
+                    //toReplaceVoteDetail.ForEach(fe =>
+                    //            {
+                    //                voteDetails = voteDetails.Replace(fe, $"$");
 
-                                });
+                    //            });
 
-                    var splitVoter = voteDetails.Split('$');
-                    var forNo = splitVoter[1].Split(' ');
+                    //var splitVoter = voteDetails.Split('$');
+                    //var forNo = splitVoter[1].Split(' ');
 
-                    bd.EndNo = forNo[1].Trim().ToInt32();
+                    //bd.EndNo = forNo[1].Trim().ToInt32();
 
-                    if (year == 2020)
-                        try
-                        {
-                            bd.Male = forNo[4].ToInt32();
-                        }
-                        catch (Exception)
-                        {
-                            bd.Male = forNo[3].ToInt32();
-                            General.WriteLog(logErrorPath, $"Error in First Page-Male Detail", assNo, partNo, 1);
-                        }
+                    //if (year == 2020)
+                    //    try
+                    //    {
+                    //        bd.Male = forNo[4].ToInt32();
+                    //    }
+                    //    catch (Exception)
+                    //    {
+                    //        bd.Male = forNo[3].ToInt32();
+                    //        General.WriteLog(logErrorPath, $"Error in First Page-Male Detail", assNo, partNo, 1);
+                    //    }
 
-                    else
-                        bd.Male = forNo[3].ToInt32();
+                    //else
+                    //    bd.Male = forNo[3].ToInt32();
 
-                    if (year == 2020)
-                    {
-                        var genderVotes = splitVoter[3].Split(' ');
-                        bd.TotalVoters = splitVoter[4].Split(' ')[1].Trim().ToInt32();
-                        bd.Female = genderVotes[1].Trim().ToInt32();
-                        bd.ThirdGender = genderVotes[2].Trim().ToInt32();
-                    }
-                    else
-                    {
-                        var genderVotes = splitVoter[4].Split(' ');
-                        bd.TotalVoters = splitVoter[1].Split(' ')[1].Trim().ToInt32();
-                        bd.Female = genderVotes[1].Trim().ToInt32();
-                        bd.ThirdGender = genderVotes[2].Trim().ToInt32();
-                    }
+                    //if (year == 2020)
+                    //{
+                    //    var genderVotes = splitVoter[3].Split(' ');
+                    //    bd.TotalVoters = splitVoter[4].Split(' ')[1].Trim().ToInt32();
+                    //    bd.Female = genderVotes[1].Trim().ToInt32();
+                    //    bd.ThirdGender = genderVotes[2].Trim().ToInt32();
+                    //}
+                    //else
+                    //{
+                    //    var genderVotes = splitVoter[4].Split(' ');
+                    //    bd.TotalVoters = splitVoter[1].Split(' ')[1].Trim().ToInt32();
+                    //    bd.Female = genderVotes[1].Trim().ToInt32();
+                    //    bd.ThirdGender = genderVotes[2].Trim().ToInt32();
+                    //}
 
                     /*************************************************************/
 
@@ -421,8 +427,8 @@ namespace CenturyFinCorpApp.UsrCtrl
                 var thirty = GetAgeCount(allAges, 36, 45);
                 var forty = GetAgeCount(allAges, 46, 55);
                 var fifty = GetAgeCount(allAges, 56, 65);
-                var sixty = 0; // GetAgeCount(allAges, 51, 60);
-                var aboveSixty = GetMoreAgeCount(allAges, 66);
+                var sixty = GetMoreAgeCount(allAges, 66); ; // GetAgeCount(allAges, 51, 60);
+                var aboveSixty = 0; // GetMoreAgeCount(allAges, 66);
 
                 var newBoothPerc = new VotePercDetail()
                 {
