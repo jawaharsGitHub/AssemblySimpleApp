@@ -248,9 +248,15 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void button1_Click(object sender, EventArgs e)
         {
+            List<int> snos = new List<int>();
+
             foreach (DataGridViewRow r in dataGridView1.SelectedRows)
             {
-                var memberId = (r.DataBoundItem as TvdMember).MemberId;
+                var tvd = (r.DataBoundItem as TvdMember);
+
+                snos.Add(tvd.Sno);
+
+                var memberId = tvd.MemberId;
 
                 var utp = (comboBox1.SelectedItem as Pair);
 
@@ -270,7 +276,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             }
             
             LoadGrid();
-            OnlyEmpty();
+            OnlyEmpty(snos.Max());
             //LoadRec();
 
             MessageBox.Show("Done");
@@ -367,9 +373,20 @@ namespace CenturyFinCorpApp.UsrCtrl
             OnlyEmpty();
         }
 
-        private void OnlyEmpty()
+        private void OnlyEmpty(int max = 0)
         {
-            dataGridView1.DataSource = assemblies.Where(w => w.UtPaguthi.Trim() == string.Empty).ToList();
+            var x = assemblies.Where(w => w.UtPaguthi.Trim() == string.Empty).ToList();
+
+            if(max > 0)
+            {
+                dataGridView1.DataSource = x.Where(w => w.Sno >= max).ToList();
+            }
+            else
+            {
+                dataGridView1.DataSource = x;
+            }
+
+
             LoadRec();
         }
 
