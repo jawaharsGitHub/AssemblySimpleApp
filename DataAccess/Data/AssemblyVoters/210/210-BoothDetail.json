@@ -594,7 +594,7 @@
     "Male": 0,
     "Female": 0,
     "ThirdGender": 0,
-    "NewVoters": 0,
+    "NewVoters": 2,
     "TotalVoters": 0
   },
   {
@@ -3116,7 +3116,7 @@
     "Male": 0,
     "Female": 0,
     "ThirdGender": 0,
-    "NewVoters": 0,
+    "NewVoters": 24,
     "TotalVoters": 0
   },
   {
@@ -3506,7 +3506,7 @@
     "Male": 0,
     "Female": 0,
     "ThirdGender": 0,
-    "NewVoters": 0,
+    "NewVoters": 1,
     "TotalVoters": 0
   },
   {
@@ -8056,7 +8056,7 @@
     "Male": 0,
     "Female": 0,
     "ThirdGender": 0,
-    "NewVoters": 0,
+    "NewVoters": 9,
     "TotalVoters": 0
   },
   {
@@ -8915,6 +8915,32 @@
     "Female": 0,
     "ThirdGender": 0,
     "NewVoters": 25,
+    "TotalVoters": 0
+  },
+  {
+    "PartNo": "193",
+    "PartPlaceName": null,
+    "PartLocationAddress": null,
+    "BoothType": "பொது",
+    "AssemblyName": "திருவாடானை ( பொது)",
+    "ParlimentNo": "35",
+    "ParlimentName": "இராமநாதபுரம்",
+    "AssemblyNo": "210",
+    "EligibilityDay": null,
+    "ReleaseDate": null,
+    "MainCityOrVillage": null,
+    "Zone": null,
+    "Birga": null,
+    "PoliceStation": null,
+    "Taluk": null,
+    "District": null,
+    "Pincode": 0,
+    "StartNo": 0,
+    "EndNo": 0,
+    "Male": 0,
+    "Female": 0,
+    "ThirdGender": 0,
+    "NewVoters": 0,
     "TotalVoters": 0
   }
 ]

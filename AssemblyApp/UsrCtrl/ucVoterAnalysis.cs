@@ -132,6 +132,12 @@ namespace CenturyFinCorpApp.UsrCtrl
                     General.WriteLog(logErrorPath, $"Error in FileName - {ex.ToString()}", assNo, partNo, 0);
                 }
 
+                //DocxToText dtt1 = new DocxToText(filePath);
+                //var allPageContent1 = dtt1.ExtractText();
+
+                //DocxToText dtt2 = new DocxToText(filePath);
+                //var allPageContent2 = dtt2.ExtractText();
+
                 DocxToText dtt = new DocxToText(filePath);
                 var allPageContent = dtt.ExtractText();
 
@@ -377,7 +383,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                     var startIndex = IndexOf(onlyVotersPages, pageNumber - 1); //onlyVotersPages.IndexOf($"பக்கம் {i + 2}");
                     var lastIndex = IndexOf(onlyVotersPages, pageNumber) - startIndex;
 
-                    if (pageNumber == 15)
+                    if (pageNumber == 7)
                     {
                         var tt = "";
                     }
@@ -387,8 +393,10 @@ namespace CenturyFinCorpApp.UsrCtrl
                     {
                         General.WriteLog(logErrorPath, $"Error in PageProcess", assNo, partNo, pageNumber);
                         isProcessed = false;
-                        break;
+                        //break;
                     }
+
+                    //isProcessed = true;
                 }
 
                 var newFileName = Path.Combine(DoneFolder, fileInfo.Name);
@@ -708,6 +716,27 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                     pageContent = pageContent.Replace("W RM", "WRM");
                     var keyList = new List<string>() { "WRM", "JRR", "XOE", "FXJ", "STG" };
+
+                    if (pageNumber == 22)
+                    {
+                        //var allLinesTest = (from f in pageContent.Split(' ').ToList()
+                        //                    where keyList.Any(a => f.Trim().StartsWith(a))
+                        //                    select f.Trim().Substring(0, 10)).ToList();
+
+                        var one = pageContent.Split(' ').ToList();
+
+                        foreach (var item in one)
+                        {
+                            if (keyList.Any(a => item.Trim().StartsWith(a)))
+                            {
+                                if (item.Length < 10)
+                                {
+                                    var it = item.Trim().Substring(0, 10);
+                                }
+                            }
+                        }
+                    }
+
 
                     var allLines = (from f in pageContent.Split(' ').ToList()
                                     where keyList.Any(a => f.Trim().StartsWith(a))
