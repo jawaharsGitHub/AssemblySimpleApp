@@ -13,11 +13,11 @@ namespace DataAccess.PrimaryTypes
 
         public int Sno { get; set; }
         public string Address { get; set; }
-        public string Paguthi { get; set; }
-        public string UtPaguthi { get; set; }
+        public string Paguthi { get; set; } = string.Empty;
+        public string UtPaguthi { get; set; } = string.Empty;
 
-        public string PaguthiEng { get; set; }
-        public string UtPaguthiEng { get; set; }
+        public string PaguthiEng { get; set; } = string.Empty;
+        public string UtPaguthiEng { get; set; } = string.Empty;
         public string Country { get; set; }
         public string State { get; set; }
         public string District { get; set; }
@@ -34,6 +34,12 @@ namespace DataAccess.PrimaryTypes
         public static List<TvdMember> GetAll()
         {
             return ReadFileAsObjects<TvdMember>(JsonFilePath);
+        }
+
+        public static void AddTvdMembers(List<TvdMember> mem)
+        {
+            //investment.CreatedDate = DateTime.Today.ToLongTimeString();
+            WriteObjectsToFile(mem, JsonFilePath);
         }
 
         public static void UpdateMemberDetails(string memberId, string Paguthi, string utPaguthi, string pagEng, string utPagEng)

@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using DataAccess.PrimaryTypes;
 using System.Threading;
 using System.IO;
+using System.Web.Helpers;
+using Common.ExtensionMethod;
+using Newtonsoft.Json;
 
 namespace CenturyFinCorpApp.UsrCtrl
 {
@@ -53,6 +56,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             comboBox1.DataSource = GetUtPaguthi();
             comboBox1.DisplayMember = "Display";
             comboBox1.ValueMember = "DisplayTamil";
+            LoadRec();
 
         }
 
@@ -231,6 +235,8 @@ namespace CenturyFinCorpApp.UsrCtrl
                 new Pair(9,"RSM-Nagar","ஆர்.எஸ்.மங்களம்"),
 
                 new Pair(10,"Thondi","தொண்டி"),
+                new Pair(11,"Others","Other Assembly"),
+                new Pair(12,"Dont Know","Dont Know")
 
 
             };
@@ -407,6 +413,76 @@ namespace CenturyFinCorpApp.UsrCtrl
             File.WriteAllText($@"F:\NTK\jawa - 2021\members\{selectedPan}.txt", sb.ToString());
 
 
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            if(ofd.ShowDialog() == DialogResult.OK)
+            {
+                var file = ofd.FileName;
+                //dynamic data = Json.Decode(File.ReadAllText(file));
+
+                var con = File.ReadAllText(file);
+
+                string s = con.RemoveLines(1);
+
+                s = "[" + Environment.NewLine + s;
+
+                s = s.Replace("\"உறுப்பினர் எண்\"", "\"MemberId\"")
+                     .Replace("\"முகவரி\"", "\"Address\"")
+                     .Replace("\"நாடு\"", "\"Country\"")
+                     .Replace("\"மாநிலம்\"", "\"State\"")
+                     .Replace("\"மாவட்டம்\"", "\"District\"")
+                     .Replace("\"தொகுதி\"", "\"Assembly\"")
+                     .Replace("\"பெயர்\"", "\"Name\"")
+                     .Replace("\"தொடர்பு எண்\"", "\"Phone\"")
+                     .Replace("\"மின்னஞ்சல்\"", "\"Email\"");
+
+
+                var myList = JsonConvert.DeserializeObject<List<TvdMember>>(s).ToList();
+
+                var existingMembersId = TvdMember.GetAll().Select(ss => ss.MemberId.Trim()).ToList();
+
+                var allMembersId = myList.Select(ss => ss.MemberId.Trim()).ToList();
+
+
+               var newMembersId =  allMembersId.Except(existingMembersId).ToList();
+
+                var newList = new List<TvdMember>();
+
+                foreach (var item in newMembersId)
+                {
+
+                    if(existingMembersId.Contains(item))
+                    {
+                        MessageBox.Show($"{item} already exist");
+                    }
+                    else
+                    {
+                        var d = myList.Where(w => w.MemberId == item).ToList();
+
+                        if(d.Count() == 1)
+                        {
+                            newList.Add(d.First());
+                        }
+                        else
+                        {
+                            MessageBox.Show($"{item} more than 1 member ids");
+
+                        }
+                    }
+
+                }
+
+                TvdMember.AddTvdMembers(newList);
+
+                MessageBox.Show($"{newList.Count} new members added");
+
+            }
+
+            
         }
     }
 

@@ -43,6 +43,7 @@
             this.button8 = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -190,10 +191,21 @@
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(391, 32);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(131, 23);
+            this.button9.TabIndex = 15;
+            this.button9.Text = "upload Latest";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
             // ucTvdMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button9);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.button8);
@@ -234,5 +246,6 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.Button button9;
     }
 }

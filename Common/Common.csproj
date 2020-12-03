@@ -101,6 +101,7 @@
     <Compile Include="DataCorrector.cs" />
     <Compile Include="DateHelper.cs" />
     <Compile Include="DocxToText.cs" />
+    <Compile Include="ExtensionMethod\StringExtension.cs" />
     <Compile Include="ExtensionMethod\DataExtension.cs" />
     <Compile Include="ExtensionMethod\EnumExtension.cs" />
     <Compile Include="ExtensionMethod\TypeExtenstion.cs" />
