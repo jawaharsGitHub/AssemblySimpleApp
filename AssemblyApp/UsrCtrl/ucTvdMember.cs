@@ -270,8 +270,9 @@ namespace CenturyFinCorpApp.UsrCtrl
             }
             
             LoadGrid();
-            LoadRec();
-            
+            OnlyEmpty();
+            //LoadRec();
+
             MessageBox.Show("Done");
 
         }
@@ -363,9 +364,13 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void button6_Click(object sender, EventArgs e)
         {
+            OnlyEmpty();
+        }
+
+        private void OnlyEmpty()
+        {
             dataGridView1.DataSource = assemblies.Where(w => w.UtPaguthi.Trim() == string.Empty).ToList();
             LoadRec();
-
         }
 
         private void button7_Click(object sender, EventArgs e)
