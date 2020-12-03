@@ -87,7 +87,9 @@ namespace CenturyFinCorpApp.UsrCtrl
                 new Pair(7,"Rmd-K", "இராம்நாடு - கிழக்கு"),
                 new Pair(8,"Rmd-m", "இராம்நாடு - மேற்கு"),
                 new Pair(9,"RSMNagar", "ஆர்.எஸ்.மங்களம் நகர்"),
-                new Pair(10,"Thondi", "தொண்டி")
+                new Pair(10,"Thondi", "தொண்டி"),
+                new Pair(11,"Others","Other Assembly"),
+                new Pair(12,"Dont Know","Dont Know")
             };
 
             return paguthi;
@@ -479,6 +481,8 @@ namespace CenturyFinCorpApp.UsrCtrl
                 TvdMember.AddTvdMembers(newList);
 
                 MessageBox.Show($"{newList.Count} new members added");
+
+                LoadRec();
 
             }
 

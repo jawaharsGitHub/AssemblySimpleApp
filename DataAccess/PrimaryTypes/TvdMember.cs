@@ -39,7 +39,7 @@ namespace DataAccess.PrimaryTypes
         public static void AddTvdMembers(List<TvdMember> mem)
         {
             //investment.CreatedDate = DateTime.Today.ToLongTimeString();
-            WriteObjectsToFile(mem, JsonFilePath);
+            InsertObjectsToJson(JsonFilePath, mem);
         }
 
         public static void UpdateMemberDetails(string memberId, string Paguthi, string utPaguthi, string pagEng, string utPagEng)
