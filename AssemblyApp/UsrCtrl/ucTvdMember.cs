@@ -215,7 +215,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 new Pair(7,"Madakottan","மாடகொட்டான் "),
 
                 // RMD-Merku
-                new Pair(8,"Kavanur", "காவனூர் "),
+                new Pair(8,"Kavanur-RMD", "காவனூர்-RMD"),
                 new Pair(8,"Karukudi","காருகுடி "),
                 new Pair(8,"Thoruvalur","தொருவலூர் "),
                 new Pair(8,"Siththoor","சித்தூர் "),
