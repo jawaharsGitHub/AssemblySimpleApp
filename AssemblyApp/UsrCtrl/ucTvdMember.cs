@@ -512,6 +512,28 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+
+            var allData = (from a in TvdMember.GetAll()
+                           group a by a.UtPaguthiEng into newGroup
+                           select new { newGroup.Key, count = newGroup.Count() }
+                           ).OrderByDescending(o => o.count).ToList();
+
+
+
+             StringBuilder sb = new StringBuilder();
+            int i = 0;
+
+            allData.ForEach(fe => {
+                i = i + 1;
+                sb.Append($"({i}) {fe.Key} ({fe.count})");
+                sb.Append(Environment.NewLine);
+            });
+
+            File.WriteAllText($@"F:\NTK\jawa - 2021\members\All-{DateTime.Now.ToShortDateString()}.txt", sb.ToString());
+        }
     }
 
     public class Pair

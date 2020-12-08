@@ -44,6 +44,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,7 +127,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(269, 10);
+            this.label1.Location = new System.Drawing.Point(186, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 8;
@@ -183,7 +184,7 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(0, 9);
+            this.btnExport.Location = new System.Drawing.Point(391, 34);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(131, 23);
             this.btnExport.TabIndex = 14;
@@ -193,7 +194,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(391, 32);
+            this.button9.Location = new System.Drawing.Point(572, 64);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(131, 23);
             this.button9.TabIndex = 15;
@@ -201,10 +202,21 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(3, 11);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(131, 23);
+            this.button10.TabIndex = 16;
+            this.button10.Text = "All Counts";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
             // ucTvdMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnSearch);
@@ -247,5 +259,6 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
     }
 }
