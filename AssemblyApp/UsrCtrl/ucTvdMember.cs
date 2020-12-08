@@ -420,7 +420,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             dataGridView1.DataSource = data;
 
             fData = new List<TvdMember>();
-            fData = data.OrderBy(o => o.Phone).ToList();
+            fData = data.OrderBy(o => o.Money).ThenBy(o => o.Phone).ToList();
 
             lblRecCounts.Text = $"{data.Count} உறுப்பினர்கள்";
 
@@ -551,7 +551,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 dataGridView1.DataSource = data;
 
                 fData = new List<TvdMember>();
-                fData = data.OrderBy(o => o.Phone).ToList();
+                fData = data.OrderBy(o => o.Money).ThenBy(o => o.Phone).ToList();
 
                 lblRecCounts.Text = $"{data.Count} உறுப்பினர்கள்";
             }
