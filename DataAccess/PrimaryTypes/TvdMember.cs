@@ -79,7 +79,7 @@ namespace DataAccess.PrimaryTypes
         {
             List<TvdMember> list = ReadFileAsObjects<TvdMember>(JsonFilePath);
             var u = list.Where(c => c.MemberId == memId).First();
-            u.Vote = votes.ToString();
+            u.Vote = votes;
 
             WriteObjectsToFile(list, JsonFilePath);
 

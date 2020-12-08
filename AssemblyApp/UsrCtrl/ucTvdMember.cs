@@ -569,11 +569,11 @@ namespace CenturyFinCorpApp.UsrCtrl
         }
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (IsEnterKey == false)
-            {
-                EditCancel();
-                return;
-            }
+            //if (IsEnterKey == false)
+            //{
+            //    EditCancel();
+            //    return;
+            //}
 
             //int existingTxnId = 0; // to  keep existing txn id.
             DataGridView grid = (sender as DataGridView);
@@ -605,7 +605,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             }
 
-            else if (owningColumnName == "Votes")
+            else if (owningColumnName == "Vote")
             {
                 TvdMember.UpdateVotes(cus.MemberId, cellValue.ToInt32());
 
