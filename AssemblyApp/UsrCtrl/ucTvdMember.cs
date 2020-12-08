@@ -38,7 +38,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             dataGridView1.Columns["Assembly"].Visible = false;
             dataGridView1.Columns["MemberId"].Visible = false;
             dataGridView1.Columns["Name"].Visible = false;
-            dataGridView1.Columns["Phone"].Visible = false;
+            //dataGridView1.Columns["Phone"].Visible = false;
             dataGridView1.Columns["Email"].Visible = false;
 
             dataGridView1.Columns["Paguthi"].Visible = false;
@@ -275,7 +275,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 }
 
             }
-            
+
             LoadGrid();
             OnlyEmpty(snos.Max());
 
@@ -285,7 +285,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+
             if (textBox1.Text.Trim() == string.Empty)
             {
                 var utp = (comboBox1.SelectedItem as Pair);
@@ -363,7 +363,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 MessageBox.Show("ALL DONE");
             };
 
-            
+
 
             bw.RunWorkerAsync();
         }
@@ -377,7 +377,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             var x = assemblies.Where(w => w.UtPaguthi.Trim() == string.Empty).ToList();
 
-            if(max > 0)
+            if (max > 0)
             {
                 dataGridView1.DataSource = x.Where(w => w.Sno >= max).ToList();
             }
@@ -398,7 +398,8 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void button8_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = assemblies;
+            //dataGridView1.DataSource = assemblies;
+            LoadGrid();
             LoadRec();
         }
 
@@ -409,7 +410,12 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             selectedPan = (comboBox1.SelectedItem as Pair).Display;
 
-             var data = assemblies.Where(w => w.UtPaguthiEng.Contains(selectedPan)).ToList();
+            var data = assemblies.Where(w => w.UtPaguthiEng.Contains(selectedPan)).ToList();
+
+            if(txtPhone.Text.Trim() != string.Empty)
+            {
+                data = data.Where(w => w.Phone.Contains(txtPhone.Text)).ToList();
+            }
 
             dataGridView1.DataSource = data;
 
@@ -427,7 +433,8 @@ namespace CenturyFinCorpApp.UsrCtrl
             StringBuilder sb = new StringBuilder();
             int i = 0;
 
-            fData.ForEach(fe => {
+            fData.ForEach(fe =>
+            {
                 i = i + 1;
                 sb.Append($"({i}){fe.Name}-- {fe.Phone}--{fe.Address}");
                 sb.Append(Environment.NewLine);
@@ -443,7 +450,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             OpenFileDialog ofd = new OpenFileDialog();
 
-            if(ofd.ShowDialog() == DialogResult.OK)
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
                 var file = ofd.FileName;
                 //dynamic data = Json.Decode(File.ReadAllText(file));
@@ -474,14 +481,14 @@ namespace CenturyFinCorpApp.UsrCtrl
                 var allMembersId = myList.Select(ss => ss.MemberId.Trim()).ToList();
 
 
-               var newMembersId =  allMembersId.Except(existingMembersId).ToList();
+                var newMembersId = allMembersId.Except(existingMembersId).ToList();
 
                 var newList = new List<TvdMember>();
 
                 foreach (var item in newMembersId)
                 {
 
-                    if(existingMembersId.Contains(item))
+                    if (existingMembersId.Contains(item))
                     {
                         MessageBox.Show($"{item} already exist");
                     }
@@ -489,7 +496,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                     {
                         var d = myList.Where(w => w.MemberId == item).ToList();
 
-                        if(d.Count() == 1)
+                        if (d.Count() == 1)
                         {
                             newList.Add(d.First());
                         }
@@ -509,7 +516,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             }
 
-            
+
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -522,10 +529,11 @@ namespace CenturyFinCorpApp.UsrCtrl
 
 
 
-             StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             int i = 0;
 
-            allData.ForEach(fe => {
+            allData.ForEach(fe =>
+            {
                 i = i + 1;
                 sb.Append($"({i}) {fe.Key} ({fe.count})");
                 sb.Append(Environment.NewLine);
@@ -533,32 +541,52 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             File.WriteAllText($@"F:\NTK\jawa - 2021\members\All-{DateTime.Now.ToShortDateString()}.txt", sb.ToString());
         }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if (txtPhone.Text.Trim() != string.Empty)
+            {
+            {
+
+                var data = assemblies.Where(w => w.Phone.EndsWith(txtPhone.Text)).ToList();
+
+                dataGridView1.DataSource = data;
+
+                fData = new List<TvdMember>();
+                fData = data.OrderBy(o => o.Phone).ToList();
+
+                lblRecCounts.Text = $"{data.Count} உறுப்பினர்கள்";
+            }
+            }
+
+        }
     }
 
     public class Pair
-    {
-
-        public Pair(int val, string dis)
         {
-            Value = val;
-            Display = dis;
-        }
 
-        public Pair(int val, string dis, string disTamil)
-        {
-            Value = val;
-            Display = dis;
-            DisplayTamil = disTamil;
-        }
+            public Pair(int val, string dis)
+            {
+                Value = val;
+                Display = dis;
+            }
 
-        public int Value { get; set; }
-        public string Display { get; set; }
+            public Pair(int val, string dis, string disTamil)
+            {
+                Value = val;
+                Display = dis;
+                DisplayTamil = disTamil;
+            }
 
-        public string DisplayTamil { get; set; }
+            public int Value { get; set; }
+            public string Display { get; set; }
 
-        public override string ToString()
-        {
-            return $"{Value}-{Display}-{DisplayTamil}";
+            public string DisplayTamil { get; set; }
+
+            public override string ToString()
+            {
+                return $"{Value}-{Display}-{DisplayTamil}";
+            }
         }
     }
-}
+

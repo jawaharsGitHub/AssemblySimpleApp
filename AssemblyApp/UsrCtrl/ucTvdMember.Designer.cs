@@ -45,6 +45,8 @@
             this.btnExport = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.button11 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,16 +62,16 @@
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(528, 3);
+            this.comboBox1.Location = new System.Drawing.Point(361, -2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(197, 21);
             this.comboBox1.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(651, 36);
+            this.button1.Location = new System.Drawing.Point(571, 36);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 23);
+            this.button1.Size = new System.Drawing.Size(86, 23);
             this.button1.TabIndex = 2;
             this.button1.Text = "UPDATE";
             this.button1.UseVisualStyleBackColor = true;
@@ -88,13 +90,13 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(131, 23);
             this.button2.TabIndex = 4;
-            this.button2.Text = "SEARCH";
+            this.button2.Text = "ADDRESS SEARCH";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(544, 38);
+            this.button3.Location = new System.Drawing.Point(1128, 64);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(90, 23);
             this.button3.TabIndex = 5;
@@ -105,9 +107,9 @@
             // button4
             // 
             this.button4.Enabled = false;
-            this.button4.Location = new System.Drawing.Point(951, 10);
+            this.button4.Location = new System.Drawing.Point(1108, 22);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(131, 45);
+            this.button4.Size = new System.Drawing.Size(131, 21);
             this.button4.TabIndex = 6;
             this.button4.Text = "CLEAR UPDATE";
             this.button4.UseVisualStyleBackColor = true;
@@ -116,9 +118,9 @@
             // button5
             // 
             this.button5.Enabled = false;
-            this.button5.Location = new System.Drawing.Point(805, 10);
+            this.button5.Location = new System.Drawing.Point(1108, 0);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(131, 45);
+            this.button5.Size = new System.Drawing.Size(131, 19);
             this.button5.TabIndex = 7;
             this.button5.Text = "SINGLE  UPDATE";
             this.button5.UseVisualStyleBackColor = true;
@@ -144,9 +146,9 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(1108, 10);
+            this.button6.Location = new System.Drawing.Point(813, 30);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(131, 23);
+            this.button6.Size = new System.Drawing.Size(94, 23);
             this.button6.TabIndex = 10;
             this.button6.Text = "only empty";
             this.button6.UseVisualStyleBackColor = true;
@@ -154,7 +156,8 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(1108, 38);
+            this.button7.Enabled = false;
+            this.button7.Location = new System.Drawing.Point(1108, 44);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(131, 23);
             this.button7.TabIndex = 11;
@@ -164,9 +167,9 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(1108, 64);
+            this.button8.Location = new System.Drawing.Point(817, 1);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(131, 23);
+            this.button8.Size = new System.Drawing.Size(90, 23);
             this.button8.TabIndex = 12;
             this.button8.Text = "reset";
             this.button8.UseVisualStyleBackColor = true;
@@ -174,19 +177,19 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(391, 5);
+            this.btnSearch.Location = new System.Drawing.Point(337, 35);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(131, 23);
+            this.btnSearch.Size = new System.Drawing.Size(110, 23);
             this.btnSearch.TabIndex = 13;
-            this.btnSearch.Text = "SEARCH";
+            this.btnSearch.Text = "SEARCH GRID";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(391, 34);
+            this.btnExport.Location = new System.Drawing.Point(465, 35);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(131, 23);
+            this.btnExport.Size = new System.Drawing.Size(80, 23);
             this.btnExport.TabIndex = 14;
             this.btnExport.Text = "EXPORT";
             this.btnExport.UseVisualStyleBackColor = true;
@@ -194,9 +197,9 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(572, 64);
+            this.button9.Location = new System.Drawing.Point(933, 11);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(131, 23);
+            this.button9.Size = new System.Drawing.Size(131, 66);
             this.button9.TabIndex = 15;
             this.button9.Text = "upload Latest";
             this.button9.UseVisualStyleBackColor = true;
@@ -212,10 +215,29 @@
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(582, 0);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(113, 20);
+            this.txtPhone.TabIndex = 17;
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(676, 36);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(110, 23);
+            this.button11.TabIndex = 18;
+            this.button11.Text = "SEARCH ALL";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
             // ucTvdMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button11);
+            this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.btnExport);
@@ -260,5 +282,7 @@
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.TextBox txtPhone;
+        private System.Windows.Forms.Button button11;
     }
 }

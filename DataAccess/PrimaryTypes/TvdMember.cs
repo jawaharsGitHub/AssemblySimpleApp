@@ -31,9 +31,20 @@ namespace DataAccess.PrimaryTypes
 
         public bool MultiplePlace { get; set; }
 
+        public bool WantsMeet { get; set; }
+
+        public bool Money { get; set; }
+
+        public string Vote { get; set; }
+
         public static List<TvdMember> GetAll()
         {
             return ReadFileAsObjects<TvdMember>(JsonFilePath);
+        }
+
+        public static TvdMember GetMember(string mid)
+        {
+            return GetAll().Where(w => w.MemberId == mid).First();
         }
 
         public static void AddTvdMembers(List<TvdMember> mem)
