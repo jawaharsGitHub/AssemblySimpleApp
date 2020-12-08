@@ -546,8 +546,6 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             if (txtPhone.Text.Trim() != string.Empty)
             {
-            {
-
                 var data = assemblies.Where(w => w.Phone.EndsWith(txtPhone.Text)).ToList();
 
                 dataGridView1.DataSource = data;
@@ -557,8 +555,78 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 lblRecCounts.Text = $"{data.Count} உறுப்பினர்கள்";
             }
+
+        }
+
+
+        bool IsEnterKey = false;
+        private void EditSuccess()
+        {
+            dataGridView1.CurrentCell.Style.BackColor = Color.LightGreen;
+            dataGridView1.CurrentCell.Style.ForeColor = Color.White;
+            this.dataGridView1.ClearSelection();
+            IsEnterKey = false; // reset flag after ecery success edit.
+        }
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (IsEnterKey == false)
+            {
+                EditCancel();
+                return;
             }
 
+            //int existingTxnId = 0; // to  keep existing txn id.
+            DataGridView grid = (sender as DataGridView);
+            int rowIndex = grid.CurrentCell.RowIndex;
+            string owningColumnName = grid.CurrentCell.OwningColumn.Name;
+            string cellValue = FormGeneral.GetGridCellValue(grid, rowIndex, owningColumnName);
+            TvdMember cus = grid.Rows[grid.CurrentCell.RowIndex].DataBoundItem as TvdMember;
+
+            if (string.IsNullOrEmpty(cellValue))
+            {
+                EditCancel();
+                return;
+            }
+
+            var updatedMember = new TvdMember()
+            {
+                MemberId = cus.MemberId
+            };
+
+            if (owningColumnName == "WantsMeet")
+            {
+                TvdMember.UpdateMeets(cus.MemberId, Convert.ToBoolean(cellValue));
+                
+            }
+
+            else if (owningColumnName == "Money")
+            {
+                TvdMember.UpdateMoney(cus.MemberId, Convert.ToBoolean(cellValue));
+
+            }
+
+            else if (owningColumnName == "Votes")
+            {
+                TvdMember.UpdateVotes(cus.MemberId, cellValue.ToInt32());
+
+            }
+
+            EditSuccess();
+
+
+
+        }
+
+        private void EditCancel()
+        {
+            dataGridView1.CurrentCell.Style.BackColor = Color.Red;
+            dataGridView1.CurrentCell.Style.ForeColor = Color.Yellow;
+        }
+
+        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, Keys keyData)
+        {
+            IsEnterKey = (keyData == Keys.Enter);
+            return false;
         }
     }
 

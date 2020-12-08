@@ -35,7 +35,7 @@ namespace DataAccess.PrimaryTypes
 
         public bool Money { get; set; }
 
-        public string Vote { get; set; }
+        public int Vote { get; set; }
 
         public static List<TvdMember> GetAll()
         {
@@ -52,6 +52,39 @@ namespace DataAccess.PrimaryTypes
             //investment.CreatedDate = DateTime.Today.ToLongTimeString();
             InsertObjectsToJson(JsonFilePath, mem);
         }
+
+        public static void UpdateMeets(string memId, bool wantMee)
+        {
+                List<TvdMember> list = ReadFileAsObjects<TvdMember>(JsonFilePath);
+
+                var u = list.Where(c => c.MemberId == memId).First();
+                u.WantsMeet = wantMee;
+
+                WriteObjectsToFile(list, JsonFilePath);
+            
+        }
+
+        public static void UpdateMoney(string memId, bool money)
+        {
+            List<TvdMember> list = ReadFileAsObjects<TvdMember>(JsonFilePath);
+
+            var u = list.Where(c => c.MemberId == memId).First();
+            u.Money = money;
+
+            WriteObjectsToFile(list, JsonFilePath);
+
+        }
+
+        public static void UpdateVotes(string memId, int votes)
+        {
+            List<TvdMember> list = ReadFileAsObjects<TvdMember>(JsonFilePath);
+            var u = list.Where(c => c.MemberId == memId).First();
+            u.Vote = votes.ToString();
+
+            WriteObjectsToFile(list, JsonFilePath);
+
+        }
+
 
         public static void UpdateMemberDetails(string memberId, string Paguthi, string utPaguthi, string pagEng, string utPagEng)
         {
