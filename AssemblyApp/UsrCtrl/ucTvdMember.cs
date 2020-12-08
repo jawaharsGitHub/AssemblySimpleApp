@@ -33,6 +33,24 @@ namespace CenturyFinCorpApp.UsrCtrl
             utPaguthiList = GetUtPaguthi();
 
 
+          
+
+
+            comboBox1.DataSource = GetUtPaguthi();
+            comboBox1.DisplayMember = "Display";
+            comboBox1.ValueMember = "DisplayTamil";
+            LoadRec();
+
+        }
+
+
+        private void LoadGrid()
+        {
+            assemblies = TvdMember.GetAll().ToList();
+            int i = 1;
+            assemblies.ForEach(f => f.Sno = i++);
+            dataGridView1.DataSource = assemblies;
+
             dataGridView1.Columns["State"].Visible = false;
             dataGridView1.Columns["District"].Visible = false;
             dataGridView1.Columns["Assembly"].Visible = false;
@@ -51,22 +69,6 @@ namespace CenturyFinCorpApp.UsrCtrl
             dataGridView1.Columns["Country"].Visible = false;
 
             dataGridView1.Columns["Address"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-
-            comboBox1.DataSource = GetUtPaguthi();
-            comboBox1.DisplayMember = "Display";
-            comboBox1.ValueMember = "DisplayTamil";
-            LoadRec();
-
-        }
-
-
-        private void LoadGrid()
-        {
-            assemblies = TvdMember.GetAll().ToList();
-            int i = 1;
-            assemblies.ForEach(f => f.Sno = i++);
-            dataGridView1.DataSource = assemblies;
         }
 
         private void LoadRec()
@@ -428,6 +430,8 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             //lblRecCounts.Text = $"{data.Count} உறுப்பினர்கள்";
 
+            LoadRec();
+
 
 
         }
@@ -544,6 +548,12 @@ namespace CenturyFinCorpApp.UsrCtrl
             });
 
             File.WriteAllText($@"F:\NTK\jawa - 2021\members\All-{DateTime.Now.ToShortDateString()}.txt", sb.ToString());
+
+            dataGridView1.DataSource = allData;
+
+            //LoadRec();
+
+
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -558,8 +568,9 @@ namespace CenturyFinCorpApp.UsrCtrl
                     .ToList();
 
                 dataGridView1.DataSource = fData;
+                LoadRec();
 
-                lblRecCounts.Text = $"{data.Count} உறுப்பினர்கள்";
+                //lblRecCounts.Text = $"{data.Count} உறுப்பினர்கள்";
             }
 
         }
