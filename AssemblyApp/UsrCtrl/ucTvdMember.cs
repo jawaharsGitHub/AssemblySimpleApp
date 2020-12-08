@@ -414,7 +414,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             dataGridView1.DataSource = data;
 
             fData = new List<TvdMember>();
-            fData = data;
+            fData = data.OrderBy(o => o.Phone).ToList();
 
             lblRecCounts.Text = $"{data.Count} உறுப்பினர்கள்";
 
@@ -496,7 +496,6 @@ namespace CenturyFinCorpApp.UsrCtrl
                         else
                         {
                             MessageBox.Show($"{item} more than 1 member ids");
-
                         }
                     }
 
