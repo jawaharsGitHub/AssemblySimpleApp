@@ -238,7 +238,8 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 new Pair(10,"Thondi","தொண்டி"),
                 new Pair(11,"Others","Other Assembly"),
-                new Pair(12,"Dont Know","Dont Know")
+                new Pair(12,"Dont Know","Dont Know"),
+                new Pair(12,",",",")
 
 
             };
@@ -277,7 +278,6 @@ namespace CenturyFinCorpApp.UsrCtrl
             
             LoadGrid();
             OnlyEmpty(snos.Max());
-            //LoadRec();
 
             MessageBox.Show("Done");
 
@@ -450,9 +450,11 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 var con = File.ReadAllText(file);
 
-                string s = con.RemoveLines(1);
+                string s = con.RemoveLines(2);
+                //.Remove(con.LastIndexOf('}'));}
 
                 s = "[" + Environment.NewLine + s;
+                s = s.Remove(s.LastIndexOf('}'));
 
                 s = s.Replace("\"உறுப்பினர் எண்\"", "\"MemberId\"")
                      .Replace("\"முகவரி\"", "\"Address\"")
