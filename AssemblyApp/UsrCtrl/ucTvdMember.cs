@@ -417,12 +417,16 @@ namespace CenturyFinCorpApp.UsrCtrl
                 data = data.Where(w => w.Phone.Contains(txtPhone.Text)).ToList();
             }
 
-            dataGridView1.DataSource = data;
+            
 
             fData = new List<TvdMember>();
-            fData = data.OrderBy(o => o.Money).ThenBy(o => o.Phone).ToList();
+            fData = data.OrderByDescending(o => o.Money)
+                .ThenBy(o => o.Phone)
+                .ToList();
 
-            lblRecCounts.Text = $"{data.Count} உறுப்பினர்கள்";
+            dataGridView1.DataSource = fData;
+
+            //lblRecCounts.Text = $"{data.Count} உறுப்பினர்கள்";
 
 
 
@@ -548,10 +552,12 @@ namespace CenturyFinCorpApp.UsrCtrl
             {
                 var data = assemblies.Where(w => w.Phone.EndsWith(txtPhone.Text)).ToList();
 
-                dataGridView1.DataSource = data;
-
                 fData = new List<TvdMember>();
-                fData = data.OrderBy(o => o.Money).ThenBy(o => o.Phone).ToList();
+                fData = data.OrderByDescending(o => o.Money)
+                    .ThenBy(o => o.Phone)
+                    .ToList();
+
+                dataGridView1.DataSource = fData;
 
                 lblRecCounts.Text = $"{data.Count} உறுப்பினர்கள்";
             }
