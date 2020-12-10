@@ -37,6 +37,8 @@ namespace DataAccess.PrimaryTypes
 
         public int Vote { get; set; }
 
+        public DateTime UpdatedTime { get; set; }
+
         public static List<TvdMember> GetAll()
         {
             return ReadFileAsObjects<TvdMember>(JsonFilePath);
@@ -59,6 +61,7 @@ namespace DataAccess.PrimaryTypes
 
                 var u = list.Where(c => c.MemberId == memId).First();
                 u.WantsMeet = wantMee;
+                u.UpdatedTime = DateTime.Now;
 
                 WriteObjectsToFile(list, JsonFilePath);
             
@@ -70,6 +73,7 @@ namespace DataAccess.PrimaryTypes
 
             var u = list.Where(c => c.MemberId == memId).First();
             u.Money = money;
+            u.UpdatedTime = DateTime.Now;
 
             WriteObjectsToFile(list, JsonFilePath);
 
@@ -80,6 +84,7 @@ namespace DataAccess.PrimaryTypes
             List<TvdMember> list = ReadFileAsObjects<TvdMember>(JsonFilePath);
             var u = list.Where(c => c.MemberId == memId).First();
             u.Vote = votes;
+            u.UpdatedTime = DateTime.Now;
 
             WriteObjectsToFile(list, JsonFilePath);
 

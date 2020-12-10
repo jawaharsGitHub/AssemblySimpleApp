@@ -33,13 +33,28 @@ namespace CenturyFinCorpApp.UsrCtrl
             utPaguthiList = GetUtPaguthi();
 
 
-          
-
-
             comboBox1.DataSource = GetUtPaguthi();
             comboBox1.DisplayMember = "Display";
             comboBox1.ValueMember = "DisplayTamil";
-            LoadRec();
+            LoadRec(0);
+
+            comboBox3.DataSource = GetOptions();
+
+        }
+
+        public static List<KeyValuePair<int, string>> GetOptions()
+        {
+            var myKeyValuePair = new List<KeyValuePair<int, string>>()
+               {
+                   new KeyValuePair<int, string>(1, "Order By Vote"),
+                   new KeyValuePair<int, string>(2, "Only money"),
+                   new KeyValuePair<int, string>(3, "wants meet"),
+                   new KeyValuePair<int, string>(4, "Not Yet Contact")
+
+
+               };
+
+            return myKeyValuePair;
 
         }
 
@@ -55,7 +70,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             dataGridView1.Columns["District"].Visible = false;
             dataGridView1.Columns["Assembly"].Visible = false;
             dataGridView1.Columns["MemberId"].Visible = false;
-            dataGridView1.Columns["Name"].Visible = false;
+            //dataGridView1.Columns["Name"].Visible = false;
             //dataGridView1.Columns["Phone"].Visible = false;
             dataGridView1.Columns["Email"].Visible = false;
 
@@ -71,9 +86,9 @@ namespace CenturyFinCorpApp.UsrCtrl
             dataGridView1.Columns["Address"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
-        private void LoadRec()
+        private void LoadRec(int searchCount)
         {
-            lblRecCounts.Text = TvdMember.GetCount();
+            lblRecCounts.Text = $"{searchCount} out of {TvdMember.GetCount()}";
         }
         private List<Pair> GetPaguthi()
         {
@@ -381,28 +396,26 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             if (max > 0)
             {
-                dataGridView1.DataSource = x.Where(w => w.Sno >= max).ToList();
-            }
-            else
-            {
-                dataGridView1.DataSource = x;
+                x = x.Where(w => w.Sno >= max).ToList();
             }
 
+            dataGridView1.DataSource = x;
 
-            LoadRec();
+            LoadRec(x.Count);
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = assemblies.Where(w => w.UtPaguthi.Trim().Contains(",")).ToList();
-            LoadRec();
+            var x = assemblies.Where(w => w.UtPaguthi.Trim().Contains(",")).ToList();
+            dataGridView1.DataSource = x;
+            LoadRec(x.Count);
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             //dataGridView1.DataSource = assemblies;
             LoadGrid();
-            LoadRec();
+            LoadRec(0);
         }
 
         List<TvdMember> fData;
@@ -414,12 +427,12 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             var data = assemblies.Where(w => w.UtPaguthiEng.Contains(selectedPan)).ToList();
 
-            if(txtPhone.Text.Trim() != string.Empty)
+            if (txtPhone.Text.Trim() != string.Empty)
             {
                 data = data.Where(w => w.Phone.Contains(txtPhone.Text)).ToList();
             }
 
-            
+
 
             fData = new List<TvdMember>();
             fData = data.OrderByDescending(o => o.Money)
@@ -430,7 +443,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             //lblRecCounts.Text = $"{data.Count} உறுப்பினர்கள்";
 
-            LoadRec();
+            LoadRec(fData.Count);
 
 
 
@@ -441,7 +454,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             StringBuilder sb = new StringBuilder();
             int i = 0;
 
-            fData.ForEach(fe =>
+            fData.OrderBy(o => o.Phone).ToList().ForEach(fe =>
             {
                 i = i + 1;
                 sb.Append($"({i}){fe.Name}-- {fe.Phone}--{fe.Address}");
@@ -520,7 +533,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 MessageBox.Show($"{newList.Count} new members added");
 
-                LoadRec();
+                LoadRec(0);
 
             }
 
@@ -568,7 +581,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                     .ToList();
 
                 dataGridView1.DataSource = fData;
-                LoadRec();
+                LoadRec(fData.Count);
 
                 //lblRecCounts.Text = $"{data.Count} உறுப்பினர்கள்";
             }
@@ -613,7 +626,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             if (owningColumnName == "WantsMeet")
             {
                 TvdMember.UpdateMeets(cus.MemberId, Convert.ToBoolean(cellValue));
-                
+
             }
 
             else if (owningColumnName == "Money")
@@ -645,33 +658,80 @@ namespace CenturyFinCorpApp.UsrCtrl
             IsEnterKey = (keyData == Keys.Enter);
             return false;
         }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<TvdMember> data = null;
+            string detail = "";
+            if (checkBox1.Checked)
+            {
+                data = TvdMember.GetAll();
+                detail = "தொகுதியில்";
+            }
+            else
+            {
+                var selectedPan = (comboBox1.SelectedItem as Pair).Display;
+                data = assemblies.Where(w => w.UtPaguthiEng.Contains(selectedPan)).ToList();
+                detail = (comboBox1.SelectedItem as Pair).DisplayTamil + "-யில்";
+            }
+            //if (customers == null) return;
+            var value = ((KeyValuePair<int, string>)comboBox3.SelectedItem).Key;
+            List<TvdMember> searchedMember = null;
+
+
+            if (value == 1)
+            {
+                searchedMember = data.OrderByDescending(o => o.Vote).ToList();
+
+                lblDetails.Text = $"{detail} {searchedMember.Sum(s => s.Vote)} ஓட்டுகள் உறுதியானது.";
+            }
+            else if (value == 2)
+            {
+                searchedMember = data.Where(w => w.Money).ToList();
+                lblDetails.Text = $"{detail} {searchedMember.Count} உறவுகள் நிதி அளிக்க விரும்பிகிறார்கள்.";
+            }
+            else if (value == 3)
+            {
+                searchedMember = data.Where(w => w.WantsMeet).ToList();
+                lblDetails.Text = $"{detail} {searchedMember.Count} உறவுகள் வேட்பாளரை  சந்திக்க விரும்பிகிறார்கள்.";
+            }
+            else if (value == 4)
+            {
+                searchedMember = data.Where(w => w.UpdatedTime.ToString() == "01-01-0001 00:00:00").ToList();
+                lblDetails.Text = $"{detail} {searchedMember.Count} உறவுககளை தொடர்புகொள்ள இயலவில்லை.";
+            }
+
+            dataGridView1.DataSource = searchedMember;
+
+
+        }
     }
 
     public class Pair
+    {
+
+        public Pair(int val, string dis)
         {
+            Value = val;
+            Display = dis;
+        }
 
-            public Pair(int val, string dis)
-            {
-                Value = val;
-                Display = dis;
-            }
+        public Pair(int val, string dis, string disTamil)
+        {
+            Value = val;
+            Display = dis;
+            DisplayTamil = disTamil;
+        }
 
-            public Pair(int val, string dis, string disTamil)
-            {
-                Value = val;
-                Display = dis;
-                DisplayTamil = disTamil;
-            }
+        public int Value { get; set; }
+        public string Display { get; set; }
 
-            public int Value { get; set; }
-            public string Display { get; set; }
+        public string DisplayTamil { get; set; }
 
-            public string DisplayTamil { get; set; }
-
-            public override string ToString()
-            {
-                return $"{Value}-{Display}-{DisplayTamil}";
-            }
+        public override string ToString()
+        {
+            return $"{Value}-{Display}-{DisplayTamil}";
         }
     }
+}
 
