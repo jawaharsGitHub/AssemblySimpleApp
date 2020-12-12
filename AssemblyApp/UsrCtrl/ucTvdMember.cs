@@ -49,9 +49,10 @@ namespace CenturyFinCorpApp.UsrCtrl
                    new KeyValuePair<int, string>(1, "Order By Vote"),
                    new KeyValuePair<int, string>(2, "Only money"),
                    new KeyValuePair<int, string>(3, "wants meet"),
-                   new KeyValuePair<int, string>(4, "Not Yet Contact")
-
-
+                   new KeyValuePair<int, string>(4, "Not Yet Contact"),
+                   new KeyValuePair<int, string>(5, "HighOrder By Members Count"),
+                   new KeyValuePair<int, string>(6, "LowOrder By Members Count"),
+                   new KeyValuePair<int, string>(7, "Order By Panchayat Names And Count")
                };
 
             return myKeyValuePair;
@@ -642,6 +643,18 @@ namespace CenturyFinCorpApp.UsrCtrl
                 TvdMember.UpdateVotes(cus.MemberId, cellValue.ToInt32());
 
             }
+            else if (owningColumnName == "UtPaguthiEng")
+            {
+                if(utPaguthiList.Select(s => s.Display).Contains(cellValue) == false)
+                {
+                    MessageBox.Show("Wrong Panchayats!");
+                    return;
+                }
+
+                TvdMember.UpdateUtEngPaguthi(cus.MemberId, cellValue);
+
+            }
+
 
             EditSuccess();
 
@@ -663,17 +676,18 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<TvdMember> data = null;
+            List<TvdMember> data = TvdMember.GetAll();
             string detail = "";
+            //data = TvdMember.GetAll();
             if (checkBox1.Checked)
             {
-                data = TvdMember.GetAll();
+                //data = TvdMember.GetAll();
                 detail = "தொகுதியில்";
             }
             else
             {
                 var selectedPan = (comboBox1.SelectedItem as Pair).Display;
-                data = assemblies.Where(w => w.UtPaguthiEng.Contains(selectedPan)).ToList();
+                data = data.Where(w => w.UtPaguthiEng.Contains(selectedPan)).ToList();
                 detail = (comboBox1.SelectedItem as Pair).DisplayTamil + "-யில்";
             }
             //if (customers == null) return;
@@ -702,6 +716,46 @@ namespace CenturyFinCorpApp.UsrCtrl
                 searchedMember = data.Where(w => w.UpdatedTime.ToString() == "01-01-0001 00:00:00").ToList();
                 lblDetails.Text = $"{detail} {searchedMember.Count} உறவுககளை தொடர்புகொள்ள இயலவில்லை.";
             }
+            else if (value == 5 || value == 6)
+            {
+               var localData  = (from d in data
+                                  where 
+                                  d.UtPaguthiEng.Contains(',') == false &&
+                                  d.UtPaguthiEng.Contains("Others") == false &&
+                                  d.UtPaguthiEng.Contains("Dont") == false
+
+                                 group d by d.UtPaguthiEng into ng
+                                  select new { panchayat = ng.Key , MembersCount = ng.Count() }).ToList();
+
+                var noMemberPanchayat = utPaguthiList.Where(
+                    w => w.Display.Contains(',') == false &&
+                    w.Display.Contains("Others") == false &&
+                    w.Display.Contains("Dont") == false).Select(s => s.Display).ToList().Except(localData.Select(d => d.panchayat)).ToList();
+
+                noMemberPanchayat.ForEach(fe => { localData.Add(new { panchayat = fe, MembersCount = 0 }); });
+
+                
+                
+
+                if(value == 5)
+                    localData = localData.OrderByDescending(o => o.MembersCount).ToList();
+                
+                else if (value == 6)
+                    localData = localData.OrderBy(o => o.MembersCount).ToList();
+                else
+                    localData = localData.OrderBy(o => o.panchayat).ToList();
+
+                localData.Insert(0, new { panchayat = "Multple", MembersCount = data.Where(d => d.UtPaguthiEng.Contains(',')).Count() });
+                localData.Insert(0, new { panchayat = "Others", MembersCount = data.Where(d => d.UtPaguthiEng.Contains("Others")).Count() });
+                localData.Insert(0, new { panchayat = "DontKnow", MembersCount = data.Where(d => d.UtPaguthiEng.Contains("Dont")).Count() });
+
+                dataGridView1.DataSource = localData;
+
+                lblDetails.Text = $"{localData.Count} ஊராட்சியின் உறுப்பினர் எண்ணிக்கை!";
+                return;
+            }
+           
+
 
             dataGridView1.DataSource = searchedMember;
 

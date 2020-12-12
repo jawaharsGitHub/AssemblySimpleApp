@@ -90,6 +90,16 @@ namespace DataAccess.PrimaryTypes
 
         }
 
+        public static void UpdateUtEngPaguthi(string memId, string utPaguthiEng)
+        {
+            List<TvdMember> list = ReadFileAsObjects<TvdMember>(JsonFilePath);
+            var u = list.Where(c => c.MemberId == memId).First();
+            u.UtPaguthiEng = utPaguthiEng;
+
+            WriteObjectsToFile(list, JsonFilePath);
+
+        }
+
 
         public static void UpdateMemberDetails(string memberId, string Paguthi, string utPaguthi, string pagEng, string utPagEng)
         {

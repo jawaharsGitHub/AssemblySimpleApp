@@ -268,9 +268,11 @@
             // lblDetails
             // 
             this.lblDetails.AutoSize = true;
+            this.lblDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetails.ForeColor = System.Drawing.Color.White;
             this.lblDetails.Location = new System.Drawing.Point(261, 100);
             this.lblDetails.Name = "lblDetails";
-            this.lblDetails.Size = new System.Drawing.Size(43, 13);
+            this.lblDetails.Size = new System.Drawing.Size(73, 24);
             this.lblDetails.TabIndex = 22;
             this.lblDetails.Text = "[details]";
             // 
