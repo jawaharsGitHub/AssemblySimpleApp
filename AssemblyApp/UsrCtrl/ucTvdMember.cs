@@ -454,7 +454,9 @@ namespace CenturyFinCorpApp.UsrCtrl
             StringBuilder sb = new StringBuilder();
             int i = 0;
 
-            fData.OrderBy(o => o.Phone).ToList().ForEach(fe =>
+            var d = fData.Where(w => w.UpdatedTime.ToString() == "01-01-0001 00:00:00").OrderBy(o => o.Phone).ToList();
+
+            d.ForEach(fe =>
             {
                 i = i + 1;
                 sb.Append($"({i}){fe.Name}-- {fe.Phone}--{fe.Address}");
@@ -462,7 +464,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 sb.Append(Environment.NewLine);
             });
 
-            File.WriteAllText($@"F:\NTK\jawa - 2021\members\{selectedPan}.txt", sb.ToString());
+            File.WriteAllText($@"F:\NTK\jawa - 2021\members\{selectedPan}({d.Count}).txt", sb.ToString());
 
 
         }
