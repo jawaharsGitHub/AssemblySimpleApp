@@ -66,7 +66,13 @@ namespace CenturyFinCorpApp.UsrCtrl
             int i = 1;
             assemblies.ForEach(f => f.Sno = i++);
             dataGridView1.DataSource = assemblies;
+            ColumnVisibility();
 
+
+        }
+
+        private void ColumnVisibility()
+        {
             dataGridView1.Columns["State"].Visible = false;
             dataGridView1.Columns["District"].Visible = false;
             dataGridView1.Columns["Assembly"].Visible = false;
@@ -159,31 +165,31 @@ namespace CenturyFinCorpApp.UsrCtrl
                 new Pair(2,"Vadakkaloor","வடக்கலூர்"),
 
                 // TVD-Therku
-                new Pair(3,"Theloor", "தேளூர் "),
-                new Pair(3,"Thalirmarungoor","தளிர்மருங்கூர் "),
-                new Pair(3,"Aathiyur","ஆதியூர் "),
-                new Pair(3,"Arumboor","அரும்பூர் "),
-                new Pair(3,"Kulaththoor","குளத்தூர் "),
-                new Pair(3,"Thiruvetriyur","திருவெற்றியூர் "),
-                new Pair(3,"Mugilthanagam","முகிழ்த்தகம் "),
-                new Pair(3,"Nambuthalai","நம்புதாளை "),
-                new Pair(3,"Puthupattinam","புதுப்பட்டினம் "),
-                new Pair(3,"Mullimunai","முள்ளிமுனை "),
-                new Pair(3,"Karangaadu","காரங்காடு"),
+                new Pair(3,"Theloor", "தேளூர் "), //4
+                new Pair(3,"Thalirmarungoor","தளிர்மருங்கூர் "), //4
+                new Pair(3,"Aathiyur","ஆதியூர் "), //4
+                new Pair(3,"Arumboor","அரும்பூர் "), //4
+                new Pair(3,"Kulaththoor","குளத்தூர் "), //4
+                new Pair(3,"Thiruvetriyur","திருவெற்றியூர் "), //4
+                new Pair(3,"Mugilthanagam","முகிழ்த்தகம் "), //4
+                new Pair(3,"Nambuthalai","நம்புதாளை "),  //4
+                new Pair(3,"Puthupattinam","புதுப்பட்டினம் "),//4
+                new Pair(3,"Mullimunai","முள்ளிமுனை "),//4
+                new Pair(3,"Karangaadu","காரங்காடு"),//4
 
                 // TVD-Kilakku
-                new Pair(4,"Mangalakudi", "மங்களக்குடி "),
+                new Pair(4,"Mangalakudi", "மங்களக்குடி "), // 5
                 new Pair(4,"Arasaththoor","அரசத்தூர் "),
-                new Pair(4,"Nilamalagiyamangalam","நிலமழகியமங்களம் "),
-                new Pair(4,"Kattivayal","கட்டிவயல் "),
-                new Pair(4,"Kunjangulam","குஞ்சங்குளம் "),
-                new Pair(4,"Anjukottai","அஞ்சுகோட்டை "),
-                new Pair(4,"Kodanoor","கோடனூர் "),
-                new Pair(4,"Pandukudi","பாண்டுகுடி "),
-                new Pair(4,"Nagarikathan","நகரிகாத்தான் "),
+                new Pair(4,"Nilamalagiyamangalam","நிலமழகியமங்களம் "), // 5
+                new Pair(4,"Kattivayal","கட்டிவயல் "), //5
+                new Pair(4,"Kunjangulam","குஞ்சங்குளம் "), //5
+                new Pair(4,"Anjukottai","அஞ்சுகோட்டை "), //5
+                new Pair(4,"Kodanoor","கோடனூர் "), //5
+                new Pair(4,"Pandukudi","பாண்டுகுடி "), //5
+                new Pair(4,"Nagarikathan","நகரிகாத்தான் "), //5
                 new Pair(4,"Kodipangu","கொடிப்பங்கு "),
                 new Pair(4,"Maavoor","மாவூர் "),
-                new Pair(4,"Achchangudi","அச்சங்குடி "),
+                new Pair(4,"Achchangudi","அச்சங்குடி "), //5
                 
                 // TVD-MErku
                 new Pair(5,"Neivayal", "நெய்வயல் "),
@@ -200,18 +206,18 @@ namespace CenturyFinCorpApp.UsrCtrl
                 new Pair(5,"Thiruvadanai","திருவாடானை "),
                
                 // TVD-Vadakku
-                new Pair(6,"Kattavilagam", "கட்டவிளாகம் "),
-                new Pair(6,"Aandaavoorani","ஆண்டாவூரணி "),
-                new Pair(6,"Paaganur","பாகனூர் "),
-                new Pair(6,"Sirukambaiyur","சிறுகம்பையூர் "),
-                new Pair(6,"Pathanakudi","பதனக்குடி "),
-                new Pair(6,"Vallaiyaapuram","வெள்ளையபுரம் "),
-                new Pair(6,"Oriyur","ஓரியூர் "),
-                new Pair(6,"S.P.Pattinam","S.P. பட்டிணம்  "),
-                new Pair(6,"Panachayal","பனஞ்சாயல் "),
-                new Pair(6,"Vattanam","வட்டானம் "),
-                new Pair(6,"Kaliyanagari","கலியநகரி "),
-                new Pair(6,"Pullakadamban","புல்லக்கடம்பன் "),
+                new Pair(6,"Kattavilagam", "கட்டவிளாகம் "), //4
+                new Pair(6,"Aandaavoorani","ஆண்டாவூரணி "),      //5
+                new Pair(6,"Paaganur","பாகனூர் "),                 //5
+                new Pair(6,"Sirukambaiyur","சிறுகம்பையூர் "),     //5
+                new Pair(6,"Pathanakudi","பதனக்குடி "),             //5
+                new Pair(6,"Vallaiyaapuram","வெள்ளையபுரம் "), //4
+                new Pair(6,"Oriyur","ஓரியூர் "),//4
+                new Pair(6,"S.P.Pattinam","S.P. பட்டிணம்  "),//4
+                new Pair(6,"Panachayal","பனஞ்சாயல் "), //4
+                new Pair(6,"Vattanam","வட்டானம் "), //4
+                new Pair(6,"Kaliyanagari","கலியநகரி "), //4
+                new Pair(6,"Pullakadamban","புல்லக்கடம்பன் "), //4
                
 
                 // RMD-Kilakku
@@ -253,8 +259,8 @@ namespace CenturyFinCorpApp.UsrCtrl
                 new Pair(8,"Achunthavayal","அச்சுந்தவயல்"),
 
                 new Pair(9,"RSM-Nagar","ஆர்.எஸ்.மங்களம்"),
-
                 new Pair(10,"Thondi","தொண்டி"),
+
                 new Pair(11,"Others","Other Assembly"),
                 new Pair(12,"Dont Know","Dont Know"),
                 new Pair(12,",",",")
@@ -318,8 +324,6 @@ namespace CenturyFinCorpApp.UsrCtrl
             }
 
             dataGridView1.SelectAll();
-
-            //dataGridView1.DataSource = assemblies.Where(w => w.Address.Contains(textBox1.Text.Trim())).ToList();
 
         }
 
@@ -414,7 +418,6 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void button8_Click(object sender, EventArgs e)
         {
-            //dataGridView1.DataSource = assemblies;
             LoadGrid();
             LoadRec(0);
         }
@@ -433,8 +436,6 @@ namespace CenturyFinCorpApp.UsrCtrl
                 data = data.Where(w => w.Phone.Contains(txtPhone.Text)).ToList();
             }
 
-
-
             fData = new List<TvdMember>();
             fData = data.OrderByDescending(o => o.Money)
                 .ThenBy(o => o.Phone)
@@ -442,12 +443,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             dataGridView1.DataSource = fData;
 
-            //lblRecCounts.Text = $"{data.Count} உறுப்பினர்கள்";
-
             LoadRec(fData.Count);
-
-
-
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -477,12 +473,9 @@ namespace CenturyFinCorpApp.UsrCtrl
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 var file = ofd.FileName;
-                //dynamic data = Json.Decode(File.ReadAllText(file));
-
                 var con = File.ReadAllText(file);
 
                 string s = con.RemoveLines(2);
-                //.Remove(con.LastIndexOf('}'));}
 
                 s = "[" + Environment.NewLine + s;
                 s = s.Remove(s.LastIndexOf('}'));
@@ -567,9 +560,6 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             dataGridView1.DataSource = allData;
 
-            //LoadRec();
-
-
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -586,7 +576,6 @@ namespace CenturyFinCorpApp.UsrCtrl
                 dataGridView1.DataSource = fData;
                 LoadRec(fData.Count);
 
-                //lblRecCounts.Text = $"{data.Count} உறுப்பினர்கள்";
             }
 
         }
@@ -602,13 +591,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         }
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            //if (IsEnterKey == false)
-            //{
-            //    EditCancel();
-            //    return;
-            //}
-
-            //int existingTxnId = 0; // to  keep existing txn id.
+            
             DataGridView grid = (sender as DataGridView);
             int rowIndex = grid.CurrentCell.RowIndex;
             string owningColumnName = grid.CurrentCell.OwningColumn.Name;
@@ -678,10 +661,9 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             List<TvdMember> data = TvdMember.GetAll();
             string detail = "";
-            //data = TvdMember.GetAll();
+
             if (checkBox1.Checked)
             {
-                //data = TvdMember.GetAll();
                 detail = "தொகுதியில்";
             }
             else
@@ -690,10 +672,9 @@ namespace CenturyFinCorpApp.UsrCtrl
                 data = data.Where(w => w.UtPaguthiEng.Contains(selectedPan)).ToList();
                 detail = (comboBox1.SelectedItem as Pair).DisplayTamil + "-யில்";
             }
-            //if (customers == null) return;
+            
             var value = ((KeyValuePair<int, string>)comboBox3.SelectedItem).Key;
             List<TvdMember> searchedMember = null;
-
 
             if (value == 1)
             {
@@ -734,12 +715,8 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 noMemberPanchayat.ForEach(fe => { localData.Add(new { panchayat = fe, MembersCount = 0 }); });
 
-                
-                
-
                 if(value == 5)
-                    localData = localData.OrderByDescending(o => o.MembersCount).ToList();
-                
+                    localData = localData.OrderByDescending(o => o.MembersCount).ToList();                
                 else if (value == 6)
                     localData = localData.OrderBy(o => o.MembersCount).ToList();
                 else
@@ -754,11 +731,8 @@ namespace CenturyFinCorpApp.UsrCtrl
                 lblDetails.Text = $"{localData.Count} ஊராட்சியின் உறுப்பினர் எண்ணிக்கை!";
                 return;
             }
-           
-
 
             dataGridView1.DataSource = searchedMember;
-
 
         }
     }
