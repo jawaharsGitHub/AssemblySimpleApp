@@ -110,7 +110,7 @@ namespace DataAccess.PrimaryTypes
 
                 var u = list.Where(c => c.MemberId == memberId).First();
 
-                if (u.UtPaguthi.Trim() == string.Empty)
+                if (u.UtPaguthiEng == null || u.UtPaguthiEng.Trim() == string.Empty)
                 {
                     u.Paguthi = Paguthi;
                     u.UtPaguthi = utPaguthi;
@@ -119,26 +119,6 @@ namespace DataAccess.PrimaryTypes
 
                     WriteObjectsToFile(list, JsonFilePath);
                 }
-
-
-                //if (u.UtPaguthi.Trim() == string.Empty)
-                //{
-                //    u.Paguthi = Paguthi;
-                //    u.UtPaguthi = utPaguthi;
-                //    u.PaguthiEng = pagEng;
-                //    u.UtPaguthiEng = utPagEng;
-                //}
-                //else
-                //{
-                //    u.Paguthi = Paguthi;
-                //    u.UtPaguthi = $"{u.UtPaguthi},{utPaguthi}";
-                //    u.PaguthiEng = pagEng;
-                //    u.UtPaguthiEng = $"{u.UtPaguthiEng},{utPagEng}";
-                //    u.MultiplePlace = true;
-                //}
-
-                
-
             }
             catch (Exception ex)
             {

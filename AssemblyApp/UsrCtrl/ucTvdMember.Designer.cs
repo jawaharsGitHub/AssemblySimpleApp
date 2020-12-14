@@ -51,6 +51,7 @@
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.lblDetails = new System.Windows.Forms.Label();
+            this.chkExpAll = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -276,10 +277,21 @@
             this.lblDetails.TabIndex = 22;
             this.lblDetails.Text = "[details]";
             // 
+            // chkExpAll
+            // 
+            this.chkExpAll.AutoSize = true;
+            this.chkExpAll.Location = new System.Drawing.Point(474, 68);
+            this.chkExpAll.Name = "chkExpAll";
+            this.chkExpAll.Size = new System.Drawing.Size(76, 17);
+            this.chkExpAll.TabIndex = 23;
+            this.chkExpAll.Text = "Export All?";
+            this.chkExpAll.UseVisualStyleBackColor = true;
+            // 
             // ucTvdMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.chkExpAll);
             this.Controls.Add(this.lblDetails);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.comboBox3);
@@ -336,5 +348,6 @@
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label lblDetails;
+        private System.Windows.Forms.CheckBox chkExpAll;
     }
 }

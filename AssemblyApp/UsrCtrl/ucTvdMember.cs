@@ -371,7 +371,6 @@ namespace CenturyFinCorpApp.UsrCtrl
                             foreach (string memberId in dataToUpdate)
                             {
                                 TvdMember.UpdateMemberDetails(memberId, Pagu.DisplayTamil, utPagu.DisplayTamil, Pagu.Display, utPagu.Display);
-                                // Thread.Sleep(500);
                             }
                         }
                     }
@@ -397,7 +396,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void OnlyEmpty(int max = 0)
         {
-            var x = assemblies.Where(w => w.UtPaguthi.Trim() == string.Empty).ToList();
+            var x = assemblies.Where(w => w.UtPaguthiEng == null ||  w.UtPaguthiEng.Trim() == string.Empty).ToList();
 
             if (max > 0)
             {
@@ -450,18 +449,60 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             StringBuilder sb = new StringBuilder();
             int i = 0;
-
-            var d = fData.Where(w => w.UpdatedTime.ToString() == "01-01-0001 00:00:00").OrderBy(o => o.Phone).ToList();
-
-            d.ForEach(fe =>
+            if (chkExpAll.Checked == false)
             {
-                i = i + 1;
-                sb.Append($"({i}){fe.Name}-- {fe.Phone}--{fe.Address}");
-                sb.Append(Environment.NewLine);
-                sb.Append(Environment.NewLine);
-            });
+                var d = fData.Where(w => w.UpdatedTime.ToString() == "01-01-0001 00:00:00").OrderBy(o => o.Phone).ToList();
 
-            File.WriteAllText($@"F:\NTK\jawa - 2021\members\{selectedPan}({d.Count}).txt", sb.ToString());
+                sb.AppendLine($"-------------------");
+                sb.AppendLine($"{fData[0].UtPaguthi} ({fData.Count})");
+                sb.AppendLine($"-------------------");
+
+                d.ForEach(fe =>
+                {
+                    i = i + 1;
+                    sb.AppendLine($"({i}){fe.Name} [ {fe.Phone} ]{Environment.NewLine}{fe.Address}");
+                    sb.Append(Environment.NewLine);
+                });
+
+                File.WriteAllText($@"F:\NTK\jawa - 2021\members\{selectedPan}({d.Count}).txt", sb.ToString());
+                MessageBox.Show($"{selectedPan}({d.Count} Exported Successfully!");
+            }
+            else
+            {
+                var allData = (from t in TvdMember.GetAll().Where(w => w.UpdatedTime.ToString() == "01-01-0001 00:00:00")
+                                where t.UpdatedTime.ToString() == "01-01-0001 00:00:00" &&
+                                   t.UtPaguthiEng.Contains(',') == false &&
+                                   t.UtPaguthiEng.Contains("Others") == false &&
+                                  t.UtPaguthiEng.Contains("Dont") == false
+                         group t by t.UtPaguthiEng into newGrp
+                         select new {
+                             Key = newGrp.Key,
+                             Data = newGrp.ToList()
+                         }).ToList();
+
+                int panNo = 0;
+
+                allData.OrderByDescending(o => o.Data.Count).ToList().ForEach(fe =>
+                {
+                    panNo = panNo + 1;
+
+                    sb.AppendLine($"-------------------");
+                    sb.AppendLine($"{panNo}. {fe.Data[0].UtPaguthi} ({fe.Data.Count})");
+                    sb.AppendLine($"-------------------");
+
+                    int panchMemberNo = 0;
+                    fe.Data.OrderBy(o => o.Phone).ToList().ForEach(fed =>
+                    {
+                        panchMemberNo = panchMemberNo + 1;
+                        sb.AppendLine($"({panchMemberNo})  {fed.Name} [ {fed.Phone} ]{Environment.NewLine}{fed.Address}");
+                        sb.AppendLine(Environment.NewLine);
+                    });
+
+                });
+
+                File.WriteAllText(@"F:\NTK\jawa - 2021\members\AllPanchayatMember.txt", sb.ToString());
+                MessageBox.Show($"All Members Exported Successfully!");
+            }
 
 
         }
@@ -598,7 +639,9 @@ namespace CenturyFinCorpApp.UsrCtrl
             string cellValue = FormGeneral.GetGridCellValue(grid, rowIndex, owningColumnName);
             TvdMember cus = grid.Rows[grid.CurrentCell.RowIndex].DataBoundItem as TvdMember;
 
-            if (string.IsNullOrEmpty(cellValue))
+            
+
+            if (owningColumnName != "UtPaguthiEng" && string.IsNullOrEmpty(cellValue))
             {
                 EditCancel();
                 return;
@@ -618,31 +661,25 @@ namespace CenturyFinCorpApp.UsrCtrl
             else if (owningColumnName == "Money")
             {
                 TvdMember.UpdateMoney(cus.MemberId, Convert.ToBoolean(cellValue));
-
             }
 
             else if (owningColumnName == "Vote")
             {
                 TvdMember.UpdateVotes(cus.MemberId, cellValue.ToInt32());
-
             }
             else if (owningColumnName == "UtPaguthiEng")
             {
-                if(utPaguthiList.Select(s => s.Display).Contains(cellValue) == false)
+
+                if (cellValue != null && utPaguthiList.Select(s => s.Display).Contains(cellValue) == false)
                 {
                     MessageBox.Show("Wrong Panchayats!");
                     return;
                 }
 
-                TvdMember.UpdateUtEngPaguthi(cus.MemberId, cellValue);
-
+                TvdMember.UpdateUtEngPaguthi(cus.MemberId, cellValue ?? "");
             }
 
-
             EditSuccess();
-
-
-
         }
 
         private void EditCancel()
