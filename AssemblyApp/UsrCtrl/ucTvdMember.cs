@@ -460,7 +460,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 d.ForEach(fe =>
                 {
                     i = i + 1;
-                    sb.AppendLine($"({i}){fe.Name} [ {fe.Phone} ]{Environment.NewLine}{fe.Address}");
+                    sb.AppendLine($"({i})  {fe.Name} [ {fe.Phone} ]{Environment.NewLine}{fe.Address}");
                     sb.Append(Environment.NewLine);
                 });
 
