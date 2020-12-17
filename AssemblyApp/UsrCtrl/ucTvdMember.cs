@@ -441,6 +441,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 .ToList();
 
             dataGridView1.DataSource = fData;
+            ColumnVisibility();
 
             LoadRec(fData.Count);
         }
@@ -612,9 +613,10 @@ namespace CenturyFinCorpApp.UsrCtrl
                 fData = new List<TvdMember>();
                 fData = data.OrderByDescending(o => o.Money)
                     .ThenBy(o => o.Phone)
-                    .ToList();
+                    .ToList();               
 
                 dataGridView1.DataSource = fData;
+                ColumnVisibility();
                 LoadRec(fData.Count);
 
             }
@@ -813,18 +815,11 @@ namespace CenturyFinCorpApp.UsrCtrl
             {
                 searchedMember = (from d in data
                                   where d.IsFemale
-                                  select d).ToList();
+                                  select d).OrderBy(o => o.UtPaguthiEng).ThenBy(t => t.Phone).ToList();
 
                 lblDetails.Text = $"{searchedMember.Count} மகளிர் உறுப்பினர் உள்ளார்கள்";
             }
-            else if (value == 11)
-            {
-                searchedMember = (from d in data
-                                  where d.IsFemale
-                                  select d).ToList();
-
-                lblDetails.Text = $"{searchedMember.Count} மகளிர் உறுப்பினர் உள்ளார்கள்";
-            }
+            
 
             else if (value == 12)
             {
