@@ -36,8 +36,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblRecCounts = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -52,6 +50,7 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.lblDetails = new System.Windows.Forms.Label();
             this.chkExpAll = new System.Windows.Forms.CheckBox();
+            this.button12 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,14 +84,14 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(37, 38);
+            this.textBox1.Location = new System.Drawing.Point(5, 38);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(187, 20);
             this.textBox1.TabIndex = 3;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(73, 64);
+            this.button2.Location = new System.Drawing.Point(25, 64);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(131, 23);
             this.button2.TabIndex = 4;
@@ -132,24 +131,6 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(186, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "[status]";
-            // 
-            // lblRecCounts
-            // 
-            this.lblRecCounts.AutoSize = true;
-            this.lblRecCounts.Location = new System.Drawing.Point(358, 64);
-            this.lblRecCounts.Name = "lblRecCounts";
-            this.lblRecCounts.Size = new System.Drawing.Size(41, 13);
-            this.lblRecCounts.TabIndex = 9;
-            this.lblRecCounts.Text = "[status]";
-            // 
             // button6
             // 
             this.button6.Location = new System.Drawing.Point(813, 30);
@@ -183,9 +164,9 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(337, 35);
+            this.btnSearch.Location = new System.Drawing.Point(361, 35);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(110, 23);
+            this.btnSearch.Size = new System.Drawing.Size(98, 23);
             this.btnSearch.TabIndex = 13;
             this.btnSearch.Text = "SEARCH GRID";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -193,7 +174,7 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(465, 35);
+            this.btnExport.Location = new System.Drawing.Point(468, 35);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(80, 23);
             this.btnExport.TabIndex = 14;
@@ -287,10 +268,21 @@
             this.chkExpAll.Text = "Export All?";
             this.chkExpAll.UseVisualStyleBackColor = true;
             // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(205, 2);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(131, 66);
+            this.button12.TabIndex = 24;
+            this.button12.Text = "Update Female Flag";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
             // ucTvdMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button12);
             this.Controls.Add(this.chkExpAll);
             this.Controls.Add(this.lblDetails);
             this.Controls.Add(this.checkBox1);
@@ -305,8 +297,6 @@
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.lblRecCounts);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -333,8 +323,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblRecCounts;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
@@ -349,5 +337,6 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label lblDetails;
         private System.Windows.Forms.CheckBox chkExpAll;
+        private System.Windows.Forms.Button button12;
     }
 }

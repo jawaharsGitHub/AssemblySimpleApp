@@ -1,18 +1,15 @@
-﻿using System;
+﻿using Common.ExtensionMethod;
+using DataAccess.PrimaryTypes;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DataAccess.PrimaryTypes;
-using System.Threading;
-using System.IO;
-using System.Web.Helpers;
-using Common.ExtensionMethod;
-using Newtonsoft.Json;
 
 namespace CenturyFinCorpApp.UsrCtrl
 {
@@ -52,7 +49,10 @@ namespace CenturyFinCorpApp.UsrCtrl
                    new KeyValuePair<int, string>(4, "Not Yet Contact"),
                    new KeyValuePair<int, string>(5, "HighOrder By Members Count"),
                    new KeyValuePair<int, string>(6, "LowOrder By Members Count"),
-                   new KeyValuePair<int, string>(7, "Order By Panchayat Names And Count")
+                   new KeyValuePair<int, string>(7, "Order By Panchayat Names And Count"),
+                   new KeyValuePair<int, string>(8, "Same Phone Numbers"),
+                   new KeyValuePair<int, string>(9, "Same Family"),
+                   new KeyValuePair<int, string>(10, "NO Phone No. Member")
                };
 
             return myKeyValuePair;
@@ -67,6 +67,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             assemblies.ForEach(f => f.Sno = i++);
             dataGridView1.DataSource = assemblies;
             ColumnVisibility();
+            LoadRec(assemblies.Count);
 
 
         }
@@ -95,7 +96,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void LoadRec(int searchCount)
         {
-            lblRecCounts.Text = $"{searchCount} out of {TvdMember.GetCount()}";
+            lblDetails.Text = $"{searchCount} out of {TvdMember.GetCount()}";
         }
         private List<Pair> GetPaguthi()
         {
@@ -104,10 +105,10 @@ namespace CenturyFinCorpApp.UsrCtrl
             {
                 new Pair(1,"Rsm-K", "ஆர்.எஸ்.மங்களம் - கிழக்கு"),
                 new Pair(2,"Rsm-M", "ஆர்.எஸ்.மங்களம் - மேற்கு"),
-                new Pair(3,"Tvd-T","திருவாடானை - தெற்கு"),
+                //new Pair(3,"Tvd-T","திருவாடானை - தெற்கு"),
                 new Pair(4,"Tvd-K", "திருவாடானை - கிழக்கு"),
                 new Pair(5,"Tvd-M", "திருவாடானை - மேற்கு"),
-                new Pair(6,"Tvd-V", "திருவாடானை - வடக்கு"),
+                //new Pair(6,"Tvd-V", "திருவாடானை - வடக்கு"),
                 new Pair(7,"Rmd-K", "இராம்நாடு - கிழக்கு"),
                 new Pair(8,"Rmd-m", "இராம்நாடு - மேற்கு"),
                 new Pair(9,"RSMNagar", "ஆர்.எஸ்.மங்களம் நகர்"),
@@ -164,34 +165,40 @@ namespace CenturyFinCorpApp.UsrCtrl
                 new Pair(2,"Thiruthervalai","திருத்தேர்வளை "),
                 new Pair(2,"Vadakkaloor","வடக்கலூர்"),
 
-                // TVD-Therku
-                new Pair(3,"Theloor", "தேளூர் "), //4
-                new Pair(3,"Thalirmarungoor","தளிர்மருங்கூர் "), //4
-                new Pair(3,"Aathiyur","ஆதியூர் "), //4
-                new Pair(3,"Arumboor","அரும்பூர் "), //4
-                new Pair(3,"Kulaththoor","குளத்தூர் "), //4
-                new Pair(3,"Thiruvetriyur","திருவெற்றியூர் "), //4
-                new Pair(3,"Mugilthanagam","முகிழ்த்தகம் "), //4
-                new Pair(3,"Nambuthalai","நம்புதாளை "),  //4
-                new Pair(3,"Puthupattinam","புதுப்பட்டினம் "),//4
-                new Pair(3,"Mullimunai","முள்ளிமுனை "),//4
-                new Pair(3,"Karangaadu","காரங்காடு"),//4
-
-                // TVD-Kilakku
-                new Pair(4,"Mangalakudi", "மங்களக்குடி "), // 5
+                // TVD-Kilakku (22-VT)
+                new Pair(4,"Theloor", "தேளூர் "), 
+                new Pair(4,"Thalirmarungoor","தளிர்மருங்கூர் "), 
+                new Pair(4,"Aathiyur","ஆதியூர் "),
+                new Pair(4,"Arumboor","அரும்பூர் "), 
+                new Pair(4,"Kulaththoor","குளத்தூர் "), 
+                new Pair(4,"Thiruvetriyur","திருவெற்றியூர் "), 
+                new Pair(4,"Mugilthanagam","முகிழ்த்தகம் "), 
+                new Pair(4,"Nambuthalai","நம்புதாளை "),  
+                new Pair(4,"Puthupattinam","புதுப்பட்டினம் "),
+                new Pair(4,"Mullimunai","முள்ளிமுனை "),
+                new Pair(4,"Karangaadu","காரங்காடு"),
                 new Pair(4,"Arasaththoor","அரசத்தூர் "),
-                new Pair(4,"Nilamalagiyamangalam","நிலமழகியமங்களம் "), // 5
-                new Pair(4,"Kattivayal","கட்டிவயல் "), //5
-                new Pair(4,"Kunjangulam","குஞ்சங்குளம் "), //5
-                new Pair(4,"Anjukottai","அஞ்சுகோட்டை "), //5
-                new Pair(4,"Kodanoor","கோடனூர் "), //5
-                new Pair(4,"Pandukudi","பாண்டுகுடி "), //5
-                new Pair(4,"Nagarikathan","நகரிகாத்தான் "), //5
                 new Pair(4,"Kodipangu","கொடிப்பங்கு "),
                 new Pair(4,"Maavoor","மாவூர் "),
-                new Pair(4,"Achchangudi","அச்சங்குடி "), //5
-                
-                // TVD-MErku
+                new Pair(4,"Kattavilagam", "கட்டவிளாகம் "),               
+                new Pair(4,"Vallaiyaapuram","வெள்ளையபுரம் "), 
+                new Pair(4,"Oriyur","ஓரியூர் "),
+                new Pair(4,"S.P.Pattinam","S.P. பட்டிணம்  "),
+                new Pair(4,"Panachayal","பனஞ்சாயல் "), 
+                new Pair(4,"Vattanam","வட்டானம் "),
+                new Pair(4,"Kaliyanagari","கலியநகரி "), 
+                new Pair(4,"Pullakadamban","புல்லக்கடம்பன் "),                 
+
+                // TVD-Merku (25-AD)
+                new Pair(5,"Mangalakudi", "மங்களக்குடி "),                
+                new Pair(5,"Nilamalagiyamangalam","நிலமழகியமங்களம் "), 
+                new Pair(5,"Kattivayal","கட்டிவயல் "), 
+                new Pair(5,"Kunjangulam","குஞ்சங்குளம் "), 
+                new Pair(5,"Anjukottai","அஞ்சுகோட்டை "),
+                new Pair(5,"Kodanoor","கோடனூர் "), 
+                new Pair(5,"Pandukudi","பாண்டுகுடி "), 
+                new Pair(5,"Nagarikathan","நகரிகாத்தான் "),                
+                new Pair(5,"Achchangudi","அச்சங்குடி "), 
                 new Pair(5,"Neivayal", "நெய்வயல் "),
                 new Pair(5,"karumoli","கருமொழி "),
                 new Pair(5,"Palangulam","பழங்குளம் "),
@@ -204,21 +211,10 @@ namespace CenturyFinCorpApp.UsrCtrl
                 new Pair(5,"Periakeeramangalam","பெரியகீரமங்களம் "),
                 new Pair(5,"Kalloore","கல்லூர் "),
                 new Pair(5,"Thiruvadanai","திருவாடானை "),
-               
-                // TVD-Vadakku
-                new Pair(6,"Kattavilagam", "கட்டவிளாகம் "), //4
-                new Pair(6,"Aandaavoorani","ஆண்டாவூரணி "),      //5
-                new Pair(6,"Paaganur","பாகனூர் "),                 //5
-                new Pair(6,"Sirukambaiyur","சிறுகம்பையூர் "),     //5
-                new Pair(6,"Pathanakudi","பதனக்குடி "),             //5
-                new Pair(6,"Vallaiyaapuram","வெள்ளையபுரம் "), //4
-                new Pair(6,"Oriyur","ஓரியூர் "),//4
-                new Pair(6,"S.P.Pattinam","S.P. பட்டிணம்  "),//4
-                new Pair(6,"Panachayal","பனஞ்சாயல் "), //4
-                new Pair(6,"Vattanam","வட்டானம் "), //4
-                new Pair(6,"Kaliyanagari","கலியநகரி "), //4
-                new Pair(6,"Pullakadamban","புல்லக்கடம்பன் "), //4
-               
+                new Pair(5,"Aandaavoorani","ஆண்டாவூரணி "),      
+                new Pair(5,"Paaganur","பாகனூர் "),                 
+                new Pair(5,"Sirukambaiyur","சிறுகம்பையூர் "),     
+                new Pair(5,"Pathanakudi","பதனக்குடி "),
 
                 // RMD-Kilakku
                 new Pair(7,"Alagankulam", "அழகன்குளம்"),
@@ -263,7 +259,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 new Pair(11,"Others","Other Assembly"),
                 new Pair(12,"Dont Know","Dont Know"),
-                new Pair(12,",",",")
+                new Pair(13,",",",")
 
 
             };
@@ -378,7 +374,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                     i = i + 1;
 
-                    label1.BeginInvoke(new Action(() => label1.Text = $"{i} - {fe.DisplayTamil.Trim()}"));
+                    // label1.BeginInvoke(new Action(() => label1.Text = $"{i} - {fe.DisplayTamil.Trim()}"));
                 });
 
                 MessageBox.Show("ALL DONE");
@@ -396,6 +392,8 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void OnlyEmpty(int max = 0)
         {
+            assemblies = TvdMember.GetAll();
+
             var x = assemblies.Where(w => w.UtPaguthiEng == null ||  w.UtPaguthiEng.Trim() == string.Empty).ToList();
 
             if (max > 0)
@@ -418,7 +416,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         private void button8_Click(object sender, EventArgs e)
         {
             LoadGrid();
-            LoadRec(0);
+            
         }
 
         List<TvdMember> fData;
@@ -768,9 +766,87 @@ namespace CenturyFinCorpApp.UsrCtrl
                 lblDetails.Text = $"{localData.Count} ஊராட்சியின் உறுப்பினர் எண்ணிக்கை!";
                 return;
             }
+            else if (value == 8)
+            {
+                dataGridView1.DataSource = (from d in data
+                    group d by d.Phone.Trim() into ng
+                    select new {
+                        Phone = ng.Key,
+                        Count = ng.Count()
+                    }).Where(w => w.Count > 1).OrderByDescending(o => o.Count).ToList();
+                 
+
+                lblDetails.Text = $"ஒரே தொடர்பு எண் கொண்ட உறுப்பினர்கள்!";
+                return;
+            }
+            else if (value == 9)
+            {
+                dataGridView1.DataSource = (from d in data
+                                            group d by d.Address.Trim() into ng
+                                            select new
+                                            {
+                                                Address = ng.Key,
+                                                Count = ng.Count(),
+                                                Panchayat = ng.First().UtPaguthiEng
+                                            }).Where(w => w.Count > 1).OrderByDescending(o => o.Count).ToList();
+
+
+
+                lblDetails.Text = $"ஒரே குடும்ப உறுப்பினர்கள்!";
+                return;
+            }
+
+            else if (value == 10)
+            {
+                searchedMember = (from d in data
+                                  where string.IsNullOrEmpty(d.Phone.Trim())
+                                  select d).ToList();
+
+      lblDetails.Text = $"தொடர்பு எண் இல்லாதவர்கள்!";
+                
+            }
+
 
             dataGridView1.DataSource = searchedMember;
 
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                var file = ofd.FileName;
+                var con = File.ReadAllText(file);
+
+                string s = con.RemoveLines(2);
+
+                s = "[" + Environment.NewLine + s;
+                s = s.Remove(s.LastIndexOf('}'));
+
+                s = s.Replace("\"உறுப்பினர் எண்\"", "\"MemberId\"")
+                     .Replace("\"முகவரி\"", "\"Address\"")
+                     .Replace("\"நாடு\"", "\"Country\"")
+                     .Replace("\"மாநிலம்\"", "\"State\"")
+                     .Replace("\"மாவட்டம்\"", "\"District\"")
+                     .Replace("\"தொகுதி\"", "\"Assembly\"")
+                     .Replace("\"பெயர்\"", "\"Name\"")
+                     .Replace("\"தொடர்பு எண்\"", "\"Phone\"")
+                     .Replace("\"மின்னஞ்சல்\"", "\"Email\"");
+
+
+                var myList = JsonConvert.DeserializeObject<List<TvdMember>>(s).ToList();
+
+                var femMemId = myList.Select(ss => ss.MemberId.Trim()).ToList();
+
+                TvdMember.BulkUpdateFemaleFlag(femMemId);
+
+                MessageBox.Show($"{femMemId.Count} female flag updated!");
+
+                LoadRec(femMemId.Count);
+
+            }
         }
     }
 

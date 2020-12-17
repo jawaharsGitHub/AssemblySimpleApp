@@ -37,6 +37,8 @@ namespace DataAccess.PrimaryTypes
 
         public int Vote { get; set; }
 
+        public bool IsFemale { get; set; }
+
         public DateTime UpdatedTime { get; set; }
 
         public static List<TvdMember> GetAll()
@@ -53,6 +55,18 @@ namespace DataAccess.PrimaryTypes
         {
             //investment.CreatedDate = DateTime.Today.ToLongTimeString();
             InsertObjectsToJson(JsonFilePath, mem);
+        }
+
+        public static void BulkUpdateFemaleFlag(List<string> femMemIds)
+        {
+            List<TvdMember> list = ReadFileAsObjects<TvdMember>(JsonFilePath);
+
+            var u = list.Where(c => femMemIds.Contains(c.MemberId)).ToList();
+
+            u.ForEach(fe => { fe.IsFemale = true; });
+
+            WriteObjectsToFile(list, JsonFilePath);
+
         }
 
         public static void UpdateMeets(string memId, bool wantMee)
