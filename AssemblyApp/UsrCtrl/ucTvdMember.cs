@@ -52,7 +52,9 @@ namespace CenturyFinCorpApp.UsrCtrl
                    new KeyValuePair<int, string>(7, "Order By Panchayat Names And Count"),
                    new KeyValuePair<int, string>(8, "Same Phone Numbers"),
                    new KeyValuePair<int, string>(9, "Same Family"),
-                   new KeyValuePair<int, string>(10, "NO Phone No. Member")
+                   new KeyValuePair<int, string>(10, "NO Phone No. Member"),
+                   new KeyValuePair<int, string>(11, "Only Female"),
+                   new KeyValuePair<int, string>(12, "Female By Area")
                };
 
             return myKeyValuePair;
@@ -734,14 +736,14 @@ namespace CenturyFinCorpApp.UsrCtrl
             }
             else if (value == 5 || value == 6)
             {
-               var localData  = (from d in data
-                                  where 
-                                  d.UtPaguthiEng.Contains(',') == false &&
-                                  d.UtPaguthiEng.Contains("Others") == false &&
-                                  d.UtPaguthiEng.Contains("Dont") == false
+                var localData = (from d in data
+                                 where
+                                 d.UtPaguthiEng.Contains(',') == false &&
+                                 d.UtPaguthiEng.Contains("Others") == false &&
+                                 d.UtPaguthiEng.Contains("Dont") == false
 
                                  group d by d.UtPaguthiEng into ng
-                                  select new { panchayat = ng.Key , MembersCount = ng.Count() }).ToList();
+                                 select new { panchayat = ng.Key, MembersCount = ng.Count() }).ToList();
 
                 var noMemberPanchayat = utPaguthiList.Where(
                     w => w.Display.Contains(',') == false &&
@@ -750,8 +752,8 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 noMemberPanchayat.ForEach(fe => { localData.Add(new { panchayat = fe, MembersCount = 0 }); });
 
-                if(value == 5)
-                    localData = localData.OrderByDescending(o => o.MembersCount).ToList();                
+                if (value == 5)
+                    localData = localData.OrderByDescending(o => o.MembersCount).ToList();
                 else if (value == 6)
                     localData = localData.OrderBy(o => o.MembersCount).ToList();
                 else
@@ -769,12 +771,13 @@ namespace CenturyFinCorpApp.UsrCtrl
             else if (value == 8)
             {
                 dataGridView1.DataSource = (from d in data
-                    group d by d.Phone.Trim() into ng
-                    select new {
-                        Phone = ng.Key,
-                        Count = ng.Count()
-                    }).Where(w => w.Count > 1).OrderByDescending(o => o.Count).ToList();
-                 
+                                            group d by d.Phone.Trim() into ng
+                                            select new
+                                            {
+                                                Phone = ng.Key,
+                                                Count = ng.Count()
+                                            }).Where(w => w.Count > 1).OrderByDescending(o => o.Count).ToList();
+
 
                 lblDetails.Text = $"ஒரே தொடர்பு எண் கொண்ட உறுப்பினர்கள்!";
                 return;
@@ -802,12 +805,44 @@ namespace CenturyFinCorpApp.UsrCtrl
                                   where string.IsNullOrEmpty(d.Phone.Trim())
                                   select d).ToList();
 
-      lblDetails.Text = $"தொடர்பு எண் இல்லாதவர்கள்!";
-                
+                lblDetails.Text = $"தொடர்பு எண் இல்லாதவர்கள்!";
+
             }
 
+            else if (value == 11)
+            {
+                searchedMember = (from d in data
+                                  where d.IsFemale
+                                  select d).ToList();
 
-            dataGridView1.DataSource = searchedMember;
+                lblDetails.Text = $"{searchedMember.Count} மகளிர் உறுப்பினர் உள்ளார்கள்";
+            }
+            else if (value == 11)
+            {
+                searchedMember = (from d in data
+                                  where d.IsFemale
+                                  select d).ToList();
+
+                lblDetails.Text = $"{searchedMember.Count} மகளிர் உறுப்பினர் உள்ளார்கள்";
+            }
+
+            else if (value == 12)
+            {
+                dataGridView1.DataSource = (from d in data
+                                            where d.IsFemale
+                                            group d by d.UtPaguthi into ng
+                                            select new
+                                            {
+                                                Area = ng.Key,
+                                                Count = ng.Count()
+                                            }).OrderByDescending(o => o.Count).ToList();
+
+                lblDetails.Text = $"Area wise - மகளிர் உறுப்பினர் உள்ளார்கள்";
+                return;
+
+            }
+            
+                dataGridView1.DataSource = searchedMember;
 
         }
 
