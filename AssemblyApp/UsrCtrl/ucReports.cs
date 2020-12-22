@@ -34,7 +34,11 @@ namespace CenturyFinCorpApp.UsrCtrl
                    new KeyValuePair<int, string>(2, "ADMK strong"),
                    new KeyValuePair<int, string>(3, "TTV strong"),
                    new KeyValuePair<int, string>(4, "BOTH STRONG"),
-                   new KeyValuePair<int, string>(5, "BY PANCHAYAT NAME")
+                   new KeyValuePair<int, string>(5, "BY PANCHAYAT NAME"),
+                   new KeyValuePair<int, string>(6, ">>TTV"),
+                   new KeyValuePair<int, string>(7, ">>MNM"),
+                   new KeyValuePair<int, string>(8, "<<TTV"),
+                   new KeyValuePair<int, string>(9, "<<MNM")
 
                };
 
@@ -219,6 +223,71 @@ namespace CenturyFinCorpApp.UsrCtrl
                 (w.DMKP - w.ADMKP > 0 && w.DMKP - w.ADMKP <= 5)).OrderBy(o => o.Ooratchi).ToList();
 
                 dataGridView1.DataSource = r;
+
+
+            }
+
+            else if (value == 6 || value == 8)
+            {
+                var localData = (from d in otherData
+                                 group d by d.ooratchi into ng
+                                 select new
+                                 {
+                                     Ooratchi = ng.Key,
+                                     Ondrium = ng.ToList().First().ondrium,
+                                     NTK = ng.Sum(s => s.ntkvote),
+                                     TTV = ng.Sum(s => s.ttv),                                     
+                                     ADMK = ng.Sum(s => s.admk),
+                                     DMK = ng.Sum(s => s.dmk),
+                                     ADMKP = GetPerc(ng.Sum(s => s.admk), ng.Sum(s => s.total)),
+                                     DMKP = GetPerc(ng.Sum(s => s.dmk), ng.Sum(s => s.total)),                                     
+                                     MNM = ng.Sum(s => s.mnm),
+                                     TOTAL = ng.Sum(s => s.total),
+                                 }
+
+                                ).ToList();
+
+                if(value == 6)
+                {
+                    dataGridView1.DataSource = localData.Where(w => w.NTK > w.TTV).OrderByDescending(o => o.NTK).ToList();
+                }
+
+                if (value == 8)
+                {
+                    dataGridView1.DataSource = localData.Where(w =>  w.NTK < w.TTV).OrderByDescending(o => o.TTV).ToList();
+                }
+
+            }
+
+            else if (value == 7 || value == 9)
+            {
+                var localData = (from d in otherData
+                                 group d by d.ooratchi into ng
+                                 select new
+                                 {
+                                     Ooratchi = ng.Key,
+                                     Ondrium = ng.ToList().First().ondrium,
+                                     NTK = ng.Sum(s => s.ntkvote),
+                                     MNM = ng.Sum(s => s.mnm),
+                                     ADMK = ng.Sum(s => s.admk),
+                                     DMK = ng.Sum(s => s.dmk),
+                                     ADMKP = GetPerc(ng.Sum(s => s.admk), ng.Sum(s => s.total)),
+                                     DMKP = GetPerc(ng.Sum(s => s.dmk), ng.Sum(s => s.total)),
+                                     TTV = ng.Sum(s => s.ttv),
+                                     TOTAL = ng.Sum(s => s.total),
+                                 }
+
+                                ).ToList();
+
+                if (value == 7)
+                {
+                    dataGridView1.DataSource = localData.Where(w => w.NTK > w.MNM).OrderByDescending(o => o.NTK).ToList();
+                }
+
+                if (value == 9)
+                {
+                    dataGridView1.DataSource = localData.Where(w => w.NTK < w.MNM).OrderByDescending(o => o.MNM).ToList();
+                }
 
 
             }
