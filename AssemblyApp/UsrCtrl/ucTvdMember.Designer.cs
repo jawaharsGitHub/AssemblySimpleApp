@@ -42,7 +42,6 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.button11 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -51,6 +50,9 @@
             this.lblDetails = new System.Windows.Forms.Label();
             this.chkExpAll = new System.Windows.Forms.CheckBox();
             this.button12 = new System.Windows.Forms.Button();
+            this.rdbFem = new System.Windows.Forms.RadioButton();
+            this.rdbMale = new System.Windows.Forms.RadioButton();
+            this.rdbAll = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -192,16 +194,6 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(3, 11);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(131, 23);
-            this.button10.TabIndex = 16;
-            this.button10.Text = "All Counts";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
-            // 
             // txtPhone
             // 
             this.txtPhone.Location = new System.Drawing.Point(582, 0);
@@ -252,7 +244,7 @@
             this.lblDetails.AutoSize = true;
             this.lblDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDetails.ForeColor = System.Drawing.Color.White;
-            this.lblDetails.Location = new System.Drawing.Point(261, 100);
+            this.lblDetails.Location = new System.Drawing.Point(33, 101);
             this.lblDetails.Name = "lblDetails";
             this.lblDetails.Size = new System.Drawing.Size(73, 24);
             this.lblDetails.TabIndex = 22;
@@ -272,16 +264,53 @@
             // 
             this.button12.Location = new System.Drawing.Point(205, 2);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(131, 66);
+            this.button12.Size = new System.Drawing.Size(131, 41);
             this.button12.TabIndex = 24;
             this.button12.Text = "Update Female Flag";
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
+            // rdbFem
+            // 
+            this.rdbFem.AutoSize = true;
+            this.rdbFem.Location = new System.Drawing.Point(205, 50);
+            this.rdbFem.Name = "rdbFem";
+            this.rdbFem.Size = new System.Drawing.Size(31, 17);
+            this.rdbFem.TabIndex = 25;
+            this.rdbFem.TabStop = true;
+            this.rdbFem.Text = "F";
+            this.rdbFem.UseVisualStyleBackColor = true;
+            // 
+            // rdbMale
+            // 
+            this.rdbMale.AutoSize = true;
+            this.rdbMale.Location = new System.Drawing.Point(242, 50);
+            this.rdbMale.Name = "rdbMale";
+            this.rdbMale.Size = new System.Drawing.Size(34, 17);
+            this.rdbMale.TabIndex = 26;
+            this.rdbMale.TabStop = true;
+            this.rdbMale.Text = "M";
+            this.rdbMale.UseVisualStyleBackColor = true;
+            // 
+            // rdbAll
+            // 
+            this.rdbAll.AutoSize = true;
+            this.rdbAll.Checked = true;
+            this.rdbAll.Location = new System.Drawing.Point(279, 50);
+            this.rdbAll.Name = "rdbAll";
+            this.rdbAll.Size = new System.Drawing.Size(44, 17);
+            this.rdbAll.TabIndex = 27;
+            this.rdbAll.TabStop = true;
+            this.rdbAll.Text = "ALL";
+            this.rdbAll.UseVisualStyleBackColor = true;
+            // 
             // ucTvdMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.rdbAll);
+            this.Controls.Add(this.rdbMale);
+            this.Controls.Add(this.rdbFem);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.chkExpAll);
             this.Controls.Add(this.lblDetails);
@@ -290,7 +319,6 @@
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.txtPhone);
-            this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnSearch);
@@ -329,7 +357,6 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.ComboBox comboBox2;
@@ -338,5 +365,8 @@
         private System.Windows.Forms.Label lblDetails;
         private System.Windows.Forms.CheckBox chkExpAll;
         private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.RadioButton rdbFem;
+        private System.Windows.Forms.RadioButton rdbMale;
+        private System.Windows.Forms.RadioButton rdbAll;
     }
 }

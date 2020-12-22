@@ -54,7 +54,9 @@ namespace CenturyFinCorpApp.UsrCtrl
                    new KeyValuePair<int, string>(9, "Same Family"),
                    new KeyValuePair<int, string>(10, "NO Phone No. Member"),
                    new KeyValuePair<int, string>(11, "Only Female"),
-                   new KeyValuePair<int, string>(12, "Female By Area")
+                   new KeyValuePair<int, string>(12, "Female By Area"),
+                   new KeyValuePair<int, string>(13, "By Ondrium Name")                   ,
+                   new KeyValuePair<int, string>(14, "By Ondrium Count")
                };
 
             return myKeyValuePair;
@@ -422,13 +424,23 @@ namespace CenturyFinCorpApp.UsrCtrl
         }
 
         List<TvdMember> fData;
+
         string selectedPan = "";
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             selectedPan = (comboBox1.SelectedItem as Pair).Display;
 
-            var data = assemblies.Where(w => w.UtPaguthiEng.Contains(selectedPan)).ToList();
+            var data = assemblies.Where(w => string.IsNullOrEmpty(w.UtPaguthiEng) == false && w.UtPaguthiEng.Contains(selectedPan)).ToList();
+
+            if(rdbFem.Checked)
+            {
+                data = data.Where(w =>  w.IsFemale == true).ToList();
+            }
+            else if (rdbMale.Checked)
+            {
+                data = data.Where(w => w.IsFemale == false).ToList();
+            }
 
             if (txtPhone.Text.Trim() != string.Empty)
             {
@@ -446,13 +458,45 @@ namespace CenturyFinCorpApp.UsrCtrl
             LoadRec(fData.Count);
         }
 
+        private string GetFileNameFIlter()
+        {
+
+            StringBuilder filterName = new StringBuilder();
+
+            if(chkExpAll.Checked == true)  filterName.Append("_ALL");
+
+            if (rdbMale.Checked == true)  filterName.Append("_M");
+            else if (rdbFem.Checked == true)  filterName.Append("_F");
+
+            return filterName.ToString();
+
+       }
+
         private void btnExport_Click(object sender, EventArgs e)
         {
+
+            if(fData == null || fData.Count == 0)
+            {
+                MessageBox.Show("No Data to export, please try search grid");
+                return;
+            }
             StringBuilder sb = new StringBuilder();
             int i = 0;
+
+            string filterName = GetFileNameFIlter();
+
             if (chkExpAll.Checked == false)
             {
                 var d = fData.Where(w => w.UpdatedTime.ToString() == "01-01-0001 00:00:00").OrderBy(o => o.Phone).ToList();
+
+                if(rdbFem.Checked)
+                {
+                    d = d.Where(w => w.IsFemale).ToList();
+                }
+                else if (rdbMale.Checked)
+                {
+                    d = d.Where(w => w.IsFemale == false).ToList();
+                }
 
                 sb.AppendLine($"-------------------");
                 sb.AppendLine($"{fData[0].UtPaguthi} ({fData.Count})");
@@ -465,11 +509,14 @@ namespace CenturyFinCorpApp.UsrCtrl
                     sb.Append(Environment.NewLine);
                 });
 
-                File.WriteAllText($@"F:\NTK\jawa - 2021\members\{selectedPan}({d.Count}).txt", sb.ToString());
+                File.WriteAllText($@"F:\NTK\jawa - 2021\members\{selectedPan}({d.Count}){filterName}.txt", sb.ToString());
                 MessageBox.Show($"{selectedPan}({d.Count} Exported Successfully!");
             }
             else
             {
+
+                string fg = "_ALL";
+                // ALL
                 var allData = (from t in TvdMember.GetAll().Where(w => w.UpdatedTime.ToString() == "01-01-0001 00:00:00")
                                 where t.UpdatedTime.ToString() == "01-01-0001 00:00:00" &&
                                    t.UtPaguthiEng.Contains(',') == false &&
@@ -482,6 +529,41 @@ namespace CenturyFinCorpApp.UsrCtrl
                          }).ToList();
 
                 int panNo = 0;
+                int recCount = allData.Sum(s =>s.Data.Count);
+
+                if (rdbFem.Checked)
+                {
+                    fg = "_F";
+                    allData = (from t in TvdMember.GetAll().Where(w => w.UpdatedTime.ToString() == "01-01-0001 00:00:00")
+                                   where t.UpdatedTime.ToString() == "01-01-0001 00:00:00" && t.IsFemale == true &&
+                                      t.UtPaguthiEng.Contains(',') == false &&
+                                      t.UtPaguthiEng.Contains("Others") == false &&
+                                     t.UtPaguthiEng.Contains("Dont") == false
+                                   group t by t.UtPaguthiEng into newGrp
+                                   select new
+                                   {
+                                       Key = newGrp.Key,
+                                       Data = newGrp.ToList()
+                                   }).ToList();
+
+                    recCount = allData.Sum(s => s.Data.Count);
+                }
+                else if (rdbMale.Checked)
+                {
+                    fg = "_M";
+                    allData = (from t in TvdMember.GetAll().Where(w => w.UpdatedTime.ToString() == "01-01-0001 00:00:00")
+                                   where t.UpdatedTime.ToString() == "01-01-0001 00:00:00" && t.IsFemale == false &&
+                                      t.UtPaguthiEng.Contains(',') == false &&
+                                      t.UtPaguthiEng.Contains("Others") == false &&
+                                     t.UtPaguthiEng.Contains("Dont") == false
+                                   group t by t.UtPaguthiEng into newGrp
+                                   select new
+                                   {
+                                       Key = newGrp.Key,
+                                       Data = newGrp.ToList()
+                                   }).ToList();
+                    recCount = allData.Sum(s => s.Data.Count);
+                }
 
                 allData.OrderByDescending(o => o.Data.Count).ToList().ForEach(fe =>
                 {
@@ -501,7 +583,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 });
 
-                File.WriteAllText(@"F:\NTK\jawa - 2021\members\AllPanchayatMember.txt", sb.ToString());
+                File.WriteAllText($@"F:\NTK\jawa - 2021\members\AllPanchayatMember{fg} ({recCount}).txt", sb.ToString());
                 MessageBox.Show($"All Members Exported Successfully!");
             }
 
@@ -578,37 +660,20 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         }
 
-        private void button10_Click(object sender, EventArgs e)
-        {
-
-            var allData = (from a in TvdMember.GetAll()
-                           group a by a.UtPaguthiEng into newGroup
-                           select new { newGroup.Key, count = newGroup.Count() }
-                           ).OrderByDescending(o => o.count).ToList();
-
-
-
-            StringBuilder sb = new StringBuilder();
-            int i = 0;
-
-            allData.ForEach(fe =>
-            {
-                i = i + 1;
-                sb.Append($"({i}) {fe.Key} ({fe.count})");
-                sb.Append(Environment.NewLine);
-            });
-
-            File.WriteAllText($@"F:\NTK\jawa - 2021\members\All-{DateTime.Now.ToShortDateString()}.txt", sb.ToString());
-
-            dataGridView1.DataSource = allData;
-
-        }
-
         private void button11_Click(object sender, EventArgs e)
         {
-            if (txtPhone.Text.Trim() != string.Empty)
-            {
+            //if (txtPhone.Text.Trim() != string.Empty)
+            //{
                 var data = assemblies.Where(w => w.Phone.EndsWith(txtPhone.Text)).ToList();
+
+                if (rdbFem.Checked)
+                {
+                    data = assemblies.Where(w => w.IsFemale && w.UtPaguthiEng.Contains(selectedPan)).ToList();
+                }
+                else if (rdbMale.Checked)
+                {
+                    data = assemblies.Where(w => w.IsFemale == false && w.UtPaguthiEng.Contains(selectedPan)).ToList();
+                }
 
                 fData = new List<TvdMember>();
                 fData = data.OrderByDescending(o => o.Money)
@@ -619,7 +684,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 ColumnVisibility();
                 LoadRec(fData.Count);
 
-            }
+            //}
 
         }
 
@@ -770,6 +835,29 @@ namespace CenturyFinCorpApp.UsrCtrl
                 lblDetails.Text = $"{localData.Count} ஊராட்சியின் உறுப்பினர் எண்ணிக்கை!";
                 return;
             }
+
+            else if (value == 7)
+            {
+
+                var allData = (from a in TvdMember.GetAll()
+                               group a by a.UtPaguthiEng into newGroup
+                               select new { newGroup.Key, count = newGroup.Count() }
+                               ).OrderByDescending(o => o.count).ToList();
+
+                StringBuilder sb = new StringBuilder();
+                int i = 0;
+
+                //allData.ForEach(fe =>
+                //{
+                //    i = i + 1;
+                //    sb.Append($"({i}) {fe.Key} ({fe.count})");
+                //    sb.Append(Environment.NewLine);
+                //});
+
+                //File.WriteAllText($@"F:\NTK\jawa - 2021\members\All-{DateTime.Now.ToShortDateString()}.txt", sb.ToString());
+
+                dataGridView1.DataSource = allData;
+            }
             else if (value == 8)
             {
                 dataGridView1.DataSource = (from d in data
@@ -836,8 +924,26 @@ namespace CenturyFinCorpApp.UsrCtrl
                 return;
 
             }
-            
-                dataGridView1.DataSource = searchedMember;
+
+            else if (value == 13 || value == 14)
+            {
+                var myLocalData = from d in data
+                                            group d by d.PaguthiEng.Trim() into ng
+                                            select new
+                                            {
+                                                Address = ng.Key,
+                                                Panchayat = ng.DistinctBy(d => d.UtPaguthiEng).Count(),
+                                                Count = ng.Count()
+                                            };
+
+                if(value == 13)  dataGridView1.DataSource =  myLocalData.OrderByDescending(o => o.Count).ToList(); 
+                else dataGridView1.DataSource = myLocalData.OrderByDescending(o => o.Panchayat).ToList();
+
+                lblDetails.Text = $"ஒன்றியம் வாரியாக உறுப்பினர் எண்ணிக்கை!";
+                return;
+            }
+
+            dataGridView1.DataSource = searchedMember;
 
         }
 
