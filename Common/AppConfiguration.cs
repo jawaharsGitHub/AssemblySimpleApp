@@ -31,6 +31,8 @@ namespace Common
 
         public static string TvdMemberFile { get { return GetFullPath("TvdMemberFile"); } }
 
+        public static string OtherPartyFile { get { return GetFullPath("OtherPartyFile"); } }
+
         public static string InvestmentFile { get; } = GetFullPath("InvestmentFile");
 
         public static string ClosedNotesFile { get; } = GetFullPath("ClosedNotesFile");

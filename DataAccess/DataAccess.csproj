@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\OtherParty.json" />
     <None Include="Data\AssemblyVoters\210\210-BoothDetail.json" />
     <None Include="Data\AssemblyVoters\211\211-BoothDetail.json" />
     <None Include="Data\BaseData - WIthoutPanchayat.json" />
@@ -76,6 +77,7 @@
     <None Include="Data\assembly.json" />
     <Compile Include="PrimaryTypes\AssemblyBoothLink.cs" />
     <Compile Include="PrimaryTypes\NTKMember.cs" />
+    <Compile Include="PrimaryTypes\OtherParty.cs" />
     <Compile Include="PrimaryTypes\TvdMember.cs" />
     <Compile Include="PrimaryTypes\VotePercDetail.cs" />
     <Compile Include="ExtendedTypes\AssemblyAndVotes.cs" />

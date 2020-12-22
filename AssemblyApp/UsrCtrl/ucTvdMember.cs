@@ -474,7 +474,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-
+            
             if(fData == null || fData.Count == 0)
             {
                 MessageBox.Show("No Data to export, please try search grid");

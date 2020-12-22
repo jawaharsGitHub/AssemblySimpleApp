@@ -39,16 +39,17 @@
             this.cmbAssembly.DisplayMember = "AssemblyFullName";
             this.cmbAssembly.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAssembly.FormattingEnabled = true;
-            this.cmbAssembly.Location = new System.Drawing.Point(61, 50);
+            this.cmbAssembly.Location = new System.Drawing.Point(62, 18);
             this.cmbAssembly.Name = "cmbAssembly";
             this.cmbAssembly.Size = new System.Drawing.Size(185, 21);
             this.cmbAssembly.TabIndex = 0;
             this.cmbAssembly.ValueMember = "AssemblyNo";
+            this.cmbAssembly.SelectedIndexChanged += new System.EventHandler(this.cmbAssembly_SelectedIndexChanged_1);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(89, 134);
+            this.label1.Location = new System.Drawing.Point(335, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
@@ -57,9 +58,9 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(92, 254);
+            this.dataGridView1.Location = new System.Drawing.Point(37, 61);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(508, 277);
+            this.dataGridView1.Size = new System.Drawing.Size(833, 711);
             this.dataGridView1.TabIndex = 2;
             // 
             // ucReports
