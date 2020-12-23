@@ -1,4 +1,5 @@
 ﻿using Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +23,6 @@ namespace DataAccess.PrimaryTypes
         public string State { get; set; }
         public string District { get; set; }
         public string Assembly { get; set; }
-
-
         public string MemberId { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
@@ -40,6 +39,9 @@ namespace DataAccess.PrimaryTypes
         public bool IsFemale { get; set; }
 
         public DateTime UpdatedTime { get; set; }
+
+        [JsonIgnore]
+        public bool NeedUpdatePagEng { get; set; }
 
         public static List<TvdMember> GetAll()
         {
@@ -64,6 +66,21 @@ namespace DataAccess.PrimaryTypes
             var u = list.Where(c => femMemIds.Contains(c.MemberId)).ToList();
 
             u.ForEach(fe => { fe.IsFemale = true; });
+
+            WriteObjectsToFile(list, JsonFilePath);
+
+        }
+
+        public static void BulkUpdatePaguthiEng(List<TvdMember> mems)
+        {
+            List<TvdMember> list = ReadFileAsObjects<TvdMember>(JsonFilePath);
+
+            mems.ForEach(fe => {
+                var d = list.Where(w => w.MemberId == fe.MemberId).First();
+
+                d.Paguthi = fe.Paguthi;
+                d.PaguthiEng = fe.PaguthiEng;
+            });
 
             WriteObjectsToFile(list, JsonFilePath);
 

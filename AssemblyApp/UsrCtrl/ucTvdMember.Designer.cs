@@ -44,7 +44,6 @@
             this.button9 = new System.Windows.Forms.Button();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.button11 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.lblDetails = new System.Windows.Forms.Label();
@@ -53,6 +52,7 @@
             this.rdbFem = new System.Windows.Forms.RadioButton();
             this.rdbMale = new System.Windows.Forms.RadioButton();
             this.rdbAll = new System.Windows.Forms.RadioButton();
+            this.btnUpdatePE = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -211,14 +211,6 @@
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(-15, -15);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 19;
-            // 
             // comboBox3
             // 
             this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -304,10 +296,21 @@
             this.rdbAll.Text = "ALL";
             this.rdbAll.UseVisualStyleBackColor = true;
             // 
+            // btnUpdatePE
+            // 
+            this.btnUpdatePE.Location = new System.Drawing.Point(25, 3);
+            this.btnUpdatePE.Name = "btnUpdatePE";
+            this.btnUpdatePE.Size = new System.Drawing.Size(131, 21);
+            this.btnUpdatePE.TabIndex = 28;
+            this.btnUpdatePE.Text = "Correct Paguthi Eng";
+            this.btnUpdatePE.UseVisualStyleBackColor = true;
+            this.btnUpdatePE.Click += new System.EventHandler(this.btnUpdatePE_Click);
+            // 
             // ucTvdMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnUpdatePE);
             this.Controls.Add(this.rdbAll);
             this.Controls.Add(this.rdbMale);
             this.Controls.Add(this.rdbFem);
@@ -316,7 +319,6 @@
             this.Controls.Add(this.lblDetails);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.button9);
@@ -359,7 +361,6 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label lblDetails;
@@ -368,5 +369,6 @@
         private System.Windows.Forms.RadioButton rdbFem;
         private System.Windows.Forms.RadioButton rdbMale;
         private System.Windows.Forms.RadioButton rdbAll;
+        private System.Windows.Forms.Button btnUpdatePE;
     }
 }

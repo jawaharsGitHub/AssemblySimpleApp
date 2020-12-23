@@ -130,7 +130,6 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             List<Pair> utpaguthi = new List<Pair>()
             {
-
                 new Pair(1,"Manakkudi", "அ.மணக்குடி"),
                 new Pair(1,"Alagarthevankottai","அழகர்தேவன்கோட்டை "),
                 new Pair(1,"Siththoorvaadi","சித்தூர்வாடி "),
@@ -984,10 +983,33 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             }
         }
+
+        private void btnUpdatePE_Click(object sender, EventArgs e)
+        {
+            var ourData = TvdMember.GetAll();
+
+            //List<TvdMember> needCorrectionData = new List<TvdMember>();
+
+            ourData.ForEach(fe => {
+
+                var correctData = paguthiList.Where(w => w.Value == utPaguthiList.Where(w => w.Display == fe.UtPaguthiEng).First().Value).First();
+
+                fe.PaguthiEng = correctData.Display;
+                fe.Paguthi = correctData.DisplayTamil;
+
+            });
+
+            TvdMember.BulkUpdatePaguthiEng(ourData);
+
+        }
     }
 
     public class Pair
     {
+        public Pair()
+        {
+
+        }
 
         public Pair(int val, string dis)
         {
