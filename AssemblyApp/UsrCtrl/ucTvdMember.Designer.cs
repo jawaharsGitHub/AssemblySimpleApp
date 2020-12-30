@@ -55,6 +55,7 @@
             this.btnUpdatePE = new System.Windows.Forms.Button();
             this.btnEmail = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.chkExcel = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -226,7 +227,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(723, 72);
+            this.checkBox1.Location = new System.Drawing.Point(723, 70);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(108, 17);
             this.checkBox1.TabIndex = 21;
@@ -320,7 +321,7 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(723, 95);
+            this.button10.Location = new System.Drawing.Point(582, 99);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(131, 23);
             this.button10.TabIndex = 30;
@@ -328,10 +329,21 @@
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
+            // chkExcel
+            // 
+            this.chkExcel.AutoSize = true;
+            this.chkExcel.Location = new System.Drawing.Point(719, 103);
+            this.chkExcel.Name = "chkExcel";
+            this.chkExcel.Size = new System.Drawing.Size(84, 17);
+            this.chkExcel.TabIndex = 31;
+            this.chkExcel.Text = "From Excel?";
+            this.chkExcel.UseVisualStyleBackColor = true;
+            // 
             // ucTvdMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.chkExcel);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.btnEmail);
             this.Controls.Add(this.btnUpdatePE);
@@ -396,5 +408,6 @@
         private System.Windows.Forms.Button btnUpdatePE;
         private System.Windows.Forms.Button btnEmail;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.CheckBox chkExcel;
     }
 }

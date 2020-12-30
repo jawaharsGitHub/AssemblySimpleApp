@@ -172,39 +172,39 @@ namespace CenturyFinCorpApp.UsrCtrl
                 new Pair(2,"Vadakkaloor","வடக்கலூர்",500),
 
                 // TVD-Kilakku (22-VT)
-                new Pair(4,"Theloor", "தேளூர் ",1200), 
-                new Pair(4,"Thalirmarungoor","தளிர்மருங்கூர் ",1200), 
+                new Pair(4,"Theloor", "தேளூர் ",1200),
+                new Pair(4,"Thalirmarungoor","தளிர்மருங்கூர் ",1200),
                 new Pair(4,"Aathiyur","ஆதியூர் ",1200),
-                new Pair(4,"Arumboor","அரும்பூர் ",1100), 
-                new Pair(4,"Kulaththoor","குளத்தூர் ",1200), 
-                new Pair(4,"Thiruvetriyur","திருவெற்றியூர் ",1000), 
-                new Pair(4,"Mugilthanagam","முகிழ்த்தகம் ",1900), 
-                new Pair(4,"Nambuthalai","நம்புதாளை ",3500),  
+                new Pair(4,"Arumboor","அரும்பூர் ",1100),
+                new Pair(4,"Kulaththoor","குளத்தூர் ",1200),
+                new Pair(4,"Thiruvetriyur","திருவெற்றியூர் ",1000),
+                new Pair(4,"Mugilthanagam","முகிழ்த்தகம் ",1900),
+                new Pair(4,"Nambuthalai","நம்புதாளை ",3500),
                 new Pair(4,"Puthupattinam","புதுப்பட்டினம் ",900),
                 new Pair(4,"Mullimunai","முள்ளிமுனை ",1200),
                 new Pair(4,"Karangaadu","காரங்காடு",900),
                 new Pair(4,"Arasaththoor","அரசத்தூர் ",1300),
                 new Pair(4,"Kodipangu","கொடிப்பங்கு ",1000),
                 new Pair(4,"Maavoor","மாவூர் ",1000),
-                new Pair(4,"Kattavilagam", "கட்டவிளாகம் ",2),               
-                new Pair(4,"Vallaiyaapuram","வெள்ளையபுரம் ",1400), 
+                new Pair(4,"Kattavilagam", "கட்டவிளாகம் ",2),
+                new Pair(4,"Vallaiyaapuram","வெள்ளையபுரம் ",1400),
                 new Pair(4,"Oriyur","ஓரியூர் ",1800),
                 new Pair(4,"S.P.Pattinam","S.P. பட்டிணம்  ", 2500),
-                new Pair(4,"Panachayal","பனஞ்சாயல் ",1000), 
+                new Pair(4,"Panachayal","பனஞ்சாயல் ",1000),
                 new Pair(4,"Vattanam","வட்டானம் ",1000),
-                new Pair(4,"Kaliyanagari","கலியநகரி ",1500), 
+                new Pair(4,"Kaliyanagari","கலியநகரி ",1500),
                 new Pair(4,"Pullakadamban","புல்லக்கடம்பன் ",1200),                 
 
                 // TVD-Merku (25-AD)
-                new Pair(5,"Mangalakudi", "மங்களக்குடி ",1500),                
-                new Pair(5,"Nilamalagiyamangalam","நிலமழகியமங்களம் ",900), 
-                new Pair(5,"Kattivayal","கட்டிவயல் ",850), 
-                new Pair(5,"Kunjangulam","குஞ்சங்குளம் ",1000), 
+                new Pair(5,"Mangalakudi", "மங்களக்குடி ",1500),
+                new Pair(5,"Nilamalagiyamangalam","நிலமழகியமங்களம் ",900),
+                new Pair(5,"Kattivayal","கட்டிவயல் ",850),
+                new Pair(5,"Kunjangulam","குஞ்சங்குளம் ",1000),
                 new Pair(5,"Anjukottai","அஞ்சுகோட்டை ",1800),
-                new Pair(5,"Kodanoor","கோடனூர் ",1700), 
-                new Pair(5,"Pandukudi","பாண்டுகுடி ",650), 
-                new Pair(5,"Nagarikathan","நகரிகாத்தான் ",600),                
-                new Pair(5,"Achchangudi","அச்சங்குடி ",1200), 
+                new Pair(5,"Kodanoor","கோடனூர் ",1700),
+                new Pair(5,"Pandukudi","பாண்டுகுடி ",650),
+                new Pair(5,"Nagarikathan","நகரிகாத்தான் ",600),
+                new Pair(5,"Achchangudi","அச்சங்குடி ",1200),
                 new Pair(5,"Neivayal", "நெய்வயல் ",1400),
                 new Pair(5,"karumoli","கருமொழி ",900),
                 new Pair(5,"Palangulam","பழங்குளம் ",800),
@@ -217,9 +217,9 @@ namespace CenturyFinCorpApp.UsrCtrl
                 new Pair(5,"Periakeeramangalam","பெரியகீரமங்களம் ", 1800),
                 new Pair(5,"Kalloore","கல்லூர் ", 2800),
                 new Pair(5,"Thiruvadanai","திருவாடானை ", 1350),
-                new Pair(5,"Aandaavoorani","ஆண்டாவூரணி ", 1000),      
-                new Pair(5,"Paaganur","பாகனூர் ", 700),                 
-                new Pair(5,"Sirukambaiyur","சிறுகம்பையூர் ", 850),     
+                new Pair(5,"Aandaavoorani","ஆண்டாவூரணி ", 1000),
+                new Pair(5,"Paaganur","பாகனூர் ", 700),
+                new Pair(5,"Sirukambaiyur","சிறுகம்பையூர் ", 850),
                 new Pair(5,"Pathanakudi","பதனக்குடி ", 400),
 
                 // RMD-Kilakku
@@ -400,7 +400,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             assemblies = TvdMember.GetAll();
 
-            var x = assemblies.Where(w => w.UtPaguthiEng == null ||  w.UtPaguthiEng.Trim() == string.Empty).ToList();
+            var x = assemblies.Where(w => w.UtPaguthiEng == null || w.UtPaguthiEng.Trim() == string.Empty).ToList();
 
             if (max > 0)
             {
@@ -422,7 +422,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         private void button8_Click(object sender, EventArgs e)
         {
             LoadGrid();
-            
+
         }
 
         List<TvdMember> fData;
@@ -435,9 +435,9 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             var data = assemblies.Where(w => string.IsNullOrEmpty(w.UtPaguthiEng) == false && w.UtPaguthiEng.Contains(selectedPan)).ToList();
 
-            if(rdbFem.Checked)
+            if (rdbFem.Checked)
             {
-                data = data.Where(w =>  w.IsFemale == true).ToList();
+                data = data.Where(w => w.IsFemale == true).ToList();
             }
             else if (rdbMale.Checked)
             {
@@ -465,19 +465,19 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             StringBuilder filterName = new StringBuilder();
 
-            if(chkExpAll.Checked == true)  filterName.Append("_ALL");
+            if (chkExpAll.Checked == true) filterName.Append("_ALL");
 
-            if (rdbMale.Checked == true)  filterName.Append("_M");
-            else if (rdbFem.Checked == true)  filterName.Append("_F");
+            if (rdbMale.Checked == true) filterName.Append("_M");
+            else if (rdbFem.Checked == true) filterName.Append("_F");
 
             return filterName.ToString();
 
-       }
+        }
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            
-            if(fData == null || fData.Count == 0)
+
+            if (fData == null || fData.Count == 0)
             {
                 MessageBox.Show("No Data to export, please try search grid");
                 return;
@@ -491,7 +491,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             {
                 var d = fData.Where(w => w.UpdatedTime.ToString() == "01-01-0001 00:00:00").OrderBy(o => o.Phone).ToList();
 
-                if(rdbFem.Checked)
+                if (rdbFem.Checked)
                 {
                     d = d.Where(w => w.IsFemale).ToList();
                 }
@@ -520,33 +520,34 @@ namespace CenturyFinCorpApp.UsrCtrl
                 string fg = "_ALL";
                 // ALL
                 var allData = (from t in TvdMember.GetAll().Where(w => w.UpdatedTime.ToString() == "01-01-0001 00:00:00")
-                                where t.UpdatedTime.ToString() == "01-01-0001 00:00:00" &&
-                                   t.UtPaguthiEng.Contains(',') == false &&
-                                   t.UtPaguthiEng.Contains("Others") == false &&
-                                  t.UtPaguthiEng.Contains("Dont") == false
-                         group t by t.UtPaguthiEng into newGrp
-                         select new {
-                             Key = newGrp.Key,
-                             Data = newGrp.ToList()
-                         }).ToList();
+                               where t.UpdatedTime.ToString() == "01-01-0001 00:00:00" &&
+                                  t.UtPaguthiEng.Contains(',') == false &&
+                                  t.UtPaguthiEng.Contains("Others") == false &&
+                                 t.UtPaguthiEng.Contains("Dont") == false
+                               group t by t.UtPaguthiEng into newGrp
+                               select new
+                               {
+                                   Key = newGrp.Key,
+                                   Data = newGrp.ToList()
+                               }).ToList();
 
                 int panNo = 0;
-                int recCount = allData.Sum(s =>s.Data.Count);
+                int recCount = allData.Sum(s => s.Data.Count);
 
                 if (rdbFem.Checked)
                 {
                     fg = "_F";
                     allData = (from t in TvdMember.GetAll().Where(w => w.UpdatedTime.ToString() == "01-01-0001 00:00:00")
-                                   where t.UpdatedTime.ToString() == "01-01-0001 00:00:00" && t.IsFemale == true &&
-                                      t.UtPaguthiEng.Contains(',') == false &&
-                                      t.UtPaguthiEng.Contains("Others") == false &&
-                                     t.UtPaguthiEng.Contains("Dont") == false
-                                   group t by t.UtPaguthiEng into newGrp
-                                   select new
-                                   {
-                                       Key = newGrp.Key,
-                                       Data = newGrp.ToList()
-                                   }).ToList();
+                               where t.UpdatedTime.ToString() == "01-01-0001 00:00:00" && t.IsFemale == true &&
+                                  t.UtPaguthiEng.Contains(',') == false &&
+                                  t.UtPaguthiEng.Contains("Others") == false &&
+                                 t.UtPaguthiEng.Contains("Dont") == false
+                               group t by t.UtPaguthiEng into newGrp
+                               select new
+                               {
+                                   Key = newGrp.Key,
+                                   Data = newGrp.ToList()
+                               }).ToList();
 
                     recCount = allData.Sum(s => s.Data.Count);
                 }
@@ -554,16 +555,16 @@ namespace CenturyFinCorpApp.UsrCtrl
                 {
                     fg = "_M";
                     allData = (from t in TvdMember.GetAll().Where(w => w.UpdatedTime.ToString() == "01-01-0001 00:00:00")
-                                   where t.UpdatedTime.ToString() == "01-01-0001 00:00:00" && t.IsFemale == false &&
-                                      t.UtPaguthiEng.Contains(',') == false &&
-                                      t.UtPaguthiEng.Contains("Others") == false &&
-                                     t.UtPaguthiEng.Contains("Dont") == false
-                                   group t by t.UtPaguthiEng into newGrp
-                                   select new
-                                   {
-                                       Key = newGrp.Key,
-                                       Data = newGrp.ToList()
-                                   }).ToList();
+                               where t.UpdatedTime.ToString() == "01-01-0001 00:00:00" && t.IsFemale == false &&
+                                  t.UtPaguthiEng.Contains(',') == false &&
+                                  t.UtPaguthiEng.Contains("Others") == false &&
+                                 t.UtPaguthiEng.Contains("Dont") == false
+                               group t by t.UtPaguthiEng into newGrp
+                               select new
+                               {
+                                   Key = newGrp.Key,
+                                   Data = newGrp.ToList()
+                               }).ToList();
                     recCount = allData.Sum(s => s.Data.Count);
                 }
 
@@ -666,25 +667,25 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             //if (txtPhone.Text.Trim() != string.Empty)
             //{
-                var data = assemblies.Where(w => w.Phone.EndsWith(txtPhone.Text)).ToList();
+            var data = assemblies.Where(w => w.Phone.EndsWith(txtPhone.Text)).ToList();
 
-                if (rdbFem.Checked)
-                {
-                    data = assemblies.Where(w => w.IsFemale && w.UtPaguthiEng.Contains(selectedPan)).ToList();
-                }
-                else if (rdbMale.Checked)
-                {
-                    data = assemblies.Where(w => w.IsFemale == false && w.UtPaguthiEng.Contains(selectedPan)).ToList();
-                }
+            if (rdbFem.Checked)
+            {
+                data = assemblies.Where(w => w.IsFemale && w.UtPaguthiEng.Contains(selectedPan)).ToList();
+            }
+            else if (rdbMale.Checked)
+            {
+                data = assemblies.Where(w => w.IsFemale == false && w.UtPaguthiEng.Contains(selectedPan)).ToList();
+            }
 
-                fData = new List<TvdMember>();
-                fData = data.OrderByDescending(o => o.Money)
-                    .ThenBy(o => o.Phone)
-                    .ToList();               
+            fData = new List<TvdMember>();
+            fData = data.OrderByDescending(o => o.Money)
+                .ThenBy(o => o.Phone)
+                .ToList();
 
-                dataGridView1.DataSource = fData;
-                ColumnVisibility();
-                LoadRec(fData.Count);
+            dataGridView1.DataSource = fData;
+            ColumnVisibility();
+            LoadRec(fData.Count);
 
             //}
 
@@ -701,14 +702,14 @@ namespace CenturyFinCorpApp.UsrCtrl
         }
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            
+
             DataGridView grid = (sender as DataGridView);
             int rowIndex = grid.CurrentCell.RowIndex;
             string owningColumnName = grid.CurrentCell.OwningColumn.Name;
             string cellValue = FormGeneral.GetGridCellValue(grid, rowIndex, owningColumnName);
             TvdMember cus = grid.Rows[grid.CurrentCell.RowIndex].DataBoundItem as TvdMember;
 
-            
+
 
             if (owningColumnName != "UtPaguthiEng" && string.IsNullOrEmpty(cellValue))
             {
@@ -778,7 +779,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 data = data.Where(w => w.UtPaguthiEng.Contains(selectedPan)).ToList();
                 detail = (comboBox1.SelectedItem as Pair).DisplayTamil + "-யில்";
             }
-            
+
             var value = ((KeyValuePair<int, string>)comboBox3.SelectedItem).Key;
             List<TvdMember> searchedMember = null;
 
@@ -909,7 +910,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 lblDetails.Text = $"{searchedMember.Count} மகளிர் உறுப்பினர் உள்ளார்கள்";
             }
-            
+
 
             else if (value == 12)
             {
@@ -930,16 +931,16 @@ namespace CenturyFinCorpApp.UsrCtrl
             else if (value == 13 || value == 14)
             {
                 var myLocalData = from d in data
-                                            group d by d.PaguthiEng.Trim() into ng
-                                            select new
-                                            {
-                                                Ondrium = ng.Key,
-                                                Panchayat = ng.Where(w => w.UtPaguthiEng.Contains(',') == false).DistinctBy(d => d.UtPaguthiEng.Trim()).ToList().Count,
-                                                SplitCount = ng.Where(w => w.UtPaguthiEng.Contains(',') == false).Count() + "+" + ng.Where(w => w.UtPaguthiEng.Contains(',') == true).Count(),
-                                                TotalCount = ng.Count()
-                                            };
+                                  group d by d.PaguthiEng.Trim() into ng
+                                  select new
+                                  {
+                                      Ondrium = ng.Key,
+                                      Panchayat = ng.Where(w => w.UtPaguthiEng.Contains(',') == false).DistinctBy(d => d.UtPaguthiEng.Trim()).ToList().Count,
+                                      SplitCount = ng.Where(w => w.UtPaguthiEng.Contains(',') == false).Count() + "+" + ng.Where(w => w.UtPaguthiEng.Contains(',') == true).Count(),
+                                      TotalCount = ng.Count()
+                                  };
 
-                if(value == 13)  dataGridView1.DataSource =  myLocalData.OrderByDescending(o => o.TotalCount).ToList(); 
+                if (value == 13) dataGridView1.DataSource = myLocalData.OrderByDescending(o => o.TotalCount).ToList();
                 else dataGridView1.DataSource = myLocalData.OrderByDescending(o => o.Panchayat).ToList();
 
                 lblDetails.Text = $"ஒன்றியம் வாரியாக உறுப்பினர் எண்ணிக்கை!";
@@ -1000,7 +1001,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 var dd = utPaguthiList.Where(ww => ww.Display == fe.UtPaguthiEng).FirstOrDefault();
 
                 if (dd != null)
-                { 
+                {
                     var correctData = paguthiList.Where(w => w.Value == dd.Value).First();
 
                     fe.PaguthiEng = correctData.Display;
@@ -1032,37 +1033,37 @@ namespace CenturyFinCorpApp.UsrCtrl
         }
         private void btnEmail_Click(object sender, EventArgs e)
         {
-            
-                try
+
+            try
+            {
+                hasInternet = CheckForInternetConnection();
+
+                if (hasInternet == false)
                 {
-                    hasInternet = CheckForInternetConnection();
+                    if (DialogResult.No == MessageBox.Show("No Internet Available, Please Connect to your WiFi", "", MessageBoxButtons.YesNo))
+                        return;
+                }
 
-                    if (hasInternet == false)
-                    {
-                        if (DialogResult.No == MessageBox.Show("No Internet Available, Please Connect to your WiFi", "", MessageBoxButtons.YesNo))
-                            return;
-                    }
+                BackgroundWorker bw = new BackgroundWorker();
+                bw.DoWork += (s, ee) =>
+                {
 
-                    BackgroundWorker bw = new BackgroundWorker();
-                    bw.DoWork += (s, ee) =>
-                    {
 
-                       
-                        SendEmailForSendBalance();
+                    SendEmailForSendBalance();
 
                         //AppCommunication.SendBalanceEmail(allBalances, currentBalanceDate, activeCus.Count(), "Jeyam Finance Balance Report");
                         MessageBox.Show("Balance Report have been send to your email");
-                    };
-                    bw.RunWorkerAsync();
+                };
+                bw.RunWorkerAsync();
 
 
 
-                }
-                catch (Exception ex)
-                {
+            }
+            catch (Exception ex)
+            {
 
-                    throw ex;
-                }
+                throw ex;
+            }
 
         }
 
@@ -1083,7 +1084,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             var noteList = string.Join(Environment.NewLine, TvdMember.NithiContact().Select(s => $"{s.Name} - {s.Phone}"));
 
             StringBuilder rowData = new StringBuilder();
-            
+
             var dat = DateTime.Today.ToShortDateString();
 
             var dailyCheckHTML = htmlString
@@ -1118,49 +1119,51 @@ namespace CenturyFinCorpApp.UsrCtrl
                     throw ex;
                 }
 
-                
-                
+
+
             }
 
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-            var allData = TvdMember.GetAll();
+            if (chkExcel.Checked)
+            {
 
-            //var sb = new StringBuilder();
+            }
+            else
+            {
+                var allData = TvdMember.GetAll();
 
-            int i = 1;
+                int i = 1;
 
-                allData.ForEach(fe =>   
-                {  
+                allData.ForEach(fe =>
+                {
                     fe.Sno = i;
                     i = i + 1;
-
                 });
 
-            StringBuilder sb = new StringBuilder();
-
-            int groupNo = 0;
-            for (int j = 0; j < allData.Count; j+=250)
-            {
-                var slicedData = allData.Skip(j).Take(250).ToList();
-                groupNo += 1;
-
-                sb = new StringBuilder();
-                slicedData.ForEach(fe =>
+                int groupNo = 0;
+                for (int j = 0; j < allData.Count; j += 250)
                 {
-                    sb.AppendLine($"BEGIN: VCARD");
-                    sb.AppendLine($"VERSION:3.0");
-                    sb.AppendLine($"KIND: org");
-                    sb.AppendLine($"FN:NTK{groupNo}-{fe.Sno.ToString().PadLeft(3, '0')}-{fe.Name}");
-                    sb.AppendLine($"TEL; type = Mobile:{fe.Phone}");
-                    sb.AppendLine($"ORG: G{groupNo}");
-                    sb.AppendLine($"END:VCARD");
-                });
+                    var slicedData = allData.Skip(j).Take(250).ToList();
+                    groupNo += 1;
 
-                File.WriteAllText($@"F:\NTK\jawa - 2021\members\All-TvdPhone{slicedData[0].Sno.ToString().PadLeft(4, '0')}-{slicedData.Last().Sno.ToString().PadLeft(4, '0')}-XX{groupNo.ToString().PadLeft(2, '0')}.vcf", sb.ToString());
+                    StringBuilder sb = new StringBuilder();
+                    slicedData.ForEach(fe =>
+                    {
+                        sb.AppendLine($"BEGIN: VCARD");
+                        sb.AppendLine($"VERSION:3.0");
+                        sb.AppendLine($"KIND: org");
+                        sb.AppendLine($"FN:NTK{groupNo}-{fe.Sno.ToString().PadLeft(3, '0')}-{fe.Name}");
+                        sb.AppendLine($"TEL; type = Mobile:{fe.Phone}");
+                        sb.AppendLine($"ORG: G{groupNo}");
+                        sb.AppendLine($"END:VCARD");
+                    });
 
+                    File.WriteAllText($@"F:\NTK\jawa - 2021\members\All-TvdPhone{slicedData[0].Sno.ToString().PadLeft(4, '0')}-{slicedData.Last().Sno.ToString().PadLeft(4, '0')}-XX{groupNo.ToString().PadLeft(2, '0')}.vcf", sb.ToString());
+
+                }
             }
 
         }
