@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -1125,15 +1126,88 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         }
 
+        public DataTable ReadExcel(string fileName, string fileExt)
+        {
+            string conn = string.Empty;
+            DataTable dtexcel = new DataTable();
+            if (fileExt.CompareTo(".xls") == 0)
+                conn = @"provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + fileName + ";Extended Properties='Excel 8.0;HRD=Yes;IMEX=1';"; //for below excel 2007  
+            else
+                conn = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + fileName + ";Extended Properties='Excel 12.0;HDR=NO';"; //for above excel 2007  
+            using (OleDbConnection con = new OleDbConnection(conn))
+            {
+                try
+                {
+                    OleDbDataAdapter oleAdpt = new OleDbDataAdapter("select * from [உறுப்பினர் தகவல்$]", con); //here we read data from sheet1  
+                    oleAdpt.Fill(dtexcel); //fill excel data into dataTable 
+
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                
+            }
+            return dtexcel;
+        }
+
         private void button10_Click(object sender, EventArgs e)
         {
+
+            string ass = "";
+
+            var allData = new List<TvdMember>();
+
             if (chkExcel.Checked)
             {
+                ass = "Rmd";
+                string filePath = string.Empty;
+                string fileExt = string.Empty;
+                OpenFileDialog file = new OpenFileDialog(); //open dialog to choose file  
+                if (file.ShowDialog() == DialogResult.OK) //if there is a file choosen by the user  
+                {
+                    filePath = file.FileName; //get the path of the file  
+                    fileExt = Path.GetExtension(filePath); //get the file extension  
+                    if (fileExt.CompareTo(".xls") == 0 || fileExt.CompareTo(".xlsx") == 0)
+                    {
+                        try
+                        {
+                            DataTable dtExcel = new DataTable();
+                            dtExcel = ReadExcel(filePath, fileExt); //read excel file  
+                            //dataGridView1.Visible = true;
+                            //dataGridView1.DataSource = dtExcel;
+
+                            List<TvdMember> studentList = new List<TvdMember>();
+                            for (int d = 1; d < dtExcel.Rows.Count; d++)
+                            {
+                                TvdMember mem = new TvdMember();
+                                mem.Phone = Convert.ToString(dtExcel.Rows[d][2]); // "தொடர்பு எண்"
+                                mem.Name = dtExcel.Rows[d][1].ToString(); // "பெயர்"
+                                //mem.Address = dt.Rows[i]["Address"].ToString();
+                                //mem.MobileNo = dt.Rows[i]["MobileNo"].ToString();
+                                studentList.Add(mem);
+                            }
+
+                            allData = studentList;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message.ToString());
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please choose .xls or .xlsx file only.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error); //custom messageBox to show error  
+                    }
+                }
 
             }
             else
             {
-                var allData = TvdMember.GetAll();
+                allData = TvdMember.GetAll();
+
+                ass = "Tvd";
+            }
 
                 int i = 1;
 
@@ -1151,7 +1225,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                     StringBuilder sb = new StringBuilder();
                     slicedData.ForEach(fe =>
-                    {
+                    {   
                         sb.AppendLine($"BEGIN: VCARD");
                         sb.AppendLine($"VERSION:3.0");
                         sb.AppendLine($"KIND: org");
@@ -1161,10 +1235,9 @@ namespace CenturyFinCorpApp.UsrCtrl
                         sb.AppendLine($"END:VCARD");
                     });
 
-                    File.WriteAllText($@"F:\NTK\jawa - 2021\members\All-TvdPhone{slicedData[0].Sno.ToString().PadLeft(4, '0')}-{slicedData.Last().Sno.ToString().PadLeft(4, '0')}-XX{groupNo.ToString().PadLeft(2, '0')}.vcf", sb.ToString());
+                    File.WriteAllText($@"F:\NTK\jawa - 2021\members\All-{ass}Phone{slicedData[0].Sno.ToString().PadLeft(4, '0')}-{slicedData.Last().Sno.ToString().PadLeft(4, '0')}-XX{groupNo.ToString().PadLeft(2, '0')}.vcf", sb.ToString());
 
                 }
-            }
 
         }
     }
