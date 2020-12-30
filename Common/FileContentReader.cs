@@ -8,7 +8,9 @@ namespace Common
         public static string DataPageHtml { get; } = GetHtmlFileContent("adangal-DataPage.htm");
 
         public static string pageListHtml { get; } = GetHtmlFileContent("adangal-PageList.htm");
-        
+
+        public static string MemberContactHtml { get; } = GetHtmlFileContent("MemberContact.htm");
+
 
         private static string GetHtmlFileContent(string fileName)
         {

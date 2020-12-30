@@ -1,12 +1,48 @@
 ﻿
 using System;
 using System.IO;
+using System.Net;
+using System.Net.Mail;
 using System.Reflection;
 
 namespace Common
 {
     public static class General
     {
+
+        public static (MailMessage, SmtpClient) GetMailMessage(string subject, string mailBody)
+        {
+
+            //var myEmail = "ramnadntk211@gmail.com";
+            //var fromEmail = "ntkthiruvadanai@gmail.com";
+            //var pwd = "ntkthiruvadanai210"; 
+
+            var fromEmail = "jawahar.subramanian83@gmail.com";
+            var pwd = "nainamarbus";
+
+
+            MailMessage message = new MailMessage();
+            SmtpClient smtp = new SmtpClient();
+            message.From = new MailAddress(fromEmail);
+            message.To.Add(new MailAddress(fromEmail));
+
+            message.CC.Add(new MailAddress("jawahar.subramanian83@gmail.com"));
+            message.Subject = subject;
+            message.IsBodyHtml = true; //to make message body as html  
+            message.Body = mailBody;
+            smtp.Port = 587;
+            smtp.Host = "smtp.gmail.com"; //for gmail host  
+            smtp.EnableSsl = true;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new NetworkCredential(fromEmail, pwd);
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+
+            return (message, smtp);
+
+
+        }
+
+
         public static string GetDaySuffix(int day)
         {
             switch (day)

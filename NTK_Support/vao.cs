@@ -152,10 +152,6 @@ namespace NTK_Support
         }
 
 
-
-
-
-
         public void WriteData(List<ChittaData> data, string filter)
         {
             List<ChittaData> PageTotalList = new List<ChittaData>();

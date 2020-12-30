@@ -53,6 +53,8 @@
             this.rdbMale = new System.Windows.Forms.RadioButton();
             this.rdbAll = new System.Windows.Forms.RadioButton();
             this.btnUpdatePE = new System.Windows.Forms.Button();
+            this.btnEmail = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -188,7 +190,7 @@
             // 
             this.button9.Location = new System.Drawing.Point(933, 11);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(131, 66);
+            this.button9.Size = new System.Drawing.Size(131, 32);
             this.button9.TabIndex = 15;
             this.button9.Text = "upload Latest";
             this.button9.UseVisualStyleBackColor = true;
@@ -226,9 +228,9 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(723, 72);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(60, 17);
+            this.checkBox1.Size = new System.Drawing.Size(108, 17);
             this.checkBox1.TabIndex = 21;
-            this.checkBox1.Text = "Reset?";
+            this.checkBox1.Text = "ALL MEMBERS?";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // lblDetails
@@ -306,10 +308,32 @@
             this.btnUpdatePE.UseVisualStyleBackColor = true;
             this.btnUpdatePE.Click += new System.EventHandler(this.btnUpdatePE_Click);
             // 
+            // btnEmail
+            // 
+            this.btnEmail.Location = new System.Drawing.Point(933, 50);
+            this.btnEmail.Name = "btnEmail";
+            this.btnEmail.Size = new System.Drawing.Size(131, 23);
+            this.btnEmail.TabIndex = 29;
+            this.btnEmail.Text = "SEND UPDATE";
+            this.btnEmail.UseVisualStyleBackColor = true;
+            this.btnEmail.Click += new System.EventHandler(this.btnEmail_Click);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(723, 95);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(131, 23);
+            this.button10.TabIndex = 30;
+            this.button10.Text = "FOR BC";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
             // ucTvdMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button10);
+            this.Controls.Add(this.btnEmail);
             this.Controls.Add(this.btnUpdatePE);
             this.Controls.Add(this.rdbAll);
             this.Controls.Add(this.rdbMale);
@@ -370,5 +394,7 @@
         private System.Windows.Forms.RadioButton rdbMale;
         private System.Windows.Forms.RadioButton rdbAll;
         private System.Windows.Forms.Button btnUpdatePE;
+        private System.Windows.Forms.Button btnEmail;
+        private System.Windows.Forms.Button button10;
     }
 }

@@ -52,7 +52,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 mBody = mBody.Replace("[name]", mv.Name);
                 mBody = mBody.Replace("[phone]", mv.ContactNo);
 
-                var smtp = GetMailMessage(sub, mBody, mv.Email, pwd);
+                var smtp = General.GetMailMessage(sub, mBody);
 
                 smtp.Item2.Send(smtp.Item1);
                 //Thread
@@ -63,30 +63,6 @@ namespace CenturyFinCorpApp.UsrCtrl
             }
         }
 
-        private static (MailMessage, SmtpClient) GetMailMessage(string subject, string mailBody, string email, string pwd = null)
-        {
-
-            //var myEmail = "ramnadntk211@gmail.com";
-            var myEmail = "ntkramnad211@gmail.com";
-            MailMessage message = new MailMessage();
-            SmtpClient smtp = new SmtpClient();
-            message.From = new MailAddress(myEmail);
-            message.To.Add(new MailAddress(email));
-
-            message.CC.Add(new MailAddress("jawahar.subramanian83@gmail.com"));
-            message.Subject = subject;
-            message.IsBodyHtml = true; //to make message body as html  
-            message.Body = mailBody;
-            smtp.Port = 587;
-            smtp.Host = "smtp.gmail.com"; //for gmail host  
-            smtp.EnableSsl = true;
-            smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new NetworkCredential(myEmail, pwd);
-            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-
-            return (message, smtp);
-
-
-        }
+       
     }
 }

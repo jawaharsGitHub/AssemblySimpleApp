@@ -1,4 +1,5 @@
-﻿using Common.ExtensionMethod;
+﻿using Common;
+using Common.ExtensionMethod;
 using DataAccess.PrimaryTypes;
 using Newtonsoft.Json;
 using System;
@@ -8,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 
@@ -107,18 +109,18 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             List<Pair> paguthi = new List<Pair>()
             {
-                new Pair(1,"Rsm-K", "ஆர்.எஸ்.மங்களம் - கிழக்கு"),
-                new Pair(2,"Rsm-M", "ஆர்.எஸ்.மங்களம் - மேற்கு"),
+                new Pair(1,"Rsm-K", "ஆர்.எஸ்.மங்களம் - கிழக்கு", 24000, "JAC"),
+                new Pair(2,"Rsm-M", "ஆர்.எஸ்.மங்களம் - மேற்கு",18000, "DAN" ),
                 //new Pair(3,"Tvd-T","திருவாடானை - தெற்கு"),
-                new Pair(4,"Tvd-K", "திருவாடானை - கிழக்கு"),
-                new Pair(5,"Tvd-M", "திருவாடானை - மேற்கு"),
+                new Pair(4,"Tvd-K", "திருவாடானை - கிழக்கு", 30000, "JAY"),
+                new Pair(5,"Tvd-M", "திருவாடானை - மேற்கு",28000, "ARD"),
                 //new Pair(6,"Tvd-V", "திருவாடானை - வடக்கு"),
-                new Pair(7,"Rmd-K", "இராம்நாடு - கிழக்கு"),
-                new Pair(8,"Rmd-m", "இராம்நாடு - மேற்கு"),
-                new Pair(9,"RSMNagar", "ஆர்.எஸ்.மங்களம் நகர்"),
-                new Pair(10,"Thondi", "தொண்டி"),
-                new Pair(11,"Others","Other Assembly"),
-                new Pair(12,"Dont Know","Dont Know")
+                new Pair(7,"Rmd-K", "இராம்நாடு - கிழக்கு",35000,"SAG"),
+                new Pair(8,"Rmd-m", "இராம்நாடு - மேற்கு", 34000,"RAB"),
+                new Pair(9,"RSMNagar", "ஆர்.எஸ்.மங்களம் நகர்" , 3500,"MER"),
+                new Pair(10,"Thondi", "தொண்டி", 4500, "SID"),
+                new Pair(11,"Others","Other Assembly",0),
+                new Pair(12,"Dont Know","Dont Know",0)
             };
 
             return paguthi;
@@ -130,94 +132,95 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             List<Pair> utpaguthi = new List<Pair>()
             {
-                new Pair(1,"Manakkudi", "அ.மணக்குடி"),
-                new Pair(1,"Alagarthevankottai","அழகர்தேவன்கோட்டை "),
-                new Pair(1,"Siththoorvaadi","சித்தூர்வாடி "),
-                new Pair(1,"Kadaloore","கடலூர் "),
-                new Pair(1,"Kallikkudi","கள்ளிக்குடி "),
-                new Pair(1,"Karungudi","கருங்குடி "),
-                new Pair(1,"Koththidal","கொத்திடல் "),
-                new Pair(1,"Kottakkudi","கொட்டக்குடி "),
-                new Pair(1,"Paaranoor","பாரனூர் "),
-                new Pair(1,"Pichchankurichi","பிச்சங்குறிச்சி "),
-                new Pair(1,"Senkudi","செங்குடி "),
-                new Pair(1,"Solanthoore","சோழந்தூர் "),
-                new Pair(1,"Thiruppaalakudi","திருப்பாலைக்குடி "),
-                new Pair(1,"Thumbadaikkakottai","தும்படைக்காகோட்டை "),
-                new Pair(1,"Ooranagkudi","ஊரணங்குடி "),
-                new Pair(1,"Varavani","வரவணி "),
-                new Pair(1,"KavanoorRsm","காவனூர்-RSM"),
+                // RSM-Kilakku
+                new Pair(1,"Manakkudi", "அ.மணக்குடி", 1200),
+                new Pair(1,"Alagarthevankottai","அழகர்தேவன்கோட்டை ",1000),
+                new Pair(1,"Siththoorvaadi","சித்தூர்வாடி ",1300),
+                new Pair(1,"Kadaloore","கடலூர் ",2500),
+                new Pair(1,"Kallikkudi","கள்ளிக்குடி ", 800),
+                new Pair(1,"Karungudi","கருங்குடி ", 2000),
+                new Pair(1,"Koththidal","கொத்திடல் ", 400),
+                new Pair(1,"Kottakkudi","கொட்டக்குடி ", 1100),
+                new Pair(1,"Paaranoor","பாரனூர் ", 1500),
+                new Pair(1,"Pichchankurichi","பிச்சங்குறிச்சி ", 700),
+                new Pair(1,"Senkudi","செங்குடி ", 450),
+                new Pair(1,"Solanthoore","சோழந்தூர் ", 1000),
+                new Pair(1,"Thiruppaalakudi","திருப்பாலைக்குடி ", 5000),
+                new Pair(1,"Thumbadaikkakottai","தும்படைக்காகோட்டை ", 1500),
+                new Pair(1,"Ooranagkudi","ஊரணங்குடி ", 600),
+                new Pair(1,"Varavani","வரவணி ", 1000),
+                new Pair(1,"KavanoorRsm","காவனூர்-RSM", 1400),
 
                 // RSM-Merku
-                new Pair(2,"A.R.Mangalam", "A.R.மங்களம்"),
-                new Pair(2,"Ananthoor","ஆனத்தூர் "),
-                new Pair(2,"Ayangudi","ஆயங்குடி "),
-                new Pair(2,"Govindamangalam","கோவிந்தமங்களம் "),
-                new Pair(2,"Koodaloore","கூடலூர் "),
-                new Pair(2,"Karkaaththakudi","கற்காத்தகுடி "),
-                new Pair(2,"Kaavanakkottai","காவனக்கோட்டை "),
-                new Pair(2,"Pullamadai","புள்ளமடை "),
-                new Pair(2,"MelPanaiyoor","மேல்பனையூர் "),
-                new Pair(2,"Odaikkaal","ஓடைக்கால் "),
-                new Pair(2,"Radhanoor","இராதானூர் "),
-                new Pair(2,"Sanaveli","சனவேலி "),
-                new Pair(2,"Saththanoor","சத்தானூர் "),
-                new Pair(2,"Seththidal","சேத்திடல் "),
-                new Pair(2,"Sevvaipettai","செவ்வாய்பேட்டை "),
-                new Pair(2,"Sirunakudi","சிருநாகுடி "),
-                new Pair(2,"Thiruthervalai","திருத்தேர்வளை "),
-                new Pair(2,"Vadakkaloor","வடக்கலூர்"),
+                new Pair(2,"A.R.Mangalam", "A.R.மங்களம்",1300),
+                new Pair(2,"Ananthoor","ஆனத்தூர் ",1700),
+                new Pair(2,"Ayangudi","ஆயங்குடி ",800),
+                new Pair(2,"Govindamangalam","கோவிந்தமங்களம் ",800),
+                new Pair(2,"Koodaloore","கூடலூர் ",800),
+                new Pair(2,"Karkaaththakudi","கற்காத்தகுடி ",1300),
+                new Pair(2,"Kaavanakkottai","காவனக்கோட்டை ",700),
+                new Pair(2,"Pullamadai","புள்ளமடை ",2000),
+                new Pair(2,"MelPanaiyoor","மேல்பனையூர் ",600),
+                new Pair(2,"Odaikkaal","ஓடைக்கால் ", 450),
+                new Pair(2,"Radhanoor","இராதானூர் ",1500),
+                new Pair(2,"Sanaveli","சனவேலி ",1600),
+                new Pair(2,"Saththanoor","சத்தானூர் ",700),
+                new Pair(2,"Seththidal","சேத்திடல் ",1200),
+                new Pair(2,"Sevvaipettai","செவ்வாய்பேட்டை ",750),
+                new Pair(2,"Sirunakudi","சிருநாகுடி ", 350),
+                new Pair(2,"Thiruthervalai","திருத்தேர்வளை ",800),
+                new Pair(2,"Vadakkaloor","வடக்கலூர்",500),
 
                 // TVD-Kilakku (22-VT)
-                new Pair(4,"Theloor", "தேளூர் "), 
-                new Pair(4,"Thalirmarungoor","தளிர்மருங்கூர் "), 
-                new Pair(4,"Aathiyur","ஆதியூர் "),
-                new Pair(4,"Arumboor","அரும்பூர் "), 
-                new Pair(4,"Kulaththoor","குளத்தூர் "), 
-                new Pair(4,"Thiruvetriyur","திருவெற்றியூர் "), 
-                new Pair(4,"Mugilthanagam","முகிழ்த்தகம் "), 
-                new Pair(4,"Nambuthalai","நம்புதாளை "),  
-                new Pair(4,"Puthupattinam","புதுப்பட்டினம் "),
-                new Pair(4,"Mullimunai","முள்ளிமுனை "),
-                new Pair(4,"Karangaadu","காரங்காடு"),
-                new Pair(4,"Arasaththoor","அரசத்தூர் "),
-                new Pair(4,"Kodipangu","கொடிப்பங்கு "),
-                new Pair(4,"Maavoor","மாவூர் "),
-                new Pair(4,"Kattavilagam", "கட்டவிளாகம் "),               
-                new Pair(4,"Vallaiyaapuram","வெள்ளையபுரம் "), 
-                new Pair(4,"Oriyur","ஓரியூர் "),
-                new Pair(4,"S.P.Pattinam","S.P. பட்டிணம்  "),
-                new Pair(4,"Panachayal","பனஞ்சாயல் "), 
-                new Pair(4,"Vattanam","வட்டானம் "),
-                new Pair(4,"Kaliyanagari","கலியநகரி "), 
-                new Pair(4,"Pullakadamban","புல்லக்கடம்பன் "),                 
+                new Pair(4,"Theloor", "தேளூர் ",1200), 
+                new Pair(4,"Thalirmarungoor","தளிர்மருங்கூர் ",1200), 
+                new Pair(4,"Aathiyur","ஆதியூர் ",1200),
+                new Pair(4,"Arumboor","அரும்பூர் ",1100), 
+                new Pair(4,"Kulaththoor","குளத்தூர் ",1200), 
+                new Pair(4,"Thiruvetriyur","திருவெற்றியூர் ",1000), 
+                new Pair(4,"Mugilthanagam","முகிழ்த்தகம் ",1900), 
+                new Pair(4,"Nambuthalai","நம்புதாளை ",3500),  
+                new Pair(4,"Puthupattinam","புதுப்பட்டினம் ",900),
+                new Pair(4,"Mullimunai","முள்ளிமுனை ",1200),
+                new Pair(4,"Karangaadu","காரங்காடு",900),
+                new Pair(4,"Arasaththoor","அரசத்தூர் ",1300),
+                new Pair(4,"Kodipangu","கொடிப்பங்கு ",1000),
+                new Pair(4,"Maavoor","மாவூர் ",1000),
+                new Pair(4,"Kattavilagam", "கட்டவிளாகம் ",2),               
+                new Pair(4,"Vallaiyaapuram","வெள்ளையபுரம் ",1400), 
+                new Pair(4,"Oriyur","ஓரியூர் ",1800),
+                new Pair(4,"S.P.Pattinam","S.P. பட்டிணம்  ", 2500),
+                new Pair(4,"Panachayal","பனஞ்சாயல் ",1000), 
+                new Pair(4,"Vattanam","வட்டானம் ",1000),
+                new Pair(4,"Kaliyanagari","கலியநகரி ",1500), 
+                new Pair(4,"Pullakadamban","புல்லக்கடம்பன் ",1200),                 
 
                 // TVD-Merku (25-AD)
-                new Pair(5,"Mangalakudi", "மங்களக்குடி "),                
-                new Pair(5,"Nilamalagiyamangalam","நிலமழகியமங்களம் "), 
-                new Pair(5,"Kattivayal","கட்டிவயல் "), 
-                new Pair(5,"Kunjangulam","குஞ்சங்குளம் "), 
-                new Pair(5,"Anjukottai","அஞ்சுகோட்டை "),
-                new Pair(5,"Kodanoor","கோடனூர் "), 
-                new Pair(5,"Pandukudi","பாண்டுகுடி "), 
-                new Pair(5,"Nagarikathan","நகரிகாத்தான் "),                
-                new Pair(5,"Achchangudi","அச்சங்குடி "), 
-                new Pair(5,"Neivayal", "நெய்வயல் "),
-                new Pair(5,"karumoli","கருமொழி "),
-                new Pair(5,"Palangulam","பழங்குளம் "),
-                new Pair(5,"Kadamboor","கடம்பூர் "),
-                new Pair(5,"Kookudi","கூகுடி "),
-                new Pair(5,"Thuththaakudi","துத்தாக்குடி "),
-                new Pair(5,"Sirumalaikottai","சிறுமலைக்கோட்டை "),
-                new Pair(5,"T.Nagini","தி.நாகனி "),
-                new Pair(5,"Orikottai","ஓரிக்கோட்டை "),
-                new Pair(5,"Periakeeramangalam","பெரியகீரமங்களம் "),
-                new Pair(5,"Kalloore","கல்லூர் "),
-                new Pair(5,"Thiruvadanai","திருவாடானை "),
-                new Pair(5,"Aandaavoorani","ஆண்டாவூரணி "),      
-                new Pair(5,"Paaganur","பாகனூர் "),                 
-                new Pair(5,"Sirukambaiyur","சிறுகம்பையூர் "),     
-                new Pair(5,"Pathanakudi","பதனக்குடி "),
+                new Pair(5,"Mangalakudi", "மங்களக்குடி ",1500),                
+                new Pair(5,"Nilamalagiyamangalam","நிலமழகியமங்களம் ",900), 
+                new Pair(5,"Kattivayal","கட்டிவயல் ",850), 
+                new Pair(5,"Kunjangulam","குஞ்சங்குளம் ",1000), 
+                new Pair(5,"Anjukottai","அஞ்சுகோட்டை ",1800),
+                new Pair(5,"Kodanoor","கோடனூர் ",1700), 
+                new Pair(5,"Pandukudi","பாண்டுகுடி ",650), 
+                new Pair(5,"Nagarikathan","நகரிகாத்தான் ",600),                
+                new Pair(5,"Achchangudi","அச்சங்குடி ",1200), 
+                new Pair(5,"Neivayal", "நெய்வயல் ",1400),
+                new Pair(5,"karumoli","கருமொழி ",900),
+                new Pair(5,"Palangulam","பழங்குளம் ",800),
+                new Pair(5,"Kadamboor","கடம்பூர் ",2),
+                new Pair(5,"Kookudi","கூகுடி ",1300),
+                new Pair(5,"Thuththaakudi","துத்தாக்குடி ",630),
+                new Pair(5,"Sirumalaikottai","சிறுமலைக்கோட்டை ", 850),
+                new Pair(5,"T.Nagini","தி.நாகனி ",1300),
+                new Pair(5,"Orikottai","ஓரிக்கோட்டை ", 380),
+                new Pair(5,"Periakeeramangalam","பெரியகீரமங்களம் ", 1800),
+                new Pair(5,"Kalloore","கல்லூர் ", 2800),
+                new Pair(5,"Thiruvadanai","திருவாடானை ", 1350),
+                new Pair(5,"Aandaavoorani","ஆண்டாவூரணி ", 1000),      
+                new Pair(5,"Paaganur","பாகனூர் ", 700),                 
+                new Pair(5,"Sirukambaiyur","சிறுகம்பையூர் ", 850),     
+                new Pair(5,"Pathanakudi","பதனக்குடி ", 400),
 
                 // RMD-Kilakku
                 new Pair(7,"Alagankulam", "அழகன்குளம்"),
@@ -930,12 +933,13 @@ namespace CenturyFinCorpApp.UsrCtrl
                                             group d by d.PaguthiEng.Trim() into ng
                                             select new
                                             {
-                                                Address = ng.Key,
-                                                Panchayat = ng.DistinctBy(d => d.UtPaguthiEng).Count(),
-                                                Count = ng.Count()
+                                                Ondrium = ng.Key,
+                                                Panchayat = ng.Where(w => w.UtPaguthiEng.Contains(',') == false).DistinctBy(d => d.UtPaguthiEng.Trim()).ToList().Count,
+                                                SplitCount = ng.Where(w => w.UtPaguthiEng.Contains(',') == false).Count() + "+" + ng.Where(w => w.UtPaguthiEng.Contains(',') == true).Count(),
+                                                TotalCount = ng.Count()
                                             };
 
-                if(value == 13)  dataGridView1.DataSource =  myLocalData.OrderByDescending(o => o.Count).ToList(); 
+                if(value == 13)  dataGridView1.DataSource =  myLocalData.OrderByDescending(o => o.TotalCount).ToList(); 
                 else dataGridView1.DataSource = myLocalData.OrderByDescending(o => o.Panchayat).ToList();
 
                 lblDetails.Text = $"ஒன்றியம் வாரியாக உறுப்பினர் எண்ணிக்கை!";
@@ -988,18 +992,176 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             var ourData = TvdMember.GetAll();
 
-            //List<TvdMember> needCorrectionData = new List<TvdMember>();
+            List<TvdMember> needCorrectionData = new List<TvdMember>();
 
-            ourData.ForEach(fe => {
+            ourData.ForEach(fe =>
+            {
 
-                var correctData = paguthiList.Where(w => w.Value == utPaguthiList.Where(w => w.Display == fe.UtPaguthiEng).First().Value).First();
+                var dd = utPaguthiList.Where(ww => ww.Display == fe.UtPaguthiEng).FirstOrDefault();
 
-                fe.PaguthiEng = correctData.Display;
-                fe.Paguthi = correctData.DisplayTamil;
+                if (dd != null)
+                { 
+                    var correctData = paguthiList.Where(w => w.Value == dd.Value).First();
+
+                    fe.PaguthiEng = correctData.Display;
+                    fe.Paguthi = correctData.DisplayTamil;
+
+                    needCorrectionData.Add(fe);
+                }
 
             });
 
-            TvdMember.BulkUpdatePaguthiEng(ourData);
+            TvdMember.BulkUpdatePaguthiEng(needCorrectionData);
+
+        }
+
+        bool hasInternet = false;
+
+        public static bool CheckForInternetConnection()
+        {
+            try
+            {
+                using (var client = new WebClient())
+                using (client.OpenRead("http://google.com/generate_204"))
+                    return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        private void btnEmail_Click(object sender, EventArgs e)
+        {
+            
+                try
+                {
+                    hasInternet = CheckForInternetConnection();
+
+                    if (hasInternet == false)
+                    {
+                        if (DialogResult.No == MessageBox.Show("No Internet Available, Please Connect to your WiFi", "", MessageBoxButtons.YesNo))
+                            return;
+                    }
+
+                    BackgroundWorker bw = new BackgroundWorker();
+                    bw.DoWork += (s, ee) =>
+                    {
+
+                       
+                        SendEmailForSendBalance();
+
+                        //AppCommunication.SendBalanceEmail(allBalances, currentBalanceDate, activeCus.Count(), "Jeyam Finance Balance Report");
+                        MessageBox.Show("Balance Report have been send to your email");
+                    };
+                    bw.RunWorkerAsync();
+
+
+
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+
+        }
+
+        private void SendEmailForSendBalance()
+        {
+
+            if (hasInternet == false) return;
+            var htmlString = FileContentReader.MemberContactHtml;
+
+
+            var total = TvdMember.GetCount();
+            var cn = TvdMember.ConAndNot();
+            var vote = TvdMember.TotalExpectedVote();
+            var meet = TvdMember.MeetCount();
+            var note = TvdMember.NithiCount();
+
+            var meetList = string.Join(Environment.NewLine, TvdMember.MeetContact().Select(s => $"{s.Name} - {s.Phone}"));
+            var noteList = string.Join(Environment.NewLine, TvdMember.NithiContact().Select(s => $"{s.Name} - {s.Phone}"));
+
+            StringBuilder rowData = new StringBuilder();
+            
+            var dat = DateTime.Today.ToShortDateString();
+
+            var dailyCheckHTML = htmlString
+                                .Replace("[DATE]", dat)
+                                .Replace("[TOTAL]", total)
+                                .Replace("[CONTACTED]", cn.C)
+                                .Replace("[TOBECONTACT]", cn.NC)
+                                .Replace("[VOTE]", vote)
+                                .Replace("[MEET]", meet)
+                                .Replace("[MEETNO]", meetList)
+                                .Replace("[NU]", note)
+                                .Replace("[NUNO]", noteList);
+
+            if (hasInternet)
+            {
+
+                //var smtp = General.GetMailMessage($"{dat} : {total} - திருவாடானை உறுப்பினர் தகவல்",
+                //    dailyCheckHTML,
+                //    "ntkthiruvadanai@gmail.com",
+                //    "ntkthiruvadanai210");
+
+
+                var smtp = General.GetMailMessage($"{dat} : {total} - திருவாடானை உறுப்பினர் தகவல்",
+                    dailyCheckHTML);
+
+                try
+                {
+                    smtp.Item2.Send(smtp.Item1);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+                
+                
+            }
+
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            var allData = TvdMember.GetAll();
+
+            //var sb = new StringBuilder();
+
+            int i = 1;
+
+                allData.ForEach(fe =>   
+                {  
+                    fe.Sno = i;
+                    i = i + 1;
+
+                });
+
+            StringBuilder sb = new StringBuilder();
+
+            int groupNo = 0;
+            for (int j = 0; j < allData.Count; j+=250)
+            {
+                var slicedData = allData.Skip(j).Take(250).ToList();
+                groupNo += 1;
+
+                sb = new StringBuilder();
+                slicedData.ForEach(fe =>
+                {
+                    sb.AppendLine($"BEGIN: VCARD");
+                    sb.AppendLine($"VERSION:3.0");
+                    sb.AppendLine($"KIND: org");
+                    sb.AppendLine($"FN:NTK{groupNo}-{fe.Sno.ToString().PadLeft(3, '0')}-{fe.Name}");
+                    sb.AppendLine($"TEL; type = Mobile:{fe.Phone}");
+                    sb.AppendLine($"ORG: G{groupNo}");
+                    sb.AppendLine($"END:VCARD");
+                });
+
+                File.WriteAllText($@"F:\NTK\jawa - 2021\members\All-TvdPhone{slicedData[0].Sno.ToString().PadLeft(4, '0')}-{slicedData.Last().Sno.ToString().PadLeft(4, '0')}-XX{groupNo.ToString().PadLeft(2, '0')}.vcf", sb.ToString());
+
+            }
 
         }
     }
@@ -1017,17 +1179,23 @@ namespace CenturyFinCorpApp.UsrCtrl
             Display = dis;
         }
 
-        public Pair(int val, string dis, string disTamil)
+        public Pair(int val, string dis, string disTamil, int voteCount = 0, string sey = "")
         {
             Value = val;
             Display = dis;
             DisplayTamil = disTamil;
+            Seyalaalar = sey;
+            Vote = voteCount;
         }
 
         public int Value { get; set; }
         public string Display { get; set; }
 
         public string DisplayTamil { get; set; }
+
+        public string Seyalaalar { get; set; }
+
+        public int Vote { get; set; }
 
         public override string ToString()
         {

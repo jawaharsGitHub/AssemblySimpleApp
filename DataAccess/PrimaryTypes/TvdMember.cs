@@ -170,7 +170,123 @@ namespace DataAccess.PrimaryTypes
 
                 return $"TR: {tr} ERC: {erc}";
 
-                //WriteObjectsToFile(list, JsonFilePath);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static string TotalExpectedVote()
+        {
+            try
+            {
+
+                List<TvdMember> list = GetAll();
+
+                var confirmedVote = list.Where(w => w.Vote > 0).Sum(s => s.Vote);
+                var expectedVote = list.Where(w => w.Vote == 0).Sum(s => s.Vote) * 1;
+
+                return (confirmedVote + expectedVote).ToString();
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        
+
+        public static string MeetCount()
+        {
+            try
+            {
+
+                List<TvdMember> list = GetAll();
+                var wantsMeet = list.Where(w => w.WantsMeet).Count();
+
+                return wantsMeet.ToString();
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static List<TvdMember> MeetContact()
+        {
+            try
+            {
+
+                List<TvdMember> list = GetAll();
+                var wantsMeet = list.Where(w => w.WantsMeet).ToList();
+
+                return wantsMeet;
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static string NithiCount()
+        {
+            try
+            {
+
+                List<TvdMember> list = GetAll();
+                var Nithi = list.Where(w => w.Money).Count();
+
+                return Nithi.ToString();
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static List<TvdMember> NithiContact()
+        {
+            try
+            {
+
+                List<TvdMember> list = GetAll();
+                var Nithi = list.Where(w => w.Money).ToList();
+
+                return Nithi;
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static bool isContacted(TvdMember tvd)
+        {
+            return tvd.UpdatedTime.ToString()!="01-01-0001 00:00:00";
+        }
+
+        public static (string C,string NC) ConAndNot()
+        {
+            try
+            {
+
+                List<TvdMember> list = GetAll();
+
+                var c = list.Where(w => isContacted(w)).Count().ToString();
+
+                var nc = list.Where(w => isContacted(w) == false).Count().ToString();
+
+                return (c, nc);
 
             }
             catch (Exception ex)
