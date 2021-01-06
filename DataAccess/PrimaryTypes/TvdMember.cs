@@ -28,6 +28,8 @@ namespace DataAccess.PrimaryTypes
         public string Phone { get; set; }
         public string Email { get; set; }
 
+        public bool JustTalk { get; set; }
+
         public bool VVIP { get; set; }
 
         public bool MultiplePlace { get; set; }
@@ -129,6 +131,17 @@ namespace DataAccess.PrimaryTypes
             List<TvdMember> list = ReadFileAsObjects<TvdMember>(JsonFilePath);
             var u = list.Where(c => c.MemberId == memId).First();
             u.Vote = votes;
+            u.UpdatedTime = DateTime.Now;
+
+            WriteObjectsToFile(list, JsonFilePath);
+
+        }
+
+        public static void UpdateTalk(string memId, bool votes)
+        {
+            List<TvdMember> list = ReadFileAsObjects<TvdMember>(JsonFilePath);
+            var u = list.Where(c => c.MemberId == memId).First();
+            u.JustTalk = votes;
             u.UpdatedTime = DateTime.Now;
 
             WriteObjectsToFile(list, JsonFilePath);

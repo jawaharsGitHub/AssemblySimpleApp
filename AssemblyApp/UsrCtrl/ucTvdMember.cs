@@ -52,6 +52,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                    new KeyValuePair<int, string>(4, "Not Yet Contact"),
                    new KeyValuePair<int, string>(15, "Till Now Contacted"),
                     new KeyValuePair<int, string>(16, "VVIP"),
+                    new KeyValuePair<int, string>(17, "TALK TO THEM"),
                    new KeyValuePair<int, string>(5, "HighOrder By Members Count"),
                    new KeyValuePair<int, string>(6, "LowOrder By Members Count"),
                    new KeyValuePair<int, string>(7, "Order By Panchayat Names And Count"),
@@ -743,6 +744,11 @@ namespace CenturyFinCorpApp.UsrCtrl
             {
                 TvdMember.UpdateVotes(cus.MemberId, cellValue.ToInt32());
             }
+
+            else if (owningColumnName == "JustTalk")
+            {
+                TvdMember.UpdateTalk(cus.MemberId, Convert.ToBoolean(cellValue));
+            }
             else if (owningColumnName == "UtPaguthiEng")
             {
 
@@ -813,13 +819,18 @@ namespace CenturyFinCorpApp.UsrCtrl
             else if (value == 15)
             {
                 searchedMember = data.Where(w => w.UpdatedTime.ToString() != "01-01-0001 00:00:00").ToList();
-                lblDetails.Text = $"{detail} {searchedMember.Count} உறவுககளை தொடர்புகொள்ளவில்லை.";
+                lblDetails.Text = $"{detail} {searchedMember.Count} உறவுககளை தொடர்பு கொண்டு பேசிவிட்டோம்!!.";
             }
 
             else if (value == 16)
             {
                 searchedMember = data.Where(w => w.VVIP).ToList();
                 lblDetails.Text = $"{detail} {searchedMember.Count} உறவுககளை கண்டிப்பாக தொடர்பு கொள்ளுங்கள்!!!";
+            }
+            else if (value == 17)
+            {
+                searchedMember = data.Where(w => w.JustTalk).ToList();
+                lblDetails.Text = $"{detail} {searchedMember.Count} உறவுககளை தொடர்புகொள்ளுங்கள்!!!";
             }
             else if (value == 5 || value == 6)
             {
