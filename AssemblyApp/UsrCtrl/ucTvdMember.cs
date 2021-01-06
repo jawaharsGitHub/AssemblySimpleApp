@@ -50,6 +50,8 @@ namespace CenturyFinCorpApp.UsrCtrl
                    new KeyValuePair<int, string>(2, "Only money"),
                    new KeyValuePair<int, string>(3, "wants meet"),
                    new KeyValuePair<int, string>(4, "Not Yet Contact"),
+                   new KeyValuePair<int, string>(15, "Till Now Contacted"),
+                    new KeyValuePair<int, string>(16, "VVIP"),
                    new KeyValuePair<int, string>(5, "HighOrder By Members Count"),
                    new KeyValuePair<int, string>(6, "LowOrder By Members Count"),
                    new KeyValuePair<int, string>(7, "Order By Panchayat Names And Count"),
@@ -726,7 +728,10 @@ namespace CenturyFinCorpApp.UsrCtrl
             if (owningColumnName == "WantsMeet")
             {
                 TvdMember.UpdateMeets(cus.MemberId, Convert.ToBoolean(cellValue));
-
+            }
+            else if (owningColumnName == "VVIP")
+            {
+                TvdMember.UpdateVVIP(cus.MemberId, Convert.ToBoolean(cellValue));
             }
 
             else if (owningColumnName == "Money")
@@ -803,7 +808,18 @@ namespace CenturyFinCorpApp.UsrCtrl
             else if (value == 4)
             {
                 searchedMember = data.Where(w => w.UpdatedTime.ToString() == "01-01-0001 00:00:00").ToList();
-                lblDetails.Text = $"{detail} {searchedMember.Count} உறவுககளை தொடர்புகொள்ள இயலவில்லை.";
+                lblDetails.Text = $"{detail} {searchedMember.Count} உறவுககளை தொடர்புகொள்ளவில்லை.";
+            }
+            else if (value == 15)
+            {
+                searchedMember = data.Where(w => w.UpdatedTime.ToString() != "01-01-0001 00:00:00").ToList();
+                lblDetails.Text = $"{detail} {searchedMember.Count} உறவுககளை தொடர்புகொள்ளவில்லை.";
+            }
+
+            else if (value == 16)
+            {
+                searchedMember = data.Where(w => w.VVIP).ToList();
+                lblDetails.Text = $"{detail} {searchedMember.Count} உறவுககளை கண்டிப்பாக தொடர்பு கொள்ளுங்கள்!!!";
             }
             else if (value == 5 || value == 6)
             {
