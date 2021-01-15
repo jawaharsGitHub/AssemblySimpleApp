@@ -38,7 +38,9 @@ namespace CenturyFinCorpApp.UsrCtrl
                    new KeyValuePair<int, string>(6, ">>TTV"),
                    new KeyValuePair<int, string>(7, ">>MNM"),
                    new KeyValuePair<int, string>(8, "<<TTV"),
-                   new KeyValuePair<int, string>(9, "<<MNM")
+                   new KeyValuePair<int, string>(9, "<<MNM"),
+                   new KeyValuePair<int, string>(10, "JOHN"),
+                   new KeyValuePair<int, string>(11, "DEVA")
 
                };
 
@@ -57,27 +59,6 @@ namespace CenturyFinCorpApp.UsrCtrl
             cmbAssembly.SelectedValue = 0; // _selectedAssembly == null ? 0 : _selectedAssembly.AssemblyNo;
         }
 
-        //private void cmbAssembly_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    var selectedAssemblyNo = cmbAssembly.SelectedValue.ToInt32();
-
-        //    Gets all data for that assembly.
-
-        //    panchayats, wards.
-
-
-        //   var panchayats = Panchayat.GetAll().Where(w => w.AssemblyNo == selectedAssemblyNo).ToList();
-
-        //    var pollingBooths = PollingStation.GetAll().Where(w => w.AssemblyNo == selectedAssemblyNo).ToList();
-
-        //    List<KeyValuePair<string, int>> data = new List<KeyValuePair<string, int>>();
-
-        //    data.Add(new KeyValuePair<string, int>("Panchayats", panchayats.Count()));
-        //    data.Add(new KeyValuePair<string, int>("polling Station", pollingBooths.Count()));
-
-        //    dataGridView1.DataSource = data;
-
-        //}
 
        private decimal GetPerc(int den, int nom)
         {
@@ -291,6 +272,65 @@ namespace CenturyFinCorpApp.UsrCtrl
 
 
             }
+            else if (value == 10)
+            {
+                var localData = (from d in otherData
+                                 group d by d.ooratchi into ng
+                                 select new
+                                 {
+                                     Ooratchi = ng.Key,
+                                     Ondrium = ng.ToList().First().ondrium,
+                                     ADMK = ng.Sum(s => s.admk),
+                                     DMK = ng.Sum(s => s.dmk),
+                                     ADMKP = GetPerc(ng.Sum(s => s.admk), ng.Sum(s => s.total)),
+                                     DMKP = GetPerc(ng.Sum(s => s.dmk), ng.Sum(s => s.total)),
+                                     TTV = ng.Sum(s => s.ttv),
+                                     NTK = ng.Sum(s => s.ntkvote),
+                                     John = ng.Sum(s => s.john),
+                                     Deva = ng.Sum(s => s.deva),
+                                     JOHNP = GetPerc(ng.Sum(s => s.john), ng.Sum(s => s.total)),
+                                     DEVAP = GetPerc(ng.Sum(s => s.deva), ng.Sum(s => s.total)),
+                                     TOTAL = ng.Sum(s => s.total),
+                                 }
+
+                                ).ToList();
+
+                var r = localData.OrderByDescending(o => o.JOHNP).ToList();
+
+                dataGridView1.DataSource = r;
+
+
+            }
+            else if (value == 11)
+            {
+                var localData = (from d in otherData
+                                 group d by d.ooratchi into ng
+                                 select new
+                                 {
+                                     Ooratchi = ng.Key,
+                                     Ondrium = ng.ToList().First().ondrium,
+                                     ADMK = ng.Sum(s => s.admk),
+                                     DMK = ng.Sum(s => s.dmk),
+                                     ADMKP = GetPerc(ng.Sum(s => s.admk), ng.Sum(s => s.total)),
+                                     DMKP = GetPerc(ng.Sum(s => s.dmk), ng.Sum(s => s.total)),
+                                     TTV = ng.Sum(s => s.ttv),
+                                     NTK = ng.Sum(s => s.ntkvote),
+                                     John = ng.Sum(s => s.john),
+                                     Deva = ng.Sum(s => s.deva),
+                                     JOHNP = GetPerc(ng.Sum(s => s.john), ng.Sum(s => s.total)),
+                                     DEVAP = GetPerc(ng.Sum(s => s.deva), ng.Sum(s => s.total)),
+                                     TOTAL = ng.Sum(s => s.total)
+                                 }
+
+                                ).ToList();
+
+                var r = localData.OrderByDescending(o => o.DEVAP).ToList();
+
+                dataGridView1.DataSource = r;
+
+
+            }
+
         }
     }
 

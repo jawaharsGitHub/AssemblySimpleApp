@@ -88,17 +88,17 @@ namespace CenturyFinCorpApp
             //mnuDataHelper.Click += (s, e) => ShowForm<DataHelper>(); ;
             //menuStrip.Items.Add(mnuDataHelper);
 
-            var mnuInternational = new ToolStripMenuItem() { Name = "international", Text = "Member-Verification" };
-            mnuInternational.Click += (s, e) => ShowForm<ucMemberVerify>(); ;
-            menuStrip.Items.Add(mnuInternational);
+            //var mnuInternational = new ToolStripMenuItem() { Name = "international", Text = "Member-Verification" };
+            //mnuInternational.Click += (s, e) => ShowForm<ucMemberVerify>(); ;
+            //menuStrip.Items.Add(mnuInternational);
 
-            var mnuLocalbody = new ToolStripMenuItem() { Name = "localbody", Text = "உள்ளாட்சி-தேர்தல்-2020" };
-            mnuLocalbody.Click += (s, e) => ShowForm<ucLocalBody>(); ;
-            menuStrip.Items.Add(mnuLocalbody);
+            //var mnuLocalbody = new ToolStripMenuItem() { Name = "localbody", Text = "உள்ளாட்சி-தேர்தல்-2020" };
+            //mnuLocalbody.Click += (s, e) => ShowForm<ucLocalBody>(); ;
+            //menuStrip.Items.Add(mnuLocalbody);
 
-            var mnuAnalysis = new ToolStripMenuItem() { Name = "localbody", Text = "2016-Election" };
-            mnuAnalysis.Click += (s, e) => ShowForm<ucVotes>();
-            menuStrip.Items.Add(mnuAnalysis);
+            //var mnuAnalysis = new ToolStripMenuItem() { Name = "localbody", Text = "2016-Election" };
+            //mnuAnalysis.Click += (s, e) => ShowForm<ucVotes>();
+            //menuStrip.Items.Add(mnuAnalysis);
 
             var mnuVoterAnalysis = new ToolStripMenuItem() { Name = "VoteAnalysis", Text = "Vote-Analysis" };
             mnuVoterAnalysis.Click += (s, e) => ShowForm<ucVoterAnalysis>(); ;
@@ -117,7 +117,11 @@ namespace CenturyFinCorpApp
             mnuReports.Click += (s, e) => ShowForm<ucReports>(); ;
             menuStrip.Items.Add(mnuReports);
 
-            
+            var mnuAllmem = new ToolStripMenuItem() { Name = "allmembers", Text = "ALL-MEM" };
+            mnuAllmem.Click += (s, e) => ShowForm<ucTvdMember>(); ;
+            menuStrip.Items.Add(mnuAllmem);
+
+
 
             this.Controls.Add(menuStrip);
         }
@@ -217,6 +221,12 @@ namespace CenturyFinCorpApp
             else if (typeof(T) == typeof(ucTvdMember))
             {
                 var ucd = new ucTvdMember();
+                panel1.Controls.Add(ucd);
+            }
+
+            else if (typeof(T) == typeof(ucReports))
+            {
+                var ucd = new ucReports();
                 panel1.Controls.Add(ucd);
             }
         }

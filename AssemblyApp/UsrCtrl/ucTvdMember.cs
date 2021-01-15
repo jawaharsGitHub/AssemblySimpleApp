@@ -830,7 +830,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             else if (value == 17)
             {
                 searchedMember = data.Where(w => w.JustTalk).ToList();
-                lblDetails.Text = $"{detail} {searchedMember.Count} உறவுககளை தொடர்புகொள்ளுங்கள்!!!";
+                lblDetails.Text = $"{detail} {searchedMember.Count} உறவுகளை தொடர்புகொள்ளுங்கள்!!!";
             }
             else if (value == 5 || value == 6)
             {

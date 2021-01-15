@@ -60,7 +60,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(37, 61);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(833, 711);
+            this.dataGridView1.Size = new System.Drawing.Size(1206, 711);
             this.dataGridView1.TabIndex = 2;
             // 
             // ucReports
@@ -71,7 +71,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbAssembly);
             this.Name = "ucReports";
-            this.Size = new System.Drawing.Size(951, 824);
+            this.Size = new System.Drawing.Size(1262, 824);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

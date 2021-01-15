@@ -30,6 +30,11 @@ namespace DataAccess.PrimaryTypes
 
         public int mnm { get; set; }
 
+        public int john { get; set; }
+
+
+        public int deva { get; set; }
+
         public int boothNO { get; set; }
 
         public int BoothCount { get; set; }
