@@ -101,7 +101,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             dataGridView1.Columns["Country"].Visible = false;
 
-            dataGridView1.Columns["Address"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            //dataGridView1.Columns["Address"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void LoadRec(int searchCount)

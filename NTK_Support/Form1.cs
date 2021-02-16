@@ -36,7 +36,8 @@ namespace NTK_Support
             var startBoothNo = Convert.ToInt32(txtStart.Text);
             var LastBoothNo = Convert.ToInt32(txtPartEndNo.Text);
             var assNo = txtAssNo.Text.Trim();
-
+            //string releaseDat = "SSR2020_14022020";
+            string releaseDat = "SSR2021_20012021";
             bw.DoWork += (s, o) =>
             {
 
@@ -47,9 +48,8 @@ namespace NTK_Support
                     try
                     {
                         btnProgress.BeginInvoke(new Action(() => btnProgress.Text = $"Processing {fileName}"));
-
-                        WebClient webClient = new WebClient();
-                        webClient.DownloadFile($"https://www.elections.tn.gov.in/SSR2020_14022020/dt27/ac{assNo}/{fileName}",
+                        WebClient webClient = new WebClient();                       
+                        webClient.DownloadFile($"https://www.elections.tn.gov.in/{releaseDat}/dt27/ac{assNo}/{fileName}",
                             $"{folderPath}/{fileName}");
 
                         btnProgress.BeginInvoke(new Action(() => btnProgress.Text = $"Done {fileName}"));
