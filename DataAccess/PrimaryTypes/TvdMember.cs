@@ -34,6 +34,14 @@ namespace DataAccess.PrimaryTypes
 
         public bool WantsMeet { get; set; }
 
+
+        public bool Campaign { get; set; }
+
+        public bool BoothAgent { get; set; }
+        public bool NoMore { get; set; }
+
+        public bool Vehicle { get; set; }
+
         public bool Money { get; set; }
 
         public int Vote { get; set; }
@@ -129,6 +137,50 @@ namespace DataAccess.PrimaryTypes
             List<TvdMember> list = ReadFileAsObjects<TvdMember>(JsonFilePath);
             var u = list.Where(c => c.MemberId == memId).First();
             u.Vote = votes;
+            u.UpdatedTime = DateTime.Now;
+
+            WriteObjectsToFile(list, JsonFilePath);
+
+        }
+
+        public static void UpdateCampaign(string memId, bool campaign)
+        {
+            List<TvdMember> list = ReadFileAsObjects<TvdMember>(JsonFilePath);
+            var u = list.Where(c => c.MemberId == memId).First();
+            u.Campaign = campaign;
+            u.UpdatedTime = DateTime.Now;
+
+            WriteObjectsToFile(list, JsonFilePath);
+
+        }
+
+        public static void UpdateNoMore(string memId, bool campaign)
+        {
+            List<TvdMember> list = ReadFileAsObjects<TvdMember>(JsonFilePath);
+            var u = list.Where(c => c.MemberId == memId).First();
+            u.NoMore = campaign;
+            u.UpdatedTime = DateTime.Now;
+
+            WriteObjectsToFile(list, JsonFilePath);
+
+        }
+
+        public static void UpdateBoothAgent(string memId, bool boothagent)
+        {
+            List<TvdMember> list = ReadFileAsObjects<TvdMember>(JsonFilePath);
+            var u = list.Where(c => c.MemberId == memId).First();
+            u.BoothAgent = boothagent;
+            u.UpdatedTime = DateTime.Now;
+
+            WriteObjectsToFile(list, JsonFilePath);
+
+        }
+
+        public static void UpdateVehicle(string memId, bool vehicle)
+        {
+            List<TvdMember> list = ReadFileAsObjects<TvdMember>(JsonFilePath);
+            var u = list.Where(c => c.MemberId == memId).First();
+            u.Vehicle = vehicle;
             u.UpdatedTime = DateTime.Now;
 
             WriteObjectsToFile(list, JsonFilePath);

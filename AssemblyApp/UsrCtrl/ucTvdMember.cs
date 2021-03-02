@@ -73,33 +73,74 @@ namespace CenturyFinCorpApp.UsrCtrl
         private void LoadGrid()
         {
             assemblies = TvdMember.GetAll().ToList();
+
+            fData = assemblies.Where(w => w.UpdatedTime.ToString() == "01-01-0001 00:00:00").ToList();
+
+            if (rdbFem.Checked)
+            {
+                fData = fData.Where(w => w.IsFemale == true).ToList();
+            }
+            else if (rdbMale.Checked)
+            {
+                fData = fData.Where(w => w.IsFemale == false).ToList();
+            }
+
             int i = 1;
-            assemblies.ForEach(f => f.Sno = i++);
-            dataGridView1.DataSource = assemblies;
+            fData.ForEach(f => f.Sno = i++);
+            dataGridView1.DataSource = fData;
             ColumnVisibility();
-            LoadRec(assemblies.Count);
+            LoadRec(fData.Count);
 
 
         }
-
+        private void ColumnOrder()
+        {
+            dataGridView1.Columns["Name"].DisplayIndex = 0;
+            dataGridView1.Columns["Phone"].DisplayIndex = 1;
+            dataGridView1.Columns["Vote"].DisplayIndex = 2;
+            dataGridView1.Columns["Campaign"].DisplayIndex = 3;
+            dataGridView1.Columns["BoothAgent"].DisplayIndex = 4;
+            dataGridView1.Columns["Vehicle"].DisplayIndex = 5;
+           dataGridView1.Columns["Money"].DisplayIndex = 6;
+            dataGridView1.Columns["NoMore"].DisplayIndex = 7;
+        }
         private void ColumnVisibility()
         {
+            dataGridView1.Columns["NoMore"].Visible = true;
+            dataGridView1.Columns["Sno"].Visible = false;
+            dataGridView1.Columns["Address"].Visible = false;
+            dataGridView1.Columns["Paguthi"].Visible = false;
+            dataGridView1.Columns["UtPaguthi"].Visible = false;
+            dataGridView1.Columns["PaguthiEng"].Visible = false;
+
+            dataGridView1.Columns["UtPaguthiEng"].Visible = false;
+            dataGridView1.Columns["Country"].Visible = false;
             dataGridView1.Columns["State"].Visible = false;
             dataGridView1.Columns["District"].Visible = false;
             dataGridView1.Columns["Assembly"].Visible = false;
+
+            
             dataGridView1.Columns["MemberId"].Visible = false;
-            //dataGridView1.Columns["Name"].Visible = false;
-            //dataGridView1.Columns["Phone"].Visible = false;
+            dataGridView1.Columns["Name"].Visible = true;
+            dataGridView1.Columns["Phone"].Visible = true;
             dataGridView1.Columns["Email"].Visible = false;
+            dataGridView1.Columns["JustTalk"].Visible = false;
 
-            dataGridView1.Columns["Paguthi"].Visible = false;
-            dataGridView1.Columns["UtPaguthi"].Visible = false;
+            dataGridView1.Columns["VVIP"].Visible = false;
+            dataGridView1.Columns["MultiplePlace"].Visible = false;
+            dataGridView1.Columns["WantsMeet"].Visible = false;
+            dataGridView1.Columns["Campaign"].Visible = true;
+            dataGridView1.Columns["BoothAgent"].Visible = true;
 
-            dataGridView1.Columns["PaguthiEng"].Visible = false;
-            //dataGridView1.Columns["UtPaguthiEng"].Visible = false;
-            //dataGridView1.Columns["UtPaguthiEng"].DisplayIndex = 3;
 
-            dataGridView1.Columns["Country"].Visible = false;
+            dataGridView1.Columns["Vehicle"].Visible = true;
+            dataGridView1.Columns["Money"].Visible = true;
+            dataGridView1.Columns["Vote"].Visible = true;
+            dataGridView1.Columns["IsFemale"].Visible = false;
+            dataGridView1.Columns["UpdatedTime"].Visible = false;
+            dataGridView1.Columns["NeedUpdatePagEng"].Visible = false;
+
+            ColumnOrder();
 
             //dataGridView1.Columns["Address"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
@@ -504,15 +545,22 @@ namespace CenturyFinCorpApp.UsrCtrl
                     d = d.Where(w => w.IsFemale == false).ToList();
                 }
 
-                sb.AppendLine($"-------------------");
-                sb.AppendLine($"{fData[0].UtPaguthi} ({fData.Count})");
-                sb.AppendLine($"-------------------");
+                //sb.AppendLine($"-------------------");
+                //sb.AppendLine($"{fData[0].UtPaguthi} ({fData.Count})");
+                //sb.AppendLine($"-------------------");
 
-                d.ForEach(fe =>
+                //d.ForEach(fe =>
+                fData.ForEach(fe =>
                 {
                     i = i + 1;
-                    sb.AppendLine($"({i})  {fe.Name} [ {fe.Phone} ]{Environment.NewLine}{fe.Address}");
-                    sb.Append(Environment.NewLine);
+                    // sb.AppendLine($"({i})  {fe.Name} [ {fe.Phone} ]{Environment.NewLine}{fe.Address}");
+                    sb.AppendLine($"({i})  {fe.Name} [ {fe.Phone} ]");
+                    if (rdbMale.Checked)
+                        sb.AppendLine($@"1. பயணிப்பதற்கு நன்றி! --- 2. எடுக்கவில்லை!  ---3. வெற்றி நம்பிக்கை! --- 4. வாக்கு?   --- 5. பரப்புரை?--- 6. பூத் ஏகென்ட்?  -- 7. வாகனம்?     --- 6. நிதி/வேறு உதவி?");
+                    else if (rdbFem.Checked)
+                        sb.AppendLine($@"1. பயணிப்பதற்கு நன்றி ! --- 2. தொடர்பில் இல்லை!   ---3. வெற்றி நம்பிக்கை! --- 4. வாக்கு?   --- 5. பரப்புரை?  -- 7. வாகனம்?     --- 6. நிதி/வேறு உதவி?");
+
+                    sb.AppendLine($"$$$$$$$$$$$$$$$$$$$$$$$$${Environment.NewLine}");
                 });
 
                 File.WriteAllText($@"F:\NTK\jawa - 2021\members\{selectedPan}({d.Count}){filterName}.txt", sb.ToString());
@@ -689,6 +737,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             dataGridView1.DataSource = fData;
             ColumnVisibility();
+            ColumnOrder();
             LoadRec(fData.Count);
 
             //}
@@ -740,10 +789,31 @@ namespace CenturyFinCorpApp.UsrCtrl
                 TvdMember.UpdateMoney(cus.MemberId, Convert.ToBoolean(cellValue));
             }
 
+            else if (owningColumnName == "Campaign")
+            {
+                TvdMember.UpdateCampaign(cus.MemberId, Convert.ToBoolean(cellValue));
+            }
+
+            else if (owningColumnName == "Vehicle")
+            {
+                TvdMember.UpdateVehicle(cus.MemberId, Convert.ToBoolean(cellValue));
+            }
+
+            else if (owningColumnName == "BoothAgent")
+            {
+                TvdMember.UpdateBoothAgent(cus.MemberId, Convert.ToBoolean(cellValue));
+            }
+
             else if (owningColumnName == "Vote")
             {
                 TvdMember.UpdateVotes(cus.MemberId, cellValue.ToInt32());
             }
+
+            else if (owningColumnName == "NoMore")
+            {
+                TvdMember.UpdateNoMore(cus.MemberId, Convert.ToBoolean(cellValue));
+            }
+            
 
             else if (owningColumnName == "JustTalk")
             {
@@ -877,15 +947,6 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 StringBuilder sb = new StringBuilder();
                 int i = 0;
-
-                //allData.ForEach(fe =>
-                //{
-                //    i = i + 1;
-                //    sb.Append($"({i}) {fe.Key} ({fe.count})");
-                //    sb.Append(Environment.NewLine);
-                //});
-
-                //File.WriteAllText($@"F:\NTK\jawa - 2021\members\All-{DateTime.Now.ToShortDateString()}.txt", sb.ToString());
 
                 dataGridView1.DataSource = allData;
             }
@@ -1079,8 +1140,8 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                     SendEmailForSendBalance();
 
-                        //AppCommunication.SendBalanceEmail(allBalances, currentBalanceDate, activeCus.Count(), "Jeyam Finance Balance Report");
-                        MessageBox.Show("Balance Report have been send to your email");
+                    //AppCommunication.SendBalanceEmail(allBalances, currentBalanceDate, activeCus.Count(), "Jeyam Finance Balance Report");
+                    MessageBox.Show("Balance Report have been send to your email");
                 };
                 bw.RunWorkerAsync();
 
@@ -1173,7 +1234,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 {
                     throw ex;
                 }
-                
+
             }
             return dtexcel;
         }
@@ -1236,35 +1297,35 @@ namespace CenturyFinCorpApp.UsrCtrl
                 ass = "Tvd";
             }
 
-                int i = 1;
+            int i = 1;
 
-                allData.ForEach(fe =>
+            allData.ForEach(fe =>
+            {
+                fe.Sno = i;
+                i = i + 1;
+            });
+
+            int groupNo = 0;
+            for (int j = 0; j < allData.Count; j += 250)
+            {
+                var slicedData = allData.Skip(j).Take(250).ToList();
+                groupNo += 1;
+
+                StringBuilder sb = new StringBuilder();
+                slicedData.ForEach(fe =>
                 {
-                    fe.Sno = i;
-                    i = i + 1;
+                    sb.AppendLine($"BEGIN: VCARD");
+                    sb.AppendLine($"VERSION:3.0");
+                    sb.AppendLine($"KIND: org");
+                    sb.AppendLine($"FN:NTK{groupNo}-{fe.Sno.ToString().PadLeft(3, '0')}-{fe.Name}");
+                    sb.AppendLine($"TEL; type = Mobile:{fe.Phone}");
+                    sb.AppendLine($"ORG: G{groupNo}");
+                    sb.AppendLine($"END:VCARD");
                 });
 
-                int groupNo = 0;
-                for (int j = 0; j < allData.Count; j += 250)
-                {
-                    var slicedData = allData.Skip(j).Take(250).ToList();
-                    groupNo += 1;
+                File.WriteAllText($@"F:\NTK\jawa - 2021\members\All-{ass}Phone{slicedData[0].Sno.ToString().PadLeft(4, '0')}-{slicedData.Last().Sno.ToString().PadLeft(4, '0')}-XX{groupNo.ToString().PadLeft(2, '0')}.vcf", sb.ToString());
 
-                    StringBuilder sb = new StringBuilder();
-                    slicedData.ForEach(fe =>
-                    {   
-                        sb.AppendLine($"BEGIN: VCARD");
-                        sb.AppendLine($"VERSION:3.0");
-                        sb.AppendLine($"KIND: org");
-                        sb.AppendLine($"FN:NTK{groupNo}-{fe.Sno.ToString().PadLeft(3, '0')}-{fe.Name}");
-                        sb.AppendLine($"TEL; type = Mobile:{fe.Phone}");
-                        sb.AppendLine($"ORG: G{groupNo}");
-                        sb.AppendLine($"END:VCARD");
-                    });
-
-                    File.WriteAllText($@"F:\NTK\jawa - 2021\members\All-{ass}Phone{slicedData[0].Sno.ToString().PadLeft(4, '0')}-{slicedData.Last().Sno.ToString().PadLeft(4, '0')}-XX{groupNo.ToString().PadLeft(2, '0')}.vcf", sb.ToString());
-
-                }
+            }
 
         }
     }
