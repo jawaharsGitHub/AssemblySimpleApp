@@ -793,6 +793,12 @@ namespace CenturyFinCorpApp.UsrCtrl
             ColumnOrder();
             LoadRec(fData.Count);
 
+            if (dataGridView1.Rows.Count == 0) return;
+            dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells["Vote"];
+            //cellCurrentValue = Transaction.GetLastTransactionAmount(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].DataBoundItem as Customer);
+            //dataGridView1.CurrentCell.Value = cellCurrentValue;
+            dataGridView1.BeginEdit(true);
+
             //}
 
         }
@@ -1465,6 +1471,8 @@ namespace CenturyFinCorpApp.UsrCtrl
                 txtPhone.Focus();
             }
         }
+
+       
     }
 
     public class Pair

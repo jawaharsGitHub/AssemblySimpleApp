@@ -68,7 +68,6 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
-            //this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             // 
             // comboBox1
             // 
@@ -78,7 +77,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(197, 21);
             this.comboBox1.TabIndex = 1;
-           // this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -206,6 +204,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(113, 20);
             this.txtPhone.TabIndex = 17;
+            //this.txtPhone.Leave += new System.EventHandler(this.txtPhone_Leave);
             // 
             // button11
             // 
@@ -376,7 +375,6 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "ucTvdMember";
             this.Size = new System.Drawing.Size(1272, 552);
-            // this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ucTvdMember_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
