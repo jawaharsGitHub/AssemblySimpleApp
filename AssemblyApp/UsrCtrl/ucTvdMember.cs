@@ -823,7 +823,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
 
 
-            if (owningColumnName != "UtPaguthiEng" && string.IsNullOrEmpty(cellValue))
+            if (owningColumnName != "UtPaguthiEng" && (string.IsNullOrEmpty(cellValue) || cellValue == "0"))
             {
                 EditCancel();
                 return;
