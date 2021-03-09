@@ -48,6 +48,13 @@ namespace CenturyFinCorpApp.UsrCtrl
                {
                    new KeyValuePair<int, string>(1, "Order By Vote"),
                    new KeyValuePair<int, string>(2, "Only money"),
+                   new KeyValuePair<int, string>(31, "MO"),
+                   new KeyValuePair<int, string>(32, "PO"),
+                   new KeyValuePair<int, string>(33, "VEO"),
+                   new KeyValuePair<int, string>(34, "M+P"),
+                   new KeyValuePair<int, string>(35, "M+V"),
+                   new KeyValuePair<int, string>(36, "P+V"),
+                   new KeyValuePair<int, string>(37, "M+P+V"),
                    new KeyValuePair<int, string>(3, "wants meet"),
                    new KeyValuePair<int, string>(4, "Not Yet Contact"),
                    new KeyValuePair<int, string>(15, "Till Now Contacted"),
@@ -61,7 +68,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                    new KeyValuePair<int, string>(10, "NO Phone No. Member"),
                    new KeyValuePair<int, string>(11, "Only Female"),
                    new KeyValuePair<int, string>(12, "Female By Area"),
-                   new KeyValuePair<int, string>(13, "By Ondrium Name")                   ,
+                   new KeyValuePair<int, string>(13, "By Ondrium Name"),                   
                    new KeyValuePair<int, string>(14, "By Ondrium Count")
                };
 
@@ -101,8 +108,11 @@ namespace CenturyFinCorpApp.UsrCtrl
             dataGridView1.Columns["Campaign"].DisplayIndex = 3;
             dataGridView1.Columns["BoothAgent"].DisplayIndex = 4;
             dataGridView1.Columns["Vehicle"].DisplayIndex = 5;
-           dataGridView1.Columns["Money"].DisplayIndex = 6;
-            dataGridView1.Columns["NoMore"].DisplayIndex = 7;
+            dataGridView1.Columns["Money"].DisplayIndex = 6;
+            dataGridView1.Columns["NoMore"].DisplayIndex = 7; 
+            dataGridView1.Columns["UpdatedTime"].DisplayIndex = 8;
+
+
         }
         private void ColumnVisibility()
         {
@@ -137,7 +147,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             dataGridView1.Columns["Money"].Visible = true;
             dataGridView1.Columns["Vote"].Visible = true;
             dataGridView1.Columns["IsFemale"].Visible = false;
-            dataGridView1.Columns["UpdatedTime"].Visible = false;
+            dataGridView1.Columns["UpdatedTime"].Visible = true;
             dataGridView1.Columns["NeedUpdatePagEng"].Visible = false;
 
             ColumnOrder();
@@ -519,6 +529,21 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         }
 
+        private string Status(TvdMember tvdm)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            if (tvdm.Campaign) sb.Append("பிரச்சாரம் - march 6 கூட்டம்?  ||");
+            if (tvdm.Vehicle) sb.Append("வாகனம் - ins. copy, RC, License, Photo    ||");
+            if (tvdm.BoothAgent) sb.Append("பூத் ஏஜென்ட் - voter id?    ||");
+            if (tvdm.Vote > 19) sb.Append($"vote:{tvdm.Vote} - நன்றி    ||");
+            if (tvdm.Money) sb.Append("money - account details?");
+
+            sb.Append(Environment.NewLine);
+
+            return sb.ToString();
+        }
+
         private void btnExport_Click(object sender, EventArgs e)
         {
 
@@ -529,6 +554,27 @@ namespace CenturyFinCorpApp.UsrCtrl
             }
             StringBuilder sb = new StringBuilder();
             int i = 0;
+            ///*
+
+            
+            fData.ForEach(fe =>
+            {
+
+                if (fe.Campaign == true || fe.Vehicle == true || fe.BoothAgent == true || fe.Vote > 19 || fe.Money == true)
+                {
+                    i = i + 1;
+                    // sb.AppendLine($"({i})  {fe.Name} [ {fe.Phone} ]{Environment.NewLine}{fe.Address}");
+                    sb.AppendLine($"({i})  {fe.Name} [ {fe.Phone} ] - {Status(fe)} ");
+                }
+                
+                // sb.AppendLine($"$$$$$$$$$$$$$$$$$$$$$$$$${Environment.NewLine}");
+            });
+
+            File.WriteAllText($@"F:\NTK\jawa - 2021\members\CallUpdate-2 march.txt", sb.ToString());
+            MessageBox.Show($"All Members Exported Successfully!");
+            return;
+            ///
+
 
             string filterName = GetFileNameFIlter();
 
@@ -719,18 +765,25 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             //if (txtPhone.Text.Trim() != string.Empty)
             //{
-            var data = assemblies.Where(w => w.Phone.EndsWith(txtPhone.Text)).ToList();
+            //////var data = assemblies.Where(w => w.Phone.EndsWith(txtPhone.Text)).ToList();
 
-            if (rdbFem.Checked)
+            //////if (rdbFem.Checked)
+            //////{
+            //////    data = assemblies.Where(w => w.IsFemale && w.UtPaguthiEng.Contains(selectedPan)).ToList();
+            //////}
+            //////else if (rdbMale.Checked)
+            //////{
+            //////    data = assemblies.Where(w => w.IsFemale == false && w.UtPaguthiEng.Contains(selectedPan)).ToList();
+            //////}
+            ///
+            var data = assemblies.Where(w => w.UpdatedTime.ToString() != "01-01-0001 00:00:00").ToList();
+
+            if (txtPhone.Text.Trim() != string.Empty)
             {
-                data = assemblies.Where(w => w.IsFemale && w.UtPaguthiEng.Contains(selectedPan)).ToList();
-            }
-            else if (rdbMale.Checked)
-            {
-                data = assemblies.Where(w => w.IsFemale == false && w.UtPaguthiEng.Contains(selectedPan)).ToList();
+                data = assemblies.Where(w => w.Phone.EndsWith(txtPhone.Text)).ToList();
             }
 
-            fData = new List<TvdMember>();
+           fData = new List<TvdMember>();
             fData = data.OrderByDescending(o => o.Money)
                 .ThenBy(o => o.Phone)
                 .ToList();
@@ -851,20 +904,21 @@ namespace CenturyFinCorpApp.UsrCtrl
             List<TvdMember> data = TvdMember.GetAll();
             string detail = "";
 
-            if (checkBox1.Checked)
-            {
-                detail = "தொகுதியில்";
-            }
-            else
-            {
-                var selectedPan = (comboBox1.SelectedItem as Pair).Display;
-                data = data.Where(w => w.UtPaguthiEng.Contains(selectedPan)).ToList();
-                detail = (comboBox1.SelectedItem as Pair).DisplayTamil + "-யில்";
-            }
+            //if (checkBox1.Checked)
+            //{
+            //    detail = "தொகுதியில்";
+            //}
+            //else
+            //{
+            //    var selectedPan = (comboBox1.SelectedItem as Pair).Display;
+               //data = data.Where(w => w.UtPaguthiEng.Contains(selectedPan)).ToList();
+            //    detail = (comboBox1.SelectedItem as Pair).DisplayTamil + "-யில்";
+            //}
 
             var value = ((KeyValuePair<int, string>)comboBox3.SelectedItem).Key;
             List<TvdMember> searchedMember = null;
 
+            int day = 2;
             if (value == 1)
             {
                 searchedMember = data.OrderByDescending(o => o.Vote).ToList();
@@ -1035,8 +1089,82 @@ namespace CenturyFinCorpApp.UsrCtrl
                 lblDetails.Text = $"ஒன்றியம் வாரியாக உறுப்பினர் எண்ணிக்கை!";
                 return;
             }
+            else if (value == 31)
+            {
+                searchedMember = data.Where(w => 
+                w.UpdatedTime.ToString() != "01-01-0001 00:00:00" &&
+                w.UpdatedTime.Day <= day &&
+                w.Money == true && w.Campaign == false && w.Vehicle == false).ToList();
+                LoadRec(searchedMember.Count);
+               
+              
+
+            }
+            else if (value == 32)
+            {
+                searchedMember = data.Where(w =>
+                w.UpdatedTime.ToString() != "01-01-0001 00:00:00" &&
+                w.UpdatedTime.Day <= day &&
+                w.Money == false && w.Campaign == true && w.Vehicle == false).ToList();
+                LoadRec(searchedMember.Count);
+                
+
+            }
+
+            else if (value == 33)
+            {
+                searchedMember = data.Where(w =>
+                w.UpdatedTime.ToString() != "01-01-0001 00:00:00" &&
+                w.UpdatedTime.Day <= day &&
+                w.Money == false && w.Campaign == false && w.Vehicle == true).ToList();
+                LoadRec(searchedMember.Count);
+                
+            }
+
+            else if (value == 34)
+            {
+                searchedMember = data.Where(w =>
+                w.UpdatedTime.ToString() != "01-01-0001 00:00:00" &&
+                w.UpdatedTime.Day <= day &&
+                w.Money == true && w.Campaign == true && w.Vehicle == false).ToList();
+                LoadRec(searchedMember.Count);
+               
+            }
+
+            else if (value == 35)
+            {
+                searchedMember = data.Where(w =>
+                w.UpdatedTime.ToString() != "01-01-0001 00:00:00" &&
+                w.UpdatedTime.Day <= day &&
+                w.Money == true && w.Campaign == false && w.Vehicle == true).ToList();
+                LoadRec(searchedMember.Count);
+               
+            }
+
+
+            else if (value == 36)
+            {
+                searchedMember = data.Where(w =>
+                w.UpdatedTime.ToString() != "01-01-0001 00:00:00" &&
+                w.UpdatedTime.Day <= day &&
+                w.Money == false && w.Campaign == true && w.Vehicle == true).ToList();
+                LoadRec(searchedMember.Count);
+               
+            }
+
+            else if (value == 37)
+            {
+                searchedMember = data.Where(w =>
+                w.UpdatedTime.ToString() != "01-01-0001 00:00:00" &&
+                w.UpdatedTime.Day <= day &&
+                w.Money == true && w.Campaign == true && w.Vehicle == true).ToList();
+                LoadRec(searchedMember.Count);
+                
+            }
 
             dataGridView1.DataSource = searchedMember;
+
+
 
         }
 
@@ -1327,6 +1455,15 @@ namespace CenturyFinCorpApp.UsrCtrl
 
             }
 
+        }
+
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.Q) // char.IsDigit(e.KeyChar) &&
+            {
+                txtPhone.SelectAll();
+                txtPhone.Focus();
+            }
         }
     }
 
