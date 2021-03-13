@@ -51,10 +51,10 @@ namespace CenturyFinCorpApp.UsrCtrl
                    new KeyValuePair<int, string>(31, "MO"),
                    new KeyValuePair<int, string>(32, "PO"),
                    new KeyValuePair<int, string>(33, "VEO"),
-                   new KeyValuePair<int, string>(34, "M+P"),
-                   new KeyValuePair<int, string>(35, "M+V"),
-                   new KeyValuePair<int, string>(36, "P+V"),
-                   new KeyValuePair<int, string>(37, "M+P+V"),
+                   //new KeyValuePair<int, string>(34, "M+P"),
+                   //new KeyValuePair<int, string>(35, "M+V"),
+                   //new KeyValuePair<int, string>(36, "P+V"),
+                   //new KeyValuePair<int, string>(37, "M+P+V"),
                    new KeyValuePair<int, string>(3, "wants meet"),
                    new KeyValuePair<int, string>(4, "Not Yet Contact"),
                    new KeyValuePair<int, string>(15, "Till Now Contacted"),
@@ -924,7 +924,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             var value = ((KeyValuePair<int, string>)comboBox3.SelectedItem).Key;
             List<TvdMember> searchedMember = null;
 
-            int day = 2;
+            int day = 14;
             if (value == 1)
             {
                 searchedMember = data.OrderByDescending(o => o.Vote).ToList();
@@ -1100,18 +1100,19 @@ namespace CenturyFinCorpApp.UsrCtrl
                 searchedMember = data.Where(w => 
                 w.UpdatedTime.ToString() != "01-01-0001 00:00:00" &&
                 w.UpdatedTime.Day <= day &&
-                w.Money == true && w.Campaign == false && w.Vehicle == false).ToList();
+                w.Money == true).ToList();
                 LoadRec(searchedMember.Count);
-               
-              
 
+                //new KeyValuePair<int, string>(31, "MO"),
+                //   new KeyValuePair<int, string>(32, "PO"),
+                //   new KeyValuePair<int, string>(33, "VEO"),
             }
             else if (value == 32)
             {
                 searchedMember = data.Where(w =>
                 w.UpdatedTime.ToString() != "01-01-0001 00:00:00" &&
                 w.UpdatedTime.Day <= day &&
-                w.Money == false && w.Campaign == true && w.Vehicle == false).ToList();
+                w.Campaign == true).ToList();
                 LoadRec(searchedMember.Count);
                 
 
@@ -1122,7 +1123,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 searchedMember = data.Where(w =>
                 w.UpdatedTime.ToString() != "01-01-0001 00:00:00" &&
                 w.UpdatedTime.Day <= day &&
-                w.Money == false && w.Campaign == false && w.Vehicle == true).ToList();
+                w.Vehicle == true).ToList();
                 LoadRec(searchedMember.Count);
                 
             }
@@ -1132,45 +1133,12 @@ namespace CenturyFinCorpApp.UsrCtrl
                 searchedMember = data.Where(w =>
                 w.UpdatedTime.ToString() != "01-01-0001 00:00:00" &&
                 w.UpdatedTime.Day <= day &&
-                w.Money == true && w.Campaign == true && w.Vehicle == false).ToList();
+                w.Campaign == true).ToList();
                 LoadRec(searchedMember.Count);
                
-            }
-
-            else if (value == 35)
-            {
-                searchedMember = data.Where(w =>
-                w.UpdatedTime.ToString() != "01-01-0001 00:00:00" &&
-                w.UpdatedTime.Day <= day &&
-                w.Money == true && w.Campaign == false && w.Vehicle == true).ToList();
-                LoadRec(searchedMember.Count);
-               
-            }
-
-
-            else if (value == 36)
-            {
-                searchedMember = data.Where(w =>
-                w.UpdatedTime.ToString() != "01-01-0001 00:00:00" &&
-                w.UpdatedTime.Day <= day &&
-                w.Money == false && w.Campaign == true && w.Vehicle == true).ToList();
-                LoadRec(searchedMember.Count);
-               
-            }
-
-            else if (value == 37)
-            {
-                searchedMember = data.Where(w =>
-                w.UpdatedTime.ToString() != "01-01-0001 00:00:00" &&
-                w.UpdatedTime.Day <= day &&
-                w.Money == true && w.Campaign == true && w.Vehicle == true).ToList();
-                LoadRec(searchedMember.Count);
-                
             }
 
             dataGridView1.DataSource = searchedMember;
-
-
 
         }
 
