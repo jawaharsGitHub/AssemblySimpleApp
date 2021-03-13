@@ -47,11 +47,11 @@ namespace CenturyFinCorpApp.UsrCtrl
             var myKeyValuePair = new List<KeyValuePair<int, string>>()
                {
                    new KeyValuePair<int, string>(1, "Order By Vote"),
-                   new KeyValuePair<int, string>(2, "Only money"),
+                   //new KeyValuePair<int, string>(2, "Only money"),
                    new KeyValuePair<int, string>(31, "MO"),
                    new KeyValuePair<int, string>(32, "PO"),
                    new KeyValuePair<int, string>(33, "VEO"),
-                   //new KeyValuePair<int, string>(34, "M+P"),
+                   new KeyValuePair<int, string>(34, "BA"),
                    //new KeyValuePair<int, string>(35, "M+V"),
                    //new KeyValuePair<int, string>(36, "P+V"),
                    //new KeyValuePair<int, string>(37, "M+P+V"),
@@ -544,6 +544,42 @@ namespace CenturyFinCorpApp.UsrCtrl
             return sb.ToString();
         }
 
+        private string StatusExceptBAandMoney(TvdMember tvdm)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            if (tvdm.Money == false)
+            {
+                if (tvdm.Vote > 0) sb.Append($"-- வாக்கு :{tvdm.Vote} - நன்றி");
+                if (tvdm.Campaign) sb.Append("-- பிரச்சாரம் - march-15?");
+                if (tvdm.Vehicle) sb.Append("-- வாகனம் - ins. copy, RC, License");
+                // if (tvdm.BoothAgent) sb.Append("பூத் ஏஜென்ட் - voter id?    ||");
+                //if (tvdm.Money) sb.Append("-- money account details?");
+                sb.Append(Environment.NewLine);
+            }
+
+            
+
+            return sb.ToString();
+        }
+
+        private string StatusOnlyMoney(TvdMember tvdm)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            if (tvdm.Money)
+            {
+                if (tvdm.Vote > 0) sb.Append($"-- வாக்கு :{tvdm.Vote} - நன்றி");
+                if (tvdm.Campaign) sb.Append("-- பிரச்சாரம் - march-15?");
+                if (tvdm.Vehicle) sb.Append("-- வாகனம் - ins. copy, RC, License");
+                // if (tvdm.BoothAgent) sb.Append("பூத் ஏஜென்ட் - voter id?    ||");
+                sb.Append("-- money account details?");
+                sb.Append(Environment.NewLine);
+            }
+
+            return sb.ToString();
+        }
+
         private void btnExport_Click(object sender, EventArgs e)
         {
 
@@ -931,11 +967,11 @@ namespace CenturyFinCorpApp.UsrCtrl
 
                 lblDetails.Text = $"{detail} {searchedMember.Sum(s => s.Vote)} ஓட்டுகள் உறுதியானது.";
             }
-            else if (value == 2)
-            {
-                searchedMember = data.Where(w => w.Money).ToList();
-                lblDetails.Text = $"{detail} {searchedMember.Count} உறவுகள் நிதி அளிக்க விரும்பிகிறார்கள்.";
-            }
+            //else if (value == 2)
+            //{
+            //    searchedMember = data.Where(w => w.Money).ToList();
+            //    lblDetails.Text = $"{detail} {searchedMember.Count} உறவுகள் நிதி அளிக்க விரும்பிகிறார்கள்.";
+            //}
             else if (value == 3)
             {
                 searchedMember = data.Where(w => w.WantsMeet).ToList();
@@ -1133,7 +1169,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 searchedMember = data.Where(w =>
                 w.UpdatedTime.ToString() != "01-01-0001 00:00:00" &&
                 w.UpdatedTime.Day <= day &&
-                w.Campaign == true).ToList();
+                w.BoothAgent == true).ToList();
                 LoadRec(searchedMember.Count);
                
             }
@@ -1440,10 +1476,80 @@ namespace CenturyFinCorpApp.UsrCtrl
             }
         }
 
-       
+        private void btnBA_Click(object sender, EventArgs e)
+        {
+            var finalData = new List<TvdMember>();
+
+            if (fData == null || fData.Count == 0)
+            {
+                MessageBox.Show("No Data to export, please try search grid");
+                return;
+            }
+            StringBuilder sb = new StringBuilder();
+            int i = 0;
+
+            fData.ForEach(fe =>
+            {
+
+                if (fe.Campaign == true || fe.Vehicle == true || fe.Money == true)
+                {
+                    finalData.Add(fe);
+                }
+            });
+
+            finalData = finalData.OrderByDescending(o => o.Vote).Where(w => w.Money == false).ToList();
+
+            foreach (var item in finalData)
+            {
+                i = i + 1;
+                sb.AppendLine($"({i})  {item.Name} [ {item.Phone} ] - {StatusExceptBAandMoney(item)} ");
+            }
+
+            File.WriteAllText($@"F:\NTK\jawa - 2021\members\ExceptBAandMoney-Mar14.txt", sb.ToString());
+            MessageBox.Show($"All Members Exported Successfully!");
+            return;
+        }
+
+        private void btnCam_Click(object sender, EventArgs e)
+        {
+            var finalData = new List<TvdMember>();
+
+            if (fData == null || fData.Count == 0)
+            {
+                MessageBox.Show("No Data to export, please try search grid");
+                return;
+            }
+            StringBuilder sb = new StringBuilder();
+            int i = 0;
+
+            fData.ForEach(fe =>
+            {
+
+                if (fe.Campaign == true || fe.Vehicle == true || fe.Money == true)
+                {
+                    finalData.Add(fe);
+                }
+            });
+
+            finalData = finalData.OrderByDescending(o => o.Vote).Where(w => w.Money == true).ToList();
+
+            foreach (var item in finalData)
+            {
+                i = i + 1;
+                sb.AppendLine($"({i})  {item.Name} [ {item.Phone} ] - {StatusOnlyMoney(item)} ");
+            }
+
+            File.WriteAllText($@"F:\NTK\jawa - 2021\members\StatusOnlyMoney.txt", sb.ToString());
+            MessageBox.Show($"All Members Exported Successfully!");
+            return;
+        }
     }
 
-    public class Pair
+    
+}
+
+
+public class Pair
     {
         public Pair()
         {
@@ -1479,5 +1585,5 @@ namespace CenturyFinCorpApp.UsrCtrl
             return $"{Value}-{Display}-{DisplayTamil}";
         }
     }
-}
+
 

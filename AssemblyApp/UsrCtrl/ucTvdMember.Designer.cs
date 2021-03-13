@@ -56,6 +56,10 @@
             this.btnEmail = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.chkExcel = new System.Windows.Forms.CheckBox();
+            this.btnBA = new System.Windows.Forms.Button();
+            this.btnCam = new System.Windows.Forms.Button();
+            this.btnMO = new System.Windows.Forms.Button();
+            this.btnVe = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -204,7 +208,6 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(113, 20);
             this.txtPhone.TabIndex = 17;
-            //this.txtPhone.Leave += new System.EventHandler(this.txtPhone_Leave);
             // 
             // button11
             // 
@@ -341,10 +344,52 @@
             this.chkExcel.Text = "From Excel?";
             this.chkExcel.UseVisualStyleBackColor = true;
             // 
+            // btnBA
+            // 
+            this.btnBA.Location = new System.Drawing.Point(837, 71);
+            this.btnBA.Name = "btnBA";
+            this.btnBA.Size = new System.Drawing.Size(40, 23);
+            this.btnBA.TabIndex = 32;
+            this.btnBA.Text = "BA";
+            this.btnBA.UseVisualStyleBackColor = true;
+            this.btnBA.Click += new System.EventHandler(this.btnBA_Click);
+            // 
+            // btnCam
+            // 
+            this.btnCam.Location = new System.Drawing.Point(891, 71);
+            this.btnCam.Name = "btnCam";
+            this.btnCam.Size = new System.Drawing.Size(40, 23);
+            this.btnCam.TabIndex = 33;
+            this.btnCam.Text = "CAM";
+            this.btnCam.UseVisualStyleBackColor = true;
+            this.btnCam.Click += new System.EventHandler(this.btnCam_Click);
+            // 
+            // btnMO
+            // 
+            this.btnMO.Location = new System.Drawing.Point(837, 102);
+            this.btnMO.Name = "btnMO";
+            this.btnMO.Size = new System.Drawing.Size(40, 23);
+            this.btnMO.TabIndex = 34;
+            this.btnMO.Text = "MO";
+            this.btnMO.UseVisualStyleBackColor = true;
+            // 
+            // btnVe
+            // 
+            this.btnVe.Location = new System.Drawing.Point(891, 102);
+            this.btnVe.Name = "btnVe";
+            this.btnVe.Size = new System.Drawing.Size(40, 23);
+            this.btnVe.TabIndex = 35;
+            this.btnVe.Text = "VE";
+            this.btnVe.UseVisualStyleBackColor = true;
+            // 
             // ucTvdMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnVe);
+            this.Controls.Add(this.btnMO);
+            this.Controls.Add(this.btnCam);
+            this.Controls.Add(this.btnBA);
             this.Controls.Add(this.chkExcel);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.btnEmail);
@@ -411,5 +456,9 @@
         private System.Windows.Forms.Button btnEmail;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.CheckBox chkExcel;
+        private System.Windows.Forms.Button btnBA;
+        private System.Windows.Forms.Button btnCam;
+        private System.Windows.Forms.Button btnMO;
+        private System.Windows.Forms.Button btnVe;
     }
 }
