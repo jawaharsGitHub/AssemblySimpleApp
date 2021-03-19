@@ -118,7 +118,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         {
             dataGridView1.Columns["NoMore"].Visible = true;
             dataGridView1.Columns["Sno"].Visible = false;
-            dataGridView1.Columns["Address"].Visible = false;
+            dataGridView1.Columns["Address"].Visible = true;
             dataGridView1.Columns["Paguthi"].Visible = false;
             dataGridView1.Columns["UtPaguthi"].Visible = false;
             dataGridView1.Columns["PaguthiEng"].Visible = false;
@@ -593,22 +593,22 @@ namespace CenturyFinCorpApp.UsrCtrl
             ///*
 
             
-            fData.ForEach(fe =>
-            {
+            //fData.ForEach(fe =>
+            //{
 
-                if (fe.Campaign == true || fe.Vehicle == true || fe.BoothAgent == true || fe.Vote > 19 || fe.Money == true)
-                {
-                    i = i + 1;
-                    // sb.AppendLine($"({i})  {fe.Name} [ {fe.Phone} ]{Environment.NewLine}{fe.Address}");
-                    sb.AppendLine($"({i})  {fe.Name} [ {fe.Phone} ] - {Status(fe)} ");
-                }
+            //    if (fe.Campaign == true || fe.Vehicle == true || fe.BoothAgent == true || fe.Vote > 19 || fe.Money == true)
+            //    {
+            //        i = i + 1;
+            //        // sb.AppendLine($"({i})  {fe.Name} [ {fe.Phone} ]{Environment.NewLine}{fe.Address}");
+            //        sb.AppendLine($"({i})  {fe.Name} [ {fe.Phone} ] - {Status(fe)} ");
+            //    }
                 
-                // sb.AppendLine($"$$$$$$$$$$$$$$$$$$$$$$$$${Environment.NewLine}");
-            });
+            //    // sb.AppendLine($"$$$$$$$$$$$$$$$$$$$$$$$$${Environment.NewLine}");
+            //});
 
-            File.WriteAllText($@"F:\NTK\jawa - 2021\members\CallUpdate-2 march.txt", sb.ToString());
-            MessageBox.Show($"All Members Exported Successfully!");
-            return;
+            //File.WriteAllText($@"F:\NTK\jawa - 2021\members\CallUpdate-2 march.txt", sb.ToString());
+            //MessageBox.Show($"All Members Exported Successfully!");
+            //return;
             ///
 
 
@@ -1542,6 +1542,47 @@ namespace CenturyFinCorpApp.UsrCtrl
             File.WriteAllText($@"F:\NTK\jawa - 2021\members\StatusOnlyMoney.txt", sb.ToString());
             MessageBox.Show($"All Members Exported Successfully!");
             return;
+        }
+
+        private void btnExportAllPan_Click(object sender, EventArgs e)
+        {
+            var d = (from t in TvdMember.GetAll()
+                     where
+                        t.UtPaguthiEng.Contains(',') == false &&
+                        t.UtPaguthiEng.Contains("Others") == false &&
+                       t.UtPaguthiEng.Contains("Dont") == false
+                     select t).ToList();
+
+            StringBuilder sb;
+
+            foreach (var item in GetUtPaguthi())
+            {
+                sb = new StringBuilder();
+                
+                var allData = (from t in d
+                               where t.UtPaguthiEng == item.Display
+                               select t).ToList();
+
+                int panNo = 0;
+                int recCount = allData.Count();
+
+                sb.AppendLine($"{item.Display} ({recCount})");
+
+
+                allData.OrderByDescending(o => o.Vote).ToList().ForEach(fe =>
+                {
+                    panNo = panNo + 1;
+
+                    //sb.AppendLine($"-------------------");
+                    sb.AppendLine($"({panNo}).{fe.Name} [ {fe.Phone} ]");
+                    //sb.AppendLine($"-------------------");
+                });
+
+                File.WriteAllText($@"F:\NTK\jawa - 2021\members\{item.Display} ({recCount}).txt", sb.ToString());
+            }
+
+            MessageBox.Show($"All Members Exported Successfully!");
+            
         }
     }
 

@@ -60,6 +60,7 @@
             this.btnCam = new System.Windows.Forms.Button();
             this.btnMO = new System.Windows.Forms.Button();
             this.btnVe = new System.Windows.Forms.Button();
+            this.btnExportAllPan = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -382,10 +383,21 @@
             this.btnVe.Text = "VE";
             this.btnVe.UseVisualStyleBackColor = true;
             // 
+            // btnExportAllPan
+            // 
+            this.btnExportAllPan.Location = new System.Drawing.Point(267, 80);
+            this.btnExportAllPan.Name = "btnExportAllPan";
+            this.btnExportAllPan.Size = new System.Drawing.Size(174, 23);
+            this.btnExportAllPan.TabIndex = 36;
+            this.btnExportAllPan.Text = "EXPORT ALL PANCHAYATS";
+            this.btnExportAllPan.UseVisualStyleBackColor = true;
+            this.btnExportAllPan.Click += new System.EventHandler(this.btnExportAllPan_Click);
+            // 
             // ucTvdMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnExportAllPan);
             this.Controls.Add(this.btnVe);
             this.Controls.Add(this.btnMO);
             this.Controls.Add(this.btnCam);
@@ -460,5 +472,6 @@
         private System.Windows.Forms.Button btnCam;
         private System.Windows.Forms.Button btnMO;
         private System.Windows.Forms.Button btnVe;
+        private System.Windows.Forms.Button btnExportAllPan;
     }
 }
