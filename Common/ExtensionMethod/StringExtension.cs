@@ -13,5 +13,15 @@ namespace Common.ExtensionMethod
             var lines = Regex.Split(text, "\r\n|\r|\n").Skip(linesCount);
             return string.Join(Environment.NewLine, lines.ToArray());
         }
+
+        public static int NthIndexOf(this string target, string value, int n)
+        {
+            Match m = Regex.Match(target, "((" + Regex.Escape(value) + ").*?){" + n + "}");
+
+            if (m.Success)
+                return m.Groups[2].Captures[n - 1].Index;
+            else
+                return -1;
+        }
     }
 }
