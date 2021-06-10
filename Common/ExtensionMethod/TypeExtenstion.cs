@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace Common.ExtensionMethod
 {
@@ -13,6 +14,17 @@ namespace Common.ExtensionMethod
 
             return Convert.ToInt32(value);
 
+        }
+
+        public static bool isNumber(this string value)
+        {
+            //return Regex.IsMatch(value, @"\d");
+            int myInt;
+
+            return int.TryParse(value, out myInt);
+            
+
+            
         }
 
         public static int ToInt32(this double value)

@@ -16,9 +16,9 @@ namespace NTK_Support
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form20Analysis());
+            //Application.Run(new Form20Analysis());
             //Application.Run(new DocxToTxt());
-            ////Application.Run(new vao());
+            Application.Run(new vao());
         }
     }
 }

@@ -23,3 +23,4 @@ F:\AssemblySimpleApp\NTK_Support\bin\Debug\BouncyCastle.Crypto.dll
 F:\AssemblySimpleApp\NTK_Support\bin\Debug\itextsharp.dll
 F:\AssemblySimpleApp\NTK_Support\bin\Debug\itextsharp.xml
 F:\AssemblySimpleApp\NTK_Support\obj\Debug\NTK_Support.Form20Analysis.resources
+F:\AssemblySimpleApp\NTK_Support\bin\Debug\Common.dll.config
