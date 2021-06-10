@@ -28,6 +28,7 @@ namespace NTK_Support
         bool forPageList = true;
         int rightPageNo = 6;
         int startPno = 284;
+        string testFile = "";
 
         public vao()
         {
@@ -37,11 +38,13 @@ namespace NTK_Support
             {
                 myFile = @"F:\TN GOV\VANITHA\Vaidehi-Vao\reg data\Chitta_Report-1.pdf";
                 content = myFile.GetPdfContent();
+                testFile = myFile.Replace(".pdf", "valid.txt");
             }
             else
             {
                 myFile = @"F:\TN GOV\VANITHA\Vaidehi-Vao\reg data\Chitta_Report-1.txt";
                 content = File.ReadAllText(myFile);
+                testFile = myFile.Replace(".txt", "valid.txt");
             }
 
             ProcessChittaFile();
@@ -58,17 +61,12 @@ namespace NTK_Support
             data.RemoveAt(0); // empty data
             List<ChittaData> cds = new List<ChittaData>();
 
-            var testFile = myFile.Replace(".txt", "wrongPattaCount.txt");
-
             int validCount = 0;
-
             int otherIssueCount = 0;
-
             int wrongPattaCount = 0;
             int invalidType3zeroonly = 0;
             int threeDigitIssueCount = 0;
             int continueNoIssueCount = 0;
-
             int previousPattaNo = 0;
             int currentPattaNo = 0;
 
@@ -112,8 +110,65 @@ namespace NTK_Support
 
                 bool isValidData = false;
 
+                if (isNo == false)
+                {
+                    wrongPattaCount += 1;
+                    //File.AppendAllText(testFile, "|" + $"[{previousPattaNo}-{pattaNO}]");
+
+                }
+               else  if (justData.Count == 1)
+                {
+                    invalidType3zeroonly += 1;
+                }
+
+                else if (justData.Count > 1)
+                {
+                    isValidData = true; // justData.Last().Contains("TOTAL");
+                    validCount += 1;
+                    //File.AppendAllText(testFile, "valid data:" + string.Join(Environment.NewLine, justData));
+                }
+                else
+                {
+                    var s = "";
+                }
+
+                
+                //// VALID DATA
+                //else if (isValidData)
+                //{
+                //    validCount += 1;
+                //    //File.AppendAllText(testFile, "|" + pattaNO);
+                //}
+                //// THREE DIGIT _ ISSUE
+                //else if (justData.Count == 0)
+                //{
+                //    threeDigitIssueCount += 1;
+                //}
+                //// CONTINUE DATA ISSUE
+                //else if (currentPattaNo == (previousPattaNo + 1))
+                //{
+                //    continueNoIssueCount += 1;
+                //    //File.AppendAllText(testFile, "|" + $"[{previousPattaNo}-{currentPattaNo}]");
+                //}
+                //// OTHER ISSUES
+                //else
+                //{
+                //    otherIssueCount += 1;
+                //    //File.AppendAllText(testFile, "|" + pattaNO);
+                //    //File.AppendAllText(testFile, "INVALID-Type-2" + pattaNO);
+                //    //File.AppendAllLines(testFile, rrr);
+                //    //File.AppendAllText(testFile, "==========================================================");
+                //}
+
+                if (isNo)
+                    previousPattaNo = pattaNO.ToInt32();
+
+
+
+                /*
                 if (justData.Count > 0)
                     isValidData = justData.Last().Contains("TOTAL");
+
 
                 if (isNo == false)
                 {
@@ -121,6 +176,7 @@ namespace NTK_Support
                     File.AppendAllText(testFile, "|" + $"[{previousPattaNo}-{pattaNO}]");
 
                 }
+
                 // VALID DATA
                 else if (isValidData)
                 {
@@ -161,6 +217,8 @@ namespace NTK_Support
 
                 if (isNo)
                     previousPattaNo = pattaNO.ToInt32();
+
+                */
 
                 //File.AppendAllText(myFile.Replace(".txt", "-test-2.txt"), item);
                 //File.AppendAllText(myFile.Replace(".txt", "-test-2.txt"), "-------------------------------------" + Environment.NewLine);
