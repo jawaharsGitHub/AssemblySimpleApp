@@ -30,15 +30,20 @@ namespace NTK_Support
         int startPno = 284;
         string testFile = "";
 
+        List<Patta> pattaList;
+        Patta pattaSingle;
+
         public vao()
         {
             InitializeComponent();
+            pattaList = new List<Patta>();
+             
 
             if (isProductionTest)
             {
                 myFile = @"F:\TN GOV\VANITHA\Vaidehi-Vao\reg data\Chitta_Report-1.pdf";
                 content = myFile.GetPdfContent();
-                testFile = myFile.Replace(".pdf", "valid.txt");
+                //testFile = myFile.Replace(".pdf", "valid.txt");
             }
             else
             {
@@ -50,10 +55,16 @@ namespace NTK_Support
             ProcessChittaFile();
         }
 
-       
+        private void updateTestFileName(string fn)
+        {
+            testFile = myFile.Replace("Chitta_Report-1.pdf", $"{fn}.txt");
+
+        }
+
         private void ProcessChittaFile()
         {
 
+            updateTestFileName("vagaiData");
             var pattaas = content.Replace("பட்டா எண்", "$");
 
             var data = pattaas.Split('$').ToList();
@@ -62,176 +73,172 @@ namespace NTK_Support
             List<ChittaData> cds = new List<ChittaData>();
 
             int validCount = 0;
-            int otherIssueCount = 0;
-            int wrongPattaCount = 0;
+            int doubleDashCount = 0;
             int invalidType3zeroonly = 0;
-            int threeDigitIssueCount = 0;
-            int continueNoIssueCount = 0;
-            int previousPattaNo = 0;
-            int currentPattaNo = 0;
+            int wrongPattaCount = 0;
+            int vagaiCount = 0;
+            int otherIssueCount = 0;
 
+            bool isBreakingData = false;
+
+            pattaList = new List<Patta>();
 
             for (int i = 0; i <= data.Count - 1; i++)
             {
+                pattaSingle = new Patta();
 
-                //}
-                //data.ForEach(fe =>
-                //{
-                //var item = fe.Replace("வ.எண்", empty).Replace("உ எண்", empty).Replace("உறவினர் பெயர்", empty)
-                //             .Replace("உறவு", empty).Replace("உரிமையாளர் பெயர்", empty).Replace("புல எண்", empty)
-                //             .Replace("உட்பிரிவு எண்", empty).Replace("நன்செய்", empty).Replace("புன்செய்", empty)
-                //             .Replace("மற்றவை", empty).Replace("குறிப்பு", empty).Replace("பரப்பு", empty)
-                //             .Replace("தீர்வை", empty).Replace("மொத்தம்", "TOTAL").Replace('\t', '$');
-
-                //var item = data[i].Replace("வ.எண்.", empty).Replace("உ எண்", empty).Replace("உறவினர் ெபயர்", empty)
-                //             .Replace("உறவ", empty).Replace("உரிமைமையாளர் ெபயர்", empty).Replace("புல எண்-", empty)
-                //             .Replace(" புல எண் -    ", "")
-                //             .Replace("உட்பிரிமவ எண்", empty).Replace("நனெசெய", empty).Replace("புனெசெய", empty)
-                //             .Replace("மைற்றைவ", empty).Replace("குறிப்பு", empty).Replace("பரப்பு", empty)
-                //             .Replace("தீர்ைவ", empty).Replace("ெமைாத்தம", "TOTAL"); //.Replace('\t', '$');
+                isBreakingData = false;
 
                 var item = data[i].Replace("வ.எண்", empty).Replace("உ எண்", empty).Replace("உறவினர் ெபயர்", empty)
                              .Replace("உறவ", empty).Replace("உரிமைமையாளர் ெபயர்", empty).Replace("புல எண்-", empty)
                              .Replace(". புல எண் -    ", "")
                              .Replace("உட்பிரிமவ எண்", empty).Replace("நனெசெய", empty).Replace("புனெசெய", empty)
                              .Replace("மைற்றைவ", empty).Replace("குறிப்பு", empty).Replace("பரப்பு", empty)
-                             .Replace("தீர்ைவ", empty).Replace("ெமைாத்தம", "TOTAL"); //.Replace('\t', '$');
-                
+                             .Replace("தீர்ைவ", empty).Replace("ெமைாத்தம", "TOTAL");
 
-                //var rrr = item.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList(); //1
-                var rrr = item.Split('\n').Where(w => w.Trim() != empty && w.Contains("புல எண்") == false).ToList(); // 2
 
-                var pattaNO = rrr.First().Replace(":", "").Trim();
+                var fullData = item.Split('\n').Where(w => w.Trim() != empty && w.Contains("புல எண்") == false).ToList();
+
+                fullData = (from r in fullData
+                            where r.Contains("digitally") == false &&
+                                  r.Contains("_________________________________________________________________________________________________") == false
+                            select r).ToList();
+
+                var pattaNO = fullData.First().Replace(":", "").Trim();
                 var isNo = pattaNO.isNumber();
 
-
-                //var justData = rrr.Where(w => w.Contains('-')).ToList(); //1
-                var justData = rrr.Where(ww => rrr.IndexOf(ww) >= rrr.FindIndex(w => w.Contains('-'))).ToList(); //2
-
-                bool isValidData = false;
-
                 if (isNo == false)
                 {
                     wrongPattaCount += 1;
-                    //File.AppendAllText(testFile, "|" + $"[{previousPattaNo}-{pattaNO}]");
-
-                }
-               else  if (justData.Count == 1)
-                {
-                    invalidType3zeroonly += 1;
-                }
-
-                else if (justData.Count > 1)
-                {
-                    isValidData = true; // justData.Last().Contains("TOTAL");
-                    validCount += 1;
-                    //File.AppendAllText(testFile, "valid data:" + string.Join(Environment.NewLine, justData));
+                    pattaSingle.PattaType = PattaType.InValidPatta;
+                    pattaList.Add(pattaSingle);
+                    continue;
                 }
                 else
                 {
-                    var s = "";
+                    pattaSingle.PattaEn = Convert.ToInt32(pattaNO);
                 }
 
-                
-                //// VALID DATA
-                //else if (isValidData)
-                //{
-                //    validCount += 1;
-                //    //File.AppendAllText(testFile, "|" + pattaNO);
-                //}
-                //// THREE DIGIT _ ISSUE
-                //else if (justData.Count == 0)
-                //{
-                //    threeDigitIssueCount += 1;
-                //}
-                //// CONTINUE DATA ISSUE
-                //else if (currentPattaNo == (previousPattaNo + 1))
-                //{
-                //    continueNoIssueCount += 1;
-                //    //File.AppendAllText(testFile, "|" + $"[{previousPattaNo}-{currentPattaNo}]");
-                //}
-                //// OTHER ISSUES
-                //else
-                //{
-                //    otherIssueCount += 1;
-                //    //File.AppendAllText(testFile, "|" + pattaNO);
-                //    //File.AppendAllText(testFile, "INVALID-Type-2" + pattaNO);
-                //    //File.AppendAllLines(testFile, rrr);
-                //    //File.AppendAllText(testFile, "==========================================================");
-                //}
+                var dataIndex = fullData.FindIndex(w => w.Contains('-'));
 
-                if (isNo)
-                    previousPattaNo = pattaNO.ToInt32();
+                var headerData = fullData.Take(dataIndex).ToList();
+                var memberData = fullData.Where(ww => fullData.IndexOf(ww) >= dataIndex).ToList();
+                var totalData = memberData.Last();
+                memberData.RemoveAt(memberData.Count - 1);
 
+                var totalRecord = (memberData.Count - memberData.ToList().Where(w => w.Contains("-") == false).Count());
 
-
-                /*
-                if (justData.Count > 0)
-                    isValidData = justData.Last().Contains("TOTAL");
-
-
-                if (isNo == false)
+                // zero record.
+                if (memberData.Count == 0)
                 {
-                    wrongPattaCount += 1;
-                    File.AppendAllText(testFile, "|" + $"[{previousPattaNo}-{pattaNO}]");
-
+                    pattaSingle.PattaType = PattaType.Zero;
+                    pattaList.Add(pattaSingle);
+                    continue;
                 }
-
-                // VALID DATA
-                else if (isValidData)
+                else if (totalRecord == memberData.Count)
                 {
-                    validCount += 1;
-                    //File.AppendAllText(testFile, "|" + pattaNO);
+                    // perfect data
+                    if ((memberData.All(a => a.Split('-').Count() == 5 &&
+                        totalData.Split('-').Count() == 4)) == false)
+                    {
+                        pattaSingle.PattaType = PattaType.Error;
+                        pattaList.Add(pattaSingle);
+                        continue;
+                    }
                 }
-                // THREE DIGIT _ ISSUE
-                else if (justData.Count == 0)
+                else if ((totalRecord * 2) == memberData.Count)
                 {
-                    threeDigitIssueCount += 1;
-                    // File.AppendAllText(testFile, "|" + pattaNO);
-
-                    //File.AppendAllText(testFile, "INVALID-Type-1:" + pattaNO);
-                    //File.AppendAllLines(testFile, rrr);
-                    //File.AppendAllText(testFile, "==========================================================");
+                    isBreakingData = true;
+                    if ((GetEvenIndexData(memberData).All(e => e.Split('-').Count() == 5) &&
+                        GetOddIndexData(memberData).All(o => o.Split('-').Count() == 1) &&
+                        totalData.Split('-').Count() == 4) == false)
+                    {
+                        pattaSingle.PattaType = PattaType.Error;
+                        pattaList.Add(pattaSingle);
+                        continue;
+                    }
                 }
-                // ZERO DATA
-                else if (justData.All(a => a == "0 - 0.00 "))
-                {
-                    //invalidType3zeroonly += 1;
-                    //File.AppendAllText(testFile, "|" + pattaNO);
-                }
-                // CONTINUE DATA ISSUE
-                else if (currentPattaNo == (previousPattaNo + 1))
-                {
-                    continueNoIssueCount += 1;
-                    //File.AppendAllText(testFile, "|" + $"[{previousPattaNo}-{currentPattaNo}]");
-                }
-                // OTHER ISSUES
                 else
                 {
-                    otherIssueCount += 1;
-                    //File.AppendAllText(testFile, "|" + pattaNO);
-                    //File.AppendAllText(testFile, "INVALID-Type-2" + pattaNO);
-                    //File.AppendAllLines(testFile, rrr);
-                    //File.AppendAllText(testFile, "==========================================================");
+                    pattaSingle.PattaType = PattaType.Unknown;
+                    pattaList.Add(pattaSingle);
+                    continue;
                 }
 
-                if (isNo)
-                    previousPattaNo = pattaNO.ToInt32();
-
-                */
-
-                //File.AppendAllText(myFile.Replace(".txt", "-test-2.txt"), item);
-                //File.AppendAllText(myFile.Replace(".txt", "-test-2.txt"), "-------------------------------------" + Environment.NewLine);
-
-                //File.AppendAllLines(myFile.Replace(".txt", "-test-2.txt"), rrr);
-                //File.AppendAllText(myFile.Replace(".txt", "-test-2.txt"),"==========================================================");
 
 
-                //NEW CODE
+                // Gets the name
+                if (headerData.Count > 3)
+                {
+                    pattaSingle.isVagai = true;
+                }
 
 
-                //NEW CODE
-                //bool isVagai = false;
+                List<LandDetail> lds = new List<LandDetail>();
+                LandDetail land;
+
+                // Gets the data.
+                if (isBreakingData)
+                {
+                    var actualData = GetEvenIndexData(memberData);
+                    var breakData = GetOddIndexData(memberData);
+
+                    if (actualData.Count == breakData.Count)
+                    {
+                        for (int index = 0; index <= actualData.Count - 1; index++)
+                        {
+                            land = new LandDetail();
+
+                            var ad = actualData[index].Split('-').Select(s => s.Trim() + "-").ToList();
+                            var bd = breakData[index];
+
+                            land.PulaEn = ad[0].Split(' ')[1] + bd;
+
+                            land.nansaiParappu = ad[1] + ad[2].Split(' ')[0];
+                            land.nansaiTheervai = ad[2].Split(' ')[1];
+
+                            land.punsaiParappu = ad[2].Split(' ')[2] + ad[3].Split(' ')[0];
+                            land.punsaiTheervai = ad[3].Split(' ')[1];
+
+                            land.matravaiParappu = ad[3].Split(' ')[2] + ad[4].Split(' ')[0];
+                            land.matravaiTheervai = ad[4].Split(' ')[1].Replace("-", "");
+
+                            lds.Add(land);
+                        }
+                    }
+                    
+
+                }
+
+                else
+                {
+                    // error data
+                    for (int index = 0; index <= memberData.Count - 1; index++)
+                    {
+                        land = new LandDetail();
+
+                        var ad = memberData[index].Split('-').Select(s => s.Trim() + "-").ToList();
+
+                        land.PulaEn = ad[0].Split(' ')[1];
+
+                        land.nansaiParappu = ad[1] + ad[2].Split(' ')[0];
+                        land.nansaiTheervai = ad[2].Split(' ')[1];
+
+                        land.punsaiParappu = ad[2].Split(' ')[2] + ad[3].Split(' ')[0];
+                        land.punsaiTheervai = ad[3].Split(' ')[1];
+
+                        land.matravaiParappu = ad[3].Split(' ')[2] + ad[4].Split(' ')[0];
+                        land.matravaiTheervai = ad[4].Split(' ')[1].Replace("-", "");
+                        lds.Add(land);
+
+                    }
+
+                }
+
+
+                pattaSingle.landDetails = lds;
+                pattaList.Add(pattaSingle);
+
 
                 //var dd2 = (from tt in rrr
                 //               //where tt.Replace("$", "").Trim() != string.Empty
@@ -318,13 +325,16 @@ namespace NTK_Support
                 //);
             }
 
-            File.AppendAllText(testFile, $"total record: {data.Count}");
-            File.AppendAllText(testFile, "VALID : " + validCount);
-            File.AppendAllText(testFile, "wrongPattaCount" + wrongPattaCount);
-            File.AppendAllText(testFile, "INVALID-Type-1" + threeDigitIssueCount);
-            File.AppendAllText(testFile, "INVALID-Type-ZeroOnly" + invalidType3zeroonly);
-            File.AppendAllText(testFile, "INVALID-Type-ZeroOnly" + invalidType3zeroonly);
-            File.AppendAllText(testFile, "INVALID-Type-2" + otherIssueCount);
+            var dataCheck = data.Count - (validCount + invalidType3zeroonly +
+                            vagaiCount + wrongPattaCount + otherIssueCount);
+
+            //File.AppendAllText(testFile, $"total record: {data.Count}");
+            //File.AppendAllText(testFile, "VALID : " + validCount);
+            //File.AppendAllText(testFile, "INVALID-Type-ZeroOnly" + invalidType3zeroonly);
+            //File.AppendAllText(testFile, "wrongPattaCount" + wrongPattaCount);
+
+            //File.AppendAllText(testFile, "INVALID-Type-1" + threeDigitIssueCount);
+            //File.AppendAllText(testFile, "INVALID-Type-2" + otherIssueCount);
 
 
             CreateInitialPages(); // 10 pages
@@ -343,6 +353,18 @@ namespace NTK_Support
         }
 
 
+
+        private List<string> GetEvenIndexData(List<string> dataList)
+        {
+            return dataList.Where(w => dataList.IndexOf(w) % 2 == 0).ToList();
+
+        }
+
+        private List<string> GetOddIndexData(List<string> dataList)
+        {
+            return dataList.Where(w => dataList.IndexOf(w) % 2 != 0).ToList();
+
+        }
         public void WriteData(List<ChittaData> data, string filter)
         {
             List<ChittaData> PageTotalList = new List<ChittaData>();
@@ -591,6 +613,49 @@ namespace NTK_Support
         {
             return String.Format("{0}\t{1}\t{2}{3}", PageNumberStr, Parappu, TheervaiStr, Environment.NewLine);
         }
+
+    }
+
+
+    public class Patta
+    {
+
+        public int PattaEn { get; set; }
+
+        public List<LandDetail> landDetails { get; set; }
+
+        public bool haveError { get; set; }
+
+        public PattaType PattaType { get; set; }
+
+        public bool isVagai { get; set; }
+
+
+    }
+
+    public enum PattaType
+    {
+        Valid,
+        Zero,
+        InValidPatta,
+        Error,
+        Unknown
+    }
+
+    public class LandDetail
+    {
+
+        public string PulaEn { get; set; }
+
+        public string nansaiParappu { get; set; }
+        public string nansaiTheervai { get; set; }
+
+        public string punsaiParappu { get; set; }
+        public string punsaiTheervai { get; set; }
+
+
+        public string matravaiParappu { get; set; }
+        public string matravaiTheervai { get; set; }
 
     }
 }
