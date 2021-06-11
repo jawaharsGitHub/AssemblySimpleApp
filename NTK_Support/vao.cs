@@ -657,5 +657,15 @@ namespace NTK_Support
         public string matravaiParappu { get; set; }
         public string matravaiTheervai { get; set; }
 
+        public LandType LandType { get; set; }
+
+    }
+
+    public enum LandType
+    {
+        Nansai,
+        Punsai,
+        Other
+
     }
 }
