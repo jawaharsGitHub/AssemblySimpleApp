@@ -79,184 +79,211 @@ namespace NTK_Support
 
             data.RemoveAt(0); // empty data
             List<ChittaData> cds = new List<ChittaData>();
-            bool isBreakingData = false;
+            bool isFullBreakData = false;
+            bool isPartialBreakData = false;
+            bool isSomeDotData = false;
+            List<string> brkData;
+            List<string> nonBkData;
+
             pattaList = new List<Patta>();
 
             for (int i = 0; i <= data.Count - 1; i++)
             {
-                pattaSingle = new Patta();
+                List<string> fullData = null;
 
-                isBreakingData = false;
-
-                var item = data[i].Replace("வ.எண்", empty).Replace("உ எண்", empty).Replace("உறவினர் ெபயர்", empty)
-                             .Replace("உறவ", empty).Replace("உரிமைமையாளர் ெபயர்", empty).Replace("புல எண்-", empty)
-                             .Replace(". புல எண் -    ", "")
-                             .Replace("உட்பிரிமவ எண்", empty).Replace("நனெசெய", empty).Replace("புனெசெய", empty)
-                             .Replace("மைற்றைவ", empty).Replace("குறிப்பு", empty).Replace("பரப்பு", empty)
-                             .Replace("தீர்ைவ", empty).Replace("ெமைாத்தம", "TOTAL");
-
-                var fullData = item.Split('\n').Where(w => w.Trim() != empty && w.Contains("புல எண்") == false).ToList();
-
-                fullData = (from r in fullData
-                            where r.Contains("digitally") == false &&
-                                  r.Contains("_________________________________________________________________________________________________") == false
-                            select r).ToList();
-
-                var pattaNO = fullData.First().Replace(":", "").Trim();
-                var isNo = pattaNO.isNumber();
-
-                if (isNo == false)
+                try
                 {
-                    pattaSingle.PattaType = PattaType.InValidPatta;
-                    pattaSingle.ErrorData = fullData.ListToString();
-                    pattaList.Add(pattaSingle);
-                    continue;
-                }
-                else
-                {
-                    pattaSingle.PattaEn = Convert.ToInt32(pattaNO);
-                }
+                    pattaSingle = new Patta();
 
-                var dataIndex = fullData.FindIndex(w => w.Contains('-'));
+                    isFullBreakData = isPartialBreakData = isSomeDotData = false;
+                    brkData = new List<string>();
+                    nonBkData = new List<string>();
 
-                var headerData = fullData.Take(dataIndex).ToList();
-                var memberData = fullData.Where(ww => fullData.IndexOf(ww) >= dataIndex).ToList();
-                var totalData = memberData.Last();
-                memberData.RemoveAt(memberData.Count - 1);
+                    var item = data[i].Replace("வ.எண்", empty).Replace("உ எண்", empty).Replace("உறவினர் ெபயர்", empty)
+                                 .Replace("உறவ", empty).Replace("உரிமைமையாளர் ெபயர்", empty).Replace("புல எண்-", empty)
+                                 .Replace(". புல எண் -    ", "")
+                                 .Replace("உட்பிரிமவ எண்", empty).Replace("நனெசெய", empty).Replace("புனெசெய", empty)
+                                 .Replace("மைற்றைவ", empty).Replace("குறிப்பு", empty).Replace("பரப்பு", empty)
+                                 .Replace("தீர்ைவ", empty).Replace("ெமைாத்தம", "TOTAL");
 
-                var totalRecord = (memberData.Count - memberData.ToList().Where(w => w.Contains("-") == false).Count());
+                    fullData = item.Split('\n').Where(w => w.Trim() != empty && w.Contains("புல எண்") == false).ToList();
 
-                // zero record.
-                if (memberData.Count == 0)
-                {
-                    pattaSingle.PattaType = PattaType.Zero;
-                    pattaSingle.ErrorData = fullData.ListToString();
-                    pattaList.Add(pattaSingle);
-                    continue;
-                }
-                else if (totalRecord == memberData.Count)
-                {
-                    // perfect data
-                    if ((memberData.All(a => a.Split('-').Count() == 5 &&
-                        totalData.Split('-').Count() == 4)) == false)
+                    fullData = (from r in fullData
+                                where r.Contains("digitally") == false &&
+                                      r.Contains("_________________________________________________________________________________________________") == false
+                                select r).ToList();
+
+                    var pattaNO = fullData.First().Replace(":", "").Trim();
+                    var isNo = pattaNO.isNumber();
+
+
+
+                    if (isNo == false)
                     {
-                        if (memberData.All(a => a.Split('-').Count()) == 6 &&
-                       (totalData.Split('-').Count() == 4) == false)
-                        {
-                            pattaSingle.PattaType = PattaType.Error;
-                            pattaSingle.ErrorData = fullData.ListToString();
-                            pattaList.Add(pattaSingle);
-                            continue;
-
-                        }
-                        else
-                        {
-                            pattaSingle.PattaType = PattaType.ValidAndNoSubdivision;
-                            pattaSingle.ErrorData = fullData.ListToString();
-                            pattaList.Add(pattaSingle);
-                            
-
-                        }
-                           
-                    }
-
-                }
-                else if ((totalRecord * 2) == memberData.Count)
-                {
-                    isBreakingData = IsValidMemberBreakData(memberData);
-
-                    if ((GetEvenIndexData(memberData).All(e => e.Split('-').Count() == 5) &&
-                        GetOddIndexData(memberData).All(o => o.Split('-').Count() == 1) &&
-                        totalData.Split('-').Count() == 4) == false)
-                    {
-
-                        if ((GetEvenIndexData(memberData).All(e => e.Split('-').Count() == 6) &&
-                        GetOddIndexData(memberData).All(o => o.Split('-').Count() == 1) &&
-                        totalData.Split('-').Count() == 4) == false)
-                        {
-                            pattaSingle.PattaType = PattaType.Error;
-                            pattaSingle.ErrorData = fullData.ListToString();
-                            pattaList.Add(pattaSingle);
-                            continue;
-
-                        }
-                        else
-                        {
-                            pattaSingle.PattaType = PattaType.ValidAndNoSubdivision;
-                            pattaSingle.ErrorData = fullData.ListToString();
-                            pattaList.Add(pattaSingle);
-                        }
-
-                    }
-                }
-                else
-                {
-                    var isValidMemberData = GetEvenIndexData(memberData);
-
-                    pattaSingle.PattaType = PattaType.Unknown;
-                    pattaSingle.ErrorData = fullData.ListToString();
-                    pattaList.Add(pattaSingle);
-                    continue;
-                }
-                //else
-                //{
-                    
-                //}
-
-                // Gets the name
-                pattaSingle.isVagai = (headerData.Count > 3);
-
-                var nameRow = headerData[1];
-                if (relationTypes.Any(a => nameRow.Split(' ').ToList().Contains(a)) == false)
-                {
-                    Debug.WriteLine($"{pattaNO} - {nameRow}");
-                }
-
-                //List<LandDetail> lds = new List<LandDetail>();
-
-                // Gets the data.
-                if (isBreakingData)
-                {
-                    var actualData = GetEvenIndexData(memberData);
-                    var breakData = GetOddIndexData(memberData);
-
-                    if (actualData.Count == breakData.Count)
-                    {
-                        pattaSingle.landDetails = ProcessLandType(actualData, breakData);
+                        pattaSingle.PattaType = PattaType.InValidPatta;
+                        pattaSingle.ErrorData = fullData.ListToString();
                         pattaList.Add(pattaSingle);
+                        continue;
                     }
                     else
                     {
-                        MessageBox.Show("Error!");
+                        pattaSingle.PattaEn = Convert.ToInt32(pattaNO);
                     }
-                }
 
-                else
+
+                    var dataIndex = fullData.FindIndex(w => w.Contains('-'));
+                    var headerData = fullData.Take(dataIndex).ToList();
+                    var memberData = fullData.Where(ww => fullData.IndexOf(ww) >= dataIndex).ToList();
+                    var totalData = memberData.Last();
+                    memberData.RemoveAt(memberData.Count - 1);
+
+                    var totalRecord = (memberData.Count - memberData.ToList().Where(w => w.Contains("-") == false).Count());
+
+                    // zero record.
+                    if (memberData.Count == 0 || headerData.Count == 0)
+                    {
+                        pattaSingle.PattaType = PattaType.Zero;
+                        pattaSingle.ErrorData = fullData.ListToString();
+                        pattaList.Add(pattaSingle);
+                        continue;
+                    }
+
+                    else if (totalRecord == memberData.Count)
+                    {
+                        // perfect data
+                        if ((isValidRecords(memberData) && isValidTotalRecord(totalData)) == false)
+                        {
+                            if ((isValidRecords(memberData, true) && isValidTotalRecord(totalData)) == false)
+                            {
+                                pattaSingle.PattaType = PattaType.Error;
+                                pattaSingle.ErrorData = fullData.ListToString();
+                                pattaList.Add(pattaSingle);
+                                continue;
+                            }
+                            else
+                            {
+                                pattaSingle.PattaType = PattaType.ValidAndNoSubdivision;
+                                pattaSingle.ErrorData = fullData.ListToString();
+                                pattaList.Add(pattaSingle);
+                            }
+
+                        }
+
+                    }
+
+                    else if ((totalRecord * 2) == memberData.Count)
+                    {
+                        isFullBreakData = IsValidBreakData(memberData);
+
+                        if ((IsValidBreakData(memberData) && isValidTotalRecord(totalData)) == false)
+                        {
+                            if ((IsValidBreakData(memberData, true) && isValidTotalRecord(totalData)) == false)
+                            {
+                                pattaSingle.PattaType = PattaType.Error;
+                                pattaSingle.ErrorData = fullData.ListToString();
+                                pattaList.Add(pattaSingle);
+                                continue;
+                            }
+                            else
+                            {
+                                pattaSingle.PattaType = PattaType.ValidAndNoSubdivision;
+                                pattaSingle.ErrorData = fullData.ListToString();
+                                pattaList.Add(pattaSingle);
+                            }
+
+                        }
+                    }
+                    else
+                    {
+
+                        if (IsSomeDots(memberData))
+                        {
+                            pattaSingle.PattaType = PattaType.SomeDots;
+                            //pattaSingle.ErrorData = fullData.ListToString();
+                        }
+
+                        if (pattaSingle.PattaType == PattaType.SomeDots || pattaSingle.PattaType == PattaType.Valid)
+                        {
+                            var d = IsPartialBreak(memberData);
+
+                            brkData = d.bk;
+                            nonBkData = d.nobk;
+                            isPartialBreakData = true;
+
+                            if (pattaSingle.PattaType == PattaType.Valid)
+                                pattaSingle.PattaType = PattaType.PartailBreak;
+
+                            pattaSingle.ErrorData = fullData.ListToString();
+                        }
+                        else
+                        {
+                            pattaSingle.PattaType = PattaType.Unknown;
+                            pattaSingle.ErrorData = fullData.ListToString();
+                            pattaList.Add(pattaSingle);
+                            continue;
+
+                        }
+                    }
+
+                    // Gets the name
+                    pattaSingle.isVagai = (headerData.Count > 3);
+
+                    var nameRow = headerData[1];
+                    if (relationTypes.Any(a => nameRow.Split(' ').ToList().Contains(a)) == false)
+                    {
+                        Debug.WriteLine($"{pattaNO} - {nameRow}");
+                    }
+
+                    // Gets the data.
+                    if (isPartialBreakData)
+                    {
+                        var actualData = GetEvenIndexData(brkData);
+                        var breakData = GetOddIndexData(brkData);
+
+                        if (actualData.Count == breakData.Count)
+                        {
+                            pattaSingle.landDetails = ProcessLandType(actualData, breakData);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error!");
+                        }
+
+                        pattaSingle.landDetails.AddRange(ProcessLandType(nonBkData));
+                        pattaList.Add(pattaSingle);
+
+
+                    }
+                    else if (isFullBreakData)
+                    {
+                        var actualData = GetEvenIndexData(memberData);
+                        var breakData = GetOddIndexData(memberData);
+
+                        if (actualData.Count == breakData.Count)
+                        {
+                            pattaSingle.landDetails = ProcessLandType(actualData, breakData);
+                            pattaList.Add(pattaSingle);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error!");
+                        }
+                    }
+                    else
+                    {
+                        pattaSingle.landDetails = ProcessLandType(memberData);
+                        pattaList.Add(pattaSingle);
+                    }
+
+                }
+                catch (Exception)
                 {
-                    var actualData = GetEvenIndexData(memberData);
-                    pattaSingle.landDetails = ProcessLandType(actualData);
+                    pattaSingle.PattaType = PattaType.Error;
+                    pattaSingle.ErrorData = fullData.ListToString();
                     pattaList.Add(pattaSingle);
+                    continue;
                 }
 
-
-                //pattaSingle.landDetails = lds;
-                //pattaList.Add(pattaSingle);
-
-
-                //        if (names[2].Trim().StartsWith("இரா"))
-                //            initial = "இரா";
-                //        else if (Convert.ToInt32(names[2][1]).ToString()[0] == '3')
-                //            initial = $"{names[2][0]}{names[2][1]}";
-                //        else
-                //            initial = $"{names[2][0]}";
-
-                //        if (names[2].Trim() == "இல்லை" || names[2].Trim() == "அச்சுந்தன்வயல்")
-                //            oName = $"{pattaNo} - {names[4]} ";
-                //        else
-                //            oName = $"{pattaNo} - {initial}.{names[4]} ";
-
-                //        // if already have initial then ignore.
-                //    }
             }
 
             // Full Report
@@ -277,6 +304,29 @@ namespace NTK_Support
 
 
         }
+
+
+
+
+
+        //pattaSingle.landDetails = lds;
+        //pattaList.Add(pattaSingle);
+
+
+        //        if (names[2].Trim().StartsWith("இரா"))
+        //            initial = "இரா";
+        //        else if (Convert.ToInt32(names[2][1]).ToString()[0] == '3')
+        //            initial = $"{names[2][0]}{names[2][1]}";
+        //        else
+        //            initial = $"{names[2][0]}";
+
+        //        if (names[2].Trim() == "இல்லை" || names[2].Trim() == "அச்சுந்தன்வயல்")
+        //            oName = $"{pattaNo} - {names[4]} ";
+        //        else
+        //            oName = $"{pattaNo} - {initial}.{names[4]} ";
+
+        //        // if already have initial then ignore.
+        //    }
 
         private List<LandDetail> ProcessLandType(List<string> actualData, List<string> breakData = null)
         {
@@ -333,10 +383,100 @@ namespace NTK_Support
 
         }
 
-        private bool IsValidMemberBreakData(List<string> memberData)
+        private bool IsValidBreakData(List<string> memberData, bool isSubdivision = false)
         {
-            return GetEvenIndexData(memberData).All(e => e.Contains('-')) && 
-                   GetOddIndexData(memberData).All(o => !o.Contains('-'));
+            var c = isSubdivision ? 6 : 5;
+
+            var evenData = GetEvenIndexData(memberData);
+            var oddData = GetOddIndexData(memberData);
+
+            return evenData.All(e => e.Contains('-') == true) &&
+                    evenData.All(e => e.Split('-').Count() == c) &&
+                    oddData.All(o => o.Contains('-') == false) &&
+                    oddData.All(o => o.Split('-').Count() == 1);
+        }
+
+        private bool isValidRecords(List<string> memberData, bool isSubdivision = false)
+        {
+            var c = isSubdivision ? 6 : 5;
+            return memberData.All(a => a.Split('-').Count() == c);
+        }
+
+        private bool isValidTotalRecord(string total)
+        {
+            return total.Split('-').Count() == 4;
+        }
+
+
+        private (bool status, List<string> bk, List<string> nobk) IsPartialBreak(List<string> memberData)
+        {
+            var isPrevBkrec = false;
+            var brkData = new List<string>();
+            var nonBkData = new List<string>();
+            var done = false;
+
+            try
+            {
+
+
+                for (int mi = 0; mi <= memberData.Count; mi++)
+                {
+                    var isLastRecord = memberData.Count == (mi + 1); // last record
+
+                    if (isLastRecord)
+                    {
+                        if (!isPrevBkrec)
+                            nonBkData.Add(memberData[mi]);
+
+                        done = true;
+                        break;
+                    }
+
+                    if (memberData[mi].Contains('-') && !memberData[mi + 1].Contains('-'))
+                    {
+                        brkData.Add(memberData[mi]);
+                        brkData.Add(memberData[mi + 1]);
+                        mi += 1; // very imporatant spot
+                        isPrevBkrec = true;
+                    }
+                    else if (memberData[mi].Contains('-') && memberData[mi + 1].Contains('-'))
+                    {
+                        nonBkData.Add(memberData[mi]);
+                        isPrevBkrec = false;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return (done, brkData, nonBkData); ;
+            }
+
+            return (done, brkData, nonBkData);
+
+        }
+
+        public bool IsSomeDots(List<string> memberData)
+        {
+            //bool done = false;
+            if (memberData.Any(a => a.Contains("ே") || a.Contains("\0")))
+            {
+                for (int md = 0; md <= memberData.Count - 1; md++)
+                {
+                    memberData[md] = memberData[md].Replace("ே", "*").Replace("\0", "*").Trim();
+                    if (memberData[md].Replace(" ", "").ToList().All(a => a == '*'))
+                    {
+                        memberData.RemoveAt(md);
+                        md -= 1;
+                    }
+                    else if (memberData[md].Contains("*"))
+                    {
+                        memberData[md] = memberData[md].Replace("*", "").Trim();
+                    }
+                }
+                return true;
+            }
+
+            return false;
         }
 
         public void WriteData(List<ChittaData> data, string filter)
@@ -481,8 +621,6 @@ namespace NTK_Support
 
         }
 
-
-
         private void button1_Click(object sender, EventArgs e)
         {
             var data = textBox1.Text;
@@ -544,6 +682,7 @@ namespace NTK_Support
             }
 
         }
+
     }
 
 
@@ -615,6 +754,7 @@ namespace NTK_Support
         InValidPatta,
         Error,
         PartailBreak,
+        SomeDots,
         Unknown
     }
 
@@ -623,12 +763,18 @@ namespace NTK_Support
 
         private string _pulaEn;
         // புல எண் - உட்பிரிவு எண் (survey no - subdidvision no)
-        public string PulaEn {
-            get { 
-                    haveSubdivision = _pulaEn.Contains("-");
-                return _pulaEn.Replace("-", "");
+        public string PulaEn
+        {
+            get
+            {
+                haveSubdivision = _pulaEn.Contains("-");
 
-                }
+                if (haveSubdivision)
+                    return _pulaEn.Replace("-", "");
+                else
+                    return _pulaEn;
+
+            }
             set { _pulaEn = value; }
         }
 
