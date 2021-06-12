@@ -32,12 +32,21 @@ namespace NTK_Support
 
         List<Patta> pattaList;
         Patta pattaSingle;
+        List<string> relationTypes;
 
         public vao()
         {
             InitializeComponent();
             pattaList = new List<Patta>();
-             
+            relationTypes = new List<string>() {
+                "தந்தைத",
+                "கணவன",
+                "காப்பாளர்",
+                "மைகன",
+                "மைைனவி"
+            };
+
+
 
             if (isProductionTest)
             {
@@ -49,7 +58,7 @@ namespace NTK_Support
             {
                 myFile = @"F:\TN GOV\VANITHA\Vaidehi-Vao\reg data\Chitta_Report-1.txt";
                 content = File.ReadAllText(myFile);
-                testFile = myFile.Replace(".txt", "valid.txt");
+                //testFile = myFile.Replace(".txt", "valid.txt");
             }
 
             ProcessChittaFile();
@@ -58,7 +67,6 @@ namespace NTK_Support
         private void updateTestFileName(string fn)
         {
             testFile = myFile.Replace("Chitta_Report-1.pdf", $"{fn}.txt");
-
         }
 
         private void ProcessChittaFile()
@@ -71,16 +79,7 @@ namespace NTK_Support
 
             data.RemoveAt(0); // empty data
             List<ChittaData> cds = new List<ChittaData>();
-
-            int validCount = 0;
-            int doubleDashCount = 0;
-            int invalidType3zeroonly = 0;
-            int wrongPattaCount = 0;
-            int vagaiCount = 0;
-            int otherIssueCount = 0;
-
             bool isBreakingData = false;
-
             pattaList = new List<Patta>();
 
             for (int i = 0; i <= data.Count - 1; i++)
@@ -96,7 +95,6 @@ namespace NTK_Support
                              .Replace("மைற்றைவ", empty).Replace("குறிப்பு", empty).Replace("பரப்பு", empty)
                              .Replace("தீர்ைவ", empty).Replace("ெமைாத்தம", "TOTAL");
 
-
                 var fullData = item.Split('\n').Where(w => w.Trim() != empty && w.Contains("புல எண்") == false).ToList();
 
                 fullData = (from r in fullData
@@ -109,8 +107,8 @@ namespace NTK_Support
 
                 if (isNo == false)
                 {
-                    wrongPattaCount += 1;
                     pattaSingle.PattaType = PattaType.InValidPatta;
+                    pattaSingle.ErrorData = fullData.ListToString();
                     pattaList.Add(pattaSingle);
                     continue;
                 }
@@ -132,6 +130,7 @@ namespace NTK_Support
                 if (memberData.Count == 0)
                 {
                     pattaSingle.PattaType = PattaType.Zero;
+                    pattaSingle.ErrorData = fullData.ListToString();
                     pattaList.Add(pattaSingle);
                     continue;
                 }
@@ -141,41 +140,79 @@ namespace NTK_Support
                     if ((memberData.All(a => a.Split('-').Count() == 5 &&
                         totalData.Split('-').Count() == 4)) == false)
                     {
-                        pattaSingle.PattaType = PattaType.Error;
-                        pattaList.Add(pattaSingle);
-                        continue;
+                        if (memberData.All(a => a.Split('-').Count()) == 6 &&
+                       (totalData.Split('-').Count() == 4) == false)
+                        {
+                            pattaSingle.PattaType = PattaType.Error;
+                            pattaSingle.ErrorData = fullData.ListToString();
+                            pattaList.Add(pattaSingle);
+                            continue;
+
+                        }
+                        else
+                        {
+                            pattaSingle.PattaType = PattaType.ValidAndNoSubdivision;
+                            pattaSingle.ErrorData = fullData.ListToString();
+                            pattaList.Add(pattaSingle);
+                            
+
+                        }
+                           
                     }
+
                 }
                 else if ((totalRecord * 2) == memberData.Count)
                 {
-                    isBreakingData = true;
+                    isBreakingData = IsValidMemberBreakData(memberData);
+
                     if ((GetEvenIndexData(memberData).All(e => e.Split('-').Count() == 5) &&
                         GetOddIndexData(memberData).All(o => o.Split('-').Count() == 1) &&
                         totalData.Split('-').Count() == 4) == false)
                     {
-                        pattaSingle.PattaType = PattaType.Error;
-                        pattaList.Add(pattaSingle);
-                        continue;
+
+                        if ((GetEvenIndexData(memberData).All(e => e.Split('-').Count() == 6) &&
+                        GetOddIndexData(memberData).All(o => o.Split('-').Count() == 1) &&
+                        totalData.Split('-').Count() == 4) == false)
+                        {
+                            pattaSingle.PattaType = PattaType.Error;
+                            pattaSingle.ErrorData = fullData.ListToString();
+                            pattaList.Add(pattaSingle);
+                            continue;
+
+                        }
+                        else
+                        {
+                            pattaSingle.PattaType = PattaType.ValidAndNoSubdivision;
+                            pattaSingle.ErrorData = fullData.ListToString();
+                            pattaList.Add(pattaSingle);
+                        }
+
                     }
                 }
                 else
                 {
+                    var isValidMemberData = GetEvenIndexData(memberData);
+
                     pattaSingle.PattaType = PattaType.Unknown;
+                    pattaSingle.ErrorData = fullData.ListToString();
                     pattaList.Add(pattaSingle);
                     continue;
                 }
-
-
+                //else
+                //{
+                    
+                //}
 
                 // Gets the name
-                if (headerData.Count > 3)
+                pattaSingle.isVagai = (headerData.Count > 3);
+
+                var nameRow = headerData[1];
+                if (relationTypes.Any(a => nameRow.Split(' ').ToList().Contains(a)) == false)
                 {
-                    pattaSingle.isVagai = true;
+                    Debug.WriteLine($"{pattaNO} - {nameRow}");
                 }
 
-
-                List<LandDetail> lds = new List<LandDetail>();
-                LandDetail land;
+                //List<LandDetail> lds = new List<LandDetail>();
 
                 // Gets the data.
                 if (isBreakingData)
@@ -185,92 +222,25 @@ namespace NTK_Support
 
                     if (actualData.Count == breakData.Count)
                     {
-                        for (int index = 0; index <= actualData.Count - 1; index++)
-                        {
-                            land = new LandDetail();
-
-                            var ad = actualData[index].Split('-').Select(s => s.Trim() + "-").ToList();
-                            var bd = breakData[index];
-
-                            land.PulaEn = ad[0].Split(' ')[1] + bd;
-
-                            land.nansaiParappu = ad[1] + ad[2].Split(' ')[0];
-                            land.nansaiTheervai = ad[2].Split(' ')[1];
-
-                            land.punsaiParappu = ad[2].Split(' ')[2] + ad[3].Split(' ')[0];
-                            land.punsaiTheervai = ad[3].Split(' ')[1];
-
-                            land.matravaiParappu = ad[3].Split(' ')[2] + ad[4].Split(' ')[0];
-                            land.matravaiTheervai = ad[4].Split(' ')[1].Replace("-", "");
-
-                            lds.Add(land);
-                        }
+                        pattaSingle.landDetails = ProcessLandType(actualData, breakData);
+                        pattaList.Add(pattaSingle);
                     }
-                    
-
+                    else
+                    {
+                        MessageBox.Show("Error!");
+                    }
                 }
 
                 else
                 {
-                    // error data
-                    for (int index = 0; index <= memberData.Count - 1; index++)
-                    {
-                        land = new LandDetail();
-
-                        var ad = memberData[index].Split('-').Select(s => s.Trim() + "-").ToList();
-
-                        land.PulaEn = ad[0].Split(' ')[1];
-
-                        land.nansaiParappu = ad[1] + ad[2].Split(' ')[0];
-                        land.nansaiTheervai = ad[2].Split(' ')[1];
-
-                        land.punsaiParappu = ad[2].Split(' ')[2] + ad[3].Split(' ')[0];
-                        land.punsaiTheervai = ad[3].Split(' ')[1];
-
-                        land.matravaiParappu = ad[3].Split(' ')[2] + ad[4].Split(' ')[0];
-                        land.matravaiTheervai = ad[4].Split(' ')[1].Replace("-", "");
-                        lds.Add(land);
-
-                    }
-
+                    var actualData = GetEvenIndexData(memberData);
+                    pattaSingle.landDetails = ProcessLandType(actualData);
+                    pattaList.Add(pattaSingle);
                 }
 
 
-                pattaSingle.landDetails = lds;
-                pattaList.Add(pattaSingle);
-
-
-                //var dd2 = (from tt in rrr
-                //               //where tt.Replace("$", "").Trim() != string.Empty
-                //           where tt.Trim() != string.Empty
-                //           select tt).ToList();
-
-                //var dd = new List<string>(dd2);
-
-                //for (int i = 2; i < dd.Count; i++)
-                //{
-                //    if (dd[i].Contains("-") == false && dd[i].Contains(":") == false)
-                //    {
-                //        isVagai = true;
-                //        dd2[dd2.IndexOf(dd2[i])] = "*" + dd2[i];
-                //    }
-                //}
-
-
-                //if (dd2.Count > 3)
-                //{
-                //    var d3 = dd2.Take(dd2.Count - 1).ToList().Where(w => w.StartsWith("*") == false).ToList();
-                //    string oName = "";
-                //    int pattaNo = 0;
-                //    pattaNo = Convert.ToInt32(d3[0].Replace(":", "").Trim());
-
-                //    var names = d3[1].Split('$');
-
-                //    if (isVagai)
-                //        oName = $"{pattaNo} - {names[4]} வகை ";
-                //    else
-                //    {
-                //        string initial = "";
+                //pattaSingle.landDetails = lds;
+                //pattaList.Add(pattaSingle);
 
 
                 //        if (names[2].Trim().StartsWith("இரா"))
@@ -287,54 +257,16 @@ namespace NTK_Support
 
                 //        // if already have initial then ignore.
                 //    }
-
-                //    for (int i = 2; i <= d3.Count - 1; i++)
-                //    {
-                //        ChittaData d = new ChittaData();
-                //        d.OwnerName = oName;
-                //        d.PattaNo = pattaNo;
-
-                //        var nums = d3[i].Split('$');
-
-                //        d.SurveyNo = Convert.ToInt32(nums[1].Split('-')[0].Trim());
-                //        d.SubDivNo = nums[1].Split('-')[1].Trim();
-
-                //        if (nums[3].Trim() != "0.00")    // N - நன்செய் 
-                //        {
-                //            d.LandType = "1N";
-                //            d.Parappu = nums[2].Replace("-", ".").Trim().Replace(" ", "");
-                //            d.Theervai = Convert.ToDecimal(nums[3]);
-                //        }
-                //        else if (nums[5].Trim() != "0.00") // P - புன்செய் 
-                //        {
-                //            d.LandType = "2P";
-                //            d.Parappu = nums[4].Replace("-", ".").Trim().Replace(" ", "");
-                //            d.Theervai = Convert.ToDecimal(nums[5]);
-                //        }
-                //        else if (nums[7].Trim() != "0.00") // M - மானாவாரி  
-                //        {
-                //            d.LandType = "3M";
-                //            d.Parappu = nums[6].Replace("-", ".").Trim().Replace(" ", "");
-                //            d.Theervai = Convert.ToDecimal(nums[7]);
-                //        }
-
-                //        cds.Add(d);
-                //    }
-                //}
-                //}
-                //);
             }
 
-            var dataCheck = data.Count - (validCount + invalidType3zeroonly +
-                            vagaiCount + wrongPattaCount + otherIssueCount);
+            // Full Report
+            FinalReport fr = new FinalReport(pattaList);
+            var result = fr.ToString();
 
-            //File.AppendAllText(testFile, $"total record: {data.Count}");
-            //File.AppendAllText(testFile, "VALID : " + validCount);
-            //File.AppendAllText(testFile, "INVALID-Type-ZeroOnly" + invalidType3zeroonly);
-            //File.AppendAllText(testFile, "wrongPattaCount" + wrongPattaCount);
-
-            //File.AppendAllText(testFile, "INVALID-Type-1" + threeDigitIssueCount);
-            //File.AppendAllText(testFile, "INVALID-Type-2" + otherIssueCount);
+            if (fr.IsFullProcessed == false)
+            {
+                MessageBox.Show($"{fr.NotProcessedData} not processes");
+            }
 
 
             CreateInitialPages(); // 10 pages
@@ -346,13 +278,48 @@ namespace NTK_Support
 
         }
 
+        private List<LandDetail> ProcessLandType(List<string> actualData, List<string> breakData = null)
+        {
+
+            var landList = new List<LandDetail>();
+            LandDetail land = null;
+
+            for (int index = 0; index <= actualData.Count - 1; index++)
+            {
+                land = new LandDetail();
+
+                var ad = actualData[index].Split('-').Where(w => w.Trim() != "").Select(s => s.Trim() + "-").ToList();
+
+                if (breakData != null && breakData.Count > 0)
+                {
+                    land.PulaEn = ad[0].Split(' ')[1] + breakData[index];
+                }
+                else
+                {
+                    land.PulaEn = ad[0].Split(' ')[1];
+                }
+
+                land.nansaiParappu = ad[1] + ad[2].Split(' ')[0];
+                land.nansaiTheervai = ad[2].Split(' ')[1];
+
+                land.punsaiParappu = ad[2].Split(' ')[2] + ad[3].Split(' ')[0];
+                land.punsaiTheervai = ad[3].Split(' ')[1];
+
+                land.maanavariParappu = ad[3].Split(' ')[2] + ad[4].Split(' ')[0];
+                land.maanavariTheervai = ad[4].Split(' ')[1].Replace("-", "");
+
+                landList.Add(land);
+            }
+
+            return landList;
+
+        }
+
         private void CreateInitialPages()
         {
 
 
         }
-
-
 
         private List<string> GetEvenIndexData(List<string> dataList)
         {
@@ -365,6 +332,13 @@ namespace NTK_Support
             return dataList.Where(w => dataList.IndexOf(w) % 2 != 0).ToList();
 
         }
+
+        private bool IsValidMemberBreakData(List<string> memberData)
+        {
+            return GetEvenIndexData(memberData).All(e => e.Contains('-')) && 
+                   GetOddIndexData(memberData).All(o => !o.Contains('-'));
+        }
+
         public void WriteData(List<ChittaData> data, string filter)
         {
             List<ChittaData> PageTotalList = new List<ChittaData>();
@@ -616,7 +590,6 @@ namespace NTK_Support
 
     }
 
-
     public class Patta
     {
 
@@ -624,40 +597,62 @@ namespace NTK_Support
 
         public List<LandDetail> landDetails { get; set; }
 
-        public bool haveError { get; set; }
+        //public bool haveError { get; set; }
 
         public PattaType PattaType { get; set; }
 
         public bool isVagai { get; set; }
 
+        public string ErrorData { get; set; }
 
     }
 
     public enum PattaType
     {
         Valid,
+        ValidAndNoSubdivision,
         Zero,
         InValidPatta,
         Error,
+        PartailBreak,
         Unknown
     }
 
     public class LandDetail
     {
 
-        public string PulaEn { get; set; }
+        private string _pulaEn;
+        // புல எண் - உட்பிரிவு எண் (survey no - subdidvision no)
+        public string PulaEn {
+            get { 
+                    haveSubdivision = _pulaEn.Contains("-");
+                return _pulaEn.Replace("-", "");
 
+                }
+            set { _pulaEn = value; }
+        }
+
+        // நன்செய் பரப்பு 
         public string nansaiParappu { get; set; }
+
+        // நன்செய் தீர்வை  
         public string nansaiTheervai { get; set; }
 
+        // புன்செய் பரப்பு 
         public string punsaiParappu { get; set; }
+
+        // புன்செய் தீர்வை 
         public string punsaiTheervai { get; set; }
 
+        // மானாவரி பரப்பு
+        public string maanavariParappu { get; set; }
 
-        public string matravaiParappu { get; set; }
-        public string matravaiTheervai { get; set; }
+        // மானாவரி தீர்வை
+        public string maanavariTheervai { get; set; }
 
         public LandType LandType { get; set; }
+
+        public bool haveSubdivision { get; set; } = true;
 
     }
 
@@ -665,7 +660,58 @@ namespace NTK_Support
     {
         Nansai,
         Punsai,
-        Other
+        Maanaavari,
+        Porambokku,
+    }
+
+
+    public class FinalReport
+    {
+        public FinalReport(List<Patta> PattaListCtr)
+        {
+            PattaList = PattaListCtr;
+            KeyValue singleData = null;
+            CountData = new List<KeyValue>();
+
+            int processedCount = 0;
+            foreach (PattaType rt in Enum.GetValues(typeof(PattaType)))
+            {
+                singleData = new KeyValue();
+                singleData.Value = PattaList.Count(c => c.PattaType == rt);
+                processedCount += singleData.Value;
+                singleData.Caption = Enum.GetName(typeof(PattaType), rt);
+                singleData.CaptionData = PattaList.Where(c => c.PattaType == rt).ToList().Select(s => s.ErrorData).ToList();
+                CountData.Add(singleData);
+            }
+
+            IsFullProcessed = (PattaList.Count == processedCount);
+
+            NotProcessedData = (PattaList.Count - processedCount);
+
+            CountData.Add(new KeyValue("Total Record", PattaList.Count));
+            CountData.Add(new KeyValue("Not Processed", NotProcessedData));
+
+
+        }
+        public List<KeyValue> CountData { get; set; }
+
+        public List<Patta> PattaList { get; set; }
+
+        public bool IsFullProcessed { get; set; }
+
+        public int NotProcessedData { get; set; }
+        public override string ToString()
+        {
+
+            var reportStr = "";
+
+            if (PattaList == null || PattaList.Count == 0)
+                return reportStr;
+
+            return CountData.Select(s => s.ToString()).ToList().ListToString();
+        }
 
     }
+
+
 }

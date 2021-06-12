@@ -23,5 +23,12 @@ namespace Common.ExtensionMethod
             else
                 return -1;
         }
+
+        public static string ListToString(this List<string> list, string seperator = null)
+        {
+
+            if (seperator == null) seperator = Environment.NewLine;
+            return string.Join(seperator, list);
+        }
     }
 }
