@@ -30,14 +30,14 @@ namespace NTK_Support
         int startPno = 284;
         string testFile = "";
 
-        List<Patta> pattaList;
+        PattaList pattaList;
         Patta pattaSingle;
         List<string> relationTypes;
 
         public vao()
         {
             InitializeComponent();
-            pattaList = new List<Patta>();
+            pattaList = new PattaList();
             relationTypes = new List<string>() {
                 "தந்தைத",
                 "கணவன",
@@ -85,7 +85,7 @@ namespace NTK_Support
             List<string> brkData;
             List<string> nonBkData;
 
-            pattaList = new List<Patta>();
+            pattaList = new PattaList();
 
             for (int i = 0; i <= data.Count - 1; i++)
             {
@@ -93,6 +93,8 @@ namespace NTK_Support
 
                 try
                 {
+                    #region Initial Process...
+                    
                     pattaSingle = new Patta();
 
                     isFullBreakData = isPartialBreakData = isSomeDotData = false;
@@ -116,20 +118,21 @@ namespace NTK_Support
                     var pattaNO = fullData.First().Replace(":", "").Trim();
                     var isNo = pattaNO.isNumber();
 
+                    
+
+                    #endregion
 
 
+                    #region "Identify PattaType"
+
+                    
                     if (isNo == false)
                     {
-                        pattaSingle.PattaType = PattaType.InValidPatta;
-                        pattaSingle.ErrorData = fullData.ListToString();
-                        pattaList.Add(pattaSingle);
+                        pattaList.AddAndUpdateList(pattaSingle, PattaType.InValidPatta, fullData);
                         continue;
                     }
-                    else
-                    {
-                        pattaSingle.PattaEn = Convert.ToInt32(pattaNO);
-                    }
 
+                    pattaSingle.PattaEn = Convert.ToInt32(pattaNO);
 
                     var dataIndex = fullData.FindIndex(w => w.Contains('-'));
                     var headerData = fullData.Take(dataIndex).ToList();
@@ -142,9 +145,7 @@ namespace NTK_Support
                     // zero record.
                     if (memberData.Count == 0 || headerData.Count == 0)
                     {
-                        pattaSingle.PattaType = PattaType.Zero;
-                        pattaSingle.ErrorData = fullData.ListToString();
-                        pattaList.Add(pattaSingle);
+                        pattaList.AddAndUpdateList(pattaSingle, PattaType.Zero, fullData);
                         continue;
                     }
 
@@ -155,16 +156,12 @@ namespace NTK_Support
                         {
                             if ((isValidRecords(memberData, true) && isValidTotalRecord(totalData)) == false)
                             {
-                                pattaSingle.PattaType = PattaType.Error;
-                                pattaSingle.ErrorData = fullData.ListToString();
-                                pattaList.Add(pattaSingle);
+                                pattaList.AddAndUpdateList(pattaSingle, PattaType.Zero, fullData);
                                 continue;
                             }
                             else
                             {
                                 pattaSingle.PattaType = PattaType.ValidAndNoSubdivision;
-                                pattaSingle.ErrorData = fullData.ListToString();
-                                pattaList.Add(pattaSingle);
                             }
 
                         }
@@ -179,18 +176,13 @@ namespace NTK_Support
                         {
                             if ((IsValidBreakData(memberData, true) && isValidTotalRecord(totalData)) == false)
                             {
-                                pattaSingle.PattaType = PattaType.Error;
-                                pattaSingle.ErrorData = fullData.ListToString();
-                                pattaList.Add(pattaSingle);
+                                pattaList.AddAndUpdateList(pattaSingle, PattaType.Zero, fullData);
                                 continue;
                             }
                             else
                             {
                                 pattaSingle.PattaType = PattaType.ValidAndNoSubdivision;
-                                pattaSingle.ErrorData = fullData.ListToString();
-                                pattaList.Add(pattaSingle);
                             }
-
                         }
                     }
                     else
@@ -199,7 +191,6 @@ namespace NTK_Support
                         if (IsSomeDots(memberData))
                         {
                             pattaSingle.PattaType = PattaType.SomeDots;
-                            //pattaSingle.ErrorData = fullData.ListToString();
                         }
 
                         if (pattaSingle.PattaType == PattaType.SomeDots || pattaSingle.PattaType == PattaType.Valid)
@@ -212,19 +203,18 @@ namespace NTK_Support
 
                             if (pattaSingle.PattaType == PattaType.Valid)
                                 pattaSingle.PattaType = PattaType.PartailBreak;
-
-                            pattaSingle.ErrorData = fullData.ListToString();
                         }
                         else
                         {
-                            pattaSingle.PattaType = PattaType.Unknown;
-                            pattaSingle.ErrorData = fullData.ListToString();
-                            pattaList.Add(pattaSingle);
+                            pattaList.AddAndUpdateList(pattaSingle, PattaType.Unknown, fullData);
                             continue;
-
                         }
                     }
 
+                    #endregion
+
+                    #region "Process Owner Name"
+                    
                     // Gets the name
                     pattaSingle.isVagai = (headerData.Count > 3);
 
@@ -234,6 +224,11 @@ namespace NTK_Support
                         Debug.WriteLine($"{pattaNO} - {nameRow}");
                     }
 
+                    #endregion
+
+
+                    #region Process Land Data
+                   
                     // Gets the data.
                     if (isPartialBreakData)
                     {
@@ -250,7 +245,7 @@ namespace NTK_Support
                         }
 
                         pattaSingle.landDetails.AddRange(ProcessLandType(nonBkData));
-                        pattaList.Add(pattaSingle);
+                        //pattaList.Add(pattaSingle);
 
 
                     }
@@ -262,25 +257,34 @@ namespace NTK_Support
                         if (actualData.Count == breakData.Count)
                         {
                             pattaSingle.landDetails = ProcessLandType(actualData, breakData);
-                            pattaList.Add(pattaSingle);
+                            //pattaList.Add(pattaSingle);
                         }
                         else
                         {
                             MessageBox.Show("Error!");
                         }
                     }
-                    else
+                    else // PERFECT DATA
                     {
                         pattaSingle.landDetails = ProcessLandType(memberData);
-                        pattaList.Add(pattaSingle);
                     }
 
+                    #endregion
+
+                    pattaList.AddAndUpdateList(pattaSingle, PattaType.Valid, fullData);
+
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    pattaSingle.PattaType = PattaType.Error;
-                    pattaSingle.ErrorData = fullData.ListToString();
-                    pattaList.Add(pattaSingle);
+                    if (pattaSingle.PattaType == PattaType.Valid)
+                    {
+                        pattaList.AddAndUpdateList(pattaSingle, PattaType.ValidException, fullData);
+                    }
+                    else
+                    {
+                        pattaList.AddAndUpdateList(pattaSingle, PattaType.Exception, fullData);
+                    }
+
                     continue;
                 }
 
@@ -295,6 +299,20 @@ namespace NTK_Support
                 MessageBox.Show($"{fr.NotProcessedData} not processes");
             }
 
+            var checkData1 = pattaList.Select(s => s.PattaEn).ToList();
+
+            var numberList = Enumerable.Range(1, checkData1.Count).ToList();
+
+            var wrongSeq = new List<int>();
+
+            for (int ws = 0; ws <= checkData1.Count - 1; ws++)
+            {
+                if (checkData1[ws] != numberList[ws])
+                {
+                    wrongSeq.Add(numberList[ws]);
+                }
+            }
+
 
             CreateInitialPages(); // 10 pages
             WriteData(cds, "1N"); // from chitta
@@ -304,10 +322,6 @@ namespace NTK_Support
 
 
         }
-
-
-
-
 
         //pattaSingle.landDetails = lds;
         //pattaList.Add(pattaSingle);
@@ -724,7 +738,7 @@ namespace NTK_Support
 
         public override string ToString()
         {
-            return String.Format("{0}\t{1}\t{2}{3}", PageNumberStr, Parappu, TheervaiStr, Environment.NewLine);
+            return string.Format("{0}\t{1}\t{2}{3}", PageNumberStr, Parappu, TheervaiStr, Environment.NewLine);
         }
 
     }
@@ -736,13 +750,23 @@ namespace NTK_Support
 
         public List<LandDetail> landDetails { get; set; }
 
-        //public bool haveError { get; set; }
-
         public PattaType PattaType { get; set; }
 
         public bool isVagai { get; set; }
 
-        public string ErrorData { get; set; }
+        public string FullData { get; set; }
+
+
+        public void UpdatePatta(PattaType pattaType, List<string> fullData)
+        {
+            PattaType = pattaType;
+            FullData = fullData.ListToString();
+        }
+
+        public override string ToString()
+        {
+            return $"Patta En:{PattaEn} PattaType: {Enum.GetName(typeof(PattaType), PattaType)} IsVagai: {Convert.ToInt32(isVagai)} land: {landDetails.Count}";
+        }
 
     }
 
@@ -752,7 +776,9 @@ namespace NTK_Support
         ValidAndNoSubdivision,
         Zero,
         InValidPatta,
-        Error,
+        KnownError,
+        ValidException,
+        Exception,
         PartailBreak,
         SomeDots,
         Unknown
@@ -826,7 +852,7 @@ namespace NTK_Support
                 singleData.Value = PattaList.Count(c => c.PattaType == rt);
                 processedCount += singleData.Value;
                 singleData.Caption = Enum.GetName(typeof(PattaType), rt);
-                singleData.CaptionData = PattaList.Where(c => c.PattaType == rt).ToList().Select(s => s.ErrorData).ToList();
+                singleData.CaptionData = PattaList.Where(c => c.PattaType == rt).ToList().Select(s => s.FullData).ToList();
                 CountData.Add(singleData);
             }
 
@@ -857,6 +883,22 @@ namespace NTK_Support
             return CountData.Select(s => s.ToString()).ToList().ListToString();
         }
 
+    }
+
+    public class PattaList : List<Patta>
+    {
+
+        //public new void Add(T item)
+        //{
+
+        //    base.Add(item);
+        //}
+
+        public void AddAndUpdateList(Patta item, PattaType pattaType, List<string> fullData)
+        {
+            item.UpdatePatta(pattaType, fullData);
+            base.Add(item);
+        }
     }
 
 
