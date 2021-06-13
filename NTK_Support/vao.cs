@@ -72,19 +72,17 @@ namespace NTK_Support
         private void ProcessChittaFile()
         {
 
-            updateTestFileName("vagaiData");
+            //updateTestFileName("vagaiData");
             var pattaas = content.Replace("பட்டா எண்", "$");
-
             var data = pattaas.Split('$').ToList();
+            data.RemoveAt(0); // first is empty data
 
-            data.RemoveAt(0); // empty data
+
             List<ChittaData> cds = new List<ChittaData>();
-            bool isFullBreakData = false;
-            bool isPartialBreakData = false;
-            bool isSomeDotData = false;
+            bool isFullBreakData, isPartialBreakData =  false;
+            //bool isPartialBreakData = false;
             List<string> brkData;
             List<string> nonBkData;
-
             pattaList = new PattaList();
 
             for (int i = 0; i <= data.Count - 1; i++)
@@ -97,7 +95,7 @@ namespace NTK_Support
                     
                     pattaSingle = new Patta();
 
-                    isFullBreakData = isPartialBreakData = isSomeDotData = false;
+                    isFullBreakData = isPartialBreakData  = false;
                     brkData = new List<string>();
                     nonBkData = new List<string>();
 
@@ -118,13 +116,9 @@ namespace NTK_Support
                     var pattaNO = fullData.First().Replace(":", "").Trim();
                     var isNo = pattaNO.isNumber();
 
-                    
-
                     #endregion
 
-
                     #region "Identify PattaType"
-
                     
                     if (isNo == false)
                     {
@@ -134,13 +128,14 @@ namespace NTK_Support
 
                     pattaSingle.PattaEn = Convert.ToInt32(pattaNO);
 
-                    var dataIndex = fullData.FindIndex(w => w.Contains('-'));
-                    var headerData = fullData.Take(dataIndex).ToList();
-                    var memberData = fullData.Where(ww => fullData.IndexOf(ww) >= dataIndex).ToList();
+                    var dataStartIndex = fullData.FindIndex(w => w.Contains('-'));
+                    var headerData = fullData.Take(dataStartIndex).ToList();
+                    var memberData = fullData.Where(ww => fullData.IndexOf(ww) >= dataStartIndex).ToList();
                     var totalData = memberData.Last();
                     memberData.RemoveAt(memberData.Count - 1);
 
-                    var totalRecord = (memberData.Count - memberData.ToList().Where(w => w.Contains("-") == false).Count());
+                    var exactMemDat = memberData.ToList().Where(w => w.Contains("-") == false);
+                    var totalRecord = memberData.Count - exactMemDat.Count(); // its for breaking record.
 
                     // zero record.
                     if (memberData.Count == 0 || headerData.Count == 0)
@@ -226,7 +221,6 @@ namespace NTK_Support
 
                     #endregion
 
-
                     #region Process Land Data
                    
                     // Gets the data.
@@ -290,6 +284,13 @@ namespace NTK_Support
 
             }
 
+            //dataGridView1.DataSource = pattaList.Where(w => w.PattaType != PattaType.Zero).SelectMany(s => s.landDetails).ToList();
+
+
+            var items = (from list in pattaList
+    //from item in list.landDetails
+                        select list.landDetails).ToList();
+
             // Full Report
             FinalReport fr = new FinalReport(pattaList);
             var result = fr.ToString();
@@ -314,11 +315,11 @@ namespace NTK_Support
             }
 
 
-            CreateInitialPages(); // 10 pages
-            WriteData(cds, "1N"); // from chitta
-            WriteData(cds, "2P");  // from chitta
-            WriteData(cds, "3M");  // from chitta
-            WriteData(cds, "4P");  // from a-reg
+            //CreateInitialPages(); // 10 pages
+            //WriteData(cds, "1N"); // from chitta
+            //WriteData(cds, "2P");  // from chitta
+            //WriteData(cds, "3M");  // from chitta
+            //WriteData(cds, "4P");  // from a-reg
 
 
         }
@@ -788,18 +789,13 @@ namespace NTK_Support
     {
 
         private string _pulaEn;
+
         // புல எண் - உட்பிரிவு எண் (survey no - subdidvision no)
         public string PulaEn
         {
             get
             {
-                haveSubdivision = _pulaEn.Contains("-");
-
-                if (haveSubdivision)
-                    return _pulaEn.Replace("-", "");
-                else
-                    return _pulaEn;
-
+                return _pulaEn.Trim().EndsWith("-") ? _pulaEn.Replace("-", "") : _pulaEn;
             }
             set { _pulaEn = value; }
         }
@@ -824,7 +820,7 @@ namespace NTK_Support
 
         public LandType LandType { get; set; }
 
-        public bool haveSubdivision { get; set; } = true;
+        //public bool haveSubdivision { get; set; }
 
     }
 
@@ -844,6 +840,7 @@ namespace NTK_Support
             PattaList = PattaListCtr;
             KeyValue singleData = null;
             CountData = new List<KeyValue>();
+            GroupedData = new List<object>();
 
             int processedCount = 0;
             foreach (PattaType rt in Enum.GetValues(typeof(PattaType)))
@@ -852,7 +849,10 @@ namespace NTK_Support
                 singleData.Value = PattaList.Count(c => c.PattaType == rt);
                 processedCount += singleData.Value;
                 singleData.Caption = Enum.GetName(typeof(PattaType), rt);
-                singleData.CaptionData = PattaList.Where(c => c.PattaType == rt).ToList().Select(s => s.FullData).ToList();
+                var lst = PattaList.Where(c => c.PattaType == rt).ToList();
+
+                singleData.CaptionData = lst.Select(s => s.FullData).ToList();
+                GroupedData.Add(lst);
                 CountData.Add(singleData);
             }
 
@@ -863,6 +863,8 @@ namespace NTK_Support
             CountData.Add(new KeyValue("Total Record", PattaList.Count));
             CountData.Add(new KeyValue("Not Processed", NotProcessedData));
 
+            
+
 
         }
         public List<KeyValue> CountData { get; set; }
@@ -872,6 +874,8 @@ namespace NTK_Support
         public bool IsFullProcessed { get; set; }
 
         public int NotProcessedData { get; set; }
+
+        public List<object> GroupedData { get; set; }
         public override string ToString()
         {
 

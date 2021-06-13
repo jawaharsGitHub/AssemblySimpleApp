@@ -22,11 +22,14 @@ namespace Common
 
         public List<string> CaptionData { get; set; }
 
+        // public List<T> CaptionObj { get; set; }
+
         public int Value { get; set; }
 
         public override string ToString()
         {
             return $"{Caption} - {Value}";
         }
+        
     }
 }
