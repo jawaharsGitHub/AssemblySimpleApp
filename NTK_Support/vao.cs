@@ -31,12 +31,15 @@ namespace NTK_Support
         string testFile = "";
 
         PattaList pattaList;
+        List<LandDetail> WholeLandList;
         Patta pattaSingle;
         List<string> relationTypes;
 
         public vao()
         {
             InitializeComponent();
+
+
             pattaList = new PattaList();
             relationTypes = new List<string>() {
                 "தந்தைத",
@@ -61,6 +64,8 @@ namespace NTK_Support
                 //testFile = myFile.Replace(".txt", "valid.txt");
             }
 
+            //var pattaTypes = Enum.get
+
             ProcessChittaFile();
         }
 
@@ -79,7 +84,7 @@ namespace NTK_Support
 
 
             List<ChittaData> cds = new List<ChittaData>();
-            bool isFullBreakData, isPartialBreakData =  false;
+            bool isFullBreakData, isPartialBreakData = false;
             //bool isPartialBreakData = false;
             List<string> brkData;
             List<string> nonBkData;
@@ -92,10 +97,10 @@ namespace NTK_Support
                 try
                 {
                     #region Initial Process...
-                    
+
                     pattaSingle = new Patta();
 
-                    isFullBreakData = isPartialBreakData  = false;
+                    isFullBreakData = isPartialBreakData = false;
                     brkData = new List<string>();
                     nonBkData = new List<string>();
 
@@ -119,7 +124,7 @@ namespace NTK_Support
                     #endregion
 
                     #region "Identify PattaType"
-                    
+
                     if (isNo == false)
                     {
                         pattaList.AddAndUpdateList(pattaSingle, PattaType.InValidPatta, fullData);
@@ -209,20 +214,42 @@ namespace NTK_Support
                     #endregion
 
                     #region "Process Owner Name"
-                    
+
                     // Gets the name
                     pattaSingle.isVagai = (headerData.Count > 3);
 
                     var nameRow = headerData[1];
-                    if (relationTypes.Any(a => nameRow.Split(' ').ToList().Contains(a)) == false)
+                    if (relationTypes.Any(a => nameRow.Split(' ').ToList().Contains(a))) // have valid names.
                     {
-                        Debug.WriteLine($"{pattaNO} - {nameRow}");
+                        var delitList = relationTypes.Intersect(nameRow.Split(' ').ToList()).ToList();
+
+                        if(delitList.Count == 1)
+                        {
+                            var delimit = delitList[0];
+                            pattaSingle.PattaTharar = nameRow.Replace(delimit, "$").Split('$')[1];
+
+                            var d = nameRow.Replace(delimit, "$").Split('$');
+
+                            pattaSingle.PattaTharar = d[1];
+                            //pattaSingle.PattaTharar = $"{d[1]} {delimit} {d[0]}";
+                        }
+                        else
+                        {
+                            pattaList.AddAndUpdateList(pattaSingle, PattaType.TwoNameDelimit, fullData);
+                            continue;
+                        }
+                        
+                    }
+                    else 
+                    {
+                        pattaList.AddAndUpdateList(pattaSingle, PattaType.NameIssue, fullData);
+                        continue;
                     }
 
                     #endregion
 
                     #region Process Land Data
-                   
+
                     // Gets the data.
                     if (isPartialBreakData)
                     {
@@ -265,6 +292,7 @@ namespace NTK_Support
 
                     #endregion
 
+
                     pattaList.AddAndUpdateList(pattaSingle, PattaType.Valid, fullData);
 
                 }
@@ -281,19 +309,40 @@ namespace NTK_Support
 
                     continue;
                 }
-
             }
 
-            //dataGridView1.DataSource = pattaList.Where(w => w.PattaType != PattaType.Zero).SelectMany(s => s.landDetails).ToList();
-
-
-            var items = (from list in pattaList
-    //from item in list.landDetails
-                        select list.landDetails).ToList();
+            WholeLandList = pattaList.SelectMany(x => x.landDetails.Select(y => y)).ToList();
 
             // Full Report
             FinalReport fr = new FinalReport(pattaList);
             var result = fr.ToString();
+
+            ddlPattaTypes.DataSource = fr.CountData;
+            ddlPattaTypes.DisplayMember = "DisplayMember";
+            ddlPattaTypes.ValueMember = "Id";
+
+            ddlListType.DataSource = new List<KeyValue> {
+                new KeyValue() { Id = 1, Caption = "PATTA" },
+                new KeyValue() { Id = 2, Caption = "LANDDETAIL" }
+            };
+
+            ddlListType.DisplayMember = "Caption";
+            ddlListType.ValueMember = "Id";
+
+            var landTypeSource = new List<KeyValue>();
+
+            foreach (LandType rt in Enum.GetValues(typeof(LandType)))
+            {
+                landTypeSource.Add(new KeyValue() { 
+                                    Caption = Enum.GetName(typeof(LandType), rt),
+                                    Id = (int)rt
+                });
+            }
+
+            ddlLandTypes.DisplayMember = "Caption";
+            ddlLandTypes.ValueMember = "Id";
+
+            ddlLandTypes.DataSource = landTypeSource;
 
             if (fr.IsFullProcessed == false)
             {
@@ -358,13 +407,13 @@ namespace NTK_Support
                 if (breakData != null && breakData.Count > 0)
                 {
                     land.PulaEn = ad[0].Split(' ')[1] + breakData[index];
+                    land.nansaiParappu = ad[1] + ad[2].Split(' ')[0];
                 }
                 else
                 {
-                    land.PulaEn = ad[0].Split(' ')[1];
+                    land.PulaEn = ad[0].Split(' ')[1] + ad[1].Split(' ')[0];
+                    land.nansaiParappu = ad[1].Split(' ')[1] + ad[2].Split(' ')[0];
                 }
-
-                land.nansaiParappu = ad[1] + ad[2].Split(' ')[0];
                 land.nansaiTheervai = ad[2].Split(' ')[1];
 
                 land.punsaiParappu = ad[2].Split(' ')[2] + ad[3].Split(' ')[0];
@@ -372,6 +421,7 @@ namespace NTK_Support
 
                 land.maanavariParappu = ad[3].Split(' ')[2] + ad[4].Split(' ')[0];
                 land.maanavariTheervai = ad[4].Split(' ')[1].Replace("-", "");
+
 
                 landList.Add(land);
             }
@@ -698,6 +748,31 @@ namespace NTK_Support
 
         }
 
+        private void ddlListType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selected = ddlListType.SelectedValue.ToInt32();
+
+            if (selected == 1)
+                dataGridView1.DataSource = pattaList;
+            else if (selected == 2)
+                dataGridView1.DataSource = WholeLandList;
+        }
+
+        private void ddlPattaTypes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selected = ddlListType.SelectedValue.ToInt32();
+
+            if (selected == 1)
+                dataGridView1.DataSource = pattaList.Where(w => (int)w.PattaType == ddlPattaTypes.SelectedValue.ToInt32()).ToList();
+            else if (selected == 2)
+                dataGridView1.DataSource = pattaList.Where(w => (int)w.PattaType == ddlPattaTypes.SelectedValue.ToInt32()).ToList()
+                                            .SelectMany(x => x.landDetails.Select(y => y)).ToList();
+        }
+
+        private void ddlLandTypes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = WholeLandList.Where(w => (int)w.LandType == ddlLandTypes.SelectedValue.ToInt32()).ToList();
+        }
     }
 
 
@@ -755,6 +830,8 @@ namespace NTK_Support
 
         public bool isVagai { get; set; }
 
+        public string PattaTharar { get; set; }
+
         public string FullData { get; set; }
 
 
@@ -782,23 +859,16 @@ namespace NTK_Support
         Exception,
         PartailBreak,
         SomeDots,
-        Unknown
+        Unknown,
+        NameIssue,
+        TwoNameDelimit
     }
 
     public class LandDetail
     {
+        public int PattaEn { get; set; }
 
-        private string _pulaEn;
-
-        // புல எண் - உட்பிரிவு எண் (survey no - subdidvision no)
-        public string PulaEn
-        {
-            get
-            {
-                return _pulaEn.Trim().EndsWith("-") ? _pulaEn.Replace("-", "") : _pulaEn;
-            }
-            set { _pulaEn = value; }
-        }
+        public string PulaEn { get; set; }
 
         // நன்செய் பரப்பு 
         public string nansaiParappu { get; set; }
@@ -818,9 +888,40 @@ namespace NTK_Support
         // மானாவரி தீர்வை
         public string maanavariTheervai { get; set; }
 
-        public LandType LandType { get; set; }
+        public LandType LandType { 
 
-        //public bool haveSubdivision { get; set; }
+            get {
+
+                int i = 0;
+                LandType ld = LandType.Other;
+
+                if(nansaiTheervai != "0" && nansaiTheervai != "0.00")
+                {
+                    i += 1;
+                    ld = LandType.Nansai;
+                }
+                
+                if (punsaiTheervai != "0" && punsaiTheervai != "0.00")
+                {
+                    i += 1;
+                    ld = LandType.Punsai;
+                }
+
+                if (maanavariTheervai != "0" && maanavariTheervai != "0.00")
+                {
+                    i += 1;
+                    ld = LandType.Maanaavari;
+                }
+
+                if(i > 1)
+                {
+                    ld = LandType.Other;
+                }
+
+                return ld;
+            } 
+             
+        }
 
     }
 
@@ -830,6 +931,7 @@ namespace NTK_Support
         Punsai,
         Maanaavari,
         Porambokku,
+        Other
     }
 
 
@@ -849,6 +951,7 @@ namespace NTK_Support
                 singleData.Value = PattaList.Count(c => c.PattaType == rt);
                 processedCount += singleData.Value;
                 singleData.Caption = Enum.GetName(typeof(PattaType), rt);
+                singleData.Id = (int)rt;
                 var lst = PattaList.Where(c => c.PattaType == rt).ToList();
 
                 singleData.CaptionData = lst.Select(s => s.FullData).ToList();
@@ -862,10 +965,6 @@ namespace NTK_Support
 
             CountData.Add(new KeyValue("Total Record", PattaList.Count));
             CountData.Add(new KeyValue("Not Processed", NotProcessedData));
-
-            
-
-
         }
         public List<KeyValue> CountData { get; set; }
 
@@ -878,11 +977,8 @@ namespace NTK_Support
         public List<object> GroupedData { get; set; }
         public override string ToString()
         {
-
-            var reportStr = "";
-
             if (PattaList == null || PattaList.Count == 0)
-                return reportStr;
+                return "";
 
             return CountData.Select(s => s.ToString()).ToList().ListToString();
         }
@@ -892,16 +988,23 @@ namespace NTK_Support
     public class PattaList : List<Patta>
     {
 
-        //public new void Add(T item)
-        //{
-
-        //    base.Add(item);
-        //}
-
         public void AddAndUpdateList(Patta item, PattaType pattaType, List<string> fullData)
         {
             item.UpdatePatta(pattaType, fullData);
             base.Add(item);
+
+            if (item.landDetails == null)
+            {
+                item.landDetails = new List<LandDetail>()
+                {
+                    new LandDetail() { PattaEn = item.PattaEn }
+                };
+            }
+            else
+            {
+                item.landDetails.ForEach(ld => ld.PattaEn = item.PattaEn);
+            }
+
         }
     }
 

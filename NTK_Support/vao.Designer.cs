@@ -32,6 +32,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ddlPattaTypes = new System.Windows.Forms.ComboBox();
+            this.ddlListType = new System.Windows.Forms.ComboBox();
+            this.ddlLandTypes = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,11 +72,44 @@
             this.dataGridView1.Size = new System.Drawing.Size(743, 333);
             this.dataGridView1.TabIndex = 3;
             // 
+            // ddlPattaTypes
+            // 
+            this.ddlPattaTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlPattaTypes.FormattingEnabled = true;
+            this.ddlPattaTypes.Location = new System.Drawing.Point(322, 74);
+            this.ddlPattaTypes.Name = "ddlPattaTypes";
+            this.ddlPattaTypes.Size = new System.Drawing.Size(121, 21);
+            this.ddlPattaTypes.TabIndex = 4;
+            this.ddlPattaTypes.SelectedIndexChanged += new System.EventHandler(this.ddlPattaTypes_SelectedIndexChanged);
+            // 
+            // ddlListType
+            // 
+            this.ddlListType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlListType.FormattingEnabled = true;
+            this.ddlListType.Location = new System.Drawing.Point(473, 74);
+            this.ddlListType.Name = "ddlListType";
+            this.ddlListType.Size = new System.Drawing.Size(121, 21);
+            this.ddlListType.TabIndex = 5;
+            this.ddlListType.SelectedIndexChanged += new System.EventHandler(this.ddlListType_SelectedIndexChanged);
+            // 
+            // ddlLandTypes
+            // 
+            this.ddlLandTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlLandTypes.FormattingEnabled = true;
+            this.ddlLandTypes.Location = new System.Drawing.Point(620, 74);
+            this.ddlLandTypes.Name = "ddlLandTypes";
+            this.ddlLandTypes.Size = new System.Drawing.Size(121, 21);
+            this.ddlLandTypes.TabIndex = 6;
+            this.ddlLandTypes.SelectedIndexChanged += new System.EventHandler(this.ddlLandTypes_SelectedIndexChanged);
+            // 
             // vao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ddlLandTypes);
+            this.Controls.Add(this.ddlListType);
+            this.Controls.Add(this.ddlPattaTypes);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button1);
@@ -92,5 +128,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ComboBox ddlPattaTypes;
+        private System.Windows.Forms.ComboBox ddlListType;
+        private System.Windows.Forms.ComboBox ddlLandTypes;
     }
 }

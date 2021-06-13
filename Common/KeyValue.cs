@@ -20,16 +20,26 @@ namespace Common
         }
         public string Caption { get; set; }
 
+
+        public string DisplayMember
+        {
+            get
+            {
+                return $"{Caption} ({Value})";
+            }
+        }
+
+
         public List<string> CaptionData { get; set; }
 
-        // public List<T> CaptionObj { get; set; }
-
         public int Value { get; set; }
+
+        public int Id { get; set; }
 
         public override string ToString()
         {
             return $"{Caption} - {Value}";
         }
-        
+
     }
 }
