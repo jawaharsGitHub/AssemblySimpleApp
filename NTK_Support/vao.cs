@@ -227,10 +227,9 @@ namespace NTK_Support
                         {
                             var delimit = delitList[0];
                             pattaSingle.PattaTharar = nameRow.Replace(delimit, "$").Split('$')[1];
-
                             var d = nameRow.Replace(delimit, "$").Split('$');
 
-                            pattaSingle.PattaTharar = d[1];
+                            pattaSingle.PattaTharar = ApplyUnicode(d[1]);
                             //pattaSingle.PattaTharar = $"{d[1]} {delimit} {d[0]}";
                         }
                         else
@@ -238,7 +237,6 @@ namespace NTK_Support
                             pattaList.AddAndUpdateList(pattaSingle, PattaType.TwoNameDelimit, fullData);
                             continue;
                         }
-                        
                     }
                     else 
                     {
@@ -371,6 +369,21 @@ namespace NTK_Support
             //WriteData(cds, "4P");  // from a-reg
 
 
+        }
+
+        private string ApplyUnicode(string name)
+        {
+            var t = name + "1" + "அர்ஜூனன்கோ";
+
+            var enumerator = System.Globalization.StringInfo.GetTextElementEnumerator(t);
+
+            var tt = "";
+            while (enumerator.MoveNext())
+            {
+                tt = tt + enumerator.Current;
+            }
+
+            throw new NotImplementedException();
         }
 
         //pattaSingle.landDetails = lds;
