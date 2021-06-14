@@ -2,15 +2,10 @@
 using Common.ExtensionMethod;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NTK_Support
@@ -49,8 +44,6 @@ namespace NTK_Support
                 "மைைனவி"
             };
 
-
-
             if (isProductionTest)
             {
                 myFile = @"F:\TN GOV\VANITHA\Vaidehi-Vao\reg data\Chitta_Report-1.pdf";
@@ -63,8 +56,6 @@ namespace NTK_Support
                 content = File.ReadAllText(myFile);
                 //testFile = myFile.Replace(".txt", "valid.txt");
             }
-
-            //var pattaTypes = Enum.get
 
             ProcessChittaFile();
         }
@@ -151,12 +142,15 @@ namespace NTK_Support
 
                     else if (totalRecord == memberData.Count)
                     {
-                        // perfect data
+                        // perfect data (without subdivision)
                         if ((isValidRecords(memberData) && isValidTotalRecord(totalData)) == false)
                         {
+                            // perfect  data (with subdivision)
                             if ((isValidRecords(memberData, true) && isValidTotalRecord(totalData)) == false)
                             {
-                                pattaList.AddAndUpdateList(pattaSingle, PattaType.Zero, fullData);
+                                // ERROR!
+                                pattaList.AddAndUpdateList(pattaSingle, PattaType.KnownError
+                                    , fullData);
                                 continue;
                             }
                             else
@@ -171,12 +165,13 @@ namespace NTK_Support
                     else if ((totalRecord * 2) == memberData.Count)
                     {
                         isFullBreakData = IsValidBreakData(memberData);
-
+                        // perfect break data (without subdivision)
                         if ((IsValidBreakData(memberData) && isValidTotalRecord(totalData)) == false)
                         {
+                            // perfect break data (with subdivision)
                             if ((IsValidBreakData(memberData, true) && isValidTotalRecord(totalData)) == false)
                             {
-                                pattaList.AddAndUpdateList(pattaSingle, PattaType.Zero, fullData);
+                                pattaList.AddAndUpdateList(pattaSingle, PattaType.KnownError, fullData);
                                 continue;
                             }
                             else
@@ -206,6 +201,7 @@ namespace NTK_Support
                         }
                         else
                         {
+                            // UNKNOWN ERROR
                             pattaList.AddAndUpdateList(pattaSingle, PattaType.Unknown, fullData);
                             continue;
                         }
@@ -234,12 +230,14 @@ namespace NTK_Support
                         }
                         else
                         {
+                            // ERROR!
                             pattaList.AddAndUpdateList(pattaSingle, PattaType.TwoNameDelimit, fullData);
                             continue;
                         }
                     }
                     else 
                     {
+                        // ERROR!
                         pattaList.AddAndUpdateList(pattaSingle, PattaType.NameIssue, fullData);
                         continue;
                     }
@@ -254,37 +252,26 @@ namespace NTK_Support
                         var actualData = GetEvenIndexData(brkData);
                         var breakData = GetOddIndexData(brkData);
 
-                        if (actualData.Count == breakData.Count)
-                        {
+                        if (actualData.Count == breakData.Count) // Partial Break
                             pattaSingle.landDetails = ProcessLandType(actualData, breakData);
-                        }
                         else
-                        {
-                            MessageBox.Show("Error!");
-                        }
+                            MessageBox.Show("isPartialBreakData Error!");
 
-                        pattaSingle.landDetails.AddRange(ProcessLandType(nonBkData));
-                        //pattaList.Add(pattaSingle);
-
-
+                        pattaSingle.landDetails.AddRange(ProcessLandType(nonBkData));  // partial Perfect 
                     }
                     else if (isFullBreakData)
                     {
                         var actualData = GetEvenIndexData(memberData);
                         var breakData = GetOddIndexData(memberData);
 
-                        if (actualData.Count == breakData.Count)
-                        {
+                        if (actualData.Count == breakData.Count) // full break
                             pattaSingle.landDetails = ProcessLandType(actualData, breakData);
-                            //pattaList.Add(pattaSingle);
-                        }
                         else
-                        {
-                            MessageBox.Show("Error!");
-                        }
+                            MessageBox.Show("isFullBreakData Error!");
+                        
                     }
-                    else // PERFECT DATA
-                    {
+                    else
+                    { // PERFECT DATA
                         pattaSingle.landDetails = ProcessLandType(memberData);
                     }
 
@@ -356,14 +343,12 @@ namespace NTK_Support
             for (int ws = 0; ws <= checkData1.Count - 1; ws++)
             {
                 if (checkData1[ws] != numberList[ws])
-                {
                     wrongSeq.Add(numberList[ws]);
-                }
             }
 
 
-            //CreateInitialPages(); // 10 pages
-            //WriteData(cds, "1N"); // from chitta
+            CreateInitialPages(); // 10 pages
+            WriteData(cds, "1N"); // from chitta
             //WriteData(cds, "2P");  // from chitta
             //WriteData(cds, "3M");  // from chitta
             //WriteData(cds, "4P");  // from a-reg
@@ -371,23 +356,7 @@ namespace NTK_Support
 
         }
 
-        private string ApplyUnicode(string name)
-        {
-            var t = name + "1" + "அர்ஜூனன்கோ";
 
-            var enumerator = System.Globalization.StringInfo.GetTextElementEnumerator(t);
-
-            var tt = "";
-            while (enumerator.MoveNext())
-            {
-                tt = tt + enumerator.Current;
-            }
-
-            throw new NotImplementedException();
-        }
-
-        //pattaSingle.landDetails = lds;
-        //pattaList.Add(pattaSingle);
 
 
         //        if (names[2].Trim().StartsWith("இரா"))
@@ -405,6 +374,29 @@ namespace NTK_Support
         //        // if already have initial then ignore.
         //    }
 
+        private string ApplyUnicode(string name)
+        {
+
+            var r = true;
+
+            if (r)
+            {
+                return name;
+            }
+
+            var t = name + "1" + "அர்ஜூனன்கோ";
+
+            var test = "கோவிந்தம்மாள்";
+            var enumerator = System.Globalization.StringInfo.GetTextElementEnumerator(t);
+
+            var tt = "";
+            while (enumerator.MoveNext())
+            {
+                tt = tt + enumerator.Current;
+            }
+
+            throw new NotImplementedException();
+        }
         private List<LandDetail> ProcessLandType(List<string> actualData, List<string> breakData = null)
         {
 
@@ -555,6 +547,11 @@ namespace NTK_Support
             }
 
             return false;
+        }
+
+        public void GenerateNansaiPages()
+        {
+            var nansaiData = WholeLandList.Where(w => w.LandType == LandType.Nansai).ToList();
         }
 
         public void WriteData(List<ChittaData> data, string filter)

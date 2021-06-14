@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlphaNumericSort.cs" />
+    <Content Include="AdangalHtmlTemplates\LandDetail.html" />
     <Content Include="Class1.txt" />
     <Compile Include="DocxToText.cs" />
     <Compile Include="DocxToTxt.cs">
