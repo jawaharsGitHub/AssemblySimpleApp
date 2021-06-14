@@ -134,6 +134,8 @@
   <ItemGroup>
     <Content Include="HTMLTemplate\adangal-DataPage - Copy.htm" />
     <Content Include="HTMLTemplate\adangal-PageList.htm" />
+    <Content Include="HTMLTemplate\RowTemplate.htm" />
+    <Content Include="HTMLTemplate\MainHtml.htm" />
     <Content Include="HTMLTemplate\MemberContact.htm" />
     <Content Include="HTMLTemplate\EmailBody.htm" />
     <Content Include="ICSharpCode.SharpZipLib.dll" />

@@ -219,7 +219,7 @@ namespace NTK_Support
                     {
                         var delitList = relationTypes.Intersect(nameRow.Split(' ').ToList()).ToList();
 
-                        if(delitList.Count == 1)
+                        if (delitList.Count == 1)
                         {
                             var delimit = delitList[0];
                             pattaSingle.PattaTharar = nameRow.Replace(delimit, "$").Split('$')[1];
@@ -235,7 +235,7 @@ namespace NTK_Support
                             continue;
                         }
                     }
-                    else 
+                    else
                     {
                         // ERROR!
                         pattaList.AddAndUpdateList(pattaSingle, PattaType.NameIssue, fullData);
@@ -268,7 +268,7 @@ namespace NTK_Support
                             pattaSingle.landDetails = ProcessLandType(actualData, breakData);
                         else
                             MessageBox.Show("isFullBreakData Error!");
-                        
+
                     }
                     else
                     { // PERFECT DATA
@@ -318,9 +318,10 @@ namespace NTK_Support
 
             foreach (LandType rt in Enum.GetValues(typeof(LandType)))
             {
-                landTypeSource.Add(new KeyValue() { 
-                                    Caption = Enum.GetName(typeof(LandType), rt),
-                                    Id = (int)rt
+                landTypeSource.Add(new KeyValue()
+                {
+                    Caption = Enum.GetName(typeof(LandType), rt),
+                    Id = (int)rt
                 });
             }
 
@@ -355,8 +356,6 @@ namespace NTK_Support
 
 
         }
-
-
 
 
         //        if (names[2].Trim().StartsWith("இரா"))
@@ -783,240 +782,287 @@ namespace NTK_Support
         {
             dataGridView1.DataSource = WholeLandList.Where(w => (int)w.LandType == ddlLandTypes.SelectedValue.ToInt32()).ToList();
         }
-    }
 
-
-    public class ChittaData
-    {
-
-        public int index { get; set; }
-
-        public int SurveyNo { get; set; }
-
-        public string SurveyNoStr { get { return SurveyNo == 0 ? "" : SurveyNo.ToString(); } }
-
-        public string SubDivNo { get; set; }
-
-        public string Parappu { get; set; }
-
-        public decimal Theervai { get; set; }
-        public string TheervaiStr { get { return Theervai == 0 ? "" : Theervai.ToString(); } }
-
-        public int PattaNo { get; set; }
-
-        public string OwnerName { get; set; }
-
-        public string LandType { get; set; }    // N-Nanjai, P- Punjai, M-matravai
-
-        public int PageNumber { get; set; }
-
-
-        public string PageNumberStr
+        private void btnGenerate_Click(object sender, EventArgs e)
         {
-            get
+            var html = File.ReadAllText(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates\LandDetail.html");
+
+
+            var tooo = WholeLandList.Where(w => w.LandType == LandType.Nansai).OrderBy(t => t.PulaEn).ToList(); //.ThenBy(t => t.SubDivNo, new AlphanumericComparer().ToList();
+
+
+            var pageCount = tooo.Count / 7;
+
+            if (tooo.Count % 7 > 0) pageCount = pageCount + 1;
+
+            var html2 = FileContentReader.MainHtml;
+            var rowTemplate = FileContentReader.RowTemplate;
+
+            string dataRows = "";
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i <= pageCount - 1; i++)
             {
-                return PageNumber == 0 ? "" : PageNumber.ToString();
-            }
-        }
-
-        public string PageIndex { get; set; }
+               
+                var temData = tooo.Skip(i * 7).Take(7).ToList();
 
 
-        public override string ToString()
-        {
-            return string.Format("{0}\t{1}\t{2}{3}", PageNumberStr, Parappu, TheervaiStr, Environment.NewLine);
-        }
-
-    }
-
-    public class Patta
-    {
-
-        public int PattaEn { get; set; }
-
-        public List<LandDetail> landDetails { get; set; }
-
-        public PattaType PattaType { get; set; }
-
-        public bool isVagai { get; set; }
-
-        public string PattaTharar { get; set; }
-
-        public string FullData { get; set; }
-
-
-        public void UpdatePatta(PattaType pattaType, List<string> fullData)
-        {
-            PattaType = pattaType;
-            FullData = fullData.ListToString();
-        }
-
-        public override string ToString()
-        {
-            return $"Patta En:{PattaEn} PattaType: {Enum.GetName(typeof(PattaType), PattaType)} IsVagai: {Convert.ToInt32(isVagai)} land: {landDetails.Count}";
-        }
-
-    }
-
-    public enum PattaType
-    {
-        Valid,
-        ValidAndNoSubdivision,
-        Zero,
-        InValidPatta,
-        KnownError,
-        ValidException,
-        Exception,
-        PartailBreak,
-        SomeDots,
-        Unknown,
-        NameIssue,
-        TwoNameDelimit
-    }
-
-    public class LandDetail
-    {
-        public int PattaEn { get; set; }
-
-        public string PulaEn { get; set; }
-
-        // நன்செய் பரப்பு 
-        public string nansaiParappu { get; set; }
-
-        // நன்செய் தீர்வை  
-        public string nansaiTheervai { get; set; }
-
-        // புன்செய் பரப்பு 
-        public string punsaiParappu { get; set; }
-
-        // புன்செய் தீர்வை 
-        public string punsaiTheervai { get; set; }
-
-        // மானாவரி பரப்பு
-        public string maanavariParappu { get; set; }
-
-        // மானாவரி தீர்வை
-        public string maanavariTheervai { get; set; }
-
-        public LandType LandType { 
-
-            get {
-
-                int i = 0;
-                LandType ld = LandType.Other;
-
-                if(nansaiTheervai != "0" && nansaiTheervai != "0.00")
+                temData.ForEach(ff =>
                 {
-                    i += 1;
-                    ld = LandType.Nansai;
+                    dataRows = rowTemplate.Replace("[pulaen]", ff.PulaEn)
+                                          .Replace("[utpirivu]", ff.PulaEn)
+                                          .Replace("[parappu]", ff.nansaiParappu)
+                                           .Replace("[theervai]", ff.nansaiTheervai)
+                                           .Replace("[pattaen-name]", ff.PattaEn + "-" + pattaList.Where(w => w.PattaEn == ff.PattaEn).First().PattaTharar);
+
+                    sb.Append(dataRows);
                 }
+                );
+
                 
-                if (punsaiTheervai != "0" && punsaiTheervai != "0.00")
-                {
-                    i += 1;
-                    ld = LandType.Punsai;
-                }
-
-                if (maanavariTheervai != "0" && maanavariTheervai != "0.00")
-                {
-                    i += 1;
-                    ld = LandType.Maanaavari;
-                }
-
-                if(i > 1)
-                {
-                    ld = LandType.Other;
-                }
-
-                return ld;
-            } 
-             
-        }
-
-    }
-
-    public enum LandType
-    {
-        Nansai,
-        Punsai,
-        Maanaavari,
-        Porambokku,
-        Other
-    }
-
-
-    public class FinalReport
-    {
-        public FinalReport(List<Patta> PattaListCtr)
-        {
-            PattaList = PattaListCtr;
-            KeyValue singleData = null;
-            CountData = new List<KeyValue>();
-            GroupedData = new List<object>();
-
-            int processedCount = 0;
-            foreach (PattaType rt in Enum.GetValues(typeof(PattaType)))
-            {
-                singleData = new KeyValue();
-                singleData.Value = PattaList.Count(c => c.PattaType == rt);
-                processedCount += singleData.Value;
-                singleData.Caption = Enum.GetName(typeof(PattaType), rt);
-                singleData.Id = (int)rt;
-                var lst = PattaList.Where(c => c.PattaType == rt).ToList();
-
-                singleData.CaptionData = lst.Select(s => s.FullData).ToList();
-                GroupedData.Add(lst);
-                CountData.Add(singleData);
             }
 
-            IsFullProcessed = (PattaList.Count == processedCount);
+            //html2 = html2.Replace("[datarows]", dataRows);
 
-            NotProcessedData = (PattaList.Count - processedCount);
+            File.WriteAllText(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates\All.htm", html2.Replace("[datarows]", sb.ToString()));
 
-            CountData.Add(new KeyValue("Total Record", PattaList.Count));
-            CountData.Add(new KeyValue("Not Processed", NotProcessedData));
-        }
-        public List<KeyValue> CountData { get; set; }
 
-        public List<Patta> PattaList { get; set; }
-
-        public bool IsFullProcessed { get; set; }
-
-        public int NotProcessedData { get; set; }
-
-        public List<object> GroupedData { get; set; }
-        public override string ToString()
-        {
-            if (PattaList == null || PattaList.Count == 0)
-                return "";
-
-            return CountData.Select(s => s.ToString()).ToList().ListToString();
         }
 
-    }
 
-    public class PattaList : List<Patta>
-    {
-
-        public void AddAndUpdateList(Patta item, PattaType pattaType, List<string> fullData)
+        public class ChittaData
         {
-            item.UpdatePatta(pattaType, fullData);
-            base.Add(item);
 
-            if (item.landDetails == null)
+            public int index { get; set; }
+
+            public int SurveyNo { get; set; }
+
+            public string SurveyNoStr { get { return SurveyNo == 0 ? "" : SurveyNo.ToString(); } }
+
+            public string SubDivNo { get; set; }
+
+            public string Parappu { get; set; }
+
+            public decimal Theervai { get; set; }
+            public string TheervaiStr { get { return Theervai == 0 ? "" : Theervai.ToString(); } }
+
+            public int PattaNo { get; set; }
+
+            public string OwnerName { get; set; }
+
+            public string LandType { get; set; }    // N-Nanjai, P- Punjai, M-matravai
+
+            public int PageNumber { get; set; }
+
+
+            public string PageNumberStr
             {
-                item.landDetails = new List<LandDetail>()
+                get
+                {
+                    return PageNumber == 0 ? "" : PageNumber.ToString();
+                }
+            }
+
+            public string PageIndex { get; set; }
+
+
+            public override string ToString()
+            {
+                return string.Format("{0}\t{1}\t{2}{3}", PageNumberStr, Parappu, TheervaiStr, Environment.NewLine);
+            }
+
+        }
+
+        public class Patta
+        {
+
+            public int PattaEn { get; set; }
+
+            public List<LandDetail> landDetails { get; set; }
+
+            public PattaType PattaType { get; set; }
+
+            public bool isVagai { get; set; }
+
+            public string PattaTharar { get; set; }
+
+            public string FullData { get; set; }
+
+
+            public void UpdatePatta(PattaType pattaType, List<string> fullData)
+            {
+                PattaType = pattaType;
+                FullData = fullData.ListToString();
+            }
+
+            public override string ToString()
+            {
+                return $"Patta En:{PattaEn} PattaType: {Enum.GetName(typeof(PattaType), PattaType)} IsVagai: {Convert.ToInt32(isVagai)} land: {landDetails.Count}";
+            }
+
+        }
+
+        public enum PattaType
+        {
+            Valid,
+            ValidAndNoSubdivision,
+            Zero,
+            InValidPatta,
+            KnownError,
+            ValidException,
+            Exception,
+            PartailBreak,
+            SomeDots,
+            Unknown,
+            NameIssue,
+            TwoNameDelimit
+        }
+
+        public class LandDetail
+        {
+            public int PattaEn { get; set; }
+
+            public string PulaEn { get; set; }
+
+            // நன்செய் பரப்பு 
+            public string nansaiParappu { get; set; }
+
+            // நன்செய் தீர்வை  
+            public string nansaiTheervai { get; set; }
+
+            // புன்செய் பரப்பு 
+            public string punsaiParappu { get; set; }
+
+            // புன்செய் தீர்வை 
+            public string punsaiTheervai { get; set; }
+
+            // மானாவரி பரப்பு
+            public string maanavariParappu { get; set; }
+
+            // மானாவரி தீர்வை
+            public string maanavariTheervai { get; set; }
+
+            public LandType LandType
+            {
+
+                get
+                {
+
+                    int i = 0;
+                    LandType ld = LandType.Other;
+
+                    if (nansaiTheervai != "0" && nansaiTheervai != "0.00")
+                    {
+                        i += 1;
+                        ld = LandType.Nansai;
+                    }
+
+                    if (punsaiTheervai != "0" && punsaiTheervai != "0.00")
+                    {
+                        i += 1;
+                        ld = LandType.Punsai;
+                    }
+
+                    if (maanavariTheervai != "0" && maanavariTheervai != "0.00")
+                    {
+                        i += 1;
+                        ld = LandType.Maanaavari;
+                    }
+
+                    if (i > 1)
+                    {
+                        ld = LandType.Other;
+                    }
+
+                    return ld;
+                }
+
+            }
+
+        }
+
+        public enum LandType
+        {
+            Nansai,
+            Punsai,
+            Maanaavari,
+            Porambokku,
+            Other
+        }
+
+
+        public class FinalReport
+        {
+            public FinalReport(List<Patta> PattaListCtr)
+            {
+                PattaList = PattaListCtr;
+                KeyValue singleData = null;
+                CountData = new List<KeyValue>();
+                GroupedData = new List<object>();
+
+                int processedCount = 0;
+                foreach (PattaType rt in Enum.GetValues(typeof(PattaType)))
+                {
+                    singleData = new KeyValue();
+                    singleData.Value = PattaList.Count(c => c.PattaType == rt);
+                    processedCount += singleData.Value;
+                    singleData.Caption = Enum.GetName(typeof(PattaType), rt);
+                    singleData.Id = (int)rt;
+                    var lst = PattaList.Where(c => c.PattaType == rt).ToList();
+
+                    singleData.CaptionData = lst.Select(s => s.FullData).ToList();
+                    GroupedData.Add(lst);
+                    CountData.Add(singleData);
+                }
+
+                IsFullProcessed = (PattaList.Count == processedCount);
+
+                NotProcessedData = (PattaList.Count - processedCount);
+
+                CountData.Add(new KeyValue("Total Record", PattaList.Count));
+                CountData.Add(new KeyValue("Not Processed", NotProcessedData));
+            }
+            public List<KeyValue> CountData { get; set; }
+
+            public List<Patta> PattaList { get; set; }
+
+            public bool IsFullProcessed { get; set; }
+
+            public int NotProcessedData { get; set; }
+
+            public List<object> GroupedData { get; set; }
+            public override string ToString()
+            {
+                if (PattaList == null || PattaList.Count == 0)
+                    return "";
+
+                return CountData.Select(s => s.ToString()).ToList().ListToString();
+            }
+
+        }
+
+        public class PattaList : List<Patta>
+        {
+
+            public void AddAndUpdateList(Patta item, PattaType pattaType, List<string> fullData)
+            {
+                item.UpdatePatta(pattaType, fullData);
+                base.Add(item);
+
+                if (item.landDetails == null)
+                {
+                    item.landDetails = new List<LandDetail>()
                 {
                     new LandDetail() { PattaEn = item.PattaEn }
                 };
-            }
-            else
-            {
-                item.landDetails.ForEach(ld => ld.PattaEn = item.PattaEn);
-            }
+                }
+                else
+                {
+                    item.landDetails.ForEach(ld => ld.PattaEn = item.PattaEn);
+                }
 
+            }
         }
+
+
     }
-
-
 }

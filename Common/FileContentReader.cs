@@ -12,6 +12,11 @@ namespace Common
         public static string MemberContactHtml { get; } = GetHtmlFileContent("MemberContact.htm");
 
 
+        public static string MainHtml { get; } = GetHtmlFileContent("MainHtml.htm");
+
+        public static string RowTemplate { get; } = GetHtmlFileContent("RowTemplate.htm");
+
+
         private static string GetHtmlFileContent(string fileName)
         {
             // var dataFolder = General.GetDataFolder("AssemblySimpleApp\\bin\\Debug", "Common\\HTMLTemplate\\");

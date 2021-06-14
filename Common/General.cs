@@ -66,9 +66,9 @@ namespace Common
         {
             string exeFile = (new Uri(Assembly.GetEntryAssembly().CodeBase)).AbsolutePath;
             string exeDir = Path.GetDirectoryName(exeFile);
-            string dataFolder = exeDir.Replace("AssemblyApp\\bin\\Debug", newValue);  
+            //string dataFolder = exeDir.Replace("AssemblyApp\\bin\\Debug", newValue);  
 
-            //string dataFolder = exeDir.Replace("NTK_Support\\bin\\Debug", newValue);
+            string dataFolder = exeDir.Replace("NTK_Support\\bin\\Debug", newValue);
 
             return dataFolder;
         }

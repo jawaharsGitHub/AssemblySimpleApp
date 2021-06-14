@@ -35,6 +35,7 @@
             this.ddlPattaTypes = new System.Windows.Forms.ComboBox();
             this.ddlListType = new System.Windows.Forms.ComboBox();
             this.ddlLandTypes = new System.Windows.Forms.ComboBox();
+            this.btnGenerate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,11 +103,22 @@
             this.ddlLandTypes.TabIndex = 6;
             this.ddlLandTypes.SelectedIndexChanged += new System.EventHandler(this.ddlLandTypes_SelectedIndexChanged);
             // 
+            // btnGenerate
+            // 
+            this.btnGenerate.Location = new System.Drawing.Point(652, 22);
+            this.btnGenerate.Name = "btnGenerate";
+            this.btnGenerate.Size = new System.Drawing.Size(75, 23);
+            this.btnGenerate.TabIndex = 7;
+            this.btnGenerate.Text = "Generate Html";
+            this.btnGenerate.UseVisualStyleBackColor = true;
+            this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
+            // 
             // vao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.ddlLandTypes);
             this.Controls.Add(this.ddlListType);
             this.Controls.Add(this.ddlPattaTypes);
@@ -131,5 +143,6 @@
         private System.Windows.Forms.ComboBox ddlPattaTypes;
         private System.Windows.Forms.ComboBox ddlListType;
         private System.Windows.Forms.ComboBox ddlLandTypes;
+        private System.Windows.Forms.Button btnGenerate;
     }
 }
