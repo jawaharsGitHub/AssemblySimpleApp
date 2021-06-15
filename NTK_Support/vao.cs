@@ -1,5 +1,8 @@
 ﻿using Common;
 using Common.ExtensionMethod;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.tool.xml;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -726,6 +729,10 @@ namespace NTK_Support
         private string GetSumThreeDotNo(List<string> nos, string filter, int pn)
         {
 
+            try
+            {
+
+            
             var decimalList = new List<decimal>();
             var intList = new List<int>();
 
@@ -750,9 +757,16 @@ namespace NTK_Support
             }
             else
             {
-                var f = filter;
-                var p = pn;
+                //var f = filter;
+                //var p = pn;
                 return $"0.{finalData}";
+            }
+
+            }
+            catch (Exception)
+            {
+
+                return "Error";
             }
 
         }
@@ -785,24 +799,38 @@ namespace NTK_Support
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            var html = File.ReadAllText(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates\LandDetail.html");
+            //var html = File.ReadAllText(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates\LandDetail.html");
 
+            System.IO.DirectoryInfo di = new DirectoryInfo(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates");
+
+            foreach (FileInfo file in di.GetFiles())
+            {
+                file.Delete();
+            }
 
             var tooo = WholeLandList.Where(w => w.LandType == LandType.Nansai).OrderBy(t => t.PulaEn).ToList(); //.ThenBy(t => t.SubDivNo, new AlphanumericComparer().ToList();
-
-
+            
             var pageCount = tooo.Count / 7;
 
             if (tooo.Count % 7 > 0) pageCount = pageCount + 1;
 
-            var html2 = FileContentReader.MainHtml;
-            var rowTemplate = FileContentReader.RowTemplate;
+            
+            var rowTemplate22 = FileContentReader.RowTemplate;
+            var totalTemplate22 = FileContentReader.TotalTemplate;
+            var tableTemplate22 = FileContentReader.TableTemplate;
+            var mainHtml = FileContentReader.MainHtml;
 
-            string dataRows = "";
-            StringBuilder sb = new StringBuilder();
+
+            StringBuilder allContent = new StringBuilder();
+
             for (int i = 0; i <= pageCount - 1; i++)
             {
-               
+                var html2 = tableTemplate22;
+                var rowTemplate = rowTemplate22;
+                var totalTemplate = totalTemplate22;
+                string dataRows = "";
+                StringBuilder sb = new StringBuilder();
+
                 var temData = tooo.Skip(i * 7).Take(7).ToList();
 
 
@@ -815,19 +843,68 @@ namespace NTK_Support
                                            .Replace("[pattaen-name]", ff.PattaEn + "-" + pattaList.Where(w => w.PattaEn == ff.PattaEn).First().PattaTharar);
 
                     sb.Append(dataRows);
-                }
-                );
+                });
 
+                html2 = html2.Replace("[datarows]", sb.ToString());
                 
+                var totalparappu = GetSumThreeDotNo(temData.Select(s => s.nansaiParappu.Replace("-", ".")).ToList(), null, 0);
+                var totalTheervai = temData.Sum(s => Convert.ToDecimal(s.nansaiTheervai));
+                var total = totalTemplate.Replace("[moththaparappu]", totalparappu).Replace("[moththatheervai]", totalTheervai.ToString());
+
+                html2 = html2.Replace("[totalrow]", total);
+
+
+                //File.AppendAllText(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates\All-"+ i +".htm", html2);
+
+                allContent.Append(html2);
+
+                //CreatePDFFromHTMLFile(html2);
+
             }
 
-            //html2 = html2.Replace("[datarows]", dataRows);
-
-            File.WriteAllText(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates\All.htm", html2.Replace("[datarows]", sb.ToString()));
-
-
+            //var allData = mainHtml.Replace("[allPageData]", allContent.ToString());
+            File.AppendAllText(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates\All.htm", mainHtml.Replace("[allPageData]", allContent.ToString()));
         }
 
+        public void CreatePDFFromHTMLFile(string htmlText)
+        {
+            try
+            {
+                Document Doc;
+                Doc = new Document(PageSize.A4, 10f, 10f, 50f, 20f);
+
+                string filename = "PaySlip";
+                string outXml = htmlText;
+                outXml = "<style>#tdiv1{background:red;color:white;}</style>" + outXml;
+                outXml = outXml.Replace("px", "");
+                outXml = outXml.Replace("<br>", "<br/>");
+
+                MemoryStream memStream = new MemoryStream();
+                TextReader xmlString = new StringReader(outXml);
+                using (Document document = new Document())
+                {
+                    PdfWriter writer = PdfWriter.GetInstance(document, memStream);
+                    document.Open();
+                    byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(outXml);
+                    MemoryStream ms = new MemoryStream(byteArray);
+                    XMLWorkerHelper.GetInstance().ParseXHtml(writer, document, ms, System.Text.Encoding.UTF8);
+                    //document.sa(pdfFileName)
+                    //document.Close();
+                }
+
+                //Response.ContentType = "application/pdf";
+                //Response.AddHeader("content-disposition", "attachment;filename=" + filename + ".pdf");
+                //Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                //Response.BinaryWrite(memStream.ToArray());
+                //Response.End();
+                //Response.Flush();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public class ChittaData
         {
@@ -923,8 +1000,19 @@ namespace NTK_Support
 
             public string PulaEn { get; set; }
 
+            private string _nansaiParappu;
+
             // நன்செய் பரப்பு 
-            public string nansaiParappu { get; set; }
+            public string nansaiParappu { 
+                get
+                {
+                return _nansaiParappu; //.Replace("-", ".").Trim();
+                }
+                set
+                {
+                    _nansaiParappu = value;
+                }
+            }
 
             // நன்செய் தீர்வை  
             public string nansaiTheervai { get; set; }

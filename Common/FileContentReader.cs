@@ -15,6 +15,9 @@ namespace Common
         public static string MainHtml { get; } = GetHtmlFileContent("MainHtml.htm");
 
         public static string RowTemplate { get; } = GetHtmlFileContent("RowTemplate.htm");
+        public static string TotalTemplate { get; } = GetHtmlFileContent("TotalTemplate.htm");
+
+        public static string TableTemplate { get; } = GetHtmlFileContent("TableTemplate.htm");
 
 
         private static string GetHtmlFileContent(string fileName)
