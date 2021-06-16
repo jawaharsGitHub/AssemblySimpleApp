@@ -36,6 +36,7 @@
             this.ddlListType = new System.Windows.Forms.ComboBox();
             this.ddlLandTypes = new System.Windows.Forms.ComboBox();
             this.btnGenerate = new System.Windows.Forms.Button();
+            this.lblMessage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,6 +73,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(743, 333);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.DataSourceChanged += new System.EventHandler(this.dataGridView1_DataSourceChanged);
             // 
             // ddlPattaTypes
             // 
@@ -105,6 +107,7 @@
             // 
             // btnGenerate
             // 
+            this.btnGenerate.Enabled = false;
             this.btnGenerate.Location = new System.Drawing.Point(652, 22);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(75, 23);
@@ -113,11 +116,21 @@
             this.btnGenerate.UseVisualStyleBackColor = true;
             this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
             // 
+            // lblMessage
+            // 
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Location = new System.Drawing.Point(436, 44);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(35, 13);
+            this.lblMessage.TabIndex = 8;
+            this.lblMessage.Text = "label1";
+            // 
             // vao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.ddlLandTypes);
             this.Controls.Add(this.ddlListType);
@@ -144,5 +157,6 @@
         private System.Windows.Forms.ComboBox ddlListType;
         private System.Windows.Forms.ComboBox ddlLandTypes;
         private System.Windows.Forms.Button btnGenerate;
+        private System.Windows.Forms.Label lblMessage;
     }
 }

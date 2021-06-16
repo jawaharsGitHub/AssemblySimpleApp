@@ -19,8 +19,10 @@ namespace NTK_Support
 
         bool isProductionTest = true;
 
-        string myFile = "";
-        string content = "";
+        string chittaFile = "";
+        string aRegFile = "";
+        string chittaContent = "";
+        string aRegContent = "";
 
         string empty = "";
         int pageListRowNo = 24;
@@ -31,6 +33,8 @@ namespace NTK_Support
 
         PattaList pattaList;
         List<LandDetail> WholeLandList;
+        List<Adangal> AdangalList;
+        List<Adangal> PurambokkuAdangalList;
         Patta pattaSingle;
         List<string> relationTypes;
 
@@ -50,25 +54,66 @@ namespace NTK_Support
 
             if (isProductionTest)
             {
-                myFile = @"F:\TN GOV\VANITHA\Vaidehi-Vao\reg data\Chitta_Report-1.pdf";
-                content = myFile.GetPdfContent();
+                chittaFile = @"F:\TN GOV\VANITHA\Vaidehi-Vao\reg data\Chitta_Report-1.pdf";
+                aRegFile = @"F:\TN GOV\VANITHA\Vaidehi-Vao\reg data\Areg_Report-1.pdf";
+                chittaContent = chittaFile.GetPdfContent();
+                aRegContent = aRegFile.GetPdfContent();
+
                 //testFile = myFile.Replace(".pdf", "valid.txt");
             }
             else
             {
-                myFile = @"F:\TN GOV\VANITHA\Vaidehi-Vao\reg data\Chitta_Report-1.txt";
-                content = File.ReadAllText(myFile);
+                chittaFile = @"F:\TN GOV\VANITHA\Vaidehi-Vao\reg data\Chitta_Report-1.txt";
+                chittaContent = File.ReadAllText(chittaFile);
                 //testFile = myFile.Replace(".txt", "valid.txt");
             }
 
             ProcessChittaFile();
+            ProcessAreg();
         }
 
 
+        private void ProcessAreg()
+        {
+            PurambokkuAdangalList = new List<Adangal>();
+
+            var aregPatta = aRegContent.Split(Environment.NewLine.ToCharArray()).Where(w => w.Contains("புறமேபாககு")).ToList();
+
+            foreach (var item in aregPatta)
+            {
+                var d = item.Split(' ').Where(w => w.Trim() != "").ToList();
+
+                try
+                {
+                    PurambokkuAdangalList.Add(new Adangal()
+                    {
+                        NilaAlavaiEn = d[0].ToInt32(),
+                        UtpirivuEn = d[1],
+                        OwnerName = d[16],
+                        Parappu = d[13] + d[14],
+                        Theervai = $"{d[11]}.{d[12]}",
+                        Anupathaarar = d[16],
+                        LandType = LandType.Porambokku
+                    });
+
+                }
+                catch (Exception)
+                {
+                    PurambokkuAdangalList.Add(new Adangal()
+                    {
+                        NilaAlavaiEn = d[0].ToInt32(),
+                        UtpirivuEn = d[1],
+                        LandType = LandType.PorambokkuError
+                    });
+                }
+                
+
+            }
+        }
         private void ProcessChittaFile()
         {
 
-            var pattaas = content.Replace("பட்டா எண்", "$");
+            var pattaas = chittaContent.Replace("பட்டா எண்", "$");
             var data = pattaas.Split('$').ToList();
             data.RemoveAt(0); // first is empty data
 
@@ -125,7 +170,12 @@ namespace NTK_Support
 
                     var dataStartIndex = fullData.FindIndex(w => w.Contains('-'));
                     var headerData = fullData.Take(dataStartIndex).ToList();
-                    var memberData = fullData.Where(ww => fullData.IndexOf(ww) >= dataStartIndex).ToList();
+                    var memberData = fullData.Where(ww => fullData.IndexOf(ww) >= dataStartIndex)
+                                             .Where(ww => ww.Replace("ே", "").Replace("\0", "").Trim() != "")
+                                            .ToList();
+
+
+
                     var totalData = memberData.Last();
                     memberData.RemoveAt(memberData.Count - 1);
 
@@ -325,7 +375,8 @@ namespace NTK_Support
 
             ddlListType.DataSource = new List<KeyValue> {
                 new KeyValue() { Id = 1, Caption = "PATTA" },
-                new KeyValue() { Id = 2, Caption = "LANDDETAIL" }
+                new KeyValue() { Id = 2, Caption = "LANDDETAIL" },
+                new KeyValue() { Id = 3, Caption = "ADANGAL" }
             };
 
             ddlListType.DisplayMember = "Caption";
@@ -825,11 +876,33 @@ namespace NTK_Support
         private void ddlListType_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selected = ddlListType.SelectedValue.ToInt32();
+              
 
             if (selected == 1)
                 dataGridView1.DataSource = pattaList;
             else if (selected == 2)
                 dataGridView1.DataSource = WholeLandList;
+            else if (selected == 3)
+            {
+                 AdangalList = (from wl in WholeLandList
+                                            .OrderByDescending(o => o.LandType)
+                                            .ThenBy(o => o.SurveyNo)
+                                            .ThenBy(t => t.Subdivision, new AlphanumericComparer()).ToList()
+                                            select new Adangal()
+                                            {
+                                                NilaAlavaiEn = wl.SurveyNo,
+                                                UtpirivuEn = wl.Subdivision,
+                                                OwnerName = wl.OwnerName,
+                                                Parappu = wl.Parappu,
+                                                Theervai = wl.Theervai,
+                                                Anupathaarar = wl.Anupathaarar,
+                                                LandType = wl.LandType
+                                            }).ToList();
+
+                AdangalList.AddRange(PurambokkuAdangalList);
+                dataGridView1.DataSource = AdangalList;
+                
+            }
         }
 
         private void ddlPattaTypes_SelectedIndexChanged(object sender, EventArgs e)
@@ -845,10 +918,18 @@ namespace NTK_Support
 
         private void ddlLandTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //if (ddlLandTypes.SelectedValue.ToInt32() == -1)
+            //    dataGridView1.DataSource = WholeLandList.OrderBy(o => o.PattaEn).ToList();
+            //else
+            //dataGridView1.DataSource = WholeLandList.Where(w => (int)w.LandType == ddlLandTypes.SelectedValue.ToInt32()).OrderBy(o => o.PattaEn).ToList();
+
             if (ddlLandTypes.SelectedValue.ToInt32() == -1)
-                dataGridView1.DataSource = WholeLandList.OrderBy(o => o.PattaEn).ToList();
+                dataGridView1.DataSource = AdangalList.OrderBy(o => o.NilaAlavaiEn).ToList();
             else
-            dataGridView1.DataSource = WholeLandList.Where(w => (int)w.LandType == ddlLandTypes.SelectedValue.ToInt32()).OrderBy(o => o.PattaEn).ToList();
+                dataGridView1.DataSource = AdangalList.Where(w => (int)w.LandType == ddlLandTypes.SelectedValue.ToInt32()).OrderBy(o => o.NilaAlavaiEn).ToList();
+
+
+
         }
 
         private void btnGenerate_Click(object sender, EventArgs e)
@@ -860,20 +941,25 @@ namespace NTK_Support
                 file.Delete();
             }
 
-            var tooo = WholeLandList.Where(w => w.LandType == LandType.Nansai).Take(50).OrderBy(t => t.PulaEn).ToList(); //.ThenBy(t => t.SubDivNo, new AlphanumericComparer().ToList();
-            
-            var pageCount = tooo.Count / 7;
+            // var tooo = WholeLandList.Where(w => w.LandType == LandType.Nansai).Take(50).OrderBy(t => t.PulaEn).ToList(); //.ThenBy(t => t.SubDivNo, new AlphanumericComparer().ToList();
 
-            if (tooo.Count % 7 > 0) pageCount = pageCount + 1;
+            var landTypeGroup = (from wl in AdangalList
+                                 where wl.LandType != LandType.Other
+                                 group wl by wl.LandType into newGrp
+                                 // orderby newGrp.Key
+                                 select newGrp).ToList();
 
-            
             var rowTemplate22 = FileContentReader.RowTemplate;
             var totalTemplate22 = FileContentReader.TotalTemplate;
             var tableTemplate22 = FileContentReader.TableTemplate;
             var mainHtml = FileContentReader.MainHtml;
-
-
             StringBuilder allContent = new StringBuilder();
+
+            landTypeGroup.ForEach(fe => { 
+
+            var pageCount = fe.ToList().Count / 7;
+
+            if (fe.ToList().Count % 7 > 0) pageCount = pageCount + 1;
 
             for (int i = 0; i <= pageCount - 1; i++)
             {
@@ -883,33 +969,38 @@ namespace NTK_Support
                 string dataRows = "";
                 StringBuilder sb = new StringBuilder();
 
-                var temData = tooo.Skip(i * 7).Take(7).ToList();
+                var temData = fe.ToList().Skip(i * 7).Take(7).ToList();
 
 
                 temData.ForEach(ff =>
                 {
-                    dataRows = rowTemplate.Replace("[pulaen]", ff.SurveyNo.ToString())
-                                          .Replace("[utpirivu]", ff.Subdivision)
-                                          .Replace("[parappu]", ff.nansaiParappu)
-                                           .Replace("[theervai]", ff.nansaiTheervai)
-                                           .Replace("[pattaen-name]", ff.PattaEn + "-" + pattaList.Where(w => w.PattaEn == ff.PattaEn).First().PattaTharar);
+                    dataRows = rowTemplate.Replace("[pulaen]", ff.NilaAlavaiEn.ToString())
+                                          .Replace("[utpirivu]", ff.UtpirivuEn)
+                                          .Replace("[parappu]", ff.Parappu)
+                                           .Replace("[theervai]", ff.Theervai)
+                                           .Replace("[pattaen-name]", ff.Anupathaarar);
 
                     sb.Append(dataRows);
                 });
 
                 html2 = html2.Replace("[datarows]", sb.ToString());
                 
-                var totalparappu = GetSumThreeDotNo(temData.Select(s => s.nansaiParappu.Replace("-", ".")).ToList(), null, 0);
-                var totalTheervai = temData.Sum(s => Convert.ToDecimal(s.nansaiTheervai));
+                var totalparappu = GetSumThreeDotNo(temData.Select(s => s.Parappu).ToList(), null, 0);
+                var totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai));
                 var total = totalTemplate.Replace("[moththaparappu]", totalparappu).Replace("[moththatheervai]", totalTheervai.ToString());
 
                 html2 = html2.Replace("[totalrow]", total);
 
                 allContent.Append(html2);
             }
-
+            });
             File.AppendAllText(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates\All.htm", mainHtml.Replace("[allPageData]", allContent.ToString()));
         }
 
+        private void dataGridView1_DataSourceChanged(object sender, EventArgs e)
+        {
+            lblMessage.Text = $"Record Count: {dataGridView1.Rows.Count} ";
+            btnGenerate.Enabled = (ddlListType.SelectedValue.ToInt32() == 3);
+        }
     }
 }

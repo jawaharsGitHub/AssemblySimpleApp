@@ -7,6 +7,8 @@ namespace NTK_Support.AdangalTypes
     {
         public int PattaEn { get; set; }
 
+        public string OwnerName { get; set; }
+
         public string PulaEn { get; set; }
 
         public int SurveyNo
@@ -85,5 +87,34 @@ namespace NTK_Support.AdangalTypes
 
         }
 
+        public string Parappu
+        {
+            get
+            {
+                if (LandType == LandType.Nansai) return nansaiParappu.Replace("-",".");
+                else if (LandType == LandType.Punsai) return punsaiParappu.Replace("-", ".");
+                else if (LandType == LandType.Maanaavari) return maanavariParappu.Replace("-", ".");
+                else return "-";
+            }
+        }
+
+        public string Theervai
+        {
+            get
+            {
+                if (LandType == LandType.Nansai) return nansaiTheervai;
+                else if (LandType == LandType.Punsai) return punsaiTheervai;
+                else if (LandType == LandType.Maanaavari) return maanavariTheervai;
+                else return "-";
+            }
+        }
+
+        public string Anupathaarar
+        {
+            get
+            {
+                return $"{PattaEn} - {OwnerName}";
+            }
+        }
     }
 }

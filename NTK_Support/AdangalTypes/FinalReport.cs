@@ -36,6 +36,7 @@ namespace NTK_Support.AdangalTypes
 
             CountData.Add(new KeyValue("Total Record", PattaList.Count));
             CountData.Add(new KeyValue("Not Processed", NotProcessedData));
+            // CountData.Add(new KeyValue("Have Some Dots", PattaList.Any(a => a.landDetails.Any(s => s.))
         }
         public List<KeyValue> CountData { get; set; }
 

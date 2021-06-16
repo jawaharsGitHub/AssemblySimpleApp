@@ -19,7 +19,11 @@ namespace NTK_Support.AdangalTypes
             }
             else
             {
-                item.landDetails.ForEach(ld => ld.PattaEn = item.PattaEn);
+                item.landDetails.ForEach(ld => {
+
+                    ld.PattaEn = item.PattaEn;
+                    ld.OwnerName = item.isVagai ? $"{item.PattaTharar} வஐ" : item.PattaTharar;
+                    }) ;
             }
 
         }
