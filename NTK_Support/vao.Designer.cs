@@ -77,9 +77,9 @@
             // 
             this.ddlPattaTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlPattaTypes.FormattingEnabled = true;
-            this.ddlPattaTypes.Location = new System.Drawing.Point(322, 74);
+            this.ddlPattaTypes.Location = new System.Drawing.Point(257, 74);
             this.ddlPattaTypes.Name = "ddlPattaTypes";
-            this.ddlPattaTypes.Size = new System.Drawing.Size(121, 21);
+            this.ddlPattaTypes.Size = new System.Drawing.Size(186, 21);
             this.ddlPattaTypes.TabIndex = 4;
             this.ddlPattaTypes.SelectedIndexChanged += new System.EventHandler(this.ddlPattaTypes_SelectedIndexChanged);
             // 

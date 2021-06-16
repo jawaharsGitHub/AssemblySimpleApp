@@ -62,6 +62,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdangalTypes\ChittaData.cs" />
+    <Compile Include="AdangalTypes\Patta.cs" />
+    <Compile Include="AdangalTypes\PattaType.cs" />
+    <Compile Include="AdangalTypes\LandDetail.cs" />
+    <Compile Include="AdangalTypes\LandType.cs" />
+    <Compile Include="AdangalTypes\FinalReport.cs" />
+    <Compile Include="AdangalTypes\PattaList.cs" />
     <Compile Include="AlphaNumericSort.cs" />
     <Content Include="AdangalHtmlTemplates\LandDetail.html" />
     <Content Include="Class1.txt" />
