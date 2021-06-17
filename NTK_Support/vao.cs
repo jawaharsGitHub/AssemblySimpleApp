@@ -274,6 +274,8 @@ namespace NTK_Support
                         }
                     }
 
+                    //pattaList.AddAndUpdateList(pattaSingle, PattaType.Valid, fullData);
+
                     #endregion
 
                     #region "Process Owner Name"
@@ -292,8 +294,8 @@ namespace NTK_Support
                             pattaSingle.PattaTharar = nameRow.Replace(delimit, "$").Split('$')[1];
                             var d = nameRow.Replace(delimit, "$").Split('$');
 
-                            pattaSingle.PattaTharar = ApplyUnicode(d[1]);
-                            //pattaSingle.PattaTharar = $"{d[1]} {delimit} {d[0]}";
+                            //pattaSingle.PattaTharar = ApplyUnicode(d[1]);
+                            pattaSingle.PattaTharar = $"{d[1]} {delimit} {d[0]}";
                         }
                         else
                         {
@@ -446,8 +448,18 @@ namespace NTK_Support
 
         private string ApplyUnicode(string name)
         {
+            if(name.ToCharArray().Select(s => (int)s).Any(a => a >= 3000))
+            {
+                var wrongName = name;
 
-            var r = true;
+            }
+            else
+            {
+                var corrName = name;
+
+            }
+
+            var r = false;
 
             if (r)
             {
@@ -663,7 +675,7 @@ namespace NTK_Support
 
         public void GenerateNansaiPages()
         {
-            var nansaiData = WholeLandList.Where(w => w.LandType == LandType.Nansai).ToList();
+            //var nansaiData = WholeLandList.Where(w => w.LandType == LandType.Nansai).ToList();
         }
 
         public void WriteData(List<ChittaData> data, string filter)
@@ -885,7 +897,7 @@ namespace NTK_Support
             else if (selected == 3)
             {
                  AdangalList = (from wl in WholeLandList
-                                            .OrderByDescending(o => o.LandType)
+                                            .OrderBy(o => o.LandType)
                                             .ThenBy(o => o.SurveyNo)
                                             .ThenBy(t => t.Subdivision, new AlphanumericComparer()).ToList()
                                             select new Adangal()
