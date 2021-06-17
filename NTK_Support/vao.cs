@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 
@@ -38,9 +39,85 @@ namespace NTK_Support
         Patta pattaSingle;
         List<string> relationTypes;
 
+
+        public string webPostMethod(string postData, string URL)
+        {
+            string responseFromServer = "";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(URL);
+            request.Method = "POST";
+            request.Credentials = CredentialCache.DefaultCredentials;
+            //request.ContentLength = 152;
+            ((HttpWebRequest)request).UserAgent = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 7.1; Trident/5.0)";
+           request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9";
+            request.ContentType = "application / x - www - form - urlencoded";
+            
+            request.Headers.Add("Accept-Encoding", "gzip, deflate, br");
+            request.Headers.Add("Accept-Language", "en-US,en;q=0.9,hi;q=0.8,ta;q=0.7");
+            request.Headers.Add("Cache-Control", "max-age=0");
+            request.Headers.Add("Cookie", "JSESSIONID=E94FBE8591AC60CEABBEEE2E76D5B43B; JSESSIONID=E94FBE8591AC60CEABBEEE2E76D5B43B; _ga=GA1.3.1462099152.1580678354");
+            request.Headers.Add("Upgrade-Insecure-Requests", "1");
+
+
+
+
+            request.UseDefaultCredentials = true;
+            request.Proxy.Credentials = CredentialCache.DefaultCredentials;
+            byte[] byteArray = Encoding.UTF8.GetBytes(postData);
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = byteArray.Length;
+            Stream dataStream = request.GetRequestStream();
+            dataStream.Write(byteArray, 0, byteArray.Length);
+            dataStream.Close();
+
+            WebResponse response = request.GetResponse();
+            dataStream = response.GetResponseStream();
+            StreamReader reader = new StreamReader(dataStream);
+            responseFromServer = reader.ReadToEnd();
+            reader.Close();
+            dataStream.Close();
+            response.Close();
+            return responseFromServer;
+        }
+
         public vao()
         {
             InitializeComponent();
+
+            var request = (HttpWebRequest)WebRequest.Create("https://eservices.tn.gov.in/eservicesnew/land/chittaExtract_ta.html?lan=ta");
+
+            var postData = "task=chittaTam";
+            postData += "&districtCode=27";
+            postData += "&talukCode=11";
+            postData += "&villageCode=022";
+
+            postData += "&viewOpt=pt";
+            postData += "&pattaNo=1";
+            postData += "&captcha=87PVC6";
+
+            postData += "&searchPattaName=";
+
+            postData += "&surveyNo=";
+
+            postData += "&subdivNo=";
+
+           //// var res = webPostMethod(postData, "https://eservices.tn.gov.in/eservicesnew/land/chittaExtract_ta.html?lan=ta");
+
+
+           // var data = Encoding.ASCII.GetBytes(postData);
+
+           // request.Method = "POST";
+           // request.ContentType = "text/html;charset=utf-8";
+           // request.ContentLength = data.Length;
+
+           // using (var stream = request.GetRequestStream())
+           // {
+           //     stream.Write(data, 0, data.Length);
+           // }
+
+           // var response = (HttpWebResponse)request.GetResponse();
+
+           // var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
 
 
             pattaList = new PattaList();
@@ -294,8 +371,8 @@ namespace NTK_Support
                             pattaSingle.PattaTharar = nameRow.Replace(delimit, "$").Split('$')[1];
                             var d = nameRow.Replace(delimit, "$").Split('$');
 
-                            //pattaSingle.PattaTharar = ApplyUnicode(d[1]);
-                            pattaSingle.PattaTharar = $"{d[1]} {delimit} {d[0]}";
+                            pattaSingle.PattaTharar = ApplyUnicode(d[1]);
+                            //pattaSingle.PattaTharar = $"{d[1]} {delimit} {d[0]}";
                         }
                         else
                         {
@@ -448,7 +525,47 @@ namespace NTK_Support
 
         private string ApplyUnicode(string name)
         {
-            if(name.ToCharArray().Select(s => (int)s).Any(a => a >= 3000))
+
+            const string str = "தமிழ்"; // this is already a unicode string.
+
+            byte[] stringBytes = Encoding.Unicode.GetBytes(str);
+            char[] stringChars = Encoding.Unicode.GetChars(stringBytes);
+
+             string strr = name; // this is already a unicode string.
+
+            byte[] stringBytes2 = Encoding.Unicode.GetBytes(strr);
+            char[] stringChars2 = Encoding.Unicode.GetChars(stringBytes2);
+
+            //foreach (var chr in stringChars)
+            //{
+            //    // unicode character code
+            //    var unicoded = ((int)chr).ToString();
+
+            //    // hex character code
+            //    var hexcoded = @"\u" + ((int)chr).ToString("X4").ToLower();
+
+            //    //Console.OutputEncoding = Encoding.UTF8;
+            //    // print to VS output window
+            //    Console.WriteLine(chr + "     " + unicoded + "     " + hexcoded);
+            //}
+
+            byte[] unicodeBytes = new byte[]
+    {0x61, 0x70, 0x70, 0x6C, 0x69, 0x63, 0x61,
+     0x74, 0x69, 0x6F, 0x6E, 0x2F, 0x70, 0x63,
+     0x61, 0x70};
+
+            string unicodeString = Encoding.UTF8.GetString(unicodeBytes);
+
+            Console.WriteLine(unicodeString);
+
+
+            string str22 = name;
+            var myarray2 = Encoding.UTF8.GetBytes(str22);
+            string unicodeString22 = Encoding.UTF8.GetString(myarray2);
+            Console.WriteLine(unicodeString22);
+
+
+            if (name.ToCharArray().Select(s => (int)s).Any(a => a >= 3000))
             {
                 var wrongName = name;
 
