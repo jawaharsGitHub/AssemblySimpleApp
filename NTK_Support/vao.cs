@@ -7,10 +7,12 @@ using NTK_Support.AdangalTypes;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace NTK_Support
@@ -40,85 +42,11 @@ namespace NTK_Support
         List<string> relationTypes;
 
 
-        public string webPostMethod(string postData, string URL)
-        {
-            string responseFromServer = "";
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(URL);
-            request.Method = "POST";
-            request.Credentials = CredentialCache.DefaultCredentials;
-            //request.ContentLength = 152;
-            ((HttpWebRequest)request).UserAgent = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 7.1; Trident/5.0)";
-           request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9";
-            request.ContentType = "application / x - www - form - urlencoded";
-            
-            request.Headers.Add("Accept-Encoding", "gzip, deflate, br");
-            request.Headers.Add("Accept-Language", "en-US,en;q=0.9,hi;q=0.8,ta;q=0.7");
-            request.Headers.Add("Cache-Control", "max-age=0");
-            request.Headers.Add("Cookie", "JSESSIONID=E94FBE8591AC60CEABBEEE2E76D5B43B; JSESSIONID=E94FBE8591AC60CEABBEEE2E76D5B43B; _ga=GA1.3.1462099152.1580678354");
-            request.Headers.Add("Upgrade-Insecure-Requests", "1");
 
-
-
-
-            request.UseDefaultCredentials = true;
-            request.Proxy.Credentials = CredentialCache.DefaultCredentials;
-            byte[] byteArray = Encoding.UTF8.GetBytes(postData);
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.ContentLength = byteArray.Length;
-            Stream dataStream = request.GetRequestStream();
-            dataStream.Write(byteArray, 0, byteArray.Length);
-            dataStream.Close();
-
-            WebResponse response = request.GetResponse();
-            dataStream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(dataStream);
-            responseFromServer = reader.ReadToEnd();
-            reader.Close();
-            dataStream.Close();
-            response.Close();
-            return responseFromServer;
-        }
 
         public vao()
         {
             InitializeComponent();
-
-            var request = (HttpWebRequest)WebRequest.Create("https://eservices.tn.gov.in/eservicesnew/land/chittaExtract_ta.html?lan=ta");
-
-            var postData = "task=chittaTam";
-            postData += "&districtCode=27";
-            postData += "&talukCode=11";
-            postData += "&villageCode=022";
-
-            postData += "&viewOpt=pt";
-            postData += "&pattaNo=1";
-            postData += "&captcha=87PVC6";
-
-            postData += "&searchPattaName=";
-
-            postData += "&surveyNo=";
-
-            postData += "&subdivNo=";
-
-           //// var res = webPostMethod(postData, "https://eservices.tn.gov.in/eservicesnew/land/chittaExtract_ta.html?lan=ta");
-
-
-           // var data = Encoding.ASCII.GetBytes(postData);
-
-           // request.Method = "POST";
-           // request.ContentType = "text/html;charset=utf-8";
-           // request.ContentLength = data.Length;
-
-           // using (var stream = request.GetRequestStream())
-           // {
-           //     stream.Write(data, 0, data.Length);
-           // }
-
-           // var response = (HttpWebResponse)request.GetResponse();
-
-           // var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
-
 
             pattaList = new PattaList();
             relationTypes = new List<string>() {
@@ -135,21 +63,99 @@ namespace NTK_Support
                 aRegFile = @"F:\TN GOV\VANITHA\Vaidehi-Vao\reg data\Areg_Report-1.pdf";
                 chittaContent = chittaFile.GetPdfContent();
                 aRegContent = aRegFile.GetPdfContent();
-
-                //testFile = myFile.Replace(".pdf", "valid.txt");
             }
             else
             {
                 chittaFile = @"F:\TN GOV\VANITHA\Vaidehi-Vao\reg data\Chitta_Report-1.txt";
                 chittaContent = File.ReadAllText(chittaFile);
-                //testFile = myFile.Replace(".txt", "valid.txt");
             }
 
+            ProcessNames();
             ProcessChittaFile();
             ProcessAreg();
         }
 
+        private void ProcessNames()
+        {
 
+            var namesContent = File.ReadAllText(@"F:\TN GOV\VANITHA\Vaidehi-Vao\reg data\22-Names.txt");
+            //.Where(w => w.Contains("District :") == false).ToList();
+            //namesContent
+
+            //string sPattern = @"[a-zA-Z_\s]:[\s0-9]"; //$"[a-zA-Z]+:[0-9]";
+
+            //var nm = namesContent.Split(Environment.NewLine.ToCharArray())
+            //    .Where(w => 
+            //    //w.Contains("Ramanathapuram") == false &&
+            //    //w.Contains("Taluk") == false &&
+            //    //w.Contains("Village") == false &&
+            //    //w.Contains("ACHUTHANVAYAL") == false &&
+            //    //w.Contains("District") == false &&
+            //    w.Trim() != empty)
+            //    .ToList(); 
+
+            //for (int i = 0; i <= nm.Count - 1; i++)
+            //{
+            //    //if (nm[i].Contains("பட்டா எண்")) continue;
+
+            //    //var matches = nm[i].Contains(":") && Regex.Matches(nm[i].Replace(" ",""), sPattern);
+
+            //    //if(matches)
+            //    //{
+
+            //    //}
+            //    //else
+            //    //{
+
+            //    //}
+
+            //    //if(matches.Count == 1)
+            //    //{
+            //    //    Debug.WriteLine(matches[0]);
+            //    //    namesContent = namesContent.Replace(
+            //    //        matches[0].ToString().Split(':')[0], 
+            //    //        $"பட்டா எண்");
+
+
+            //    //    //nm[i] = nm[i].Replace(
+            //    //    //    matches[0].ToString().Split(':')[0],
+            //    //    //    $"பட்டா எண்");
+
+            //    //}
+            //    //else if (matches.Count > 1)
+            //    //{
+
+
+            //    //}
+            //}
+            
+            namesContent = namesContent.Replace("பட்டா எண்", "$");
+            var tn = namesContent.Split('$').Where(w => w.Trim().Trim() != empty).ToList();
+            tn.RemoveAt(0);
+            List<string> fullData;
+            List<string> errorCount = new List<string>();
+            for (int i = 0; i <= tn.Count - 1; i++)
+            {
+                fullData = tn[i].Split('\n').Where(w => w.Trim() != empty).ToList();
+
+                fullData = tn[i].Split('\n').Where(w =>
+                                                    //w.Trim() != empty &&
+                                                    w.Contains("வ.எண்") == false &&
+                                                    w.Contains("மொத்தம்") == false &&
+                                                    w.Contains("000") == false &&
+                                                    w.Contains("|")).ToList();
+
+                if (fullData.Count == 1)
+                    Debug.WriteLine($"{i + 1} : {fullData[0]}");
+                else
+                {
+                    Debug.WriteLine($"{i} : ERROR: {tn[i]}");
+                    errorCount.Add(i + ":" + tn[i].Split(Environment.NewLine.ToCharArray())[0].Replace(" ", ""));
+                }
+            }
+
+
+        }
         private void ProcessAreg()
         {
             PurambokkuAdangalList = new List<Adangal>();
@@ -167,8 +173,8 @@ namespace NTK_Support
                         NilaAlavaiEn = d[0].ToInt32(),
                         UtpirivuEn = d[1],
                         OwnerName = d[16],
-                        Parappu = d[13] + d[14],
-                        Theervai = $"{d[11]}.{d[12]}",
+                        Parappu = $"{d[11]}.{d[12]}",
+                        //Theervai = $"{d[11]}.{d[12]}",
                         Anupathaarar = d[16],
                         LandType = LandType.Porambokku
                     });
@@ -183,7 +189,7 @@ namespace NTK_Support
                         LandType = LandType.PorambokkuError
                     });
                 }
-                
+
 
             }
         }
@@ -193,7 +199,6 @@ namespace NTK_Support
             var pattaas = chittaContent.Replace("பட்டா எண்", "$");
             var data = pattaas.Split('$').ToList();
             data.RemoveAt(0); // first is empty data
-
 
             List<ChittaData> cds = new List<ChittaData>();
             bool isFullBreakData, isPartialBreakData = false;
@@ -221,7 +226,7 @@ namespace NTK_Support
                                  .Replace("உட்பிரிமவ எண்", empty).Replace("நனெசெய", empty).Replace("புனெசெய", empty)
                                  .Replace("மைற்றைவ", empty).Replace("குறிப்பு", empty).Replace("பரப்பு", empty)
                                  .Replace("தீர்ைவ", empty).Replace("ெமைாத்தம", "TOTAL")
-                                 .Replace("--","உறவினர் இல்லை");
+                                 .Replace("--", "உறவினர் இல்லை");
 
                     fullData = item.Split('\n').Where(w => w.Trim() != empty && w.Contains("புல எண்") == false).ToList();
 
@@ -268,26 +273,8 @@ namespace NTK_Support
 
                     else if (totalRecord == memberData.Count)
                     {
-                        // perfect data (without subdivision)
-                        //if ((isValidRecords(memberData) && isValidTotalRecord(totalData)) == false)
-                        //{
-                        //    // perfect  data (with subdivision)
-                        //    if ((isValidRecords(memberData, true) && isValidTotalRecord(totalData)) == false)
-                        //    {
-                        //        // ERROR!
-                        //        pattaList.AddAndUpdateList(pattaSingle, PattaType.KnownError
-                        //            , fullData);
-                        //        continue;
-                        //    }
-                        //    else
-                        //    {
-                        //        pattaSingle.PattaType = PattaType.ValidAndNoSubdivision;
-                        //    }
-
-                        //}
-
                         var pt = isAllmemberDataValid(memberData, totalData);
-                        if(pt == PattaType.KnownError || pt == PattaType.TotalRecordIssue)
+                        if (pt == PattaType.KnownError || pt == PattaType.TotalRecordIssue)
                         {
                             pattaList.AddAndUpdateList(pattaSingle, pt, fullData);
                             continue;
@@ -298,22 +285,6 @@ namespace NTK_Support
 
                     else if ((totalRecord * 2) == memberData.Count)
                     {
-                        //isFullBreakData = IsValidBreakData(memberData);
-                        //// perfect break data (without subdivision)
-                        //if ((IsValidBreakData(memberData) && isValidTotalRecord(totalData)) == false)
-                        //{
-                        //    // perfect break data (with subdivision)
-                        //    if ((IsValidBreakData(memberData, true) && isValidTotalRecord(totalData)) == false)
-                        //    {
-                        //        pattaList.AddAndUpdateList(pattaSingle, PattaType.KnownError, fullData);
-                        //        continue;
-                        //    }
-                        //    else
-                        //    {
-                        //        pattaSingle.PattaType = PattaType.ValidAndNoSubdivision;
-                        //    }
-                        //}
-
                         var pt = isAllmemberBreakDataValid(memberData, totalData);
                         if (pt == PattaType.KnownError || pt == PattaType.TotalRecordIssue)
                         {
@@ -327,10 +298,7 @@ namespace NTK_Support
                     else
                     {
 
-                        if (IsSomeDots(memberData))
-                        {
-                            pattaSingle.PattaType = PattaType.SomeDots;
-                        }
+                        if (IsSomeDots(memberData)) pattaSingle.PattaType = PattaType.SomeDots;
 
                         if (pattaSingle.PattaType == PattaType.SomeDots || pattaSingle.PattaType == PattaType.Valid)
                         {
@@ -351,8 +319,6 @@ namespace NTK_Support
                         }
                     }
 
-                    //pattaList.AddAndUpdateList(pattaSingle, PattaType.Valid, fullData);
-
                     #endregion
 
                     #region "Process Owner Name"
@@ -371,8 +337,9 @@ namespace NTK_Support
                             pattaSingle.PattaTharar = nameRow.Replace(delimit, "$").Split('$')[1];
                             var d = nameRow.Replace(delimit, "$").Split('$');
 
-                            pattaSingle.PattaTharar = ApplyUnicode(d[1]);
+                            //pattaSingle.PattaTharar = ApplyUnicode(d[1]);
                             //pattaSingle.PattaTharar = $"{d[1]} {delimit} {d[0]}";
+                            pattaSingle.PattaTharar = $"{d[1]}";
                         }
                         else
                         {
@@ -525,76 +492,7 @@ namespace NTK_Support
 
         private string ApplyUnicode(string name)
         {
-
-            const string str = "தமிழ்"; // this is already a unicode string.
-
-            byte[] stringBytes = Encoding.Unicode.GetBytes(str);
-            char[] stringChars = Encoding.Unicode.GetChars(stringBytes);
-
-             string strr = name; // this is already a unicode string.
-
-            byte[] stringBytes2 = Encoding.Unicode.GetBytes(strr);
-            char[] stringChars2 = Encoding.Unicode.GetChars(stringBytes2);
-
-            //foreach (var chr in stringChars)
-            //{
-            //    // unicode character code
-            //    var unicoded = ((int)chr).ToString();
-
-            //    // hex character code
-            //    var hexcoded = @"\u" + ((int)chr).ToString("X4").ToLower();
-
-            //    //Console.OutputEncoding = Encoding.UTF8;
-            //    // print to VS output window
-            //    Console.WriteLine(chr + "     " + unicoded + "     " + hexcoded);
-            //}
-
-            byte[] unicodeBytes = new byte[]
-    {0x61, 0x70, 0x70, 0x6C, 0x69, 0x63, 0x61,
-     0x74, 0x69, 0x6F, 0x6E, 0x2F, 0x70, 0x63,
-     0x61, 0x70};
-
-            string unicodeString = Encoding.UTF8.GetString(unicodeBytes);
-
-            Console.WriteLine(unicodeString);
-
-
-            string str22 = name;
-            var myarray2 = Encoding.UTF8.GetBytes(str22);
-            string unicodeString22 = Encoding.UTF8.GetString(myarray2);
-            Console.WriteLine(unicodeString22);
-
-
-            if (name.ToCharArray().Select(s => (int)s).Any(a => a >= 3000))
-            {
-                var wrongName = name;
-
-            }
-            else
-            {
-                var corrName = name;
-
-            }
-
-            var r = false;
-
-            if (r)
-            {
-                return name;
-            }
-
-            var t = name + "1" + "அர்ஜூனன்கோ";
-
-            var test = "கோவிந்தம்மாள்";
-            var enumerator = System.Globalization.StringInfo.GetTextElementEnumerator(t);
-
-            var tt = "";
-            while (enumerator.MoveNext())
-            {
-                tt = tt + enumerator.Current;
-            }
-
-            throw new NotImplementedException();
+            return "";
         }
         private List<LandDetail> ProcessLandType(List<string> actualData, List<string> breakData = null)
         {
@@ -970,27 +868,27 @@ namespace NTK_Support
 
             try
             {
-            
-            var decimalList = new List<decimal>();
-            var intList = new List<int>();
 
-            nos.ForEach(fe =>
-            {
-                decimalList.Add(Convert.ToDecimal(fe.Substring(fe.IndexOf(".") + 1).Trim()));
-                intList.Add(Convert.ToInt32(fe.Split('.')[0]));
-            });
+                var decimalList = new List<decimal>();
+                var intList = new List<int>();
 
-            var addedData = decimalList.Sum();
-            var intAddedData = intList.Sum();
+                nos.ForEach(fe =>
+                {
+                    decimalList.Add(Convert.ToDecimal(fe.Substring(fe.IndexOf(".") + 1).Trim()));
+                    intList.Add(Convert.ToInt32(fe.Split('.')[0]));
+                });
 
-            var finalData = addedData + (intAddedData * 100);
+                var addedData = decimalList.Sum();
+                var intAddedData = intList.Sum();
 
-            if (finalData >= 100)
-            {
-                var firstPart = Convert.ToDecimal(Convert.ToInt32(finalData.ToString().Split('.')[0])) / Convert.ToDecimal(100);
-                var secPart = $"{finalData.ToString().Split('.')[1]}";
-                return $"{firstPart}.{secPart}";
-            }
+                var finalData = addedData + (intAddedData * 100);
+
+                if (finalData >= 100)
+                {
+                    var firstPart = Convert.ToDecimal(Convert.ToInt32(finalData.ToString().Split('.')[0])) / Convert.ToDecimal(100);
+                    var secPart = $"{finalData.ToString().Split('.')[1]}";
+                    return $"{firstPart}.{secPart}";
+                }
 
                 return $"0.{finalData}";
 
@@ -1005,7 +903,7 @@ namespace NTK_Support
         private void ddlListType_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selected = ddlListType.SelectedValue.ToInt32();
-              
+
 
             if (selected == 1)
                 dataGridView1.DataSource = pattaList;
@@ -1013,24 +911,24 @@ namespace NTK_Support
                 dataGridView1.DataSource = WholeLandList;
             else if (selected == 3)
             {
-                 AdangalList = (from wl in WholeLandList
-                                            .OrderBy(o => o.LandType)
-                                            .ThenBy(o => o.SurveyNo)
-                                            .ThenBy(t => t.Subdivision, new AlphanumericComparer()).ToList()
-                                            select new Adangal()
-                                            {
-                                                NilaAlavaiEn = wl.SurveyNo,
-                                                UtpirivuEn = wl.Subdivision,
-                                                OwnerName = wl.OwnerName,
-                                                Parappu = wl.Parappu,
-                                                Theervai = wl.Theervai,
-                                                Anupathaarar = wl.Anupathaarar,
-                                                LandType = wl.LandType
-                                            }).ToList();
+                AdangalList = (from wl in WholeLandList
+                                           .OrderBy(o => o.LandType)
+                                           .ThenBy(o => o.SurveyNo)
+                                           .ThenBy(t => t.Subdivision, new AlphanumericComparer()).ToList()
+                               select new Adangal()
+                               {
+                                   NilaAlavaiEn = wl.SurveyNo,
+                                   UtpirivuEn = wl.Subdivision,
+                                   OwnerName = wl.OwnerName,
+                                   Parappu = wl.Parappu,
+                                   Theervai = wl.Theervai,
+                                   Anupathaarar = wl.Anupathaarar,
+                                   LandType = wl.LandType
+                               }).ToList();
 
                 AdangalList.AddRange(PurambokkuAdangalList);
                 dataGridView1.DataSource = AdangalList;
-                
+
             }
         }
 
@@ -1083,45 +981,53 @@ namespace NTK_Support
             var tableTemplate22 = FileContentReader.TableTemplate;
             var mainHtml = FileContentReader.MainHtml;
             StringBuilder allContent = new StringBuilder();
+            int recordPerPage = 7;
 
-            landTypeGroup.ForEach(fe => { 
-
-            var pageCount = fe.ToList().Count / 7;
-
-            if (fe.ToList().Count % 7 > 0) pageCount = pageCount + 1;
-
-            for (int i = 0; i <= pageCount - 1; i++)
+            var pageNumber = 1;
+            landTypeGroup.ForEach(fe =>
             {
-                var html2 = tableTemplate22;
-                var rowTemplate = rowTemplate22;
-                var totalTemplate = totalTemplate22;
-                string dataRows = "";
-                StringBuilder sb = new StringBuilder();
 
-                var temData = fe.ToList().Skip(i * 7).Take(7).ToList();
+                var pageCount = fe.ToList().Count / recordPerPage;
 
+                if (fe.ToList().Count % recordPerPage > 0) pageCount = pageCount + 1;
 
-                temData.ForEach(ff =>
+                //for (int i = 0; i <= pageCount - 1; i++)
+                for (int i = 0; i <= 4; i++)
                 {
-                    dataRows = rowTemplate.Replace("[pulaen]", ff.NilaAlavaiEn.ToString())
-                                          .Replace("[utpirivu]", ff.UtpirivuEn)
-                                          .Replace("[parappu]", ff.Parappu)
-                                           .Replace("[theervai]", ff.Theervai)
-                                           .Replace("[pattaen-name]", ff.Anupathaarar);
+                    var html2 = tableTemplate22;
+                    var rowTemplate = rowTemplate22;
+                    var totalTemplate = totalTemplate22;
+                    string dataRows = "";
+                    StringBuilder sb = new StringBuilder();
 
-                    sb.Append(dataRows);
-                });
+                    var temData = fe.ToList().Skip(i * recordPerPage).Take(recordPerPage).ToList();
 
-                html2 = html2.Replace("[datarows]", sb.ToString());
-                
-                var totalparappu = GetSumThreeDotNo(temData.Select(s => s.Parappu).ToList(), null, 0);
-                var totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai));
-                var total = totalTemplate.Replace("[moththaparappu]", totalparappu).Replace("[moththatheervai]", totalTheervai.ToString());
+                    temData.ForEach(ff =>
+                    {
+                        dataRows = rowTemplate.Replace("[pulaen]", ff.NilaAlavaiEn.ToString())
+                                              .Replace("[utpirivu]", ff.UtpirivuEn)
+                                              .Replace("[parappu]", ff.Parappu)
+                                               .Replace("[theervai]", ff.Theervai)
+                                               .Replace("[pattaen-name]", ff.Anupathaarar);
 
-                html2 = html2.Replace("[totalrow]", total);
+                        sb.Append(dataRows);
+                    });
 
-                allContent.Append(html2);
-            }
+                    html2 = html2.Replace("[datarows]", sb.ToString());
+
+                    var totalparappu = GetSumThreeDotNo(temData.Select(s => s.Parappu).ToList(), null, 0);
+                    var totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai));
+                    var total = totalTemplate.Replace("[moththaparappu]", totalparappu).Replace("[moththatheervai]", totalTheervai.ToString());
+
+                    html2 = html2.Replace("[totalrow]", total);
+
+                    if((pageNumber % 2) == 0) html2 = html2.Replace("[pageMargin]", "margin-right: 100px;margin-left: 10px;margin-top: 10px;");
+                    else html2 = html2.Replace("[pageMargin]", "margin-right: 10px;margin-left: 100px;margin-top: 10px;");
+
+
+                    allContent.Append(html2);
+                    pageNumber += 1;
+                }
             });
             File.AppendAllText(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates\All.htm", mainHtml.Replace("[allPageData]", allContent.ToString()));
         }
