@@ -12,10 +12,15 @@ namespace Common
         public static string MemberContactHtml { get; } = GetHtmlFileContent("MemberContact.htm");
 
 
+        public static string FirstPageTemplate { get; } = GetHtmlFileContent("FirstPage.htm");
+
         public static string MainHtml { get; } = GetHtmlFileContent("MainHtml.htm");
+        public static string RightMainHtml { get; } = GetHtmlFileContent("RightMainHtml.htm");
 
         public static string RowTemplate { get; } = GetHtmlFileContent("RowTemplate.htm");
+        public static string RightPagerowTemplate { get; } = GetHtmlFileContent("RowTemplateRightPage.htm");
         public static string TotalTemplate { get; } = GetHtmlFileContent("TotalTemplate.htm");
+        public static string TotalTemplateRightPage { get; } = GetHtmlFileContent("TotalTemplateRightPage.htm");
 
         public static string TableTemplate { get; } = GetHtmlFileContent("TableTemplate.htm");
 

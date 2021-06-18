@@ -128,7 +128,7 @@ namespace NTK_Support
 
             //    //}
             //}
-            
+
             namesContent = namesContent.Replace("பட்டா எண்", "$");
             var tn = namesContent.Split('$').Where(w => w.Trim().Trim() != empty).ToList();
             tn.RemoveAt(0);
@@ -964,11 +964,20 @@ namespace NTK_Support
             DirectoryInfo di = new DirectoryInfo(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates");
 
             foreach (FileInfo file in di.GetFiles())
-            {
                 file.Delete();
-            }
 
-            // var tooo = WholeLandList.Where(w => w.LandType == LandType.Nansai).Take(50).OrderBy(t => t.PulaEn).ToList(); //.ThenBy(t => t.SubDivNo, new AlphanumericComparer().ToList();
+
+            StringBuilder allContent = new StringBuilder();
+
+            // FIRST PAGE.
+            var firstPage = FileContentReader.FirstPageTemplate;
+            var mainHtml = FileContentReader.MainHtml;
+
+            // allContent.Append(firstPage);
+
+            mainHtml = mainHtml.Replace("[initialPages]", firstPage);
+
+
 
             var landTypeGroup = (from wl in AdangalList
                                  where wl.LandType != LandType.Other
@@ -979,28 +988,47 @@ namespace NTK_Support
             var rowTemplate22 = FileContentReader.RowTemplate;
             var totalTemplate22 = FileContentReader.TotalTemplate;
             var tableTemplate22 = FileContentReader.TableTemplate;
-            var mainHtml = FileContentReader.MainHtml;
-            StringBuilder allContent = new StringBuilder();
+            
+            var RightMainHtml = FileContentReader.RightMainHtml;
+            var RightPagerowTemplate = FileContentReader.RightPagerowTemplate;
+            var RightPageTotalTemplate = FileContentReader.TotalTemplateRightPage;
+            
+            
             int recordPerPage = 7;
 
+            string rightPageDataRows = "";
+            string rightPageTotalDataRows = "";
+            StringBuilder sbRightPage = new StringBuilder();
+
             var pageNumber = 1;
+            
+
             landTypeGroup.ForEach(fe =>
             {
-
                 var pageCount = fe.ToList().Count / recordPerPage;
-
                 if (fe.ToList().Count % recordPerPage > 0) pageCount = pageCount + 1;
 
                 //for (int i = 0; i <= pageCount - 1; i++)
-                for (int i = 0; i <= 4; i++)
+                for (int i = 0; i <= 2; i++)
                 {
-                    var html2 = tableTemplate22;
+                    var leftPage = tableTemplate22;
                     var rowTemplate = rowTemplate22;
                     var totalTemplate = totalTemplate22;
+
+                    var RprowTemplate = RightPagerowTemplate;
+                    var RptotalTemplate = RightPageTotalTemplate;
+
                     string dataRows = "";
+
+                    var rightPage = RightMainHtml;
+
                     StringBuilder sb = new StringBuilder();
+                    
 
                     var temData = fe.ToList().Skip(i * recordPerPage).Take(recordPerPage).ToList();
+
+                    var isRightPageEmpty = string.IsNullOrEmpty(rightPageDataRows);
+                    var isRightPageTotalEmpty = string.IsNullOrEmpty(rightPageTotalDataRows);
 
                     temData.ForEach(ff =>
                     {
@@ -1010,26 +1038,41 @@ namespace NTK_Support
                                                .Replace("[theervai]", ff.Theervai)
                                                .Replace("[pattaen-name]", ff.Anupathaarar);
 
+                        if (isRightPageEmpty)
+                        {
+                            rightPageDataRows = RprowTemplate;
+                            sbRightPage.Append(rightPageDataRows);
+                        }
+
                         sb.Append(dataRows);
                     });
 
-                    html2 = html2.Replace("[datarows]", sb.ToString());
+                    // LEFT PAGE ROWS
+                    leftPage = leftPage.Replace("[datarows]", sb.ToString());
 
+                    //LEFT PAGE TOTAL
                     var totalparappu = GetSumThreeDotNo(temData.Select(s => s.Parappu).ToList(), null, 0);
                     var totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai));
                     var total = totalTemplate.Replace("[moththaparappu]", totalparappu).Replace("[moththatheervai]", totalTheervai.ToString());
+                    leftPage = leftPage.Replace("[totalrow]", total);
 
-                    html2 = html2.Replace("[totalrow]", total);
+                    // RIGHT PAGE ROWS
+                    rightPage = rightPage.Replace("[datarows]", sbRightPage.ToString());
 
-                    if((pageNumber % 2) == 0) html2 = html2.Replace("[pageMargin]", "margin-right: 100px;margin-left: 10px;margin-top: 10px;");
-                    else html2 = html2.Replace("[pageMargin]", "margin-right: 10px;margin-left: 100px;margin-top: 10px;");
+                    // RIGHT PAGE TOTAL
+                    if (isRightPageTotalEmpty)
+                        rightPageTotalDataRows = RptotalTemplate;
 
+                    rightPage = rightPage.Replace("[totalrow]", rightPageTotalDataRows);
 
-                    allContent.Append(html2);
+                    allContent.Append(leftPage);
+                    allContent.Append(rightPage); // right page
                     pageNumber += 1;
                 }
             });
-            File.AppendAllText(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates\All.htm", mainHtml.Replace("[allPageData]", allContent.ToString()));
+
+            mainHtml = mainHtml.Replace("[allPageData]", allContent.ToString());
+            File.AppendAllText(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates\All.htm", mainHtml);
         }
 
         private void dataGridView1_DataSourceChanged(object sender, EventArgs e)
