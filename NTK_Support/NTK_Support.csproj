@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="AdangalTypes\Adangal.cs" />
     <Compile Include="AdangalTypes\ChittaData.cs" />
+    <Compile Include="AdangalTypes\PageEnum.cs" />
     <Compile Include="AdangalTypes\Patta.cs" />
     <Compile Include="AdangalTypes\PattaType.cs" />
     <Compile Include="AdangalTypes\LandDetail.cs" />

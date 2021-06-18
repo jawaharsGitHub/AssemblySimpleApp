@@ -12,17 +12,23 @@ namespace Common
         public static string MemberContactHtml { get; } = GetHtmlFileContent("MemberContact.htm");
 
 
-        public static string FirstPageTemplate { get; } = GetHtmlFileContent("FirstPage.htm");
+        public static string FirstPageTemplate { get; } = GetHtmlFileContent("FirstPageTemplate.htm");
 
         public static string MainHtml { get; } = GetHtmlFileContent("MainHtml.htm");
-        public static string RightMainHtml { get; } = GetHtmlFileContent("RightMainHtml.htm");
 
-        public static string RowTemplate { get; } = GetHtmlFileContent("RowTemplate.htm");
-        public static string RightPagerowTemplate { get; } = GetHtmlFileContent("RowTemplateRightPage.htm");
-        public static string TotalTemplate { get; } = GetHtmlFileContent("TotalTemplate.htm");
-        public static string TotalTemplateRightPage { get; } = GetHtmlFileContent("TotalTemplateRightPage.htm");
+        public static string LeftPageTableTemplate { get; } = GetHtmlFileContent("LeftPageTableTemplate.htm");
+        
+        public static string RightPageTableTemplate { get; } = GetHtmlFileContent("RightPageTableTemplate.htm");
 
-        public static string TableTemplate { get; } = GetHtmlFileContent("TableTemplate.htm");
+        public static string LeftPageRowTemplate { get; } = GetHtmlFileContent("LeftPageRowTemplate.htm");
+        public static string RightPageRowTemplate { get; } = GetHtmlFileContent("RightPageRowTemplate.htm");
+
+        public static string LeftPageTotalTemplate { get; } = GetHtmlFileContent("LeftPageTotalTemplate.htm");
+        public static string RightPageTotalTemplate { get; } = GetHtmlFileContent("RightPageTotalTemplate.htm");
+
+
+        public static string LeftPageCertTableTemplate { get; } = GetHtmlFileContent("LeftPageCertTableTemplate.htm");
+        public static string RightPageTableCertTemplate { get; } = GetHtmlFileContent("RightPageTableCertTemplate.htm");
 
 
         private static string GetHtmlFileContent(string fileName)

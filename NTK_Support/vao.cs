@@ -904,7 +904,6 @@ namespace NTK_Support
         {
             var selected = ddlListType.SelectedValue.ToInt32();
 
-
             if (selected == 1)
                 dataGridView1.DataSource = pattaList;
             else if (selected == 2)
@@ -945,20 +944,158 @@ namespace NTK_Support
 
         private void ddlLandTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (ddlLandTypes.SelectedValue.ToInt32() == -1)
-            //    dataGridView1.DataSource = WholeLandList.OrderBy(o => o.PattaEn).ToList();
-            //else
-            //dataGridView1.DataSource = WholeLandList.Where(w => (int)w.LandType == ddlLandTypes.SelectedValue.ToInt32()).OrderBy(o => o.PattaEn).ToList();
-
             if (ddlLandTypes.SelectedValue.ToInt32() == -1)
                 dataGridView1.DataSource = AdangalList.OrderBy(o => o.NilaAlavaiEn).ToList();
             else
                 dataGridView1.DataSource = AdangalList.Where(w => (int)w.LandType == ddlLandTypes.SelectedValue.ToInt32()).OrderBy(o => o.NilaAlavaiEn).ToList();
+        }
 
 
+        private string GetLeftEmptyPage(int recordCount)
+        {
+            // LeftEmptyPage
+            var leftPage = FileContentReader.LeftPageTableTemplate;
+            var rowTemplate = FileContentReader.LeftPageRowTemplate;
+            var totalRowTemplate = FileContentReader.LeftPageTotalTemplate;
+
+            //string dataRows = "";
+
+            var sb = new StringBuilder();
+
+            for (int i = 1; i <= recordCount; i++)
+            {
+                sb.Append(rowTemplate.Replace("[pulaen]", empty)
+                                      .Replace("[utpirivu]", empty)
+                                      .Replace("[parappu]", empty)
+                                       .Replace("[theervai]", empty)
+                                       .Replace("[pattaen-name]", empty));
+
+                //sb.Append(dataRows);
+            }
+
+            var total = totalRowTemplate.Replace("[moththaparappu]", empty).Replace("[moththatheervai]", empty);
+            
+            leftPage = leftPage.Replace("[datarows]", sb.ToString());
+            leftPage = leftPage.Replace("[totalrow]", total);
+
+            return leftPage;
+        }
+
+        private string GetRightEmptyPage(int recordCount)
+        {
+            var rightPage = FileContentReader.RightPageTableTemplate;
+            var rowTemplate = FileContentReader.RightPageRowTemplate;
+            var totalRowTemplate = FileContentReader.RightPageTotalTemplate;
+
+            var sb = new StringBuilder();
+
+            for (int i = 1; i <= recordCount; i++)
+            {
+                sb.Append(rowTemplate);
+            }
+
+            rightPage = rightPage.Replace("[datarows]", sb.ToString());
+            rightPage = rightPage.Replace("[totalrow]", totalRowTemplate);
+
+            return rightPage;
+        }
+
+        private string GetLeftEmptyCertPage(int recordCount)
+        {
+            // LeftEmptyPage
+            var leftPage = FileContentReader.LeftPageCertTableTemplate;
+            //var rowTemplate = FileContentReader.LeftPageRowTemplate;
+            //var totalRowTemplate = FileContentReader.LeftPageTableTemplate;
+
+            //string dataRows = "";
+
+            //var sb = new StringBuilder();
+
+            //for (int i = 1; i <= recordCount; i++)
+            //{
+            //    dataRows = rowTemplate.Replace("[pulaen]", empty)
+            //                          .Replace("[utpirivu]", empty)
+            //                          .Replace("[parappu]", empty)
+            //                           .Replace("[theervai]", empty)
+            //                           .Replace("[pattaen-name]", empty);
+
+            //    sb.Append(dataRows);
+            //}
+
+            //var total = totalRowTemplate.Replace("[moththaparappu]", empty).Replace("[moththatheervai]", empty);
+
+            //leftPage = leftPage.Replace("[datarows]", sb.ToString());
+            //leftPage = leftPage.Replace("[totalrow]", total);
+
+            return leftPage;
+        }
+
+        private string GetRightEmptyCertPage(int recordCount)
+        {
+            var leftPage = FileContentReader.RightPageTableCertTemplate;
+            //var rowTemplate = FileContentReader.RightPageRowTemplate;
+            //var totalRowTemplate = FileContentReader.RightPageTotalTemplate;
+
+            ////string dataRows = "";
+            //var sb = new StringBuilder();
+
+            //for (int i = 1; i <= recordCount; i++)
+            //{
+            //    //dataRows = rowTemplate;
+            //    sb.Append(rowTemplate);
+            //}
+
+            ////var total = totalRowTemplate.Replace("[moththaparappu]", empty).Replace("[moththatheervai]", empty);
+
+            //leftPage = leftPage.Replace("[datarows]", sb.ToString());
+            //leftPage = leftPage.Replace("[totalrow]", totalRowTemplate);
+
+            return leftPage;
+        }
+        private string GetInitialPages(int recordCount)
+        {
+            var initialPages = new StringBuilder();
+
+            // FIRST PAGE.
+            var firstPage = FileContentReader.FirstPageTemplate;
+            var leftEmpty = GetLeftEmptyPage(recordCount);
+            var rightEmpty = GetRightEmptyPage(recordCount);
+            var leftCertEmpty = GetLeftEmptyCertPage(recordCount);
+            var rightCertEmpty = GetRightEmptyCertPage(recordCount);
+
+            initialPages.Append(firstPage);
+
+            initialPages.Append(GetEmptyPages(1, recordCount));
+
+            initialPages.Append(leftCertEmpty);
+            initialPages.Append(rightEmpty);
+            initialPages.Append(leftEmpty);
+            initialPages.Append(rightCertEmpty);
+            initialPages.Append(leftEmpty);
+            initialPages.Append(rightCertEmpty);
+
+           initialPages.Append(GetEmptyPages(6, recordCount));
+
+            return initialPages.ToString();
 
         }
 
+        private string GetEmptyPages(int pageCount, int recCount)
+        {
+            var leftEmpty = GetLeftEmptyPage(recCount);
+            var rightEmpty = GetRightEmptyPage(recCount);
+
+            var sb = new StringBuilder();
+
+            for (int i = 1; i <= pageCount; i++)
+            {
+                sb.Append(leftEmpty);
+                sb.Append(rightEmpty);
+            }
+
+            return sb.ToString();
+
+        }
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             DirectoryInfo di = new DirectoryInfo(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates");
@@ -968,33 +1105,28 @@ namespace NTK_Support
 
 
             StringBuilder allContent = new StringBuilder();
+            int recordPerPage = 7;
 
-            // FIRST PAGE.
-            var firstPage = FileContentReader.FirstPageTemplate;
             var mainHtml = FileContentReader.MainHtml;
+            string initialPages = GetInitialPages(recordPerPage);
 
-            // allContent.Append(firstPage);
-
-            mainHtml = mainHtml.Replace("[initialPages]", firstPage);
-
-
+            mainHtml = mainHtml.Replace("[initialPages]", initialPages);
 
             var landTypeGroup = (from wl in AdangalList
                                  where wl.LandType != LandType.Other
                                  group wl by wl.LandType into newGrp
-                                 // orderby newGrp.Key
                                  select newGrp).ToList();
 
-            var rowTemplate22 = FileContentReader.RowTemplate;
-            var totalTemplate22 = FileContentReader.TotalTemplate;
-            var tableTemplate22 = FileContentReader.TableTemplate;
+            var rowTemplate22 = FileContentReader.LeftPageRowTemplate;
+            var totalTemplate22 = FileContentReader.LeftPageTotalTemplate;
+            var tableTemplate22 = FileContentReader.LeftPageTableTemplate;
             
-            var RightMainHtml = FileContentReader.RightMainHtml;
-            var RightPagerowTemplate = FileContentReader.RightPagerowTemplate;
-            var RightPageTotalTemplate = FileContentReader.TotalTemplateRightPage;
+            var RightMainHtml = FileContentReader.RightPageTableTemplate;
+            var RightPagerowTemplate = FileContentReader.RightPageRowTemplate;
+            var RightPageTotalTemplate = FileContentReader.RightPageTotalTemplate;
             
             
-            int recordPerPage = 7;
+            
 
             string rightPageDataRows = "";
             string rightPageTotalDataRows = "";
@@ -1019,11 +1151,8 @@ namespace NTK_Support
                     var RptotalTemplate = RightPageTotalTemplate;
 
                     string dataRows = "";
-
                     var rightPage = RightMainHtml;
-
                     StringBuilder sb = new StringBuilder();
-                    
 
                     var temData = fe.ToList().Skip(i * recordPerPage).Take(recordPerPage).ToList();
 
@@ -1072,6 +1201,8 @@ namespace NTK_Support
             });
 
             mainHtml = mainHtml.Replace("[allPageData]", allContent.ToString());
+
+
             File.AppendAllText(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates\All.htm", mainHtml);
         }
 

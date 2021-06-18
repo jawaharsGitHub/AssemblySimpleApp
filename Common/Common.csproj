@@ -134,13 +134,17 @@
   <ItemGroup>
     <Content Include="HTMLTemplate\adangal-DataPage - Copy.htm" />
     <Content Include="HTMLTemplate\adangal-PageList.htm" />
-    <Content Include="HTMLTemplate\FirstPage.htm" />
-    <Content Include="HTMLTemplate\RightMainHtml.htm" />
-    <Content Include="HTMLTemplate\RowTemplate.htm" />
-    <Content Include="HTMLTemplate\TableTemplate.htm" />
-    <Content Include="HTMLTemplate\TotalTemplateRightPage.htm" />
-    <Content Include="HTMLTemplate\TotalTemplate.htm" />
-    <Content Include="HTMLTemplate\RowTemplateRightPage.htm" />
+    <Content Include="HTMLTemplate\FirstPageTemplate.htm" />
+    <Content Include="HTMLTemplate\LeftPageCertTableTemplate.htm" />
+    <Content Include="HTMLTemplate\RightPageTableTemplate.htm" />
+    <Content Include="HTMLTemplate\RightPageTableTemplate-backup.htm" />
+    <Content Include="HTMLTemplate\RightPageTableCertTemplate.htm" />
+    <Content Include="HTMLTemplate\LeftPageRowTemplate.htm" />
+    <Content Include="HTMLTemplate\CertTableTemplate.htm" />
+    <Content Include="HTMLTemplate\LeftPageTableTemplate.htm" />
+    <Content Include="HTMLTemplate\RightPageTotalTemplate.htm" />
+    <Content Include="HTMLTemplate\LeftPageTotalTemplate.htm" />
+    <Content Include="HTMLTemplate\RightPageRowTemplate.htm" />
     <Content Include="HTMLTemplate\MainHtml.htm" />
     <Content Include="HTMLTemplate\MemberContact.htm" />
     <Content Include="HTMLTemplate\EmailBody.htm" />
