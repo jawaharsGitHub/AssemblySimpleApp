@@ -19,7 +19,7 @@ namespace NTK_Support
 {
     public partial class vao : Form
     {
-        int recordPerPage = 7;
+        int recordPerPage = 8;
         int pageTotalrecordPerPage = 25;
         bool isProductionTest = true;
 
@@ -46,6 +46,7 @@ namespace NTK_Support
         string firstPage;
         string leftEmpty;
         string rightEmpty;
+
         string leftCertEmpty;
         string rightCertEmpty;
 
@@ -79,8 +80,8 @@ namespace NTK_Support
             firstPage = FileContentReader.FirstPageTemplate;
             leftEmpty = GetLeftEmptyPage();
             rightEmpty = GetRightEmptyPage();
-            leftCertEmpty = GetEmptyLeftCertPage();
-            rightCertEmpty = GetEmptyRightCertPage();
+            leftCertEmpty = FileContentReader.LeftPageCertTableTemplate;
+            rightCertEmpty = FileContentReader.RightPageTableCertTemplate;
 
             ProcessNames();
             ProcessChittaFile();
@@ -1011,7 +1012,7 @@ namespace NTK_Support
             return rightPage;
         }
 
-        private string GetEmptyLeftCertPage()
+        private string GetLeftCertPage()
         {
             var sb = new StringBuilder();
             sb.Append(leftCertEmpty);
@@ -1020,7 +1021,7 @@ namespace NTK_Support
             return sb.ToString();
         }
 
-        private string GetEmptyRightCertPage()
+        private string GetRightCertPage()
         {
             var sb = new StringBuilder();
             sb.Append(leftEmpty);
@@ -1038,19 +1039,9 @@ namespace NTK_Support
             initialPages.Append(firstPage);
 
             initialPages.Append(GetEmptyPages(1));
-            //initialPages.Append(leftCertEmpty);
-            //initialPages.Append(rightEmpty);
-
-            initialPages.Append(GetEmptyLeftCertPage());
-            //initialPages.Append(leftEmpty);
-            //initialPages.Append(rightCertEmpty);
-
-            initialPages.Append(GetEmptyRightCertPage());
-            //initialPages.Append(leftEmpty);
-            //initialPages.Append(rightCertEmpty);
-
-            initialPages.Append(GetEmptyLeftCertPage());
-
+            initialPages.Append(GetLeftCertPage());
+            initialPages.Append(GetRightCertPage());
+            initialPages.Append(GetRightCertPage());
             initialPages.Append(GetEmptyPages(6));
 
             return initialPages.ToString();
@@ -1161,8 +1152,6 @@ namespace NTK_Support
             var rowTemplate22 = FileContentReader.LeftPageRowTemplate;
             var totalTemplate22 = FileContentReader.LeftPageTotalTemplate;
             var tableTemplate22 = FileContentReader.LeftPageTableTemplate;
-
-           
 
             landTypeGroup.ForEach(fe =>
             {
