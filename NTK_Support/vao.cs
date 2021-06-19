@@ -1069,45 +1069,55 @@ namespace NTK_Support
         {
             StringBuilder totalContent = new StringBuilder();
 
-            var pageCount = pageTotalList.Count / pageTotalrecordPerPage;
-            if (pageTotalList.Count % pageTotalrecordPerPage > 0) pageCount = pageCount + 1;
+            var landTypeGroup = (from wl in pageTotalList
+                                 where wl.LandType != LandType.Other
+                                 group wl by wl.LandType into newGrp
+                                 select newGrp).ToList();
 
-            var tableTemplate22  = FileContentReader.PageTotalTableTemplate;
-            var rowTemplate22 = FileContentReader.PageTotalRowTemplate;
 
-            for (int i = 0; i <= pageCount - 1; i++)
+            landTypeGroup.ToList().ForEach(fe =>
             {
-                var tbl = tableTemplate22;
-                var row = rowTemplate22;
+                var pageCount = fe.ToList().Count / pageTotalrecordPerPage;
+                if (fe.ToList().Count % pageTotalrecordPerPage > 0) pageCount = pageCount + 1;
 
-                string dataRows = "";
-                StringBuilder sb = new StringBuilder();
+                var tableTemplate22 = FileContentReader.PageTotalTableTemplate;
+                var rowTemplate22 = FileContentReader.PageTotalRowTemplate;
+                var landType = fe.Key.ToName();
 
-                var temData = pageTotalList.Skip(i * pageTotalrecordPerPage).Take(pageTotalrecordPerPage).ToList();
-
-                temData.ForEach(ff =>
+                for (int i = 0; i <= pageCount - 1; i++)
                 {
-                    dataRows = row.Replace("[pageNo]", ff.PageNo.ToString())
-                                          .Replace("[parappu]", ff.ParappuTotal)
-                                          .Replace("[theervai]", ff.TheervaiTotal.ToString());
+                    var tbl = tableTemplate22;
+                    var row = rowTemplate22;
+
+                    string dataRows = "";
+                    StringBuilder sb = new StringBuilder();
+
+                    var temData = pageTotalList.Skip(i * pageTotalrecordPerPage).Take(pageTotalrecordPerPage).ToList();
+
+                    temData.ForEach(ff =>
+                    {
+                        dataRows = row.Replace("[pageNo]", ff.PageNo.ToString())
+                                              .Replace("[parappu]", ff.ParappuTotal)
+                                              .Replace("[theervai]", ff.TheervaiTotal.ToString());
+
+                        sb.Append(dataRows);
+                    });
+
+                    var totalRows = row.Replace("[pageNo]", empty)
+                                              .Replace("[parappu]", GetSumThreeDotNo(temData.Select(s => s.ParappuTotal).ToList())
+                                              .Replace("[theervai]", temData.Sum(s => s.TheervaiTotal).ToString()));
 
                     sb.Append(dataRows);
-                });
 
-                var totalRows = row.Replace("[pageNo]", empty)
-                                          .Replace("[parappu]", GetSumThreeDotNo(temData.Select(s => s.ParappuTotal).ToList())
-                                          .Replace("[theervai]", temData.Sum(s => s.TheervaiTotal).ToString()));
+                    tbl = tbl.Replace("[datarows]", sb.ToString());
+                    tbl = tbl.Replace("[totalrow]", totalRows);
+                    tbl = tbl.Replace("[landtype]", landType);
+                    totalContent.Append(tbl);
+                }
 
-                sb.Append(dataRows);
+            });
 
-                tbl = tbl.Replace("[datarows]", sb.ToString());
-                tbl = tbl.Replace("[totalrow]", totalRows);
-
-                totalContent.Append(tbl);
-
-            }
-
-            return totalContent.ToString() ;
+            return totalContent.ToString();
         }
 
         List<PageTotal> pageTotalList = null;
@@ -1140,9 +1150,10 @@ namespace NTK_Support
             {
                 var pageCount = fe.ToList().Count / recordPerPage;
                 if (fe.ToList().Count % recordPerPage > 0) pageCount = pageCount + 1;
+                var landType = fe.Key.ToName();
 
-                //for (int i = 0; i <= pageCount - 1; i++)
-                for (int i = 0; i <= 2; i++)
+                for (int i = 0; i <= pageCount - 1; i++)
+                //for (int i = 0; i <= 2; i++)
                 {
                     var leftPage = tableTemplate22;
                     var rowTemplate = rowTemplate22;
@@ -1174,7 +1185,7 @@ namespace NTK_Support
 
                    
                     leftPage = leftPage.Replace("[totalrow]", total);
-                    leftPage = leftPage.Replace("[landtype]", Enum.GetName(typeof(LandType), fe.ToList()[0].LandType));
+                    leftPage = leftPage.Replace("[landtype]", landType);
 
                     allContent.Append(leftPage);
                     allContent.Append(GetRightEmptyPage()); // right page
