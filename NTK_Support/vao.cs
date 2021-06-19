@@ -45,10 +45,12 @@ namespace NTK_Support
 
         string firstPage;
         string leftEmpty;
-        string rightEmpty;
+        //string rightEmpty;
 
         string leftCertEmpty;
         string rightCertEmpty;
+
+        int pageNumber = 0;
 
 
         public vao()
@@ -79,7 +81,7 @@ namespace NTK_Support
 
             firstPage = FileContentReader.FirstPageTemplate;
             leftEmpty = GetLeftEmptyPage();
-            rightEmpty = GetRightEmptyPage();
+            //rightEmpty = GetRightEmptyPage();
             leftCertEmpty = FileContentReader.LeftPageCertTableTemplate;
             rightCertEmpty = FileContentReader.RightPageTableCertTemplate;
 
@@ -987,9 +989,21 @@ namespace NTK_Support
             
             leftPage = leftPage.Replace("[datarows]", sb.ToString());
             leftPage = leftPage.Replace("[totalrow]", total);
+            leftPage = leftPage.Replace("( [landtype] )", empty);
 
             return leftPage;
         }
+
+        
+        private string GetLeftCertPage()
+        {
+            var sb = new StringBuilder();
+            sb.Append(leftCertEmpty);
+            sb.Append(GetRightEmptyPage());
+            //pageNumber += 1;
+            return sb.ToString();
+        }
+
 
         private string GetRightEmptyPage()
         {
@@ -1000,37 +1014,25 @@ namespace NTK_Support
             var sb = new StringBuilder();
 
             for (int i = 1; i <= recordPerPage; i++)
-            {
                 sb.Append(rowTemplate);
-            }
 
             rightPage = rightPage.Replace("[datarows]", sb.ToString());
             rightPage = rightPage.Replace("[totalrow]", totalRowTemplate);
 
             pageNumber += 1;
+            rightPage = rightPage.Replace("[pageNo]", pageNumber.ToString());
 
             return rightPage;
         }
 
-        private string GetLeftCertPage()
-        {
-            var sb = new StringBuilder();
-            sb.Append(leftCertEmpty);
-            sb.Append(rightEmpty);
-            pageNumber += 1;
-            return sb.ToString();
-        }
-
         private string GetRightCertPage()
         {
+            pageNumber += 1;
             var sb = new StringBuilder();
             sb.Append(leftEmpty);
-            sb.Append(rightCertEmpty);
-            pageNumber += 1;
+            sb.Append(rightCertEmpty.Replace("[pageNo]", pageNumber.ToString()));
             return sb.ToString();
         }
-
-        int pageNumber = 0;
 
         private string GetInitialPages()
         {
@@ -1055,27 +1057,8 @@ namespace NTK_Support
             for (int i = 1; i <= pageCount; i++)
             {
                 sb.Append(leftEmpty);
-                sb.Append(rightEmpty);
-                pageNumber += 1;
-            }
-
-            return sb.ToString();
-
-        }
-
-        private string GetLeftCertPages(int pageCount)
-        {
-            
-
-            var leftEmpty = GetLeftEmptyPage();
-            var rightEmpty = GetRightEmptyPage();
-
-            var sb = new StringBuilder();
-
-            for (int i = 1; i <= pageCount; i++)
-            {
-                sb.Append(leftEmpty);
-                sb.Append(rightEmpty);
+                sb.Append(GetRightEmptyPage());
+                //pageNumber += 1;
             }
 
             return sb.ToString();
@@ -1191,6 +1174,7 @@ namespace NTK_Support
 
                    
                     leftPage = leftPage.Replace("[totalrow]", total);
+                    leftPage = leftPage.Replace("[landtype]", Enum.GetName(typeof(LandType), fe.ToList()[0].LandType));
 
                     allContent.Append(leftPage);
                     allContent.Append(GetRightEmptyPage()); // right page
