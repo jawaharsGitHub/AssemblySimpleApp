@@ -29,6 +29,7 @@ namespace NTK_Support
         string aRegContent = "";
 
         string empty = "";
+        string tamilMoththam = "மொத்தம்";
         int pageListRowNo = 24;
         bool forPageList = true;
         int rightPageNo = 6;
@@ -51,6 +52,9 @@ namespace NTK_Support
         string rightCertEmpty;
 
         int pageNumber = 0;
+        List<PageTotal> pageTotalList = null;
+        List<PageTotal> pageTotal2List = null;
+        List<PageTotal> pageTotal3List = null;
 
 
         public vao()
@@ -986,7 +990,7 @@ namespace NTK_Support
             }
 
             var total = totalRowTemplate.Replace("[moththaparappu]", empty).Replace("[moththatheervai]", empty);
-            
+
             leftPage = leftPage.Replace("[datarows]", sb.ToString());
             leftPage = leftPage.Replace("[totalrow]", total);
             leftPage = leftPage.Replace("( [landtype] )", empty);
@@ -994,7 +998,7 @@ namespace NTK_Support
             return leftPage;
         }
 
-        
+
         private string GetLeftCertPage()
         {
             var sb = new StringBuilder();
@@ -1065,11 +1069,11 @@ namespace NTK_Support
 
         }
 
-        private string GetPageTotal()
+        private string GetPageTotal(List<PageTotal> source, List<PageTotal> destination)
         {
             StringBuilder totalContent = new StringBuilder();
 
-            var landTypeGroup = (from wl in pageTotalList
+            var landTypeGroup = (from wl in source
                                  where wl.LandType != LandType.Other
                                  group wl by wl.LandType into newGrp
                                  select newGrp).ToList();
@@ -1077,8 +1081,10 @@ namespace NTK_Support
 
             landTypeGroup.ToList().ForEach(fe =>
             {
-                var pageCount = fe.ToList().Count / pageTotalrecordPerPage;
-                if (fe.ToList().Count % pageTotalrecordPerPage > 0) pageCount = pageCount + 1;
+                var dataToProcess = fe.ToList();
+
+                var pageCount = dataToProcess.Count / pageTotalrecordPerPage;
+                if (dataToProcess.Count % pageTotalrecordPerPage > 0) pageCount = pageCount + 1;
 
                 var tableTemplate22 = FileContentReader.PageTotalTableTemplate;
                 var rowTemplate22 = FileContentReader.PageTotalRowTemplate;
@@ -1086,28 +1092,35 @@ namespace NTK_Support
 
                 for (int i = 0; i <= pageCount - 1; i++)
                 {
+                    pageNumber += 1;
                     var tbl = tableTemplate22;
                     var row = rowTemplate22;
 
                     string dataRows = "";
                     StringBuilder sb = new StringBuilder();
 
-                    var temData = pageTotalList.Skip(i * pageTotalrecordPerPage).Take(pageTotalrecordPerPage).ToList();
+                    var temData = dataToProcess.Skip(i * pageTotalrecordPerPage).Take(pageTotalrecordPerPage).ToList();
 
                     temData.ForEach(ff =>
                     {
                         dataRows = row.Replace("[pageNo]", ff.PageNo.ToString())
                                               .Replace("[parappu]", ff.ParappuTotal)
                                               .Replace("[theervai]", ff.TheervaiTotal.ToString());
-
                         sb.Append(dataRows);
                     });
 
-                    var totalRows = row.Replace("[pageNo]", empty)
-                                              .Replace("[parappu]", GetSumThreeDotNo(temData.Select(s => s.ParappuTotal).ToList())
-                                              .Replace("[theervai]", temData.Sum(s => s.TheervaiTotal).ToString()));
+                    var totalRows = row.Replace("[pageNo]", tamilMoththam)
+                                              .Replace("[parappu]", GetSumThreeDotNo(temData.Select(s => s.ParappuTotal).ToList()))
+                                              .Replace("[theervai]", temData.Sum(s => s.TheervaiTotal).ToString());
+                    // Created a sub list item!
+                    destination.Add(new PageTotal()
+                    {
+                        ParappuTotal = GetSumThreeDotNo(temData.Select(s => s.ParappuTotal).ToList()),
+                        TheervaiTotal = temData.Sum(s => s.TheervaiTotal),
+                        LandType = fe.Key,
+                        PageNo = pageNumber
+                    });
 
-                    sb.Append(dataRows);
 
                     tbl = tbl.Replace("[datarows]", sb.ToString());
                     tbl = tbl.Replace("[totalrow]", totalRows);
@@ -1120,17 +1133,49 @@ namespace NTK_Support
             return totalContent.ToString();
         }
 
-        List<PageTotal> pageTotalList = null;
+        private string GetOverallTotal(List<PageTotal> source)
+        {
+            StringBuilder totalContent = new StringBuilder();
+
+           var tbl = FileContentReader.PageOverallTotalTableTemplate;
+           var row = FileContentReader.PageOverallTotalRowTemplate;
+            pageNumber += 1;
+            string dataRows = "";
+            StringBuilder sb = new StringBuilder();
+
+            source.ForEach(ff =>
+            {
+                dataRows = row.Replace("[vibaram]", ff.LandType.ToName())
+                                      .Replace("[parappu]", ff.ParappuTotal)
+                                      .Replace("[theervai]", ff.TheervaiTotal.ToString());
+                sb.Append(dataRows);
+            });
+
+            var totalRows = row.Replace("[pageNo]", tamilMoththam)
+                                      .Replace("[parappu]", GetSumThreeDotNo(source.Select(s => s.ParappuTotal).ToList()))
+                                      .Replace("[theervai]", source.Sum(s => s.TheervaiTotal).ToString());
+
+            tbl = tbl.Replace("[datarows]", sb.ToString());
+            tbl = tbl.Replace("[totalrow]", totalRows);
+            //tbl = tbl.Replace("[landtype]", landType);
+            totalContent.Append(tbl);
+            return totalContent.ToString();
+        }
+
+
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            pageTotalList = new List<PageTotal>();
+
             DirectoryInfo di = new DirectoryInfo(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates");
 
             foreach (FileInfo file in di.GetFiles())
                 file.Delete();
 
             StringBuilder allContent = new StringBuilder();
-            
+            pageTotalList = new List<PageTotal>();
+            pageTotal2List = new List<PageTotal>();
+            pageTotal3List = new List<PageTotal>();
+
 
             var mainHtml = FileContentReader.MainHtml;
             string initialPages = GetInitialPages();
@@ -1152,8 +1197,8 @@ namespace NTK_Support
                 if (fe.ToList().Count % recordPerPage > 0) pageCount = pageCount + 1;
                 var landType = fe.Key.ToName();
 
-                for (int i = 0; i <= pageCount - 1; i++)
-                //for (int i = 0; i <= 2; i++)
+                //for (int i = 0; i <= pageCount - 1; i++)
+                for (int i = 0; i <= 5; i++)
                 {
                     var leftPage = tableTemplate22;
                     var rowTemplate = rowTemplate22;
@@ -1183,7 +1228,7 @@ namespace NTK_Support
                     var totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai));
                     var total = totalTemplate.Replace("[moththaparappu]", totalparappu).Replace("[moththatheervai]", totalTheervai.ToString());
 
-                   
+
                     leftPage = leftPage.Replace("[totalrow]", total);
                     leftPage = leftPage.Replace("[landtype]", landType);
 
@@ -1194,14 +1239,19 @@ namespace NTK_Support
                     {
                         PageNo = pageNumber,
                         ParappuTotal = totalparappu,
-                        TheervaiTotal = totalTheervai
+                        TheervaiTotal = totalTheervai,
+                        LandType = fe.Key
                     });
                 }
             });
 
             allContent.Append(GetEmptyPages(4));  // add 4 empty pages.
 
-            allContent.Append(GetPageTotal());
+            allContent.Append(GetPageTotal(pageTotalList, pageTotal2List));
+
+            allContent.Append(GetPageTotal(pageTotal2List, pageTotal3List));
+
+            allContent.Append(GetOverallTotal(pageTotal3List));
 
             mainHtml = mainHtml.Replace("[allPageData]", allContent.ToString());
 

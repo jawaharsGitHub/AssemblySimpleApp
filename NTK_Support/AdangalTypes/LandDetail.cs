@@ -52,10 +52,8 @@ namespace NTK_Support.AdangalTypes
 
         public LandType LandType
         {
-
             get
             {
-
                 int i = 0;
                 LandType ld = LandType.Other;
 
