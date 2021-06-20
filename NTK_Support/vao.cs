@@ -1172,6 +1172,7 @@ namespace NTK_Support
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
+            pageNumber = 0;
 
             DirectoryInfo di = new DirectoryInfo(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates");
 
@@ -1208,8 +1209,8 @@ namespace NTK_Support
 
 
                 // FOR TETSING ONLY
-                int  testingPageNo = 6;
-                pageCount = pageCount >= testingPageNo ? testingPageNo : pageCount;
+                //int  testingPageNo = 6;
+                //pageCount = pageCount >= testingPageNo ? testingPageNo : pageCount;
                 // FOR TETSING ONLY
 
                 for (int i = 0; i <= pageCount - 1; i++)
@@ -1241,11 +1242,11 @@ namespace NTK_Support
                     var totalparappu = GetSumThreeDotNo(temData.Select(s => s.Parappu).ToList());
                     //var totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai));
 
-                    string totalTheervai = "";
+                    decimal totalTheervai = 0;
                     if (fe.Key != LandType.Porambokku)
-                        totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai)).ToString();
+                        totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai));
 
-                    var total = totalTemplate.Replace("[moththaparappu]", totalparappu).Replace("[moththatheervai]", totalTheervai);
+                    var total = totalTemplate.Replace("[moththaparappu]", totalparappu).Replace("[moththatheervai]", totalTheervai.ToString());
 
 
                     leftPage = leftPage.Replace("[totalrow]", total);
@@ -1258,7 +1259,7 @@ namespace NTK_Support
                     {
                         PageNo = pageNumber,
                         ParappuTotal = totalparappu,
-                        TheervaiTotal = Convert.ToDecimal(totalTheervai),
+                        TheervaiTotal = totalTheervai,
                         LandType = fe.Key
                     });
                 }
