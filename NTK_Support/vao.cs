@@ -1105,13 +1105,19 @@ namespace NTK_Support
                     {
                         dataRows = row.Replace("[pageNo]", ff.PageNo.ToString())
                                               .Replace("[parappu]", ff.ParappuTotal)
-                                              .Replace("[theervai]", ff.TheervaiTotal.ToString());
+                                              .Replace("[theervai]", (ff.TheervaiTotal == 0 ? "" : ff.TheervaiTotal.ToString()));
                         sb.Append(dataRows);
                     });
 
+                    string totalTheervai = "";
+
+                    if (fe.Key != LandType.Porambokku)
+                        totalTheervai = temData.Sum(s => s.TheervaiTotal).ToString();
+
                     var totalRows = row.Replace("[pageNo]", tamilMoththam)
                                               .Replace("[parappu]", GetSumThreeDotNo(temData.Select(s => s.ParappuTotal).ToList()))
-                                              .Replace("[theervai]", temData.Sum(s => s.TheervaiTotal).ToString());
+                                              .Replace("[theervai]", totalTheervai);
+
                     // Created a sub list item!
                     destination.Add(new PageTotal()
                     {
@@ -1125,6 +1131,7 @@ namespace NTK_Support
                     tbl = tbl.Replace("[datarows]", sb.ToString());
                     tbl = tbl.Replace("[totalrow]", totalRows);
                     tbl = tbl.Replace("[landtype]", landType);
+                    tbl = tbl.Replace("[pageNo]", pageNumber.ToString());
                     totalContent.Append(tbl);
                 }
 
@@ -1151,13 +1158,13 @@ namespace NTK_Support
                 sb.Append(dataRows);
             });
 
-            var totalRows = row.Replace("[pageNo]", tamilMoththam)
+            var totalRows = row.Replace("[vibaram]", tamilMoththam)
                                       .Replace("[parappu]", GetSumThreeDotNo(source.Select(s => s.ParappuTotal).ToList()))
                                       .Replace("[theervai]", source.Sum(s => s.TheervaiTotal).ToString());
 
             tbl = tbl.Replace("[datarows]", sb.ToString());
             tbl = tbl.Replace("[totalrow]", totalRows);
-            //tbl = tbl.Replace("[landtype]", landType);
+            tbl = tbl.Replace("[pageNo]", pageNumber.ToString());
             totalContent.Append(tbl);
             return totalContent.ToString();
         }
@@ -1193,12 +1200,19 @@ namespace NTK_Support
 
             landTypeGroup.ForEach(fe =>
             {
-                var pageCount = fe.ToList().Count / recordPerPage;
-                if (fe.ToList().Count % recordPerPage > 0) pageCount = pageCount + 1;
+                var dataToProcess = fe.ToList();
+
+                var pageCount = dataToProcess.Count / recordPerPage;
+                if (dataToProcess.Count % recordPerPage > 0) pageCount = pageCount + 1;
                 var landType = fe.Key.ToName();
 
-                //for (int i = 0; i <= pageCount - 1; i++)
-                for (int i = 0; i <= 5; i++)
+
+                // FOR TETSING ONLY
+                int  testingPageNo = 6;
+                pageCount = pageCount >= testingPageNo ? testingPageNo : pageCount;
+                // FOR TETSING ONLY
+
+                for (int i = 0; i <= pageCount - 1; i++)
                 {
                     var leftPage = tableTemplate22;
                     var rowTemplate = rowTemplate22;
@@ -1207,7 +1221,7 @@ namespace NTK_Support
                     string dataRows = "";
                     StringBuilder sb = new StringBuilder();
 
-                    var temData = fe.ToList().Skip(i * recordPerPage).Take(recordPerPage).ToList();
+                    var temData = dataToProcess.Skip(i * recordPerPage).Take(recordPerPage).ToList();
 
                     temData.ForEach(ff =>
                     {
@@ -1225,8 +1239,13 @@ namespace NTK_Support
 
                     //LEFT PAGE TOTAL
                     var totalparappu = GetSumThreeDotNo(temData.Select(s => s.Parappu).ToList());
-                    var totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai));
-                    var total = totalTemplate.Replace("[moththaparappu]", totalparappu).Replace("[moththatheervai]", totalTheervai.ToString());
+                    //var totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai));
+
+                    string totalTheervai = "";
+                    if (fe.Key != LandType.Porambokku)
+                        totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai)).ToString();
+
+                    var total = totalTemplate.Replace("[moththaparappu]", totalparappu).Replace("[moththatheervai]", totalTheervai);
 
 
                     leftPage = leftPage.Replace("[totalrow]", total);
@@ -1239,7 +1258,7 @@ namespace NTK_Support
                     {
                         PageNo = pageNumber,
                         ParappuTotal = totalparappu,
-                        TheervaiTotal = totalTheervai,
+                        TheervaiTotal = Convert.ToDecimal(totalTheervai),
                         LandType = fe.Key
                     });
                 }
