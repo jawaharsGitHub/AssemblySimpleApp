@@ -60,6 +60,7 @@ namespace NTK_Support
         public vao()
         {
             InitializeComponent();
+            BindDropdown(ddlDistrict, DataAccess.GetDistricts(), "Display", "Value");
 
             pattaList = new PattaList();
             relationTypes = new List<string>() {
@@ -92,6 +93,14 @@ namespace NTK_Support
             ProcessNames();
             ProcessChittaFile();
             ProcessAreg();
+        }
+               
+
+        private void BindDropdown(ComboBox cb, object dataSource, string DisplayMember, string ValueMember)
+        {
+            cb.DataSource = dataSource;
+            cb.DisplayMember = DisplayMember;
+            cb.ValueMember = ValueMember;
         }
 
         private void ProcessNames()
@@ -464,6 +473,7 @@ namespace NTK_Support
             ddlLandTypes.ValueMember = "Id";
 
             ddlLandTypes.DataSource = landTypeSource;
+
 
             if (fr.IsFullProcessed == false)
             {

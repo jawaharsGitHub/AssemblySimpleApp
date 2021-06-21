@@ -38,13 +38,15 @@
             this.btnGenerate = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
             this.btnSaveJson = new System.Windows.Forms.Button();
+            this.ddlDistrict = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(35, 12);
+            this.textBox1.Location = new System.Drawing.Point(508, 12);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(167, 56);
@@ -52,7 +54,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(226, 39);
+            this.button1.Location = new System.Drawing.Point(688, 42);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -62,17 +64,20 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(226, 12);
+            this.textBox2.Location = new System.Drawing.Point(684, 14);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 2;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(45, 105);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 117);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(743, 333);
+            this.dataGridView1.Size = new System.Drawing.Size(800, 333);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.DataSourceChanged += new System.EventHandler(this.dataGridView1_DataSourceChanged);
             // 
@@ -109,9 +114,9 @@
             // btnGenerate
             // 
             this.btnGenerate.Enabled = false;
-            this.btnGenerate.Location = new System.Drawing.Point(699, 22);
+            this.btnGenerate.Location = new System.Drawing.Point(663, 76);
             this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(75, 40);
+            this.btnGenerate.Size = new System.Drawing.Size(101, 23);
             this.btnGenerate.TabIndex = 7;
             this.btnGenerate.Text = "Generate Html";
             this.btnGenerate.UseVisualStyleBackColor = true;
@@ -120,7 +125,7 @@
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(436, 44);
+            this.lblMessage.Location = new System.Drawing.Point(306, 11);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(66, 13);
             this.lblMessage.TabIndex = 8;
@@ -137,11 +142,31 @@
             this.btnSaveJson.UseVisualStyleBackColor = true;
             this.btnSaveJson.Click += new System.EventHandler(this.button2_Click);
             // 
+            // ddlDistrict
+            // 
+            this.ddlDistrict.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlDistrict.FormattingEnabled = true;
+            this.ddlDistrict.Location = new System.Drawing.Point(26, 29);
+            this.ddlDistrict.Name = "ddlDistrict";
+            this.ddlDistrict.Size = new System.Drawing.Size(186, 21);
+            this.ddlDistrict.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(23, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "மாவட்டம்";
+            // 
             // vao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ddlDistrict);
             this.Controls.Add(this.btnSaveJson);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.btnGenerate);
@@ -172,5 +197,7 @@
         private System.Windows.Forms.Button btnGenerate;
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.Button btnSaveJson;
+        private System.Windows.Forms.ComboBox ddlDistrict;
+        private System.Windows.Forms.Label label1;
     }
 }

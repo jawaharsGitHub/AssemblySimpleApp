@@ -26,5 +26,14 @@ namespace NTK_Support
             return null;
         }
 
+        public static List<ComboData> GetDistricts()
+        {
+            var filePath = AppConfiguration.GetDynamicPath($"database/RevDistrict.json");
+
+            
+                return ReadFileAsObjects<ComboData>(filePath);
+            
+        }
+
     }
 }

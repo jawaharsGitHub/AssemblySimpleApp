@@ -112,6 +112,7 @@
     <Compile Include="FileContentReader.cs" />
     <Compile Include="General.cs" />
     <Compile Include="GlobalValue.cs" />
+    <Compile Include="ComboData.cs" />
     <Compile Include="KeyValue.cs" />
     <Compile Include="LogHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
