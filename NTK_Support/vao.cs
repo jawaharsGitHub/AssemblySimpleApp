@@ -1335,13 +1335,17 @@ namespace NTK_Support
 
         private void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=taluk&districtCode={ddlDistrict.SelectedValue}";
+            if (ddlDistrict.SelectedItem != null)
+            {
+                var selValue = ((ComboData)ddlDistrict.SelectedItem).Value;
 
-            var response = WebReader.CallHttpWebRequest(url);
-            string json = WebReader.xmlTojson(response);
+                
+                    var url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=taluk&districtCode={selValue}";
 
-
-
+                    var response = WebReader.CallHttpWebRequest(url);
+                    //string json = WebReader.xmlTojson(response);
+                    BindDropdown(cmbTaluk, WebReader.xmlToDynamic(response), "Display", "Value");
+            }
 
         }
     }
