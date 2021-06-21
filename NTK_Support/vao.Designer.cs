@@ -40,6 +40,7 @@
             this.btnSaveJson = new System.Windows.Forms.Button();
             this.ddlDistrict = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnStatusCheck = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,10 +75,10 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 117);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 149);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(800, 333);
+            this.dataGridView1.Size = new System.Drawing.Size(776, 301);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.DataSourceChanged += new System.EventHandler(this.dataGridView1_DataSourceChanged);
             // 
@@ -85,7 +86,7 @@
             // 
             this.ddlPattaTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlPattaTypes.FormattingEnabled = true;
-            this.ddlPattaTypes.Location = new System.Drawing.Point(45, 78);
+            this.ddlPattaTypes.Location = new System.Drawing.Point(12, 89);
             this.ddlPattaTypes.Name = "ddlPattaTypes";
             this.ddlPattaTypes.Size = new System.Drawing.Size(186, 21);
             this.ddlPattaTypes.TabIndex = 4;
@@ -95,7 +96,7 @@
             // 
             this.ddlListType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlListType.FormattingEnabled = true;
-            this.ddlListType.Location = new System.Drawing.Point(401, 78);
+            this.ddlListType.Location = new System.Drawing.Point(379, 89);
             this.ddlListType.Name = "ddlListType";
             this.ddlListType.Size = new System.Drawing.Size(121, 21);
             this.ddlListType.TabIndex = 5;
@@ -105,7 +106,7 @@
             // 
             this.ddlLandTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlLandTypes.FormattingEnabled = true;
-            this.ddlLandTypes.Location = new System.Drawing.Point(251, 80);
+            this.ddlLandTypes.Location = new System.Drawing.Point(225, 89);
             this.ddlLandTypes.Name = "ddlLandTypes";
             this.ddlLandTypes.Size = new System.Drawing.Size(121, 21);
             this.ddlLandTypes.TabIndex = 6;
@@ -114,7 +115,7 @@
             // btnGenerate
             // 
             this.btnGenerate.Enabled = false;
-            this.btnGenerate.Location = new System.Drawing.Point(663, 76);
+            this.btnGenerate.Location = new System.Drawing.Point(634, 111);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(101, 23);
             this.btnGenerate.TabIndex = 7;
@@ -134,7 +135,7 @@
             // btnSaveJson
             // 
             this.btnSaveJson.Enabled = false;
-            this.btnSaveJson.Location = new System.Drawing.Point(535, 76);
+            this.btnSaveJson.Location = new System.Drawing.Point(531, 111);
             this.btnSaveJson.Name = "btnSaveJson";
             this.btnSaveJson.Size = new System.Drawing.Size(87, 23);
             this.btnSaveJson.TabIndex = 9;
@@ -160,11 +161,22 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "மாவட்டம்";
             // 
+            // btnStatusCheck
+            // 
+            this.btnStatusCheck.Enabled = false;
+            this.btnStatusCheck.Location = new System.Drawing.Point(278, 29);
+            this.btnStatusCheck.Name = "btnStatusCheck";
+            this.btnStatusCheck.Size = new System.Drawing.Size(128, 40);
+            this.btnStatusCheck.TabIndex = 12;
+            this.btnStatusCheck.Text = "status";
+            this.btnStatusCheck.UseVisualStyleBackColor = true;
+            // 
             // vao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnStatusCheck);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ddlDistrict);
             this.Controls.Add(this.btnSaveJson);
@@ -178,7 +190,9 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Name = "vao";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "vao";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -199,5 +213,6 @@
         private System.Windows.Forms.Button btnSaveJson;
         private System.Windows.Forms.ComboBox ddlDistrict;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnStatusCheck;
     }
 }

@@ -443,36 +443,42 @@ namespace NTK_Support
             FinalReport fr = new FinalReport(pattaList);
             var result = fr.ToString();
 
-            ddlPattaTypes.DataSource = fr.CountData;
-            ddlPattaTypes.DisplayMember = "DisplayMember";
-            ddlPattaTypes.ValueMember = "Id";
+            //ddlPattaTypes.DataSource = fr.CountData;
+            //ddlPattaTypes.DisplayMember = "DisplayMember";
+            //ddlPattaTypes.ValueMember = "Id";
 
-            ddlListType.DataSource = new List<KeyValue> {
-                new KeyValue() { Id = 1, Caption = "PATTA" },
-                new KeyValue() { Id = 2, Caption = "LANDDETAIL" },
-                new KeyValue() { Id = 3, Caption = "ADANGAL" }
-            };
+            BindDropdown(ddlPattaTypes, fr.CountData, "DisplayMember", "Id");
 
-            ddlListType.DisplayMember = "Caption";
-            ddlListType.ValueMember = "Id";
+            //ddlListType.DataSource = new List<KeyValue> {
+            //    new KeyValue() { Id = 1, Caption = "PATTA" },
+            //    new KeyValue() { Id = 2, Caption = "LANDDETAIL" },
+            //    new KeyValue() { Id = 3, Caption = "ADANGAL" }
+            //};
 
-            var landTypeSource = new List<KeyValue>();
+            //ddlListType.DisplayMember = "Caption";
+            //ddlListType.ValueMember = "Id";
 
-            landTypeSource.Add(new KeyValue() { Caption = "ALL", Id = -1 });
-            foreach (LandType rt in Enum.GetValues(typeof(LandType)))
-            {
+            BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
 
-                landTypeSource.Add(new KeyValue()
-                {
-                    Caption = Enum.GetName(typeof(LandType), rt),
-                    Id = (int)rt
-                });
-            }
+            //var landTypeSource = new List<KeyValue>();
 
-            ddlLandTypes.DisplayMember = "Caption";
-            ddlLandTypes.ValueMember = "Id";
+            //landTypeSource.Add(new KeyValue() { Caption = "ALL", Id = -1 });
+            //foreach (LandType rt in Enum.GetValues(typeof(LandType)))
+            //{
 
-            ddlLandTypes.DataSource = landTypeSource;
+            //    landTypeSource.Add(new KeyValue()
+            //    {
+            //        Caption = Enum.GetName(typeof(LandType), rt),
+            //        Id = (int)rt
+            //    });
+            //}
+
+            //ddlLandTypes.DisplayMember = "Caption";
+            //ddlLandTypes.ValueMember = "Id";
+
+            //ddlLandTypes.DataSource = landTypeSource;
+
+            BindDropdown(ddlLandTypes, GetLandTypes(), "Caption", "Id");
 
 
             if (fr.IsFullProcessed == false)
@@ -519,6 +525,32 @@ namespace NTK_Support
         //        // if already have initial then ignore.
         //    }
 
+        private List<KeyValue> GetListTypes()
+        {
+            return new List<KeyValue> {
+                new KeyValue() { Id = 1, Caption = "PATTA" },
+                new KeyValue() { Id = 2, Caption = "LANDDETAIL" },
+                new KeyValue() { Id = 3, Caption = "ADANGAL" }
+            };
+
+        }
+        private List<KeyValue> GetLandTypes()
+        {
+            var landTypeSource = new List<KeyValue>();
+
+            landTypeSource.Add(new KeyValue() { Caption = "ALL", Id = -1 });
+            foreach (LandType rt in Enum.GetValues(typeof(LandType)))
+            {
+
+                landTypeSource.Add(new KeyValue()
+                {
+                    Caption = Enum.GetName(typeof(LandType), rt),
+                    Id = (int)rt
+                });
+            }
+
+            return landTypeSource;
+        }
         private string ApplyUnicode(string name)
         {
             return "";
