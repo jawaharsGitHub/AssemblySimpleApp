@@ -1281,7 +1281,13 @@ namespace NTK_Support
         private void dataGridView1_DataSourceChanged(object sender, EventArgs e)
         {
             lblMessage.Text = $"Record Count: {dataGridView1.Rows.Count} ";
-            btnGenerate.Enabled = (ddlListType.SelectedValue.ToInt32() == 3);
+            btnGenerate.Enabled = btnSaveJson.Enabled = (ddlListType.SelectedValue.ToInt32() == 3);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var d = DataAccess.GetAdangal(1,2,3, AdangalList);
+
         }
     }
 }

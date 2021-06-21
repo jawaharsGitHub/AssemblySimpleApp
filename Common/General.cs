@@ -62,13 +62,15 @@ namespace Common
             }
         }
 
-        public static string GetDataFolder(string oldValue, string newValue)
+        public static string GetDataFolder(string dataAccessPath)
         {
             string exeFile = (new Uri(Assembly.GetEntryAssembly().CodeBase)).AbsolutePath;
             string exeDir = Path.GetDirectoryName(exeFile);
             //string dataFolder = exeDir.Replace("AssemblyApp\\bin\\Debug", newValue);  
 
-            string dataFolder = exeDir.Replace("NTK_Support\\bin\\Debug", newValue);
+            var projectName = new FileInfo(exeFile).Name.Split('.')[0];
+
+            string dataFolder = exeDir.Replace($"{projectName}\\bin\\Debug", dataAccessPath);
 
             return dataFolder;
         }

@@ -24,7 +24,7 @@ namespace CenturyFinCorpApp
 
             Thread.CurrentThread.CurrentCulture = myCI;
 
-            var dataFolder = General.GetDataFolder("AssemblyApp\\bin\\Debug", "DataAccess\\Data\\");
+            var dataFolder = General.GetDataFolder("DataAccess\\Data\\");
 
             if (AppConfiguration.AddOrUpdateAppSettings("SourceFolder", dataFolder))
             {

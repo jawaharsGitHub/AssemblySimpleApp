@@ -37,6 +37,7 @@
             this.ddlLandTypes = new System.Windows.Forms.ComboBox();
             this.btnGenerate = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
+            this.btnSaveJson = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,22 +47,22 @@
             this.textBox1.Location = new System.Drawing.Point(35, 12);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(372, 56);
+            this.textBox1.Size = new System.Drawing.Size(167, 56);
             this.textBox1.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(519, 5);
+            this.button1.Location = new System.Drawing.Point(226, 39);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
+            this.button1.Text = "Test Sum";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(413, 8);
+            this.textBox2.Location = new System.Drawing.Point(226, 12);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 2;
@@ -79,7 +80,7 @@
             // 
             this.ddlPattaTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlPattaTypes.FormattingEnabled = true;
-            this.ddlPattaTypes.Location = new System.Drawing.Point(257, 74);
+            this.ddlPattaTypes.Location = new System.Drawing.Point(45, 78);
             this.ddlPattaTypes.Name = "ddlPattaTypes";
             this.ddlPattaTypes.Size = new System.Drawing.Size(186, 21);
             this.ddlPattaTypes.TabIndex = 4;
@@ -89,7 +90,7 @@
             // 
             this.ddlListType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlListType.FormattingEnabled = true;
-            this.ddlListType.Location = new System.Drawing.Point(473, 74);
+            this.ddlListType.Location = new System.Drawing.Point(401, 78);
             this.ddlListType.Name = "ddlListType";
             this.ddlListType.Size = new System.Drawing.Size(121, 21);
             this.ddlListType.TabIndex = 5;
@@ -99,7 +100,7 @@
             // 
             this.ddlLandTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlLandTypes.FormattingEnabled = true;
-            this.ddlLandTypes.Location = new System.Drawing.Point(620, 74);
+            this.ddlLandTypes.Location = new System.Drawing.Point(251, 80);
             this.ddlLandTypes.Name = "ddlLandTypes";
             this.ddlLandTypes.Size = new System.Drawing.Size(121, 21);
             this.ddlLandTypes.TabIndex = 6;
@@ -108,9 +109,9 @@
             // btnGenerate
             // 
             this.btnGenerate.Enabled = false;
-            this.btnGenerate.Location = new System.Drawing.Point(652, 22);
+            this.btnGenerate.Location = new System.Drawing.Point(699, 22);
             this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(75, 23);
+            this.btnGenerate.Size = new System.Drawing.Size(75, 40);
             this.btnGenerate.TabIndex = 7;
             this.btnGenerate.Text = "Generate Html";
             this.btnGenerate.UseVisualStyleBackColor = true;
@@ -121,15 +122,27 @@
             this.lblMessage.AutoSize = true;
             this.lblMessage.Location = new System.Drawing.Point(436, 44);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(35, 13);
+            this.lblMessage.Size = new System.Drawing.Size(66, 13);
             this.lblMessage.TabIndex = 8;
-            this.lblMessage.Text = "label1";
+            this.lblMessage.Text = "[lblMessage]";
+            // 
+            // btnSaveJson
+            // 
+            this.btnSaveJson.Enabled = false;
+            this.btnSaveJson.Location = new System.Drawing.Point(535, 76);
+            this.btnSaveJson.Name = "btnSaveJson";
+            this.btnSaveJson.Size = new System.Drawing.Size(87, 23);
+            this.btnSaveJson.TabIndex = 9;
+            this.btnSaveJson.Text = "Save as JSON";
+            this.btnSaveJson.UseVisualStyleBackColor = true;
+            this.btnSaveJson.Click += new System.EventHandler(this.button2_Click);
             // 
             // vao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSaveJson);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.ddlLandTypes);
@@ -158,5 +171,6 @@
         private System.Windows.Forms.ComboBox ddlLandTypes;
         private System.Windows.Forms.Button btnGenerate;
         private System.Windows.Forms.Label lblMessage;
+        private System.Windows.Forms.Button btnSaveJson;
     }
 }

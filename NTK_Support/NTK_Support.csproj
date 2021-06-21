@@ -75,6 +75,7 @@
     <Compile Include="AlphaNumericSort.cs" />
     <Content Include="AdangalHtmlTemplates\LandDetail.html" />
     <Content Include="Class1.txt" />
+    <Compile Include="DataAccess.cs" />
     <Compile Include="DocxToText.cs" />
     <Compile Include="DocxToTxt.cs">
       <SubType>Form</SubType>
@@ -149,6 +150,9 @@
       <Project>{3B50D786-0B24-4845-889E-9439E55B8D91}</Project>
       <Name>Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="json\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -59,10 +59,18 @@ namespace Common
 
         public static string AssemblyVotersFolder { get { return GetFullPath("AssemblyVotersFolder"); } }
 
+
         private static string GetFullPath(string configKey)
         {
             if (ConfigurationManager.AppSettings[configKey] == null) return null;
             return Path.Combine(ConfigurationManager.AppSettings["SourceFolder"], ConfigurationManager.AppSettings[configKey]);
+
+        }
+
+        public static string GetDynamicPath(string fullPath)
+        {
+            //if (ConfigurationManager.AppSettings[configKey] == null) return null;
+            return Path.Combine(ConfigurationManager.AppSettings["SourceFolder"], fullPath);
 
         }
 

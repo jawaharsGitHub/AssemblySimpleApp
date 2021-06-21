@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,7 +19,15 @@ namespace NTK_Support
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form20Analysis());
             //Application.Run(new DocxToTxt());
-            Application.Run(new vao());
+
+            var dataFolder = General.GetDataFolder("NTK_Support\\json\\");
+
+            if (AppConfiguration.AddOrUpdateAppSettings("SourceFolder", dataFolder))
+            {
+                Application.Run(new vao());
+
+            }
+            
         }
     }
 }

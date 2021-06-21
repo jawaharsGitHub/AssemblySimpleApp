@@ -42,7 +42,7 @@ namespace Common
         {
             // var dataFolder = General.GetDataFolder("AssemblySimpleApp\\bin\\Debug", "Common\\HTMLTemplate\\");
 
-            var dataFolder = General.GetDataFolder("NTK_support\\bin\\Debug", "Common\\HTMLTemplate\\");
+            var dataFolder = General.GetDataFolder("Common\\HTMLTemplate\\");
             return File.ReadAllText($"{dataFolder}{fileName}");
         }
 
