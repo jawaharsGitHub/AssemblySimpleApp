@@ -14,6 +14,7 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace NTK_Support
 {
@@ -1329,6 +1330,18 @@ namespace NTK_Support
         private void button2_Click(object sender, EventArgs e)
         {
             var d = DataAccess.GetAdangal(1,2,3, AdangalList);
+
+        }
+
+        private void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=taluk&districtCode={ddlDistrict.SelectedValue}";
+
+            var response = WebReader.CallHttpWebRequest(url);
+            string json = WebReader.xmlTojson(response);
+
+
+
 
         }
     }

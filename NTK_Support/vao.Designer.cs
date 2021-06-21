@@ -41,6 +41,10 @@
             this.ddlDistrict = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnStatusCheck = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbTaluk = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbVillages = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,7 +90,7 @@
             // 
             this.ddlPattaTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlPattaTypes.FormattingEnabled = true;
-            this.ddlPattaTypes.Location = new System.Drawing.Point(12, 89);
+            this.ddlPattaTypes.Location = new System.Drawing.Point(12, 103);
             this.ddlPattaTypes.Name = "ddlPattaTypes";
             this.ddlPattaTypes.Size = new System.Drawing.Size(186, 21);
             this.ddlPattaTypes.TabIndex = 4;
@@ -96,7 +100,7 @@
             // 
             this.ddlListType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlListType.FormattingEnabled = true;
-            this.ddlListType.Location = new System.Drawing.Point(379, 89);
+            this.ddlListType.Location = new System.Drawing.Point(379, 103);
             this.ddlListType.Name = "ddlListType";
             this.ddlListType.Size = new System.Drawing.Size(121, 21);
             this.ddlListType.TabIndex = 5;
@@ -106,7 +110,7 @@
             // 
             this.ddlLandTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlLandTypes.FormattingEnabled = true;
-            this.ddlLandTypes.Location = new System.Drawing.Point(225, 89);
+            this.ddlLandTypes.Location = new System.Drawing.Point(225, 103);
             this.ddlLandTypes.Name = "ddlLandTypes";
             this.ddlLandTypes.Size = new System.Drawing.Size(121, 21);
             this.ddlLandTypes.TabIndex = 6;
@@ -126,7 +130,7 @@
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(306, 11);
+            this.lblMessage.Location = new System.Drawing.Point(146, 133);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(66, 13);
             this.lblMessage.TabIndex = 8;
@@ -151,6 +155,7 @@
             this.ddlDistrict.Name = "ddlDistrict";
             this.ddlDistrict.Size = new System.Drawing.Size(186, 21);
             this.ddlDistrict.TabIndex = 10;
+            this.ddlDistrict.SelectedIndexChanged += new System.EventHandler(this.ddlDistrict_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -164,18 +169,58 @@
             // btnStatusCheck
             // 
             this.btnStatusCheck.Enabled = false;
-            this.btnStatusCheck.Location = new System.Drawing.Point(278, 29);
+            this.btnStatusCheck.Location = new System.Drawing.Point(520, 72);
             this.btnStatusCheck.Name = "btnStatusCheck";
-            this.btnStatusCheck.Size = new System.Drawing.Size(128, 40);
+            this.btnStatusCheck.Size = new System.Drawing.Size(128, 36);
             this.btnStatusCheck.TabIndex = 12;
             this.btnStatusCheck.Text = "status";
             this.btnStatusCheck.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(23, 52);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "வட்டம்";
+            // 
+            // cmbTaluk
+            // 
+            this.cmbTaluk.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTaluk.FormattingEnabled = true;
+            this.cmbTaluk.Location = new System.Drawing.Point(26, 70);
+            this.cmbTaluk.Name = "cmbTaluk";
+            this.cmbTaluk.Size = new System.Drawing.Size(186, 21);
+            this.cmbTaluk.TabIndex = 13;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(264, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(112, 13);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "வருவாய் கிராமம்";
+            // 
+            // cmbVillages
+            // 
+            this.cmbVillages.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbVillages.FormattingEnabled = true;
+            this.cmbVillages.Location = new System.Drawing.Point(263, 47);
+            this.cmbVillages.Name = "cmbVillages";
+            this.cmbVillages.Size = new System.Drawing.Size(225, 21);
+            this.cmbVillages.TabIndex = 15;
             // 
             // vao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cmbVillages);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmbTaluk);
             this.Controls.Add(this.btnStatusCheck);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ddlDistrict);
@@ -214,5 +259,9 @@
         private System.Windows.Forms.ComboBox ddlDistrict;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnStatusCheck;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbTaluk;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbVillages;
     }
 }
