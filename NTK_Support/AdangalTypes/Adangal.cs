@@ -15,5 +15,10 @@ namespace NTK_Support.AdangalTypes
         public string Anupathaarar { get; set; }
         public string OwnerName { get; set; }
         public LandType LandType { get; set; }
+
+        public bool IsFullfilled { get {
+                return string.IsNullOrEmpty(UtpirivuEn);
+                    } 
+        }
     }
 }

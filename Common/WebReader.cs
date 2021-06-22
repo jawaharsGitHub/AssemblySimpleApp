@@ -16,7 +16,7 @@ namespace Common
 
         public static string CallHttpWebRequest(string URL)
         {
-
+            if (General.CheckForInternetConnection() == false) return null;
             string sAddress = URL;
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(sAddress);
             req.Accept = "text/xml,text/plain,text/html";
@@ -41,61 +41,71 @@ namespace Common
         }
 
 
-        public static List<ComboData> xmlToDynamic(string xml, string key, bool isSimple = false)
+        public static List<ComboData> xmlToDynamic(string xml, string key)
         {
             try
             {
                 List<ComboData> data = new List<ComboData>();
                 dynamic taluks = JObject.Parse(xmlTojson(xml));
 
-                if((((JObject)taluks["root"])["flag"]).ToString() == "false")
+               var d = ((JArray)taluks["root"][key]).ToList();
+
+                for (int i = 0; i <= d.Count - 1; i++)
+                {
+                    //var tc = ((JObject)d[i])["talukcode"];
+                    //var tn = ((JObject)d[i])["talukname"];
+
+                    data.Add(new ComboData()
+                    {
+                        Value = Convert.ToInt32((((JObject)d[i])[key + "code"]).ToString()),
+                        Display = (((JObject)(((JObject)d[i])[key + "name"]))["#cdata-section"]).ToString().Trim()
+                    });
+                }
+
+                data.Insert(0,new ComboData() { Value = -1, Display = "--select--" });
+                return data;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public static List<string> GetSubdivisions(string xml, string key)
+        {
+            try
+            {
+                List<string> subdivisions = new List<string>();
+                dynamic taluks = JObject.Parse(xmlTojson(xml));
+
+                if ((((JObject)taluks["root"])["flag"]).ToString() == "false")
                 {
                     return null;
                 }
 
-                List<JToken> d = null;
-                try
+                List<JToken> d = new List<JToken>();
+
+                var isFullfilled = (taluks["root"][key]).ToString().Contains("-");
+
+                if (isFullfilled)
+                    return new List<string>() { "" };
+
+                if (((JContainer)taluks["root"][key]).Count > 1)
                 {
                     d = ((JArray)taluks["root"][key]).ToList();
                 }
-                catch (Exception)
+                else if (((JContainer)taluks["root"][key]).Count == 1)
                 {
-
-                    
-                }
-                 
-
-                if (isSimple)
-                {
-                    for (int i = 0; i < d.Count - 1; i++)
-                    {
-                        //var tc = ((JObject)d[i])["talukcode"];
-                        //var tn = ((JObject)d[i])["talukname"];
-
-                        data.Add(new ComboData()
-                        {
-                            Display = (((JObject)d[i])[key + "code"]).ToString(),
-                            //Display = isSimple ? "" : (((JObject)(((JObject)d[i])[key + "name"]))["#cdata-section"]).ToString().Trim()
-                        });
-                    }
-
-                }
-                else
-                {
-                    for (int i = 0; i < d.Count - 1; i++)
-                    {
-                        //var tc = ((JObject)d[i])["talukcode"];
-                        //var tn = ((JObject)d[i])["talukname"];
-
-                        data.Add(new ComboData()
-                        {
-                            Value = Convert.ToInt32((((JObject)d[i])[key + "code"]).ToString()),
-                            Display = (((JObject)(((JObject)d[i])[key + "name"]))["#cdata-section"]).ToString().Trim()
-                        });
-                    }
+                    d.Add(((JObject)taluks["root"][key]));
                 }
 
-                    return data;
+
+                for (int i = 0; i <= d.Count - 1; i++)
+                    subdivisions.Add((((JObject)d[i])[key + "code"]).ToString());
+
+                return subdivisions;
 
             }
             catch (Exception ex)

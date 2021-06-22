@@ -63,39 +63,9 @@ namespace NTK_Support
             InitializeComponent();
             BindDropdown(ddlDistrict, DataAccess.GetDistricts(), "Display", "Value");
 
-            pattaList = new PattaList();
-            relationTypes = new List<string>() {
-                "தந்தைத",
-                "கணவன",
-                "காப்பாளர்",
-                "மைகன",
-                "மைைனவி"
-            };
 
-            if (isProductionTest)
-            {
-                chittaFile = @"F:\TN GOV\VANITHA\Vaidehi-Vao\reg data\Chitta_Report-1.pdf";
-                aRegFile = @"F:\TN GOV\VANITHA\Vaidehi-Vao\reg data\Areg_Report-1.pdf";
-                chittaContent = chittaFile.GetPdfContent();
-                aRegContent = aRegFile.GetPdfContent();
-            }
-            else
-            {
-                chittaFile = @"F:\TN GOV\VANITHA\Vaidehi-Vao\reg data\Chitta_Report-1.txt";
-                chittaContent = File.ReadAllText(chittaFile);
-            }
-
-            firstPage = FileContentReader.FirstPageTemplate;
-            leftEmpty = GetLeftEmptyPage();
-            //rightEmpty = GetRightEmptyPage();
-            leftCertEmpty = FileContentReader.LeftPageCertTableTemplate;
-            rightCertEmpty = FileContentReader.RightPageTableCertTemplate;
-
-            ProcessNames();
-            ProcessChittaFile();
-            ProcessAreg();
         }
-               
+
 
         private void BindDropdown(ComboBox cb, object dataSource, string DisplayMember, string ValueMember)
         {
@@ -227,6 +197,12 @@ namespace NTK_Support
 
             var pattaas = chittaContent.Replace("பட்டா எண்", "$");
             var data = pattaas.Split('$').ToList();
+
+
+            if (DialogResult.No == MessageBox.Show($"{data.First().Split(':')[3].Trim()} village?", "Confirm", MessageBoxButtons.YesNo))
+                return;
+
+
             data.RemoveAt(0); // first is empty data
 
             List<ChittaData> cds = new List<ChittaData>();
@@ -234,6 +210,8 @@ namespace NTK_Support
             List<string> brkData;
             List<string> nonBkData;
             pattaList = new PattaList();
+
+
 
             for (int i = 0; i <= data.Count - 1; i++)
             {
@@ -692,12 +670,14 @@ namespace NTK_Support
             {
                 for (int mi = 0; mi <= memberData.Count; mi++)
                 {
+                    if (memberData.Count < (mi + 1)) break; // last rec is break record!. what about prev is break rec?
+
                     var isLastRecord = memberData.Count == (mi + 1); // last record
 
                     if (isLastRecord)
                     {
-                        if (!isPrevBkrec)
-                            nonBkData.Add(memberData[mi]);
+                        //if (!isPrevBkrec)
+                        nonBkData.Add(memberData[mi]);
 
                         done = true;
                         break;
@@ -717,8 +697,9 @@ namespace NTK_Support
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return (done, brkData, nonBkData); ;
             }
 
@@ -964,7 +945,8 @@ namespace NTK_Support
 
         private void ddlListType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selected = ddlListType.SelectedValue.ToInt32();
+            var selected = ((KeyValue)ddlListType.SelectedItem).Id;
+            //ddlListType.SelectedValue.ToInt32();
 
             if (selected == 1)
                 dataGridView1.DataSource = pattaList;
@@ -989,6 +971,7 @@ namespace NTK_Support
 
                 AdangalList.AddRange(PurambokkuAdangalList);
                 dataGridView1.DataSource = AdangalList;
+                EnableReady();
 
             }
         }
@@ -1006,10 +989,13 @@ namespace NTK_Support
 
         private void ddlLandTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlLandTypes.SelectedValue.ToInt32() == -1)
-                dataGridView1.DataSource = AdangalList.OrderBy(o => o.NilaAlavaiEn).ToList();
-            else
-                dataGridView1.DataSource = AdangalList.Where(w => (int)w.LandType == ddlLandTypes.SelectedValue.ToInt32()).OrderBy(o => o.NilaAlavaiEn).ToList();
+            if (AdangalList != null)
+            {
+                if (((KeyValue)ddlLandTypes.SelectedItem).Id == -1)
+                    dataGridView1.DataSource = AdangalList.OrderBy(o => o.NilaAlavaiEn).ToList();
+                else
+                    dataGridView1.DataSource = AdangalList.Where(w => (int)w.LandType == ddlLandTypes.SelectedValue.ToInt32()).OrderBy(o => o.NilaAlavaiEn).ToList();
+            }
         }
 
 
@@ -1187,8 +1173,8 @@ namespace NTK_Support
         {
             StringBuilder totalContent = new StringBuilder();
 
-           var tbl = FileContentReader.PageOverallTotalTableTemplate;
-           var row = FileContentReader.PageOverallTotalRowTemplate;
+            var tbl = FileContentReader.PageOverallTotalTableTemplate;
+            var row = FileContentReader.PageOverallTotalRowTemplate;
             pageNumber += 1;
             string dataRows = "";
             StringBuilder sb = new StringBuilder();
@@ -1324,32 +1310,45 @@ namespace NTK_Support
         private void dataGridView1_DataSourceChanged(object sender, EventArgs e)
         {
             lblMessage.Text = $"Record Count: {dataGridView1.Rows.Count} ";
-            btnGenerate.Enabled = btnSaveJson.Enabled = (ddlListType.SelectedValue.ToInt32() == 3);
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var d = DataAccess.GetAdangal(1,2,3, AdangalList);
+            var d = DataAccess.GetAdangal(1, 2, 3, AdangalList);
 
         }
 
         private void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (General.CheckForInternetConnection() == false)
+            {
+                MessageBox.Show("No Internet Connection!");
+                return;
+            }
+
             if (ddlDistrict.SelectedItem != null)
             {
                 var selValue = ((ComboData)ddlDistrict.SelectedItem).Value;
 
-                
-                    var url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=taluk&districtCode={selValue}";
 
-                    var response = WebReader.CallHttpWebRequest(url);
-                    BindDropdown(cmbTaluk, WebReader.xmlToDynamic(response, "taluk"), "Display", "Value");
+                var url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=taluk&districtCode={selValue}";
+
+                var response = WebReader.CallHttpWebRequest(url);
+
+                BindDropdown(cmbTaluk, WebReader.xmlToDynamic(response, "taluk"), "Display", "Value");
+                cmbTaluk.SelectedIndexChanged += new System.EventHandler(this.cmbTaluk_SelectedIndexChanged);
             }
 
         }
 
         private void cmbTaluk_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (General.CheckForInternetConnection() == false)
+            {
+                MessageBox.Show("No Internet Connection!");
+                return;
+            }
             if (ddlDistrict.SelectedItem != null)
             {
                 var disValue = ((ComboData)ddlDistrict.SelectedItem).Value;
@@ -1358,13 +1357,62 @@ namespace NTK_Support
                 var url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=village&districtCode={disValue}&&talukCode={talValue}";
 
                 var response = WebReader.CallHttpWebRequest(url);
+
                 BindDropdown(cmbVillages, WebReader.xmlToDynamic(response, "village"), "Display", "Value");
+                cmbVillages.SelectedIndexChanged += new System.EventHandler(this.cmbVillages_SelectedIndexChanged);
             }
 
         }
 
         private void cmbVillages_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+
+        }
+
+        private void vao_Load(object sender, EventArgs e)
+        {
+            ddlDistrict.SelectedIndexChanged += new System.EventHandler(this.ddlDistrict_SelectedIndexChanged);
+
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            // Gets the expected land details count.
+
+            if (General.CheckForInternetConnection() == false)
+            {
+                MessageBox.Show("No Internet Connection!");
+                return;
+            }
+
+            var adangals = AdangalList.Where(w => w.LandType != LandType.Other);
+            var onlineData = GetLandCount();
+
+            var expLandDetails = (onlineData
+                                .OrderBy(o => o.Value)
+                                .ThenBy(o => o.Caption, new AlphanumericComparer())
+                                .Select(s => (s.Value.ToString().Trim() + "-" + s.Caption.Trim()).Trim())).ToList();
+
+
+            var actualLandDetails = (adangals
+                                    .OrderBy(o => o.NilaAlavaiEn)
+                                    .ThenBy(o => o.UtpirivuEn, new AlphanumericComparer())
+                                    .Select(s => (s.NilaAlavaiEn.ToString().Trim() + "-" + s.UtpirivuEn.Trim()).Trim())).ToList();
+
+            var notInPdf = expLandDetails.Except(actualLandDetails).ToList(); 
+            var notinOnline = actualLandDetails.Except(expLandDetails).ToList();
+
+
+
+        }
+
+
+        private List<KeyValue> GetLandCount()
+        {
+            var totalLandList = new List<KeyValue>();
+
             if (cmbVillages.SelectedItem != null)
             {
                 var disValue = ((ComboData)ddlDistrict.SelectedItem).Value;
@@ -1374,19 +1422,124 @@ namespace NTK_Support
                 var url = "";
 
 
-                for (int i = 1; i <= 100; i++)
+                int continueCheckCount = 0;
+
+                for (int i = 1; i <= 200; i++)
                 {
+                    if (continueCheckCount == 25)
+                    {
+                        break;
+                    };
+
                     url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=getSubdivNo&districtCode={disValue}&talukCode={talValue}&villageCode=0{villageValue}&surveyno={i}";
                     var response = WebReader.CallHttpWebRequest(url);
-                    var ubDivs = WebReader.xmlToDynamic(response, "subdiv", true);
 
+                    var ubDivs = WebReader.GetSubdivisions(response, "subdiv");
+                    if (ubDivs == null)
+                    {
+                        continueCheckCount += 1;
+                    }
+                    else
+                    {
+                        ubDivs.ForEach(fe =>
+                        {
+                            totalLandList.Add(new KeyValue(fe, i));
+                            continueCheckCount = 0; // reset.
+                        });
+                    }
                 }
+            }
+
+            return totalLandList;
 
 
-               
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.SelectedPath = @"F:\AUTO-ADANGAL";
+
+            string folderPath = "";
+            if (DialogResult.OK == fbd.ShowDialog())
+            {
+                folderPath = fbd.SelectedPath;
+            }
+
+            if (haveValidFiles(folderPath))
+            {
+                pattaList = new PattaList();
+                relationTypes = new List<string>() {
+                "தந்தைத",
+                "கணவன",
+                "காப்பாளர்",
+                "மைகன",
+                "மைைனவி"
+            };
+
+
+                chittaFile = Path.Combine(folderPath, "Chitta_Report-1.pdf");
+                aRegFile = Path.Combine(folderPath, "Areg_Report-1.pdf");
+                chittaContent = chittaFile.GetPdfContent();
+                aRegContent = aRegFile.GetPdfContent();
+
+                //ConfirmVillageName();
+
+                firstPage = FileContentReader.FirstPageTemplate;
+                leftEmpty = GetLeftEmptyPage();
+                leftCertEmpty = FileContentReader.LeftPageCertTableTemplate;
+                rightCertEmpty = FileContentReader.RightPageTableCertTemplate;
+
+                ProcessNames();
+                ProcessChittaFile();    // Nansai, Pun, Maa,
+                ProcessAreg();  // Puram
+
+            }
+            else
+            {
+                MessageBox.Show("Some file missing in the folder?");
 
             }
 
+
+        }
+
+
+        private bool haveValidFiles(string folderPath)
+        {
+            var files = Directory.GetFiles(folderPath);
+
+            var filesCount = files.Count();
+
+            if (filesCount != 4)
+            {
+                MessageBox.Show("SOme file missing!");
+                return false;
+            }
+
+            var pdffilesCount = files.Where(w => w.EndsWith(".pdf")).Count();
+            var txtfilesCount = files.Where(w => w.EndsWith(".txt")).Count();
+
+            if (pdffilesCount != 2 || txtfilesCount != 2)
+            {
+                MessageBox.Show("Some txt or pdf file missing!");
+                return false;
+            }
+
+
+            return true;
+        }
+
+        private void cmbVillages_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            EnableReady();
+        }
+
+        void EnableReady()
+        {
+            btnReady.Enabled = (((ComboData)cmbVillages.SelectedItem).Value != -1);
+            btnGenerate.Enabled = btnSaveJson.Enabled = (ddlListType.SelectedValue.ToInt32() == 3);
         }
     }
 }

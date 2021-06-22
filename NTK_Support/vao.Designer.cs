@@ -45,6 +45,8 @@
             this.cmbTaluk = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbVillages = new System.Windows.Forms.ComboBox();
+            this.btnReady = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,7 +81,7 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 149);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 198);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(776, 301);
@@ -100,7 +102,7 @@
             // 
             this.ddlListType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlListType.FormattingEnabled = true;
-            this.ddlListType.Location = new System.Drawing.Point(379, 103);
+            this.ddlListType.Location = new System.Drawing.Point(348, 103);
             this.ddlListType.Name = "ddlListType";
             this.ddlListType.Size = new System.Drawing.Size(121, 21);
             this.ddlListType.TabIndex = 5;
@@ -110,7 +112,7 @@
             // 
             this.ddlLandTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlLandTypes.FormattingEnabled = true;
-            this.ddlLandTypes.Location = new System.Drawing.Point(225, 103);
+            this.ddlLandTypes.Location = new System.Drawing.Point(207, 103);
             this.ddlLandTypes.Name = "ddlLandTypes";
             this.ddlLandTypes.Size = new System.Drawing.Size(121, 21);
             this.ddlLandTypes.TabIndex = 6;
@@ -119,7 +121,7 @@
             // btnGenerate
             // 
             this.btnGenerate.Enabled = false;
-            this.btnGenerate.Location = new System.Drawing.Point(634, 111);
+            this.btnGenerate.Location = new System.Drawing.Point(683, 111);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(101, 23);
             this.btnGenerate.TabIndex = 7;
@@ -155,7 +157,6 @@
             this.ddlDistrict.Name = "ddlDistrict";
             this.ddlDistrict.Size = new System.Drawing.Size(186, 21);
             this.ddlDistrict.TabIndex = 10;
-            this.ddlDistrict.SelectedIndexChanged += new System.EventHandler(this.ddlDistrict_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -193,12 +194,11 @@
             this.cmbTaluk.Name = "cmbTaluk";
             this.cmbTaluk.Size = new System.Drawing.Size(186, 21);
             this.cmbTaluk.TabIndex = 13;
-            this.cmbTaluk.SelectedIndexChanged += new System.EventHandler(this.cmbTaluk_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(264, 29);
+            this.label3.Location = new System.Drawing.Point(225, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 13);
             this.label3.TabIndex = 16;
@@ -208,17 +208,39 @@
             // 
             this.cmbVillages.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVillages.FormattingEnabled = true;
-            this.cmbVillages.Location = new System.Drawing.Point(263, 47);
+            this.cmbVillages.Location = new System.Drawing.Point(224, 30);
             this.cmbVillages.Name = "cmbVillages";
             this.cmbVillages.Size = new System.Drawing.Size(225, 21);
             this.cmbVillages.TabIndex = 15;
-            this.cmbVillages.SelectedIndexChanged += new System.EventHandler(this.cmbVillages_SelectedIndexChanged);
+            this.cmbVillages.SelectedIndexChanged += new System.EventHandler(this.cmbVillages_SelectedIndexChanged_1);
+            // 
+            // btnReady
+            // 
+            this.btnReady.Location = new System.Drawing.Point(688, 82);
+            this.btnReady.Name = "btnReady";
+            this.btnReady.Size = new System.Drawing.Size(101, 23);
+            this.btnReady.TabIndex = 17;
+            this.btnReady.Text = "Ready For Print?";
+            this.btnReady.UseVisualStyleBackColor = true;
+            this.btnReady.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(228, 152);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(109, 23);
+            this.button3.TabIndex = 18;
+            this.button3.Text = "Browse Folder ...";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // vao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnReady);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbVillages);
             this.Controls.Add(this.label2);
@@ -240,6 +262,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "vao";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.vao_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -265,5 +288,7 @@
         private System.Windows.Forms.ComboBox cmbTaluk;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbVillages;
+        private System.Windows.Forms.Button btnReady;
+        private System.Windows.Forms.Button button3;
     }
 }
