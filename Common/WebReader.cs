@@ -41,26 +41,58 @@ namespace Common
         }
 
 
-        public static List<ComboData> xmlToDynamic(string xml)
+        public static List<ComboData> xmlToDynamic(string xml, string key, bool isSimple = false)
         {
             try
             {
                 List<ComboData> data = new List<ComboData>();
                 dynamic taluks = JObject.Parse(xmlTojson(xml));
 
-                var d = ((JArray)taluks["root"]["taluk"]).ToList();
-
-                for (int i = 0; i < d.Count - 1; i++)
+                if((((JObject)taluks["root"])["flag"]).ToString() == "false")
                 {
-                    //var tc = ((JObject)d[i])["talukcode"];
-                    //var tn = ((JObject)d[i])["talukname"];
+                    return null;
+                }
 
-                    data.Add(new ComboData()
+                List<JToken> d = null;
+                try
+                {
+                    d = ((JArray)taluks["root"][key]).ToList();
+                }
+                catch (Exception)
+                {
+
+                    
+                }
+                 
+
+                if (isSimple)
+                {
+                    for (int i = 0; i < d.Count - 1; i++)
                     {
+                        //var tc = ((JObject)d[i])["talukcode"];
+                        //var tn = ((JObject)d[i])["talukname"];
 
-                        Value = Convert.ToInt32((((JObject)d[i])["talukcode"]).ToString()),
-                        Display = (((JObject)(((JObject)d[i])["talukname"]))["#cdata-section"]).ToString().Trim()
-                    });
+                        data.Add(new ComboData()
+                        {
+                            Display = (((JObject)d[i])[key + "code"]).ToString(),
+                            //Display = isSimple ? "" : (((JObject)(((JObject)d[i])[key + "name"]))["#cdata-section"]).ToString().Trim()
+                        });
+                    }
+
+                }
+                else
+                {
+                    for (int i = 0; i < d.Count - 1; i++)
+                    {
+                        //var tc = ((JObject)d[i])["talukcode"];
+                        //var tn = ((JObject)d[i])["talukname"];
+
+                        data.Add(new ComboData()
+                        {
+                            Value = Convert.ToInt32((((JObject)d[i])[key + "code"]).ToString()),
+                            Display = (((JObject)(((JObject)d[i])[key + "name"]))["#cdata-section"]).ToString().Trim()
+                        });
+                    }
                 }
 
                     return data;

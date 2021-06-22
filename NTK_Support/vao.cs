@@ -1343,8 +1343,48 @@ namespace NTK_Support
                     var url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=taluk&districtCode={selValue}";
 
                     var response = WebReader.CallHttpWebRequest(url);
-                    //string json = WebReader.xmlTojson(response);
-                    BindDropdown(cmbTaluk, WebReader.xmlToDynamic(response), "Display", "Value");
+                    BindDropdown(cmbTaluk, WebReader.xmlToDynamic(response, "taluk"), "Display", "Value");
+            }
+
+        }
+
+        private void cmbTaluk_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlDistrict.SelectedItem != null)
+            {
+                var disValue = ((ComboData)ddlDistrict.SelectedItem).Value;
+                var talValue = ((ComboData)cmbTaluk.SelectedItem).Value;
+
+                var url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=village&districtCode={disValue}&&talukCode={talValue}";
+
+                var response = WebReader.CallHttpWebRequest(url);
+                BindDropdown(cmbVillages, WebReader.xmlToDynamic(response, "village"), "Display", "Value");
+            }
+
+        }
+
+        private void cmbVillages_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbVillages.SelectedItem != null)
+            {
+                var disValue = ((ComboData)ddlDistrict.SelectedItem).Value;
+                var talValue = ((ComboData)cmbTaluk.SelectedItem).Value;
+                var villageValue = ((ComboData)cmbVillages.SelectedItem).Value;
+
+                var url = "";
+
+
+                for (int i = 1; i <= 100; i++)
+                {
+                    url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=getSubdivNo&districtCode={disValue}&talukCode={talValue}&villageCode=0{villageValue}&surveyno={i}";
+                    var response = WebReader.CallHttpWebRequest(url);
+                    var ubDivs = WebReader.xmlToDynamic(response, "subdiv", true);
+
+                }
+
+
+               
+
             }
 
         }

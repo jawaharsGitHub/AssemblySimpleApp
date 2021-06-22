@@ -193,6 +193,7 @@
             this.cmbTaluk.Name = "cmbTaluk";
             this.cmbTaluk.Size = new System.Drawing.Size(186, 21);
             this.cmbTaluk.TabIndex = 13;
+            this.cmbTaluk.SelectedIndexChanged += new System.EventHandler(this.cmbTaluk_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -211,6 +212,7 @@
             this.cmbVillages.Name = "cmbVillages";
             this.cmbVillages.Size = new System.Drawing.Size(225, 21);
             this.cmbVillages.TabIndex = 15;
+            this.cmbVillages.SelectedIndexChanged += new System.EventHandler(this.cmbVillages_SelectedIndexChanged);
             // 
             // vao
             // 
