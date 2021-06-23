@@ -8,16 +8,47 @@ namespace NTK_Support
 {
     public class DataAccess : BaseClass
     {
+
+        private static string GetAdangalPath(string fileName)
+        {
+            return AppConfiguration.GetDynamicPath($"Adangal/{fileName}.json");
+        }
+
+        private static string GetdatabasePath(string fileName)
+        {
+            return AppConfiguration.GetDynamicPath($"database/{fileName}.json");
+        }
+
         public static List<Adangal> GetAdangal(string fileName)
         {
-            var filePath = AppConfiguration.GetDynamicPath($"{fileName}.json");
+            var filePath = GetAdangalPath(fileName);
             var data  = ReadFileAsObjects<Adangal>(filePath);
+            return data;
+        }
+
+        public static List<KeyValue> GetSubdiv(string fileName)
+        {
+            var filePath = GetAdangalPath(fileName);
+            var data = ReadFileAsObjects<KeyValue>(filePath);
+            return data;
+        }
+
+        public static List<KeyValue> SubdivToJson(List<KeyValue> subdivData, string fileName)
+        {
+            var filePath = GetAdangalPath(fileName);
+
+            if (File.Exists(filePath) == false)
+            {
+                WriteObjectsToFile<KeyValue>(subdivData, filePath);
+            }
+            //var data = GetSubdiv(filePath);
+            var data = ReadFileAsObjects<KeyValue>(filePath);
             return data;
         }
 
         public static List<Adangal> AdangalToJson(List<Adangal> adangalData, string fileName)
         {
-            var filePath = AppConfiguration.GetDynamicPath($"{fileName}.json");
+            var filePath = GetAdangalPath(fileName);
 
             if (File.Exists(filePath) == false)
             {
@@ -29,13 +60,13 @@ namespace NTK_Support
 
         public static bool IsAdangalExist(string fileName)
         {
-            var filePath = AppConfiguration.GetDynamicPath($"{fileName}.json");
+            var filePath = GetAdangalPath(fileName);
             return File.Exists(filePath);
         }
 
         public static List<Adangal> SetDeleteFlag(string fileName, List<string> adangalToBeDelete)
         {
-            var filePath = AppConfiguration.GetDynamicPath($"{fileName}.json");
+            var filePath = GetAdangalPath(fileName);
             var data = ReadFileAsObjects<Adangal>(filePath);
 
             adangalToBeDelete.ForEach(fe => {
@@ -51,7 +82,7 @@ namespace NTK_Support
         }
         public static List<ComboData> GetDistricts()
         {
-            var filePath = AppConfiguration.GetDynamicPath($"database/RevDistrict.json");
+            var filePath = GetdatabasePath("RevDistrict");
 
             
                 return ReadFileAsObjects<ComboData>(filePath);

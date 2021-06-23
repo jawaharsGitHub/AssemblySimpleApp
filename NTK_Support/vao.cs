@@ -1125,14 +1125,8 @@ namespace NTK_Support
                 var response = WebReader.CallHttpWebRequest(url);
 
                 BindDropdown(cmbVillages, WebReader.xmlToDynamic(response, "village"), "Display", "Value");
-                cmbVillages.SelectedIndexChanged += new System.EventHandler(this.cmbVillages_SelectedIndexChanged);
+                //cmbVillages.SelectedIndexChanged += new System.EventHandler(this.cmbVillages_SelectedIndexChanged);
             }
-
-        }
-
-        private void cmbVillages_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
 
         }
 
@@ -1188,6 +1182,13 @@ namespace NTK_Support
 
         private List<KeyValue> GetLandCount()
         {
+            var fileName = $"{villageName}-subdiv";
+
+            if (DataAccess.IsAdangalExist(fileName) == true)
+            {
+                return DataAccess.GetSubdiv(fileName);
+            }
+
             var totalLandList = new List<KeyValue>();
 
             if (cmbVillages.SelectedItem != null)
@@ -1227,9 +1228,8 @@ namespace NTK_Support
                 }
             }
 
-            return totalLandList;
-
-
+            return DataAccess.SubdivToJson(totalLandList, fileName);
+            //return totalLandList;
 
         }
 
@@ -1290,7 +1290,7 @@ namespace NTK_Support
 
             if (filesCount != 4)
             {
-                MessageBox.Show("SOme file missing!");
+                MessageBox.Show("Some file missing!");
                 return false;
             }
 
@@ -1342,7 +1342,7 @@ namespace NTK_Support
             else if (selValue == 2)
             {
                 dataGridView1.DataSource = fullAdangalFromjson.Where(w => !string.IsNullOrEmpty(w.UtpirivuEn) && w.UtpirivuEn != "-").ToList();
-            } // .Replace("ே", "*").Replace("\0", "*")
+            }
 
             else if (selValue == 3)
             {
@@ -1354,7 +1354,59 @@ namespace NTK_Support
         private void btnDelete_Click(object sender, EventArgs e)
         {
             fullAdangalFromjson = DataAccess.SetDeleteFlag(villageName, notInOnlineToBeDeleted);
+            dataGridView1.DataSource = fullAdangalFromjson;
+        }
 
+        private void EditCancel()
+        {
+            dataGridView1.CurrentCell.Style.BackColor = Color.Red;
+            dataGridView1.CurrentCell.Style.ForeColor = Color.Yellow;
+        }
+
+        bool IsEnterKey = false;
+
+        private void EditSuccess()
+        {
+            dataGridView1.CurrentCell.Style.BackColor = Color.LightGreen;
+            dataGridView1.CurrentCell.Style.ForeColor = Color.White;
+            this.dataGridView1.ClearSelection();
+            IsEnterKey = false; // reset flag after ecery success edit.
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (ddlListType.SelectedIndex != 3) return;
+
+            if (IsEnterKey == false)
+            {
+                EditCancel();
+                return;
+            }
+
+            int existingTxnId = 0; // to  keep existing txn id.
+            DataGridView grid = (sender as DataGridView);
+            int rowIndex = grid.CurrentCell.RowIndex;
+            string owningColumnName = grid.CurrentCell.OwningColumn.Name;
+            string cellValue = GetGridCellValue(grid, rowIndex, owningColumnName);
+            Adangal cus = grid.Rows[grid.CurrentCell.RowIndex].DataBoundItem as Adangal;
+
+            if (string.IsNullOrEmpty(cellValue))
+            {
+                EditCancel();
+                return;
+            }
+        }
+
+        public static string GetGridCellValue(DataGridView grid, int rowIndex, string columnName)
+        {
+            var cellValue = Convert.ToString(grid.Rows[grid.CurrentCell.RowIndex].Cells[columnName].Value);
+            return (cellValue == string.Empty) ? null : cellValue;
+        }
+
+        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, Keys keyData)
+        {
+            IsEnterKey = (keyData == Keys.Enter);
+            return false;
         }
     }
 }
