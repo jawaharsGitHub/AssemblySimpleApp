@@ -1176,6 +1176,7 @@ namespace NTK_Support
 
 
             btnDelete.Enabled = (notInOnlineToBeDeleted.Count > 0);
+            btnAdd.Enabled = (notInPdfToBeAdded.Count > 0);
 
 
         }
