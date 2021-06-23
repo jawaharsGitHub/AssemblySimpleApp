@@ -90,7 +90,7 @@ namespace Common
                 var isFullfilled = (taluks["root"][key]).ToString().Contains("-");
 
                 if (isFullfilled)
-                    return new List<string>() { "" };
+                    return new List<string>() { "-" };
 
                 if (((JContainer)taluks["root"][key]).Count > 1)
                 {

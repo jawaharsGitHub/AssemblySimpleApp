@@ -20,5 +20,6 @@ namespace NTK_Support.AdangalTypes
                 return string.IsNullOrEmpty(UtpirivuEn);
                     } 
         }
+        public LandStatus LandStatus { get; set; }
     }
 }

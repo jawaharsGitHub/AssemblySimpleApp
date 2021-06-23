@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -22,7 +23,6 @@ namespace NTK_Support
     {
         int recordPerPage = 8;
         int pageTotalrecordPerPage = 25;
-        bool isProductionTest = true;
 
         string chittaFile = "";
         string aRegFile = "";
@@ -32,23 +32,21 @@ namespace NTK_Support
         string empty = "";
         string tamilMoththam = "மொத்தம்";
         int pageListRowNo = 24;
-        bool forPageList = true;
         int rightPageNo = 6;
         int startPno = 284;
-        string testFile = "";
+        string villageName = "";
 
         PattaList pattaList;
         List<LandDetail> WholeLandList;
         List<Adangal> AdangalList;
         List<Adangal> PurambokkuAdangalList;
+        List<Adangal> fullAdangalFromjson;
         Patta pattaSingle;
         List<string> relationTypes;
 
 
         string firstPage;
         string leftEmpty;
-        //string rightEmpty;
-
         string leftCertEmpty;
         string rightCertEmpty;
 
@@ -57,15 +55,14 @@ namespace NTK_Support
         List<PageTotal> pageTotal2List = null;
         List<PageTotal> pageTotal3List = null;
 
+        List<string> notInPdfToBeAdded;
+        List<string> notInOnlineToBeDeleted;
 
         public vao()
         {
             InitializeComponent();
             BindDropdown(ddlDistrict, DataAccess.GetDistricts(), "Display", "Value");
-
-
         }
-
 
         private void BindDropdown(ComboBox cb, object dataSource, string DisplayMember, string ValueMember)
         {
@@ -191,15 +188,22 @@ namespace NTK_Support
 
 
             }
+
+            AdangalList.AddRange(PurambokkuAdangalList);
+
+            fullAdangalFromjson = DataAccess.AdangalToJson(AdangalList, villageName);
+
+
         }
+
         private void ProcessChittaFile()
         {
 
             var pattaas = chittaContent.Replace("பட்டா எண்", "$");
             var data = pattaas.Split('$').ToList();
+            villageName = data.First().Split(':')[3].Trim();
 
-
-            if (DialogResult.No == MessageBox.Show($"{data.First().Split(':')[3].Trim()} village?", "Confirm", MessageBoxButtons.YesNo))
+            if (DialogResult.No == MessageBox.Show($"{villageName} village?", "Confirm", MessageBoxButtons.YesNo))
                 return;
 
 
@@ -418,101 +422,64 @@ namespace NTK_Support
 
             WholeLandList = pattaList.SelectMany(x => x.landDetails.Select(y => y)).ToList();
 
+            AdangalList = (from wl in WholeLandList
+                               .Where(w => w.LandType != LandType.Other)
+                                           .OrderBy(o => o.LandType)
+                                           .ThenBy(o => o.SurveyNo)
+                                           .ThenBy(t => t.Subdivision, new AlphanumericComparer()).ToList()
+                           select new Adangal()
+                           {
+                               NilaAlavaiEn = wl.SurveyNo,
+                               UtpirivuEn = wl.Subdivision,
+                               OwnerName = wl.OwnerName,
+                               Parappu = wl.Parappu,
+                               Theervai = wl.Theervai,
+                               Anupathaarar = wl.Anupathaarar,
+                               LandType = wl.LandType
+                           }).ToList();
+
+
+        }
+
+        private void ProcessFullReport()
+        {
             // Full Report
             FinalReport fr = new FinalReport(pattaList);
-            var result = fr.ToString();
-
-            //ddlPattaTypes.DataSource = fr.CountData;
-            //ddlPattaTypes.DisplayMember = "DisplayMember";
-            //ddlPattaTypes.ValueMember = "Id";
+            //var result = fr.ToString();
 
             BindDropdown(ddlPattaTypes, fr.CountData, "DisplayMember", "Id");
-
-            //ddlListType.DataSource = new List<KeyValue> {
-            //    new KeyValue() { Id = 1, Caption = "PATTA" },
-            //    new KeyValue() { Id = 2, Caption = "LANDDETAIL" },
-            //    new KeyValue() { Id = 3, Caption = "ADANGAL" }
-            //};
-
-            //ddlListType.DisplayMember = "Caption";
-            //ddlListType.ValueMember = "Id";
-
             BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
-
-            //var landTypeSource = new List<KeyValue>();
-
-            //landTypeSource.Add(new KeyValue() { Caption = "ALL", Id = -1 });
-            //foreach (LandType rt in Enum.GetValues(typeof(LandType)))
-            //{
-
-            //    landTypeSource.Add(new KeyValue()
-            //    {
-            //        Caption = Enum.GetName(typeof(LandType), rt),
-            //        Id = (int)rt
-            //    });
-            //}
-
-            //ddlLandTypes.DisplayMember = "Caption";
-            //ddlLandTypes.ValueMember = "Id";
-
-            //ddlLandTypes.DataSource = landTypeSource;
-
             BindDropdown(ddlLandTypes, GetLandTypes(), "Caption", "Id");
-
 
             if (fr.IsFullProcessed == false)
             {
                 MessageBox.Show($"{fr.NotProcessedData} not processes");
             }
-
-            var checkData1 = pattaList.Select(s => s.PattaEn).ToList();
-
-            var numberList = Enumerable.Range(1, checkData1.Count).ToList();
-
-            var wrongSeq = new List<int>();
-
-            for (int ws = 0; ws <= checkData1.Count - 1; ws++)
-            {
-                if (checkData1[ws] != numberList[ws])
-                    wrongSeq.Add(numberList[ws]);
-            }
-
-            //ValidationConstraints 
-
-            CreateInitialPages(); // 10 pages
-            WriteData(cds, "1N"); // from chitta
-            //WriteData(cds, "2P");  // from chitta
-            //WriteData(cds, "3M");  // from chitta
-            //WriteData(cds, "4P");  // from a-reg
-
-
         }
-
-
-        //        if (names[2].Trim().StartsWith("இரா"))
-        //            initial = "இரா";
-        //        else if (Convert.ToInt32(names[2][1]).ToString()[0] == '3')
-        //            initial = $"{names[2][0]}{names[2][1]}";
-        //        else
-        //            initial = $"{names[2][0]}";
-
-        //        if (names[2].Trim() == "இல்லை" || names[2].Trim() == "அச்சுந்தன்வயல்")
-        //            oName = $"{pattaNo} - {names[4]} ";
-        //        else
-        //            oName = $"{pattaNo} - {initial}.{names[4]} ";
-
-        //        // if already have initial then ignore.
-        //    }
 
         private List<KeyValue> GetListTypes()
         {
             return new List<KeyValue> {
                 new KeyValue() { Id = 1, Caption = "PATTA" },
                 new KeyValue() { Id = 2, Caption = "LANDDETAIL" },
-                new KeyValue() { Id = 3, Caption = "ADANGAL" }
+                new KeyValue() { Id = 3, Caption = "ADANGAL" },
+                new KeyValue() { Id = 4, Caption = "JSON-ADANGAL" }
             };
 
         }
+
+        private List<KeyValue> GetFullfilledOptions()
+        {
+            return new List<KeyValue> {
+
+                new KeyValue() { Id = -1, Caption = "--select--" },
+                new KeyValue() { Id = 1, Caption = "Fullfilled" },
+                new KeyValue() { Id = 2, Caption = "Extend" },
+                new KeyValue() { Id = 3, Caption = "SomeDots" }
+            };
+
+        }
+
         private List<KeyValue> GetLandTypes()
         {
             var landTypeSource = new List<KeyValue>();
@@ -530,10 +497,7 @@ namespace NTK_Support
 
             return landTypeSource;
         }
-        private string ApplyUnicode(string name)
-        {
-            return "";
-        }
+
         private List<LandDetail> ProcessLandType(List<string> actualData, List<string> breakData = null)
         {
 
@@ -583,12 +547,6 @@ namespace NTK_Support
 
         }
 
-        private void CreateInitialPages()
-        {
-
-
-        }
-
         private List<string> GetEvenIndexData(List<string> dataList)
         {
             return dataList.Where(w => dataList.IndexOf(w) % 2 == 0).ToList();
@@ -599,19 +557,6 @@ namespace NTK_Support
         {
             return dataList.Where(w => dataList.IndexOf(w) % 2 != 0).ToList();
 
-        }
-
-        private bool IsValidBreakData(List<string> memberData, bool isSubdivision = false)
-        {
-            var c = isSubdivision ? 6 : 5;
-
-            var evenData = GetEvenIndexData(memberData);
-            var oddData = GetOddIndexData(memberData);
-
-            return evenData.All(e => e.Contains('-') == true) &&
-                    evenData.All(e => e.Split('-').Count() == c) &&
-                    oddData.All(o => o.Contains('-') == false) &&
-                    oddData.All(o => o.Split('-').Count() == 1);
         }
 
         private PattaType isAllmemberBreakDataValid(List<string> memberData, string totalData)
@@ -632,13 +577,6 @@ namespace NTK_Support
                 return PattaType.KnownError;
         }
 
-
-        private bool isValidRecords(List<string> memberData, bool isSubdivision = false)
-        {
-            var c = isSubdivision ? 6 : 5;
-            return memberData.All(a => a.Split('-').Count() == c);
-        }
-
         private PattaType isAllmemberDataValid(List<string> memberData, string totalData)
         {
             if (isValidTotalRecord(totalData) == false)
@@ -657,7 +595,6 @@ namespace NTK_Support
         {
             return total.Split('-').Count() == 4;
         }
-
 
         private (bool status, List<string> bk, List<string> nobk) IsPartialBreak(List<string> memberData)
         {
@@ -731,153 +668,6 @@ namespace NTK_Support
             return false;
         }
 
-        public void GenerateNansaiPages()
-        {
-            //var nansaiData = WholeLandList.Where(w => w.LandType == LandType.Nansai).ToList();
-        }
-
-        public void WriteData(List<ChittaData> data, string filter)
-        {
-            List<ChittaData> PageTotalList = new List<ChittaData>();
-            string landType = "";
-
-            if (filter == "1N") landType = "( நன்செய் )";
-            else if (filter == "2P")
-            {
-                landType = "( புன்செய் )";
-                rightPageNo = rightPageNo - 1;
-            }
-            else if (filter == "3M") landType = "( மானாவாரி )";
-            else if (filter == "4P") landType = "( புறம்போக்கு )";
-
-            var filteredList = new List<ChittaData>();
-
-            if (filter == "4P")
-            {
-                var csvLines = File.ReadAllLines(@"F:\vanitha - vao\achunthavayal\v-3\DataPages/puram.txt");
-
-                csvLines.ToList().ForEach(fe =>
-                {
-                    var dt = fe.Split(',').ToList();
-
-                    filteredList.Add(new ChittaData
-                    {
-                        SurveyNo = Convert.ToInt32(dt[0].Trim()),
-                        SubDivNo = dt[1].Trim(),
-                        Parappu = dt[2].Trim(),
-                        OwnerName = dt[3].Trim()
-                    });
-                });
-
-
-            }
-            else
-            {
-                filteredList = data.Where(w => w.LandType == filter).OrderBy(o => o.LandType).ThenBy(t => t.SurveyNo).ThenBy(t => t.SubDivNo, new AlphanumericComparer()).ToList();
-
-            }
-
-            var finalList = new List<ChittaData>();
-            int index = 0;
-            var MyPagesList = new List<ChittaData>();
-            var fList = new List<ChittaData>();
-            var pageCount = filteredList.Count / 7;
-
-            if (filteredList.Count % 7 > 0)
-            {
-                pageCount = pageCount + 1;
-            }
-
-            for (int i = 0; i <= pageCount - 1; i++)
-            {
-                var html = FileContentReader.DataPageHtml;
-                StringBuilder sb = new StringBuilder();
-                var temData = filteredList.Skip(i * 7).Take(7).ToList();
-                string dataRows = "";
-
-                var totalData = new ChittaData()
-                {
-                    Parappu = GetSumThreeDotNo(temData.Select(s => s.Parappu).ToList()),
-                    Theervai = temData.Sum(s => s.Theervai),
-                    PageNumber = i + 1
-                };
-
-                PageTotalList.Add(totalData);
-
-                temData.ForEach(ff =>
-                {
-
-                    dataRows += $@"<tr><td class='datahgt' style='min-width:35px;font-weight: bold;'>{ff.SurveyNoStr}</td><td style='min-width:50px;font-weight: bold;'>{ff.SubDivNo}</td>
- <td style='min-width:50px;font-weight: bold;'>{ff.Parappu}</td><td style='min-width:20px;font-weight: bold;'>{ff.TheervaiStr}</td>
- <td style='min-width:20px;'></td><td style='min-width:200px;word-break:break-word;font-weight: bold;'>{ff.OwnerName}</td><td></td><td></td><td></td><td></td><td></td><td></td>
-  </tr>
-  <tr>
-  <td class='datahgt'></td><td></td><td></td><td>
-  </td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-  </tr>";
-                });
-
-                dataRows += $@"<td class='datahgt'></td><td></td><td class='footer'>{totalData.Parappu}</td><td class='footer'>{totalData.TheervaiStr}</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-  </ tr > ";
-
-                html = html.Replace("[data]", dataRows).Replace("[landtype]", landType);
-                // Data Pages html.
-                File.WriteAllText($@"F:\vanitha - vao\achunthavayal\v-3\DataPages\DP-{filter}{totalData.PageNumber + 0}.htm", html);
-            }
-
-            var pageListCount = PageTotalList.Count / pageListRowNo;
-
-            if (PageTotalList.Count % pageListRowNo > 0) pageListCount = pageListCount + 1;
-
-            for (int i = 0; i <= pageListCount - 1; i++)
-            {
-                var html2 = FileContentReader.pageListHtml;
-                string dataRows2 = "";
-                StringBuilder sb2 = new StringBuilder();
-                var PageCountFinal = new List<ChittaData>();
-
-                var pageListtemData = PageTotalList.Skip(i * pageListRowNo).Take(pageListRowNo).ToList();
-
-                pageListtemData.ForEach(ff =>
-                {
-
-                    rightPageNo = rightPageNo + 1;
-
-                    dataRows2 += $@" <tr class='head'>
- <td>{rightPageNo}</td>
- <td>{ff.Parappu}</td>
- <td></td>
- <td></td>
- </tr>";
-                });
-
-                if (pageListtemData.Count < pageListRowNo)
-                {
-                    int diff = pageListRowNo - pageListtemData.Count;
-
-                    for (int di = 1; di <= diff; di++)
-                    {
-
-                        dataRows2 += $@" <tr class='head'>
-                                         <td></td>
-                                         <td></td>
-                                         <td></td>
-                                         <td></td>
-                                         </tr>";
-
-                    }
-
-                }
-
-                startPno = startPno + 1;
-                html2 = html2.Replace("[data]", dataRows2).Replace("[landtype]", landType.Replace("(", "").Replace(")", "")).Replace("[pn]", "");
-                // Write to page total list.
-                File.WriteAllText($@"F:\vanitha - vao\achunthavayal\v-3\DataPages\TP-{filter}{startPno}.htm", html2);
-
-            }
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             var data = textBox1.Text;
@@ -908,10 +698,8 @@ namespace NTK_Support
 
         private string GetSumThreeDotNo(List<string> nos)
         {
-
             try
             {
-
                 var decimalList = new List<decimal>();
                 var intList = new List<int>();
 
@@ -946,7 +734,6 @@ namespace NTK_Support
         private void ddlListType_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selected = ((KeyValue)ddlListType.SelectedItem).Id;
-            //ddlListType.SelectedValue.ToInt32();
 
             if (selected == 1)
                 dataGridView1.DataSource = pattaList;
@@ -954,25 +741,14 @@ namespace NTK_Support
                 dataGridView1.DataSource = WholeLandList;
             else if (selected == 3)
             {
-                AdangalList = (from wl in WholeLandList
-                                           .OrderBy(o => o.LandType)
-                                           .ThenBy(o => o.SurveyNo)
-                                           .ThenBy(t => t.Subdivision, new AlphanumericComparer()).ToList()
-                               select new Adangal()
-                               {
-                                   NilaAlavaiEn = wl.SurveyNo,
-                                   UtpirivuEn = wl.Subdivision,
-                                   OwnerName = wl.OwnerName,
-                                   Parappu = wl.Parappu,
-                                   Theervai = wl.Theervai,
-                                   Anupathaarar = wl.Anupathaarar,
-                                   LandType = wl.LandType
-                               }).ToList();
-
-                AdangalList.AddRange(PurambokkuAdangalList);
                 dataGridView1.DataSource = AdangalList;
-                EnableReady();
+                //EnableReady();
 
+            }
+            else if (selected == 4)
+            {
+                dataGridView1.DataSource = fullAdangalFromjson;
+                EnableReady();
             }
         }
 
@@ -989,15 +765,14 @@ namespace NTK_Support
 
         private void ddlLandTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (AdangalList != null)
+            if (fullAdangalFromjson != null)
             {
                 if (((KeyValue)ddlLandTypes.SelectedItem).Id == -1)
-                    dataGridView1.DataSource = AdangalList.OrderBy(o => o.NilaAlavaiEn).ToList();
+                    dataGridView1.DataSource = fullAdangalFromjson.OrderBy(o => o.NilaAlavaiEn).ToList();
                 else
-                    dataGridView1.DataSource = AdangalList.Where(w => (int)w.LandType == ddlLandTypes.SelectedValue.ToInt32()).OrderBy(o => o.NilaAlavaiEn).ToList();
+                    dataGridView1.DataSource = fullAdangalFromjson.Where(w => (int)w.LandType == ddlLandTypes.SelectedValue.ToInt32()).OrderBy(o => o.NilaAlavaiEn).ToList();
             }
         }
-
 
         private string GetLeftEmptyPage()
         {
@@ -1027,7 +802,6 @@ namespace NTK_Support
             return leftPage;
         }
 
-
         private string GetLeftCertPage()
         {
             var sb = new StringBuilder();
@@ -1036,7 +810,6 @@ namespace NTK_Support
             //pageNumber += 1;
             return sb.ToString();
         }
-
 
         private string GetRightEmptyPage()
         {
@@ -1198,7 +971,6 @@ namespace NTK_Support
             return totalContent.ToString();
         }
 
-
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             pageNumber = 0;
@@ -1219,7 +991,7 @@ namespace NTK_Support
 
             mainHtml = mainHtml.Replace("[initialPages]", initialPages);
 
-            var landTypeGroup = (from wl in AdangalList
+            var landTypeGroup = (from wl in fullAdangalFromjson
                                  where wl.LandType != LandType.Other
                                  group wl by wl.LandType into newGrp
                                  select newGrp).ToList();
@@ -1313,12 +1085,6 @@ namespace NTK_Support
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            var d = DataAccess.GetAdangal(1, 2, 3, AdangalList);
-
-        }
-
         private void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (General.CheckForInternetConnection() == false)
@@ -1387,27 +1153,38 @@ namespace NTK_Support
                 return;
             }
 
-            var adangals = AdangalList.Where(w => w.LandType != LandType.Other);
             var onlineData = GetLandCount();
 
             var expLandDetails = (onlineData
                                 .OrderBy(o => o.Value)
                                 .ThenBy(o => o.Caption, new AlphanumericComparer())
-                                .Select(s => (s.Value.ToString().Trim() + "-" + s.Caption.Trim()).Trim())).ToList();
+                                .Select(s => (s.Value.ToString().Trim() + "~" + s.Caption.Trim()).Trim())).ToList();
 
-
-            var actualLandDetails = (adangals
+            var actualLandDetails = fullAdangalFromjson
                                     .OrderBy(o => o.NilaAlavaiEn)
                                     .ThenBy(o => o.UtpirivuEn, new AlphanumericComparer())
-                                    .Select(s => (s.NilaAlavaiEn.ToString().Trim() + "-" + s.UtpirivuEn.Trim()).Trim())).ToList();
+                                    .Select(s =>
+                                    (s.NilaAlavaiEn.ToString().Trim() + "~" + s.UtpirivuEn.Trim()).Trim())
+                                    .ToList();
 
-            var notInPdf = expLandDetails.Except(actualLandDetails).ToList(); 
-            var notinOnline = actualLandDetails.Except(expLandDetails).ToList();
+            notInPdfToBeAdded = expLandDetails.Except(actualLandDetails).ToList();
+            notInOnlineToBeDeleted = actualLandDetails.Except(expLandDetails).ToList();
 
+            if(notInPdfToBeAdded.Count == 0 && notInOnlineToBeDeleted.Count == 0)
+            {
+                btnStatusCheck.Text = "OK";
+                btnStatusCheck.BackColor = Color.Green;
+            }
+            {
+                btnStatusCheck.Text = $"ADD:{notInPdfToBeAdded.Count} {Environment.NewLine} DELETE:{notInOnlineToBeDeleted.Count}";
+                btnStatusCheck.BackColor = Color.Red;
+            }
+
+
+            btnDelete.Enabled = (notInOnlineToBeDeleted.Count > 0);
 
 
         }
-
 
         private List<KeyValue> GetLandCount()
         {
@@ -1417,7 +1194,7 @@ namespace NTK_Support
             {
                 var disValue = ((ComboData)ddlDistrict.SelectedItem).Value;
                 var talValue = ((ComboData)cmbTaluk.SelectedItem).Value;
-                var villageValue = ((ComboData)cmbVillages.SelectedItem).Value;
+                var villageValue = ((ComboData)cmbVillages.SelectedItem).Value.ToString().PadLeft(3, '0');
 
                 var url = "";
 
@@ -1431,7 +1208,7 @@ namespace NTK_Support
                         break;
                     };
 
-                    url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=getSubdivNo&districtCode={disValue}&talukCode={talValue}&villageCode=0{villageValue}&surveyno={i}";
+                    url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=getSubdivNo&districtCode={disValue}&talukCode={talValue}&villageCode={villageValue}&surveyno={i}";
                     var response = WebReader.CallHttpWebRequest(url);
 
                     var ubDivs = WebReader.GetSubdivisions(response, "subdiv");
@@ -1484,16 +1261,16 @@ namespace NTK_Support
                 chittaContent = chittaFile.GetPdfContent();
                 aRegContent = aRegFile.GetPdfContent();
 
-                //ConfirmVillageName();
-
                 firstPage = FileContentReader.FirstPageTemplate;
                 leftEmpty = GetLeftEmptyPage();
                 leftCertEmpty = FileContentReader.LeftPageCertTableTemplate;
                 rightCertEmpty = FileContentReader.RightPageTableCertTemplate;
 
-                ProcessNames();
+                //ProcessNames();
                 ProcessChittaFile();    // Nansai, Pun, Maa,
                 ProcessAreg();  // Puram
+
+                ProcessFullReport();
 
             }
             else
@@ -1504,7 +1281,6 @@ namespace NTK_Support
 
 
         }
-
 
         private bool haveValidFiles(string folderPath)
         {
@@ -1538,8 +1314,47 @@ namespace NTK_Support
 
         void EnableReady()
         {
-            btnReady.Enabled = (((ComboData)cmbVillages.SelectedItem).Value != -1);
-            btnGenerate.Enabled = btnSaveJson.Enabled = (ddlListType.SelectedValue.ToInt32() == 3);
+
+
+            if ((((ComboData)cmbVillages.SelectedItem).Value != -1) && ddlListType.SelectedValue.ToInt32() == 4)
+            {
+                btnReady.Enabled = btnGenerate.Enabled = true;
+                BindDropdown(cmbFulfilled, GetFullfilledOptions(), "Caption", "Id");
+            }
+            else
+            {
+                btnReady.Enabled = btnGenerate.Enabled = false;
+            }
+
+        }
+
+        private void cmbFulfilled_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            var selValue = ((KeyValue)cmbFulfilled.SelectedItem).Id;
+
+            if (selValue == -1) return;
+
+            if (selValue == 1)
+            {
+                dataGridView1.DataSource = fullAdangalFromjson.Where(w => string.IsNullOrEmpty(w.UtpirivuEn) || w.UtpirivuEn == "-").ToList();
+            }
+            else if (selValue == 2)
+            {
+                dataGridView1.DataSource = fullAdangalFromjson.Where(w => !string.IsNullOrEmpty(w.UtpirivuEn) && w.UtpirivuEn != "-").ToList();
+            } // .Replace("ே", "*").Replace("\0", "*")
+
+            else if (selValue == 3)
+            {
+                dataGridView1.DataSource = fullAdangalFromjson.Where(w => w.UtpirivuEn.Contains("ே") || w.UtpirivuEn.Contains("\0")).ToList();
+            }
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            fullAdangalFromjson = DataAccess.SetDeleteFlag(villageName, notInOnlineToBeDeleted);
+
         }
     }
 }

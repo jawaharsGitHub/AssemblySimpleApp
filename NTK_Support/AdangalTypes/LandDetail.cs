@@ -23,7 +23,7 @@ namespace NTK_Support.AdangalTypes
         {
             get
             {
-                if (PulaEn != null && PulaEn.Split('-').Count() == 2)
+                if (PulaEn != null && PulaEn.Split('-').Count() == 2 && PulaEn.Split('-')[1].Trim() != "")
                     return PulaEn.Split('-')[1];
                 else
                     return "-";

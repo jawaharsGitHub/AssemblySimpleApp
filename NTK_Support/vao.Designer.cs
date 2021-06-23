@@ -37,7 +37,6 @@
             this.ddlLandTypes = new System.Windows.Forms.ComboBox();
             this.btnGenerate = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
-            this.btnSaveJson = new System.Windows.Forms.Button();
             this.ddlDistrict = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnStatusCheck = new System.Windows.Forms.Button();
@@ -47,6 +46,8 @@
             this.cmbVillages = new System.Windows.Forms.ComboBox();
             this.btnReady = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.cmbFulfilled = new System.Windows.Forms.ComboBox();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,7 +103,7 @@
             // 
             this.ddlListType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlListType.FormattingEnabled = true;
-            this.ddlListType.Location = new System.Drawing.Point(348, 103);
+            this.ddlListType.Location = new System.Drawing.Point(338, 157);
             this.ddlListType.Name = "ddlListType";
             this.ddlListType.Size = new System.Drawing.Size(121, 21);
             this.ddlListType.TabIndex = 5;
@@ -112,7 +113,7 @@
             // 
             this.ddlLandTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlLandTypes.FormattingEnabled = true;
-            this.ddlLandTypes.Location = new System.Drawing.Point(207, 103);
+            this.ddlLandTypes.Location = new System.Drawing.Point(12, 130);
             this.ddlLandTypes.Name = "ddlLandTypes";
             this.ddlLandTypes.Size = new System.Drawing.Size(121, 21);
             this.ddlLandTypes.TabIndex = 6;
@@ -121,9 +122,9 @@
             // btnGenerate
             // 
             this.btnGenerate.Enabled = false;
-            this.btnGenerate.Location = new System.Drawing.Point(683, 111);
+            this.btnGenerate.Location = new System.Drawing.Point(672, 147);
             this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(101, 23);
+            this.btnGenerate.Size = new System.Drawing.Size(101, 40);
             this.btnGenerate.TabIndex = 7;
             this.btnGenerate.Text = "Generate Html";
             this.btnGenerate.UseVisualStyleBackColor = true;
@@ -132,22 +133,11 @@
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(146, 133);
+            this.lblMessage.Location = new System.Drawing.Point(479, 179);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(66, 13);
             this.lblMessage.TabIndex = 8;
             this.lblMessage.Text = "[lblMessage]";
-            // 
-            // btnSaveJson
-            // 
-            this.btnSaveJson.Enabled = false;
-            this.btnSaveJson.Location = new System.Drawing.Point(531, 111);
-            this.btnSaveJson.Name = "btnSaveJson";
-            this.btnSaveJson.Size = new System.Drawing.Size(87, 23);
-            this.btnSaveJson.TabIndex = 9;
-            this.btnSaveJson.Text = "Save as JSON";
-            this.btnSaveJson.UseVisualStyleBackColor = true;
-            this.btnSaveJson.Click += new System.EventHandler(this.button2_Click);
             // 
             // ddlDistrict
             // 
@@ -170,9 +160,9 @@
             // btnStatusCheck
             // 
             this.btnStatusCheck.Enabled = false;
-            this.btnStatusCheck.Location = new System.Drawing.Point(520, 72);
+            this.btnStatusCheck.Location = new System.Drawing.Point(668, 89);
             this.btnStatusCheck.Name = "btnStatusCheck";
-            this.btnStatusCheck.Size = new System.Drawing.Size(128, 36);
+            this.btnStatusCheck.Size = new System.Drawing.Size(105, 46);
             this.btnStatusCheck.TabIndex = 12;
             this.btnStatusCheck.Text = "status";
             this.btnStatusCheck.UseVisualStyleBackColor = true;
@@ -216,9 +206,9 @@
             // 
             // btnReady
             // 
-            this.btnReady.Location = new System.Drawing.Point(688, 82);
+            this.btnReady.Location = new System.Drawing.Point(549, 89);
             this.btnReady.Name = "btnReady";
-            this.btnReady.Size = new System.Drawing.Size(101, 23);
+            this.btnReady.Size = new System.Drawing.Size(101, 35);
             this.btnReady.TabIndex = 17;
             this.btnReady.Text = "Ready For Print?";
             this.btnReady.UseVisualStyleBackColor = true;
@@ -226,7 +216,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(228, 152);
+            this.button3.Location = new System.Drawing.Point(340, 128);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(109, 23);
             this.button3.TabIndex = 18;
@@ -234,11 +224,33 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // cmbFulfilled
+            // 
+            this.cmbFulfilled.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFulfilled.FormattingEnabled = true;
+            this.cmbFulfilled.Location = new System.Drawing.Point(12, 157);
+            this.cmbFulfilled.Name = "cmbFulfilled";
+            this.cmbFulfilled.Size = new System.Drawing.Size(121, 21);
+            this.cmbFulfilled.TabIndex = 19;
+            this.cmbFulfilled.SelectedIndexChanged += new System.EventHandler(this.cmbFulfilled_SelectedIndexChanged);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(508, 130);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(86, 46);
+            this.btnDelete.TabIndex = 20;
+            this.btnDelete.Text = "Delete Non Existing.";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // vao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.cmbFulfilled);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnReady);
             this.Controls.Add(this.label3);
@@ -248,7 +260,6 @@
             this.Controls.Add(this.btnStatusCheck);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ddlDistrict);
-            this.Controls.Add(this.btnSaveJson);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.ddlLandTypes);
@@ -280,7 +291,6 @@
         private System.Windows.Forms.ComboBox ddlLandTypes;
         private System.Windows.Forms.Button btnGenerate;
         private System.Windows.Forms.Label lblMessage;
-        private System.Windows.Forms.Button btnSaveJson;
         private System.Windows.Forms.ComboBox ddlDistrict;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnStatusCheck;
@@ -290,5 +300,7 @@
         private System.Windows.Forms.ComboBox cmbVillages;
         private System.Windows.Forms.Button btnReady;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox cmbFulfilled;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
