@@ -747,7 +747,7 @@ namespace NTK_Support
             }
             else if (selected == 4)
             {
-                dataGridView1.DataSource = fullAdangalFromjson;
+                dataGridView1.DataSource =  fullAdangalFromjson;
                 EnableReady();
             }
         }

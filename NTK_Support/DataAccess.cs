@@ -23,7 +23,7 @@ namespace NTK_Support
             {
                 WriteObjectsToFile<Adangal>(adangalData, filePath);
             }
-            var data = ReadFileAsObjects<Adangal>(filePath);
+            var data = GetActiveAdangal(filePath);
             return data;
         }
 
@@ -42,9 +42,13 @@ namespace NTK_Support
                 data.Where(w => w.NilaAlavaiEn.ToString() == fe.Split('~')[0] && w.UtpirivuEn == fe.Split('~')[1]).First().LandStatus = LandStatus.Deleted;
             });
             WriteObjectsToFile(data, filePath);
-            return ReadFileAsObjects<Adangal>(filePath);
+            return GetActiveAdangal(filePath);
         }
 
+        public static List<Adangal> GetActiveAdangal(string filePath)
+        {
+            return ReadFileAsObjects<Adangal>(filePath).Where(w => w.LandStatus != LandStatus.Deleted).ToList();
+        }
         public static List<ComboData> GetDistricts()
         {
             var filePath = AppConfiguration.GetDynamicPath($"database/RevDistrict.json");
