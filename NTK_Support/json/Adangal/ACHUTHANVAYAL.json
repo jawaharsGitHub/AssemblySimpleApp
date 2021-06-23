@@ -19593,7 +19593,7 @@
   {
     "NilaAlavaiEn": 3,
     "UtpirivuEn": "2A",
-    "Parappu": "0 - 39.50",
+    "Parappu": "0.39.50",
     "Theervai": "1.09",
     "Anupathaarar": "38-உடையக்காள்",
     "OwnerName": null,
@@ -19604,11 +19604,22 @@
   {
     "NilaAlavaiEn": 3,
     "UtpirivuEn": "2B",
-    "Parappu": "0 - 39.50",
+    "Parappu": "0.39.50",
     "Theervai": "1.09",
     "Anupathaarar": "1637-மேகவர்ணம்",
     "OwnerName": null,
     "LandType": 2,
+    "IsFullfilled": false,
+    "LandStatus": 2
+  },
+  {
+    "NilaAlavaiEn": 42,
+    "UtpirivuEn": "2B1",
+    "Parappu": "3.17.63",
+    "Theervai": "66.70",
+    "Anupathaarar": "8-அய்யப்பன்",
+    "OwnerName": null,
+    "LandType": 1,
     "IsFullfilled": false,
     "LandStatus": 2
   }

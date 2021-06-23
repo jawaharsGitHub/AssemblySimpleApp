@@ -1462,8 +1462,12 @@ namespace NTK_Support
                 if (rowData[0] == surveysubdiv[0] && rowData[1] == surveysubdiv[1])
                 {
                     var adangal = GetAdangalFromCopiedData(rowData,  pattaEn, name);
-                    DataAccess.AddNewAdangal(villageName, adangal);
-                    cmbItemToBeAdded.Items.Remove(cmbItemToBeAdded.SelectedItem.ToString());
+
+                    if (MessageBox.Show(adangal.ToString(), "சரியா?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        DataAccess.AddNewAdangal(villageName, adangal);
+                        cmbItemToBeAdded.SelectedIndex += 1;
+                    }
 
                 }
 
@@ -1506,7 +1510,7 @@ namespace NTK_Support
             adangal.NilaAlavaiEn = data[0].ToInt32();
             adangal.UtpirivuEn = data[1];
             var ld = GetLandDetails(data);
-            adangal.Parappu = ld.par;
+            adangal.Parappu = ld.par.Trim().Replace(" ", "").Replace("-", ".");
             adangal.Theervai = ld.thee;
             adangal.LandType = ld.lt;
             adangal.Anupathaarar = $"{pattaEn}-{ownerName}";

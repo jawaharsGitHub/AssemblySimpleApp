@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.ExtensionMethod;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,5 +22,11 @@ namespace NTK_Support.AdangalTypes
                     } 
         }
         public LandStatus LandStatus { get; set; }
+
+
+        public override string ToString()
+        {
+            return $"அனுபதாரர்: {Anupathaarar} சர்வே எண்: {NilaAlavaiEn} உட்பிரிவு எண்: {UtpirivuEn} {LandType.ToName()} பரப்பு: {Parappu} தீர்வை {Theervai}";
+        }
     }
 }
