@@ -1,4 +1,4 @@
-step nos.
+step nos.[enable next only after current step ok]
 all stes into logging.
 process names
 read reg file from txt and not from pdf
@@ -9,6 +9,12 @@ disable delete button by default.
 add new options - deleted, no change, added.
 
 dropdowns for survey and subdiv nos.
+add more conditions for OK status. eg: porambookku error!
+
+status of one panchayat ?
+
+
+thread process for long running process...
 
 
 

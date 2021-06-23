@@ -55,6 +55,10 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.txtAddNewSurvey = new System.Windows.Forms.TextBox();
+            this.btnAddNewSurvey = new System.Windows.Forms.Button();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.cmbItemToBeAdded = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -62,6 +66,7 @@
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -315,6 +320,7 @@
             this.btnAdd.TabIndex = 21;
             this.btnAdd.Text = "Add  Non Existing.";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // groupBox5
             // 
@@ -338,11 +344,53 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "groupBox6";
             // 
+            // txtAddNewSurvey
+            // 
+            this.txtAddNewSurvey.Enabled = false;
+            this.txtAddNewSurvey.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.txtAddNewSurvey.Location = new System.Drawing.Point(28, 43);
+            this.txtAddNewSurvey.Multiline = true;
+            this.txtAddNewSurvey.Name = "txtAddNewSurvey";
+            this.txtAddNewSurvey.Size = new System.Drawing.Size(283, 193);
+            this.txtAddNewSurvey.TabIndex = 26;
+            // 
+            // btnAddNewSurvey
+            // 
+            this.btnAddNewSurvey.Location = new System.Drawing.Point(128, 242);
+            this.btnAddNewSurvey.Name = "btnAddNewSurvey";
+            this.btnAddNewSurvey.Size = new System.Drawing.Size(75, 23);
+            this.btnAddNewSurvey.TabIndex = 27;
+            this.btnAddNewSurvey.Text = "Add";
+            this.btnAddNewSurvey.UseVisualStyleBackColor = true;
+            this.btnAddNewSurvey.Click += new System.EventHandler(this.btnAddNewSurvey_Click);
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.cmbItemToBeAdded);
+            this.groupBox7.Controls.Add(this.txtAddNewSurvey);
+            this.groupBox7.Controls.Add(this.btnAddNewSurvey);
+            this.groupBox7.Location = new System.Drawing.Point(807, 244);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(352, 301);
+            this.groupBox7.TabIndex = 28;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "groupBox7";
+            // 
+            // cmbItemToBeAdded
+            // 
+            this.cmbItemToBeAdded.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbItemToBeAdded.FormattingEnabled = true;
+            this.cmbItemToBeAdded.Location = new System.Drawing.Point(166, 16);
+            this.cmbItemToBeAdded.Name = "cmbItemToBeAdded";
+            this.cmbItemToBeAdded.Size = new System.Drawing.Size(121, 21);
+            this.cmbItemToBeAdded.TabIndex = 29;
+            // 
             // vao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1088, 450);
+            this.ClientSize = new System.Drawing.Size(1201, 557);
+            this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -368,6 +416,8 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -402,5 +452,9 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.TextBox txtAddNewSurvey;
+        private System.Windows.Forms.Button btnAddNewSurvey;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.ComboBox cmbItemToBeAdded;
     }
 }

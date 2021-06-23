@@ -76,9 +76,17 @@ namespace NTK_Support
             return GetActiveAdangal(filePath);
         }
 
-        public static List<Adangal> GetActiveAdangal(string filePath)
+        public static List<Adangal> GetActiveAdangal(string fileName, bool directCall = false)
         {
+            var filePath = directCall ? GetAdangalPath(fileName) : fileName; // ???
             return ReadFileAsObjects<Adangal>(filePath).Where(w => w.LandStatus != LandStatus.Deleted).ToList();
+        }
+
+        public static bool AddNewAdangal(string fileName, Adangal adangal)
+        {
+            var filePath = GetAdangalPath(fileName);
+            InsertSingleObjectToListJson<Adangal>(filePath, adangal);
+            return true;
         }
         public static List<ComboData> GetDistricts()
         {

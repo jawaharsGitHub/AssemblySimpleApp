@@ -43,6 +43,7 @@ namespace NTK_Support
         List<Adangal> fullAdangalFromjson;
         Patta pattaSingle;
         List<string> relationTypes;
+        List<string> relationTypesCorrect;
 
 
         string firstPage;
@@ -449,12 +450,16 @@ namespace NTK_Support
 
             BindDropdown(ddlPattaTypes, fr.CountData, "DisplayMember", "Id");
             BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
+            ddlListType.SelectedIndex = 3;
             BindDropdown(ddlLandTypes, GetLandTypes(), "Caption", "Id");
+
 
             if (fr.IsFullProcessed == false)
             {
                 MessageBox.Show($"{fr.NotProcessedData} not processes");
             }
+
+
         }
 
         private List<KeyValue> GetListTypes()
@@ -747,7 +752,7 @@ namespace NTK_Support
             }
             else if (selected == 4)
             {
-                dataGridView1.DataSource =  fullAdangalFromjson;
+                dataGridView1.DataSource = fullAdangalFromjson;
                 EnableReady();
             }
         }
@@ -1148,6 +1153,7 @@ namespace NTK_Support
             }
 
             var onlineData = GetLandCount();
+            fullAdangalFromjson = DataAccess.GetActiveAdangal(villageName, true);
 
             var expLandDetails = (onlineData
                                 .OrderBy(o => o.Value)
@@ -1164,7 +1170,7 @@ namespace NTK_Support
             notInPdfToBeAdded = expLandDetails.Except(actualLandDetails).ToList();
             notInOnlineToBeDeleted = actualLandDetails.Except(expLandDetails).ToList();
 
-            if(notInPdfToBeAdded.Count == 0 && notInOnlineToBeDeleted.Count == 0)
+            if (notInPdfToBeAdded.Count == 0 && notInOnlineToBeDeleted.Count == 0)
             {
                 btnStatusCheck.Text = "OK";
                 btnStatusCheck.BackColor = Color.Green;
@@ -1177,6 +1183,8 @@ namespace NTK_Support
 
             btnDelete.Enabled = (notInOnlineToBeDeleted.Count > 0);
             btnAdd.Enabled = (notInPdfToBeAdded.Count > 0);
+
+            cmbItemToBeAdded.DataSource = notInPdfToBeAdded;
 
 
         }
@@ -1254,6 +1262,14 @@ namespace NTK_Support
                 "காப்பாளர்",
                 "மைகன",
                 "மைைனவி"
+            };
+
+                relationTypesCorrect = new List<string>() {
+                "தந்தை",
+                "கணவன்",
+                "காப்பாளர்",
+                "மகன்",
+                "மனைவி"
             };
 
 
@@ -1409,5 +1425,132 @@ namespace NTK_Support
             IsEnterKey = (keyData == Keys.Enter);
             return false;
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            txtAddNewSurvey.Enabled = btnAddNewSurvey.Enabled = cmbItemToBeAdded.Enabled =  true;
+            
+
+        }
+
+        private void btnAddNewSurvey_Click(object sender, EventArgs e)
+        {
+            var newData = txtAddNewSurvey.Text;
+
+            var splitData = newData.Replace("உரிமையாளர்கள் பெயர்", "$").Split('$');
+            var pattaEn = splitData[0].Replace("பட்டா எண்", "$").Split('$').ToList()[1].Replace(":", "").Trim();
+
+            var first = splitData[1];
+
+            var sec = first.Replace("குறிப்பு2", "$").Split('$')[0];
+            var third = sec.Split(Environment.NewLine.ToCharArray()).Where(w => w.Trim() != "").ToList();
+
+            var hecIndex = third.FindIndex(f => f.Contains("ஹெக்"));
+            var totalIndex = third.Count - 1;
+
+            var neededData = third.Skip(hecIndex + 1);
+            neededData = neededData.Take(neededData.Count() - 1);
+
+            var name = GetOwnerName(sec.Replace("புல எண்", "$").Split('$').ToList()[0]);
+
+            var surveysubdiv = cmbItemToBeAdded.SelectedItem.ToString().Split('~').ToList();
+
+            neededData.ToList().ForEach(fe => {
+
+                var rowData = fe.Split('\t').ToList();
+
+                if (rowData[0] == surveysubdiv[0] && rowData[1] == surveysubdiv[1])
+                {
+                    var adangal = GetAdangalFromCopiedData(rowData,  pattaEn, name);
+                    DataAccess.AddNewAdangal(villageName, adangal);
+                    cmbItemToBeAdded.Items.Remove(cmbItemToBeAdded.SelectedItem.ToString());
+
+                }
+
+
+            });
+
+        }
+
+        private string GetOwnerName(string nameRow)
+        {
+            nameRow = nameRow.Split(' ').ToList().Where(w => w.Trim() != "").ToList()[1];
+            string name = "";
+            if (relationTypesCorrect.Any(a => nameRow.Split('\t').ToList().Contains(a))) // have valid names.
+            {
+                var delitList = relationTypesCorrect.Intersect(nameRow.Split('\t').ToList()).ToList();
+
+                if (delitList.Count == 1)
+                {
+                    var delimit = delitList[0];
+                    name = nameRow.Replace(delimit, "$").Split('$')[1];
+                    var d = nameRow.Replace(delimit, "$").Split('$');
+                    name = $"{d[1]}";
+                }
+                else
+                {
+                    // ERROR!
+                    MessageBox.Show("Error!");
+                }
+            }
+
+            return name.Trim().Replace("\t", "").Replace("-", "");
+        }
+
+
+        private Adangal GetAdangalFromCopiedData(List<string> data, string pattaEn, string ownerName)
+        {
+            var adangal = new Adangal();
+
+            // Test for both fullfilled and extend also
+            adangal.NilaAlavaiEn = data[0].ToInt32();
+            adangal.UtpirivuEn = data[1];
+            var ld = GetLandDetails(data);
+            adangal.Parappu = ld.par;
+            adangal.Theervai = ld.thee;
+            adangal.LandType = ld.lt;
+            adangal.Anupathaarar = $"{pattaEn}-{ownerName}";
+            adangal.LandStatus = LandStatus.Added;
+
+            return adangal;
+        }
+
+        private (LandType lt, string par, string thee) GetLandDetails(List<string> data)
+        {
+            int i = 0;
+            LandType ld = LandType.Other;
+            var parappu = "";
+            var theervai = "";
+
+            if (data[2] != "--" && data[3] != "--")
+            {
+                ld = LandType.Punsai;
+                parappu = data[2];
+                theervai = data[3];
+                i += 1;
+            }
+            if (data[4] != "--" && data[5] != "--")
+            {
+                ld = LandType.Nansai;
+                parappu = data[4];
+                theervai = data[5];
+                i += 1;
+            }
+            if (data[6] != "--" && data[7] != "--")
+            {
+                ld = LandType.Maanaavari;
+                parappu = data[6];
+                theervai = data[7];
+                i += 1;
+            }
+
+            if(i > 1)
+            {
+                ld = LandType.Other;
+            }
+
+            return (ld, parappu, theervai);
+        }
+        
     }
 }
