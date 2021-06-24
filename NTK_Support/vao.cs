@@ -59,6 +59,22 @@ namespace NTK_Support
         {
             InitializeComponent();
             BindDropdown(ddlDistrict, DataAccess.GetDistricts(), "Display", "Value");
+
+            relationTypes = new List<string>() {
+                        "தந்தைத",
+                        "கணவன",
+                        "காப்பாளர்",
+                        "மைகன",
+                        "மைைனவி"
+                    };
+
+            relationTypesCorrect = new List<string>() {
+                        "தந்தை",
+                        "கணவன்",
+                        "காப்பாளர்",
+                        "மகன்",
+                        "மனைவி"
+                    };
         }
 
         private void BindDropdown(ComboBox cb, object dataSource, string DisplayMember, string ValueMember)
@@ -151,24 +167,45 @@ namespace NTK_Support
         }
         private void ProcessAreg()
         {
+
+            aRegContent = aRegFile.GetPdfContent();
+            //aRegContent = File.ReadAllText(aRegFile); 
+
             PurambokkuAdangalList = new List<Adangal>();
 
             var aregPatta = aRegContent.Split(Environment.NewLine.ToCharArray()).Where(w => w.Contains("புறமேபாககு")).ToList();
+            // var aregPatta = aRegContent.Split(Environment.NewLine.ToCharArray()).ToList().Where(w => w.Trim() != "" && w.Contains("புறம்போக்கு")).ToList();
+
+            var landType = LandType.Porambokku;
 
             foreach (var item in aregPatta)
             {
+                //var d  = item.Split(' ').ToList();
+                //var surveyNo = d[2].Split('-')[0];
+                //var surveyNo2 = d[0];
+                //var parappu = $"{d[totalLength - 6]}.{d[totalLength - 5]}";
+                //if (surveyNo.Trim() != surveyNo2.Trim())
+                //{
+                //    landType = LandType.PorambokkuError;
+                //}
+                //var subdiv2 = 
+
                 var d = item.Split(' ').Where(w => w.Trim() != "").ToList();
+                var pointedIndex = d.LastIndexOf("0");
+                var parappu = $"{d[pointedIndex - 4]}.{d[pointedIndex - 3]}";
 
                 try
                 {
+                //Debug.WriteLine($"{d[0]}    {d[1]}  {parappu}   {d.Last()}");
+               
                     PurambokkuAdangalList.Add(new Adangal()
                     {
-                        NilaAlavaiEn = d[0].ToInt32(),
+                        NilaAlavaiEn = d[0].ToInt32(), 
                         UtpirivuEn = d[1],
-                        OwnerName = d[16],
-                        Parappu = $"{d[11]}.{d[12]}",
+                        OwnerName = d.Last(),
+                        Parappu = parappu, 
                         //Theervai = $"{d[11]}.{d[12]}",
-                        Anupathaarar = d[16],
+                        Anupathaarar = d.Last(),
                         LandType = LandType.Porambokku
                     });
 
@@ -195,6 +232,7 @@ namespace NTK_Support
 
         private void ProcessChittaFile()
         {
+            chittaContent = chittaFile.GetPdfContent();
 
             var pattaas = chittaContent.Replace("பட்டா எண்    :", "$"); //("பட்டா எண்", "$");
             var data = pattaas.Split('$').ToList();
@@ -914,9 +952,9 @@ namespace NTK_Support
                     if (fe.Key != LandType.Porambokku)
                         totalTheervai = temData.Sum(s => s.TheervaiTotal).ToString();
 
-                    var totalRows = row.Replace("[pageNo]", tamilMoththam)
-                                              .Replace("[parappu]", GetSumThreeDotNo(temData.Select(s => s.ParappuTotal).ToList()))
-                                              .Replace("[theervai]", totalTheervai);
+                    var totalRows = row.Replace("[pageNo]", $"<b>{tamilMoththam}</b>")
+                                              .Replace("[parappu]", $"<b>{GetSumThreeDotNo(temData.Select(s => s.ParappuTotal).ToList())}</b>")
+                                              .Replace("[theervai]", $"<b>{totalTheervai}</b>");
 
                     // Created a sub list item!
                     destination.Add(new PageTotal()
@@ -958,9 +996,9 @@ namespace NTK_Support
                 sb.Append(dataRows);
             });
 
-            var totalRows = row.Replace("[vibaram]", tamilMoththam)
-                                      .Replace("[parappu]", GetSumThreeDotNo(source.Select(s => s.ParappuTotal).ToList()))
-                                      .Replace("[theervai]", source.Sum(s => s.TheervaiTotal).ToString());
+            var totalRows = row.Replace("[vibaram]", $"<b>{tamilMoththam}</b>")
+                                      .Replace("[parappu]", $"<b>{GetSumThreeDotNo(source.Select(s => s.ParappuTotal).ToList())}</b>")
+                                      .Replace("[theervai]", $"<b>{source.Sum(s => s.TheervaiTotal).ToString()}</b>");
 
             tbl = tbl.Replace("[datarows]", sb.ToString());
             tbl = tbl.Replace("[totalrow]", totalRows);
@@ -1008,8 +1046,8 @@ namespace NTK_Support
 
 
                 // FOR TETSING ONLY
-                //int  testingPageNo = 6;
-                //pageCount = pageCount >= testingPageNo ? testingPageNo : pageCount;
+                int testingPageNo = 6;
+                pageCount = pageCount >= testingPageNo ? testingPageNo : pageCount;
                 // FOR TETSING ONLY
 
                 for (int i = 0; i <= pageCount - 1; i++)
@@ -1268,50 +1306,48 @@ namespace NTK_Support
                 folderPath = fbd.SelectedPath;
             }
 
+
+            if (chkProd.Checked)
+            {
+                chittaFile = Path.Combine(folderPath, "Chitta_Report-1.pdf");
+                chittaContent = chittaFile.GetPdfContent();
+                var pattaas = chittaContent.Replace("பட்டா எண்    :", "$"); //("பட்டா எண்", "$");
+                var data = pattaas.Split('$').ToList();
+                villageName = data.First().Split(':')[3].Trim();
+                fullAdangalFromjson = DataAccess.GetActiveAdangal(villageName, true);
+                BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
+                ddlListType.SelectedIndex = 3;
+                LoadSurveyAndSubdiv();
+                return;
+            }
+            
+
             if (haveValidFiles(folderPath))
             {
-                pattaList = new PattaList();
-                relationTypes = new List<string>() {
-                "தந்தைத",
-                "கணவன",
-                "காப்பாளர்",
-                "மைகன",
-                "மைைனவி"
-            };
-
-                relationTypesCorrect = new List<string>() {
-                "தந்தை",
-                "கணவன்",
-                "காப்பாளர்",
-                "மகன்",
-                "மனைவி"
-            };
+                        pattaList = new PattaList();
+                        
 
 
-                chittaFile = Path.Combine(folderPath, "Chitta_Report-1.pdf");
-                aRegFile = Path.Combine(folderPath, "Areg_Report-1.pdf");
-                chittaContent = chittaFile.GetPdfContent();
-                aRegContent = aRegFile.GetPdfContent();
+                    firstPage = FileContentReader.FirstPageTemplate;
+                    leftEmpty = GetLeftEmptyPage();
+                    leftCertEmpty = FileContentReader.LeftPageCertTableTemplate;
+                    rightCertEmpty = FileContentReader.RightPageTableCertTemplate;
 
-                firstPage = FileContentReader.FirstPageTemplate;
-                leftEmpty = GetLeftEmptyPage();
-                leftCertEmpty = FileContentReader.LeftPageCertTableTemplate;
-                rightCertEmpty = FileContentReader.RightPageTableCertTemplate;
+                    ProcessNames();
+                    chittaFile = Path.Combine(folderPath, "Chitta_Report-1.pdf");
+                    ProcessChittaFile();    // Nansai, Pun, Maa,
 
-                //ProcessNames();
-                ProcessChittaFile();    // Nansai, Pun, Maa,
-                ProcessAreg();  // Puram
+                    aRegFile = Path.Combine(folderPath, "Areg_Report-1.pdf");
+                    ProcessAreg();  // Puram
 
-                ProcessFullReport();
-                LoadSurveyAndSubdiv();
+                    ProcessFullReport();
+                    LoadSurveyAndSubdiv();
 
             }
             else
             {
                 MessageBox.Show("Some file missing in the folder?");
-
             }
-
 
         }
 
@@ -1420,16 +1456,23 @@ namespace NTK_Support
             {
                 dataGridView1.DataSource = fullAdangalFromjson.Where(w => w.UtpirivuEn.Contains("ே") || w.UtpirivuEn.Contains("\0")).ToList();
             }
-            else if (selValue == 4 || selValue == 5 || selValue == 7)
+            else if (selValue == 4)
             {
-                dataGridView1.DataSource = fullAdangalFromjson.Where(w => (int)w.LandStatus == (selValue-4)).ToList();
+                dataGridView1.DataSource = fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.NoChange).ToList();
             }
-            
+            else if (selValue == 5)
+            {
+                dataGridView1.DataSource = fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.Added).ToList();
+            }
+
             else if (selValue == 6)
             {
                 dataGridView1.DataSource = DataAccess.GetDeletedAdangal(villageName, true);  // fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.Deleted).ToList();
             }
-           
+            else if (selValue == 7)
+            {
+                dataGridView1.DataSource = fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.Error).ToList();
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -1522,17 +1565,22 @@ namespace NTK_Support
 
                 var rowData = fe.Split('\t').ToList();
 
-                if (rowData[0] == surveysubdiv[0] && rowData[1] == surveysubdiv[1])
-                {
-                    var adangal = GetAdangalFromCopiedData(rowData,  pattaEn, name);
+                var adangal = GetAdangalFromCopiedData(rowData, pattaEn, name);
 
+
+                //if ((rowData[0] == surveysubdiv[0] && rowData[1] == surveysubdiv[1]))
+                if (notInPdfToBeAdded.Contains($"{adangal.NilaAlavaiEn}~{adangal.UtpirivuEn}"))
+                {
                     if (MessageBox.Show(adangal.ToString(), "சரியா?", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         DataAccess.AddNewAdangal(villageName, adangal);
-                        cmbItemToBeAdded.SelectedIndex += 1;
+                        //cmbItemToBeAdded.SelectedIndex += 1;
                     }
                 }
             });
+
+            button2_Click_1(null, null);
+            txtAddNewSurvey.Clear();
         }
 
         private string GetOwnerName(string nameRow)

@@ -24,7 +24,10 @@ namespace NTK_Support.AdangalTypes
             } 
             set 
             {
-                if (value == LandType.PorambokkuError) LandStatus = LandStatus.Error;
+                if (value == LandType.PorambokkuError)
+                {
+                    LandStatus = LandStatus.Error;
+                }
                 _landType =  value; 
             }
         }

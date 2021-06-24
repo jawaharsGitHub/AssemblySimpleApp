@@ -63,6 +63,7 @@
             this.cmbSubdivNo = new System.Windows.Forms.ComboBox();
             this.lblSurveyNo = new System.Windows.Forms.Label();
             this.lblSubdiv = new System.Windows.Forms.Label();
+            this.chkProd = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -239,7 +240,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(21, 31);
+            this.button3.Location = new System.Drawing.Point(21, 38);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(109, 23);
             this.button3.TabIndex = 18;
@@ -285,6 +286,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.chkProd);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Location = new System.Drawing.Point(295, 1);
             this.groupBox2.Name = "groupBox2";
@@ -425,6 +427,16 @@
             this.lblSubdiv.TabIndex = 32;
             this.lblSubdiv.Text = "subdiv no";
             // 
+            // chkProd
+            // 
+            this.chkProd.AutoSize = true;
+            this.chkProd.Location = new System.Drawing.Point(21, 12);
+            this.chkProd.Name = "chkProd";
+            this.chkProd.Size = new System.Drawing.Size(80, 17);
+            this.chkProd.TabIndex = 19;
+            this.chkProd.Text = "checkBox1";
+            this.chkProd.UseVisualStyleBackColor = true;
+            // 
             // vao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -456,6 +468,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
@@ -504,5 +517,6 @@
         private System.Windows.Forms.ComboBox cmbSubdivNo;
         private System.Windows.Forms.Label lblSurveyNo;
         private System.Windows.Forms.Label lblSubdiv;
+        private System.Windows.Forms.CheckBox chkProd;
     }
 }

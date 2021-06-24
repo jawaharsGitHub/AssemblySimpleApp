@@ -14,44 +14,36 @@ namespace Common.ExtensionMethod
 
         public static string GetPdfContent(this string fileName)
         {
-
-            //return File.ReadAllText(@"E:\TN GOV\Achunthavayal\text.txt");
             PdfReader reader = new PdfReader(fileName);
             int intPageNum = reader.NumberOfPages;
 
-            //var result = new StringBuilder();
             var filePath = fileName.Replace(".pdf", ".txt");
 
             File.WriteAllText(filePath, "");
 
+            //for (int i = 1; i <= intPageNum; i++)
+            //{
+            //    FontProgramRenderFilter fontFilter = new FontProgramRenderFilter();
+            //    ITextExtractionStrategy strategy = new FilteredTextRenderListener(
+            //            new LocationTextExtractionStrategy(), fontFilter);
+
+            //    var text = PdfTextExtractor.GetTextFromPage(reader, i, strategy);
+
+            //    //var text2 = Encoding.UTF8.GetString(Encoding.Default.GetBytes(text));
+
+            //    //var text2 = PdfTextExtractor.GetTextFromPage(reader, i, new SimpleTextExtractionStrategy());
+
+            //    File.AppendAllText(filePath, text);
+            //}
+
+
             for (int i = 1; i <= intPageNum; i++)
             {
-                //page = new PdfContent();
-                //page.PageNo = i;
-                //List<string> pdfPageContent = new List<string>();
-
                 var text = PdfTextExtractor.GetTextFromPage(reader, i, new LocationTextExtractionStrategy());
-
                 File.AppendAllText(filePath, text);
-
-                //result = (result + text);
-
-                //words = text.Split('\n');
-
-                //for (int j = 0, len = words.Length; j < len; j++)
-                //{
-                //    pdfPageContent.Add(Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(words[j])));
-                //}
-
-                //page.PageContentLines = pdfPageContent;
-
-                //result.Add(page);
-
             }
-
+            reader.Close();
             return File.ReadAllText(filePath);
-
-            // return result.ToString();
         }
 
 
@@ -67,4 +59,35 @@ namespace Common.ExtensionMethod
 
 
     }
+
+    //class FontProgramRenderFilter : RenderFilter
+    //{
+    //    public override bool AllowText(TextRenderInfo renderInfo)
+    //    {
+    //        DocumentFont font = renderInfo.GetFont();
+    //        PdfDictionary fontDict = font.FontDictionary;
+    //        PdfName subType = fontDict.GetAsName(PdfName.SUBTYPE);
+    //        if (PdfName.TYPE0.Equals(subType))
+    //        {
+    //            PdfArray descendantFonts = fontDict.GetAsArray(PdfName.DESCENDANTFONTS);
+    //            PdfDictionary descendantFont = descendantFonts[0] as PdfDictionary;
+    //            PdfDictionary fontDescriptor = descendantFont.GetAsDict(PdfName.FONTDESCRIPTOR);
+    //            PdfStream fontStream = fontDescriptor.GetAsStream(PdfName.FONTFILE2);
+    //            byte[] fontData = PdfReader.GetStreamBytes((PRStream)fontStream);
+    //            MemoryStream dataStream = new MemoryStream(fontData);
+    //            dataStream.Position = 0;
+    //            MemoryPackage memoryPackage = new MemoryPackage();
+    //            Uri uri = memoryPackage.CreatePart(dataStream);
+    //            GlyphTypeface glyphTypeface = new GlyphTypeface(uri);
+    //            memoryPackage.DeletePart(uri);
+    //            ICollection<string> names = glyphTypeface.FamilyNames.Values;
+    //            return names.Where(name => name.Contains("Arial")).Count() > 0;
+    //        }
+    //        else
+    //        {
+    //            // analogous code for other font subtypes
+    //            return false;
+    //        }
+    //    }
+    //}
 }
