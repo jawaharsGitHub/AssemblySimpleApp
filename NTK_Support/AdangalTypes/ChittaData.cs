@@ -5,7 +5,7 @@ namespace NTK_Support.AdangalTypes
     public class ChittaData
     {
 
-        public int index { get; set; }
+        public int Index { get; set; }
 
         public int SurveyNo { get; set; }
 

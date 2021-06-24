@@ -18,15 +18,9 @@ namespace Common.ExtensionMethod
             //return File.ReadAllText(@"E:\TN GOV\Achunthavayal\text.txt");
             PdfReader reader = new PdfReader(fileName);
             int intPageNum = reader.NumberOfPages;
-            string[] words;
-            string line;
 
             //var result = new StringBuilder();
-            string result = "";
-
             var filePath = fileName.Replace(".pdf", ".txt");
-
-            PdfContent page = null;
 
             File.WriteAllText(filePath, "");
 

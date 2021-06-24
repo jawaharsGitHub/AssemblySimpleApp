@@ -21,19 +21,15 @@ namespace NTK_Support
 {
     public partial class vao : Form
     {
-        int recordPerPage = 8;
-        int pageTotalrecordPerPage = 25;
+        readonly int recordPerPage = 8;
+        readonly int pageTotalrecordPerPage = 25;
 
         string chittaFile = "";
         string aRegFile = "";
         string chittaContent = "";
         string aRegContent = "";
-
-        string empty = "";
-        string tamilMoththam = "மொத்தம்";
-        int pageListRowNo = 24;
-        int rightPageNo = 6;
-        int startPno = 284;
+        readonly string empty = "";
+        readonly string tamilMoththam = "மொத்தம்";
         string villageName = "";
 
         PattaList pattaList;
@@ -487,8 +483,8 @@ namespace NTK_Support
         private List<KeyValue> GetLandTypes()
         {
             var landTypeSource = new List<KeyValue>();
-
             landTypeSource.Add(new KeyValue() { Caption = "ALL", Id = -1 });
+
             foreach (LandType rt in Enum.GetValues(typeof(LandType)))
             {
 
@@ -517,7 +513,7 @@ namespace NTK_Support
                 if (breakData != null && breakData.Count > 0)
                 {
                     land.PulaEn = ad[0].Split(' ')[1] + breakData[index];
-                    land.nansaiParappu = ad[1] + ad[2].Split(' ')[0];
+                    land.NansaiParappu = ad[1] + ad[2].Split(' ')[0];
                 }
                 else
                 {
@@ -525,23 +521,23 @@ namespace NTK_Support
                     if (ad[1].Split(' ').Count() == 2)
                     {
                         land.PulaEn = ad[0].Split(' ')[1] + ad[1].Split(' ')[0];
-                        land.nansaiParappu = ad[1].Split(' ')[1] + ad[2].Split(' ')[0];
+                        land.NansaiParappu = ad[1].Split(' ')[1] + ad[2].Split(' ')[0];
                     }
                     else if (ad[1].Split(' ').Count() == 1)
                     {
                         land.PulaEn = ad[0].Split(' ')[1];
-                        land.nansaiParappu = ad[1].Split(' ')[0] + ad[2].Split(' ')[0];
+                        land.NansaiParappu = ad[1].Split(' ')[0] + ad[2].Split(' ')[0];
                     }
                     else
                         throw new Exception();
                 }
-                land.nansaiTheervai = ad[2].Split(' ')[1];
+                land.NansaiTheervai = ad[2].Split(' ')[1];
 
-                land.punsaiParappu = ad[2].Split(' ')[2] + ad[3].Split(' ')[0];
-                land.punsaiTheervai = ad[3].Split(' ')[1];
+                land.PunsaiParappu = ad[2].Split(' ')[2] + ad[3].Split(' ')[0];
+                land.PunsaiTheervai = ad[3].Split(' ')[1];
 
-                land.maanavariParappu = ad[3].Split(' ')[2] + ad[4].Split(' ')[0];
-                land.maanavariTheervai = ad[4].Split(' ')[1].Replace("-", "");
+                land.MaanavariParappu = ad[3].Split(' ')[2] + ad[4].Split(' ')[0];
+                land.MaanavariTheervai = ad[4].Split(' ')[1].Replace("-", "");
 
 
                 landList.Add(land);
@@ -566,7 +562,7 @@ namespace NTK_Support
         private PattaType isAllmemberBreakDataValid(List<string> memberData, string totalData)
         {
 
-            if (isValidTotalRecord(totalData) == false)
+            if (IsValidTotalRecord(totalData) == false)
                 return PattaType.TotalRecordIssue;
 
             var evenData = GetEvenIndexData(memberData);
@@ -583,7 +579,7 @@ namespace NTK_Support
 
         private PattaType isAllmemberDataValid(List<string> memberData, string totalData)
         {
-            if (isValidTotalRecord(totalData) == false)
+            if (IsValidTotalRecord(totalData) == false)
                 return PattaType.TotalRecordIssue;
             if (memberData.All(a => a.Split('-').Count() == 5))
                 return PattaType.Valid;
@@ -595,14 +591,13 @@ namespace NTK_Support
                 return PattaType.KnownError;
         }
 
-        private bool isValidTotalRecord(string total)
+        private bool IsValidTotalRecord(string total)
         {
             return total.Split('-').Count() == 4;
         }
 
         private (bool status, List<string> bk, List<string> nobk) IsPartialBreak(List<string> memberData)
         {
-            var isPrevBkrec = false;
             var brkData = new List<string>();
             var nonBkData = new List<string>();
             var done = false;
@@ -629,12 +624,12 @@ namespace NTK_Support
                         brkData.Add(memberData[mi]);
                         brkData.Add(memberData[mi + 1]);
                         mi += 1; // very imporatant spot
-                        isPrevBkrec = true;
+                        //isPrevBkrec = true;
                     }
                     else if (memberData[mi].Contains('-') && memberData[mi + 1].Contains('-'))
                     {
                         nonBkData.Add(memberData[mi]);
-                        isPrevBkrec = false;
+                        //isPrevBkrec = false;
                     }
                 }
             }
@@ -889,7 +884,7 @@ namespace NTK_Support
                 var dataToProcess = fe.ToList();
 
                 var pageCount = dataToProcess.Count / pageTotalrecordPerPage;
-                if (dataToProcess.Count % pageTotalrecordPerPage > 0) pageCount = pageCount + 1;
+                if (dataToProcess.Count % pageTotalrecordPerPage > 0) pageCount += 1;
 
                 var tableTemplate22 = FileContentReader.PageTotalTableTemplate;
                 var rowTemplate22 = FileContentReader.PageTotalRowTemplate;
@@ -1008,7 +1003,7 @@ namespace NTK_Support
                 var dataToProcess = fe.ToList();
 
                 var pageCount = dataToProcess.Count / recordPerPage;
-                if (dataToProcess.Count % recordPerPage > 0) pageCount = pageCount + 1;
+                if (dataToProcess.Count % recordPerPage > 0) pageCount += 1;
                 var landType = fe.Key.ToName();
 
 
@@ -1169,9 +1164,9 @@ namespace NTK_Support
             notInOnlineToBeDeleted = actualLandDetails.Except(expLandDetails).ToList();
 
 
-            var isReady = IsReadyToPrint();
-            btnStatusCheck.Text = isReady.status;
-            btnStatusCheck.BackColor = isReady.r ? Color.Green : Color.Red;
+            var (r, status) = IsReadyToPrint();
+            btnStatusCheck.Text = status;
+            btnStatusCheck.BackColor = r ? Color.Green : Color.Red;
 
             btnDelete.Enabled = (notInOnlineToBeDeleted.Count > 0);
             btnAdd.Enabled = (notInPdfToBeAdded.Count > 0);
@@ -1262,8 +1257,10 @@ namespace NTK_Support
 
         private void button3_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.SelectedPath = @"F:\AUTO-ADANGAL";
+            FolderBrowserDialog fbd = new FolderBrowserDialog
+            {
+                SelectedPath = @"F:\AUTO-ADANGAL"
+            };
 
             string folderPath = "";
             if (DialogResult.OK == fbd.ShowDialog())
@@ -1467,7 +1464,6 @@ namespace NTK_Support
                 return;
             }
 
-            int existingTxnId = 0; // to  keep existing txn id.
             DataGridView grid = (sender as DataGridView);
             int rowIndex = grid.CurrentCell.RowIndex;
             string owningColumnName = grid.CurrentCell.OwningColumn.Name;
@@ -1483,7 +1479,7 @@ namespace NTK_Support
 
         public static string GetGridCellValue(DataGridView grid, int rowIndex, string columnName)
         {
-            var cellValue = Convert.ToString(grid.Rows[grid.CurrentCell.RowIndex].Cells[columnName].Value);
+            var cellValue = Convert.ToString(grid.Rows[rowIndex].Cells[columnName].Value);
             return (cellValue == string.Empty) ? null : cellValue;
         }
 
@@ -1567,15 +1563,17 @@ namespace NTK_Support
 
         private Adangal GetAdangalFromCopiedData(List<string> data, string pattaEn, string ownerName)
         {
-            var adangal = new Adangal();
+            var adangal = new Adangal
+            {
+                // Test for both fullfilled and extend also
+                NilaAlavaiEn = data[0].ToInt32(),
+                UtpirivuEn = data[1]
+            };
 
-            // Test for both fullfilled and extend also
-            adangal.NilaAlavaiEn = data[0].ToInt32();
-            adangal.UtpirivuEn = data[1];
-            var ld = GetLandDetails(data);
-            adangal.Parappu = ld.par.Trim().Replace(" ", "").Replace("-", ".");
-            adangal.Theervai = ld.thee;
-            adangal.LandType = ld.lt;
+            var (lt, par, thee) = GetLandDetails(data);
+            adangal.Parappu = par.Trim().Replace(" ", "").Replace("-", ".");
+            adangal.Theervai = thee;
+            adangal.LandType = lt;
             adangal.Anupathaarar = $"{pattaEn}-{ownerName}";
             adangal.LandStatus = LandStatus.Added;
 

@@ -32,23 +32,23 @@ namespace NTK_Support.AdangalTypes
 
 
         // நன்செய் பரப்பு 
-        public string nansaiParappu { get; set; }
+        public string NansaiParappu { get; set; }
 
 
         // நன்செய் தீர்வை  
-        public string nansaiTheervai { get; set; }
+        public string NansaiTheervai { get; set; }
 
         // புன்செய் பரப்பு 
-        public string punsaiParappu { get; set; }
+        public string PunsaiParappu { get; set; }
 
         // புன்செய் தீர்வை 
-        public string punsaiTheervai { get; set; }
+        public string PunsaiTheervai { get; set; }
 
         // மானாவரி பரப்பு
-        public string maanavariParappu { get; set; }
+        public string MaanavariParappu { get; set; }
 
         // மானாவரி தீர்வை
-        public string maanavariTheervai { get; set; }
+        public string MaanavariTheervai { get; set; }
 
         public LandType LandType
         {
@@ -57,19 +57,19 @@ namespace NTK_Support.AdangalTypes
                 int i = 0;
                 LandType ld = LandType.Zero;
 
-                if (nansaiTheervai != "0" && nansaiTheervai != "0.00")
+                if (NansaiTheervai != "0" && NansaiTheervai != "0.00")
                 {
                     i += 1;
                     ld = LandType.Nansai;
                 }
 
-                if (punsaiTheervai != "0" && punsaiTheervai != "0.00")
+                if (PunsaiTheervai != "0" && PunsaiTheervai != "0.00")
                 {
                     i += 1;
                     ld = LandType.Punsai;
                 }
 
-                if (maanavariTheervai != "0" && maanavariTheervai != "0.00")
+                if (MaanavariTheervai != "0" && MaanavariTheervai != "0.00")
                 {
                     i += 1;
                     ld = LandType.Maanaavari;
@@ -89,9 +89,9 @@ namespace NTK_Support.AdangalTypes
         {
             get
             {
-                if (LandType == LandType.Nansai) return nansaiParappu.Replace("-",".");
-                else if (LandType == LandType.Punsai) return punsaiParappu.Replace("-", ".");
-                else if (LandType == LandType.Maanaavari) return maanavariParappu.Replace("-", ".");
+                if (LandType == LandType.Nansai) return NansaiParappu.Replace("-",".");
+                else if (LandType == LandType.Punsai) return PunsaiParappu.Replace("-", ".");
+                else if (LandType == LandType.Maanaavari) return MaanavariParappu.Replace("-", ".");
                 else return "-";
             }
         }
@@ -100,9 +100,9 @@ namespace NTK_Support.AdangalTypes
         {
             get
             {
-                if (LandType == LandType.Nansai) return nansaiTheervai;
-                else if (LandType == LandType.Punsai) return punsaiTheervai;
-                else if (LandType == LandType.Maanaavari) return maanavariTheervai;
+                if (LandType == LandType.Nansai) return NansaiTheervai;
+                else if (LandType == LandType.Punsai) return PunsaiTheervai;
+                else if (LandType == LandType.Maanaavari) return MaanavariTheervai;
                 else return "-";
             }
         }

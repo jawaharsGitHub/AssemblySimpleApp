@@ -138,15 +138,17 @@ namespace NTK_Support
             PdfReader reader = new PdfReader(fileName);
             int intPageNum = reader.NumberOfPages;
             string[] words;
-            string line;
 
             var result = new List<PdfContent>();
 
             PdfContent page = null;
             for (int i = 1; i <= intPageNum; i++)
             {
-                page = new PdfContent();
-                page.PageNo = i;
+                page = new PdfContent
+                {
+                    PageNo = i
+                };
+
                 List<string> pdfPageContent = new List<string>();
 
                 var text = PdfTextExtractor.GetTextFromPage(reader, i, new LocationTextExtractionStrategy());
