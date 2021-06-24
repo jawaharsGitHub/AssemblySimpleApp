@@ -196,7 +196,7 @@ namespace NTK_Support
         private void ProcessChittaFile()
         {
 
-            var pattaas = chittaContent.Replace("பட்டா எண்", "$");
+            var pattaas = chittaContent.Replace("பட்டா எண்    :", "$"); //("பட்டா எண்", "$");
             var data = pattaas.Split('$').ToList();
             villageName = data.First().Split(':')[3].Trim();
 
@@ -243,7 +243,7 @@ namespace NTK_Support
                                       r.Contains("_________________________________________________________________________________________________") == false
                                 select r).ToList();
 
-                    var pattaNO = fullData.First().Replace(":", "").Trim();
+                    var pattaNO = fullData.First().Trim(); //.Replace(":", "").Trim();
                     var isNo = pattaNO.isNumber();
 
                     #endregion
