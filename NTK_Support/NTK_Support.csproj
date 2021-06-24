@@ -62,7 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdangalTypes\AdangalStatus.cs" />
+    <Compile Include="AdangalTypes\LandStatus.cs" />
     <Compile Include="AdangalTypes\PageTotal.cs" />
     <Compile Include="AdangalTypes\Adangal.cs" />
     <Compile Include="AdangalTypes\ChittaData.cs" />

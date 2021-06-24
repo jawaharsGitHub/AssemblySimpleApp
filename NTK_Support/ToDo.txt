@@ -1,21 +1,15 @@
 step nos.[enable next only after current step ok]
-all stes into logging.
+all steps into logging.
 process names
 read reg file from txt and not from pdf
-
 for texting use the constant value.
-disable delete button by default.
-
-add new options - deleted, no change, added.
-
-dropdowns for survey and subdiv nos.
+--------------------------------------disable delete button by default.
+--------------------------------------add new options - deleted, no change, added.
+--------------------------------------dropdowns for survey and subdiv nos.
 add more conditions for OK status. eg: porambookku error!
-
-status of one panchayat ?
-
-
+status of ok panchayat ?
 thread process for long running process...
-
+what if we added new survey wrongly, give upadte option. or you can update in grid.
 
 
 
@@ -26,9 +20,11 @@ marketing:
 
 time is money - how much is time is important?
 how much you spent?
-extra information? 
-
+extra information?
 need just pdf? or the full book?
+next year will be very very easy!!!
+
+
 
 
 

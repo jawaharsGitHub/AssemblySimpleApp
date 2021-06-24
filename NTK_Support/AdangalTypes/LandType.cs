@@ -13,6 +13,6 @@ namespace NTK_Support.AdangalTypes
         [Description("புறம்போக்கு")]
         Porambokku,
         PorambokkuError,
-        Other
+        Zero
     }
 }

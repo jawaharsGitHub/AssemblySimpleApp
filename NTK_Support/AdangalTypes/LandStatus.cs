@@ -6,7 +6,7 @@ namespace NTK_Support.AdangalTypes
     {
         NoChange,
         Deleted,
-        Added
-
+        Added,
+        Error
     }
 }

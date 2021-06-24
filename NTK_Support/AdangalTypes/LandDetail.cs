@@ -55,7 +55,7 @@ namespace NTK_Support.AdangalTypes
             get
             {
                 int i = 0;
-                LandType ld = LandType.Other;
+                LandType ld = LandType.Zero;
 
                 if (nansaiTheervai != "0" && nansaiTheervai != "0.00")
                 {
@@ -77,7 +77,7 @@ namespace NTK_Support.AdangalTypes
 
                 if (i > 1)
                 {
-                    ld = LandType.Other;
+                    ld = LandType.Zero;
                 }
 
                 return ld;

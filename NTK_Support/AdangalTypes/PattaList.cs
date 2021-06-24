@@ -5,7 +5,7 @@ namespace NTK_Support.AdangalTypes
     public class PattaList : List<Patta>
     {
 
-        public void AddAndUpdateList(Patta item, PattaType pattaType, List<string> fullData)
+        public void AddAndUpdatePattaAndOwnerNameinList(Patta item, PattaType pattaType, List<string> fullData)
         {
             item.UpdatePatta(pattaType, fullData);
             base.Add(item);
@@ -22,7 +22,7 @@ namespace NTK_Support.AdangalTypes
                 item.landDetails.ForEach(ld => {
 
                     ld.PattaEn = item.PattaEn;
-                    ld.OwnerName = item.isVagai ? $"{item.PattaTharar} வஐ" : item.PattaTharar;
+                    ld.OwnerName = item.isVagai ? $"{item.PattaTharar} வகை" : item.PattaTharar;
                     }) ;
             }
 

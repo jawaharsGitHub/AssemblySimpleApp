@@ -59,6 +59,10 @@
             this.btnAddNewSurvey = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.cmbItemToBeAdded = new System.Windows.Forms.ComboBox();
+            this.cmbSurveyNo = new System.Windows.Forms.ComboBox();
+            this.cmbSubdivNo = new System.Windows.Forms.ComboBox();
+            this.lblSurveyNo = new System.Windows.Forms.Label();
+            this.lblSubdiv = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -152,7 +156,7 @@
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(132, 228);
+            this.lblMessage.Location = new System.Drawing.Point(37, 225);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(66, 13);
             this.lblMessage.TabIndex = 8;
@@ -385,11 +389,51 @@
             this.cmbItemToBeAdded.Size = new System.Drawing.Size(121, 21);
             this.cmbItemToBeAdded.TabIndex = 29;
             // 
+            // cmbSurveyNo
+            // 
+            this.cmbSurveyNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSurveyNo.FormattingEnabled = true;
+            this.cmbSurveyNo.Location = new System.Drawing.Point(161, 217);
+            this.cmbSurveyNo.Name = "cmbSurveyNo";
+            this.cmbSurveyNo.Size = new System.Drawing.Size(65, 21);
+            this.cmbSurveyNo.TabIndex = 29;
+            // 
+            // cmbSubdivNo
+            // 
+            this.cmbSubdivNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSubdivNo.FormattingEnabled = true;
+            this.cmbSubdivNo.Location = new System.Drawing.Point(244, 217);
+            this.cmbSubdivNo.Name = "cmbSubdivNo";
+            this.cmbSubdivNo.Size = new System.Drawing.Size(57, 21);
+            this.cmbSubdivNo.TabIndex = 30;
+            // 
+            // lblSurveyNo
+            // 
+            this.lblSurveyNo.AutoSize = true;
+            this.lblSurveyNo.Location = new System.Drawing.Point(160, 198);
+            this.lblSurveyNo.Name = "lblSurveyNo";
+            this.lblSurveyNo.Size = new System.Drawing.Size(52, 13);
+            this.lblSurveyNo.TabIndex = 31;
+            this.lblSurveyNo.Text = "surveyNo";
+            // 
+            // lblSubdiv
+            // 
+            this.lblSubdiv.AutoSize = true;
+            this.lblSubdiv.Location = new System.Drawing.Point(241, 198);
+            this.lblSubdiv.Name = "lblSubdiv";
+            this.lblSubdiv.Size = new System.Drawing.Size(53, 13);
+            this.lblSubdiv.TabIndex = 32;
+            this.lblSubdiv.Text = "subdiv no";
+            // 
             // vao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1201, 557);
+            this.Controls.Add(this.lblSubdiv);
+            this.Controls.Add(this.lblSurveyNo);
+            this.Controls.Add(this.cmbSubdivNo);
+            this.Controls.Add(this.cmbSurveyNo);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
@@ -456,5 +500,9 @@
         private System.Windows.Forms.Button btnAddNewSurvey;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.ComboBox cmbItemToBeAdded;
+        private System.Windows.Forms.ComboBox cmbSurveyNo;
+        private System.Windows.Forms.ComboBox cmbSubdivNo;
+        private System.Windows.Forms.Label lblSurveyNo;
+        private System.Windows.Forms.Label lblSubdiv;
     }
 }

@@ -54,7 +54,7 @@ namespace NTK_Support
             {
                 WriteObjectsToFile<Adangal>(adangalData, filePath);
             }
-            var data = GetActiveAdangal(filePath);
+            var data = GetActiveAdangal(filePath, false);
             return data;
         }
 
@@ -73,13 +73,26 @@ namespace NTK_Support
                 data.Where(w => w.NilaAlavaiEn.ToString() == fe.Split('~')[0] && w.UtpirivuEn == fe.Split('~')[1]).First().LandStatus = LandStatus.Deleted;
             });
             WriteObjectsToFile(data, filePath);
-            return GetActiveAdangal(filePath);
+            return GetActiveAdangal(filePath, false);
         }
 
-        public static List<Adangal> GetActiveAdangal(string fileName, bool directCall = false)
+        public static List<Adangal> GetActiveAdangal(string fileName, bool directCall)
         {
             var filePath = directCall ? GetAdangalPath(fileName) : fileName; // ???
             return ReadFileAsObjects<Adangal>(filePath).Where(w => w.LandStatus != LandStatus.Deleted).ToList();
+        }
+
+
+        public static List<Adangal> GetDeletedAdangal(string fileName, bool directCall)
+        {
+            var filePath = directCall ? GetAdangalPath(fileName) : fileName; // ???
+            return ReadFileAsObjects<Adangal>(filePath).Where(w => w.LandStatus == LandStatus.Deleted).ToList();
+        }
+
+        public static List<Adangal> GetErrorAdangal(string fileName, bool directCall)
+        {
+            var filePath = directCall ? GetAdangalPath(fileName) : fileName; // ???
+            return ReadFileAsObjects<Adangal>(filePath).Where(w => w.LandStatus == LandStatus.Error).ToList();
         }
 
         public static bool AddNewAdangal(string fileName, Adangal adangal)

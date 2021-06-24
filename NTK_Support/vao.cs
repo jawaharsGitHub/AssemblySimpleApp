@@ -256,7 +256,7 @@ namespace NTK_Support
 
                     if (isNo == false)
                     {
-                        pattaList.AddAndUpdateList(pattaSingle, PattaType.InValidPatta, fullData);
+                        pattaList.AddAndUpdatePattaAndOwnerNameinList(pattaSingle, PattaType.InValidPatta, fullData);
                         continue;
                     }
 
@@ -268,8 +268,6 @@ namespace NTK_Support
                                              .Where(ww => ww.Replace("ே", "").Replace("\0", "").Trim() != "")
                                             .ToList();
 
-
-
                     var totalData = memberData.Last();
                     memberData.RemoveAt(memberData.Count - 1);
 
@@ -279,7 +277,7 @@ namespace NTK_Support
                     // zero record.
                     if (memberData.Count == 0 || headerData.Count == 0)
                     {
-                        pattaList.AddAndUpdateList(pattaSingle, PattaType.Zero, fullData);
+                        pattaList.AddAndUpdatePattaAndOwnerNameinList(pattaSingle, PattaType.Zero, fullData);
                         continue;
                     }
 
@@ -288,10 +286,9 @@ namespace NTK_Support
                         var pt = isAllmemberDataValid(memberData, totalData);
                         if (pt == PattaType.KnownError || pt == PattaType.TotalRecordIssue)
                         {
-                            pattaList.AddAndUpdateList(pattaSingle, pt, fullData);
+                            pattaList.AddAndUpdatePattaAndOwnerNameinList(pattaSingle, pt, fullData);
                             continue;
                         }
-
                         pattaSingle.PattaType = pt;
                     }
 
@@ -300,12 +297,11 @@ namespace NTK_Support
                         var pt = isAllmemberBreakDataValid(memberData, totalData);
                         if (pt == PattaType.KnownError || pt == PattaType.TotalRecordIssue)
                         {
-                            pattaList.AddAndUpdateList(pattaSingle, pt, fullData);
+                            pattaList.AddAndUpdatePattaAndOwnerNameinList(pattaSingle, pt, fullData);
                             continue;
                         }
-
                         pattaSingle.PattaType = pt;
-                        if (pt == PattaType.Valid) isFullBreakData = true;
+                        isFullBreakData = pt == PattaType.Valid; // if (pt == PattaType.Valid) 
                     }
                     else
                     {
@@ -326,7 +322,7 @@ namespace NTK_Support
                         else
                         {
                             // UNKNOWN ERROR
-                            pattaList.AddAndUpdateList(pattaSingle, PattaType.Unknown, fullData);
+                            pattaList.AddAndUpdatePattaAndOwnerNameinList(pattaSingle, PattaType.Unknown, fullData);
                             continue;
                         }
                     }
@@ -356,14 +352,14 @@ namespace NTK_Support
                         else
                         {
                             // ERROR!
-                            pattaList.AddAndUpdateList(pattaSingle, PattaType.TwoNameDelimit, fullData);
+                            pattaList.AddAndUpdatePattaAndOwnerNameinList(pattaSingle, PattaType.TwoNameDelimit, fullData);
                             continue;
                         }
                     }
                     else
                     {
                         // ERROR!
-                        pattaList.AddAndUpdateList(pattaSingle, PattaType.NameIssue, fullData);
+                        pattaList.AddAndUpdatePattaAndOwnerNameinList(pattaSingle, PattaType.NameIssue, fullData);
                         continue;
                     }
 
@@ -403,18 +399,18 @@ namespace NTK_Support
                     #endregion
 
 
-                    pattaList.AddAndUpdateList(pattaSingle, pattaSingle.PattaType, fullData);
+                    pattaList.AddAndUpdatePattaAndOwnerNameinList(pattaSingle, pattaSingle.PattaType, fullData);
 
                 }
                 catch (Exception ex)
                 {
                     if (pattaSingle.PattaType == PattaType.Valid)
                     {
-                        pattaList.AddAndUpdateList(pattaSingle, PattaType.ValidException, fullData);
+                        pattaList.AddAndUpdatePattaAndOwnerNameinList(pattaSingle, PattaType.ValidException, fullData);
                     }
                     else
                     {
-                        pattaList.AddAndUpdateList(pattaSingle, PattaType.Exception, fullData);
+                        pattaList.AddAndUpdatePattaAndOwnerNameinList(pattaSingle, PattaType.Exception, fullData);
                     }
 
                     continue;
@@ -424,7 +420,7 @@ namespace NTK_Support
             WholeLandList = pattaList.SelectMany(x => x.landDetails.Select(y => y)).ToList();
 
             AdangalList = (from wl in WholeLandList
-                               .Where(w => w.LandType != LandType.Other)
+                               .Where(w => w.LandType != LandType.Zero)
                                            .OrderBy(o => o.LandType)
                                            .ThenBy(o => o.SurveyNo)
                                            .ThenBy(t => t.Subdivision, new AlphanumericComparer()).ToList()
@@ -438,7 +434,6 @@ namespace NTK_Support
                                Anupathaarar = wl.Anupathaarar,
                                LandType = wl.LandType
                            }).ToList();
-
 
         }
 
@@ -480,7 +475,11 @@ namespace NTK_Support
                 new KeyValue() { Id = -1, Caption = "--select--" },
                 new KeyValue() { Id = 1, Caption = "Fullfilled" },
                 new KeyValue() { Id = 2, Caption = "Extend" },
-                new KeyValue() { Id = 3, Caption = "SomeDots" }
+                new KeyValue() { Id = 3, Caption = "SomeDots" },
+                new KeyValue() { Id = 4, Caption = "No Change" },
+                new KeyValue() { Id = 5, Caption = "Added" },
+                new KeyValue() { Id = 6, Caption = "Deleted" },
+                new KeyValue() { Id = 7, Caption = "Error" }
             };
 
         }
@@ -745,16 +744,15 @@ namespace NTK_Support
             else if (selected == 2)
                 dataGridView1.DataSource = WholeLandList;
             else if (selected == 3)
-            {
                 dataGridView1.DataSource = AdangalList;
-                //EnableReady();
-
-            }
             else if (selected == 4)
             {
                 dataGridView1.DataSource = fullAdangalFromjson;
                 EnableReady();
+                
             }
+
+             
         }
 
         private void ddlPattaTypes_SelectedIndexChanged(object sender, EventArgs e)
@@ -881,7 +879,7 @@ namespace NTK_Support
             StringBuilder totalContent = new StringBuilder();
 
             var landTypeGroup = (from wl in source
-                                 where wl.LandType != LandType.Other
+                                 where wl.LandType != LandType.Zero
                                  group wl by wl.LandType into newGrp
                                  select newGrp).ToList();
 
@@ -997,7 +995,7 @@ namespace NTK_Support
             mainHtml = mainHtml.Replace("[initialPages]", initialPages);
 
             var landTypeGroup = (from wl in fullAdangalFromjson
-                                 where wl.LandType != LandType.Other
+                                 where wl.LandType != LandType.Zero
                                  group wl by wl.LandType into newGrp
                                  select newGrp).ToList();
 
@@ -1102,7 +1100,6 @@ namespace NTK_Support
             {
                 var selValue = ((ComboData)ddlDistrict.SelectedItem).Value;
 
-
                 var url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=taluk&districtCode={selValue}";
 
                 var response = WebReader.CallHttpWebRequest(url);
@@ -1154,6 +1151,7 @@ namespace NTK_Support
 
             var onlineData = GetLandCount();
             fullAdangalFromjson = DataAccess.GetActiveAdangal(villageName, true);
+            LoadSurveyAndSubdiv();
 
             var expLandDetails = (onlineData
                                 .OrderBy(o => o.Value)
@@ -1170,22 +1168,42 @@ namespace NTK_Support
             notInPdfToBeAdded = expLandDetails.Except(actualLandDetails).ToList();
             notInOnlineToBeDeleted = actualLandDetails.Except(expLandDetails).ToList();
 
-            if (notInPdfToBeAdded.Count == 0 && notInOnlineToBeDeleted.Count == 0)
-            {
-                btnStatusCheck.Text = "OK";
-                btnStatusCheck.BackColor = Color.Green;
-            }
-            {
-                btnStatusCheck.Text = $"ADD:{notInPdfToBeAdded.Count} {Environment.NewLine} DELETE:{notInOnlineToBeDeleted.Count}";
-                btnStatusCheck.BackColor = Color.Red;
-            }
 
+            var isReady = IsReadyToPrint();
+            btnStatusCheck.Text = isReady.status;
+            btnStatusCheck.BackColor = isReady.r ? Color.Green : Color.Red;
 
             btnDelete.Enabled = (notInOnlineToBeDeleted.Count > 0);
             btnAdd.Enabled = (notInPdfToBeAdded.Count > 0);
 
             cmbItemToBeAdded.DataSource = notInPdfToBeAdded;
+        }
 
+        private (bool r, string status) IsReadyToPrint()
+        {
+            StringBuilder status = new StringBuilder();
+            bool result = true;
+            var errorCount = DataAccess.GetErrorAdangal(villageName, true).Count;
+
+            if(notInPdfToBeAdded.Count != 0)
+            {
+                status.AppendLine($"ADD:{notInPdfToBeAdded.Count}");
+                result = false;
+            }
+
+            if (notInOnlineToBeDeleted.Count != 0)
+            {
+                status.AppendLine($"DELETE:{notInOnlineToBeDeleted.Count}");
+                result = false;
+            }
+
+            if (errorCount != 0)
+            {
+                status.AppendLine($"ERROR REC:{errorCount}");
+                result = false;
+            }
+
+            return (result, status.ToString());
 
         }
 
@@ -1288,6 +1306,7 @@ namespace NTK_Support
                 ProcessAreg();  // Puram
 
                 ProcessFullReport();
+                LoadSurveyAndSubdiv();
 
             }
             else
@@ -1329,6 +1348,46 @@ namespace NTK_Support
             EnableReady();
         }
 
+        private void LoadSurveyAndSubdiv()
+        {
+            cmbSurveyNo.SelectedIndexChanged -= CmbSurveyNo_SelectedIndexChanged;
+            var d = (from a in fullAdangalFromjson
+                                      group a by a.NilaAlavaiEn into newGrp
+                                      select newGrp).ToList();
+
+            var surevyNos = d.Select(s => s.Key).ToList();
+
+            
+            cmbSurveyNo.DataSource = d.Select(s => s.Key).ToList();
+            lblSurveyNo.Text = $"survey no({surevyNos.Count})";
+            cmbSurveyNo.SelectedIndexChanged += CmbSurveyNo_SelectedIndexChanged;
+
+        }
+
+        private void CmbSurveyNo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbSubdivNo.SelectedIndexChanged -= CmbSubdivNo_SelectedIndexChanged;
+            var d = (from a in fullAdangalFromjson
+                     group a by a.NilaAlavaiEn into newGrp
+                     from ng in newGrp
+                     where ng.NilaAlavaiEn == cmbSurveyNo.SelectedItem.ToInt32()
+                     select ng.UtpirivuEn).ToList();
+
+
+            cmbSubdivNo.DataSource = d.ToList(); //.Where(w => w.Key == cmbSurveyNo.SelectedItem.ToInt32()).Select(s => s.ToList().Select(u => u.UtpirivuEn).ToList();
+
+            //cmbSubdivNo.DataSource
+
+            cmbSubdivNo.SelectedIndexChanged += CmbSubdivNo_SelectedIndexChanged;
+        }
+
+        private void CmbSubdivNo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = fullAdangalFromjson.Where(w =>
+                                                                w.NilaAlavaiEn == cmbSurveyNo.SelectedItem.ToInt32() &&
+                                                                w.UtpirivuEn == cmbSubdivNo.SelectedItem.ToString()).ToList();
+        }
+
         void EnableReady()
         {
 
@@ -1360,12 +1419,20 @@ namespace NTK_Support
             {
                 dataGridView1.DataSource = fullAdangalFromjson.Where(w => !string.IsNullOrEmpty(w.UtpirivuEn) && w.UtpirivuEn != "-").ToList();
             }
-
             else if (selValue == 3)
             {
                 dataGridView1.DataSource = fullAdangalFromjson.Where(w => w.UtpirivuEn.Contains("ே") || w.UtpirivuEn.Contains("\0")).ToList();
             }
-
+            else if (selValue == 4 || selValue == 5 || selValue == 7)
+            {
+                dataGridView1.DataSource = fullAdangalFromjson.Where(w => (int)w.LandStatus == (selValue-4)).ToList();
+            }
+            
+            else if (selValue == 6)
+            {
+                dataGridView1.DataSource = DataAccess.GetDeletedAdangal(villageName, true);  // fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.Deleted).ToList();
+            }
+           
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -1468,12 +1535,8 @@ namespace NTK_Support
                         DataAccess.AddNewAdangal(villageName, adangal);
                         cmbItemToBeAdded.SelectedIndex += 1;
                     }
-
                 }
-
-
             });
-
         }
 
         private string GetOwnerName(string nameRow)
@@ -1522,7 +1585,7 @@ namespace NTK_Support
         private (LandType lt, string par, string thee) GetLandDetails(List<string> data)
         {
             int i = 0;
-            LandType ld = LandType.Other;
+            LandType ld = LandType.Zero;
             var parappu = "";
             var theervai = "";
 
@@ -1550,7 +1613,7 @@ namespace NTK_Support
 
             if(i > 1)
             {
-                ld = LandType.Other;
+                ld = LandType.Zero;
             }
 
             return (ld, parappu, theervai);
