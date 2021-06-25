@@ -24,32 +24,31 @@ namespace NTK_Support
     {
         readonly int recordPerPage = 8;
         readonly int pageTotalrecordPerPage = 25;
+        readonly string empty = "";
+        readonly string tamilMoththam = "மொத்தம்";
 
         string chittaFile = "";
         string aRegFile = "";
         string chittaContent = "";
         string aRegContent = "";
-        readonly string empty = "";
-        readonly string tamilMoththam = "மொத்தம்";
         string villageName = "";
-
-        PattaList pattaList;
+        int pageNumber = 0;
+        bool IsEnterKey = false;
+        
         List<LandDetail> WholeLandList;
         List<Adangal> AdangalList;
         List<Adangal> PurambokkuAdangalList;
         List<Adangal> fullAdangalFromjson;
-        Patta pattaSingle;
         List<string> relationTypes;
         List<string> relationTypesCorrect;
-
+        PattaList pattaList;
+        Patta pattaSingle;
+        LogHelper logHelper;
 
         string firstPage;
         string leftEmpty;
         string leftCertEmpty;
         string rightCertEmpty;
-
-        int pageNumber = 0;
-        bool IsEnterKey = false;
 
         List<PageTotal> pageTotalList = null;
         List<PageTotal> pageTotal2List = null;
@@ -57,7 +56,7 @@ namespace NTK_Support
 
         List<string> notInPdfToBeAdded;
         List<string> notInOnlineToBeDeleted;
-        LogHelper logHelper;
+        string folderPath = "";
 
         public vao()
         {
@@ -67,7 +66,7 @@ namespace NTK_Support
                 BindDropdown(ddlDistrict, DataAccess.GetDistricts(), "Display", "Value");
                 logHelper = new LogHelper("AdangalLog");
 
-                Log("=========================================");
+                Log($"================={DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss")}========================");
                 Log("STARTED....");
                 relationTypes = new List<string>() {
                         "தந்தைத",
@@ -1119,16 +1118,14 @@ namespace NTK_Support
 
             try
             {
-
-
                 Log($"STARTED HTML GENERATION @ {DateTime.Now.ToLongTimeString()}");
 
                 pageNumber = 0;
 
-                DirectoryInfo di = new DirectoryInfo(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates");
+                //DirectoryInfo di = new DirectoryInfo(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates");
 
-                foreach (FileInfo file in di.GetFiles())
-                    file.Delete();
+                //foreach (FileInfo file in di.GetFiles())
+                //    file.Delete();
 
                 StringBuilder allContent = new StringBuilder();
                 pageTotalList = new List<PageTotal>();
@@ -1226,13 +1223,22 @@ namespace NTK_Support
 
                 mainHtml = mainHtml.Replace("[allPageData]", allContent.ToString());
 
-                File.AppendAllText(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates\All.htm", mainHtml);
+                var fPath = Path.Combine(folderPath, "Adangal");
+
+                if (Directory.Exists(fPath) == false)
+                {
+                    Directory.CreateDirectory(fPath);
+                }
+
+                var filePath = Path.Combine(fPath, $"{villageName}-{DateTime.Now.ToString("MM-dd-yyyy HH-mm-ss")}.htm");
+
+                File.AppendAllText(filePath, mainHtml);
 
                 Log($"COMPLETED HTML GENERATION @ {DateTime.Now.ToLongTimeString()}");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                Log($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
         }
         private void dataGridView1_DataSourceChanged(object sender, EventArgs e)
@@ -1289,7 +1295,8 @@ namespace NTK_Support
 
                     var response = WebReader.CallHttpWebRequest(url);
 
-                    BindDropdown(cmbVillages, WebReader.xmlToDynamic(response, "village"), "Display", "Value");
+                    BindDropdown(cmbVillages
+                        , WebReader.xmlToDynamic(response, "village"), "Display", "Value");
                     //cmbVillages.SelectedIndexChanged += new System.EventHandler(this.cmbVillages_SelectedIndexChanged);
                 }
             }
@@ -1454,14 +1461,12 @@ namespace NTK_Support
         {
             try
             {
-
-
                 FolderBrowserDialog fbd = new FolderBrowserDialog
                 {
                     SelectedPath = @"F:\AUTO-ADANGAL"
                 };
 
-                string folderPath = "";
+                
                 if (DialogResult.OK == fbd.ShowDialog())
                 {
                     folderPath = fbd.SelectedPath;
@@ -1551,7 +1556,10 @@ namespace NTK_Support
         private void cmbVillages_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             var selItem = (ComboData)cmbVillages.SelectedItem;
-            Log($"{selItem.Value}-{selItem.Display}");
+
+            if(selItem.Value != -1)
+             Log($"{selItem.Value}-{selItem.Display}");
+
             EnableReady();
         }
         private void LoadSurveyAndSubdiv()
