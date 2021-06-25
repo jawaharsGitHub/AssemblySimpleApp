@@ -7,27 +7,28 @@
 ------------------------------------all total row should be bolded.
 -------------------------------all heading should be bolded..
 --------------read reg file from txt and not from pdf (not working ok with read pdf)
+-------------------------------all steps into logging.
+-----------------------------------still porambokku data is not correct!!
 
-
+========================================================================================
 step nos.[enable next only after current step ok]
-all steps into logging.
+
 process names
--------for texting use the constant value.
--------status of ok panchayat?
+???????for texting use the constant value.
+???????status of ok panchayat?
 thread process for long running process...
 please wait loading...
 percentage message...
 use replace in all possible places.
-top header space and alignment.
-extra data : ??? -> siru guru vivasaayi -> owner(father name) -> land details and count.
+!!top header space and alignment.
+!!extra data : ??? -> siru guru vivasaayi -> owner(father name) -> land details and count.
 for total's total remove page break.
 right and left table height should be same
-total is only for nansai, punsai and maanaavari not for porambokku 
-nansai = nansai + punsai 
-option to edit and update the total land parappu (if needed)
-lastly add 10 extra pages.
+!!total is only for nansai, punsai and maanaavari not for porambokku 
+!!nansai = nansai + punsai 
+!!option to edit and update the total land parappu (if needed)
+lastly add 10 extra pages. ?? (get it from vaos)
 add govt papers to fill front and last  pages.....!!!!
-still porambokku data is not correct!!
 edit and update record via grid.
 replace an existing adangal message box?
 load all district data.
@@ -44,6 +45,11 @@ extra information?
 need just pdf? or the full book?
 next year will be very very easy!!!
 online pdf 
+manulal update list:
+	-> porampoakku pages photo
+	-> what is the final total number need to be?
+	-> land details group by kanmaai, meenu pidi etc.,
+	
 
 
 STEPS:

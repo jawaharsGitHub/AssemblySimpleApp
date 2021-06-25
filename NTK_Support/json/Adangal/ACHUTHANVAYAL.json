@@ -19710,5 +19710,27 @@
     "LandType": 1,
     "IsFullfilled": false,
     "LandStatus": 2
+  },
+  {
+    "NilaAlavaiEn": 65,
+    "UtpirivuEn": "1A1",
+    "Parappu": "0.21.32",
+    "Theervai": "0.59",
+    "Anupathaarar": "1217-",
+    "OwnerName": null,
+    "LandType": 1,
+    "IsFullfilled": false,
+    "LandStatus": 2
+  },
+  {
+    "NilaAlavaiEn": 65,
+    "UtpirivuEn": "1B1",
+    "Parappu": "0.14.44",
+    "Theervai": "0.40",
+    "Anupathaarar": "1217-",
+    "OwnerName": null,
+    "LandType": 1,
+    "IsFullfilled": false,
+    "LandStatus": 2
   }
 ]

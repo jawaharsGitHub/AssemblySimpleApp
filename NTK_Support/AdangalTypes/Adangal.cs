@@ -46,7 +46,8 @@ namespace NTK_Support.AdangalTypes
 
         public override string ToString()
         {
-            return $"{NilaAlavaiEn}-{UtpirivuEn}    {Parappu}   {Theervai} ({LandType.ToName()}){Anupathaarar}";
+            //return $"{NilaAlavaiEn}-{UtpirivuEn}    {Parappu}   {Theervai} ({LandType.ToName()}){Anupathaarar}";
+            return $"{NilaAlavaiEn}-{UtpirivuEn}    {Parappu}   {Theervai} ({LandType.ToString()}){Anupathaarar}";
         }
     }
 }
