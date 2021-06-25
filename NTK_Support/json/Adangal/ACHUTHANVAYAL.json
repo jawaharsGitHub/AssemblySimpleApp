@@ -19677,5 +19677,38 @@
     "LandType": 1,
     "IsFullfilled": false,
     "LandStatus": 2
+  },
+  {
+    "NilaAlavaiEn": 43,
+    "UtpirivuEn": "2",
+    "Parappu": "0.68.96",
+    "Theervai": "2.88",
+    "Anupathaarar": "1086-",
+    "OwnerName": null,
+    "LandType": 1,
+    "IsFullfilled": false,
+    "LandStatus": 2
+  },
+  {
+    "NilaAlavaiEn": 43,
+    "UtpirivuEn": "3",
+    "Parappu": "1.0.09",
+    "Theervai": "4.18",
+    "Anupathaarar": "1086-",
+    "OwnerName": null,
+    "LandType": 1,
+    "IsFullfilled": false,
+    "LandStatus": 2
+  },
+  {
+    "NilaAlavaiEn": 53,
+    "UtpirivuEn": "2A1",
+    "Parappu": "0.9.50",
+    "Theervai": "0.21",
+    "Anupathaarar": "1330-துவாரகநாத்\r\n2.",
+    "OwnerName": null,
+    "LandType": 1,
+    "IsFullfilled": false,
+    "LandStatus": 2
   }
 ]

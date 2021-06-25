@@ -46,7 +46,7 @@ namespace NTK_Support.AdangalTypes
 
         public override string ToString()
         {
-            return $"அனுபதாரர்: {Anupathaarar} சர்வே எண்: {NilaAlavaiEn} உட்பிரிவு எண்: {UtpirivuEn} {LandType.ToName()} பரப்பு: {Parappu} தீர்வை {Theervai}";
+            return $"{NilaAlavaiEn}-{UtpirivuEn}    {Parappu}   {Theervai} ({LandType.ToName()}){Anupathaarar}";
         }
     }
 }

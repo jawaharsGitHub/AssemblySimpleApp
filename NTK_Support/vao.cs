@@ -54,12 +54,16 @@ namespace NTK_Support
 
         List<string> notInPdfToBeAdded;
         List<string> notInOnlineToBeDeleted;
+        LogHelper logHelper;
 
         public vao()
         {
             InitializeComponent();
             BindDropdown(ddlDistrict, DataAccess.GetDistricts(), "Display", "Value");
+            logHelper = new LogHelper("AdangalLog");
 
+            logHelper.WriteAdangalLog("=========================================");
+            logHelper.WriteAdangalLog("STARTED....");
             relationTypes = new List<string>() {
                         "தந்தைத",
                         "கணவன",
@@ -67,7 +71,6 @@ namespace NTK_Support
                         "மைகன",
                         "மைைனவி"
                     };
-
             relationTypesCorrect = new List<string>() {
                         "தந்தை",
                         "கணவன்",
@@ -167,7 +170,7 @@ namespace NTK_Support
         }
         private void ProcessAreg()
         {
-
+            logHelper.WriteAdangalLog($"STARTED PROCESSING AREG PDF FILE @ {DateTime.Now.ToLongTimeString()}");
             aRegContent = aRegFile.GetPdfContent();
             //aRegContent = File.ReadAllText(aRegFile); 
 
@@ -226,12 +229,13 @@ namespace NTK_Support
             AdangalList.AddRange(PurambokkuAdangalList);
 
             fullAdangalFromjson = DataAccess.AdangalToJson(AdangalList, villageName);
-
+            logHelper.WriteAdangalLog($"COMPLETED PROCESSING CHITTA PDF FILE @ {DateTime.Now.ToLongTimeString()}");
 
         }
 
         private void ProcessChittaFile()
         {
+            logHelper.WriteAdangalLog($"READING DATA FROM CHITTA PDF fILE - {chittaFile}");
             chittaContent = chittaFile.GetPdfContent();
 
             var pattaas = chittaContent.Replace("பட்டா எண்    :", "$"); //("பட்டா எண்", "$");
@@ -239,7 +243,10 @@ namespace NTK_Support
             villageName = data.First().Split(':')[3].Trim();
 
             if (DialogResult.No == MessageBox.Show($"{villageName} village?", "Confirm", MessageBoxButtons.YesNo))
+            {
+                logHelper.WriteAdangalLog($"REJECTED THE  VILLAGE PDF FILE- {villageName}");
                 return;
+            }
 
 
             data.RemoveAt(0); // first is empty data
@@ -251,7 +258,7 @@ namespace NTK_Support
             pattaList = new PattaList();
 
 
-
+            logHelper.WriteAdangalLog($"STARTED PROCESSING CHITTA PDF FILE @ {DateTime.Now.ToLongTimeString()}");
             for (int i = 0; i <= data.Count - 1; i++)
             {
                 List<string> fullData = null;
@@ -446,10 +453,11 @@ namespace NTK_Support
                     {
                         pattaList.AddAndUpdatePattaAndOwnerNameinList(pattaSingle, PattaType.Exception, fullData);
                     }
-
+                    logHelper.WriteAdangalLog($"ERROR WHILE PROCESS patta - {pattaSingle.PattaEn}");
                     continue;
                 }
             }
+            logHelper.WriteAdangalLog($"COMPLETED PROCESSING CHITTA PDF FILE @ {DateTime.Now.ToLongTimeString()}");
 
             WholeLandList = pattaList.SelectMany(x => x.landDetails.Select(y => y)).ToList();
 
@@ -473,6 +481,7 @@ namespace NTK_Support
 
         private void ProcessFullReport()
         {
+            logHelper.WriteAdangalLog($"STARTED FULL REPORT");
             // Full Report
             FinalReport fr = new FinalReport(pattaList);
             //var result = fr.ToString();
@@ -486,7 +495,10 @@ namespace NTK_Support
             if (fr.IsFullProcessed == false)
             {
                 MessageBox.Show($"{fr.NotProcessedData} not processes");
+                logHelper.WriteAdangalLog($"{fr.NotProcessedData} not processes");
             }
+
+            logHelper.WriteAdangalLog($"COMPLETED FULL REPORT");
 
 
         }
@@ -1009,6 +1021,8 @@ namespace NTK_Support
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
+            logHelper.WriteAdangalLog($"STARTED HTML GENERATION @ {DateTime.Now.ToLongTimeString()}");
+
             pageNumber = 0;
 
             DirectoryInfo di = new DirectoryInfo(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates");
@@ -1113,6 +1127,8 @@ namespace NTK_Support
             mainHtml = mainHtml.Replace("[allPageData]", allContent.ToString());
 
             File.AppendAllText(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates\All.htm", mainHtml);
+
+            logHelper.WriteAdangalLog($"COMPLETED HTML GENERATION @ {DateTime.Now.ToLongTimeString()}");
         }
 
         private void dataGridView1_DataSourceChanged(object sender, EventArgs e)
@@ -1132,6 +1148,7 @@ namespace NTK_Support
             if (ddlDistrict.SelectedItem != null)
             {
                 var selValue = ((ComboData)ddlDistrict.SelectedItem).Value;
+                logHelper.WriteAdangalLog($"{selValue}-{((ComboData)ddlDistrict.SelectedItem).Display}");
 
                 var url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=taluk&districtCode={selValue}";
 
@@ -1154,6 +1171,7 @@ namespace NTK_Support
             {
                 var disValue = ((ComboData)ddlDistrict.SelectedItem).Value;
                 var talValue = ((ComboData)cmbTaluk.SelectedItem).Value;
+                logHelper.WriteAdangalLog($"{talValue}-{((ComboData)cmbTaluk.SelectedItem).Display}");
 
                 var url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=village&districtCode={disValue}&&talukCode={talValue}";
 
@@ -1168,8 +1186,6 @@ namespace NTK_Support
         private void vao_Load(object sender, EventArgs e)
         {
             ddlDistrict.SelectedIndexChanged += new System.EventHandler(this.ddlDistrict_SelectedIndexChanged);
-
-
         }
 
         private void button2_Click_1(object sender, EventArgs e)
@@ -1235,13 +1251,15 @@ namespace NTK_Support
                 status.AppendLine($"ERROR REC:{errorCount}");
                 result = false;
             }
-
+            logHelper.WriteAdangalLog($"ready: {result} STATUS: status.ToString()");
             return (result, status.ToString());
 
         }
 
         private List<KeyValue> GetLandCount()
         {
+
+            logHelper.WriteAdangalLog($"GETTING LAND COUNT");
             var fileName = $"{villageName}-subdiv";
 
             if (DataAccess.IsAdangalExist(fileName) == true)
@@ -1287,7 +1305,7 @@ namespace NTK_Support
                     }
                 }
             }
-
+            logHelper.WriteAdangalLog($"GETTING LAND COUNT - COMPLETED");
             return DataAccess.SubdivToJson(totalLandList, fileName);
             //return totalLandList;
 
@@ -1306,15 +1324,21 @@ namespace NTK_Support
                 folderPath = fbd.SelectedPath;
             }
 
+            firstPage = FileContentReader.FirstPageTemplate;
+            leftEmpty = GetLeftEmptyPage();
+            leftCertEmpty = FileContentReader.LeftPageCertTableTemplate;
+            rightCertEmpty = FileContentReader.RightPageTableCertTemplate;
 
             if (chkProd.Checked)
             {
                 chittaFile = Path.Combine(folderPath, "Chitta_Report-1.pdf");
+                logHelper.WriteAdangalLog($"READ DATA FROM PDF FILE - {chittaFile}");
                 chittaContent = chittaFile.GetPdfContent();
                 var pattaas = chittaContent.Replace("பட்டா எண்    :", "$"); //("பட்டா எண்", "$");
                 var data = pattaas.Split('$').ToList();
                 villageName = data.First().Split(':')[3].Trim();
                 fullAdangalFromjson = DataAccess.GetActiveAdangal(villageName, true);
+                logHelper.WriteAdangalLog($"READED DATA FROM EXISTING JSON FILE");
                 BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
                 ddlListType.SelectedIndex = 3;
                 LoadSurveyAndSubdiv();
@@ -1328,10 +1352,7 @@ namespace NTK_Support
                         
 
 
-                    firstPage = FileContentReader.FirstPageTemplate;
-                    leftEmpty = GetLeftEmptyPage();
-                    leftCertEmpty = FileContentReader.LeftPageCertTableTemplate;
-                    rightCertEmpty = FileContentReader.RightPageTableCertTemplate;
+                    
 
                     ProcessNames();
                     chittaFile = Path.Combine(folderPath, "Chitta_Report-1.pdf");
@@ -1383,6 +1404,7 @@ namespace NTK_Support
 
         private void LoadSurveyAndSubdiv()
         {
+            logHelper.WriteAdangalLog($"LOADING Survey and subdiv no.");
             cmbSurveyNo.SelectedIndexChanged -= CmbSurveyNo_SelectedIndexChanged;
             var d = (from a in fullAdangalFromjson
                                       group a by a.NilaAlavaiEn into newGrp
@@ -1479,6 +1501,7 @@ namespace NTK_Support
         {
             fullAdangalFromjson = DataAccess.SetDeleteFlag(villageName, notInOnlineToBeDeleted);
             dataGridView1.DataSource = fullAdangalFromjson;
+            logHelper.WriteAdangalLog($"set delete flag to {notInOnlineToBeDeleted.Count} land");
         }
 
         private void EditCancel()
@@ -1561,21 +1584,22 @@ namespace NTK_Support
 
             var surveysubdiv = cmbItemToBeAdded.SelectedItem.ToString().Split('~').ToList();
 
+            int addedCount = 0;
             neededData.ToList().ForEach(fe => {
-
                 var rowData = fe.Split('\t').ToList();
-
                 var adangal = GetAdangalFromCopiedData(rowData, pattaEn, name);
-
 
                 //if ((rowData[0] == surveysubdiv[0] && rowData[1] == surveysubdiv[1]))
                 if (notInPdfToBeAdded.Contains($"{adangal.NilaAlavaiEn}~{adangal.UtpirivuEn}"))
                 {
-                    if (MessageBox.Show(adangal.ToString(), "சரியா?", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
+                    //if (MessageBox.Show(adangal.ToString(), "சரியா?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    //{
                         DataAccess.AddNewAdangal(villageName, adangal);
-                        //cmbItemToBeAdded.SelectedIndex += 1;
-                    }
+                    addedCount += 1;
+                    logHelper.WriteAdangalLog($"Added new land {adangal.ToString()}");
+                    MessageBox.Show($"added {addedCount} land details");
+                    //cmbItemToBeAdded.SelectedIndex += 1;
+                    //}
                 }
             });
 
