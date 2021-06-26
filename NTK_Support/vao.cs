@@ -27,14 +27,15 @@ namespace NTK_Support
         readonly string empty = "";
         readonly string tamilMoththam = "மொத்தம்";
 
-        string chittaFile = "";
+        string chittaPdfFile = "";
+        string chittaTxtFile = "";
         string aRegFile = "";
         string chittaContent = "";
         string aRegContent = "";
         string villageName = "";
         int pageNumber = 0;
         bool IsEnterKey = false;
-        
+
         List<LandDetail> WholeLandList;
         List<Adangal> AdangalList;
         List<Adangal> PurambokkuAdangalList;
@@ -104,87 +105,55 @@ namespace NTK_Support
             }
 
         }
+
+        List<KeyValue> wrongName = new List<KeyValue>();
+        List<KeyValue> correctName = new List<KeyValue>();
+
         private void ProcessNames()
         {
             try
             {
+                var namesContent = File.ReadAllText(chittaTxtFile).Split(Environment.NewLine.ToCharArray());
 
+                var filteredContent = namesContent.Where(w =>
+                                            w.Contains("digitally") == false &&
+                                            w.Contains("Page") == false &&
+                                            w.Contains("Taluk") == false &&
+                                            w.Contains("District") == false &&
+                                            w.Trim() != empty).ToList();
 
+                List<KeyValue> nameAndPatta = new List<KeyValue>();
 
-                var namesContent = File.ReadAllText(@"F:\TN GOV\VANITHA\Vaidehi-Vao\reg data\22-Names.txt");
-                //.Where(w => w.Contains("District :") == false).ToList();
-                //namesContent
+                int processedRow = 0;
 
-                //string sPattern = @"[a-zA-Z_\s]:[\s0-9]"; //$"[a-zA-Z]+:[0-9]";
-
-                //var nm = namesContent.Split(Environment.NewLine.ToCharArray())
-                //    .Where(w => 
-                //    //w.Contains("Ramanathapuram") == false &&
-                //    //w.Contains("Taluk") == false &&
-                //    //w.Contains("Village") == false &&
-                //    //w.Contains("ACHUTHANVAYAL") == false &&
-                //    //w.Contains("District") == false &&
-                //    w.Trim() != empty)
-                //    .ToList(); 
-
-                //for (int i = 0; i <= nm.Count - 1; i++)
-                //{
-                //    //if (nm[i].Contains("பட்டா எண்")) continue;
-
-                //    //var matches = nm[i].Contains(":") && Regex.Matches(nm[i].Replace(" ",""), sPattern);
-
-                //    //if(matches)
-                //    //{
-
-                //    //}
-                //    //else
-                //    //{
-
-                //    //}
-
-                //    //if(matches.Count == 1)
-                //    //{
-                //    //    Debug.WriteLine(matches[0]);
-                //    //    namesContent = namesContent.Replace(
-                //    //        matches[0].ToString().Split(':')[0], 
-                //    //        $"பட்டா எண்");
-
-
-                //    //    //nm[i] = nm[i].Replace(
-                //    //    //    matches[0].ToString().Split(':')[0],
-                //    //    //    $"பட்டா எண்");
-
-                //    //}
-                //    //else if (matches.Count > 1)
-                //    //{
-
-
-                //    //}
-                //}
-
-                namesContent = namesContent.Replace("பட்டா எண்", "$");
-                var tn = namesContent.Split('$').Where(w => w.Trim().Trim() != empty).ToList();
-                tn.RemoveAt(0);
-                List<string> fullData;
-                List<string> errorCount = new List<string>();
-                for (int i = 0; i <= tn.Count - 1; i++)
+                for (int i = 0; i <= filteredContent.Count - 1; i++)
                 {
-                    fullData = tn[i].Split('\n').Where(w => w.Trim() != empty).ToList();
-
-                    fullData = tn[i].Split('\n').Where(w =>
-                                                        //w.Trim() != empty &&
-                                                        w.Contains("வ.எண்") == false &&
-                                                        w.Contains("மொத்தம்") == false &&
-                                                        w.Contains("000") == false &&
-                                                        w.Contains("|")).ToList();
-
-                    if (fullData.Count == 1)
-                        Debug.WriteLine($"{i + 1} : {fullData[0]}");
-                    else
+                    //var delitList =  relationTypes.Intersect(filteredContent[i].Split(' ').ToList()).ToList();
+                    try
                     {
-                        Debug.WriteLine($"{i} : ERROR: {tn[i]}");
-                        errorCount.Add(i + ":" + tn[i].Split(Environment.NewLine.ToCharArray())[0].Replace(" ", ""));
+                        if (filteredContent[i].Contains("உறவினர்‌ பெயர்"))
+                        {
+                            var pattaENRow = filteredContent[i - 1];
+                            var nameRow = filteredContent[i + 1];
+
+                            var nm = relationTypesCorrect.Intersect(nameRow.Split('|').ToList());
+                            var lst = nameRow.Split('|').ToList().Where(w => w.Trim() != "").ToList();
+                            //Debug.WriteLine($"{pattaENRow.Split(' ').Last()} - {lst.Last()} ({lst.ToList()[lst.Count() - 3]})");
+                            //Debug.WriteLine(nameRow);
+                            correctName.Add(new KeyValue(nameRow, pattaENRow.Split(' ').Last().ToInt32()));
+                            processedRow += 1;
+                        }
                     }
+                    catch (Exception)
+                    {
+                        continue;
+                    }
+                }
+
+                if (processedRow == 0)
+                {
+                    MessageBox.Show("File Corrupted!");
+                    Log("File Corrupted!");
                 }
             }
             catch (Exception)
@@ -198,31 +167,15 @@ namespace NTK_Support
         {
             try
             {
-
-
                 Log($"STARTED PROCESSING AREG PDF FILE @ {DateTime.Now.ToLongTimeString()}");
                 aRegContent = aRegFile.GetPdfContent();
-                //aRegContent = File.ReadAllText(aRegFile); 
 
                 PurambokkuAdangalList = new List<Adangal>();
 
                 var aregPatta = aRegContent.Split(Environment.NewLine.ToCharArray()).Where(w => w.Contains("புறமேபாககு")).ToList();
-                // var aregPatta = aRegContent.Split(Environment.NewLine.ToCharArray()).ToList().Where(w => w.Trim() != "" && w.Contains("புறம்போக்கு")).ToList();
-
-                var landType = LandType.Porambokku;
 
                 foreach (var item in aregPatta)
                 {
-                    //var d  = item.Split(' ').ToList();
-                    //var surveyNo = d[2].Split('-')[0];
-                    //var surveyNo2 = d[0];
-                    //var parappu = $"{d[totalLength - 6]}.{d[totalLength - 5]}";
-                    //if (surveyNo.Trim() != surveyNo2.Trim())
-                    //{
-                    //    landType = LandType.PorambokkuError;
-                    //}
-                    //var subdiv2 = 
-
                     var d = item.Split(' ').Where(w => w.Trim() != "").ToList();
                     var pointedIndex = d.LastIndexOf("0");
                     var parappu = $"{d[pointedIndex - 4]}.{d[pointedIndex - 3]}";
@@ -271,8 +224,10 @@ namespace NTK_Support
             {
 
 
-                Log($"READING DATA FROM CHITTA PDF fILE - {chittaFile}");
-                chittaContent = chittaFile.GetPdfContent();
+                Log($"READING DATA FROM CHITTA PDF fILE - {chittaPdfFile}");
+                chittaContent = chittaPdfFile.GetPdfContent();
+
+                //File.WriteAllText(chittaTxtFile, chittaContent);
 
                 var pattaas = chittaContent.Replace("பட்டா எண்    :", "$"); //("பட்டா எண்", "$");
                 var data = pattaas.Split('$').ToList();
@@ -412,6 +367,9 @@ namespace NTK_Support
                         pattaSingle.isVagai = (headerData.Count > 3);
 
                         var nameRow = headerData[1];
+
+                        wrongName.Add(new KeyValue(nameRow, pattaSingle.PattaEn));
+
                         if (relationTypes.Any(a => nameRow.Split(' ').ToList().Contains(a))) // have valid names.
                         {
                             var delitList = relationTypes.Intersect(nameRow.Split(' ').ToList()).ToList();
@@ -421,9 +379,16 @@ namespace NTK_Support
                                 var delimit = delitList[0];
                                 pattaSingle.PattaTharar = nameRow.Replace(delimit, "$").Split('$')[1];
                                 var d = nameRow.Replace(delimit, "$").Split('$');
-
                                 //pattaSingle.PattaTharar = ApplyUnicode(d[1]);
                                 //pattaSingle.PattaTharar = $"{d[1]} {delimit} {d[0]}";
+                                var fn = d[1];
+                                var ln = d[0];
+                                var correctNameRow = correctName.Where(w => w.Value == pattaSingle.PattaEn).First().Caption;
+
+                                Debug.WriteLine($"correctname [{pattaSingle.PattaEn}] : {correctNameRow}");
+                                Debug.WriteLine($"wrongname : {ln} - {fn}");
+                                Debug.WriteLine($"-----------------------------------------");
+
                                 pattaSingle.PattaTharar = $"{d[1]}";
                             }
                             else
@@ -1466,7 +1431,7 @@ namespace NTK_Support
                     SelectedPath = @"F:\AUTO-ADANGAL"
                 };
 
-                
+
                 if (DialogResult.OK == fbd.ShowDialog())
                 {
                     folderPath = fbd.SelectedPath;
@@ -1479,9 +1444,9 @@ namespace NTK_Support
 
                 if (chkProd.Checked)
                 {
-                    chittaFile = Path.Combine(folderPath, "Chitta_Report-1.pdf");
-                    Log($"READ DATA FROM PDF FILE - {chittaFile}");
-                    chittaContent = chittaFile.GetPdfContent();
+                    chittaPdfFile = Path.Combine(folderPath, "Chitta_Report-1.pdf");
+                    Log($"READ DATA FROM PDF FILE - {chittaPdfFile}");
+                    chittaContent = chittaPdfFile.GetPdfContent();
                     var pattaas = chittaContent.Replace("பட்டா எண்    :", "$"); //("பட்டா எண்", "$");
                     var data = pattaas.Split('$').ToList();
                     villageName = data.First().Split(':')[3].Trim();
@@ -1498,8 +1463,10 @@ namespace NTK_Support
                 {
                     pattaList = new PattaList();
 
+                    chittaTxtFile = Path.Combine(folderPath, "Chitta_Report-1.txt");
                     ProcessNames();
-                    chittaFile = Path.Combine(folderPath, "Chitta_Report-1.pdf");
+
+                    chittaPdfFile = Path.Combine(folderPath, "Chitta_Report-1.pdf");
                     ProcessChittaFile();    // Nansai, Pun, Maa,
 
                     aRegFile = Path.Combine(folderPath, "Areg_Report-1.pdf");
@@ -1557,8 +1524,8 @@ namespace NTK_Support
         {
             var selItem = (ComboData)cmbVillages.SelectedItem;
 
-            if(selItem.Value != -1)
-             Log($"{selItem.Value}-{selItem.Display}");
+            if (selItem.Value != -1)
+                Log($"{selItem.Value}-{selItem.Display}");
 
             EnableReady();
         }

@@ -33,6 +33,7 @@ edit and update record via grid.
 replace an existing adangal message box?
 load all district data.
 page no (not in all pages only in right page) - refer total pages.
+file is overrwritten??? how cant find it now!
 
 
 
@@ -53,7 +54,7 @@ manulal update list:
 
 STEPS:
 1) 2 pdf files - 1. Chitta_Report-1.pdf 2. Areg_Report-1.pdf (naming convention is very important!!!)
-2) convet both files to txt -> https://www.pdf2go.com/pdf-to-text
+2) convet both files to txt -> https://www.pdf2go.com/pdf-to-text (please take a back up for future use if file may get corrupted)
 3) move those 2 files into that panchayat folder (newly created) --> F:\AUTO-ADANGAL
 4) 
 

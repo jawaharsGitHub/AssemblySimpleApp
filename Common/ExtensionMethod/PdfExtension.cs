@@ -19,7 +19,9 @@ namespace Common.ExtensionMethod
 
             var filePath = fileName.Replace(".pdf", ".txt");
 
-            File.WriteAllText(filePath, "");
+            var sb = new StringBuilder();
+
+            //File.WriteAllText(filePath, "");
 
             //for (int i = 1; i <= intPageNum; i++)
             //{
@@ -40,10 +42,11 @@ namespace Common.ExtensionMethod
             for (int i = 1; i <= intPageNum; i++)
             {
                 var text = PdfTextExtractor.GetTextFromPage(reader, i, new LocationTextExtractionStrategy());
-                File.AppendAllText(filePath, text);
+                //File.AppendAllText(filePath, text);
+                sb.Append(text);
             }
             reader.Close();
-            return File.ReadAllText(filePath);
+            return sb.ToString(); //File.ReadAllText(filePath);
         }
 
 
