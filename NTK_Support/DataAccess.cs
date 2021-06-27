@@ -22,7 +22,7 @@ namespace NTK_Support
         public static List<Adangal> GetAdangal(string fileName)
         {
             var filePath = GetAdangalPath(fileName);
-            var data  = ReadFileAsObjects<Adangal>(filePath);
+            var data = ReadFileAsObjects<Adangal>(filePath);
             return data;
         }
 
@@ -69,7 +69,8 @@ namespace NTK_Support
             var filePath = GetAdangalPath(fileName);
             var data = ReadFileAsObjects<Adangal>(filePath);
 
-            adangalToBeDelete.ForEach(fe => {
+            adangalToBeDelete.ForEach(fe =>
+            {
                 data.Where(w => w.NilaAlavaiEn.ToString() == fe.Split('~')[0] && w.UtpirivuEn == fe.Split('~')[1]).First().LandStatus = LandStatus.Deleted;
             });
             WriteObjectsToFile(data, filePath);
@@ -95,6 +96,40 @@ namespace NTK_Support
             return ReadFileAsObjects<Adangal>(filePath).Where(w => w.LandStatus == LandStatus.Error).ToList();
         }
 
+        public static List<Adangal> GetNameIssueAdangal(string fileName, bool directCall)
+        {
+            var filePath = directCall ? GetAdangalPath(fileName) : fileName; // ???
+            return ReadFileAsObjects<Adangal>(filePath).Where(w => w.LandStatus == LandStatus.WrongName).ToList();
+        }
+
+        public static List<Adangal> UpdateOwnerName(Adangal adn, string ownerName, string fileName, bool directCall)
+        {
+            var filePath = directCall ? GetAdangalPath(fileName) : fileName; // ???
+
+            var data = ReadFileAsObjects<Adangal>(filePath);
+
+            var existingName = data.Where(w => w.PattaEn == adn.PattaEn).First().OwnerName;
+
+            data.Where(w => w.LandStatus == LandStatus.WrongName &&
+                            //w.PattaEn == adn.PattaEn && 
+                            w.OwnerName == existingName).ToList().ForEach(fe => {
+                                fe.OwnerName = ownerName;
+                                fe.LandStatus = LandStatus.NameEdited;
+                            });
+
+            //data.Where(w => w.OwnerName == adn.OwnerName &&
+            //                w.PattaEn == adn.pattaEn).ToList().ForEach(fe => {
+            //                    fe.OwnerName = ownerName;
+            //                    fe.LandStatus = LandStatus.NameEdited;
+            //                });
+
+            WriteObjectsToFile(data, filePath);
+
+            return GetNameIssueAdangal(filePath, false);
+
+        }
+
+
         public static bool AddNewAdangal(string fileName, Adangal adangal)
         {
             var filePath = GetAdangalPath(fileName);
@@ -104,11 +139,10 @@ namespace NTK_Support
         public static List<ComboData> GetDistricts()
         {
             var filePath = GetdatabasePath("RevDistrict");
+            return ReadFileAsObjects<ComboData>(filePath);
 
-            
-                return ReadFileAsObjects<ComboData>(filePath);
-            
         }
 
+        
     }
 }

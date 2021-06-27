@@ -31,5 +31,7 @@ namespace NTK_Support.AdangalTypes
             return $"Patta En:{PattaEn} PattaType: {Enum.GetName(typeof(PattaType), PattaType)} IsVagai: {Convert.ToInt32(isVagai)} land: {landDetails.Count}";
         }
 
+        public string NameRow { get; set; }
+
     }
 }

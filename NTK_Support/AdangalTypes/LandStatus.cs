@@ -7,6 +7,8 @@ namespace NTK_Support.AdangalTypes
         NoChange,
         Deleted,
         Added,
-        Error
+        Error,
+        WrongName,
+        NameEdited
     }
 }

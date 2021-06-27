@@ -37,6 +37,7 @@ file is overrwritten??? how cant find it now!
 sample pdf.
 capcha code logic.
 add log in all possible exception places eg: process name.
+while update name - should maintian a dictionary of correct and wrong name
 
 
 

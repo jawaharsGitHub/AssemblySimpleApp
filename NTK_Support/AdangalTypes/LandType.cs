@@ -14,6 +14,6 @@ namespace NTK_Support.AdangalTypes
         Porambokku,
         PorambokkuError,        
         Zero,
-        //Error
+        NameError
     }
 }

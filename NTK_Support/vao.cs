@@ -138,7 +138,6 @@ namespace NTK_Support
                         {
                             var pattaENRow = pdfPattaNo[processedRow]; //filteredContent[i - 1];
                             var nameRow = filteredContent[i + 1];
-
                             var nm = relationTypesCorrect.Intersect(nameRow.Split('|').ToList());
                             var lst = nameRow.Split('|').ToList().Where(w => w.Trim() != "").ToList();
                             //Debug.WriteLine($"{pattaENRow.Split(' ').Last()} - {lst.Last()} ({lst.ToList()[lst.Count() - 3]})");
@@ -195,10 +194,10 @@ namespace NTK_Support
                         {
                             NilaAlavaiEn = d[0].ToInt32(),
                             UtpirivuEn = d[1],
-                            OwnerName =  d.Last(), //names[randomNo],
+                            OwnerName = d.Last(), //names[randomNo],
                             Parappu = parappu,
                             //Theervai = $"{d[11]}.{d[12]}",
-                            Anupathaarar = d.Last(), // names[randomNo]
+                            //Anupathaarar = d.Last(), // names[randomNo]
                             LandType = LandType.Porambokku
                         });
                         randomNo += 1;
@@ -293,7 +292,7 @@ namespace NTK_Support
 
 
                 Log($"READING DATA FROM CHITTA PDF fILE - {chittaPdfFile}");
-                
+
 
                 //File.WriteAllText(chittaTxtFile, chittaContent);
 
@@ -362,7 +361,7 @@ namespace NTK_Support
                             pattaList.AddAndUpdatePattaAndOwnerNameinList(pattaSingle, PattaType.InValidPatta, fullData);
                             continue;
                         }
-                        
+
 
                         pattaSingle.PattaEn = Convert.ToInt32(pattaNO);
 
@@ -457,7 +456,7 @@ namespace NTK_Support
                                 var ln = d[0];
                                 var correctNameRow = correctName.Where(w => w.Value == pattaSingle.PattaEn).First().Caption;
 
-                                var cn = ExtractCorrectName(d[1], d[0], correctName.Where(w => w.Value == pattaSingle.PattaEn).First().Caption);
+                                var cn = ExtractCorrectName(d[1], d[0], correctNameRow);
 
                                 Debug.WriteLine($"correctname [{pattaSingle.PattaEn}] : {correctNameRow}");
                                 Debug.WriteLine($"wrongname : {ln} - {fn}");
@@ -470,7 +469,10 @@ namespace NTK_Support
                                 {
                                     pattaSingle.PattaType = PattaType.NameIssue;
                                     pattaSingle.PattaTharar = fn;
+
                                 }
+
+                                pattaSingle.NameRow = correctNameRow.Replace("|","");
                                 //var randomNo = new Random().Next(0, 99);
                                 //pattaSingle.PattaTharar = $"{nameList[randomNo]}";
                             }
@@ -557,8 +559,11 @@ namespace NTK_Support
                                    OwnerName = wl.OwnerName,
                                    Parappu = wl.Parappu,
                                    Theervai = wl.Theervai,
-                                   Anupathaarar = wl.Anupathaarar,
-                                   LandType = wl.LandType
+                                   //Anupathaarar = wl.Anupathaarar,
+                                   LandType = wl.LandType,
+                                   LandStatus = wl.LandStatus,
+                                   PattaEn = wl.PattaEn,
+                                   CorrectNameRow = wl.CorrectNameRow
                                }).ToList();
             }
             catch (Exception)
@@ -703,7 +708,8 @@ namespace NTK_Support
                 new KeyValue() { Id = 4, Caption = "No Change" },
                 new KeyValue() { Id = 5, Caption = "Added" },
                 new KeyValue() { Id = 6, Caption = "Deleted" },
-                new KeyValue() { Id = 7, Caption = "Error" }
+                new KeyValue() { Id = 7, Caption = "Error" },
+                new KeyValue() { Id = 8, Caption = "Name Issue" }
             };
 
         }
@@ -1519,6 +1525,14 @@ namespace NTK_Support
                     status.AppendLine($"ERROR REC:{errorCount}");
                     result = false;
                 }
+                var pattaNameIssue = fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.WrongName);
+
+                if (pattaNameIssue.Count() != 0)
+                {
+                    status.AppendLine($"NAME ISSUE :{pattaNameIssue.Count()}");
+                    result = false;
+                }
+
                 Log($"ready: {result} STATUS: {status.ToString()}");
             }
             catch (Exception)
@@ -1633,11 +1647,11 @@ namespace NTK_Support
                 {
                     pattaList = new PattaList();
 
-                    
+
 
                     chittaPdfFile = Path.Combine(folderPath, "Chitta_Report-1.pdf");
                     chittaContent = chittaPdfFile.GetPdfContent();
-                    
+
 
                     LoadPdfPattaNo();
                     chittaTxtFile = Path.Combine(folderPath, "Chitta_Report-1.txt");
@@ -1649,7 +1663,7 @@ namespace NTK_Support
                     {
                         for (int i = 0; i <= pdfPattaNo.Count - 1; i++)
                         {
-                            if(pdfPattaNo[i].Trim() != txtPattaNo[i].Trim())
+                            if (pdfPattaNo[i].Trim() != txtPattaNo[i].Trim())
                             {
                                 notSame.Add($"{i}-pdf:{pdfPattaNo[i].Trim()} txt: {txtPattaNo[i].Trim()}");
                             }
@@ -1816,6 +1830,10 @@ namespace NTK_Support
             {
                 dataGridView1.DataSource = fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.Error).ToList();
             }
+            else if (selValue == 8)
+            {
+                dataGridView1.DataSource = fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.WrongName).ToList();
+            }
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -1864,6 +1882,12 @@ namespace NTK_Support
                 {
                     EditCancel();
                     return;
+                }
+
+                // Edit Name
+                if(owningColumnName == "OwnerName")
+                {
+                    dataGridView1.DataSource = DataAccess.UpdateOwnerName(cus, cellValue, villageName, true);
                 }
 
             }
@@ -1985,7 +2009,9 @@ namespace NTK_Support
                 adangal.Parappu = par.Trim().Replace(" ", "").Replace("-", ".");
                 adangal.Theervai = thee;
                 adangal.LandType = lt;
-                adangal.Anupathaarar = $"{pattaEn}-{ownerName}";
+                //adangal.Anupathaarar = $"{pattaEn}-{ownerName}";
+                adangal.OwnerName = ownerName;
+                adangal.PattaEn = pattaEn.ToInt32();
                 adangal.LandStatus = LandStatus.Added;
             }
             catch (Exception)
@@ -2040,6 +2066,19 @@ namespace NTK_Support
         {
             logHelper.WriteAdangalLog(message);
 
+        }
+
+        private void chkEdit_CheckedChanged(object sender, EventArgs e)
+        {
+            var visibility = !chkEdit.Checked;
+
+            dataGridView1.Columns["NilaAlavaiEn"].Visible = visibility;
+            dataGridView1.Columns["UtpirivuEn"].Visible = visibility;
+            dataGridView1.Columns["Parappu"].Visible = visibility;
+            dataGridView1.Columns["Theervai"].Visible = visibility;
+            dataGridView1.Columns["Anupathaarar"].Visible = visibility;
+            dataGridView1.Columns["LandType"].Visible = visibility;
+            dataGridView1.Columns["IsFullfilled"].Visible = visibility;
         }
     }
 

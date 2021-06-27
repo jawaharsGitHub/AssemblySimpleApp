@@ -13,7 +13,15 @@ namespace NTK_Support.AdangalTypes
         public string UtpirivuEn { get; set; }
         public string Parappu { get; set; }
         public string Theervai { get; set; }
-        public string Anupathaarar { get; set; }
+        public string Anupathaarar { 
+            get 
+            {
+                if(PattaEn > 0)
+                return $"{PattaEn} - {OwnerName}"; 
+                else
+                    return $"{OwnerName}";
+            } 
+        }
         public string OwnerName { get; set; }
 
         private LandType _landType;
@@ -49,5 +57,9 @@ namespace NTK_Support.AdangalTypes
             //return $"{NilaAlavaiEn}-{UtpirivuEn}    {Parappu}   {Theervai} ({LandType.ToName()}){Anupathaarar}";
             return $"{NilaAlavaiEn}-{UtpirivuEn}    {Parappu}   {Theervai} ({LandType.ToString()}){Anupathaarar}";
         }
+
+        public int PattaEn { get; set; }
+
+        public string CorrectNameRow { get; set; }
     }
 }

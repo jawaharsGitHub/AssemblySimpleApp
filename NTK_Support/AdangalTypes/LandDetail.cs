@@ -120,5 +120,9 @@ namespace NTK_Support.AdangalTypes
                 return $"{PattaEn} - {OwnerName}";
             }
         }
+
+        public LandStatus LandStatus { get; set; }
+
+        public string CorrectNameRow { get; set; }
     }
 }

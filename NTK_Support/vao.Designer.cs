@@ -50,6 +50,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkProd = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -63,7 +64,7 @@
             this.cmbSubdivNo = new System.Windows.Forms.ComboBox();
             this.lblSurveyNo = new System.Windows.Forms.Label();
             this.lblSubdiv = new System.Windows.Forms.Label();
-            this.chkProd = new System.Windows.Forms.CheckBox();
+            this.chkEdit = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -105,7 +106,7 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 244);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 282);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(776, 301);
@@ -127,7 +128,7 @@
             // 
             this.ddlListType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlListType.FormattingEnabled = true;
-            this.ddlListType.Location = new System.Drawing.Point(405, 217);
+            this.ddlListType.Location = new System.Drawing.Point(405, 255);
             this.ddlListType.Name = "ddlListType";
             this.ddlListType.Size = new System.Drawing.Size(121, 21);
             this.ddlListType.TabIndex = 5;
@@ -157,7 +158,7 @@
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(37, 225);
+            this.lblMessage.Location = new System.Drawing.Point(37, 263);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(66, 13);
             this.lblMessage.TabIndex = 8;
@@ -186,7 +187,7 @@
             this.btnStatusCheck.Enabled = false;
             this.btnStatusCheck.Location = new System.Drawing.Point(19, 61);
             this.btnStatusCheck.Name = "btnStatusCheck";
-            this.btnStatusCheck.Size = new System.Drawing.Size(105, 46);
+            this.btnStatusCheck.Size = new System.Drawing.Size(105, 110);
             this.btnStatusCheck.TabIndex = 12;
             this.btnStatusCheck.Text = "status";
             this.btnStatusCheck.UseVisualStyleBackColor = true;
@@ -288,20 +289,30 @@
             // 
             this.groupBox2.Controls.Add(this.chkProd);
             this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Location = new System.Drawing.Point(295, 1);
+            this.groupBox2.Location = new System.Drawing.Point(17, 158);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(165, 73);
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "STEP-2";
             // 
+            // chkProd
+            // 
+            this.chkProd.AutoSize = true;
+            this.chkProd.Location = new System.Drawing.Point(21, 12);
+            this.chkProd.Name = "chkProd";
+            this.chkProd.Size = new System.Drawing.Size(77, 17);
+            this.chkProd.TabIndex = 19;
+            this.chkProd.Text = "From json?";
+            this.chkProd.UseVisualStyleBackColor = true;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnReady);
             this.groupBox3.Controls.Add(this.btnStatusCheck);
-            this.groupBox3.Location = new System.Drawing.Point(295, 90);
+            this.groupBox3.Location = new System.Drawing.Point(294, 16);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(155, 112);
+            this.groupBox3.Size = new System.Drawing.Size(155, 186);
             this.groupBox3.TabIndex = 19;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "STEP-3";
@@ -395,7 +406,7 @@
             // 
             this.cmbSurveyNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSurveyNo.FormattingEnabled = true;
-            this.cmbSurveyNo.Location = new System.Drawing.Point(161, 217);
+            this.cmbSurveyNo.Location = new System.Drawing.Point(161, 255);
             this.cmbSurveyNo.Name = "cmbSurveyNo";
             this.cmbSurveyNo.Size = new System.Drawing.Size(65, 21);
             this.cmbSurveyNo.TabIndex = 29;
@@ -404,7 +415,7 @@
             // 
             this.cmbSubdivNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSubdivNo.FormattingEnabled = true;
-            this.cmbSubdivNo.Location = new System.Drawing.Point(244, 217);
+            this.cmbSubdivNo.Location = new System.Drawing.Point(244, 255);
             this.cmbSubdivNo.Name = "cmbSubdivNo";
             this.cmbSubdivNo.Size = new System.Drawing.Size(57, 21);
             this.cmbSubdivNo.TabIndex = 30;
@@ -412,7 +423,7 @@
             // lblSurveyNo
             // 
             this.lblSurveyNo.AutoSize = true;
-            this.lblSurveyNo.Location = new System.Drawing.Point(160, 198);
+            this.lblSurveyNo.Location = new System.Drawing.Point(160, 236);
             this.lblSurveyNo.Name = "lblSurveyNo";
             this.lblSurveyNo.Size = new System.Drawing.Size(52, 13);
             this.lblSurveyNo.TabIndex = 31;
@@ -421,27 +432,29 @@
             // lblSubdiv
             // 
             this.lblSubdiv.AutoSize = true;
-            this.lblSubdiv.Location = new System.Drawing.Point(241, 198);
+            this.lblSubdiv.Location = new System.Drawing.Point(241, 236);
             this.lblSubdiv.Name = "lblSubdiv";
             this.lblSubdiv.Size = new System.Drawing.Size(53, 13);
             this.lblSubdiv.TabIndex = 32;
             this.lblSubdiv.Text = "subdiv no";
             // 
-            // chkProd
+            // chkEdit
             // 
-            this.chkProd.AutoSize = true;
-            this.chkProd.Location = new System.Drawing.Point(21, 12);
-            this.chkProd.Name = "chkProd";
-            this.chkProd.Size = new System.Drawing.Size(80, 17);
-            this.chkProd.TabIndex = 19;
-            this.chkProd.Text = "checkBox1";
-            this.chkProd.UseVisualStyleBackColor = true;
+            this.chkEdit.AutoSize = true;
+            this.chkEdit.Location = new System.Drawing.Point(569, 255);
+            this.chkEdit.Name = "chkEdit";
+            this.chkEdit.Size = new System.Drawing.Size(57, 17);
+            this.chkEdit.TabIndex = 20;
+            this.chkEdit.Text = "EDIT?";
+            this.chkEdit.UseVisualStyleBackColor = true;
+            this.chkEdit.CheckedChanged += new System.EventHandler(this.chkEdit_CheckedChanged);
             // 
             // vao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1201, 557);
+            this.Controls.Add(this.chkEdit);
             this.Controls.Add(this.lblSubdiv);
             this.Controls.Add(this.lblSurveyNo);
             this.Controls.Add(this.cmbSubdivNo);
@@ -518,5 +531,6 @@
         private System.Windows.Forms.Label lblSurveyNo;
         private System.Windows.Forms.Label lblSubdiv;
         private System.Windows.Forms.CheckBox chkProd;
+        private System.Windows.Forms.CheckBox chkEdit;
     }
 }
