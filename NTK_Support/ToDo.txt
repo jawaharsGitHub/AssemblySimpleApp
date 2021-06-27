@@ -34,6 +34,10 @@ replace an existing adangal message box?
 load all district data.
 page no (not in all pages only in right page) - refer total pages.
 file is overrwritten??? how cant find it now!
+sample pdf.
+capcha code logic.
+add log in all possible exception places eg: process name.
+
 
 
 

@@ -12,7 +12,8 @@ namespace NTK_Support.AdangalTypes
         Maanaavari,
         [Description("புறம்போக்கு")]
         Porambokku,
-        PorambokkuError,
-        Zero
+        PorambokkuError,        
+        Zero,
+        //Error
     }
 }

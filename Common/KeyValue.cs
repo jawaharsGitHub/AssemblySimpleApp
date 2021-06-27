@@ -19,6 +19,7 @@ namespace Common
             Value = value;
         }
         public string Caption { get; set; }
+        public string Caption2 { get; set; }
 
 
         public string DisplayMember

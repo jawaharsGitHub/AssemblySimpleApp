@@ -26,6 +26,7 @@ namespace NTK_Support
         readonly int pageTotalrecordPerPage = 25;
         readonly string empty = "";
         readonly string tamilMoththam = "மொத்தம்";
+        readonly string ERROR = "ERROR";
 
         string chittaPdfFile = "";
         string chittaTxtFile = "";
@@ -108,6 +109,8 @@ namespace NTK_Support
 
         List<KeyValue> wrongName = new List<KeyValue>();
         List<KeyValue> correctName = new List<KeyValue>();
+        List<string> pdfPattaNo = new List<string>();
+        List<string> txtPattaNo = new List<string>();
 
         private void ProcessNames()
         {
@@ -133,14 +136,15 @@ namespace NTK_Support
                     {
                         if (filteredContent[i].Contains("உறவினர்‌ பெயர்"))
                         {
-                            var pattaENRow = filteredContent[i - 1];
+                            var pattaENRow = pdfPattaNo[processedRow]; //filteredContent[i - 1];
                             var nameRow = filteredContent[i + 1];
 
                             var nm = relationTypesCorrect.Intersect(nameRow.Split('|').ToList());
                             var lst = nameRow.Split('|').ToList().Where(w => w.Trim() != "").ToList();
                             //Debug.WriteLine($"{pattaENRow.Split(' ').Last()} - {lst.Last()} ({lst.ToList()[lst.Count() - 3]})");
                             //Debug.WriteLine(nameRow);
-                            correctName.Add(new KeyValue(nameRow, pattaENRow.Split(' ').Last().ToInt32()));
+                            txtPattaNo.Add(pattaENRow.Split(' ').Last());
+                            correctName.Add(new KeyValue(nameRow, pattaENRow.ToInt32()));
                             processedRow += 1;
                         }
                     }
@@ -172,8 +176,10 @@ namespace NTK_Support
 
                 PurambokkuAdangalList = new List<Adangal>();
 
-                var aregPatta = aRegContent.Split(Environment.NewLine.ToCharArray()).Where(w => w.Contains("புறமேபாககு")).ToList();
+                //var names = GetTestPoramNames();
 
+                var aregPatta = aRegContent.Split(Environment.NewLine.ToCharArray()).Where(w => w.Contains("புறமேபாககு")).ToList();
+                int randomNo = 0;
                 foreach (var item in aregPatta)
                 {
                     var d = item.Split(' ').Where(w => w.Trim() != "").ToList();
@@ -183,17 +189,19 @@ namespace NTK_Support
                     try
                     {
                         //Debug.WriteLine($"{d[0]}    {d[1]}  {parappu}   {d.Last()}");
-
+                        if (randomNo >= 9)
+                            randomNo = 0;
                         PurambokkuAdangalList.Add(new Adangal()
                         {
                             NilaAlavaiEn = d[0].ToInt32(),
                             UtpirivuEn = d[1],
-                            OwnerName = d.Last(),
+                            OwnerName =  d.Last(), //names[randomNo],
                             Parappu = parappu,
                             //Theervai = $"{d[11]}.{d[12]}",
-                            Anupathaarar = d.Last(),
+                            Anupathaarar = d.Last(), // names[randomNo]
                             LandType = LandType.Porambokku
                         });
+                        randomNo += 1;
 
                     }
                     catch (Exception)
@@ -218,6 +226,66 @@ namespace NTK_Support
             }
 
         }
+
+        private void LoadPdfPattaNo()
+        {
+            Log($"READING DATA FROM CHITTA PDF fILE - {chittaPdfFile}");
+            //File.WriteAllText(chittaTxtFile, chittaContent);
+
+            var pattaas = chittaContent.Replace("பட்டா எண்    :", "$"); //("பட்டா எண்", "$");
+            var data = pattaas.Split('$').ToList();
+            //villageName = data.First().Split(':')[3].Trim();
+
+            //if (DialogResult.No == MessageBox.Show($"{villageName} village?", "Confirm", MessageBoxButtons.YesNo))
+            //{
+            //    Log($"REJECTED THE  VILLAGE PDF FILE- {villageName}");
+            //    return;
+            //}
+
+            data.RemoveAt(0); // first is empty data
+            List<ChittaData> cds = new List<ChittaData>();
+            //bool isFullBreakData, isPartialBreakData = false;
+            //List<string> brkData;
+            //List<string> nonBkData;
+            //pattaList = new PattaList();
+            Log($"STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ {DateTime.Now.ToLongTimeString()}");
+            //var nameList = GetTestNames();
+            for (int i = 0; i <= data.Count - 1; i++)
+            {
+                List<string> fullData = null;
+                //pattaSingle = new Patta();
+
+                //isFullBreakData = isPartialBreakData = false;
+                //brkData = new List<string>();
+                //nonBkData = new List<string>();
+
+                var item = data[i].Replace("வ.எண்", empty).Replace("உ எண்", empty).Replace("உறவினர் ெபயர்", empty)
+                             .Replace("உறவ", empty).Replace("உரிமைமையாளர் ெபயர்", empty).Replace("புல எண்-", empty)
+                             .Replace(". புல எண் -    ", "")
+                             .Replace("உட்பிரிமவ எண்", empty).Replace("நனெசெய", empty).Replace("புனெசெய", empty)
+                             .Replace("மைற்றைவ", empty).Replace("குறிப்பு", empty).Replace("பரப்பு", empty)
+                             .Replace("தீர்ைவ", empty).Replace("ெமைாத்தம", "TOTAL")
+                             .Replace("--", "உறவினர் இல்லை");
+
+                fullData = item.Split('\n').Where(w => w.Trim() != empty && w.Contains("புல எண்") == false).ToList();
+
+                fullData = (from r in fullData
+                            where r.Contains("digitally") == false &&
+                                  r.Contains("_________________________________________________________________________________________________") == false
+                            select r).ToList();
+
+                var pattaNO = fullData.First().Trim(); //.Replace(":", "").Trim();
+                var isNo = pattaNO.isNumber();
+
+                if (isNo == false)
+                {
+                    //pattaList.AddAndUpdatePattaAndOwnerNameinList(pattaSingle, PattaType.InValidPatta, fullData);
+                    continue;
+                }
+                pdfPattaNo.Add(pattaNO);
+            }
+        }
+
         private void ProcessChittaFile()
         {
             try
@@ -225,7 +293,7 @@ namespace NTK_Support
 
 
                 Log($"READING DATA FROM CHITTA PDF fILE - {chittaPdfFile}");
-                chittaContent = chittaPdfFile.GetPdfContent();
+                
 
                 //File.WriteAllText(chittaTxtFile, chittaContent);
 
@@ -250,6 +318,9 @@ namespace NTK_Support
 
 
                 Log($"STARTED PROCESSING CHITTA PDF FILE @ {DateTime.Now.ToLongTimeString()}");
+
+                //var nameList = GetTestNames();
+
                 for (int i = 0; i <= data.Count - 1; i++)
                 {
                     List<string> fullData = null;
@@ -291,6 +362,7 @@ namespace NTK_Support
                             pattaList.AddAndUpdatePattaAndOwnerNameinList(pattaSingle, PattaType.InValidPatta, fullData);
                             continue;
                         }
+                        
 
                         pattaSingle.PattaEn = Convert.ToInt32(pattaNO);
 
@@ -368,7 +440,7 @@ namespace NTK_Support
 
                         var nameRow = headerData[1];
 
-                        wrongName.Add(new KeyValue(nameRow, pattaSingle.PattaEn));
+                        //wrongName.Add(new KeyValue(nameRow, pattaSingle.PattaEn));
 
                         if (relationTypes.Any(a => nameRow.Split(' ').ToList().Contains(a))) // have valid names.
                         {
@@ -377,7 +449,7 @@ namespace NTK_Support
                             if (delitList.Count == 1)
                             {
                                 var delimit = delitList[0];
-                                pattaSingle.PattaTharar = nameRow.Replace(delimit, "$").Split('$')[1];
+                                //pattaSingle.PattaTharar = nameRow.Replace(delimit, "$").Split('$')[1];
                                 var d = nameRow.Replace(delimit, "$").Split('$');
                                 //pattaSingle.PattaTharar = ApplyUnicode(d[1]);
                                 //pattaSingle.PattaTharar = $"{d[1]} {delimit} {d[0]}";
@@ -385,11 +457,22 @@ namespace NTK_Support
                                 var ln = d[0];
                                 var correctNameRow = correctName.Where(w => w.Value == pattaSingle.PattaEn).First().Caption;
 
+                                var cn = ExtractCorrectName(d[1], d[0], correctName.Where(w => w.Value == pattaSingle.PattaEn).First().Caption);
+
                                 Debug.WriteLine($"correctname [{pattaSingle.PattaEn}] : {correctNameRow}");
                                 Debug.WriteLine($"wrongname : {ln} - {fn}");
+                                Debug.WriteLine($"correctName : {cn.Caption} - {cn.Caption2}");
                                 Debug.WriteLine($"-----------------------------------------");
 
-                                pattaSingle.PattaTharar = $"{d[1]}";
+                                pattaSingle.PattaTharar = $"{cn.Caption}";
+
+                                if (cn.Caption == ERROR) // || cn.Caption2 == ERROR
+                                {
+                                    pattaSingle.PattaType = PattaType.NameIssue;
+                                    pattaSingle.PattaTharar = fn;
+                                }
+                                //var randomNo = new Random().Next(0, 99);
+                                //pattaSingle.PattaTharar = $"{nameList[randomNo]}";
                             }
                             else
                             {
@@ -482,6 +565,93 @@ namespace NTK_Support
             {
                 Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
             }
+
+        }
+
+        private KeyValue ExtractCorrectName(string wrongFirstName, string wrongLastName, string correctNameRow)
+        {
+
+            var haveFirstName = correctNameRow.Contains(wrongFirstName.Replace("1", "").Replace("|", "").Trim());
+            var haveLastName = correctNameRow.Contains(wrongLastName.Replace("1", "").Replace("|", "").Trim());
+
+            //string firstName = "";
+            //string lastName = "";
+
+            var cnList = correctNameRow.Split(' ').Where(w => w.Trim() != empty && w.Trim() != "|" && w.Trim() != "1").ToList();
+            var wFnList = wrongFirstName.Split(' ').Where(w => w.Trim() != empty && w.Trim() != "1").ToList();
+            var wLnList = wrongLastName.Split(' ').Where(w => w.Trim() != empty && w.Trim() != "1").ToList();
+
+            //int fnCount = 0;
+
+            var matchedFirstName = MaxMatch(cnList, wFnList);
+            var matchedLastName = MaxMatch(cnList, wLnList);
+
+            return new KeyValue() { Caption = matchedFirstName, Caption2 = matchedLastName };
+
+        }
+
+        private string MaxMatch(List<string> cnList, List<string> wFnList)
+        {
+            int flagCount = 0;
+            string mathedText = "";
+            int stopFlag = 0;
+
+            for (int i = 0; i <= cnList.Count - 1; i++)
+            {
+                if (stopFlag == 1) break;
+                //wFnList.ForEach(f =>
+                //{
+                flagCount = 0;
+
+                var wrongArrText = wFnList[0].ToCharArray().Where(w => w != '‌').ToList();
+                var correctArrText = cnList[i].ToCharArray().Where(w => w != '‌').ToList();
+
+                var wrongArr = wrongArrText.Select(s => (int)s).ToList();
+                var correctArr = correctArrText.Select(s => (int)s).ToList();
+                int loopCout = Math.Min(wrongArr.Count, correctArr.Count);
+
+                var isSame = (wFnList[0].Trim() == cnList[i].Trim());
+                int perc = 0;
+
+                if ((wrongArr.Count - correctArr.Count <= 2) && isSame == false)
+                {
+                    for (int ci = 0; ci <= loopCout - 1; ci++)
+                    {
+                        if (correctArr.Contains(wrongArr[ci]))
+                            flagCount += 1;
+                    }
+                    perc = correctArr.Count.PercentageBtwNo(flagCount);
+                }
+
+                if (perc >= 60 || isSame)
+                {
+                    mathedText = cnList[i].ToString();
+                    if (wFnList.Count > 1)
+                        mathedText += $" {cnList[i + 1].ToString()}";
+                    stopFlag = 1;
+                    //return;
+                }
+
+                //});
+            }
+            return stopFlag == 1 ? mathedText.Trim() : ERROR;
+        }
+
+        private List<string> GetTestNames()
+        {
+            //var filePath = @"F:\AssemblySimpleApp\NTK_Support\samplename.txt";
+
+            return File.ReadAllLines(@"F:\AssemblySimpleApp\NTK_Support\samplename.txt").ToList();
+
+
+        }
+
+        private List<string> GetTestPoramNames()
+        {
+            //var filePath = @"F:\AssemblySimpleApp\NTK_Support\samplename.txt";
+
+            return File.ReadAllLines(@"F:\AssemblySimpleApp\NTK_Support\samplenamePorambokku.txt").ToList();
+
 
         }
         private void ProcessFullReport()
@@ -1178,7 +1348,7 @@ namespace NTK_Support
                     }
                 });
 
-                allContent.Append(GetEmptyPages(4));  // add 4 empty pages.
+                allContent.Append(GetEmptyPages(1));  // add 4 empty pages.
 
                 allContent.Append(GetPageTotal(pageTotalList, pageTotal2List));
 
@@ -1463,10 +1633,30 @@ namespace NTK_Support
                 {
                     pattaList = new PattaList();
 
+                    
+
+                    chittaPdfFile = Path.Combine(folderPath, "Chitta_Report-1.pdf");
+                    chittaContent = chittaPdfFile.GetPdfContent();
+                    
+
+                    LoadPdfPattaNo();
                     chittaTxtFile = Path.Combine(folderPath, "Chitta_Report-1.txt");
                     ProcessNames();
 
-                    chittaPdfFile = Path.Combine(folderPath, "Chitta_Report-1.pdf");
+                    List<string> notSame = new List<string>();
+
+                    if (pdfPattaNo.Count == txtPattaNo.Count)
+                    {
+                        for (int i = 0; i <= pdfPattaNo.Count - 1; i++)
+                        {
+                            if(pdfPattaNo[i].Trim() != txtPattaNo[i].Trim())
+                            {
+                                notSame.Add($"{i}-pdf:{pdfPattaNo[i].Trim()} txt: {txtPattaNo[i].Trim()}");
+                            }
+
+                        }
+                    }
+
                     ProcessChittaFile();    // Nansai, Pun, Maa,
 
                     aRegFile = Path.Combine(folderPath, "Areg_Report-1.pdf");

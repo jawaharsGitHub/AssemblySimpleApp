@@ -21,8 +21,12 @@ namespace NTK_Support.AdangalTypes
             {
                 item.landDetails.ForEach(ld => {
 
+                    //if (item.PattaType == PattaType.NameIssue)
+                      //ld.LandType = LandType.Error;
+
                     ld.PattaEn = item.PattaEn;
                     ld.OwnerName = item.isVagai ? $"{item.PattaTharar} வகை" : item.PattaTharar;
+                    
                     }) ;
             }
 

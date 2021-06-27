@@ -50,37 +50,43 @@ namespace NTK_Support.AdangalTypes
         // மானாவரி தீர்வை
         public string MaanavariTheervai { get; set; }
 
+        private LandType _landType;
         public LandType LandType
         {
             get
             {
                 int i = 0;
-                LandType ld = LandType.Zero;
+                _landType = LandType.Zero;
 
                 if (NansaiTheervai != "0" && NansaiTheervai != "0.00")
                 {
                     i += 1;
-                    ld = LandType.Nansai;
+                    _landType = LandType.Nansai;
                 }
 
                 if (PunsaiTheervai != "0" && PunsaiTheervai != "0.00")
                 {
                     i += 1;
-                    ld = LandType.Punsai;
+                    _landType = LandType.Punsai;
                 }
 
                 if (MaanavariTheervai != "0" && MaanavariTheervai != "0.00")
                 {
                     i += 1;
-                    ld = LandType.Maanaavari;
+                    _landType = LandType.Maanaavari;
                 }
 
                 if (i > 1)
                 {
-                    ld = LandType.Zero;
+                    _landType = LandType.Zero;
                 }
 
-                return ld;
+                return _landType;
+            }
+
+            set
+            {
+                _landType = value; 
             }
 
         }
