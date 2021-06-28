@@ -1950,11 +1950,13 @@ namespace NTK_Support
                         DataAccess.AddNewAdangal(villageName, adangal);
                         addedCount += 1;
                         Log($"Added new land {adangal.ToString()}");
-                        MessageBox.Show($"added {addedCount} land details");
+                        
                         //cmbItemToBeAdded.SelectedIndex += 1;
                         //}
                     }
                 });
+
+                MessageBox.Show($"added {addedCount} land details");
 
                 button2_Click_1(null, null);
                 txtAddNewSurvey.Clear();
