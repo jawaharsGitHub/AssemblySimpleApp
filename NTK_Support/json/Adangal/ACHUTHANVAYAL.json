@@ -23398,5 +23398,44 @@
     "LandStatus": 2,
     "PattaEn": 1602,
     "CorrectNameRow": null
+  },
+  {
+    "NilaAlavaiEn": 68,
+    "UtpirivuEn": "3B2",
+    "Parappu": "0.1.12",
+    "Theervai": "0.10",
+    "Anupathaarar": "1602 - ராஜேஸ்வரன்",
+    "OwnerName": "ராஜேஸ்வரன்",
+    "LandType": 1,
+    "IsFullfilled": false,
+    "LandStatus": 2,
+    "PattaEn": 1602,
+    "CorrectNameRow": null
+  },
+  {
+    "NilaAlavaiEn": 68,
+    "UtpirivuEn": "7A1B",
+    "Parappu": "0.1.11",
+    "Theervai": "0.10",
+    "Anupathaarar": "1514 - சாந்தா",
+    "OwnerName": "சாந்தா",
+    "LandType": 1,
+    "IsFullfilled": false,
+    "LandStatus": 2,
+    "PattaEn": 1514,
+    "CorrectNameRow": null
+  },
+  {
+    "NilaAlavaiEn": 68,
+    "UtpirivuEn": "7A1C",
+    "Parappu": "0.1.11",
+    "Theervai": "0.10",
+    "Anupathaarar": "1515 - வாகீஸ்வரி",
+    "OwnerName": "வாகீஸ்வரி",
+    "LandType": 1,
+    "IsFullfilled": false,
+    "LandStatus": 2,
+    "PattaEn": 1515,
+    "CorrectNameRow": null
   }
 ]
