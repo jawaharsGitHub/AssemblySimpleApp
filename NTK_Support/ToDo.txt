@@ -9,6 +9,7 @@
 --------------read reg file from txt and not from pdf (not working ok with read pdf)
 -------------------------------all steps into logging.
 -----------------------------------still porambokku data is not correct!!
+------------------------------------sample pdf.
 
 ========================================================================================
 step nos.[enable next only after current step ok]
@@ -34,10 +35,23 @@ replace an existing adangal message box?
 load all district data.
 page no (not in all pages only in right page) - refer total pages.
 file is overrwritten??? how cant find it now!
-sample pdf.
+
 capcha code logic.
 add log in all possible exception places eg: process name.
 while update name - should maintian a dictionary of correct and wrong name
+installer project
+move all my projects into single assembly - so that easy to use all common methods.
+
+offline mode working.
+product and publisher name
+replace an existing exe (replace or overwrite)
+create shortcut.
+log file dynamic path.
+softcopy version & hardcopy version 
+dual common foler - solution?
+
+
+
 
 
 
@@ -57,11 +71,20 @@ manulal update list:
 	-> land details group by kanmaai, meenu pidi etc.,
 
 
+
+PRE-requisites:
+laptop
+.net 4.7.2
+rar 
+gmail email 
+internet access 
+notepad++
+
 STEPS:
 1) 2 pdf files - 1. Chitta_Report-1.pdf 2. Areg_Report-1.pdf (naming convention is very important!!!)
 2) convet both files to txt -> https://www.pdf2go.com/pdf-to-text (please take a back up for future use if file may get corrupted)
 3) move those 2 files into that panchayat folder (newly created) --> F:\AUTO-ADANGAL
-4) 
+4) overrite exe (or delete an existing)
 
 
 

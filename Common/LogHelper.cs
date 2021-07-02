@@ -18,10 +18,11 @@ namespace Common
 
         }
 
-        public LogHelper(string logName, string filePath = null)
+        public LogHelper(string logKey, string logPath)
         {
             //logger names are mentioned in <log4net> section of config file
-            _debugLogger = GetLogger(logName);
+            log4net.GlobalContext.Properties["LogPath"] = logPath;
+            _debugLogger = GetLogger(logKey);
             //GlobalContext.Properties["LogFileName"] = filePath; //log file path 
             XmlConfigurator.Configure();
         }

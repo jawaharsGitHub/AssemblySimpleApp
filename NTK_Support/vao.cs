@@ -64,12 +64,26 @@ namespace NTK_Support
         {
             try
             {
+                //MessageBox.Show("ok-1");
                 InitializeComponent();
-                BindDropdown(ddlDistrict, DataAccess.GetDistricts(), "Display", "Value");
-                logHelper = new LogHelper("AdangalLog");
+                //MessageBox.Show("ok-2");
+                var logFolder = AdangalConstant.LogPath;
+                logHelper = new LogHelper("AdangalLog", logFolder);
+                //MessageBox.Show("ok-3");
+                try
+                {
+                    BindDropdown(ddlDistrict, DataAccess.GetDistricts(), "Display", "Value");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                  //  MessageBox.Show("ok-4");
+                }
+                
+                //MessageBox.Show("ok-5");
 
-                Log($"================={DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss")}========================");
-                Log("STARTED....");
+                LogMessage($"================={DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss")}========================");
+                LogMessage("STARTED....");
                 relationTypes = new List<string>() {
                         "தந்தைத",
                         "கணவன",
@@ -86,9 +100,9 @@ namespace NTK_Support
                     };
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
         }
         private void BindDropdown(ComboBox cb, object dataSource, string DisplayMember, string ValueMember)
@@ -100,9 +114,9 @@ namespace NTK_Support
                 cb.ValueMember = ValueMember;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
 
         }
@@ -147,7 +161,7 @@ namespace NTK_Support
                             processedRow += 1;
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         continue;
                     }
@@ -156,12 +170,12 @@ namespace NTK_Support
                 if (processedRow == 0)
                 {
                     MessageBox.Show("File Corrupted!");
-                    Log("File Corrupted!");
+                    LogMessage("File Corrupted!");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
 
 
@@ -170,7 +184,7 @@ namespace NTK_Support
         {
             try
             {
-                Log($"STARTED PROCESSING AREG PDF FILE @ {DateTime.Now.ToLongTimeString()}");
+                LogMessage($"STARTED PROCESSING AREG PDF FILE @ {DateTime.Now.ToLongTimeString()}");
                 aRegContent = aRegFile.GetPdfContent();
 
                 PurambokkuAdangalList = new List<Adangal>();
@@ -203,7 +217,7 @@ namespace NTK_Support
                         randomNo += 1;
 
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         PurambokkuAdangalList.Add(new Adangal()
                         {
@@ -211,24 +225,24 @@ namespace NTK_Support
                             UtpirivuEn = d[1],
                             LandType = LandType.PorambokkuError
                         });
-                        Log($"Error Processing Purambokku record @ {d[0].ToInt32()}");
+                        LogMessage($"Error Processing Purambokku record @ {d[0].ToInt32()}");
                     }
                 }
 
                 AdangalList.AddRange(PurambokkuAdangalList);
-                Log($"COMPLETED PROCESSING AREG PDF FILE @ {DateTime.Now.ToLongTimeString()}");
+                LogMessage($"COMPLETED PROCESSING AREG PDF FILE @ {DateTime.Now.ToLongTimeString()}");
                 fullAdangalFromjson = DataAccess.AdangalToJson(AdangalList, villageName);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
 
         }
 
         private void LoadPdfPattaNo()
         {
-            Log($"READING DATA FROM CHITTA PDF fILE - {chittaPdfFile}");
+            LogMessage($"READING DATA FROM CHITTA PDF fILE - {chittaPdfFile}");
             //File.WriteAllText(chittaTxtFile, chittaContent);
 
             var pattaas = chittaContent.Replace("பட்டா எண்    :", "$"); //("பட்டா எண்", "$");
@@ -247,7 +261,7 @@ namespace NTK_Support
             //List<string> brkData;
             //List<string> nonBkData;
             //pattaList = new PattaList();
-            Log($"STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ {DateTime.Now.ToLongTimeString()}");
+            LogMessage($"STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ {DateTime.Now.ToLongTimeString()}");
             //var nameList = GetTestNames();
             for (int i = 0; i <= data.Count - 1; i++)
             {
@@ -291,7 +305,7 @@ namespace NTK_Support
             {
 
 
-                Log($"READING DATA FROM CHITTA PDF fILE - {chittaPdfFile}");
+                LogMessage($"READING DATA FROM CHITTA PDF fILE - {chittaPdfFile}");
 
 
                 //File.WriteAllText(chittaTxtFile, chittaContent);
@@ -299,10 +313,11 @@ namespace NTK_Support
                 var pattaas = chittaContent.Replace("பட்டா எண்    :", "$"); //("பட்டா எண்", "$");
                 var data = pattaas.Split('$').ToList();
                 villageName = data.First().Split(':')[3].Trim();
+                AdangalConstant.villageName = villageName;
 
                 if (DialogResult.No == MessageBox.Show($"{villageName} village?", "Confirm", MessageBoxButtons.YesNo))
                 {
-                    Log($"REJECTED THE  VILLAGE PDF FILE- {villageName}");
+                    LogMessage($"REJECTED THE  VILLAGE PDF FILE- {villageName}");
                     return;
                 }
 
@@ -316,7 +331,7 @@ namespace NTK_Support
                 pattaList = new PattaList();
 
 
-                Log($"STARTED PROCESSING CHITTA PDF FILE @ {DateTime.Now.ToLongTimeString()}");
+                LogMessage($"STARTED PROCESSING CHITTA PDF FILE @ {DateTime.Now.ToLongTimeString()}");
 
                 //var nameList = GetTestNames();
 
@@ -539,11 +554,11 @@ namespace NTK_Support
                         {
                             pattaList.AddAndUpdatePattaAndOwnerNameinList(pattaSingle, PattaType.Exception, fullData);
                         }
-                        Log($"ERROR WHILE PROCESS patta - {pattaSingle.PattaEn}");
+                        LogMessage($"ERROR WHILE PROCESS patta - {pattaSingle.PattaEn}");
                         continue;
                     }
                 }
-                Log($"COMPLETED PROCESSING CHITTA PDF FILE @ {DateTime.Now.ToLongTimeString()}");
+                LogMessage($"COMPLETED PROCESSING CHITTA PDF FILE @ {DateTime.Now.ToLongTimeString()}");
 
                 WholeLandList = pattaList.SelectMany(x => x.landDetails.Select(y => y)).ToList();
 
@@ -566,9 +581,9 @@ namespace NTK_Support
                                    CorrectNameRow = wl.CorrectNameRow
                                }).ToList();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
 
         }
@@ -663,7 +678,7 @@ namespace NTK_Support
         {
             try
             {
-                Log($"STARTED FULL REPORT");
+                LogMessage($"STARTED FULL REPORT");
                 // Full Report
                 FinalReport fr = new FinalReport(pattaList);
                 //var result = fr.ToString();
@@ -677,14 +692,14 @@ namespace NTK_Support
                 if (fr.IsFullProcessed == false)
                 {
                     MessageBox.Show($"{fr.NotProcessedData} not processes");
-                    Log($"{fr.NotProcessedData} not processes");
+                    LogMessage($"{fr.NotProcessedData} not processes");
                 }
 
-                Log($"COMPLETED FULL REPORT");
+                LogMessage($"COMPLETED FULL REPORT");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
         }
         private List<KeyValue> GetListTypes()
@@ -775,9 +790,9 @@ namespace NTK_Support
                     landList.Add(land);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
             return landList;
 
@@ -811,9 +826,9 @@ namespace NTK_Support
                     return PattaType.KnownError;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
                 return PattaType.KnownError;
             }
         }
@@ -833,9 +848,9 @@ namespace NTK_Support
                     return PattaType.KnownError;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
                 return PattaType.KnownError;
             }
         }
@@ -882,7 +897,7 @@ namespace NTK_Support
             }
             catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
                 return (done, brkData, nonBkData); ;
             }
 
@@ -912,9 +927,9 @@ namespace NTK_Support
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
             return false;
 
@@ -947,9 +962,9 @@ namespace NTK_Support
 
                 textBox2.Text = result;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
 
         }
@@ -981,9 +996,9 @@ namespace NTK_Support
                 return $"0.{finalData}";
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
                 return "Error";
             }
 
@@ -1056,9 +1071,9 @@ namespace NTK_Support
                 leftPage = leftPage.Replace("( [landtype] )", empty);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
             return leftPage;
         }
@@ -1091,9 +1106,9 @@ namespace NTK_Support
                 pageNumber += 1;
                 rightPage = rightPage.Replace("[pageNo]", pageNumber.ToString());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
 
             return rightPage;
@@ -1208,9 +1223,9 @@ namespace NTK_Support
 
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
 
             return totalContent.ToString();
@@ -1248,9 +1263,9 @@ namespace NTK_Support
                 totalContent.Append(tbl);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
             return totalContent.ToString();
         }
@@ -1259,7 +1274,7 @@ namespace NTK_Support
 
             try
             {
-                Log($"STARTED HTML GENERATION @ {DateTime.Now.ToLongTimeString()}");
+                LogMessage($"STARTED HTML GENERATION @ {DateTime.Now.ToLongTimeString()}");
 
                 pageNumber = 0;
 
@@ -1375,11 +1390,11 @@ namespace NTK_Support
 
                 File.AppendAllText(filePath, mainHtml);
 
-                Log($"COMPLETED HTML GENERATION @ {DateTime.Now.ToLongTimeString()}");
+                LogMessage($"COMPLETED HTML GENERATION @ {filePath}");
             }
             catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
         }
         private void dataGridView1_DataSourceChanged(object sender, EventArgs e)
@@ -1401,7 +1416,7 @@ namespace NTK_Support
                 if (ddlDistrict.SelectedItem != null)
                 {
                     var selValue = ((ComboData)ddlDistrict.SelectedItem).Value;
-                    Log($"{selValue}-{((ComboData)ddlDistrict.SelectedItem).Display}");
+                    LogMessage($"{selValue}-{((ComboData)ddlDistrict.SelectedItem).Display}");
 
                     var url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=taluk&districtCode={selValue}";
 
@@ -1411,9 +1426,9 @@ namespace NTK_Support
                     cmbTaluk.SelectedIndexChanged += new System.EventHandler(this.cmbTaluk_SelectedIndexChanged);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
 
         }
@@ -1430,7 +1445,7 @@ namespace NTK_Support
                 {
                     var disValue = ((ComboData)ddlDistrict.SelectedItem).Value;
                     var talValue = ((ComboData)cmbTaluk.SelectedItem).Value;
-                    Log($"{talValue}-{((ComboData)cmbTaluk.SelectedItem).Display}");
+                    LogMessage($"{talValue}-{((ComboData)cmbTaluk.SelectedItem).Display}");
 
                     var url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=village&districtCode={disValue}&&talukCode={talValue}";
 
@@ -1441,9 +1456,9 @@ namespace NTK_Support
                     //cmbVillages.SelectedIndexChanged += new System.EventHandler(this.cmbVillages_SelectedIndexChanged);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
 
         }
@@ -1495,9 +1510,9 @@ namespace NTK_Support
 
                 cmbItemToBeAdded.DataSource = notInPdfToBeAdded;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
         }
         private (bool r, string status) IsReadyToPrint()
@@ -1533,11 +1548,11 @@ namespace NTK_Support
                     result = false;
                 }
 
-                Log($"ready: {result} STATUS: {status.ToString()}");
+                LogMessage($"ready: {result} STATUS: {status.ToString()}");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
             return (result, status.ToString());
 
@@ -1548,7 +1563,7 @@ namespace NTK_Support
             {
 
 
-                Log($"GETTING LAND COUNT");
+                LogMessage($"GETTING LAND COUNT");
                 var fileName = $"{villageName}-subdiv";
 
                 if (DataAccess.IsAdangalExist(fileName) == true)
@@ -1594,13 +1609,13 @@ namespace NTK_Support
                         }
                     }
                 }
-                Log($"GETTING LAND COUNT - COMPLETED");
+                LogMessage($"GETTING LAND COUNT - COMPLETED");
                 return DataAccess.SubdivToJson(totalLandList, fileName);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
                 return null;
             }
 
@@ -1610,10 +1625,10 @@ namespace NTK_Support
         {
             try
             {
-                FolderBrowserDialog fbd = new FolderBrowserDialog
-                {
-                    SelectedPath = @"F:\AUTO-ADANGAL"
-                };
+                FolderBrowserDialog fbd = new FolderBrowserDialog();
+                //{
+                //    //SelectedPath = @"F:\AUTO-ADANGAL"
+                //};
 
 
                 if (DialogResult.OK == fbd.ShowDialog())
@@ -1629,13 +1644,14 @@ namespace NTK_Support
                 if (chkProd.Checked)
                 {
                     chittaPdfFile = Path.Combine(folderPath, "Chitta_Report-1.pdf");
-                    Log($"READ DATA FROM PDF FILE - {chittaPdfFile}");
+                    LogMessage($"READ DATA FROM PDF FILE - {chittaPdfFile}");
                     chittaContent = chittaPdfFile.GetPdfContent();
                     var pattaas = chittaContent.Replace("பட்டா எண்    :", "$"); //("பட்டா எண்", "$");
                     var data = pattaas.Split('$').ToList();
                     villageName = data.First().Split(':')[3].Trim();
+                    AdangalConstant.villageName = villageName;
                     fullAdangalFromjson = DataAccess.GetActiveAdangal(villageName, true);
-                    Log($"READED DATA FROM EXISTING JSON FILE");
+                    LogMessage($"READED DATA FROM EXISTING JSON FILE");
                     BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
                     ddlListType.SelectedIndex = 3;
                     LoadSurveyAndSubdiv();
@@ -1645,16 +1661,17 @@ namespace NTK_Support
 
                 if (haveValidFiles(folderPath))
                 {
+                    LogMessage($"You have all required valid files to proceed process.");
                     pattaList = new PattaList();
 
 
 
-                    chittaPdfFile = Path.Combine(folderPath, "Chitta_Report-1.pdf");
+                    chittaPdfFile = General.CombinePath(folderPath, "Chitta_Report-1.pdf");
                     chittaContent = chittaPdfFile.GetPdfContent();
 
 
                     LoadPdfPattaNo();
-                    chittaTxtFile = Path.Combine(folderPath, "Chitta_Report-1.txt");
+                    chittaTxtFile = General.CombinePath(folderPath, "Chitta_Report-1.txt");
                     ProcessNames();
 
                     List<string> notSame = new List<string>();
@@ -1673,7 +1690,7 @@ namespace NTK_Support
 
                     ProcessChittaFile();    // Nansai, Pun, Maa,
 
-                    aRegFile = Path.Combine(folderPath, "Areg_Report-1.pdf");
+                    aRegFile = General.CombinePath(folderPath, "Areg_Report-1.pdf");
                     ProcessAreg();  // Puram
 
                     ProcessFullReport();
@@ -1682,13 +1699,14 @@ namespace NTK_Support
                 }
                 else
                 {
+                    LogMessage($"Some file missing in the folder?");
                     MessageBox.Show("Some file missing in the folder?");
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
 
         }
@@ -1717,9 +1735,9 @@ namespace NTK_Support
                 }
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
                 return false;
             }
 
@@ -1729,7 +1747,7 @@ namespace NTK_Support
             var selItem = (ComboData)cmbVillages.SelectedItem;
 
             if (selItem.Value != -1)
-                Log($"{selItem.Value}-{selItem.Display}");
+                LogMessage($"{selItem.Value}-{selItem.Display}");
 
             EnableReady();
         }
@@ -1737,7 +1755,7 @@ namespace NTK_Support
         {
             try
             {
-                Log($"LOADING Survey and subdiv no.");
+                LogMessage($"LOADING Survey and subdiv no.");
                 cmbSurveyNo.SelectedIndexChanged -= CmbSurveyNo_SelectedIndexChanged;
                 var d = (from a in fullAdangalFromjson
                          group a by a.NilaAlavaiEn into newGrp
@@ -1750,9 +1768,9 @@ namespace NTK_Support
                 cmbSurveyNo.SelectedIndexChanged += CmbSurveyNo_SelectedIndexChanged;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
 
         }
@@ -1771,9 +1789,9 @@ namespace NTK_Support
 
                 cmbSubdivNo.SelectedIndexChanged += CmbSubdivNo_SelectedIndexChanged;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
         }
         private void CmbSubdivNo_SelectedIndexChanged(object sender, EventArgs e)
@@ -1841,11 +1859,11 @@ namespace NTK_Support
             {
                 fullAdangalFromjson = DataAccess.SetDeleteFlag(villageName, notInOnlineToBeDeleted);
                 dataGridView1.DataSource = fullAdangalFromjson;
-                Log($"set delete flag to {notInOnlineToBeDeleted.Count} land");
+                LogMessage($"set delete flag to {notInOnlineToBeDeleted.Count} land");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
         }
         private void EditCancel()
@@ -1891,9 +1909,9 @@ namespace NTK_Support
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
         }
         public static string GetGridCellValue(DataGridView grid, int rowIndex, string columnName)
@@ -1949,7 +1967,7 @@ namespace NTK_Support
                         //{
                         DataAccess.AddNewAdangal(villageName, adangal);
                         addedCount += 1;
-                        Log($"Added new land {adangal.ToString()}");
+                        LogMessage($"Added new land {adangal.ToString()}");
                         
                         //cmbItemToBeAdded.SelectedIndex += 1;
                         //}
@@ -1961,9 +1979,9 @@ namespace NTK_Support
                 button2_Click_1(null, null);
                 txtAddNewSurvey.Clear();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
         }
         private string GetOwnerName(string nameRow)
@@ -1992,9 +2010,9 @@ namespace NTK_Support
 
                 return name.Trim().Replace("\t", "").Replace("-", "");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
                 return null;
             }
         }
@@ -2016,9 +2034,9 @@ namespace NTK_Support
                 adangal.PattaEn = pattaEn.ToInt32();
                 adangal.LandStatus = LandStatus.Added;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
 
             return adangal;
@@ -2057,16 +2075,41 @@ namespace NTK_Support
                     ld = LandType.Zero;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Log($"Error @ {MethodBase.GetCurrentMethod().Name}");
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
 
             return (ld, parappu, theervai);
         }
-        private void Log(string message)
+        private void LogMessage(string message)
         {
-            logHelper.WriteAdangalLog(message);
+            try
+            {
+                logHelper.WriteAdangalLog(message);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("erro" +  ex.ToString());
+            }
+            
+
+        }
+
+        private void LogError(string message)
+        {
+            try
+            {
+                MessageBox.Show(message);
+                logHelper.WriteAdangalLog(message);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("erro" + ex.ToString());
+            }
+
 
         }
 

@@ -8,6 +8,7 @@ namespace NTK_Support
 {
     public class DataAccess : BaseClass
     {
+        public static string panchayatName = AdangalConstant.villageName;
 
         private static string GetAdangalPath(string fileName)
         {
@@ -52,8 +53,11 @@ namespace NTK_Support
 
             if (File.Exists(filePath) == false)
             {
-                WriteObjectsToFile<Adangal>(adangalData, filePath);
+                File.Create(filePath).Close(); 
             }
+            
+            WriteObjectsToFile<Adangal>(adangalData, filePath);
+
             var data = GetActiveAdangal(filePath, false);
             return data;
         }
@@ -112,7 +116,8 @@ namespace NTK_Support
 
             data.Where(w => w.LandStatus == LandStatus.WrongName &&
                             //w.PattaEn == adn.PattaEn && 
-                            w.OwnerName == existingName).ToList().ForEach(fe => {
+                            w.OwnerName == existingName).ToList().ForEach(fe =>
+                            {
                                 fe.OwnerName = ownerName;
                                 fe.LandStatus = LandStatus.NameEdited;
                             });
@@ -139,10 +144,28 @@ namespace NTK_Support
         public static List<ComboData> GetDistricts()
         {
             var filePath = GetdatabasePath("RevDistrict");
-            return ReadFileAsObjects<ComboData>(filePath);
+            try
+            {
+                File.WriteAllText(@"F:\AssemblySimpleApp\NTK_Support\json\Adangal\Test.txt", "2:" + filePath);
+                try
+                {
+                    return ReadFileAsObjects<ComboData>(filePath);
+                }
+                catch (System.Exception ex)
+                {
+                    throw ex;
+                }
+
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+
 
         }
 
-        
+
     }
 }

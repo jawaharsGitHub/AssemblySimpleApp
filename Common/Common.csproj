@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlphanumComparatorFast.cs" />
+    <Compile Include="AlphaNumericSort.cs" />
     <Compile Include="AppConfiguration.cs" />
     <Compile Include="Attributes\StringValueAttribute.cs" />
     <Compile Include="BaseTypes\BaseClass.cs" />

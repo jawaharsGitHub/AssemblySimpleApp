@@ -20,14 +20,19 @@ namespace NTK_Support
             //Application.Run(new Form20Analysis());
             //Application.Run(new DocxToTxt());
 
-            var dataFolder = General.GetDataFolder("NTK_Support\\json\\");
+            var dataFolder = AdangalConstant.jsonPath;
+            //AdangalConstant.LogPath = General.GetDataFolder("log");
 
-            if (AppConfiguration.AddOrUpdateAppSettings("SourceFolder", dataFolder))
+            try
             {
-                Application.Run(new vao());
-
+                if (AppConfiguration.AddOrUpdateAppSettings("SourceFolder", dataFolder))
+                    Application.Run(new vao());
             }
-            
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
     }
 }

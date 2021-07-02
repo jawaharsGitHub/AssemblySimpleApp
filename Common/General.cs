@@ -62,17 +62,26 @@ namespace Common
             }
         }
 
+
+        //static string path = @"E:\Test\NTK_Support\MyLog.txt";    
+
         public static string GetDataFolder(string dataAccessPath)
         {
+            //File.WriteAllText(path, "");
             string exeFile = (new Uri(Assembly.GetEntryAssembly().CodeBase)).AbsolutePath;
+            return General.CombinePath(Path.GetDirectoryName(exeFile).Replace("\\bin\\Debug", ""), dataAccessPath);
+
             string exeDir = Path.GetDirectoryName(exeFile);
             //string dataFolder = exeDir.Replace("AssemblyApp\\bin\\Debug", newValue);  
+            //File.AppendAllText(path, $"exeFile: {exeFile}");
+            //var projectName = new FileInfo(exeFile).Name.Split('.')[0];
+            //File.AppendAllText(path, $"projectName: {projectName}");
 
-            var projectName = new FileInfo(exeFile).Name.Split('.')[0];
+            //string dataFolder = exeDir.Replace($"{projectName}\\bin\\Debug", dataAccessPath);
 
-            string dataFolder = exeDir.Replace($"{projectName}\\bin\\Debug", dataAccessPath);
 
-            return dataFolder;
+            //File.AppendAllText(path, $"dataFolder: {dataFolder}");
+            //return dataFolder;
         }
 
         public static void WriteToFile(string path, string content)
@@ -147,6 +156,11 @@ namespace Common
             {
                 return false;
             }
+        }
+
+        public static string CombinePath(string path1, string path2)
+        {
+            return Path.Combine(path1, path2).Replace("%20", " ");
         }
 
     }

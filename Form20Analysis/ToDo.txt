@@ -1,0 +1,76 @@
+
+--------------------------------------disable delete button by default.
+--------------------------------------add new options - deleted, no change, added.
+--------------------------------------dropdowns for survey and subdiv nos.
+----------------------add more conditions for OK status. eg: porambookku error!
+--------------------------------what if we added new survey wrongly, give upadte option. or you can update in grid.
+------------------------------------all total row should be bolded.
+-------------------------------all heading should be bolded..
+--------------read reg file from txt and not from pdf (not working ok with read pdf)
+-------------------------------all steps into logging.
+-----------------------------------still porambokku data is not correct!!
+
+========================================================================================
+step nos.[enable next only after current step ok]
+step no in logging.
+!!!!process names
+???????for texting use the constant value.
+???????status of ok panchayat?
+thread process for long running process...
+please wait loading...
+percentage message...
+use replace in all possible places.
+!!top header space and alignment.
+!!extra data : ??? -> siru guru vivasaayi -> owner(father name) -> land details and count.
+for total's total remove page break.
+right and left table height should be same
+!!total is only for nansai, punsai and maanaavari not for porambokku 
+!!nansai = nansai + punsai 
+!!option to edit and update the total land parappu (if needed)
+lastly add 10 extra pages. ?? (get it from vaos)
+add govt papers to fill front and last  pages.....!!!!
+edit and update record via grid.
+replace an existing adangal message box?
+load all district data.
+page no (not in all pages only in right page) - refer total pages.
+file is overrwritten??? how cant find it now!
+sample pdf.
+capcha code logic.
+add log in all possible exception places eg: process name.
+while update name - should maintian a dictionary of correct and wrong name
+installer project
+move all my projects into single assembly - so that easy to use all common methods.
+
+
+
+
+
+
+marketing:
+------------
+
+time is money - how much is time is important?
+how much you spent?
+extra information?
+need just pdf? or the full book?
+next year will be very very easy!!!
+online pdf 
+manulal update list:
+	-> porampoakku pages photo
+	-> what is the final total number need to be?
+	-> land details group by kanmaai, meenu pidi etc.,
+
+
+STEPS:
+1) 2 pdf files - 1. Chitta_Report-1.pdf 2. Areg_Report-1.pdf (naming convention is very important!!!)
+2) convet both files to txt -> https://www.pdf2go.com/pdf-to-text (please take a back up for future use if file may get corrupted)
+3) move those 2 files into that panchayat folder (newly created) --> F:\AUTO-ADANGAL
+4) 
+
+
+
+
+
+
+
+
