@@ -71,7 +71,7 @@ namespace Common
             string exeFile = (new Uri(Assembly.GetEntryAssembly().CodeBase)).AbsolutePath;
             return General.CombinePath(Path.GetDirectoryName(exeFile).Replace("\\bin\\Debug", ""), dataAccessPath);
 
-            string exeDir = Path.GetDirectoryName(exeFile);
+            //string exeDir = Path.GetDirectoryName(exeFile);
             //string dataFolder = exeDir.Replace("AssemblyApp\\bin\\Debug", newValue);  
             //File.AppendAllText(path, $"exeFile: {exeFile}");
             //var projectName = new FileInfo(exeFile).Name.Split('.')[0];

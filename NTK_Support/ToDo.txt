@@ -1,17 +1,19 @@
 
---------------------------------------disable delete button by default.
---------------------------------------add new options - deleted, no change, added.
---------------------------------------dropdowns for survey and subdiv nos.
-----------------------add more conditions for OK status. eg: porambookku error!
---------------------------------what if we added new survey wrongly, give upadte option. or you can update in grid.
-------------------------------------all total row should be bolded.
--------------------------------all heading should be bolded..
---------------read reg file from txt and not from pdf (not working ok with read pdf)
--------------------------------all steps into logging.
------------------------------------still porambokku data is not correct!!
-------------------------------------sample pdf.
+disable delete button by default.
+add new options - deleted, no change, added.
+dropdowns for survey and subdiv nos.
+add more conditions for OK status. eg: porambookku error!
+what if we added new survey wrongly, give upadte option. or you can update in grid.
+all total row should be bolded.
+all heading should be bolded..
+read reg file from txt and not from pdf (not working ok with read pdf)
+all steps into logging.
+still porambokku data is not correct!!
+sample pdf.
 
 ========================================================================================
+how to doc.
+
 step nos.[enable next only after current step ok]
 step no in logging.
 !!!!process names
@@ -49,6 +51,9 @@ create shortcut.
 log file dynamic path.
 softcopy version & hardcopy version 
 dual common foler - solution?
+
+tamil panchayat name.
+
 
 
 

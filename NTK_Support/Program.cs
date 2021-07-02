@@ -9,6 +9,9 @@ namespace NTK_Support
 {
     static class Program
     {
+
+        
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -17,12 +20,11 @@ namespace NTK_Support
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            
             //Application.Run(new Form20Analysis());
             //Application.Run(new DocxToTxt());
 
             var dataFolder = AdangalConstant.jsonPath;
-            //AdangalConstant.LogPath = General.GetDataFolder("log");
-
             try
             {
                 if (AppConfiguration.AddOrUpdateAppSettings("SourceFolder", dataFolder))

@@ -6,7 +6,7 @@ namespace Common
     public class LogHelper
     {
         private readonly ILog _debugLogger;
-        private string LogPath;
+        //private string LogPath;
         private static ILog GetLogger(string logName)
         {
             ILog log = LogManager.GetLogger(logName);

@@ -96,10 +96,11 @@ namespace Common
                 ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
                 return true;
             }
-            catch (ConfigurationErrorsException)
+            catch (Exception ex)
             {
-                Console.WriteLine("Error writing app settings");
-                return false;
+                throw ex;
+                //Console.WriteLine("Error writing app settings");
+                //return false;
             }
         }
     }

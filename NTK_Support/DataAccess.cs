@@ -1,5 +1,6 @@
 ﻿using Common;
 using NTK_Support.AdangalTypes;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,164 +9,124 @@ namespace NTK_Support
 {
     public class DataAccess : BaseClass
     {
-        public static string panchayatName = AdangalConstant.villageName;
+        public static string JsonPath = "";
+        public static string SubDivPath = "";
 
-        private static string GetAdangalPath(string fileName)
+        public static void SetVillageName()
         {
-            return AppConfiguration.GetDynamicPath($"Adangal/{fileName}.json");
+            JsonPath = AppConfiguration.GetDynamicPath($"Adangal/{AdangalConstant.villageName}.json");
+            SubDivPath = AppConfiguration.GetDynamicPath($"Adangal/{AdangalConstant.villageName}-subdiv.json");
+
+            if (Directory.Exists(Directory.GetParent(JsonPath).FullName) == false)
+                Directory.CreateDirectory(Directory.GetParent(JsonPath).FullName);
         }
 
-        private static string GetdatabasePath(string fileName)
+        private static string GetTablePath(string tableName)
         {
-            return AppConfiguration.GetDynamicPath($"database/{fileName}.json");
+            return AppConfiguration.GetDynamicPath($"database/{tableName}.json");
         }
 
-        public static List<Adangal> GetAdangal(string fileName)
+        public static List<KeyValue> GetSubdiv()
         {
-            var filePath = GetAdangalPath(fileName);
-            var data = ReadFileAsObjects<Adangal>(filePath);
+            var data = ReadFileAsObjects<KeyValue>(SubDivPath);
             return data;
         }
 
-        public static List<KeyValue> GetSubdiv(string fileName)
+        public static List<KeyValue> SubdivToJson(List<KeyValue> subdivData)
         {
-            var filePath = GetAdangalPath(fileName);
-            var data = ReadFileAsObjects<KeyValue>(filePath);
+            if (File.Exists(SubDivPath) == false)
+                WriteObjectsToFile<KeyValue>(subdivData, SubDivPath);
+
+            var data = ReadFileAsObjects<KeyValue>(SubDivPath);
             return data;
         }
 
-        public static List<KeyValue> SubdivToJson(List<KeyValue> subdivData, string fileName)
+        public static List<Adangal> AdangalToJson(List<Adangal> adangalData)
         {
-            var filePath = GetAdangalPath(fileName);
+            if (File.Exists(JsonPath) == false)
+                File.Create(JsonPath).Close();
 
-            if (File.Exists(filePath) == false)
-            {
-                WriteObjectsToFile<KeyValue>(subdivData, filePath);
-            }
-            //var data = GetSubdiv(filePath);
-            var data = ReadFileAsObjects<KeyValue>(filePath);
+            WriteObjectsToFile<Adangal>(adangalData, JsonPath);
+
+            var data = GetActiveAdangal();
             return data;
         }
 
-        public static List<Adangal> AdangalToJson(List<Adangal> adangalData, string fileName)
+        public static bool IsSubDivExist()
         {
-            var filePath = GetAdangalPath(fileName);
-
-            if (File.Exists(filePath) == false)
-            {
-                File.Create(filePath).Close(); 
-            }
-            
-            WriteObjectsToFile<Adangal>(adangalData, filePath);
-
-            var data = GetActiveAdangal(filePath, false);
-            return data;
+            return File.Exists(SubDivPath);
         }
 
-        public static bool IsAdangalExist(string fileName)
+        public static List<Adangal> SetDeleteFlag(List<string> adangalToBeDelete)
         {
-            var filePath = GetAdangalPath(fileName);
-            return File.Exists(filePath);
-        }
-
-        public static List<Adangal> SetDeleteFlag(string fileName, List<string> adangalToBeDelete)
-        {
-            var filePath = GetAdangalPath(fileName);
-            var data = ReadFileAsObjects<Adangal>(filePath);
+            var data = ReadFileAsObjects<Adangal>(JsonPath);
 
             adangalToBeDelete.ForEach(fe =>
             {
-                data.Where(w => w.NilaAlavaiEn.ToString() == fe.Split('~')[0] && w.UtpirivuEn == fe.Split('~')[1]).First().LandStatus = LandStatus.Deleted;
+                data.Where(w => w.NilaAlavaiEn.ToString() == fe.Split('~')[0] && w.UtpirivuEn == fe.Split('~')[1])
+                            .First().LandStatus = LandStatus.Deleted;
             });
-            WriteObjectsToFile(data, filePath);
-            return GetActiveAdangal(filePath, false);
+            WriteObjectsToFile(data, JsonPath);
+            return GetActiveAdangal();
         }
 
-        public static List<Adangal> GetActiveAdangal(string fileName, bool directCall)
+        public static List<Adangal> GetActiveAdangal()
         {
-            var filePath = directCall ? GetAdangalPath(fileName) : fileName; // ???
-            return ReadFileAsObjects<Adangal>(filePath).Where(w => w.LandStatus != LandStatus.Deleted).ToList();
+            return ReadFileAsObjects<Adangal>(JsonPath).Where(w => w.LandStatus != LandStatus.Deleted).ToList();
         }
 
 
-        public static List<Adangal> GetDeletedAdangal(string fileName, bool directCall)
+        public static List<Adangal> GetDeletedAdangal()
         {
-            var filePath = directCall ? GetAdangalPath(fileName) : fileName; // ???
-            return ReadFileAsObjects<Adangal>(filePath).Where(w => w.LandStatus == LandStatus.Deleted).ToList();
+            return ReadFileAsObjects<Adangal>(JsonPath).Where(w => w.LandStatus == LandStatus.Deleted).ToList();
         }
 
-        public static List<Adangal> GetErrorAdangal(string fileName, bool directCall)
+        public static List<Adangal> GetErrorAdangal()
         {
-            var filePath = directCall ? GetAdangalPath(fileName) : fileName; // ???
-            return ReadFileAsObjects<Adangal>(filePath).Where(w => w.LandStatus == LandStatus.Error).ToList();
+            return ReadFileAsObjects<Adangal>(JsonPath).Where(w => w.LandStatus == LandStatus.Error).ToList();
         }
 
-        public static List<Adangal> GetNameIssueAdangal(string fileName, bool directCall)
+        public static List<Adangal> GetNameIssueAdangal()
         {
-            var filePath = directCall ? GetAdangalPath(fileName) : fileName; // ???
-            return ReadFileAsObjects<Adangal>(filePath).Where(w => w.LandStatus == LandStatus.WrongName).ToList();
+            return ReadFileAsObjects<Adangal>(JsonPath).Where(w => w.LandStatus == LandStatus.WrongName).ToList();
         }
 
-        public static List<Adangal> UpdateOwnerName(Adangal adn, string ownerName, string fileName, bool directCall)
+        public static List<Adangal> UpdateOwnerName(Adangal adn, string ownerName)
         {
-            var filePath = directCall ? GetAdangalPath(fileName) : fileName; // ???
-
-            var data = ReadFileAsObjects<Adangal>(filePath);
+            var data = ReadFileAsObjects<Adangal>(JsonPath);
 
             var existingName = data.Where(w => w.PattaEn == adn.PattaEn).First().OwnerName;
 
             data.Where(w => w.LandStatus == LandStatus.WrongName &&
-                            //w.PattaEn == adn.PattaEn && 
                             w.OwnerName == existingName).ToList().ForEach(fe =>
                             {
                                 fe.OwnerName = ownerName;
                                 fe.LandStatus = LandStatus.NameEdited;
                             });
 
-            //data.Where(w => w.OwnerName == adn.OwnerName &&
-            //                w.PattaEn == adn.pattaEn).ToList().ForEach(fe => {
-            //                    fe.OwnerName = ownerName;
-            //                    fe.LandStatus = LandStatus.NameEdited;
-            //                });
+            WriteObjectsToFile(data, JsonPath);
 
-            WriteObjectsToFile(data, filePath);
-
-            return GetNameIssueAdangal(filePath, false);
+            return GetNameIssueAdangal();
 
         }
 
 
-        public static bool AddNewAdangal(string fileName, Adangal adangal)
+        public static bool AddNewAdangal(Adangal adangal)
         {
-            var filePath = GetAdangalPath(fileName);
-            InsertSingleObjectToListJson<Adangal>(filePath, adangal);
+            InsertSingleObjectToListJson<Adangal>(JsonPath, adangal);
             return true;
         }
         public static List<ComboData> GetDistricts()
         {
-            var filePath = GetdatabasePath("RevDistrict");
+            var filePath = GetTablePath("RevDistrict");
             try
             {
-                File.WriteAllText(@"F:\AssemblySimpleApp\NTK_Support\json\Adangal\Test.txt", "2:" + filePath);
-                try
-                {
-                    return ReadFileAsObjects<ComboData>(filePath);
-                }
-                catch (System.Exception ex)
-                {
-                    throw ex;
-                }
-
+                return ReadFileAsObjects<ComboData>(filePath);
             }
-            catch (System.Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw ex;
             }
-
-
         }
-
-
     }
 }

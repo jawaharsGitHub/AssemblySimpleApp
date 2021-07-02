@@ -64,12 +64,9 @@ namespace NTK_Support
         {
             try
             {
-                //MessageBox.Show("ok-1");
                 InitializeComponent();
-                //MessageBox.Show("ok-2");
                 var logFolder = AdangalConstant.LogPath;
                 logHelper = new LogHelper("AdangalLog", logFolder);
-                //MessageBox.Show("ok-3");
                 try
                 {
                     BindDropdown(ddlDistrict, DataAccess.GetDistricts(), "Display", "Value");
@@ -77,10 +74,7 @@ namespace NTK_Support
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
-                  //  MessageBox.Show("ok-4");
                 }
-                
-                //MessageBox.Show("ok-5");
 
                 LogMessage($"================={DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss")}========================");
                 LogMessage("STARTED....");
@@ -231,7 +225,7 @@ namespace NTK_Support
 
                 AdangalList.AddRange(PurambokkuAdangalList);
                 LogMessage($"COMPLETED PROCESSING AREG PDF FILE @ {DateTime.Now.ToLongTimeString()}");
-                fullAdangalFromjson = DataAccess.AdangalToJson(AdangalList, villageName);
+                fullAdangalFromjson = DataAccess.AdangalToJson(AdangalList);
             }
             catch (Exception ex)
             {
@@ -314,6 +308,7 @@ namespace NTK_Support
                 var data = pattaas.Split('$').ToList();
                 villageName = data.First().Split(':')[3].Trim();
                 AdangalConstant.villageName = villageName;
+                DataAccess.SetVillageName();
 
                 if (DialogResult.No == MessageBox.Show($"{villageName} village?", "Confirm", MessageBoxButtons.YesNo))
                 {
@@ -487,7 +482,7 @@ namespace NTK_Support
 
                                 }
 
-                                pattaSingle.NameRow = correctNameRow.Replace("|","");
+                                pattaSingle.NameRow = correctNameRow.Replace("|", "");
                                 //var randomNo = new Random().Next(0, 99);
                                 //pattaSingle.PattaTharar = $"{nameList[randomNo]}";
                             }
@@ -1482,7 +1477,7 @@ namespace NTK_Support
                 }
 
                 var onlineData = GetLandCount();
-                fullAdangalFromjson = DataAccess.GetActiveAdangal(villageName, true);
+                fullAdangalFromjson = DataAccess.GetActiveAdangal();
                 LoadSurveyAndSubdiv();
 
                 var expLandDetails = (onlineData
@@ -1521,7 +1516,7 @@ namespace NTK_Support
             bool result = true;
             try
             {
-                var errorCount = DataAccess.GetErrorAdangal(villageName, true).Count;
+                var errorCount = DataAccess.GetErrorAdangal().Count;
 
                 if (notInPdfToBeAdded.Count != 0)
                 {
@@ -1564,11 +1559,11 @@ namespace NTK_Support
 
 
                 LogMessage($"GETTING LAND COUNT");
-                var fileName = $"{villageName}-subdiv";
+                //var fileName = $"{villageName}-subdiv";
 
-                if (DataAccess.IsAdangalExist(fileName) == true)
+                if (DataAccess.IsSubDivExist())
                 {
-                    return DataAccess.GetSubdiv(fileName);
+                    return DataAccess.GetSubdiv();
                 }
 
                 var totalLandList = new List<KeyValue>();
@@ -1610,7 +1605,7 @@ namespace NTK_Support
                     }
                 }
                 LogMessage($"GETTING LAND COUNT - COMPLETED");
-                return DataAccess.SubdivToJson(totalLandList, fileName);
+                return DataAccess.SubdivToJson(totalLandList);
 
             }
             catch (Exception ex)
@@ -1650,7 +1645,8 @@ namespace NTK_Support
                     var data = pattaas.Split('$').ToList();
                     villageName = data.First().Split(':')[3].Trim();
                     AdangalConstant.villageName = villageName;
-                    fullAdangalFromjson = DataAccess.GetActiveAdangal(villageName, true);
+                    DataAccess.SetVillageName();
+                    fullAdangalFromjson = DataAccess.GetActiveAdangal();
                     LogMessage($"READED DATA FROM EXISTING JSON FILE");
                     BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
                     ddlListType.SelectedIndex = 3;
@@ -1842,7 +1838,7 @@ namespace NTK_Support
 
             else if (selValue == 6)
             {
-                dataGridView1.DataSource = DataAccess.GetDeletedAdangal(villageName, true);  // fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.Deleted).ToList();
+                dataGridView1.DataSource = DataAccess.GetDeletedAdangal();  // fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.Deleted).ToList();
             }
             else if (selValue == 7)
             {
@@ -1857,7 +1853,7 @@ namespace NTK_Support
         {
             try
             {
-                fullAdangalFromjson = DataAccess.SetDeleteFlag(villageName, notInOnlineToBeDeleted);
+                fullAdangalFromjson = DataAccess.SetDeleteFlag(notInOnlineToBeDeleted);
                 dataGridView1.DataSource = fullAdangalFromjson;
                 LogMessage($"set delete flag to {notInOnlineToBeDeleted.Count} land");
             }
@@ -1903,9 +1899,9 @@ namespace NTK_Support
                 }
 
                 // Edit Name
-                if(owningColumnName == "OwnerName")
+                if (owningColumnName == "OwnerName")
                 {
-                    dataGridView1.DataSource = DataAccess.UpdateOwnerName(cus, cellValue, villageName, true);
+                    dataGridView1.DataSource = DataAccess.UpdateOwnerName(cus, cellValue);
                 }
 
             }
@@ -1965,10 +1961,10 @@ namespace NTK_Support
                     {
                         //if (MessageBox.Show(adangal.ToString(), "சரியா?", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         //{
-                        DataAccess.AddNewAdangal(villageName, adangal);
+                        DataAccess.AddNewAdangal(adangal);
                         addedCount += 1;
                         LogMessage($"Added new land {adangal.ToString()}");
-                        
+
                         //cmbItemToBeAdded.SelectedIndex += 1;
                         //}
                     }
@@ -2091,9 +2087,9 @@ namespace NTK_Support
             catch (Exception ex)
             {
 
-                MessageBox.Show("erro" +  ex.ToString());
+                MessageBox.Show("erro" + ex.ToString());
             }
-            
+
 
         }
 

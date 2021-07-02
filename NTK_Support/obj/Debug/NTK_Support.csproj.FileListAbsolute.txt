@@ -21,3 +21,4 @@ F:\AssemblySimpleApp\NTK_Support\bin\Debug\itextsharp.xml
 F:\AssemblySimpleApp\NTK_Support\bin\Debug\Common.dll.config
 F:\AssemblySimpleApp\NTK_Support\bin\Debug\itextsharp.xmlworker.dll
 F:\AssemblySimpleApp\NTK_Support\bin\Debug\BouncyCastle.Crypto.dll
+F:\AssemblySimpleApp\NTK_Support\bin\Debug\ICSharpCode.SharpZipLib.dll

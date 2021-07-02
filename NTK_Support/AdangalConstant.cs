@@ -12,5 +12,6 @@ namespace NTK_Support
         public static readonly string LogPath = General.GetDataFolder("log");
         public static readonly string jsonPath = General.GetDataFolder("json");
         public static string villageName;
+        
     }
 }
