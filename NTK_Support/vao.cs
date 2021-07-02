@@ -1266,17 +1266,26 @@ namespace NTK_Support
         }
         private void btnGenerate_Click(object sender, EventArgs e)
         {
+            string actualCode = "";
+            string expectedCode = "";
+
+            var day = DateTime.Now.Day;
+            var Hour = DateTime.Now.Hour;
+            var Minute = DateTime.Now.Minute;
+            expectedCode = ((1983 * 1984 * day * Hour * Minute) / 2011 / 19).ToInt32().ToString();
+            actualCode = General.ShowPrompt("Passcode", "Verification");
+
+            if (actualCode != expectedCode)
+            {
+                MessageBox.Show("Sorry , wrong code!");
+                return;
+            }
 
             try
             {
                 LogMessage($"STARTED HTML GENERATION @ {DateTime.Now.ToLongTimeString()}");
 
                 pageNumber = 0;
-
-                //DirectoryInfo di = new DirectoryInfo(@"F:\AssemblySimpleApp\NTK_Support\AdangalHtmlTemplates");
-
-                //foreach (FileInfo file in di.GetFiles())
-                //    file.Delete();
 
                 StringBuilder allContent = new StringBuilder();
                 pageTotalList = new List<PageTotal>();
@@ -1308,8 +1317,8 @@ namespace NTK_Support
 
 
                     // FOR TETSING ONLY
-                    int testingPageNo = 6;
-                    pageCount = pageCount >= testingPageNo ? testingPageNo : pageCount;
+                    //int testingPageNo = 6;
+                    //pageCount = pageCount >= testingPageNo ? testingPageNo : pageCount;
                     // FOR TETSING ONLY
 
                     for (int i = 0; i <= pageCount - 1; i++)
@@ -1397,16 +1406,27 @@ namespace NTK_Support
             lblMessage.Text = $"Record Count: {dataGridView1.Rows.Count} ";
 
         }
+
+        private bool NoInternet()
+        {
+            if (General.CheckForInternetConnection() == false)
+            {
+                MessageBox.Show("No Internet Connection!");
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+
+        }
         private void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
 
-                if (General.CheckForInternetConnection() == false)
-                {
-                    MessageBox.Show("No Internet Connection!");
-                    return;
-                }
+                if (NoInternet()) return;
 
                 if (ddlDistrict.SelectedItem != null)
                 {
@@ -1431,11 +1451,8 @@ namespace NTK_Support
         {
             try
             {
-                if (General.CheckForInternetConnection() == false)
-                {
-                    MessageBox.Show("No Internet Connection!");
-                    return;
-                }
+                if (NoInternet()) return;
+
                 if (ddlDistrict.SelectedItem != null)
                 {
                     var disValue = ((ComboData)ddlDistrict.SelectedItem).Value;
@@ -1468,13 +1485,7 @@ namespace NTK_Support
             {
 
 
-                // Gets the expected land details count.
-
-                if (General.CheckForInternetConnection() == false)
-                {
-                    MessageBox.Show("No Internet Connection!");
-                    return;
-                }
+                if (NoInternet()) return;
 
                 var onlineData = GetLandCount();
                 fullAdangalFromjson = DataAccess.GetActiveAdangal();
