@@ -68,7 +68,7 @@ namespace NTK_Support
 
         List<string> notInPdfToBeAdded;
         List<string> notInOnlineToBeDeleted;
-        string folderPath = "";
+        string reqFileFolderPath = "";
 
         public static string title = ConfigurationManager.AppSettings["title"];
         public static string header = ConfigurationManager.AppSettings["header"];
@@ -84,6 +84,7 @@ namespace NTK_Support
 
                 var logFolder = AdangalConstant.LogPath;
                 logHelper = new LogHelper("AdangalLog", logFolder);
+
                 try
                 {
                     BindDropdown(ddlDistrict, DataAccess.GetDistricts(), "Display", "Value");
@@ -1264,17 +1265,17 @@ namespace NTK_Support
             string actualCode = "";
             string expectedCode = "";
 
-            var day = DateTime.Now.Day;
-            var Hour = DateTime.Now.Hour;
-            var Minute = DateTime.Now.Minute;
-            expectedCode = ((1983 * 1984 * day * Hour * Minute) / 2011 / 19).ToInt32().ToString();
-            actualCode = General.ShowPrompt("Passcode", "Verification");
+            //var day = DateTime.Now.Day;
+            //var Hour = DateTime.Now.Hour;
+            //var Minute = DateTime.Now.Minute;
+            //expectedCode = ((1983 * 1984 * day * Hour * Minute) / 2011 / 19).ToInt32().ToString();
+            //actualCode = General.ShowPrompt("Passcode", "Verification");
 
-            if (actualCode != expectedCode)
-            {
-                MessageBox.Show("Sorry , wrong code!");
-                return;
-            }
+            //if (actualCode != expectedCode)
+            //{
+            //    MessageBox.Show("Sorry , wrong code!");
+            //    return;
+            //}
 
             try
             {
@@ -1379,7 +1380,8 @@ namespace NTK_Support
                 mainHtml = mainHtml.Replace("[allPageData]", allContent.ToString());
                 mainHtml = mainHtml.Replace("[certifed]", GetCertifiedContent());
 
-                var fPath = Path.Combine(folderPath, "Adangal");
+                //var fPath = Path.Combine(AdangalConstant.ResultPath, "Adangal")
+                var fPath = AdangalConstant.ResultPath;
 
                 if (Directory.Exists(fPath) == false)
                     Directory.CreateDirectory(fPath);
@@ -1633,7 +1635,7 @@ namespace NTK_Support
 
                 if (DialogResult.OK == fbd.ShowDialog())
                 {
-                    folderPath = fbd.SelectedPath;
+                    reqFileFolderPath = fbd.SelectedPath;
                 }
 
                 firstPage = FileContentReader.FirstPageTemplate;
@@ -1646,17 +1648,6 @@ namespace NTK_Support
 
                 if(DataAccess.IsAdangalExist())
                 {
-
-                }
-                if (chkProd.Checked)
-                {
-                    chittaPdfFile = Path.Combine(folderPath, "Chitta_Report-1.pdf");
-                    LogMessage($"READ DATA FROM PDF FILE - {chittaPdfFile}");
-                    chittaContent = chittaPdfFile.GetPdfContent();
-                    var pattaas = chittaContent.Replace("பட்டா எண்    :", "$"); //("பட்டா எண்", "$");
-                    var data = pattaas.Split('$').ToList();
-                    pdfvillageName = data.First().Split(':')[3].Trim();
-
                     AdangalConstant.villageName = svillageName;
                     DataAccess.SetVillageName();
                     fullAdangalFromjson = DataAccess.GetActiveAdangal();
@@ -1665,20 +1656,39 @@ namespace NTK_Support
                     ddlListType.SelectedIndex = 3;
                     LoadSurveyAndSubdiv();
                     return;
+
                 }
+                //if (chkProd.Checked)
+                //{
+                //    chittaPdfFile = Path.Combine(folderPath, "Chitta_Report-1.pdf");
+                //    LogMessage($"READ DATA FROM PDF FILE - {chittaPdfFile}");
+                //    chittaContent = chittaPdfFile.GetPdfContent();
+                //    var pattaas = chittaContent.Replace("பட்டா எண்    :", "$"); //("பட்டா எண்", "$");
+                //    var data = pattaas.Split('$').ToList();
+                //    pdfvillageName = data.First().Split(':')[3].Trim();
+
+                //    //AdangalConstant.villageName = svillageName;
+                //    //DataAccess.SetVillageName();
+                //    fullAdangalFromjson = DataAccess.GetActiveAdangal();
+                //    LogMessage($"READED DATA FROM EXISTING JSON FILE");
+                //    BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
+                //    ddlListType.SelectedIndex = 3;
+                //    LoadSurveyAndSubdiv();
+                //    return;
+                //}
 
 
-                if (haveValidFiles(folderPath))
+                if (haveValidFiles(reqFileFolderPath))
                 {
                     LogMessage($"You have all required valid files to proceed process.");
                     pattaList = new PattaList();
 
-                    chittaPdfFile = General.CombinePath(folderPath, "Chitta_Report-1.pdf");
+                    chittaPdfFile = General.CombinePath(reqFileFolderPath, "Chitta_Report-1.pdf");
                     chittaContent = chittaPdfFile.GetPdfContent();
 
                     LoadPdfPattaNo();
 
-                    chittaTxtFile = General.CombinePath(folderPath, "Chitta_Report-1.txt");
+                    chittaTxtFile = General.CombinePath(reqFileFolderPath, "Chitta_Report-1.txt");
                     ProcessNames();
 
                     //List<string> notSame = new List<string>();
@@ -1697,7 +1707,7 @@ namespace NTK_Support
 
                     ProcessChittaFile();    // Nansai, Pun, Maa,
 
-                    aRegFile = General.CombinePath(folderPath, "Areg_Report-1.pdf");
+                    aRegFile = General.CombinePath(reqFileFolderPath, "Areg_Report-1.pdf");
                     ProcessAreg();  // Puram
 
                     ProcessFullReport();

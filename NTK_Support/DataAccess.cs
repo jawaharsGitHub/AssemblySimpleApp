@@ -14,8 +14,8 @@ namespace NTK_Support
 
         public static void SetVillageName()
         {
-            JsonPath = AppConfiguration.GetDynamicPath($"Adangal/{AdangalConstant.villageName}.json");
-            SubDivPath = AppConfiguration.GetDynamicPath($"Adangal/{AdangalConstant.villageName}-subdiv.json");
+            JsonPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}.json");
+            SubDivPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}-subdiv.json");
 
             if (Directory.Exists(Directory.GetParent(JsonPath).FullName) == false)
                 Directory.CreateDirectory(Directory.GetParent(JsonPath).FullName);

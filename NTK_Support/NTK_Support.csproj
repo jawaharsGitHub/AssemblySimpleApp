@@ -108,7 +108,7 @@
     <EmbeddedResource Include="vao.resx">
       <DependentUpon>vao.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="json\database\RevDistrict.json" />
+    <None Include="data\database\RevDistrict.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -133,7 +133,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="json\Adangal\" />
+    <Folder Include="data\Adangal\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

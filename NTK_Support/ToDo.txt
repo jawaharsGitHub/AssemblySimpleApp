@@ -57,6 +57,8 @@ softcopy version & hardcopy version
 dual common foler - solution?
 tamil panchayat name.
 firka database
+group purambokku data by its name.
+
 
 
 marketing:

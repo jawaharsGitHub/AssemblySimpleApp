@@ -24,7 +24,7 @@ namespace NTK_Support
             //Application.Run(new Form20Analysis());
             //Application.Run(new DocxToTxt());
 
-            var dataFolder = AdangalConstant.jsonPath;
+            var dataFolder = AdangalConstant.dataPath;
             try
             {
                 if (AppConfiguration.AddOrUpdateAppSettings("SourceFolder", dataFolder))
