@@ -10,12 +10,14 @@ namespace NTK_Support
     public class DataAccess : BaseClass
     {
         public static string JsonPath = "";
+        //public static string JsonFileFolder = "";
         public static string SubDivPath = "";
 
         public static void SetVillageName()
         {
             JsonPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}.json");
             SubDivPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}-subdiv.json");
+            //JsonFileFolder = AppConfiguration.GetDynamicPath($"AdangalJson");
 
             if (Directory.Exists(Directory.GetParent(JsonPath).FullName) == false)
                 Directory.CreateDirectory(Directory.GetParent(JsonPath).FullName);
@@ -30,6 +32,19 @@ namespace NTK_Support
         {
             var data = ReadFileAsObjects<KeyValue>(SubDivPath);
             return data;
+        }
+
+        public static List<ComboDataStr> GetProcessedFiles()
+        {
+            var JsonFileFolder = AppConfiguration.GetDynamicPath($"AdangalJson");
+            var files = (from f in Directory.GetFiles(JsonFileFolder).ToList()
+                        select new ComboDataStr() { 
+                             Value = f.Replace("-subdiv", ""),
+                             Display = new FileInfo(f).Name
+                        }).Distinct().ToList();
+
+             files.Insert(0, new ComboDataStr() { Value = "", Display = "--select--" });
+            return files;
         }
 
         public static List<KeyValue> SubdivToJson(List<KeyValue> subdivData)

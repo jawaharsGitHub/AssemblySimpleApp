@@ -12,6 +12,8 @@ still porambokku data is not correct!!
 sample pdf.
 file is overrwritten??? how cant find it now!
 edit and update record via grid.
+capcha code logic.
+process names (80%)
 
 =======================================================================================
 move all my projects into single assembly - so that easy to use all common methods.
@@ -22,7 +24,7 @@ move all my projects into single assembly - so that easy to use all common metho
 !!total is only for nansai, punsai and maanaavari not for porambokku 
 !!nansai = nansai + punsai 
 !!option to edit and update the total land parappu (if needed)
-!!!!process names
+
 
 thread process for long running process...
 please wait loading...
@@ -43,7 +45,7 @@ add govt papers to fill front and last  pages.....!!!!
 
 --------------------------------------------------------------------load all district data.
 --------------------------------------------------------------------page no (not in all pages only in right page) - refer total pages.
-capcha code logic.
+
 add log in all possible exception places eg: process name.
 while update name - should maintian a dictionary of correct and wrong name
 installer project
@@ -74,6 +76,11 @@ manulal update list:
 	-> porampoakku pages photo
 	-> what is the final total number need to be?
 	-> land details group by kanmaai, meenu pidi etc.,
+	
+	
+	tamil names 
+	space for headers
+	
 
 
 
@@ -97,6 +104,7 @@ STEPS:
 2) convet both files to txt -> https://www.pdf2go.com/pdf-to-text (please take a back up for future use if file may get corrupted)
 3) move those 2 files into that panchayat folder (newly created) --> F:\AUTO-ADANGAL
 4) overrite exe (or delete an existing)
+5) while print - margin  0 , A4, scale default, portrait etc.,
 
 
 

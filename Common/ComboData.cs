@@ -12,10 +12,25 @@ namespace Common
         
         public string Display { get; set; }
 
+        public string DisplayTamil { get; set; }
 
         public int Value { get; set; }
 
        
+
+    }
+
+    public class ComboDataStr
+    {
+
+
+        public string Display { get; set; }
+
+        public string DisplayTamil { get; set; }
+
+        public string Value { get; set; }
+
+
 
     }
 }

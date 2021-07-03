@@ -34,6 +34,7 @@ namespace NTK_Support
         string vattam = "";
         string firka = ""; // ulvattam or kuruvattam)
         string svillageName = "";
+        string tamilvillageName = "";
         string pdfvillageName = "";
         int pasali = 1430;
         int prepasali;
@@ -88,6 +89,11 @@ namespace NTK_Support
                 try
                 {
                     BindDropdown(ddlDistrict, DataAccess.GetDistricts(), "Display", "Value");
+                    var processedFiles = DataAccess.GetProcessedFiles();
+
+                    if (processedFiles.Count > 0)
+                        BindDropdown(ddlProcessedFiles, processedFiles, "Display", "Value");
+
                 }
                 catch (Exception ex)
                 {
@@ -671,13 +677,11 @@ namespace NTK_Support
                 LogMessage($"STARTED FULL REPORT");
                 // Full Report
                 FinalReport fr = new FinalReport(pattaList);
-                //var result = fr.ToString();
 
                 BindDropdown(ddlPattaTypes, fr.CountData, "DisplayMember", "Id");
                 BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
                 ddlListType.SelectedIndex = 3;
                 BindDropdown(ddlLandTypes, GetLandTypes(), "Caption", "Id");
-
 
                 if (fr.IsFullProcessed == false)
                 {
@@ -1059,8 +1063,8 @@ namespace NTK_Support
                 leftPage = leftPage.Replace("[datarows]", sb.ToString());
                 leftPage = leftPage.Replace("[totalrow]", total);
                 leftPage = leftPage.Replace("( [landtype] )", empty);
-                header = header.Replace("[pasali]", "1430").Replace("[maavattam]", ddlDistrict.SelectedText).Replace("[vattam]", cmbTaluk.SelectedText).Replace("[varuvvaikiraamam]", $"{cmbVillages.SelectedValue} - {svillageName}");
-                leftPage.Replace("[header]", header);
+                header = header.Replace("[pasali]", "1430").Replace("[maavattam]", ddlDistrict.SelectedText).Replace("[vattam]", cmbTaluk.SelectedText).Replace("[varuvvaikiraamam]", $"{cmbVillages.SelectedValue} - {tamilvillageName}");
+                leftPage = leftPage.Replace("[header]", header);
             }
             catch (Exception ex)
             {
@@ -1430,8 +1434,10 @@ namespace NTK_Support
                     LogMessage($"{selValue}-{((ComboData)ddlDistrict.SelectedItem).Display}");
 
                     var url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=taluk&districtCode={selValue}";
-
                     var response = WebReader.CallHttpWebRequest(url);
+
+                    //var urlTamil = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=talukTamil&districtCode={selValue}";
+                    //var responseTamil = WebReader.CallHttpWebRequest(urlTamil);
 
                     BindDropdown(cmbTaluk, WebReader.xmlToDynamic(response, "taluk"), "Display", "Value");
                     cmbTaluk.SelectedIndexChanged += new System.EventHandler(this.cmbTaluk_SelectedIndexChanged);
@@ -1456,8 +1462,10 @@ namespace NTK_Support
                     LogMessage($"{talValue}-{((ComboData)cmbTaluk.SelectedItem).Display}");
 
                     var url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=village&districtCode={disValue}&&talukCode={talValue}";
-
                     var response = WebReader.CallHttpWebRequest(url);
+
+                    //var urlTamil = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=villageTamil&districtCode={disValue}&&talukCode={talValue}";
+                    //var responseTamil = WebReader.CallHttpWebRequest(urlTamil);
 
                     BindDropdown(cmbVillages
                         , WebReader.xmlToDynamic(response, "village"), "Display", "Value");
@@ -1479,11 +1487,12 @@ namespace NTK_Support
 
             try
             {
+                List<KeyValue> onlineData;
 
+                if (DataAccess.IsSubDivExist()) onlineData =  DataAccess.GetSubdiv();
+                else if (NoInternet()) return;
+                else onlineData = GetLandCount();
 
-                if (NoInternet()) return;
-
-                var onlineData = GetLandCount();
                 fullAdangalFromjson = DataAccess.GetActiveAdangal();
                 LoadSurveyAndSubdiv();
 
@@ -1563,16 +1572,7 @@ namespace NTK_Support
         {
             try
             {
-
-
-                LogMessage($"GETTING LAND COUNT");
-                //var fileName = $"{villageName}-subdiv";
-
-                if (DataAccess.IsSubDivExist())
-                {
-                    return DataAccess.GetSubdiv();
-                }
-
+                LogMessage($"GETTING LAND COUNT - FROM INTERNET");
                 var totalLandList = new List<KeyValue>();
 
                 if (cmbVillages.SelectedItem != null)
@@ -1623,41 +1623,59 @@ namespace NTK_Support
 
 
         }
-        private void button3_Click(object sender, EventArgs e)
+
+        private void PreLoadFile()
+        {
+            firstPage = FileContentReader.FirstPageTemplate;
+            title = title.Replace("[pasali]", "1430").Replace("[br]", "</br>").Replace("[varuvvaikiraamam]", tamilvillageName);
+            firstPage = firstPage.Replace("[title]", title);
+
+            leftEmpty = GetLeftEmptyPage();
+            leftCertEmpty = FileContentReader.LeftPageCertTableTemplate;
+            rightCertEmpty = FileContentReader.RightPageCertTableTemplate;
+        }
+        private void btnReadFile_Click(object sender, EventArgs e)
         {
             try
             {
-                FolderBrowserDialog fbd = new FolderBrowserDialog();
-                //{
-                //    //SelectedPath = @"F:\AUTO-ADANGAL"
-                //};
+                if(txtVattam.Text.Trim() == empty || txtFirka.Text.Trim() == empty || txtVaruvai.Text.Trim() == empty)
+                {
+                    MessageBox.Show("Vattam, Firka and Village in tamil font is mandatory!");
+                    return;
+                }
 
+                // Loading basic details...
+                vattam = txtVattam.Text;
+                firka = txtFirka.Text;
+                tamilvillageName = txtVattam.Text;
+                PreLoadFile();
+
+                //firstPage = FileContentReader.FirstPageTemplate;
+                //title = title.Replace("[pasali]", "1430").Replace("[br]", "</br>").Replace("[varuvvaikiraamam]", tamilvillageName);
+                //firstPage = firstPage.Replace("[title]", title);
+
+                //leftEmpty = GetLeftEmptyPage();
+                //leftCertEmpty = FileContentReader.LeftPageCertTableTemplate;
+                //rightCertEmpty = FileContentReader.RightPageCertTableTemplate;
+
+
+                //if (DataAccess.IsAdangalExist())
+                //{
+                //    fullAdangalFromjson = DataAccess.GetActiveAdangal();
+                //    LogMessage($"READED DATA FROM EXISTING JSON FILE");
+                //    BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
+                //    ddlListType.SelectedIndex = 3;
+                //    LoadSurveyAndSubdiv();
+                //    return;
+                //}
+
+                FolderBrowserDialog fbd = new FolderBrowserDialog();
 
                 if (DialogResult.OK == fbd.ShowDialog())
                 {
                     reqFileFolderPath = fbd.SelectedPath;
                 }
 
-                firstPage = FileContentReader.FirstPageTemplate;
-                title = title.Replace("[pasali]", "1430").Replace("[br]", "</br>").Replace("[varuvvaikiraamam]", svillageName);
-                firstPage.Replace("[title]", title);
-
-                leftEmpty = GetLeftEmptyPage();
-                leftCertEmpty = FileContentReader.LeftPageCertTableTemplate;
-                rightCertEmpty = FileContentReader.RightPageCertTableTemplate;
-
-                if(DataAccess.IsAdangalExist())
-                {
-                    AdangalConstant.villageName = svillageName;
-                    DataAccess.SetVillageName();
-                    fullAdangalFromjson = DataAccess.GetActiveAdangal();
-                    LogMessage($"READED DATA FROM EXISTING JSON FILE");
-                    BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
-                    ddlListType.SelectedIndex = 3;
-                    LoadSurveyAndSubdiv();
-                    return;
-
-                }
                 //if (chkProd.Checked)
                 //{
                 //    chittaPdfFile = Path.Combine(folderPath, "Chitta_Report-1.pdf");
@@ -1690,20 +1708,6 @@ namespace NTK_Support
 
                     chittaTxtFile = General.CombinePath(reqFileFolderPath, "Chitta_Report-1.txt");
                     ProcessNames();
-
-                    //List<string> notSame = new List<string>();
-
-                    //if (pdfPattaNo.Count == txtPattaNo.Count)
-                    //{
-                    //    for (int i = 0; i <= pdfPattaNo.Count - 1; i++)
-                    //    {
-                    //        if (pdfPattaNo[i].Trim() != txtPattaNo[i].Trim())
-                    //        {
-                    //            notSame.Add($"{i}-pdf:{pdfPattaNo[i].Trim()} txt: {txtPattaNo[i].Trim()}");
-                    //        }
-
-                    //    }
-                    //}
 
                     ProcessChittaFile();    // Nansai, Pun, Maa,
 
@@ -1767,6 +1771,24 @@ namespace NTK_Support
                 LogMessage($"{selItem.Value}-{selItem.Display}");
 
             EnableReady();
+            CheckJsonExist();
+        }
+
+        private void CheckJsonExist()
+        {
+            AdangalConstant.villageName = svillageName;
+            DataAccess.SetVillageName();
+
+            if (DataAccess.IsAdangalExist())
+            {
+                if(DialogResult.Yes == 
+                    MessageBox.Show($"File already loaded for {svillageName}, You want to reload?", "Reload?", MessageBoxButtons.YesNo))
+                    btnReadFile.Enabled = true;
+                else
+                    btnReadFile.Enabled = false;
+            }
+            
+
         }
         private void LoadSurveyAndSubdiv()
         {
@@ -1820,25 +1842,22 @@ namespace NTK_Support
         private void EnableReady()
         {
             var selectedMaavatta = (ddlDistrict.SelectedItem as ComboData);
-            var selectedVattam = (cmbTaluk.SelectedItem as ComboData);
-            
+            var selectedVattam = (cmbTaluk.SelectedItem as ComboData);            
             var selectedVillage = (cmbVillages.SelectedItem as ComboData);
+            var isVillageSelected = (selectedVillage.Value != -1);
 
-            if (selectedVillage.Value != -1 && ddlListType.SelectedValue.ToInt32() == 4)
-            {
-                btnReady.Enabled = btnGenerate.Enabled = true;
+            var canEnable = (isVillageSelected && ddlListType.SelectedValue.ToInt32() == 4);
+
+            if (canEnable)
                 BindDropdown(cmbFulfilled, GetFullfilledOptions(), "Caption", "Id");
-            }
-            else
-            {
-                btnReady.Enabled = btnGenerate.Enabled = false;
-            }
 
-            // Loading basic details...
-            maavattam = selectedMaavatta.Display;
-            vattam = selectedVattam.Display;
-            firka = txtFirka.Text;
+            btnReady.Enabled = btnGenerate.Enabled = canEnable;
+            btnReadFile.Enabled = isVillageSelected;
+
+            maavattam = selectedMaavatta.DisplayTamil;
             svillageName = selectedVillage.Display;
+
+
         }
         private void cmbFulfilled_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2002,8 +2021,8 @@ namespace NTK_Support
                 });
 
                 MessageBox.Show($"added {addedCount} land details");
-
                 button2_Click_1(null, null);
+
                 txtAddNewSurvey.Clear();
             }
             catch (Exception ex)
@@ -2159,7 +2178,7 @@ namespace NTK_Support
             var content = FileContentReader.CertifiedContent;
             content = content.Replace("[vattam]", vattam)
                                 .Replace("[firka]", firka)
-                                .Replace("[varuvaikiraamam]", svillageName)
+                                .Replace("[varuvaikiraamam]", tamilvillageName)
                                 .Replace("[pasali]", pasali.ToString())
                                 .Replace("[totalpages]", pageNumber.ToString())
                                 .Replace("[last-pasali]", prepasali.ToString());
@@ -2171,6 +2190,30 @@ namespace NTK_Support
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (ddlProcessedFiles.SelectedIndex == 0) return;
+            PreLoadFile();
+
+            //if (DataAccess.IsAdangalExist())
+            //{
+                fullAdangalFromjson = DataAccess.GetActiveAdangal();
+                LogMessage($"READED DATA FROM EXISTING JSON FILE");
+                BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
+                ddlListType.SelectedIndex = 3;
+                LoadSurveyAndSubdiv();
+            //}
+        }
+
+        private void ddlProcessedFiles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlProcessedFiles.SelectedIndex == 0) return;
+
+            svillageName = (ddlProcessedFiles.SelectedItem as ComboDataStr).Display;
+            AdangalConstant.villageName = svillageName;
+            DataAccess.SetVillageName();
         }
     }
 

@@ -45,12 +45,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbVillages = new System.Windows.Forms.ComboBox();
             this.btnReady = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnReadFile = new System.Windows.Forms.Button();
             this.cmbFulfilled = new System.Windows.Forms.ComboBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtFirka = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.chkProd = new System.Windows.Forms.CheckBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.ddlProcessedFiles = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -65,8 +69,8 @@
             this.lblSurveyNo = new System.Windows.Forms.Label();
             this.lblSubdiv = new System.Windows.Forms.Label();
             this.chkEdit = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtFirka = new System.Windows.Forms.TextBox();
+            this.txtVattam = new System.Windows.Forms.TextBox();
+            this.txtVaruvai = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -108,7 +112,7 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 337);
+            this.dataGridView1.Location = new System.Drawing.Point(11, 380);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(776, 301);
@@ -131,7 +135,7 @@
             // 
             this.ddlListType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlListType.FormattingEnabled = true;
-            this.ddlListType.Location = new System.Drawing.Point(405, 310);
+            this.ddlListType.Location = new System.Drawing.Point(404, 353);
             this.ddlListType.Name = "ddlListType";
             this.ddlListType.Size = new System.Drawing.Size(121, 21);
             this.ddlListType.TabIndex = 5;
@@ -150,7 +154,7 @@
             // btnGenerate
             // 
             this.btnGenerate.Enabled = false;
-            this.btnGenerate.Location = new System.Drawing.Point(43, 11);
+            this.btnGenerate.Location = new System.Drawing.Point(43, 15);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(101, 40);
             this.btnGenerate.TabIndex = 7;
@@ -161,7 +165,7 @@
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(37, 318);
+            this.lblMessage.Location = new System.Drawing.Point(36, 361);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(66, 13);
             this.lblMessage.TabIndex = 8;
@@ -216,7 +220,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 140);
+            this.label3.Location = new System.Drawing.Point(20, 168);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 13);
             this.label3.TabIndex = 16;
@@ -226,7 +230,7 @@
             // 
             this.cmbVillages.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVillages.FormattingEnabled = true;
-            this.cmbVillages.Location = new System.Drawing.Point(19, 158);
+            this.cmbVillages.Location = new System.Drawing.Point(19, 186);
             this.cmbVillages.Name = "cmbVillages";
             this.cmbVillages.Size = new System.Drawing.Size(225, 21);
             this.cmbVillages.TabIndex = 15;
@@ -242,15 +246,16 @@
             this.btnReady.UseVisualStyleBackColor = true;
             this.btnReady.Click += new System.EventHandler(this.button2_Click_1);
             // 
-            // button3
+            // btnReadFile
             // 
-            this.button3.Location = new System.Drawing.Point(21, 38);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(109, 23);
-            this.button3.TabIndex = 18;
-            this.button3.Text = "Browse Folder ...";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnReadFile.Enabled = false;
+            this.btnReadFile.Location = new System.Drawing.Point(11, 19);
+            this.btnReadFile.Name = "btnReadFile";
+            this.btnReadFile.Size = new System.Drawing.Size(74, 23);
+            this.btnReadFile.TabIndex = 18;
+            this.btnReadFile.Text = "Read Files...";
+            this.btnReadFile.UseVisualStyleBackColor = true;
+            this.btnReadFile.Click += new System.EventHandler(this.btnReadFile_Click);
             // 
             // cmbFulfilled
             // 
@@ -275,6 +280,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtVaruvai);
+            this.groupBox1.Controls.Add(this.txtVattam);
             this.groupBox1.Controls.Add(this.txtFirka);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label1);
@@ -285,39 +292,77 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(17, -2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(253, 186);
+            this.groupBox1.Size = new System.Drawing.Size(253, 242);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "STEP-1";
             // 
+            // txtFirka
+            // 
+            this.txtFirka.Location = new System.Drawing.Point(23, 140);
+            this.txtFirka.Name = "txtFirka";
+            this.txtFirka.Size = new System.Drawing.Size(100, 20);
+            this.txtFirka.TabIndex = 33;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(21, 125);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(33, 13);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "firkaa";
+            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.chkProd);
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Location = new System.Drawing.Point(17, 193);
+            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.ddlProcessedFiles);
+            this.groupBox2.Controls.Add(this.btnReadFile);
+            this.groupBox2.Location = new System.Drawing.Point(17, 246);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(165, 73);
+            this.groupBox2.Size = new System.Drawing.Size(420, 73);
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "STEP-2";
             // 
-            // chkProd
+            // button2
             // 
-            this.chkProd.AutoSize = true;
-            this.chkProd.Location = new System.Drawing.Point(21, 12);
-            this.chkProd.Name = "chkProd";
-            this.chkProd.Size = new System.Drawing.Size(77, 17);
-            this.chkProd.TabIndex = 19;
-            this.chkProd.Text = "From json?";
-            this.chkProd.UseVisualStyleBackColor = true;
+            this.button2.Enabled = false;
+            this.button2.Location = new System.Drawing.Point(340, 21);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(74, 23);
+            this.button2.TabIndex = 35;
+            this.button2.Text = "Load...";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(91, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(23, 13);
+            this.label5.TabIndex = 34;
+            this.label5.Text = "OR";
+            // 
+            // ddlProcessedFiles
+            // 
+            this.ddlProcessedFiles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlProcessedFiles.FormattingEnabled = true;
+            this.ddlProcessedFiles.Location = new System.Drawing.Point(122, 21);
+            this.ddlProcessedFiles.Name = "ddlProcessedFiles";
+            this.ddlProcessedFiles.Size = new System.Drawing.Size(213, 21);
+            this.ddlProcessedFiles.TabIndex = 34;
+            this.ddlProcessedFiles.SelectedIndexChanged += new System.EventHandler(this.ddlProcessedFiles_SelectedIndexChanged);
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnReady);
             this.groupBox3.Controls.Add(this.btnStatusCheck);
-            this.groupBox3.Location = new System.Drawing.Point(294, 16);
+            this.groupBox3.Location = new System.Drawing.Point(294, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(155, 186);
+            this.groupBox3.Size = new System.Drawing.Size(143, 173);
             this.groupBox3.TabIndex = 19;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "STEP-3";
@@ -411,7 +456,7 @@
             // 
             this.cmbSurveyNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSurveyNo.FormattingEnabled = true;
-            this.cmbSurveyNo.Location = new System.Drawing.Point(161, 310);
+            this.cmbSurveyNo.Location = new System.Drawing.Point(160, 353);
             this.cmbSurveyNo.Name = "cmbSurveyNo";
             this.cmbSurveyNo.Size = new System.Drawing.Size(65, 21);
             this.cmbSurveyNo.TabIndex = 29;
@@ -420,7 +465,7 @@
             // 
             this.cmbSubdivNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSubdivNo.FormattingEnabled = true;
-            this.cmbSubdivNo.Location = new System.Drawing.Point(244, 310);
+            this.cmbSubdivNo.Location = new System.Drawing.Point(243, 353);
             this.cmbSubdivNo.Name = "cmbSubdivNo";
             this.cmbSubdivNo.Size = new System.Drawing.Size(57, 21);
             this.cmbSubdivNo.TabIndex = 30;
@@ -428,7 +473,7 @@
             // lblSurveyNo
             // 
             this.lblSurveyNo.AutoSize = true;
-            this.lblSurveyNo.Location = new System.Drawing.Point(160, 286);
+            this.lblSurveyNo.Location = new System.Drawing.Point(159, 329);
             this.lblSurveyNo.Name = "lblSurveyNo";
             this.lblSurveyNo.Size = new System.Drawing.Size(52, 13);
             this.lblSurveyNo.TabIndex = 31;
@@ -437,7 +482,7 @@
             // lblSubdiv
             // 
             this.lblSubdiv.AutoSize = true;
-            this.lblSubdiv.Location = new System.Drawing.Point(241, 286);
+            this.lblSubdiv.Location = new System.Drawing.Point(240, 329);
             this.lblSubdiv.Name = "lblSubdiv";
             this.lblSubdiv.Size = new System.Drawing.Size(53, 13);
             this.lblSubdiv.TabIndex = 32;
@@ -446,7 +491,7 @@
             // chkEdit
             // 
             this.chkEdit.AutoSize = true;
-            this.chkEdit.Location = new System.Drawing.Point(569, 310);
+            this.chkEdit.Location = new System.Drawing.Point(568, 353);
             this.chkEdit.Name = "chkEdit";
             this.chkEdit.Size = new System.Drawing.Size(57, 17);
             this.chkEdit.TabIndex = 20;
@@ -454,21 +499,19 @@
             this.chkEdit.UseVisualStyleBackColor = true;
             this.chkEdit.CheckedChanged += new System.EventHandler(this.chkEdit_CheckedChanged);
             // 
-            // label4
+            // txtVattam
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 97);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 13);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "firkaa";
+            this.txtVattam.Location = new System.Drawing.Point(24, 96);
+            this.txtVattam.Name = "txtVattam";
+            this.txtVattam.Size = new System.Drawing.Size(184, 20);
+            this.txtVattam.TabIndex = 34;
             // 
-            // txtFirka
+            // txtVaruvai
             // 
-            this.txtFirka.Location = new System.Drawing.Point(23, 112);
-            this.txtFirka.Name = "txtFirka";
-            this.txtFirka.Size = new System.Drawing.Size(100, 20);
-            this.txtFirka.TabIndex = 33;
+            this.txtVaruvai.Location = new System.Drawing.Point(19, 210);
+            this.txtVaruvai.Name = "txtVaruvai";
+            this.txtVaruvai.Size = new System.Drawing.Size(184, 20);
+            this.txtVaruvai.TabIndex = 35;
             // 
             // vao
             // 
@@ -533,7 +576,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbVillages;
         private System.Windows.Forms.Button btnReady;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnReadFile;
         private System.Windows.Forms.ComboBox cmbFulfilled;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -551,9 +594,13 @@
         private System.Windows.Forms.ComboBox cmbSubdivNo;
         private System.Windows.Forms.Label lblSurveyNo;
         private System.Windows.Forms.Label lblSubdiv;
-        private System.Windows.Forms.CheckBox chkProd;
         private System.Windows.Forms.CheckBox chkEdit;
         private System.Windows.Forms.TextBox txtFirka;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox ddlProcessedFiles;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox txtVaruvai;
+        private System.Windows.Forms.TextBox txtVattam;
     }
 }

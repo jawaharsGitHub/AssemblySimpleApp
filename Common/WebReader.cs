@@ -47,18 +47,18 @@ namespace Common
             {
                 List<ComboData> data = new List<ComboData>();
                 dynamic taluks = JObject.Parse(xmlTojson(xml));
+                //dynamic taluksTamil = JObject.Parse(xmlTojson(xmlTamil));
 
-               var d = ((JArray)taluks["root"][key]).ToList();
+                var d = ((JArray)taluks["root"][key]).ToList();
+                //var dTamil = ((JArray)taluksTamil["root"][key]).ToList();
 
                 for (int i = 0; i <= d.Count - 1; i++)
                 {
-                    //var tc = ((JObject)d[i])["talukcode"];
-                    //var tn = ((JObject)d[i])["talukname"];
-
                     data.Add(new ComboData()
                     {
                         Value = Convert.ToInt32((((JObject)d[i])[key + "code"]).ToString()),
-                        Display = (((JObject)(((JObject)d[i])[key + "name"]))["#cdata-section"]).ToString().Trim()
+                        Display = (((JObject)(((JObject)d[i])[key + "name"]))["#cdata-section"]).ToString().Trim(),
+                        DisplayTamil = (((JObject)(((JObject)d[i])[key + "name"]))["#cdata-section"]).ToString().Trim()
                     });
                 }
 

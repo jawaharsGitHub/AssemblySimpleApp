@@ -1,12 +1,192 @@
 ﻿[
   {
-    "Value": 27,
-    "Display": "Ramanathapuram"
+    "Value": 17,
+    "DisplayTamil": "அரியலூர்",
+    "Display": "Ariyalur"
+  },
+  {
+    "Value": 35,
+    "DisplayTamil": "செங்கல்பட்டு",
+    "Display": "Sengalpattu"
   },
   {
     "Value": 2,
+    "DisplayTamil": "சென்னை",
+    "Display": "Chennai"
+  },
+  {
+    "Value": 12,
+    "DisplayTamil": "கோயம்புத்தூர்",
+    "Display": "Coimbatore"
+  },
+  {
+    "Value": 18,
+    "DisplayTamil": "கடலூர்",
+    "Display": "Cuddalore"
+  },
+  {
+    "Value": 5,
+    "DisplayTamil": "தர்மபுரி",
+    "Display": "Dharmapuri"
+  },
+  {
+    "Value": 13,
+    "DisplayTamil": "திண்டுக்கல்",
+    "Display": "Dindigul"
+  },
+  {
+    "Value": 10,
+    "DisplayTamil": "ஈரோடு",
+    "Display": "Erode"
+  },
+  {
+    "Value": 33,
+    "DisplayTamil": "கள்ளக்குறிச்சி",
+    "Display": "Kallakuruchi"
+  },
+  {
+    "Value": 3,
+    "DisplayTamil": "காஞ்சிபுரம்",
+    "Display": "Kanchipuram"
+  },
+  {
+    "Value": 30,
+    "DisplayTamil": "கன்னியாகுமரி",
+    "Display": "Kanniyakumari"
+  },
+  {
+    "Value": 14,
+    "DisplayTamil": "கரூர்",
+    "Display": "Karur"
+  },
+  {
+    "Value": 31,
+    "DisplayTamil": "கிருஷ்ணகிரி",
+    "Display": "Krishnagiri"
+  },
+  {
+    "Value": 24,
+    "DisplayTamil": "மதுரை",
     "Display": "Madurai"
+  },
+  {
+    "Value": 38,
+    "DisplayTamil": "மயிலாடுதுறை",
+    "Display": "Mayiladudurai"
+  },
+  {
+    "Value": 19,
+    "DisplayTamil": "நாகப்பட்டினம்",
+    "Display": "Nagapattinam"
+  },
+  {
+    "Value": 9,
+    "DisplayTamil": "நாமக்கல்",
+    "Display": "Namakkal"
+  },
+  {
+    "Value": 11,
+    "DisplayTamil": "நீலகிரி",
+    "Display": "Nilgiri"
+  },
+  {
+    "Value": 16,
+    "DisplayTamil": "பெரம்பலூர்",
+    "Display": "Perambur"
+  },
+  {
+    "Value": 22,
+    "DisplayTamil": "புதுக்கோட்டை",
+    "Display": "Pudukottai"
+  },
+  {
+    "Value": 27,
+    "DisplayTamil": "இராமநாதபுரம்",
+    "Display": "Ramanathapuram"
+  },
+  {
+    "Value": 37,
+    "DisplayTamil": "ராணிப்பேட்டை",
+    "Display": "Ranipettai"
+  },
+  {
+    "Value": 8,
+    "DisplayTamil": "சேலம்",
+    "Display": "Salem"
+  },
+  {
+    "Value": 23,
+    "DisplayTamil": "சிவகங்கை",
+    "Display": "Sivagangai"
+  },
+  {
+    "Value": 34,
+    "DisplayTamil": "தென்காசி",
+    "Display": "Thenkasi"
+  },
+  {
+    "Value": 21,
+    "DisplayTamil": "தஞ்சாவூர்",
+    "Display": "Tanjore"
+  },
+  {
+    "Value": 35,
+    "DisplayTamil": "தேனி",
+    "Display": "Theni"
+  },
+  {
+    "Value": 15,
+    "DisplayTamil": "திருச்சிராப்பள்ளி",
+    "Display": "Thiruchirapalli"
+  },
+  {
+    "Value": 36,
+    "DisplayTamil": "திருப்பத்தூர்",
+    "Display": "Thirupaththur"
+  },
+  {
+    "Value": 20,
+    "DisplayTamil": "தி௫வாரூர்",
+    "Display": "Thiruvarur"
+  },
+  {
+    "Value": 28,
+    "DisplayTamil": "தூத்துக்குடி",
+    "Display": "Thoothukudi"
+  },
+  {
+    "Value": 29,
+    "DisplayTamil": "திருநெல்வேலி",
+    "Display": "Thirunelveli"
+  },
+  {
+    "Value": 32,
+    "DisplayTamil": "திருப்பூர்",
+    "Display": "Thirupur"
+  },
+  {
+    "Value": 1,
+    "DisplayTamil": "திருவள்ளூர்",
+    "Display": "Thiruvallur"
+  },
+  {
+    "Value": 6,
+    "DisplayTamil": "திருவண்ணாமலை",
+    "Display": "Thiruvannamalai"
+  },
+  {
+    "Value": 4,
+    "DisplayTamil": "வேலூர்",
+    "Display": "Velore"
+  },
+  {
+    "Value": 7,
+    "DisplayTamil": "விழுப்புரம்",
+    "Display": "Vilupuram"
+  },
+  {
+    "Value": 26,
+    "DisplayTamil": "விருதுநகர்",
+    "Display": "Viruthunagar"
   }
-
 ]
-
