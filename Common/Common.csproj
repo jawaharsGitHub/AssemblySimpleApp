@@ -136,8 +136,8 @@
     <None Include="PL file\RUNNING NOTES.ods" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="HTMLTemplate\adangal-DataPage - Copy.htm" />
     <Content Include="HTMLTemplate\adangal-PageList.htm" />
+    <Content Include="HTMLTemplate\Certified.txt" />
     <Content Include="HTMLTemplate\FirstPageTemplate.htm" />
     <Content Include="HTMLTemplate\LeftPageCertTableTemplate.htm" />
     <Content Include="HTMLTemplate\PageTotalRowTemplate.htm" />
@@ -146,7 +146,7 @@
     <Content Include="HTMLTemplate\PageOverallTotalRowTemplate.htm" />
     <Content Include="HTMLTemplate\RightPageTableTemplate.htm" />
     <Content Include="HTMLTemplate\RightPageTableTemplate-backup.htm" />
-    <Content Include="HTMLTemplate\RightPageTableCertTemplate.htm" />
+    <Content Include="HTMLTemplate\RightPageCertTableTemplate.htm" />
     <Content Include="HTMLTemplate\LeftPageRowTemplate.htm" />
     <Content Include="HTMLTemplate\CertTableTemplate.htm" />
     <Content Include="HTMLTemplate\LeftPageTableTemplate.htm" />

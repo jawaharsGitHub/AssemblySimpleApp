@@ -29,13 +29,15 @@ namespace Common
 
 
         public static string LeftPageCertTableTemplate { get; } = GetHtmlFileContent("LeftPageCertTableTemplate.htm");
-        public static string RightPageTableCertTemplate { get; } = GetHtmlFileContent("RightPageTableCertTemplate.htm");
+        public static string RightPageCertTableTemplate { get; } = GetHtmlFileContent("RightPageCertTableTemplate.htm");
 
         public static string PageTotalTableTemplate { get; } = GetHtmlFileContent("PageTotalTableTemplate.htm");
         public static string PageTotalRowTemplate { get; } = GetHtmlFileContent("PageTotalRowTemplate.htm");
 
         public static string PageOverallTotalTableTemplate { get; } = GetHtmlFileContent("PageOverallTotalTableTemplate.htm");
         public static string PageOverallTotalRowTemplate { get; } = GetHtmlFileContent("PageOverallTotalRowTemplate.htm");
+
+        public static string CertifiedContent { get; } = GetHtmlFileContent("Certified.txt");
 
 
         private static string GetHtmlFileContent(string fileName)

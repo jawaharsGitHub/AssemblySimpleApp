@@ -15,23 +15,25 @@ edit and update record via grid.
 
 =======================================================================================
 move all my projects into single assembly - so that easy to use all common methods.
-
 ========================================================================================
+!!use replace in all possible places.
 !!top header space and alignment.
 !!extra data : ??? -> siru guru vivasaayi -> owner(father name) -> land details and count.
 !!total is only for nansai, punsai and maanaavari not for porambokku 
 !!nansai = nansai + punsai 
 !!option to edit and update the total land parappu (if needed)
-!!use replace in all possible places.
 !!!!process names
-???????for texting use the constant value.
-???????status of ok panchayat?
-how to doc.
-step nos.[enable next only after current step ok]
-step no in logging.
+
 thread process for long running process...
 please wait loading...
 percentage message...
+
+
+for texting use the constant value.
+status of ok panchayat?
+how to doc.
+step nos.[enable next only after current step ok]
+step no in logging.
 
 for total's total remove page break.
 right and left table height should be same
@@ -54,6 +56,8 @@ log file dynamic path.
 softcopy version & hardcopy version 
 dual common foler - solution?
 tamil panchayat name.
+firka database
+
 
 marketing:
 ------------
@@ -78,6 +82,13 @@ rar
 gmail email 
 internet access 
 notepad++
+google input tool -  tamil 
+https://ramanathapuram.nic.in/ta/%e0%ae%a8%e0%ae%bf%e0%ae%b0%e0%af%8d%e0%ae%b5%e0%ae%be%e0%ae%95-%e0%ae%85%e0%ae%ae%e0%af%88%e0%ae%aa%e0%af%8d%e0%ae%aa%e0%af%81/%e0%ae%95%e0%af%8b%e0%ae%9f%e0%af%8d%e0%ae%9f%e0%ae%ae%e0%af%8d-%e0%ae%ae%e0%ae%b1%e0%af%8d%e0%ae%b1%e0%af%81%e0%ae%ae%e0%af%8d-%e0%ae%b5%e0%ae%9f%e0%af%8d%e0%ae%9f%e0%ae%ae%e0%af%8d/ - for knowing firkas
+
+https://cdn.s3waas.gov.in/s3f9b902fc3289af4dd08de5d1de54f68f/uploads/2018/06/2018061484.pdf - firka details
+
+
+
 
 STEPS:
 1) 2 pdf files - 1. Chitta_Report-1.pdf 2. Areg_Report-1.pdf (naming convention is very important!!!)

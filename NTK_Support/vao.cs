@@ -6,6 +6,7 @@ using iTextSharp.tool.xml;
 using NTK_Support.AdangalTypes;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -28,12 +29,21 @@ namespace NTK_Support
         readonly string tamilMoththam = "மொத்தம்";
         readonly string ERROR = "ERROR";
 
+
+        string maavattam  = "";
+        string vattam = "";
+        string firka = ""; // ulvattam or kuruvattam)
+        string svillageName = "";
+        string pdfvillageName = "";
+        int pasali = 1430;
+        int prepasali;
+
         string chittaPdfFile = "";
         string chittaTxtFile = "";
         string aRegFile = "";
         string chittaContent = "";
         string aRegContent = "";
-        string villageName = "";
+        
         int pageNumber = 0;
         bool IsEnterKey = false;
 
@@ -60,11 +70,18 @@ namespace NTK_Support
         List<string> notInOnlineToBeDeleted;
         string folderPath = "";
 
+        public static string title = ConfigurationManager.AppSettings["title"];
+        public static string header = ConfigurationManager.AppSettings["header"];
+        public static string isTesting = ConfigurationManager.AppSettings["isTesting"];
+        public static int TestingPage = ConfigurationManager.AppSettings["TestingPage"].ToInt32();
+
         public vao()
         {
             try
             {
                 InitializeComponent();
+                prepasali = (pasali - 1);
+
                 var logFolder = AdangalConstant.LogPath;
                 logHelper = new LogHelper("AdangalLog", logFolder);
                 try
@@ -237,34 +254,17 @@ namespace NTK_Support
         private void LoadPdfPattaNo()
         {
             LogMessage($"READING DATA FROM CHITTA PDF fILE - {chittaPdfFile}");
-            //File.WriteAllText(chittaTxtFile, chittaContent);
 
             var pattaas = chittaContent.Replace("பட்டா எண்    :", "$"); //("பட்டா எண்", "$");
             var data = pattaas.Split('$').ToList();
-            //villageName = data.First().Split(':')[3].Trim();
-
-            //if (DialogResult.No == MessageBox.Show($"{villageName} village?", "Confirm", MessageBoxButtons.YesNo))
-            //{
-            //    Log($"REJECTED THE  VILLAGE PDF FILE- {villageName}");
-            //    return;
-            //}
-
+            
             data.RemoveAt(0); // first is empty data
             List<ChittaData> cds = new List<ChittaData>();
-            //bool isFullBreakData, isPartialBreakData = false;
-            //List<string> brkData;
-            //List<string> nonBkData;
-            //pattaList = new PattaList();
+           
             LogMessage($"STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ {DateTime.Now.ToLongTimeString()}");
-            //var nameList = GetTestNames();
             for (int i = 0; i <= data.Count - 1; i++)
             {
                 List<string> fullData = null;
-                //pattaSingle = new Patta();
-
-                //isFullBreakData = isPartialBreakData = false;
-                //brkData = new List<string>();
-                //nonBkData = new List<string>();
 
                 var item = data[i].Replace("வ.எண்", empty).Replace("உ எண்", empty).Replace("உறவினர் ெபயர்", empty)
                              .Replace("உறவ", empty).Replace("உரிமைமையாளர் ெபயர்", empty).Replace("புல எண்-", empty)
@@ -286,7 +286,6 @@ namespace NTK_Support
 
                 if (isNo == false)
                 {
-                    //pattaList.AddAndUpdatePattaAndOwnerNameinList(pattaSingle, PattaType.InValidPatta, fullData);
                     continue;
                 }
                 pdfPattaNo.Add(pattaNO);
@@ -297,22 +296,17 @@ namespace NTK_Support
         {
             try
             {
-
-
                 LogMessage($"READING DATA FROM CHITTA PDF fILE - {chittaPdfFile}");
-
-
-                //File.WriteAllText(chittaTxtFile, chittaContent);
 
                 var pattaas = chittaContent.Replace("பட்டா எண்    :", "$"); //("பட்டா எண்", "$");
                 var data = pattaas.Split('$').ToList();
-                villageName = data.First().Split(':')[3].Trim();
-                AdangalConstant.villageName = villageName;
+                pdfvillageName = data.First().Split(':')[3].Trim();
+                AdangalConstant.villageName = svillageName;
                 DataAccess.SetVillageName();
 
-                if (DialogResult.No == MessageBox.Show($"{villageName} village?", "Confirm", MessageBoxButtons.YesNo))
+                if (DialogResult.No == MessageBox.Show($"{pdfvillageName} village?", "Confirm", MessageBoxButtons.YesNo))
                 {
-                    LogMessage($"REJECTED THE  VILLAGE PDF FILE- {villageName}");
+                    LogMessage($"REJECTED THE  VILLAGE PDF FILE- {pdfvillageName}");
                     return;
                 }
 
@@ -1064,7 +1058,8 @@ namespace NTK_Support
                 leftPage = leftPage.Replace("[datarows]", sb.ToString());
                 leftPage = leftPage.Replace("[totalrow]", total);
                 leftPage = leftPage.Replace("( [landtype] )", empty);
-
+                header = header.Replace("[pasali]", "1430").Replace("[maavattam]", ddlDistrict.SelectedText).Replace("[vattam]", cmbTaluk.SelectedText).Replace("[varuvvaikiraamam]", $"{cmbVillages.SelectedValue} - {svillageName}");
+                leftPage.Replace("[header]", header);
             }
             catch (Exception ex)
             {
@@ -1284,14 +1279,12 @@ namespace NTK_Support
             try
             {
                 LogMessage($"STARTED HTML GENERATION @ {DateTime.Now.ToLongTimeString()}");
-
                 pageNumber = 0;
 
                 StringBuilder allContent = new StringBuilder();
                 pageTotalList = new List<PageTotal>();
                 pageTotal2List = new List<PageTotal>();
                 pageTotal3List = new List<PageTotal>();
-
 
                 var mainHtml = FileContentReader.MainHtml;
                 string initialPages = GetInitialPages();
@@ -1316,10 +1309,12 @@ namespace NTK_Support
                     var landType = fe.Key.ToName();
 
 
-                    // FOR TETSING ONLY
-                    //int testingPageNo = 6;
-                    //pageCount = pageCount >= testingPageNo ? testingPageNo : pageCount;
-                    // FOR TETSING ONLY
+                    // FOR TETSING PURPOSE
+                    if (Convert.ToBoolean(isTesting))
+                    {
+                        pageCount = pageCount >= TestingPage ? TestingPage : pageCount;
+                    }
+                    // FOR TETSING PURPOSE
 
                     for (int i = 0; i <= pageCount - 1; i++)
                     {
@@ -1382,15 +1377,14 @@ namespace NTK_Support
                 allContent.Append(GetOverallTotal(pageTotal3List));
 
                 mainHtml = mainHtml.Replace("[allPageData]", allContent.ToString());
+                mainHtml = mainHtml.Replace("[certifed]", GetCertifiedContent());
 
                 var fPath = Path.Combine(folderPath, "Adangal");
 
                 if (Directory.Exists(fPath) == false)
-                {
                     Directory.CreateDirectory(fPath);
-                }
 
-                var filePath = Path.Combine(fPath, $"{villageName}-{DateTime.Now.ToString("MM-dd-yyyy HH-mm-ss")}.htm");
+                var filePath = Path.Combine(fPath, $"{pdfvillageName}-{DateTime.Now.ToString("MM-dd-yyyy HH-mm-ss")}.htm");
 
                 File.AppendAllText(filePath, mainHtml);
 
@@ -1643,10 +1637,17 @@ namespace NTK_Support
                 }
 
                 firstPage = FileContentReader.FirstPageTemplate;
+                title = title.Replace("[pasali]", "1430").Replace("[br]", "</br>").Replace("[varuvvaikiraamam]", svillageName);
+                firstPage.Replace("[title]", title);
+
                 leftEmpty = GetLeftEmptyPage();
                 leftCertEmpty = FileContentReader.LeftPageCertTableTemplate;
-                rightCertEmpty = FileContentReader.RightPageTableCertTemplate;
+                rightCertEmpty = FileContentReader.RightPageCertTableTemplate;
 
+                if(DataAccess.IsAdangalExist())
+                {
+
+                }
                 if (chkProd.Checked)
                 {
                     chittaPdfFile = Path.Combine(folderPath, "Chitta_Report-1.pdf");
@@ -1654,8 +1655,9 @@ namespace NTK_Support
                     chittaContent = chittaPdfFile.GetPdfContent();
                     var pattaas = chittaContent.Replace("பட்டா எண்    :", "$"); //("பட்டா எண்", "$");
                     var data = pattaas.Split('$').ToList();
-                    villageName = data.First().Split(':')[3].Trim();
-                    AdangalConstant.villageName = villageName;
+                    pdfvillageName = data.First().Split(':')[3].Trim();
+
+                    AdangalConstant.villageName = svillageName;
                     DataAccess.SetVillageName();
                     fullAdangalFromjson = DataAccess.GetActiveAdangal();
                     LogMessage($"READED DATA FROM EXISTING JSON FILE");
@@ -1671,29 +1673,27 @@ namespace NTK_Support
                     LogMessage($"You have all required valid files to proceed process.");
                     pattaList = new PattaList();
 
-
-
                     chittaPdfFile = General.CombinePath(folderPath, "Chitta_Report-1.pdf");
                     chittaContent = chittaPdfFile.GetPdfContent();
 
-
                     LoadPdfPattaNo();
+
                     chittaTxtFile = General.CombinePath(folderPath, "Chitta_Report-1.txt");
                     ProcessNames();
 
-                    List<string> notSame = new List<string>();
+                    //List<string> notSame = new List<string>();
 
-                    if (pdfPattaNo.Count == txtPattaNo.Count)
-                    {
-                        for (int i = 0; i <= pdfPattaNo.Count - 1; i++)
-                        {
-                            if (pdfPattaNo[i].Trim() != txtPattaNo[i].Trim())
-                            {
-                                notSame.Add($"{i}-pdf:{pdfPattaNo[i].Trim()} txt: {txtPattaNo[i].Trim()}");
-                            }
+                    //if (pdfPattaNo.Count == txtPattaNo.Count)
+                    //{
+                    //    for (int i = 0; i <= pdfPattaNo.Count - 1; i++)
+                    //    {
+                    //        if (pdfPattaNo[i].Trim() != txtPattaNo[i].Trim())
+                    //        {
+                    //            notSame.Add($"{i}-pdf:{pdfPattaNo[i].Trim()} txt: {txtPattaNo[i].Trim()}");
+                    //        }
 
-                        }
-                    }
+                    //    }
+                    //}
 
                     ProcessChittaFile();    // Nansai, Pun, Maa,
 
@@ -1807,9 +1807,14 @@ namespace NTK_Support
                                                                 w.NilaAlavaiEn == cmbSurveyNo.SelectedItem.ToInt32() &&
                                                                 w.UtpirivuEn == cmbSubdivNo.SelectedItem.ToString()).ToList();
         }
-        void EnableReady()
+        private void EnableReady()
         {
-            if ((((ComboData)cmbVillages.SelectedItem).Value != -1) && ddlListType.SelectedValue.ToInt32() == 4)
+            var selectedMaavatta = (ddlDistrict.SelectedItem as ComboData);
+            var selectedVattam = (cmbTaluk.SelectedItem as ComboData);
+            
+            var selectedVillage = (cmbVillages.SelectedItem as ComboData);
+
+            if (selectedVillage.Value != -1 && ddlListType.SelectedValue.ToInt32() == 4)
             {
                 btnReady.Enabled = btnGenerate.Enabled = true;
                 BindDropdown(cmbFulfilled, GetFullfilledOptions(), "Caption", "Id");
@@ -1819,6 +1824,11 @@ namespace NTK_Support
                 btnReady.Enabled = btnGenerate.Enabled = false;
             }
 
+            // Loading basic details...
+            maavattam = selectedMaavatta.Display;
+            vattam = selectedVattam.Display;
+            firka = txtFirka.Text;
+            svillageName = selectedVillage.Display;
         }
         private void cmbFulfilled_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2131,6 +2141,26 @@ namespace NTK_Support
             dataGridView1.Columns["Anupathaarar"].Visible = visibility;
             dataGridView1.Columns["LandType"].Visible = visibility;
             dataGridView1.Columns["IsFullfilled"].Visible = visibility;
+        }
+
+
+        private string GetCertifiedContent()
+        {
+            var content = FileContentReader.CertifiedContent;
+            content = content.Replace("[vattam]", vattam)
+                                .Replace("[firka]", firka)
+                                .Replace("[varuvaikiraamam]", svillageName)
+                                .Replace("[pasali]", pasali.ToString())
+                                .Replace("[totalpages]", pageNumber.ToString())
+                                .Replace("[last-pasali]", prepasali.ToString());
+
+            return content;
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 

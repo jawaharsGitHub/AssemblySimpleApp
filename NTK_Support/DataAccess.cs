@@ -70,11 +70,14 @@ namespace NTK_Support
             return GetActiveAdangal();
         }
 
+        public static bool IsAdangalExist()
+        {
+            return File.Exists(JsonPath);
+        }
         public static List<Adangal> GetActiveAdangal()
         {
             return ReadFileAsObjects<Adangal>(JsonPath).Where(w => w.LandStatus != LandStatus.Deleted).ToList();
         }
-
 
         public static List<Adangal> GetDeletedAdangal()
         {

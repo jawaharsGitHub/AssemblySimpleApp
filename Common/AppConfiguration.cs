@@ -64,17 +64,11 @@ namespace Common
         {
             if (ConfigurationManager.AppSettings[configKey] == null) return null;
             return Path.Combine(ConfigurationManager.AppSettings["SourceFolder"], ConfigurationManager.AppSettings[configKey]);
-
         }
 
         public static string GetDynamicPath(string fullPath)
         {
-            //if (ConfigurationManager.AppSettings[configKey] == null) return null;
-            //File.AppendAllText(@"F:\AssemblySimpleApp\NTK_Support\json\Adangal\Test.txt", Path.Combine(ConfigurationManager.AppSettings["SourceFolder"], fullPath));
-            //File.AppendAllText(@"F:\AssemblySimpleApp\NTK_Support\json\Adangal\Test.txt", "GP:" + General.AddQuotesIfRequired(Path.Combine(ConfigurationManager.AppSettings["SourceFolder"], fullPath)));
-
             return General.CombinePath(ConfigurationManager.AppSettings["SourceFolder"], fullPath);
-
         }
 
 
