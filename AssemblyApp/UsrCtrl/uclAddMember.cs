@@ -60,6 +60,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             catch (Exception ex)
             {
                 mvl.Add(mv);
+                MessageBox.Show(ex.ToString());
             }
         }
 

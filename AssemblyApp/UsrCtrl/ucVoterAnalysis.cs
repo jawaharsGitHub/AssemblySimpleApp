@@ -1,7 +1,7 @@
 ﻿using Common;
 using Common.ExtensionMethod;
 using DataAccess.PrimaryTypes;
-using Microsoft.Office.Interop.Word;
+//using Microsoft.Office.Interop.Word;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -26,7 +26,7 @@ namespace CenturyFinCorpApp.UsrCtrl
 
         string reProcessFile = "";
         BoothDetail bd;
-        bool haveErrorinFile = false;
+        //bool haveErrorinFile = false;
         int lastPageNumberToProcess;
         List<string> logs;
         string voterFilePath = "";
@@ -351,6 +351,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 catch (Exception ex)
                 {
                     General.WriteLog(logErrorPath, $"Error in First Page", assNo, partNo, 1);
+                    MessageBox.Show(ex.ToString());
                 }
 
                 //var lastPage = allPageContent.Substring(allPageContent.IndexOf("வாக்காளர்களின் தொகுப்பு"));
@@ -383,10 +384,10 @@ namespace CenturyFinCorpApp.UsrCtrl
                     var startIndex = IndexOf(onlyVotersPages, pageNumber - 1); //onlyVotersPages.IndexOf($"பக்கம் {i + 2}");
                     var lastIndex = IndexOf(onlyVotersPages, pageNumber) - startIndex;
 
-                    if (pageNumber == 7)
-                    {
-                        var tt = "";
-                    }
+                    //if (pageNumber == 7)
+                    //{
+                    //    var tt = "";
+                    //}
                     var pageContent = onlyVotersPages.Substring(startIndex, lastIndex);
 
                     if (ProcessPage(pageNumber, pageContent, assNo, partNo) == false)
@@ -472,6 +473,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 }
                 catch (Exception ex)
                 {
+                    MessageBox.Show(ex.ToString());
                 }
                 fullList.Clear();
             }
@@ -764,6 +766,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                 {
                     //fillFileName = Path.Combine(voterIdPath, pageNumber + "_ERROR.txt");
                     General.ReplaceLog(Path.Combine(voterIdPath, pageNumber + "_FULL-ERROR.txt"), "FULL-ERROR");
+                    MessageBox.Show(ex.ToString());
                 }
 
 
@@ -1099,6 +1102,7 @@ namespace CenturyFinCorpApp.UsrCtrl
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return false;
             }
 

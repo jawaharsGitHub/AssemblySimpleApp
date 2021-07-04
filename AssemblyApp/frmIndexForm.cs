@@ -18,8 +18,8 @@ namespace CenturyFinCorpApp
     public partial class frmIndexForm : Form
     {
 
-        bool usingMenu = false;
-        bool isAdded = false; // for child forms
+        //bool usingMenu = false;
+        //bool isAdded = false; // for child forms
         public static MenuStrip menuStrip;
 
         public frmIndexForm()

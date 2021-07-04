@@ -70,7 +70,7 @@ namespace CenturyFinCorpApp.UsrCtrl
         private void cmbAssembly_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             var value = ((KeyValuePair<int, string>)cmbAssembly.SelectedItem).Key;
-            List<OtherPartyData> searchedData = null;
+            //List<OtherPartyData> searchedData = null;
 
             if (value == 1)
             {

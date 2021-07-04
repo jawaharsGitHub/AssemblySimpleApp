@@ -1042,7 +1042,7 @@ namespace CenturyFinCorpApp.UsrCtrl
                                ).OrderByDescending(o => o.count).ToList();
 
                 StringBuilder sb = new StringBuilder();
-                int i = 0;
+                //int i = 0;
 
                 dataGridView1.DataSource = allData;
             }

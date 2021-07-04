@@ -603,12 +603,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_9DA051B19D034309ACB04EE61D7B0D80"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_A0853CE8468C68BFB4448E6CD4E0E1FF"
         "OwnerKey" = "8:_82E3E2EE063D45D493B4A4755EFD496D"
         "MsmSig" = "8:_UNDEFINED"
@@ -855,6 +849,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_E731A143F1E44F34A70267DB7506F3A1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_E83CEAA27F84C21133E929562904F8E7"
         "OwnerKey" = "8:_82E3E2EE063D45D493B4A4755EFD496D"
         "MsmSig" = "8:_UNDEFINED"
@@ -941,12 +941,6 @@
         {
         "MsmKey" = "8:_FDF837E776A9850C7FBD8F4CC2D9DCB3"
         "OwnerKey" = "8:_82E3E2EE063D45D493B4A4755EFD496D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9142AB7DAC022BBE71994E687E716159"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1667,6 +1661,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_3CC897857321F78A01180EF911624B9F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_9142AB7DAC022BBE71994E687E716159"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -4440,26 +4440,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9DA051B19D034309ACB04EE61D7B0D80"
-            {
-            "SourcePath" = "8:..\\NTK_Support\\data\\database\\RevDistrict.json"
-            "TargetName" = "8:RevDistrict.json"
-            "Tag" = "8:"
-            "Folder" = "8:_5976771AB2754AC5801750180F6A54F1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A0853CE8468C68BFB4448E6CD4E0E1FF"
             {
             "AssemblyRegister" = "3:1"
@@ -5530,6 +5510,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E731A143F1E44F34A70267DB7506F3A1"
+            {
+            "SourcePath" = "8:..\\Adangal\\data\\database\\RevDistrict.json"
+            "TargetName" = "8:RevDistrict.json"
+            "Tag" = "8:"
+            "Folder" = "8:_5976771AB2754AC5801750180F6A54F1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E83CEAA27F84C21133E929562904F8E7"
@@ -6611,7 +6611,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_82E3E2EE063D45D493B4A4755EFD496D"
             {
-            "SourcePath" = "8:..\\NTK_Support\\obj\\Debug\\NTK_Support.exe"
+            "SourcePath" = "8:..\\Adangal\\obj\\Debug\\NTK_Support.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_BF84757B1A5448DA841E2AF821C3D3E3"
