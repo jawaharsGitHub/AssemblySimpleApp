@@ -121,12 +121,12 @@ namespace AdangalApp
 
         public static PattaList GetPattaList()
         {
-            return ReadFileAsList<PattaList>(WholeLandListJsonPath);
+            return ReadFileAsList<PattaList>(PattaJsonPath);
         }
 
         public static List<LandDetail> GetWholeLandList()
         {
-            return ReadFileAsObjects<LandDetail>(PattaJsonPath);
+            return ReadFileAsObjects<LandDetail>(WholeLandListJsonPath);
         }
 
         public static bool IsSubDivExist()

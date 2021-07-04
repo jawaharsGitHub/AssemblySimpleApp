@@ -43,11 +43,11 @@ dual common foler - solution?
 tamil panchayat name.
 create shortcut.
 Save pattalist and landdetail as json?Save pattalist and landdetail as json?
+patta and dropdown numbers not correct while reloading.
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 ***********************************************************
-patta and dropdown numbers not correct while reloading.
-offline mode working.
+offline mode working. -- preload all files and copied into pen drive and share.
 product and publisher name
 replace an existing exe (replace or overwrite)
 softcopy version & hardcopy version 
