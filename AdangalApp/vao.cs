@@ -656,7 +656,8 @@ namespace AdangalApp
 
                 BindDropdown(ddlPattaTypes, fr.CountData, "DisplayMember", "Id");
                 BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
-                ddlListType.SelectedIndex = 3;
+                dataGridView1.DataSource = fullAdangalFromjson;
+                EnableReady();
                 BindDropdown(ddlLandTypes, GetLandTypes(), "Caption", "Id");
 
                 if (fr.IsFullProcessed == false)
@@ -1844,28 +1845,30 @@ namespace AdangalApp
             var selectedMaavatta = (ddlDistrict.SelectedItem as ComboData);
             var selectedVattam = (cmbTaluk.SelectedItem as ComboData);
             var selectedVillage = (cmbVillages.SelectedItem as ComboData);
-            var isVillageSelected = (selectedVillage.Value != -1);
+            var isVillageSelected = false;
+
+            if (cmbTaluk.SelectedItem == null || cmbVillages.SelectedItem == null)
+            {
+                 isVillageSelected = (loadedFile.VillageCode > 0);
+            }
+            else
+            {
+                isVillageSelected = (selectedVillage.Value != -1);
+                loadedFile.MaavattamNameTamil = selectedMaavatta.DisplayTamil;
+                loadedFile.MaavattamCode = selectedMaavatta.Value;
+                loadedFile.VattamCode = selectedVattam.Value;
+                loadedFile.VillageName = selectedVillage.Display;
+                loadedFile.VillageCode = selectedVillage.Value;
+
+            }
+            
 
             var canEnable = (isVillageSelected && ddlListType.SelectedValue.ToInt32() == 4);
 
             if (canEnable)
                 BindDropdown(cmbFulfilled, GetFullfilledOptions(), "Caption", "Id");
 
-            //btnReady.Enabled = btnGenerate.Enabled = canEnable;
-            //btnReady.Enabled  = canEnable;
             btnReadFile.Enabled = isVillageSelected;
-
-            //maavattam = selectedMaavatta.DisplayTamil;
-            //maavattamCode = selectedMaavatta.Value;
-            //vattamCode = selectedVattam.Value;
-            //svillageName = selectedVillage.Display;
-            //sVillageCode = selectedVillage.Value;
-
-            loadedFile.MaavattamNameTamil = selectedMaavatta.DisplayTamil;
-            loadedFile.MaavattamCode = selectedMaavatta.Value;
-            loadedFile.VattamCode = selectedVattam.Value;
-            loadedFile.VillageName = selectedVillage.Display;
-            loadedFile.VillageCode = selectedVillage.Value;
 
         }
         private void cmbFulfilled_SelectedIndexChanged(object sender, EventArgs e)
@@ -2215,15 +2218,12 @@ namespace AdangalApp
             LogMessage($"READED DATA FROM EXISTING JSON FILE");
             dataGridView1.DataSource = fullAdangalFromjson;
 
-            LoadSurveyAndSubdiv();
-            //btnReady.Enabled = btnGenerate.Enabled = true;
-            btnReady.Enabled = true;
-
             pattaList = DataAccess.GetPattaList();
             WholeLandList = DataAccess.GetWholeLandList();
 
             ProcessFullReport();
-
+            LoadSurveyAndSubdiv();
+            btnReady.Enabled = true;
             LogMessage($"STEP-2 - Completed - Existing file Load");
         }
 

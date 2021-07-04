@@ -42,10 +42,10 @@ installer project
 dual common foler - solution?
 tamil panchayat name.
 create shortcut.
+Save pattalist and landdetail as json?Save pattalist and landdetail as json?
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 ***********************************************************
-Save pattalist and landdetail as json?
 offline mode working.
 product and publisher name
 replace an existing exe (replace or overwrite)

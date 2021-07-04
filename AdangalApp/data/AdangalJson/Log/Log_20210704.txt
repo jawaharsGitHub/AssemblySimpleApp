@@ -206,3 +206,31 @@ DELETE:87
 NAME ISSUE :155
 
 2021-07-04 16:34:42,988 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-04 16:37:20,965 [1] DEBUG - =================Sunday, 04 July 2021 16:37:20========================
+2021-07-04 16:37:20,997 [1] DEBUG - STARTED....
+2021-07-04 16:37:24,579 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-04 16:37:24,657 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-04 16:37:38,197 [1] DEBUG - STARTED FULL REPORT
+2021-07-04 16:38:34,138 [1] DEBUG - Error @ ProcessFullReport - System.NullReferenceException: Object reference not set to an instance of an object.
+   at AdangalApp.vao.EnableReady() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1848
+   at AdangalApp.vao.ProcessFullReport() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 660
+2021-07-04 16:38:34,140 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-04 16:38:34,198 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-04 16:38:35,355 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-04 16:38:35,386 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-04 16:38:45,173 [1] DEBUG - STARTED FULL REPORT
+2021-07-04 16:47:26,267 [1] DEBUG - =================Sunday, 04 July 2021 16:47:26========================
+2021-07-04 16:47:26,283 [1] DEBUG - STARTED....
+2021-07-04 16:47:30,679 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-04 16:47:30,757 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-04 16:47:40,679 [1] DEBUG - STARTED FULL REPORT
+2021-07-04 16:48:36,901 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-04 16:48:36,901 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-04 16:48:36,980 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-04 16:49:02,719 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-04 16:49:02,766 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-04 16:49:02,861 [1] DEBUG - ready: False STATUS: ADD:315
+DELETE:87
+NAME ISSUE :155
+
+2021-07-04 16:49:02,935 [1] DEBUG - STEP-3 - Raedy For Print - Completed
