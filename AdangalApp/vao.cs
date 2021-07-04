@@ -1545,6 +1545,8 @@ namespace AdangalApp
                 btnDelete.Enabled = (notInOnlineToBeDeleted.Count > 0);
                 btnAdd.Enabled = (notInPdfToBeAdded.Count > 0);
 
+                btnPercentage.Text = onlineData.Count.PercentageBtwNo(actualLandDetails.Count - notInOnlineToBeDeleted.Count).ToString() + "%";
+
                 cmbItemToBeAdded.DataSource = notInPdfToBeAdded;
             }
             catch (Exception ex)

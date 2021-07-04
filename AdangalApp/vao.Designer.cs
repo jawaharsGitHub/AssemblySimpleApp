@@ -49,6 +49,8 @@
             this.cmbFulfilled = new System.Windows.Forms.ComboBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtVaruvai = new System.Windows.Forms.TextBox();
+            this.txtVattam = new System.Windows.Forms.TextBox();
             this.txtFirka = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -69,8 +71,7 @@
             this.lblSurveyNo = new System.Windows.Forms.Label();
             this.lblSubdiv = new System.Windows.Forms.Label();
             this.chkEdit = new System.Windows.Forms.CheckBox();
-            this.txtVattam = new System.Windows.Forms.TextBox();
-            this.txtVaruvai = new System.Windows.Forms.TextBox();
+            this.btnPercentage = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -194,7 +195,7 @@
             this.btnStatusCheck.Enabled = false;
             this.btnStatusCheck.Location = new System.Drawing.Point(19, 61);
             this.btnStatusCheck.Name = "btnStatusCheck";
-            this.btnStatusCheck.Size = new System.Drawing.Size(105, 110);
+            this.btnStatusCheck.Size = new System.Drawing.Size(105, 92);
             this.btnStatusCheck.TabIndex = 12;
             this.btnStatusCheck.Text = "status";
             this.btnStatusCheck.UseVisualStyleBackColor = true;
@@ -297,6 +298,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "STEP-1";
             // 
+            // txtVaruvai
+            // 
+            this.txtVaruvai.Location = new System.Drawing.Point(19, 210);
+            this.txtVaruvai.Name = "txtVaruvai";
+            this.txtVaruvai.Size = new System.Drawing.Size(184, 20);
+            this.txtVaruvai.TabIndex = 35;
+            // 
+            // txtVattam
+            // 
+            this.txtVattam.Location = new System.Drawing.Point(24, 96);
+            this.txtVattam.Name = "txtVattam";
+            this.txtVattam.Size = new System.Drawing.Size(184, 20);
+            this.txtVattam.TabIndex = 34;
+            // 
             // txtFirka
             // 
             this.txtFirka.Location = new System.Drawing.Point(23, 140);
@@ -358,11 +373,12 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnPercentage);
             this.groupBox3.Controls.Add(this.btnReady);
             this.groupBox3.Controls.Add(this.btnStatusCheck);
             this.groupBox3.Location = new System.Drawing.Point(294, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(143, 173);
+            this.groupBox3.Size = new System.Drawing.Size(143, 236);
             this.groupBox3.TabIndex = 19;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "STEP-3";
@@ -499,19 +515,15 @@
             this.chkEdit.UseVisualStyleBackColor = true;
             this.chkEdit.CheckedChanged += new System.EventHandler(this.chkEdit_CheckedChanged);
             // 
-            // txtVattam
+            // btnPercentage
             // 
-            this.txtVattam.Location = new System.Drawing.Point(24, 96);
-            this.txtVattam.Name = "txtVattam";
-            this.txtVattam.Size = new System.Drawing.Size(184, 20);
-            this.txtVattam.TabIndex = 34;
-            // 
-            // txtVaruvai
-            // 
-            this.txtVaruvai.Location = new System.Drawing.Point(19, 210);
-            this.txtVaruvai.Name = "txtVaruvai";
-            this.txtVaruvai.Size = new System.Drawing.Size(184, 20);
-            this.txtVaruvai.TabIndex = 35;
+            this.btnPercentage.Enabled = false;
+            this.btnPercentage.Location = new System.Drawing.Point(19, 175);
+            this.btnPercentage.Name = "btnPercentage";
+            this.btnPercentage.Size = new System.Drawing.Size(105, 49);
+            this.btnPercentage.TabIndex = 18;
+            this.btnPercentage.Text = "[perc]";
+            this.btnPercentage.UseVisualStyleBackColor = true;
             // 
             // vao
             // 
@@ -602,5 +614,6 @@
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.TextBox txtVaruvai;
         private System.Windows.Forms.TextBox txtVattam;
+        private System.Windows.Forms.Button btnPercentage;
     }
 }
