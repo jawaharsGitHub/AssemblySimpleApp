@@ -1726,6 +1726,7 @@ namespace AdangalApp
                     DataAccess.SavePattaList(pattaList);
                     DataAccess.SaveWholeLandList(WholeLandList);
                     DataAccess.SaveAdangalOriginalList(AdangalOriginalList);
+                    EnableReadyForNew();
 
                     ProcessFullReport();
                     //EnableReady();
@@ -1806,7 +1807,7 @@ namespace AdangalApp
             if (selItem.Value != -1)
                 LogMessage($"STEP - 1 - Village: {selItem.Value}-{selItem.Display}");
 
-            EnableReadyForNew();
+            
             CheckJsonExist();
         }
 
@@ -2248,8 +2249,8 @@ namespace AdangalApp
             WholeLandList = DataAccess.GetWholeLandList();
 
             ProcessFullReport();
-            
-            //btnReady.Enabled = true;
+
+            EnableReadyForExist();
             LogMessage($"STEP-2 - Completed - Existing file Load");
         }
 
@@ -2263,7 +2264,7 @@ namespace AdangalApp
 
             // Load Basic Details
             loadedFile = (ddlProcessedFiles.SelectedItem as LoadedFileDetail);
-            EnableReadyForExist();
+            
             btnLoad.Enabled = true;
             SetVillage();
         }
