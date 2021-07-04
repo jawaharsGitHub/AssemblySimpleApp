@@ -14,17 +14,36 @@ file is overrwritten??? how cant find it now!
 edit and update record via grid.
 capcha code logic.
 process names (80%)
+!!use replace in all possible places.
+status of ok panchayat?
+for total's total remove page break.
+replace an existing adangal message box?
+lastly add 10 extra pages. ?? (get it from vaos)
+add govt papers to fill front and last  pages.....!!!!
 
 =======================================================================================
 move all my projects into single assembly - so that easy to use all common methods.
 ========================================================================================
-!!use replace in all possible places.
-!!top header space and alignment.
-!!extra data : ??? -> siru guru vivasaayi -> owner(father name) -> land details and count.
-!!total is only for nansai, punsai and maanaavari not for porambokku 
-!!nansai = nansai + punsai 
-!!option to edit and update the total land parappu (if needed)
 
+village name wrong - listing vattam or maavataam 
+maavattam and vattam not showing in header.
+[header] in left cert page and all left pages.
+tamil font style in html pages?
+update porambokku name (manually?)
+
+top header space and alignment.
+extra data : ??? -> siru guru vivasaayi -> owner(father name) -> land details and count.
+total is only for nansai, punsai and maanaavari not for porambokku 
+nansai = nansai + punsai 
+option to edit and update the total land parappu (if needed)
+how to doc.
+step nos.[enable next only after current step ok]
+step no in logging.
+right and left table height should be same
+percentage complete.
+project name to Adangal?
+Save pattalist and landdetail as json?
+move log to village folder?
 
 thread process for long running process...
 please wait loading...
@@ -32,19 +51,8 @@ percentage message...
 
 
 for texting use the constant value.
-status of ok panchayat?
-how to doc.
-step nos.[enable next only after current step ok]
-step no in logging.
-
-for total's total remove page break.
-right and left table height should be same
-replace an existing adangal message box?
-lastly add 10 extra pages. ?? (get it from vaos)
-add govt papers to fill front and last  pages.....!!!!
-
---------------------------------------------------------------------load all district data.
---------------------------------------------------------------------page no (not in all pages only in right page) - refer total pages.
+load all district data.
+page no (not in all pages only in right page) - refer total pages.
 
 add log in all possible exception places eg: process name.
 while update name - should maintian a dictionary of correct and wrong name
@@ -80,7 +88,7 @@ manulal update list:
 	
 	tamil names 
 	space for headers
-	
+
 
 
 
@@ -105,6 +113,7 @@ STEPS:
 3) move those 2 files into that panchayat folder (newly created) --> F:\AUTO-ADANGAL
 4) overrite exe (or delete an existing)
 5) while print - margin  0 , A4, scale default, portrait etc.,
+folder structure...
 
 
 
