@@ -43,7 +43,7 @@ namespace AdangalApp
         bool IsEnterKey = false;
 
         List<LandDetail> WholeLandList;
-        List<Adangal> AdangalList;
+        List<Adangal> AdangalOriginalList;
         List<Adangal> PurambokkuAdangalList;
         List<Adangal> fullAdangalFromjson;
         List<string> relationTypes;
@@ -246,9 +246,9 @@ namespace AdangalApp
                     }
                 }
 
-                AdangalList.AddRange(PurambokkuAdangalList);
+                AdangalOriginalList.AddRange(PurambokkuAdangalList);
                 LogMessage($"COMPLETED PROCESSING AREG PDF FILE @ {DateTime.Now.ToLongTimeString()}");
-                fullAdangalFromjson = DataAccess.AdangalToJson(AdangalList);
+                fullAdangalFromjson = DataAccess.AdangalToJson(AdangalOriginalList);
             }
             catch (Exception ex)
             {
@@ -550,10 +550,9 @@ namespace AdangalApp
 
                 WholeLandList = pattaList.SelectMany(x => x.landDetails.Select(y => y)).ToList();
 
-                DataAccess.SavePattaList(pattaList);
-                DataAccess.SaveWholeLandList(WholeLandList);
+                
 
-                AdangalList = (from wl in WholeLandList
+                AdangalOriginalList = (from wl in WholeLandList
                                    .Where(w => w.LandType != LandType.Zero)
                                                .OrderBy(o => o.LandType)
                                                .ThenBy(o => o.SurveyNo)
@@ -988,7 +987,7 @@ namespace AdangalApp
             else if (selected == 2)
                 dataGridView1.DataSource = WholeLandList;
             else if (selected == 3)
-                dataGridView1.DataSource = AdangalList;
+                dataGridView1.DataSource = AdangalOriginalList;
             else if (selected == 4)
             {
                 dataGridView1.DataSource = fullAdangalFromjson;
@@ -1660,6 +1659,30 @@ namespace AdangalApp
 
             rightCertEmpty = FileContentReader.RightPageCertTableTemplate;
         }
+
+        private void LoadFileDetails()
+        {
+            var selectedMaavatta = (ddlDistrict.SelectedItem as ComboData);
+            var selectedVattam = (cmbTaluk.SelectedItem as ComboData);
+            var selectedVillage = (cmbVillages.SelectedItem as ComboData);
+
+            //var isVillageSelected = (selectedVillage.Value != -1);
+            loadedFile.MaavattamCode = selectedMaavatta.Value;
+            loadedFile.MaavattamName = selectedMaavatta.Display;
+            loadedFile.MaavattamNameTamil = selectedMaavatta.DisplayTamil;
+
+            loadedFile.VattamCode = selectedVattam.Value;
+            loadedFile.VattamName = selectedVattam.Display;
+            loadedFile.VattamNameTamil = txtVattam.Text.Trim();
+
+            loadedFile.FirkaName = txtFirka.Text.Trim();
+
+            loadedFile.VillageCode = selectedVillage.Value;
+            loadedFile.VillageName = selectedVillage.Display;
+            loadedFile.VillageNameTamil = txtVaruvai.Text.Trim();
+
+            
+        }
         private void btnReadFile_Click(object sender, EventArgs e)
         {
             try
@@ -1672,19 +1695,17 @@ namespace AdangalApp
                     return;
                 }
 
-                // Loading basic details...
-                loadedFile.VattamNameTamil = txtVattam.Text;
-                loadedFile.FirkaName = txtFirka.Text;
-                loadedFile.VillageNameTamil = txtVaruvai.Text;
-                LogMessage($"STEP-2 - VattamNameTamil: {loadedFile.VattamNameTamil} FirkaName: {loadedFile.FirkaName} VillageNameTamil: {loadedFile.VillageNameTamil}");
-                PreLoadFile();
-
                 FolderBrowserDialog fbd = new FolderBrowserDialog();
 
                 if (DialogResult.OK == fbd.ShowDialog())
                     reqFileFolderPath = fbd.SelectedPath;
                 else
                     return;
+
+                // Loading basic file details...
+                LoadFileDetails();
+                LogMessage($"STEP-2 - VattamNameTamil: {loadedFile.VattamNameTamil} FirkaName: {loadedFile.FirkaName} VillageNameTamil: {loadedFile.VillageNameTamil}");
+                PreLoadFile();
 
                 if (haveValidFiles(reqFileFolderPath))
                 {
@@ -1702,24 +1723,28 @@ namespace AdangalApp
                     ProcessChittaFile(); // Nansai, Pun, Maa,
                     ProcessAreg();  // Puram
 
+                    DataAccess.SavePattaList(pattaList);
+                    DataAccess.SaveWholeLandList(WholeLandList);
+                    DataAccess.SaveAdangalOriginalList(AdangalOriginalList);
+
                     ProcessFullReport();
                     //EnableReady();
                     //LoadSurveyAndSubdiv();
 
-                    loadedFile = new LoadedFileDetail()
-                    {
-                        FirkaName = txtFirka.Text.Trim(),
-                        MaavattamName = loadedFile.MaavattamName,
-                        MaavattamNameTamil = loadedFile.MaavattamNameTamil,
-                        MaavattamCode = loadedFile.MaavattamCode,
-                        VattamName = loadedFile.VattamName,
-                        VattamNameTamil = loadedFile.VattamNameTamil,
-                        VattamCode = loadedFile.VattamCode,
-                        VillageNameTamil = loadedFile.VillageNameTamil,
-                        VillageName = loadedFile.VillageName,
-                        VillageCode = loadedFile.VillageCode
+                    //loadedFile = new LoadedFileDetail()
+                    //{
+                    //    FirkaName = txtFirka.Text.Trim(),
+                    //    MaavattamName = loadedFile.MaavattamName,
+                    //    MaavattamNameTamil = loadedFile.MaavattamNameTamil,
+                    //    MaavattamCode = loadedFile.MaavattamCode,
+                    //    VattamName = loadedFile.VattamName,
+                    //    VattamNameTamil = loadedFile.VattamNameTamil,
+                    //    VattamCode = loadedFile.VattamCode,
+                    //    VillageNameTamil = loadedFile.VillageNameTamil,
+                    //    VillageName = loadedFile.VillageName,
+                    //    VillageCode = loadedFile.VillageCode
 
-                    };
+                    //};
 
                     DataAccess.AddNewLoadedFile(loadedFile);
                     LogMessage($"Add/Update Loaded File.");
@@ -1854,22 +1879,14 @@ namespace AdangalApp
             var selectedMaavatta = (ddlDistrict.SelectedItem as ComboData);
             var selectedVattam = (cmbTaluk.SelectedItem as ComboData);
             var selectedVillage = (cmbVillages.SelectedItem as ComboData);
-            var isVillageSelected = false;
 
-            if (cmbTaluk.SelectedItem == null || cmbVillages.SelectedItem == null)
-            {
-                 isVillageSelected = (loadedFile.VillageCode > 0);
-            }
-            else
-            {
-                isVillageSelected = (selectedVillage.Value != -1);
-                loadedFile.MaavattamNameTamil = selectedMaavatta.DisplayTamil;
-                loadedFile.MaavattamCode = selectedMaavatta.Value;
-                loadedFile.VattamCode = selectedVattam.Value;
-                loadedFile.VillageName = selectedVillage.Display;
-                loadedFile.VillageCode = selectedVillage.Value;
-
-            }
+            
+            var isVillageSelected = (selectedVillage.Value != -1);
+            loadedFile.MaavattamNameTamil = selectedMaavatta.DisplayTamil;
+            loadedFile.MaavattamCode = selectedMaavatta.Value;
+            loadedFile.VattamCode = selectedVattam.Value;
+            loadedFile.VillageName = selectedVillage.Display;
+            loadedFile.VillageCode = selectedVillage.Value;
             
 
             var canEnable = (isVillageSelected && ddlListType.SelectedValue.ToInt32() == 4);
@@ -2215,11 +2232,7 @@ namespace AdangalApp
             return content;
 
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -2248,6 +2261,7 @@ namespace AdangalApp
                 return;
             }
 
+            // Load Basic Details
             loadedFile = (ddlProcessedFiles.SelectedItem as LoadedFileDetail);
             EnableReadyForExist();
             btnLoad.Enabled = true;

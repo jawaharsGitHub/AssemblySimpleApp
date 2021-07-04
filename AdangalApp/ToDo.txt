@@ -46,6 +46,7 @@ Save pattalist and landdetail as json?Save pattalist and landdetail as json?
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 ***********************************************************
+patta and dropdown numbers not correct while reloading.
 offline mode working.
 product and publisher name
 replace an existing exe (replace or overwrite)
@@ -71,6 +72,7 @@ update porambokku name (manually?)
 while update name - should maintian a dictionary of correct and wrong name
 firka database
 for texting use the constant value.
+isvagai testing scenario
 -----------------------------------------------------------------------------------------------------
 marketing:
 ----------

@@ -1,13 +1,13 @@
 [
   {
-    "VillageCode": 22,
-    "MaavattamName": "இராமநாதபுரம்",
     "MaavattamCode": 27,
+    "MaavattamName": "Ramanathapuram",
     "MaavattamNameTamil": "இராமநாதபுரம்",
-    "VattamName": "இராமநாதபுரம் ",
-    "VattamNameTamil": "இராமநாதபுரம் ",
     "VattamCode": 11,
-    "FirkaName": "இராமநாதபுரம் ",
+    "VattamName": "RAMANATHAPURAM",
+    "VattamNameTamil": "இராமநாதபுரம்",
+    "FirkaName": "இராமநாதபுரம்",
+    "VillageCode": 22,
     "VillageName": "ACHUNTHANVAYAL",
     "VillageNameTamil": "அச்சுந்தன்வயல்"
   }

@@ -14,6 +14,7 @@ namespace AdangalApp
         public static string LoadedFile = "";
         public static string PattaJsonPath = "";
         public static string WholeLandListJsonPath = "";
+        public static string AdangalOriginalPath = "";
 
         public static void SetVillageName()
         {
@@ -21,7 +22,8 @@ namespace AdangalApp
             PattaJsonPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-PattaJsonPath.json");
             WholeLandListJsonPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-WholeLandListJsonPath.json");
             SubDivPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-subdiv.json");
-            
+            AdangalOriginalPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-OriginalAdangal.json");
+
 
             if (Directory.Exists(Directory.GetParent(JsonPath).FullName) == false)
                 Directory.CreateDirectory(Directory.GetParent(JsonPath).FullName);
@@ -40,10 +42,22 @@ namespace AdangalApp
 
         public static List<LoadedFileDetail> GetLoadedFile()
         {
+            
             LoadedFile = AppConfiguration.GetDynamicPath($"AdangalJson/LoadedFile.json");
+
+
+            List<LoadedFileDetail> data = new List<LoadedFileDetail>();
+
             if (File.Exists(LoadedFile) == false)
+            {
                 File.Create(LoadedFile).Close();
-            var data = ReadFileAsObjects<LoadedFileDetail>(LoadedFile);
+            }
+            else
+            {
+                data = ReadFileAsObjects<LoadedFileDetail>(LoadedFile);
+                data = data.Where(w => File.Exists(AppConfiguration.GetDynamicPath($"AdangalJson/{w.VillageName}/{w.VillageName}.json"))).ToList();
+            }
+
             data.Insert(0, new LoadedFileDetail() { VillageCode = -1, VillageName = "--select--" });
             return data;
         }
@@ -95,6 +109,14 @@ namespace AdangalApp
                 File.Create(WholeLandListJsonPath).Close();
 
             WriteObjectsToFile<LandDetail>(landDetails, WholeLandListJsonPath);
+        }
+
+        public static void SaveAdangalOriginalList(List<Adangal> adangal)
+        {
+            if (File.Exists(AdangalOriginalPath) == false)
+                File.Create(AdangalOriginalPath).Close();
+
+            WriteObjectsToFile<Adangal>(adangal, AdangalOriginalPath);
         }
 
         public static PattaList GetPattaList()
