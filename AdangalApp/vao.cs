@@ -127,9 +127,10 @@ namespace AdangalApp
         {
             try
             {
-                cb.DataSource = dataSource;
                 cb.DisplayMember = DisplayMember;
                 cb.ValueMember = ValueMember;
+                cb.DataSource = dataSource;
+                
 
             }
             catch (Exception ex)
@@ -656,9 +657,12 @@ namespace AdangalApp
 
                 BindDropdown(ddlPattaTypes, fr.CountData, "DisplayMember", "Id");
                 BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
-                dataGridView1.DataSource = fullAdangalFromjson;
-                EnableReady();
+                //dataGridView1.DataSource = fullAdangalFromjson;
+                //EnableReady();
                 BindDropdown(ddlLandTypes, GetLandTypes(), "Caption", "Id");
+
+                
+                LoadSurveyAndSubdiv();
 
                 if (fr.IsFullProcessed == false)
                 {
@@ -676,10 +680,11 @@ namespace AdangalApp
         private List<KeyValue> GetListTypes()
         {
             return new List<KeyValue> {
+                new KeyValue() { Id = 4, Caption = "JSON-ADANGAL" },
                 new KeyValue() { Id = 1, Caption = "PATTA" },
                 new KeyValue() { Id = 2, Caption = "LANDDETAIL" },
                 new KeyValue() { Id = 3, Caption = "ADANGAL" },
-                new KeyValue() { Id = 4, Caption = "JSON-ADANGAL" }
+                
             };
 
         }
@@ -987,7 +992,7 @@ namespace AdangalApp
             else if (selected == 4)
             {
                 dataGridView1.DataSource = fullAdangalFromjson;
-                EnableReady();
+                //EnableReady();
 
             }
 
@@ -1558,6 +1563,14 @@ namespace AdangalApp
                     result = false;
                 }
 
+                var someDotsIssue = GetAdangalForSomeDots();
+
+                if (pattaNameIssue.Count() != 0)
+                {
+                    status.AppendLine($"SomeDots ISSUE :{someDotsIssue.Count()}");
+                    result = false;
+                }
+
                 LogMessage($"ready: {result} STATUS: {status.ToString()}");
             }
             catch (Exception ex)
@@ -1690,7 +1703,8 @@ namespace AdangalApp
                     ProcessAreg();  // Puram
 
                     ProcessFullReport();
-                    LoadSurveyAndSubdiv();
+                    //EnableReady();
+                    //LoadSurveyAndSubdiv();
 
                     loadedFile = new LoadedFileDetail()
                     {
@@ -1709,6 +1723,7 @@ namespace AdangalApp
 
                     DataAccess.AddNewLoadedFile(loadedFile);
                     LogMessage($"Add/Update Loaded File.");
+                    
                 }
                 else
                 {
@@ -1766,24 +1781,18 @@ namespace AdangalApp
             if (selItem.Value != -1)
                 LogMessage($"STEP - 1 - Village: {selItem.Value}-{selItem.Display}");
 
-            EnableReady();
+            EnableReadyForNew();
             CheckJsonExist();
         }
 
         private void CheckJsonExist()
         {
             SetVillage();
-
             if (DataAccess.IsAdangalExist())
             {
-                if (DialogResult.Yes ==
-                    MessageBox.Show($"File already loaded for {loadedFile.VillageName}, You want to reload?", "Reload?", MessageBoxButtons.YesNo))
-                    btnReadFile.Enabled = true;
-                else
-                    btnReadFile.Enabled = false;
+                MessageBox.Show($"File already processed for {loadedFile.VillageName}, Please use that?", "Already Exist", MessageBoxButtons.OK);
+                btnReadFile.Enabled = false;
             }
-
-
         }
 
         private void SetVillage()
@@ -1840,7 +1849,7 @@ namespace AdangalApp
                                                                 w.NilaAlavaiEn == cmbSurveyNo.SelectedItem.ToInt32() &&
                                                                 w.UtpirivuEn == cmbSubdivNo.SelectedItem.ToString()).ToList();
         }
-        private void EnableReady()
+        private void EnableReadyForNew()
         {
             var selectedMaavatta = (ddlDistrict.SelectedItem as ComboData);
             var selectedVattam = (cmbTaluk.SelectedItem as ComboData);
@@ -1871,46 +1880,50 @@ namespace AdangalApp
             btnReadFile.Enabled = isVillageSelected;
 
         }
+
+        private void EnableReadyForExist()
+        {
+            if ((ddlListType.SelectedValue.ToInt32() == 4))
+                BindDropdown(cmbFulfilled, GetFullfilledOptions(), "Caption", "Id");
+        }
         private void cmbFulfilled_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selValue = ((KeyValue)cmbFulfilled.SelectedItem).Id;
 
             if (selValue == -1) return;
 
-            if (selValue == 1)
-            {
-                dataGridView1.DataSource = fullAdangalFromjson.Where(w => string.IsNullOrEmpty(w.UtpirivuEn) || w.UtpirivuEn == "-").ToList();
-            }
-            else if (selValue == 2)
-            {
-                dataGridView1.DataSource = fullAdangalFromjson.Where(w => !string.IsNullOrEmpty(w.UtpirivuEn) && w.UtpirivuEn != "-").ToList();
-            }
-            else if (selValue == 3)
-            {
-                dataGridView1.DataSource = fullAdangalFromjson.Where(w => w.UtpirivuEn.Contains("ே") || w.UtpirivuEn.Contains("\0")).ToList();
-            }
-            else if (selValue == 4)
-            {
-                dataGridView1.DataSource = fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.NoChange).ToList();
-            }
-            else if (selValue == 5)
-            {
-                dataGridView1.DataSource = fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.Added).ToList();
-            }
-
-            else if (selValue == 6)
-            {
-                dataGridView1.DataSource = DataAccess.GetDeletedAdangal();  // fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.Deleted).ToList();
-            }
-            else if (selValue == 7)
-            {
-                dataGridView1.DataSource = fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.Error).ToList();
-            }
-            else if (selValue == 8)
-            {
-                dataGridView1.DataSource = fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.WrongName).ToList();
-            }
+            if (selValue == 1) dataGridView1.DataSource = GetFullfilledAdangal();
+            else if (selValue == 2) dataGridView1.DataSource = GetExtendedAdangal();
+            else if (selValue == 3) dataGridView1.DataSource = GetAdangalForSomeDots();
+            else if (selValue == 4) dataGridView1.DataSource = GetAdangalForStatus(LandStatus.NoChange);
+            else if (selValue == 5) dataGridView1.DataSource = GetAdangalForStatus(LandStatus.Added);
+            else if (selValue == 6) dataGridView1.DataSource = DataAccess.GetDeletedAdangal();
+            else if (selValue == 7) dataGridView1.DataSource = GetAdangalForStatus(LandStatus.Error);
+            else if (selValue == 8) dataGridView1.DataSource = GetAdangalForStatus(LandStatus.WrongName);
         }
+
+        private List<Adangal> GetAdangalForStatus(LandStatus ls)
+        {
+            return fullAdangalFromjson.Where(w => w.LandStatus == ls).ToList();
+        }
+
+        private List<Adangal> GetAdangalForSomeDots()
+        {
+            return fullAdangalFromjson.Where(w => w.UtpirivuEn.Contains("ே") || w.UtpirivuEn.Contains("\0")).ToList();
+        }
+
+        
+        private List<Adangal> GetFullfilledAdangal()
+        {
+            return fullAdangalFromjson.Where(w => string.IsNullOrEmpty(w.UtpirivuEn) || w.UtpirivuEn == "-").ToList();
+        }
+
+        private List<Adangal> GetExtendedAdangal()
+        {
+            return fullAdangalFromjson.Where(w => !string.IsNullOrEmpty(w.UtpirivuEn) && w.UtpirivuEn != "-").ToList();
+        }
+
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try
@@ -2222,8 +2235,8 @@ namespace AdangalApp
             WholeLandList = DataAccess.GetWholeLandList();
 
             ProcessFullReport();
-            LoadSurveyAndSubdiv();
-            btnReady.Enabled = true;
+            
+            //btnReady.Enabled = true;
             LogMessage($"STEP-2 - Completed - Existing file Load");
         }
 
@@ -2236,6 +2249,7 @@ namespace AdangalApp
             }
 
             loadedFile = (ddlProcessedFiles.SelectedItem as LoadedFileDetail);
+            EnableReadyForExist();
             btnLoad.Enabled = true;
             SetVillage();
         }

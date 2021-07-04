@@ -71,9 +71,6 @@ update porambokku name (manually?)
 while update name - should maintian a dictionary of correct and wrong name
 firka database
 for texting use the constant value.
-
-
-
 -----------------------------------------------------------------------------------------------------
 marketing:
 ----------
