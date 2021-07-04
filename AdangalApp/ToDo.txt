@@ -1,4 +1,8 @@
 
+=======================================================================================
+move all my projects into single assembly - so that easy to use all common methods.
+========================================================================================
+
 disable delete button by default.
 add new options - deleted, no change, added.
 dropdowns for survey and subdiv nos.
@@ -29,60 +33,52 @@ maavattam and vattam not showing in header.
 [header] in left cert page and all left pages.
 move log to village folder?pdf file name without htm extension. - need manual correction or automatic html to pdf
 percentage complete.
-
-=======================================================================================
-move all my projects into single assembly - so that easy to use all common methods.
-========================================================================================
-
-provide correct space in header.
-what about last page page number if right side page? need testing.
-tamil font style in html pages?
-update porambokku name (manually?)
-***********************************************************
-
 step no in logging.
 step nos.[enable next only after current step ok]
+load all district data.
+page no (not in all pages only in right page) - refer total pages.
+add log in all possible exception places eg: process name.
+installer project
+dual common foler - solution?
+tamil panchayat name.
+create shortcut.
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+***********************************************************
+Save pattalist and landdetail as json?
+offline mode working.
+product and publisher name
+replace an existing exe (replace or overwrite)
+softcopy version & hardcopy version 
+STAGE-1:File loaded STAGE-2:LOADED WITHOU ISSUE STAGE-3:CORRECTED TO 100%
 thread process for long running process...
 please wait loading...
 percentage message...
 ***********************************************************
-
-top header space and alignment.
+total is only for nansai, punsai and maanaavari not for porambokku
 extra data : ??? -> siru guru vivasaayi -> owner(father name) -> land details and count.
-total is only for nansai, punsai and maanaavari not for porambokku 
-nansai = nansai + punsai 
-option to edit and update the total land parappu (if needed)
-right and left table height should be same
-Save pattalist and landdetail as json?
-
-
-
-
-
-for texting use the constant value.
-load all district data.
-page no (not in all pages only in right page) - refer total pages.
-
-add log in all possible exception places eg: process name.
-while update name - should maintian a dictionary of correct and wrong name
-installer project
-
-offline mode working.
-product and publisher name
-replace an existing exe (replace or overwrite)
-create shortcut.
-
-softcopy version & hardcopy version 
-dual common foler - solution?
-tamil panchayat name.
-firka database
+nansai = nansai + punsai
 group purambokku data by its name.
+option to edit and update the total land parappu (if needed)
+***********************************************************
+
+provide correct space in header.
+top header space and alignment.
+right and left table height should be same
+what about last page page number if right side page? need testing.
+tamil font style in html pages?
+update porambokku name (manually?)
+while update name - should maintian a dictionary of correct and wrong name
+firka database
+for texting use the constant value.
 
 
 
+-----------------------------------------------------------------------------------------------------
 marketing:
-------------
+----------
 
+should be cheap that current price.
 time is money - how much is time is important?
 how much you spent?
 extra information?

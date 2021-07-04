@@ -155,3 +155,54 @@ DELETE:87
 NAME ISSUE :155
 
 2021-07-04 15:56:25,814 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-04 16:20:39,420 [1] DEBUG - =================Sunday, 04 July 2021 16:20:39========================
+2021-07-04 16:20:39,638 [1] DEBUG - STARTED....
+2021-07-04 16:20:55,226 [1] DEBUG - STEP-1 STARTED
+2021-07-04 16:20:56,163 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-04 16:21:18,961 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-04 16:21:23,113 [1] DEBUG - STEP - 1 - Village: 22-ACHUNTHANVAYAL
+2021-07-04 16:21:33,202 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-04 16:21:33,202 [1] DEBUG - STEP-2 - VattamNameTamil: tt FirkaName: ff VillageNameTamil: ach
+2021-07-04 16:21:48,369 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-04 16:21:54,286 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Achunthavayal\Chitta_Report-1.pdf
+2021-07-04 16:21:54,286 [1] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 4:21:54 PM
+2021-07-04 16:21:54,661 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Achunthavayal\Chitta_Report-1.pdf
+2021-07-04 16:21:57,362 [1] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 4:21:57 PM
+2021-07-04 16:22:01,494 [1] DEBUG - COMPLETED PROCESSING CHITTA PDF FILE @ 4:22:01 PM
+2021-07-04 16:24:20,015 [1] DEBUG - =================Sunday, 04 July 2021 16:24:19========================
+2021-07-04 16:24:20,061 [1] DEBUG - STARTED....
+2021-07-04 16:24:23,449 [1] DEBUG - STEP-1 STARTED
+2021-07-04 16:24:23,652 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-04 16:24:28,675 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-04 16:24:32,140 [1] DEBUG - STEP - 1 - Village: 22-ACHUNTHANVAYAL
+2021-07-04 16:24:42,881 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-04 16:24:42,881 [1] DEBUG - STEP-2 - VattamNameTamil: 12 FirkaName: 34 VillageNameTamil: 56
+2021-07-04 16:24:53,100 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-04 16:24:58,131 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Achunthavayal\Chitta_Report-1.pdf
+2021-07-04 16:24:58,146 [1] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 4:24:58 PM
+2021-07-04 16:24:58,318 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Achunthavayal\Chitta_Report-1.pdf
+2021-07-04 16:24:58,906 [1] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 4:24:58 PM
+2021-07-04 16:25:02,943 [1] DEBUG - COMPLETED PROCESSING CHITTA PDF FILE @ 4:25:02 PM
+2021-07-04 16:25:27,817 [1] DEBUG - STARTED PROCESSING AREG PDF FILE @ 4:25:27 PM
+2021-07-04 16:25:30,296 [1] DEBUG - COMPLETED PROCESSING AREG PDF FILE @ 4:25:30 PM
+2021-07-04 16:25:31,242 [1] DEBUG - STARTED FULL REPORT
+2021-07-04 16:33:32,859 [1] DEBUG - =================Sunday, 04 July 2021 16:33:32========================
+2021-07-04 16:33:32,890 [1] DEBUG - STARTED....
+2021-07-04 16:33:39,281 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-04 16:33:39,343 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-04 16:33:49,145 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-04 16:34:09,851 [1] DEBUG - STARTED FULL REPORT
+2021-07-04 16:34:26,309 [1] DEBUG - Error @ ProcessFullReport - System.NullReferenceException: Object reference not set to an instance of an object.
+   at AdangalApp.vao.EnableReady() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1847
+   at AdangalApp.vao.ddlListType_SelectedIndexChanged(Object sender, EventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 989
+   at System.Windows.Forms.ComboBox.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.ComboBox.set_SelectedIndex(Int32 value)
+   at AdangalApp.vao.ProcessFullReport() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 659
+2021-07-04 16:34:26,309 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-04 16:34:42,623 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-04 16:34:42,748 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-04 16:34:42,882 [1] DEBUG - ready: False STATUS: ADD:315
+DELETE:87
+NAME ISSUE :155
+
+2021-07-04 16:34:42,988 [1] DEBUG - STEP-3 - Raedy For Print - Completed

@@ -12,10 +12,14 @@ namespace AdangalApp
         public static string JsonPath = "";
         public static string SubDivPath = "";
         public static string LoadedFile = "";
+        public static string PattaJsonPath = "";
+        public static string WholeLandListJsonPath = "";
 
         public static void SetVillageName()
         {
             JsonPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}.json");
+            PattaJsonPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-PattaJsonPath.json");
+            WholeLandListJsonPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-WholeLandListJsonPath.json");
             SubDivPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-subdiv.json");
             
 
@@ -75,6 +79,32 @@ namespace AdangalApp
 
             var data = GetActiveAdangal();
             return data;
+        }
+
+        public static void SavePattaList(PattaList pattaList)
+        {
+            if (File.Exists(PattaJsonPath) == false)
+                File.Create(PattaJsonPath).Close();
+
+            WriteObjectsToFile<PattaList>(pattaList, PattaJsonPath);
+        }
+
+        public static void SaveWholeLandList(List<LandDetail> landDetails)
+        {
+            if (File.Exists(WholeLandListJsonPath) == false)
+                File.Create(WholeLandListJsonPath).Close();
+
+            WriteObjectsToFile<LandDetail>(landDetails, WholeLandListJsonPath);
+        }
+
+        public static PattaList GetPattaList()
+        {
+            return ReadFileAsList<PattaList>(WholeLandListJsonPath);
+        }
+
+        public static List<LandDetail> GetWholeLandList()
+        {
+            return ReadFileAsObjects<LandDetail>(PattaJsonPath);
         }
 
         public static bool IsSubDivExist()

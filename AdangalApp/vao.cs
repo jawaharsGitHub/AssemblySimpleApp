@@ -29,15 +29,6 @@ namespace AdangalApp
         readonly string tamilMoththam = "மொத்தம்";
         readonly string ERROR = "ERROR";
 
-
-        //string maavattam  = "";
-        //int maavattamCode;
-        //string vattam = "";
-        //int vattamCode;
-        //string firka = ""; // ulvattam or kuruvattam)
-        //string svillageName = "";
-        //int sVillageCode;
-        //string tamilvillageName = "";
         string pdfvillageName = "";
         int pasali = 1430;
         int prepasali;
@@ -84,8 +75,6 @@ namespace AdangalApp
         public static string ChittaTxtFile = ConfigurationManager.AppSettings["ChittaTxtFile"];
         public static string AregFile = ConfigurationManager.AppSettings["AregFile"];
 
-
-
         public vao()
         {
             try
@@ -93,14 +82,14 @@ namespace AdangalApp
                 InitializeComponent();
                 prepasali = (pasali - 1);
 
-                var logFolder = AdangalConstant.CreateAndReadPath($"Log");   //AdangalConstant.LogPath;
+                var logFolder = AdangalConstant.CreateAndReadPath($"Log");
                 logHelper = new LogHelper("AdangalLog", logFolder);
 
                 try
                 {
                     BindDropdown(ddlDistrict, DataAccess.GetDistricts(), "Display", "Value");
 
-                    var processedFiles = DataAccess.GetLoadedFile(); //DataAccess.GetProcessedFiles();
+                    var processedFiles = DataAccess.GetLoadedFile();
 
                     if (processedFiles.Count > 0)
                         BindDropdown(ddlProcessedFiles, processedFiles, "VillageName", "VillageCode");
@@ -559,6 +548,9 @@ namespace AdangalApp
                 LogMessage($"COMPLETED PROCESSING CHITTA PDF FILE @ {DateTime.Now.ToLongTimeString()}");
 
                 WholeLandList = pattaList.SelectMany(x => x.landDetails.Select(y => y)).ToList();
+
+                DataAccess.SavePattaList(pattaList);
+                DataAccess.SaveWholeLandList(WholeLandList);
 
                 AdangalList = (from wl in WholeLandList
                                    .Where(w => w.LandType != LandType.Zero)
@@ -2226,6 +2218,12 @@ namespace AdangalApp
             LoadSurveyAndSubdiv();
             //btnReady.Enabled = btnGenerate.Enabled = true;
             btnReady.Enabled = true;
+
+            pattaList = DataAccess.GetPattaList();
+            WholeLandList = DataAccess.GetWholeLandList();
+
+            ProcessFullReport();
+
             LogMessage($"STEP-2 - Completed - Existing file Load");
         }
 

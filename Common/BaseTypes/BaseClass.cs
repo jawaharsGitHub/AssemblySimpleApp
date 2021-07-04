@@ -34,14 +34,25 @@ namespace Common
 
         public static List<T> ReadFileAsObjects<T>(string filePath)
         {
-            //General.CreateFileIfNotExist(filePath);
-
             var jsonText = File.ReadAllText(filePath);
             List<T> list = JsonConvert.DeserializeObject<List<T>>(jsonText) ?? new List<T>();
             return list;
         }
 
+        public static T ReadFileAsList<T>(string filePath)
+        {
+            var jsonText = File.ReadAllText(filePath);
+            T list = JsonConvert.DeserializeObject<T>(jsonText);
+            return list;
+        }
+
         public static void WriteObjectsToFile<T>(List<T> listObject, string filePath)
+        {
+            string jsonString = JsonConvert.SerializeObject(listObject, Formatting.Indented);
+            File.WriteAllText(filePath, jsonString);
+        }
+
+        public static void WriteObjectsToFile<T>(T listObject, string filePath)
         {
             string jsonString = JsonConvert.SerializeObject(listObject, Formatting.Indented);
             File.WriteAllText(filePath, jsonString);
