@@ -31,9 +31,12 @@ namespace NTK_Support
 
 
         string maavattam  = "";
+        int maavattamCode;
         string vattam = "";
+        int vattamCode;
         string firka = ""; // ulvattam or kuruvattam)
         string svillageName = "";
+        int sVillageCode;
         string tamilvillageName = "";
         string pdfvillageName = "";
         int pasali = 1430;
@@ -66,6 +69,7 @@ namespace NTK_Support
         List<PageTotal> pageTotalList = null;
         List<PageTotal> pageTotal2List = null;
         List<PageTotal> pageTotal3List = null;
+        LoadedFileDetail loadedFile = null;
 
         List<string> notInPdfToBeAdded;
         List<string> notInOnlineToBeDeleted;
@@ -75,6 +79,8 @@ namespace NTK_Support
         public static string header = ConfigurationManager.AppSettings["header"];
         public static string isTesting = ConfigurationManager.AppSettings["isTesting"];
         public static int TestingPage = ConfigurationManager.AppSettings["TestingPage"].ToInt32();
+
+
 
         public vao()
         {
@@ -89,10 +95,11 @@ namespace NTK_Support
                 try
                 {
                     BindDropdown(ddlDistrict, DataAccess.GetDistricts(), "Display", "Value");
-                    var processedFiles = DataAccess.GetProcessedFiles();
+
+                    var processedFiles = DataAccess.GetLoadedFile(); //DataAccess.GetProcessedFiles();
 
                     if (processedFiles.Count > 0)
-                        BindDropdown(ddlProcessedFiles, processedFiles, "Display", "Value");
+                        BindDropdown(ddlProcessedFiles, processedFiles, "VillageName", "VillageCode");
 
                 }
                 catch (Exception ex)
@@ -1575,18 +1582,23 @@ namespace NTK_Support
                 LogMessage($"GETTING LAND COUNT - FROM INTERNET");
                 var totalLandList = new List<KeyValue>();
 
-                if (cmbVillages.SelectedItem != null)
+                if (sVillageCode > 0)
                 {
-                    var disValue = ((ComboData)ddlDistrict.SelectedItem).Value;
-                    var talValue = ((ComboData)cmbTaluk.SelectedItem).Value;
-                    var villageValue = ((ComboData)cmbVillages.SelectedItem).Value.ToString().PadLeft(3, '0');
+                    //var disValue = ((ComboData)ddlDistrict.SelectedItem).Value;
+                    //var talValue = ((ComboData)cmbTaluk.SelectedItem).Value;
+                    //var villageValue = ((ComboData)cmbVillages.SelectedItem).Value.ToString().PadLeft(3, '0');
+
+                    var disValue = loadedFile.MaavattamCode;
+                    var talValue = loadedFile.VattamCode;
+                    var villageValue = loadedFile.VillageCode.ToString().PadLeft(3, '0');
 
                     var url = "";
 
-
                     int continueCheckCount = 0;
 
-                    for (int i = 1; i <= 200; i++)
+                    int maxSearch = 200;
+
+                    for (int i = 1; i <= maxSearch; i++)
                     {
                         if (continueCheckCount == 25)
                         {
@@ -1608,6 +1620,11 @@ namespace NTK_Support
                                 totalLandList.Add(new KeyValue(fe, i));
                                 continueCheckCount = 0; // reset.
                             });
+                        }
+                        if (i == maxSearch)
+                        {
+                            MessageBox.Show($"Max reached to {i}");
+                            maxSearch += 25;
                         }
                     }
                 }
@@ -1716,6 +1733,23 @@ namespace NTK_Support
 
                     ProcessFullReport();
                     LoadSurveyAndSubdiv();
+
+                    loadedFile = new LoadedFileDetail()
+                    {
+                        FirkaName = firka,
+                        MaavattamName = maavattam,
+                        MaavattamNameTamil = maavattam,
+                        MaavattamCode = maavattamCode,
+                        VattamName = vattam,
+                        VattamNameTamil = vattam,
+                        VattamCode = vattamCode,
+                        VillageNameTamil = tamilvillageName,
+                        VillageName = svillageName,
+                        VillageCode = sVillageCode
+
+                    };
+
+                    DataAccess.AddNewLoadedFile(loadedFile);
 
                 }
                 else
@@ -1855,9 +1889,12 @@ namespace NTK_Support
             btnReadFile.Enabled = isVillageSelected;
 
             maavattam = selectedMaavatta.DisplayTamil;
+            maavattamCode = selectedMaavatta.Value;
+
+            vattamCode = selectedVattam.Value;
+
             svillageName = selectedVillage.Display;
-
-
+            sVillageCode = selectedVillage.Value;
         }
         private void cmbFulfilled_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2201,9 +2238,12 @@ namespace NTK_Support
             //{
                 fullAdangalFromjson = DataAccess.GetActiveAdangal();
                 LogMessage($"READED DATA FROM EXISTING JSON FILE");
-                BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
-                ddlListType.SelectedIndex = 3;
+            //BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
+            //ddlListType.SelectedIndex = 3;
+            dataGridView1.DataSource = fullAdangalFromjson;
+
                 LoadSurveyAndSubdiv();
+            btnReady.Enabled = btnGenerate.Enabled = true;
             //}
         }
 
@@ -2211,9 +2251,15 @@ namespace NTK_Support
         {
             if (ddlProcessedFiles.SelectedIndex == 0) return;
 
-            svillageName = (ddlProcessedFiles.SelectedItem as ComboDataStr).Display;
+            loadedFile = (ddlProcessedFiles.SelectedItem as LoadedFileDetail);
+
+            btnLoad.Enabled = true;
+            svillageName = loadedFile.VillageName;
+            sVillageCode = loadedFile.VillageCode;
+
             AdangalConstant.villageName = svillageName;
             DataAccess.SetVillageName();
+            
         }
     }
 

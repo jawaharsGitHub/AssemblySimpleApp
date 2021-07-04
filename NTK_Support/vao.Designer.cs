@@ -52,7 +52,7 @@
             this.txtFirka = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnLoad = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.ddlProcessedFiles = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -315,7 +315,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.btnLoad);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.ddlProcessedFiles);
             this.groupBox2.Controls.Add(this.btnReadFile);
@@ -326,16 +326,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "STEP-2";
             // 
-            // button2
+            // btnLoad
             // 
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(340, 21);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(74, 23);
-            this.button2.TabIndex = 35;
-            this.button2.Text = "Load...";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnLoad.Enabled = false;
+            this.btnLoad.Location = new System.Drawing.Point(340, 21);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(74, 23);
+            this.btnLoad.TabIndex = 35;
+            this.btnLoad.Text = "Load...";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.button2_Click);
             // 
             // label5
             // 
@@ -599,7 +599,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox ddlProcessedFiles;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.TextBox txtVaruvai;
         private System.Windows.Forms.TextBox txtVattam;
     }

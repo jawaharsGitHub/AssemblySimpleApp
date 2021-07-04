@@ -10,14 +10,14 @@ namespace NTK_Support
     public class DataAccess : BaseClass
     {
         public static string JsonPath = "";
-        //public static string JsonFileFolder = "";
         public static string SubDivPath = "";
+        public static string LoadedFile = "";
 
         public static void SetVillageName()
         {
-            JsonPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}.json");
-            SubDivPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}-subdiv.json");
-            //JsonFileFolder = AppConfiguration.GetDynamicPath($"AdangalJson");
+            JsonPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}.json");
+            SubDivPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-subdiv.json");
+            
 
             if (Directory.Exists(Directory.GetParent(JsonPath).FullName) == false)
                 Directory.CreateDirectory(Directory.GetParent(JsonPath).FullName);
@@ -34,13 +34,23 @@ namespace NTK_Support
             return data;
         }
 
+        public static List<LoadedFileDetail> GetLoadedFile()
+        {
+            LoadedFile = AppConfiguration.GetDynamicPath($"AdangalJson/LoadedFile.json");
+            if (File.Exists(LoadedFile) == false)
+                File.Create(LoadedFile).Close();
+            var data = ReadFileAsObjects<LoadedFileDetail>(LoadedFile);
+            data.Insert(0, new LoadedFileDetail() { VillageCode = -1, VillageName = "--select--" });
+            return data;
+        }
+
         public static List<ComboDataStr> GetProcessedFiles()
         {
             var JsonFileFolder = AppConfiguration.GetDynamicPath($"AdangalJson");
             var files = (from f in Directory.GetFiles(JsonFileFolder).ToList()
                         select new ComboDataStr() { 
                              Value = f.Replace("-subdiv", ""),
-                             Display = new FileInfo(f).Name
+                             Display = Path.ChangeExtension(new FileInfo(f).Name, null)
                         }).Distinct().ToList();
 
              files.Insert(0, new ComboDataStr() { Value = "", Display = "--select--" });
@@ -134,6 +144,30 @@ namespace NTK_Support
             InsertSingleObjectToListJson<Adangal>(JsonPath, adangal);
             return true;
         }
+
+        public static bool AddNewLoadedFile(LoadedFileDetail loadedFileDetail)
+        {
+            DeleteLoadedFile(loadedFileDetail);
+            InsertSingleObjectToListJson<LoadedFileDetail>(LoadedFile, loadedFileDetail);
+            return true;
+        }
+
+        public static void DeleteLoadedFile(LoadedFileDetail loadedFileDetail)
+        {
+            var data = ReadFileAsObjects<LoadedFileDetail>(LoadedFile);
+
+                var itemToDelete = data.Where(w => w.MaavattamCode == loadedFileDetail.MaavattamCode &&
+                                w.VattamCode == loadedFileDetail.VattamCode &&
+                                w.VillageCode == loadedFileDetail.VillageCode).FirstOrDefault();
+
+                if(itemToDelete != null)
+                {
+                    data.Remove(itemToDelete);
+                    WriteObjectsToFile(data, LoadedFile);
+                }
+        }
+
+
         public static List<ComboData> GetDistricts()
         {
             var filePath = GetTablePath("RevDistrict");
