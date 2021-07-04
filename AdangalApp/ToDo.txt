@@ -27,24 +27,21 @@ village name wrong - listing vattam or maavataam ok
 --select--  - ok
 maavattam and vattam not showing in header.
 [header] in left cert page and all left pages.
-move log to village folder?
+move log to village folder?pdf file name without htm extension. - need manual correction or automatic html to pdf
+percentage complete.
 
 =======================================================================================
 move all my projects into single assembly - so that easy to use all common methods.
 ========================================================================================
-
-
 
 provide correct space in header.
 what about last page page number if right side page? need testing.
 tamil font style in html pages?
 update porambokku name (manually?)
 ***********************************************************
-pdf file name without htm extension. - need manual correction or automatic html to pdf
-percentage complete.
+
 step no in logging.
 step nos.[enable next only after current step ok]
-
 thread process for long running process...
 please wait loading...
 percentage message...

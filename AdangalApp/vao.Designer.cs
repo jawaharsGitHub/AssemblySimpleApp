@@ -58,6 +58,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.ddlProcessedFiles = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnPercentage = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -71,7 +72,6 @@
             this.lblSurveyNo = new System.Windows.Forms.Label();
             this.lblSubdiv = new System.Windows.Forms.Label();
             this.chkEdit = new System.Windows.Forms.CheckBox();
-            this.btnPercentage = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -239,6 +239,7 @@
             // 
             // btnReady
             // 
+            this.btnReady.Enabled = false;
             this.btnReady.Location = new System.Drawing.Point(19, 19);
             this.btnReady.Name = "btnReady";
             this.btnReady.Size = new System.Drawing.Size(101, 35);
@@ -383,6 +384,17 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "STEP-3";
             // 
+            // btnPercentage
+            // 
+            this.btnPercentage.Enabled = false;
+            this.btnPercentage.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPercentage.Location = new System.Drawing.Point(19, 175);
+            this.btnPercentage.Name = "btnPercentage";
+            this.btnPercentage.Size = new System.Drawing.Size(105, 49);
+            this.btnPercentage.TabIndex = 18;
+            this.btnPercentage.Text = "[perc]";
+            this.btnPercentage.UseVisualStyleBackColor = true;
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.btnAdd);
@@ -514,16 +526,6 @@
             this.chkEdit.Text = "EDIT?";
             this.chkEdit.UseVisualStyleBackColor = true;
             this.chkEdit.CheckedChanged += new System.EventHandler(this.chkEdit_CheckedChanged);
-            // 
-            // btnPercentage
-            // 
-            this.btnPercentage.Enabled = false;
-            this.btnPercentage.Location = new System.Drawing.Point(19, 175);
-            this.btnPercentage.Name = "btnPercentage";
-            this.btnPercentage.Size = new System.Drawing.Size(105, 49);
-            this.btnPercentage.TabIndex = 18;
-            this.btnPercentage.Text = "[perc]";
-            this.btnPercentage.UseVisualStyleBackColor = true;
             // 
             // vao
             // 
