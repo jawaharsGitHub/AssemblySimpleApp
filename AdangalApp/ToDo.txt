@@ -27,6 +27,7 @@ village name wrong - listing vattam or maavataam ok
 --select--  - ok
 maavattam and vattam not showing in header.
 [header] in left cert page and all left pages.
+move log to village folder?
 
 =======================================================================================
 move all my projects into single assembly - so that easy to use all common methods.
@@ -43,7 +44,7 @@ pdf file name without htm extension. - need manual correction or automatic html 
 percentage complete.
 step no in logging.
 step nos.[enable next only after current step ok]
-move log to village folder?
+
 thread process for long running process...
 please wait loading...
 percentage message...
