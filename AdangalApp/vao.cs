@@ -30,14 +30,14 @@ namespace AdangalApp
         readonly string ERROR = "ERROR";
 
 
-        string maavattam  = "";
-        int maavattamCode;
-        string vattam = "";
-        int vattamCode;
-        string firka = ""; // ulvattam or kuruvattam)
-        string svillageName = "";
-        int sVillageCode;
-        string tamilvillageName = "";
+        //string maavattam  = "";
+        //int maavattamCode;
+        //string vattam = "";
+        //int vattamCode;
+        //string firka = ""; // ulvattam or kuruvattam)
+        //string svillageName = "";
+        //int sVillageCode;
+        //string tamilvillageName = "";
         string pdfvillageName = "";
         int pasali = 1430;
         int prepasali;
@@ -69,11 +69,12 @@ namespace AdangalApp
         List<PageTotal> pageTotalList = null;
         List<PageTotal> pageTotal2List = null;
         List<PageTotal> pageTotal3List = null;
-        LoadedFileDetail loadedFile = null;
+        LoadedFileDetail loadedFile = new LoadedFileDetail();
 
         List<string> notInPdfToBeAdded;
         List<string> notInOnlineToBeDeleted;
         string reqFileFolderPath = "";
+        string updatedHeader = "";
 
         public static string title = ConfigurationManager.AppSettings["title"];
         public static string header = ConfigurationManager.AppSettings["header"];
@@ -89,7 +90,7 @@ namespace AdangalApp
                 InitializeComponent();
                 prepasali = (pasali - 1);
 
-                var logFolder = AdangalConstant.LogPath;
+                var logFolder = AdangalConstant.CreateAndReadPath($"Log");   //AdangalConstant.LogPath;
                 logHelper = new LogHelper("AdangalLog", logFolder);
 
                 try
@@ -316,7 +317,7 @@ namespace AdangalApp
                 var pattaas = chittaContent.Replace("பட்டா எண்    :", "$"); //("பட்டா எண்", "$");
                 var data = pattaas.Split('$').ToList();
                 pdfvillageName = data.First().Split(':')[3].Trim();
-                AdangalConstant.villageName = svillageName;
+                AdangalConstant.villageName = loadedFile.VillageName;
                 DataAccess.SetVillageName();
 
                 if (DialogResult.No == MessageBox.Show($"{pdfvillageName} village?", "Confirm", MessageBoxButtons.YesNo))
@@ -1063,7 +1064,6 @@ namespace AdangalApp
                                           .Replace("[parappu]", empty)
                                            .Replace("[theervai]", empty)
                                            .Replace("[pattaen-name]", empty));
-
                 }
 
                 var total = totalRowTemplate.Replace("[moththaparappu]", empty).Replace("[moththatheervai]", empty);
@@ -1071,14 +1071,19 @@ namespace AdangalApp
                 leftPage = leftPage.Replace("[datarows]", sb.ToString());
                 leftPage = leftPage.Replace("[totalrow]", total);
                 leftPage = leftPage.Replace("( [landtype] )", empty);
-                header = header.Replace("[pasali]", "1430").Replace("[maavattam]", ddlDistrict.SelectedText).Replace("[vattam]", cmbTaluk.SelectedText).Replace("[varuvvaikiraamam]", $"{cmbVillages.SelectedValue} - {tamilvillageName}");
-                leftPage = leftPage.Replace("[header]", header);
+                //header = header.Replace("[pasali]", pasali.ToString()).Replace("[maavattam]", maavattam).Replace("[vattam]", vattam).Replace("[varuvvaikiraamam]", $"{sVillageCode} - {tamilvillageName}");
+                leftPage = leftPage.Replace("[header]", updatedHeader);
             }
             catch (Exception ex)
             {
                 LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
             return leftPage;
+        }
+
+        private void SetHeader()
+        {
+            updatedHeader = header.Replace("[pasali]", pasali.ToString()).Replace("[maavattam]", loadedFile.MaavattamNameTamil).Replace("[vattam]", loadedFile.VattamNameTamil).Replace("[varuvvaikiraamam]", $"{loadedFile.VillageCode} - {loadedFile.VillageNameTamil}");
         }
         private string GetLeftCertPage()
         {
@@ -1153,15 +1158,14 @@ namespace AdangalApp
             return sb.ToString();
 
         }
+
+        int totalPageIndexTracker = 0;
         private string GetPageTotal(List<PageTotal> source, List<PageTotal> destination)
         {
             StringBuilder totalContent = new StringBuilder();
 
             try
             {
-
-
-
                 var landTypeGroup = (from wl in source
                                      where wl.LandType != LandType.Zero
                                      group wl by wl.LandType into newGrp
@@ -1178,10 +1182,15 @@ namespace AdangalApp
                     var tableTemplate22 = FileContentReader.PageTotalTableTemplate;
                     var rowTemplate22 = FileContentReader.PageTotalRowTemplate;
                     var landType = fe.Key.ToName();
-
+                    bool isRightSide = false;
                     for (int i = 0; i <= pageCount - 1; i++)
                     {
-                        pageNumber += 1;
+                        totalPageIndexTracker += 1;
+                        isRightSide = totalPageIndexTracker.IsEven();
+
+                        if(isRightSide)
+                            pageNumber += 1;
+
                         var tbl = tableTemplate22;
                         var row = rowTemplate22;
 
@@ -1220,7 +1229,8 @@ namespace AdangalApp
                         tbl = tbl.Replace("[datarows]", sb.ToString());
                         tbl = tbl.Replace("[totalrow]", totalRows);
                         tbl = tbl.Replace("[landtype]", landType);
-                        tbl = tbl.Replace("[pageNo]", pageNumber.ToString());
+                        tbl = tbl.Replace("[header]", updatedHeader);
+                        tbl = tbl.Replace("[pageNo]", isRightSide ? pageNumber.ToString() : empty);
                         totalContent.Append(tbl);
                     }
 
@@ -1239,12 +1249,16 @@ namespace AdangalApp
 
             try
             {
-
-
-
                 var tbl = FileContentReader.PageOverallTotalTableTemplate;
                 var row = FileContentReader.PageOverallTotalRowTemplate;
-                pageNumber += 1;
+
+                totalPageIndexTracker += 1;
+                var isRightSide = totalPageIndexTracker.IsEven();
+
+                if (isRightSide)
+                    pageNumber += 1;
+
+                //pageNumber += 1;
                 string dataRows = "";
                 StringBuilder sb = new StringBuilder();
 
@@ -1262,7 +1276,8 @@ namespace AdangalApp
 
                 tbl = tbl.Replace("[datarows]", sb.ToString());
                 tbl = tbl.Replace("[totalrow]", totalRows);
-                tbl = tbl.Replace("[pageNo]", pageNumber.ToString());
+                tbl = tbl.Replace("[header]", updatedHeader);
+                tbl = tbl.Replace("[pageNo]", isRightSide ? pageNumber.ToString() : empty); 
                 totalContent.Append(tbl);
 
             }
@@ -1367,6 +1382,7 @@ namespace AdangalApp
 
                         leftPage = leftPage.Replace("[totalrow]", total);
                         leftPage = leftPage.Replace("[landtype]", landType);
+                        leftPage = leftPage.Replace("[header]", updatedHeader);
 
                         allContent.Append(leftPage);
                         allContent.Append(GetRightEmptyPage()); // right page
@@ -1393,12 +1409,12 @@ namespace AdangalApp
                 mainHtml = mainHtml.Replace("[certifed]", GetCertifiedContent());
 
                 //var fPath = Path.Combine(AdangalConstant.ResultPath, "Adangal")
-                var fPath = AdangalConstant.ResultPath;
+                var fPath = AdangalConstant.CreateAndReadPath($"{loadedFile.VillageName}-Result"); //AdangalConstant.ResultPath;
 
-                if (Directory.Exists(fPath) == false)
-                    Directory.CreateDirectory(fPath);
+                //if (Directory.Exists(fPath) == false)
+                //    Directory.CreateDirectory(fPath);
 
-                var filePath = Path.Combine(fPath, $"{pdfvillageName}-{DateTime.Now.ToString("MM-dd-yyyy HH-mm-ss")}.htm");
+                var filePath = Path.Combine(fPath, $"{loadedFile.VillageName}-{DateTime.Now.ToString("MM-dd-yyyy HH-mm-ss")}.htm");
 
                 File.AppendAllText(filePath, mainHtml);
 
@@ -1467,12 +1483,14 @@ namespace AdangalApp
                 {
                     var disValue = ((ComboData)ddlDistrict.SelectedItem).Value;
                     var talValue = ((ComboData)cmbTaluk.SelectedItem).Value;
+                    if (talValue == -1) return;
+                    var tv = talValue.ToString().PadLeft(2, '0');
                     LogMessage($"{talValue}-{((ComboData)cmbTaluk.SelectedItem).Display}");
 
-                    var url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=village&districtCode={disValue}&&talukCode={talValue}";
+                    var url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=village&districtCode={disValue}&talukCode={tv}";
                     var response = WebReader.CallHttpWebRequest(url);
 
-                    //var urlTamil = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=villageTamil&districtCode={disValue}&&talukCode={talValue}";
+                    //var urlTamil = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=villageTamil&districtCode={disValue}&talukCode={tv}";
                     //var responseTamil = WebReader.CallHttpWebRequest(urlTamil);
 
                     BindDropdown(cmbVillages
@@ -1583,7 +1601,7 @@ namespace AdangalApp
                 LogMessage($"GETTING LAND COUNT - FROM INTERNET");
                 var totalLandList = new List<KeyValue>();
 
-                if (sVillageCode > 0)
+                if (loadedFile.VillageCode > 0)
                 {
                     //var disValue = ((ComboData)ddlDistrict.SelectedItem).Value;
                     //var talValue = ((ComboData)cmbTaluk.SelectedItem).Value;
@@ -1644,12 +1662,16 @@ namespace AdangalApp
 
         private void PreLoadFile()
         {
+            SetHeader();
             firstPage = FileContentReader.FirstPageTemplate;
-            title = title.Replace("[pasali]", "1430").Replace("[br]", "</br>").Replace("[varuvvaikiraamam]", tamilvillageName);
+            title = title.Replace("[pasali]", pasali.ToString()).Replace("[br]", "</br>").Replace("[varuvvaikiraamam]", loadedFile.VillageNameTamil);
             firstPage = firstPage.Replace("[title]", title);
 
             leftEmpty = GetLeftEmptyPage();
+            
             leftCertEmpty = FileContentReader.LeftPageCertTableTemplate;
+            leftCertEmpty = leftCertEmpty.Replace("[header]", updatedHeader);
+
             rightCertEmpty = FileContentReader.RightPageCertTableTemplate;
         }
         private void btnReadFile_Click(object sender, EventArgs e)
@@ -1663,9 +1685,9 @@ namespace AdangalApp
                 }
 
                 // Loading basic details...
-                vattam = txtVattam.Text;
-                firka = txtFirka.Text;
-                tamilvillageName = txtVattam.Text;
+                loadedFile.VattamNameTamil = txtVattam.Text;
+                loadedFile.FirkaName = txtFirka.Text;
+                loadedFile.VillageNameTamil = txtVaruvai.Text;                
                 PreLoadFile();
 
                 //firstPage = FileContentReader.FirstPageTemplate;
@@ -1692,6 +1714,10 @@ namespace AdangalApp
                 if (DialogResult.OK == fbd.ShowDialog())
                 {
                     reqFileFolderPath = fbd.SelectedPath;
+                }
+                else
+                {
+                    return;
                 }
 
                 //if (chkProd.Checked)
@@ -1737,20 +1763,21 @@ namespace AdangalApp
 
                     loadedFile = new LoadedFileDetail()
                     {
-                        FirkaName = firka,
-                        MaavattamName = maavattam,
-                        MaavattamNameTamil = maavattam,
-                        MaavattamCode = maavattamCode,
-                        VattamName = vattam,
-                        VattamNameTamil = vattam,
-                        VattamCode = vattamCode,
-                        VillageNameTamil = tamilvillageName,
-                        VillageName = svillageName,
-                        VillageCode = sVillageCode
+                        FirkaName = txtFirka.Text.Trim(),
+                        MaavattamName = loadedFile.MaavattamName,
+                        MaavattamNameTamil = loadedFile.MaavattamNameTamil,
+                        MaavattamCode = loadedFile.MaavattamCode,
+                        VattamName = loadedFile.VattamName,
+                        VattamNameTamil = loadedFile.VattamNameTamil,
+                        VattamCode = loadedFile.VattamCode,
+                        VillageNameTamil = loadedFile.VillageNameTamil,
+                        VillageName = loadedFile.VillageName,
+                        VillageCode = loadedFile.VillageCode
 
                     };
 
                     DataAccess.AddNewLoadedFile(loadedFile);
+                    
 
                 }
                 else
@@ -1800,6 +1827,8 @@ namespace AdangalApp
         }
         private void cmbVillages_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+            if (cmbVillages.SelectedIndex == 0) return;
+
             var selItem = (ComboData)cmbVillages.SelectedItem;
 
             if (selItem.Value != -1)
@@ -1811,13 +1840,13 @@ namespace AdangalApp
 
         private void CheckJsonExist()
         {
-            AdangalConstant.villageName = svillageName;
+            AdangalConstant.villageName = loadedFile.VillageName;
             DataAccess.SetVillageName();
 
             if (DataAccess.IsAdangalExist())
             {
                 if(DialogResult.Yes == 
-                    MessageBox.Show($"File already loaded for {svillageName}, You want to reload?", "Reload?", MessageBoxButtons.YesNo))
+                    MessageBox.Show($"File already loaded for {loadedFile.VillageName}, You want to reload?", "Reload?", MessageBoxButtons.YesNo))
                     btnReadFile.Enabled = true;
                 else
                     btnReadFile.Enabled = false;
@@ -1889,13 +1918,18 @@ namespace AdangalApp
             btnReady.Enabled = btnGenerate.Enabled = canEnable;
             btnReadFile.Enabled = isVillageSelected;
 
-            maavattam = selectedMaavatta.DisplayTamil;
-            maavattamCode = selectedMaavatta.Value;
+            //maavattam = selectedMaavatta.DisplayTamil;
+            //maavattamCode = selectedMaavatta.Value;
+            //vattamCode = selectedVattam.Value;
+            //svillageName = selectedVillage.Display;
+            //sVillageCode = selectedVillage.Value;
 
-            vattamCode = selectedVattam.Value;
+            loadedFile.MaavattamNameTamil = selectedMaavatta.DisplayTamil;
+            loadedFile.MaavattamCode = selectedMaavatta.Value;
+            loadedFile.VattamCode = selectedVattam.Value;
+            loadedFile.VillageName = selectedVillage.Display;
+            loadedFile.VillageCode = selectedVillage.Value;
 
-            svillageName = selectedVillage.Display;
-            sVillageCode = selectedVillage.Value;
         }
         private void cmbFulfilled_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2214,9 +2248,9 @@ namespace AdangalApp
         private string GetCertifiedContent()
         {
             var content = FileContentReader.CertifiedContent;
-            content = content.Replace("[vattam]", vattam)
-                                .Replace("[firka]", firka)
-                                .Replace("[varuvaikiraamam]", tamilvillageName)
+            content = content.Replace("[vattam]", loadedFile.VattamNameTamil)
+                                .Replace("[firka]", loadedFile.FirkaName)
+                                .Replace("[varuvaikiraamam]", loadedFile.VillageNameTamil)
                                 .Replace("[pasali]", pasali.ToString())
                                 .Replace("[totalpages]", pageNumber.ToString())
                                 .Replace("[last-pasali]", prepasali.ToString());
@@ -2255,10 +2289,10 @@ namespace AdangalApp
             loadedFile = (ddlProcessedFiles.SelectedItem as LoadedFileDetail);
 
             btnLoad.Enabled = true;
-            svillageName = loadedFile.VillageName;
-            sVillageCode = loadedFile.VillageCode;
+            //svillageName = loadedFile.VillageName;
+            //sVillageCode = loadedFile.VillageCode;
 
-            AdangalConstant.villageName = svillageName;
+            AdangalConstant.villageName = loadedFile.VillageName;
             DataAccess.SetVillageName();
             
         }

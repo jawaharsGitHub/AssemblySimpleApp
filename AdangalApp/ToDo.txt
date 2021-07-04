@@ -20,34 +20,45 @@ for total's total remove page break.
 replace an existing adangal message box?
 lastly add 10 extra pages. ?? (get it from vaos)
 add govt papers to fill front and last  pages.....!!!!
+how to doc.
+project name to AdangalApp?
+log file dynamic path.
+village name wrong - listing vattam or maavataam ok
+--select--  - ok
+maavattam and vattam not showing in header.
+[header] in left cert page and all left pages.
 
 =======================================================================================
 move all my projects into single assembly - so that easy to use all common methods.
 ========================================================================================
 
-village name wrong - listing vattam or maavataam 
-maavattam and vattam not showing in header.
-[header] in left cert page and all left pages.
+
+
+provide correct space in header.
+what about last page page number if right side page? need testing.
 tamil font style in html pages?
 update porambokku name (manually?)
+***********************************************************
+pdf file name without htm extension. - need manual correction or automatic html to pdf
+percentage complete.
+step no in logging.
+step nos.[enable next only after current step ok]
+move log to village folder?
+thread process for long running process...
+please wait loading...
+percentage message...
+***********************************************************
 
 top header space and alignment.
 extra data : ??? -> siru guru vivasaayi -> owner(father name) -> land details and count.
 total is only for nansai, punsai and maanaavari not for porambokku 
 nansai = nansai + punsai 
 option to edit and update the total land parappu (if needed)
-how to doc.
-step nos.[enable next only after current step ok]
-step no in logging.
 right and left table height should be same
-percentage complete.
-project name to Adangal?
 Save pattalist and landdetail as json?
-move log to village folder?
 
-thread process for long running process...
-please wait loading...
-percentage message...
+
+
 
 
 for texting use the constant value.
@@ -62,7 +73,7 @@ offline mode working.
 product and publisher name
 replace an existing exe (replace or overwrite)
 create shortcut.
-log file dynamic path.
+
 softcopy version & hardcopy version 
 dual common foler - solution?
 tamil panchayat name.
