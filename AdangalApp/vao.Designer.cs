@@ -76,6 +76,10 @@
             this.lblSurveyNo = new System.Windows.Forms.Label();
             this.lblSubdiv = new System.Windows.Forms.Label();
             this.chkEdit = new System.Windows.Forms.CheckBox();
+            this.lblLandTypeError = new System.Windows.Forms.Label();
+            this.lblLandStatusError = new System.Windows.Forms.Label();
+            this.lblPattaCheckError = new System.Windows.Forms.Label();
+            this.grpTheervaiTest = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -84,20 +88,21 @@
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.grpTheervaiTest.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(818, 427);
+            this.textBox1.Location = new System.Drawing.Point(44, 28);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(181, 129);
+            this.textBox1.Size = new System.Drawing.Size(387, 205);
             this.textBox1.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1011, 427);
+            this.button1.Location = new System.Drawing.Point(108, 250);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 7;
@@ -107,7 +112,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(1005, 463);
+            this.textBox2.Location = new System.Drawing.Point(205, 250);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 2;
@@ -127,6 +132,7 @@
             // 
             // ddlPattaTypes
             // 
+            this.ddlPattaTypes.BackColor = System.Drawing.SystemColors.Window;
             this.ddlPattaTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlPattaTypes.FormattingEnabled = true;
             this.ddlPattaTypes.Location = new System.Drawing.Point(17, 123);
@@ -439,6 +445,9 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.lblPattaCheckError);
+            this.groupBox6.Controls.Add(this.lblLandStatusError);
+            this.groupBox6.Controls.Add(this.lblLandTypeError);
             this.groupBox6.Controls.Add(this.cmbLandStatus);
             this.groupBox6.Controls.Add(this.label8);
             this.groupBox6.Controls.Add(this.label7);
@@ -579,11 +588,60 @@
             this.chkEdit.UseVisualStyleBackColor = true;
             this.chkEdit.CheckedChanged += new System.EventHandler(this.chkEdit_CheckedChanged);
             // 
+            // lblLandTypeError
+            // 
+            this.lblLandTypeError.AutoSize = true;
+            this.lblLandTypeError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLandTypeError.ForeColor = System.Drawing.Color.Red;
+            this.lblLandTypeError.Location = new System.Drawing.Point(206, 34);
+            this.lblLandTypeError.Name = "lblLandTypeError";
+            this.lblLandTypeError.Size = new System.Drawing.Size(15, 13);
+            this.lblLandTypeError.TabIndex = 36;
+            this.lblLandTypeError.Text = "!!";
+            this.lblLandTypeError.Visible = false;
+            // 
+            // lblLandStatusError
+            // 
+            this.lblLandStatusError.AutoSize = true;
+            this.lblLandStatusError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLandStatusError.ForeColor = System.Drawing.Color.Red;
+            this.lblLandStatusError.Location = new System.Drawing.Point(206, 83);
+            this.lblLandStatusError.Name = "lblLandStatusError";
+            this.lblLandStatusError.Size = new System.Drawing.Size(15, 13);
+            this.lblLandStatusError.TabIndex = 37;
+            this.lblLandStatusError.Text = "!!";
+            this.lblLandStatusError.Visible = false;
+            // 
+            // lblPattaCheckError
+            // 
+            this.lblPattaCheckError.AutoSize = true;
+            this.lblPattaCheckError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPattaCheckError.ForeColor = System.Drawing.Color.Red;
+            this.lblPattaCheckError.Location = new System.Drawing.Point(209, 126);
+            this.lblPattaCheckError.Name = "lblPattaCheckError";
+            this.lblPattaCheckError.Size = new System.Drawing.Size(15, 13);
+            this.lblPattaCheckError.TabIndex = 38;
+            this.lblPattaCheckError.Text = "!!";
+            this.lblPattaCheckError.Visible = false;
+            // 
+            // grpTheervaiTest
+            // 
+            this.grpTheervaiTest.Controls.Add(this.textBox1);
+            this.grpTheervaiTest.Controls.Add(this.button1);
+            this.grpTheervaiTest.Controls.Add(this.textBox2);
+            this.grpTheervaiTest.Location = new System.Drawing.Point(830, 431);
+            this.grpTheervaiTest.Name = "grpTheervaiTest";
+            this.grpTheervaiTest.Size = new System.Drawing.Size(452, 302);
+            this.grpTheervaiTest.TabIndex = 33;
+            this.grpTheervaiTest.TabStop = false;
+            this.grpTheervaiTest.Text = "TEST-Theervai Sum";
+            // 
             // vao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1201, 557);
+            this.ClientSize = new System.Drawing.Size(1217, 684);
+            this.Controls.Add(this.grpTheervaiTest);
             this.Controls.Add(this.chkEdit);
             this.Controls.Add(this.lblSubdiv);
             this.Controls.Add(this.lblSurveyNo);
@@ -600,9 +658,6 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
             this.Name = "vao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "vao";
@@ -620,6 +675,8 @@
             this.groupBox6.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.grpTheervaiTest.ResumeLayout(false);
+            this.grpTheervaiTest.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -676,5 +733,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnLoadProcessed;
         private System.Windows.Forms.ComboBox cmbLandStatus;
+        private System.Windows.Forms.Label lblLandTypeError;
+        private System.Windows.Forms.Label lblPattaCheckError;
+        private System.Windows.Forms.Label lblLandStatusError;
+        private System.Windows.Forms.GroupBox grpTheervaiTest;
     }
 }

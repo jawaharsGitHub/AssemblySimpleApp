@@ -74,7 +74,8 @@ namespace AdangalApp
         public static int TestingPage = ConfigurationManager.AppSettings["TestingPage"].ToInt32();
         public static string ChittaPdfFile = ConfigurationManager.AppSettings["ChittaPdfFile"];
         public static string ChittaTxtFile = ConfigurationManager.AppSettings["ChittaTxtFile"];
-        public static string AregFile = ConfigurationManager.AppSettings["AregFile"];
+        public static string AregFile = ConfigurationManager.AppSettings["AregFile"]; 
+        public static bool needTheervaiTest = Convert.ToBoolean(ConfigurationManager.AppSettings["needTheervaiTest"]);
 
         List<KeyValue> wrongName = new List<KeyValue>();
         List<KeyValue> correctName = new List<KeyValue>();
@@ -1622,9 +1623,48 @@ namespace AdangalApp
 
                 var someDotsIssue = GetAdangalForSomeDots();
 
-                if (pattaNameIssue.Count() != 0)
+                if (someDotsIssue.Count() != 0)
                 {
                     status.AppendLine($"SomeDots ISSUE :{someDotsIssue.Count()}");
+                    result = false;
+                }
+
+
+                // Validate Land Type.
+                lblLandTypeError.Visible = lblLandStatusError.Visible = lblPattaCheckError.Visible = false;
+                var totalAdangal = fullAdangalFromjson.Count;
+                
+                var landTypeCheck = ddlLandTypes.DataSource as List<KeyValue>;
+                var totalLandTypes = (landTypeCheck[2].Value + landTypeCheck[3].Value + landTypeCheck[4].Value + landTypeCheck[5].Value);
+
+                if (totalAdangal != totalLandTypes || landTypeCheck[1].Value != totalLandTypes)
+                {
+                    status.AppendLine($"LandType ISSUE");
+                    lblLandTypeError.Visible = true;
+                    result = false;
+                }
+
+                // Validate Land Status.
+                var landStatusCheck = cmbLandStatus.DataSource as List<KeyValue>;
+                var totalLandStatus = landStatusCheck.Sum(s => s.Value);
+
+                if (totalAdangal != totalLandStatus)
+                {
+                    status.AppendLine($"LandStatus ISSUE");
+                    lblLandStatusError.Visible = true;
+                    result = false;
+                }
+
+                var pattaCount = pattaList.Count;
+
+                // Validate Patta types.
+                var pattaCheck = ddlPattaTypes.DataSource as List<KeyValue>;
+                var totalPattaStatus = pattaCheck.Skip(2).Sum(s => s.Value);
+
+                if (pattaCount != totalPattaStatus || pattaCheck.Skip(9).Sum(s => s.Value) != 0)
+                {
+                    status.AppendLine($"Patta ISSUE");
+                    lblPattaCheckError.Visible = true;
                     result = false;
                 }
 
@@ -1951,6 +1991,7 @@ namespace AdangalApp
         private void SetTestMode()
         {
             ddlPattaTypes.Visible = cmbFulfilled.Visible = lblPattaCheck.Visible = isTestingMode;
+            grpTheervaiTest.Visible = needTheervaiTest;
         }
         private void cmbFulfilled_SelectedIndexChanged(object sender, EventArgs e)
         {
