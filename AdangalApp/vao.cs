@@ -662,7 +662,7 @@ namespace AdangalApp
                 // Full Report
                 FinalReport fr = new FinalReport(pattaList);
                 BindDropdown(ddlPattaTypes, fr.CountData, "DisplayMember", "Id");
-                BindDropdown(ddlLandTypes, GetLandTypes(), "Caption", "Id");
+                BindDropdown(ddlLandTypes, GetLandTypes(), "DisplayMember", "Id");
                 BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
                 
                 LoadSurveyAndSubdiv();
@@ -707,12 +707,13 @@ namespace AdangalApp
             var landStatusSource = new List<KeyValue>();
             landStatusSource.Add(new KeyValue() { Caption = "--select--", Id = -1 });
 
-            foreach (LandType rt in Enum.GetValues(typeof(LandStatus)))
+            foreach (LandStatus ls in Enum.GetValues(typeof(LandStatus)))
             {
                 landStatusSource.Add(new KeyValue()
                 {
-                    Caption = Enum.GetName(typeof(LandStatus), rt),
-                    Id = (int)rt
+                    Caption = Enum.GetName(typeof(LandStatus), ls),
+                    Value = fullAdangalFromjson.Where(w => w.LandStatus == ls).Count(),
+                    Id = (int)ls
                 });
             }
 
@@ -724,13 +725,14 @@ namespace AdangalApp
         {
             var landTypeSource = new List<KeyValue>();
             landTypeSource.Add(new KeyValue() { Caption = "--select--", Id = -2 });
-            landTypeSource.Add(new KeyValue() { Caption = "ALL", Id = -1 });
+            landTypeSource.Add(new KeyValue() { Caption = "ALL", Id = -1, Value = fullAdangalFromjson.Count });
 
             foreach (LandType rt in Enum.GetValues(typeof(LandType)))
             {
                 landTypeSource.Add(new KeyValue()
                 {
                     Caption = Enum.GetName(typeof(LandType), rt),
+                    Value = fullAdangalFromjson.Where(w => w.LandType == rt).Count(),
                     Id = (int)rt
                 });
             }
@@ -1935,7 +1937,7 @@ namespace AdangalApp
             var canEnable = (isVillageSelected && ddlListType.SelectedValue.ToInt32() == 4);
 
             if (canEnable)
-                BindDropdown(cmbLandStatus, GetLandStatusOptions(), "Caption", "Id");
+                BindDropdown(cmbLandStatus, GetLandStatusOptions(), "DisplayMember", "Id");
 
             btnReadFile.Enabled = isVillageSelected;
         }
@@ -1943,7 +1945,7 @@ namespace AdangalApp
         private void EnableReadyForExist()
         {
             if ((ddlListType.SelectedValue.ToInt32() == 4))
-                BindDropdown(cmbLandStatus, GetLandStatusOptions(), "Caption", "Id");
+                BindDropdown(cmbLandStatus, GetLandStatusOptions(), "DisplayMember", "Id");
         }
 
         private void SetTestMode()
