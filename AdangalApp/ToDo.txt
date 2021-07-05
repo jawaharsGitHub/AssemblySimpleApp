@@ -47,15 +47,16 @@ patta and dropdown numbers not correct while reloading.
 offline mode working. -- preload all files and copied into pen drive and share.
 thread process for long running process...please wait loading...percentage message...
 product and publisher name
+logic for production and testing purpose.
+password patterns
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 ***********************************************************
-logic for production and testing purpose.
-replace an existing exe (replace or overwrite)
-softcopy version & hardcopy version 
+softcopy version & hardcopy version
 STAGE-1:File loaded STAGE-2:LOADED WITHOU ISSUE STAGE-3:CORRECTED TO 100%
 grid paging - should be same as adangal book.
 order by survey and sub div no.
+replace an existing exe (replace or overwrite)
 ***********************************************************
 total is only for nansai, punsai and maanaavari not for porambokku
 extra data : ??? -> siru guru vivasaayi -> owner(father name) -> land details and count.
@@ -64,8 +65,7 @@ group purambokku data by its name.
 option to edit and update the total land parappu (if needed)
 ***********************************************************
 
-provide correct space in header.
-top header space and alignment.
+provide correct space in header. (top header space and alignment.)
 right and left table height should be same
 what about last page page number if right side page? need testing.
 tamil font style in html pages?
@@ -74,6 +74,21 @@ while update name - should maintian a dictionary of correct and wrong name
 firka database
 for texting use the constant value.
 isvagai testing scenario
+column which need mre width.
+Manual Work:
+	update porambokku data
+	Add missed survey details
+	Update name
+Surveyor name
+Data analysis Report
+	patta count
+	land count(survey no)
+	siru guru vivasaayi
+	peru vivasaayi
+
+Total sama panthi kanakku
+Correction history table.
+
 -----------------------------------------------------------------------------------------------------
 marketing:
 ----------

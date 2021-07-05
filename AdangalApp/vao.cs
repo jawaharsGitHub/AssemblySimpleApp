@@ -1320,23 +1320,36 @@ namespace AdangalApp
             }
             return totalContent.ToString();
         }
+
+        private string GetPasscode()
+        {
+            var now = DateTime.Now;
+            var quarter = now.Minute % 15 == 0 ? (now.Minute / 15) : (now.Minute / 15) + 1;
+            var pc = (1983 + now.Month + now.Day + now.Hour + quarter + now.Minute).ToString();
+
+            string result = "";
+            pc.ToList().ForEach(c => result += (c.ToString().ToInt32()+1));
+            return result;
+        }
+
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             LogMessage($"STEP-5 - Generate Started");
             string actualCode = "";
             string expectedCode = "";
+           
+            actualCode = General.ShowPrompt("Passcode", "Verification");
+            expectedCode = GetPasscode();
 
-            //var day = DateTime.Now.Day;
-            //var Hour = DateTime.Now.Hour;
-            //var Minute = DateTime.Now.Minute;
-            //expectedCode = ((1983 * 1984 * day * Hour * Minute) / 2011 / 19).ToInt32().ToString();
-            //actualCode = General.ShowPrompt("Passcode", "Verification");
-
-            //if (actualCode != expectedCode)
-            //{
-            //    MessageBox.Show("Sorry , wrong code!");
-            //    return;
-            //}
+            if (actualCode != expectedCode)
+            {
+                MessageBox.Show("Sorry , wrong code!");
+                return;
+            }
+            else
+            {
+                MessageBox.Show("Success!");
+            }
 
             try
             {
@@ -1990,7 +2003,10 @@ namespace AdangalApp
 
         private void SetTestMode()
         {
-            ddlPattaTypes.Visible = cmbFulfilled.Visible = lblPattaCheck.Visible = isTestingMode;
+            ddlPattaTypes.Visible = cmbFulfilled.Visible = 
+                lblPattaCheck.Visible = btnGenerate.Enabled = 
+                btnSoftGen.Enabled  = isTestingMode;
+
             grpTheervaiTest.Visible = needTheervaiTest;
         }
         private void cmbFulfilled_SelectedIndexChanged(object sender, EventArgs e)
@@ -1998,18 +2014,11 @@ namespace AdangalApp
             if (cmbFulfilled.SelectedIndex == 0) return;
             var selValue = ((KeyValue)cmbFulfilled.SelectedItem).Id;
 
-            //if (selValue == -1) return;
-
             waitForm.Show(this);
             if (selValue == 1) dataGridView1.DataSource = GetFullfilledAdangal();
             else if (selValue == 2) dataGridView1.DataSource = GetExtendedAdangal();
             waitForm.Close();
         }
-
-        //private List<Adangal> GetAdangalForStatus(LandStatus ls)
-        //{
-        //    return fullAdangalFromjson.Where(w => w.LandStatus == ls).ToList();
-        //}
 
         private List<Adangal> GetAdangalForSomeDots()
         {

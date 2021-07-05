@@ -80,6 +80,7 @@
             this.lblLandStatusError = new System.Windows.Forms.Label();
             this.lblPattaCheckError = new System.Windows.Forms.Label();
             this.grpTheervaiTest = new System.Windows.Forms.GroupBox();
+            this.btnSoftGen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -165,11 +166,11 @@
             // btnGenerate
             // 
             this.btnGenerate.Enabled = false;
-            this.btnGenerate.Location = new System.Drawing.Point(48, 109);
+            this.btnGenerate.Location = new System.Drawing.Point(20, 112);
             this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(121, 40);
+            this.btnGenerate.Size = new System.Drawing.Size(74, 40);
             this.btnGenerate.TabIndex = 7;
-            this.btnGenerate.Text = "Generate Adangal";
+            this.btnGenerate.Text = "Hard Copy";
             this.btnGenerate.UseVisualStyleBackColor = true;
             this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
             // 
@@ -433,6 +434,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.btnSoftGen);
             this.groupBox5.Controls.Add(this.btnPercentage);
             this.groupBox5.Controls.Add(this.btnGenerate);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -636,6 +638,16 @@
             this.grpTheervaiTest.TabStop = false;
             this.grpTheervaiTest.Text = "TEST-Theervai Sum";
             // 
+            // btnSoftGen
+            // 
+            this.btnSoftGen.Enabled = false;
+            this.btnSoftGen.Location = new System.Drawing.Point(115, 112);
+            this.btnSoftGen.Name = "btnSoftGen";
+            this.btnSoftGen.Size = new System.Drawing.Size(74, 40);
+            this.btnSoftGen.TabIndex = 19;
+            this.btnSoftGen.Text = "Soft Copy";
+            this.btnSoftGen.UseVisualStyleBackColor = true;
+            // 
             // vao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -737,5 +749,6 @@
         private System.Windows.Forms.Label lblPattaCheckError;
         private System.Windows.Forms.Label lblLandStatusError;
         private System.Windows.Forms.GroupBox grpTheervaiTest;
+        private System.Windows.Forms.Button btnSoftGen;
     }
 }
