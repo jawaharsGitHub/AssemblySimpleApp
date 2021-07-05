@@ -70,7 +70,7 @@ namespace AdangalApp
 
         public static string title = ConfigurationManager.AppSettings["title"];
         public static string header = ConfigurationManager.AppSettings["header"];
-        public static string isTesting = ConfigurationManager.AppSettings["isTesting"];
+        public static bool isTestingMode = Convert.ToBoolean(ConfigurationManager.AppSettings["isTesting"]);
         public static int TestingPage = ConfigurationManager.AppSettings["TestingPage"].ToInt32();
         public static string ChittaPdfFile = ConfigurationManager.AppSettings["ChittaPdfFile"];
         public static string ChittaTxtFile = ConfigurationManager.AppSettings["ChittaTxtFile"];
@@ -659,15 +659,13 @@ namespace AdangalApp
                 LogMessage($"STARTED FULL REPORT");
                 // Full Report
                 FinalReport fr = new FinalReport(pattaList);
-
                 BindDropdown(ddlPattaTypes, fr.CountData, "DisplayMember", "Id");
-                BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
-                //dataGridView1.DataSource = fullAdangalFromjson;
-                //EnableReady();
                 BindDropdown(ddlLandTypes, GetLandTypes(), "Caption", "Id");
-
+                BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
+                
                 
                 LoadSurveyAndSubdiv();
+
 
                 if (fr.IsFullProcessed == false)
                 {
@@ -1314,14 +1312,11 @@ namespace AdangalApp
                     var pageCount = dataToProcess.Count / recordPerPage;
                     if (dataToProcess.Count % recordPerPage > 0) pageCount += 1;
                     var landType = fe.Key.ToName();
-
-
-                    // FOR TETSING PURPOSE
-                    if (Convert.ToBoolean(isTesting))
+                    
+                    if (isTestingMode)
                     {
                         pageCount = pageCount >= TestingPage ? TestingPage : pageCount;
                     }
-                    // FOR TETSING PURPOSE
 
                     for (int i = 0; i <= pageCount - 1; i++)
                     {
@@ -1420,12 +1415,13 @@ namespace AdangalApp
         private void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
-            {
+            {            
                 LogMessage("STEP-1 STARTED");
                 if (NoInternet()) return;
 
+                waitForm.Show(this);
                 if (ddlDistrict.SelectedItem != null)
-                {
+                {                  
                     var selValue = ((ComboData)ddlDistrict.SelectedItem).Value;
                     LogMessage($"STEP-1 - Maavattam: {selValue}-{((ComboData)ddlDistrict.SelectedItem).Display}");
 
@@ -1433,8 +1429,9 @@ namespace AdangalApp
                     var response = WebReader.CallHttpWebRequest(url);
 
                     BindDropdown(cmbTaluk, WebReader.xmlToDynamic(response, "taluk"), "Display", "Value");
-                    cmbTaluk.SelectedIndexChanged += new EventHandler(cmbTaluk_SelectedIndexChanged);
+                    cmbTaluk.SelectedIndexChanged += new EventHandler(cmbTaluk_SelectedIndexChanged);                  
                 }
+                waitForm.Close();
             }
             catch (Exception ex)
             {
@@ -1477,7 +1474,7 @@ namespace AdangalApp
         {
 
             try
-            {
+            {                
                 LogMessage($"STEP-3 - Raedy For Print - Started");
                 List<KeyValue> onlineData;
 
@@ -1527,7 +1524,6 @@ namespace AdangalApp
                 }
 
                 cmbItemToBeAdded.DataSource = notInPdfToBeAdded;
-
                 LogMessage($"STEP-3 - Raedy For Print - Completed");
             }
             catch (Exception ex)
@@ -1589,23 +1585,18 @@ namespace AdangalApp
         {
             try
             {
+                waitForm.Show(this);
                 LogMessage($"GETTING LAND COUNT - FROM INTERNET");
                 var totalLandList = new List<KeyValue>();
 
                 if (loadedFile.VillageCode > 0)
                 {
-                    //var disValue = ((ComboData)ddlDistrict.SelectedItem).Value;
-                    //var talValue = ((ComboData)cmbTaluk.SelectedItem).Value;
-                    //var villageValue = ((ComboData)cmbVillages.SelectedItem).Value.ToString().PadLeft(3, '0');
-
                     var disValue = loadedFile.MaavattamCode;
                     var talValue = loadedFile.VattamCode;
                     var villageValue = loadedFile.VillageCode.ToString().PadLeft(3, '0');
 
                     var url = "";
-
                     int continueCheckCount = 0;
-
                     int maxSearch = 200;
 
                     for (int i = 1; i <= maxSearch; i++)
@@ -1639,6 +1630,7 @@ namespace AdangalApp
                     }
                 }
                 LogMessage($"GETTING LAND COUNT - COMPLETED");
+                waitForm.Close();
                 return DataAccess.SubdivToJson(totalLandList);
 
             }
@@ -1696,8 +1688,6 @@ namespace AdangalApp
         {
             try
             {
-                
-
                 LogMessage($"STEP-2 - Started - First time Load");
                 if (txtVattam.Text.Trim() == empty || txtFirka.Text.Trim() == empty || txtVaruvai.Text.Trim() == empty)
                 {
@@ -1739,7 +1729,6 @@ namespace AdangalApp
                     DataAccess.SaveWholeLandList(WholeLandList);
                     DataAccess.SaveAdangalOriginalList(AdangalOriginalList);
                     EnableReadyForNew();
-
                     ProcessFullReport();
                     
                     DataAccess.AddNewLoadedFile(loadedFile);
@@ -1881,7 +1870,6 @@ namespace AdangalApp
             var selectedMaavatta = (ddlDistrict.SelectedItem as ComboData);
             var selectedVattam = (cmbTaluk.SelectedItem as ComboData);
             var selectedVillage = (cmbVillages.SelectedItem as ComboData);
-
             
             var isVillageSelected = (selectedVillage.Value != -1);
             loadedFile.MaavattamNameTamil = selectedMaavatta.DisplayTamil;
@@ -1889,7 +1877,6 @@ namespace AdangalApp
             loadedFile.VattamCode = selectedVattam.Value;
             loadedFile.VillageName = selectedVillage.Display;
             loadedFile.VillageCode = selectedVillage.Value;
-            
 
             var canEnable = (isVillageSelected && ddlListType.SelectedValue.ToInt32() == 4);
 
@@ -1904,6 +1891,8 @@ namespace AdangalApp
         {
             if ((ddlListType.SelectedValue.ToInt32() == 4))
                 BindDropdown(cmbFulfilled, GetFullfilledOptions(), "Caption", "Id");
+
+            btnReady.Enabled = true;
         }
         private void cmbFulfilled_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2209,6 +2198,7 @@ namespace AdangalApp
 
         private void chkEdit_CheckedChanged(object sender, EventArgs e)
         {
+            waitForm.Show(this);
             var visibility = !chkEdit.Checked;
 
             dataGridView1.Columns["NilaAlavaiEn"].Visible = visibility;
@@ -2218,6 +2208,8 @@ namespace AdangalApp
             dataGridView1.Columns["Anupathaarar"].Visible = visibility;
             dataGridView1.Columns["LandType"].Visible = visibility;
             dataGridView1.Columns["IsFullfilled"].Visible = visibility;
+
+            waitForm.Close();
         }
 
 
@@ -2234,11 +2226,13 @@ namespace AdangalApp
             return content;
 
         }
-        
 
-        private void button2_Click(object sender, EventArgs e)
+
+        private void btnLoadProcessed_Click(object sender, EventArgs e)
         {
             if (ddlProcessedFiles.SelectedIndex == 0) return;
+
+            waitForm.Show(this);
             LogMessage($"STEP-2 - Started - Existing file Load");
             PreLoadFile();
 
@@ -2250,25 +2244,32 @@ namespace AdangalApp
             WholeLandList = DataAccess.GetWholeLandList();
 
             ProcessFullReport();
-
             EnableReadyForExist();
             LogMessage($"STEP-2 - Completed - Existing file Load");
+            waitForm.Close();
         }
 
         private void ddlProcessedFiles_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlProcessedFiles.SelectedIndex == 0)
             {
-                btnLoad.Enabled = false;
+                btnLoadProcessed.Enabled = false;
                 return;
             }
 
             // Load Basic Details
             loadedFile = (ddlProcessedFiles.SelectedItem as LoadedFileDetail);
-            
-            btnLoad.Enabled = true;
+
+            btnLoadProcessed.Enabled = true;
             SetVillage();
         }
+
+        private void ddlListType_DataSourceChanged(object sender, EventArgs e)
+        {
+                ddlListType.Enabled = isTestingMode;
+        }
+
+        
     }
 
 }

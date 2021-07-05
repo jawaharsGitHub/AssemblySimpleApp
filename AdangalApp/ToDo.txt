@@ -44,18 +44,18 @@ tamil panchayat name.
 create shortcut.
 Save pattalist and landdetail as json?Save pattalist and landdetail as json?
 patta and dropdown numbers not correct while reloading.
+offline mode working. -- preload all files and copied into pen drive and share.
+thread process for long running process...please wait loading...percentage message...
+product and publisher name
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 ***********************************************************
-offline mode working. -- preload all files and copied into pen drive and share.
-product and publisher name
+logic for production and testing purpose.
 replace an existing exe (replace or overwrite)
 softcopy version & hardcopy version 
 STAGE-1:File loaded STAGE-2:LOADED WITHOU ISSUE STAGE-3:CORRECTED TO 100%
-thread process for long running process...
-please wait loading...
-percentage message...
 grid paging - should be same as adangal book.
+order by survey and sub div no.
 ***********************************************************
 total is only for nansai, punsai and maanaavari not for porambokku
 extra data : ??? -> siru guru vivasaayi -> owner(father name) -> land details and count.
