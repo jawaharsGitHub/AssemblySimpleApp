@@ -86,6 +86,8 @@ namespace AdangalApp
             try
             {
                 InitializeComponent();
+                SetTestMode();
+                BindDropdown(cmbFulfilled, GetFullfilledOptions(), "Caption", "Id");
                 prepasali = (pasali - 1);
 
                 var logFolder = AdangalConstant.CreateAndReadPath($"Log");
@@ -663,9 +665,8 @@ namespace AdangalApp
                 BindDropdown(ddlLandTypes, GetLandTypes(), "Caption", "Id");
                 BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
                 
-                
                 LoadSurveyAndSubdiv();
-
+                btnReady.Enabled = cmbFulfilled.Enabled = true;
 
                 if (fr.IsFullProcessed == false)
                 {
@@ -694,27 +695,39 @@ namespace AdangalApp
         private List<KeyValue> GetFullfilledOptions()
         {
             return new List<KeyValue> {
-
                 new KeyValue() { Id = -1, Caption = "--select--" },
                 new KeyValue() { Id = 1, Caption = "Fullfilled" },
                 new KeyValue() { Id = 2, Caption = "Extend" },
-                new KeyValue() { Id = 3, Caption = "SomeDots" },
-                new KeyValue() { Id = 4, Caption = "No Change" },
-                new KeyValue() { Id = 5, Caption = "Added" },
-                new KeyValue() { Id = 6, Caption = "Deleted" },
-                new KeyValue() { Id = 7, Caption = "Error" },
-                new KeyValue() { Id = 8, Caption = "Name Issue" }
             };
 
         }
+
+        private List<KeyValue> GetLandStatusOptions()
+        {
+            var landStatusSource = new List<KeyValue>();
+            landStatusSource.Add(new KeyValue() { Caption = "--select--", Id = -1 });
+
+            foreach (LandType rt in Enum.GetValues(typeof(LandStatus)))
+            {
+                landStatusSource.Add(new KeyValue()
+                {
+                    Caption = Enum.GetName(typeof(LandStatus), rt),
+                    Id = (int)rt
+                });
+            }
+
+            landStatusSource.Add(new KeyValue() { Id = 6, Caption = "SomeDots" });
+            return landStatusSource;
+        }
+
         private List<KeyValue> GetLandTypes()
         {
             var landTypeSource = new List<KeyValue>();
+            landTypeSource.Add(new KeyValue() { Caption = "--select--", Id = -2 });
             landTypeSource.Add(new KeyValue() { Caption = "ALL", Id = -1 });
 
             foreach (LandType rt in Enum.GetValues(typeof(LandType)))
             {
-
                 landTypeSource.Add(new KeyValue()
                 {
                     Caption = Enum.GetName(typeof(LandType), rt),
@@ -1001,25 +1014,66 @@ namespace AdangalApp
 
 
         }
-        private void ddlPattaTypes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var selected = ddlListType.SelectedValue.ToInt32();
-
-            if (selected == 1)
-                dataGridView1.DataSource = pattaList.Where(w => (int)w.PattaType == ddlPattaTypes.SelectedValue.ToInt32()).ToList();
-            else if (selected == 2)
-                dataGridView1.DataSource = pattaList.Where(w => (int)w.PattaType == ddlPattaTypes.SelectedValue.ToInt32()).ToList()
-                                            .SelectMany(x => x.landDetails.Select(y => y)).ToList();
-        }
+        
         private void ddlLandTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (ddlLandTypes.SelectedIndex == 0) return;
             if (fullAdangalFromjson != null)
             {
-                if (((KeyValue)ddlLandTypes.SelectedItem).Id == -1)
+                waitForm.Show(this);
+                var selItem = (ddlLandTypes.SelectedItem as KeyValue);
+                if (selItem.Id == -1)
                     dataGridView1.DataSource = fullAdangalFromjson.OrderBy(o => o.NilaAlavaiEn).ToList();
                 else
-                    dataGridView1.DataSource = fullAdangalFromjson.Where(w => (int)w.LandType == ddlLandTypes.SelectedValue.ToInt32()).OrderBy(o => o.NilaAlavaiEn).ToList();
+                    dataGridView1.DataSource = fullAdangalFromjson.Where(w => (int)w.LandType == selItem.Id).OrderBy(o => o.NilaAlavaiEn).ToList();
+                waitForm.Close();
             }
+        }
+
+        private void cmbLandStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbLandStatus.SelectedIndex == 0) return;
+            if (fullAdangalFromjson != null)
+            {
+                var selItem = (cmbLandStatus.SelectedItem as KeyValue);
+
+                waitForm.Show(this);
+                if (selItem.Id == 6)
+                    dataGridView1.DataSource = GetAdangalForSomeDots();
+                if (selItem.Id == 1) // Deleted
+                    dataGridView1.DataSource = DataAccess.GetDeletedAdangal();
+                else
+                    dataGridView1.DataSource = fullAdangalFromjson.Where(w => (int)w.LandStatus == selItem.Id).OrderBy(o => o.NilaAlavaiEn).ToList();
+
+                waitForm.Close();
+            }
+        }
+
+        private void ddlPattaTypes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //if (ddlPattaTypes.SelectedIndex == 0) return;
+            //waitForm.Show(this);
+            //var selected = ddlListType.SelectedValue.ToInt32();
+
+            //if (selected == 1)
+            //    dataGridView1.DataSource = pattaList.Where(w => (int)w.PattaType == ddlPattaTypes.SelectedValue.ToInt32()).ToList();
+            //else if (selected == 2)
+            //    dataGridView1.DataSource = pattaList.Where(w => (int)w.PattaType == ddlPattaTypes.SelectedValue.ToInt32()).ToList()
+            //                                .SelectMany(x => x.landDetails.Select(y => y)).ToList();
+
+            //waitForm.Close();
+
+            if (ddlPattaTypes.SelectedIndex == 0) return;
+            waitForm.Show(this);
+            var selected = ddlPattaTypes.SelectedItem as KeyValue;
+
+            //if (selected == 1)
+                dataGridView1.DataSource = pattaList.Where(w => (int)w.PattaType == selected.Id).ToList();
+            //else if (selected == 2)
+            //    dataGridView1.DataSource = pattaList.Where(w => (int)w.PattaType == ddlPattaTypes.SelectedValue.ToInt32()).ToList()
+            //                                .SelectMany(x => x.landDetails.Select(y => y)).ToList();
+
+            waitForm.Close();
         }
         private string GetLeftEmptyPage()
         {
@@ -1741,7 +1795,7 @@ namespace AdangalApp
                     LogMessage($"Some file missing in the folder?");
                     MessageBox.Show("Some file missing in the folder?");
                 }
-                btnReady.Enabled = true;
+                
                 LogMessage($"STEP-2 - Completed - - First time Load");
                 
 
@@ -1881,39 +1935,38 @@ namespace AdangalApp
             var canEnable = (isVillageSelected && ddlListType.SelectedValue.ToInt32() == 4);
 
             if (canEnable)
-                BindDropdown(cmbFulfilled, GetFullfilledOptions(), "Caption", "Id");
+                BindDropdown(cmbLandStatus, GetLandStatusOptions(), "Caption", "Id");
 
             btnReadFile.Enabled = isVillageSelected;
-
         }
 
         private void EnableReadyForExist()
         {
             if ((ddlListType.SelectedValue.ToInt32() == 4))
-                BindDropdown(cmbFulfilled, GetFullfilledOptions(), "Caption", "Id");
+                BindDropdown(cmbLandStatus, GetLandStatusOptions(), "Caption", "Id");
+        }
 
-            btnReady.Enabled = true;
+        private void SetTestMode()
+        {
+            ddlPattaTypes.Visible = cmbFulfilled.Visible = lblPattaCheck.Visible = isTestingMode;
         }
         private void cmbFulfilled_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cmbFulfilled.SelectedIndex == 0) return;
             var selValue = ((KeyValue)cmbFulfilled.SelectedItem).Id;
 
-            if (selValue == -1) return;
+            //if (selValue == -1) return;
 
+            waitForm.Show(this);
             if (selValue == 1) dataGridView1.DataSource = GetFullfilledAdangal();
             else if (selValue == 2) dataGridView1.DataSource = GetExtendedAdangal();
-            else if (selValue == 3) dataGridView1.DataSource = GetAdangalForSomeDots();
-            else if (selValue == 4) dataGridView1.DataSource = GetAdangalForStatus(LandStatus.NoChange);
-            else if (selValue == 5) dataGridView1.DataSource = GetAdangalForStatus(LandStatus.Added);
-            else if (selValue == 6) dataGridView1.DataSource = DataAccess.GetDeletedAdangal();
-            else if (selValue == 7) dataGridView1.DataSource = GetAdangalForStatus(LandStatus.Error);
-            else if (selValue == 8) dataGridView1.DataSource = GetAdangalForStatus(LandStatus.WrongName);
+            waitForm.Close();
         }
 
-        private List<Adangal> GetAdangalForStatus(LandStatus ls)
-        {
-            return fullAdangalFromjson.Where(w => w.LandStatus == ls).ToList();
-        }
+        //private List<Adangal> GetAdangalForStatus(LandStatus ls)
+        //{
+        //    return fullAdangalFromjson.Where(w => w.LandStatus == ls).ToList();
+        //}
 
         private List<Adangal> GetAdangalForSomeDots()
         {
@@ -2268,7 +2321,6 @@ namespace AdangalApp
         {
                 ddlListType.Enabled = isTestingMode;
         }
-
         
     }
 

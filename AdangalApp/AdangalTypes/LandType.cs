@@ -14,6 +14,6 @@ namespace AdangalApp.AdangalTypes
         Porambokku,
         PorambokkuError,        
         Zero,
-        NameError
+        //NameError
     }
 }

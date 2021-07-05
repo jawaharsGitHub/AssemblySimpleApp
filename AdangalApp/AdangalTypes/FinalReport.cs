@@ -16,6 +16,8 @@ namespace AdangalApp.AdangalTypes
             GroupedData = new List<object>();
 
             int processedCount = 0;
+            
+
             foreach (PattaType rt in Enum.GetValues(typeof(PattaType)))
             {
                 singleData = new KeyValue();
@@ -26,17 +28,18 @@ namespace AdangalApp.AdangalTypes
                 var lst = PattaList.Where(c => c.PattaType == rt).ToList();
 
                 singleData.CaptionData = lst.Select(s => s.FullData).ToList();
-                GroupedData.Add(lst);
+                GroupedData.Add(lst);                
                 CountData.Add(singleData);
             }
+            
 
             IsFullProcessed = (PattaList.Count == processedCount);
-
             NotProcessedData = (PattaList.Count - processedCount);
 
             CountData.Add(new KeyValue("Total Record", PattaList.Count));
             CountData.Add(new KeyValue("Not Processed", NotProcessedData));
-            // CountData.Add(new KeyValue("Have Some Dots", PattaList.Any(a => a.landDetails.Any(s => s.))
+            CountData = CountData.OrderByDescending(o => o.Value).ToList();
+            CountData.Insert(0, new KeyValue() { Value = -1, Caption = "--select--" });
         }
         public List<KeyValue> CountData { get; set; }
 

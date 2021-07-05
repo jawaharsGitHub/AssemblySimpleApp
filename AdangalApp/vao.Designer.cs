@@ -63,9 +63,10 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.cmbLandStatus = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblPattaCheck = new System.Windows.Forms.Label();
             this.txtAddNewSurvey = new System.Windows.Forms.TextBox();
             this.btnAddNewSurvey = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -128,7 +129,7 @@
             // 
             this.ddlPattaTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlPattaTypes.FormattingEnabled = true;
-            this.ddlPattaTypes.Location = new System.Drawing.Point(17, 35);
+            this.ddlPattaTypes.Location = new System.Drawing.Point(17, 123);
             this.ddlPattaTypes.Name = "ddlPattaTypes";
             this.ddlPattaTypes.Size = new System.Drawing.Size(186, 21);
             this.ddlPattaTypes.TabIndex = 12;
@@ -149,9 +150,9 @@
             // 
             this.ddlLandTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlLandTypes.FormattingEnabled = true;
-            this.ddlLandTypes.Location = new System.Drawing.Point(17, 78);
+            this.ddlLandTypes.Location = new System.Drawing.Point(14, 32);
             this.ddlLandTypes.Name = "ddlLandTypes";
-            this.ddlLandTypes.Size = new System.Drawing.Size(121, 21);
+            this.ddlLandTypes.Size = new System.Drawing.Size(186, 21);
             this.ddlLandTypes.TabIndex = 13;
             this.ddlLandTypes.SelectedIndexChanged += new System.EventHandler(this.ddlLandTypes_SelectedIndexChanged);
             // 
@@ -169,7 +170,7 @@
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(36, 412);
+            this.lblMessage.Location = new System.Drawing.Point(644, 406);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(66, 13);
             this.lblMessage.TabIndex = 8;
@@ -236,7 +237,7 @@
             this.cmbVillages.FormattingEnabled = true;
             this.cmbVillages.Location = new System.Drawing.Point(19, 186);
             this.cmbVillages.Name = "cmbVillages";
-            this.cmbVillages.Size = new System.Drawing.Size(225, 21);
+            this.cmbVillages.Size = new System.Drawing.Size(190, 21);
             this.cmbVillages.TabIndex = 4;
             this.cmbVillages.SelectedIndexChanged += new System.EventHandler(this.cmbVillages_SelectedIndexChanged_1);
             // 
@@ -265,10 +266,11 @@
             // cmbFulfilled
             // 
             this.cmbFulfilled.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFulfilled.Enabled = false;
             this.cmbFulfilled.FormattingEnabled = true;
-            this.cmbFulfilled.Location = new System.Drawing.Point(17, 124);
+            this.cmbFulfilled.Location = new System.Drawing.Point(17, 404);
             this.cmbFulfilled.Name = "cmbFulfilled";
-            this.cmbFulfilled.Size = new System.Drawing.Size(121, 21);
+            this.cmbFulfilled.Size = new System.Drawing.Size(145, 21);
             this.cmbFulfilled.TabIndex = 14;
             this.cmbFulfilled.SelectedIndexChanged += new System.EventHandler(this.cmbFulfilled_SelectedIndexChanged);
             // 
@@ -296,9 +298,9 @@
             this.groupBox1.Controls.Add(this.cmbVillages);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(17, -2);
+            this.groupBox1.Location = new System.Drawing.Point(17, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(253, 242);
+            this.groupBox1.Size = new System.Drawing.Size(231, 242);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "STEP-1";
@@ -307,7 +309,7 @@
             // 
             this.txtVaruvai.Location = new System.Drawing.Point(19, 210);
             this.txtVaruvai.Name = "txtVaruvai";
-            this.txtVaruvai.Size = new System.Drawing.Size(184, 20);
+            this.txtVaruvai.Size = new System.Drawing.Size(190, 20);
             this.txtVaruvai.TabIndex = 5;
             // 
             // txtVattam
@@ -321,7 +323,7 @@
             // 
             this.txtFirka.Location = new System.Drawing.Point(23, 140);
             this.txtFirka.Name = "txtFirka";
-            this.txtFirka.Size = new System.Drawing.Size(100, 20);
+            this.txtFirka.Size = new System.Drawing.Size(185, 20);
             this.txtFirka.TabIndex = 3;
             // 
             // label4
@@ -342,7 +344,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(17, 255);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(253, 121);
+            this.groupBox2.Size = new System.Drawing.Size(231, 121);
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "STEP-2";
@@ -373,7 +375,7 @@
             this.ddlProcessedFiles.FormattingEnabled = true;
             this.ddlProcessedFiles.Location = new System.Drawing.Point(11, 61);
             this.ddlProcessedFiles.Name = "ddlProcessedFiles";
-            this.ddlProcessedFiles.Size = new System.Drawing.Size(213, 21);
+            this.ddlProcessedFiles.Size = new System.Drawing.Size(198, 21);
             this.ddlProcessedFiles.TabIndex = 7;
             this.ddlProcessedFiles.SelectedIndexChanged += new System.EventHandler(this.ddlProcessedFiles_SelectedIndexChanged);
             // 
@@ -382,7 +384,7 @@
             this.groupBox3.Controls.Add(this.btnReady);
             this.groupBox3.Controls.Add(this.btnStatusCheck);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(294, 4);
+            this.groupBox3.Location = new System.Drawing.Point(285, 4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(178, 236);
             this.groupBox3.TabIndex = 19;
@@ -405,7 +407,7 @@
             this.groupBox4.Controls.Add(this.btnAdd);
             this.groupBox4.Controls.Add(this.btnDelete);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(294, 255);
+            this.groupBox4.Location = new System.Drawing.Point(285, 255);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(178, 79);
             this.groupBox4.TabIndex = 23;
@@ -437,46 +439,56 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.cmbLandStatus);
             this.groupBox6.Controls.Add(this.label8);
             this.groupBox6.Controls.Add(this.label7);
-            this.groupBox6.Controls.Add(this.label6);
+            this.groupBox6.Controls.Add(this.lblPattaCheck);
             this.groupBox6.Controls.Add(this.ddlPattaTypes);
             this.groupBox6.Controls.Add(this.ddlLandTypes);
-            this.groupBox6.Controls.Add(this.cmbFulfilled);
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.Location = new System.Drawing.Point(485, 13);
+            this.groupBox6.Location = new System.Drawing.Point(485, 4);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(234, 153);
             this.groupBox6.TabIndex = 25;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "STEP-5";
             // 
+            // cmbLandStatus
+            // 
+            this.cmbLandStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLandStatus.FormattingEnabled = true;
+            this.cmbLandStatus.Location = new System.Drawing.Point(14, 80);
+            this.cmbLandStatus.Name = "cmbLandStatus";
+            this.cmbLandStatus.Size = new System.Drawing.Size(186, 21);
+            this.cmbLandStatus.TabIndex = 33;
+            this.cmbLandStatus.SelectedIndexChanged += new System.EventHandler(this.cmbLandStatus_SelectedIndexChanged);
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(17, 107);
+            this.label8.Location = new System.Drawing.Point(14, 61);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(67, 13);
+            this.label8.Size = new System.Drawing.Size(98, 13);
             this.label8.TabIndex = 35;
-            this.label8.Text = "Other Check";
+            this.label8.Text = "Land Status Check";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(17, 62);
+            this.label7.Location = new System.Drawing.Point(14, 16);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(83, 13);
+            this.label7.Size = new System.Drawing.Size(92, 13);
             this.label7.TabIndex = 34;
-            this.label7.Text = "Adangal  Check";
+            this.label7.Text = "Land Type Check";
             // 
-            // label6
+            // lblPattaCheck
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(17, 19);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 13);
-            this.label6.TabIndex = 33;
-            this.label6.Text = "Patta Check";
+            this.lblPattaCheck.AutoSize = true;
+            this.lblPattaCheck.Location = new System.Drawing.Point(17, 107);
+            this.lblPattaCheck.Name = "lblPattaCheck";
+            this.lblPattaCheck.Size = new System.Drawing.Size(66, 13);
+            this.lblPattaCheck.TabIndex = 33;
+            this.lblPattaCheck.Text = "Patta Check";
             // 
             // txtAddNewSurvey
             // 
@@ -577,6 +589,7 @@
             this.Controls.Add(this.lblSurveyNo);
             this.Controls.Add(this.cmbSubdivNo);
             this.Controls.Add(this.cmbSurveyNo);
+            this.Controls.Add(this.cmbFulfilled);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
@@ -659,8 +672,9 @@
         private System.Windows.Forms.TextBox txtVattam;
         private System.Windows.Forms.Button btnPercentage;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblPattaCheck;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnLoadProcessed;
+        private System.Windows.Forms.ComboBox cmbLandStatus;
     }
 }
