@@ -18,6 +18,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml;
+using System.Threading;
 
 namespace AdangalApp
 {
@@ -75,6 +76,11 @@ namespace AdangalApp
         public static string ChittaTxtFile = ConfigurationManager.AppSettings["ChittaTxtFile"];
         public static string AregFile = ConfigurationManager.AppSettings["AregFile"];
 
+        List<KeyValue> wrongName = new List<KeyValue>();
+        List<KeyValue> correctName = new List<KeyValue>();
+        List<string> pdfPattaNo = new List<string>();
+        List<string> txtPattaNo = new List<string>();
+
         public vao()
         {
             try
@@ -123,6 +129,11 @@ namespace AdangalApp
                 LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
         }
+
+
+
+
+
         private void BindDropdown(ComboBox cb, object dataSource, string DisplayMember, string ValueMember)
         {
             try
@@ -130,20 +141,14 @@ namespace AdangalApp
                 cb.DisplayMember = DisplayMember;
                 cb.ValueMember = ValueMember;
                 cb.DataSource = dataSource;
-                
-
             }
             catch (Exception ex)
             {
                 LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
-
         }
 
-        List<KeyValue> wrongName = new List<KeyValue>();
-        List<KeyValue> correctName = new List<KeyValue>();
-        List<string> pdfPattaNo = new List<string>();
-        List<string> txtPattaNo = new List<string>();
+        
 
         private void ProcessNames()
         {
@@ -308,12 +313,13 @@ namespace AdangalApp
                 pdfvillageName = data.First().Split(':')[3].Trim();
                 SetVillage();
 
+                waitForm.Close();
                 if (DialogResult.No == MessageBox.Show($"{pdfvillageName} village?", "Confirm", MessageBoxButtons.YesNo))
                 {
                     LogMessage($"REJECTED THE  VILLAGE PDF FILE- {pdfvillageName}");
                     return;
                 }
-
+                waitForm.Show(this);
 
                 data.RemoveAt(0); // first is empty data
 
@@ -1683,10 +1689,15 @@ namespace AdangalApp
 
             
         }
+
+        WaitWnd.WaitWndFun waitForm = new WaitWnd.WaitWndFun();
+
         private void btnReadFile_Click(object sender, EventArgs e)
         {
             try
             {
+                
+
                 LogMessage($"STEP-2 - Started - First time Load");
                 if (txtVattam.Text.Trim() == empty || txtFirka.Text.Trim() == empty || txtVaruvai.Text.Trim() == empty)
                 {
@@ -1709,6 +1720,7 @@ namespace AdangalApp
 
                 if (haveValidFiles(reqFileFolderPath))
                 {
+                    waitForm.Show(this);
                     LogMessage($"You have all required valid files to proceed process.");
                     pattaList = new PattaList();
 
@@ -1729,27 +1741,11 @@ namespace AdangalApp
                     EnableReadyForNew();
 
                     ProcessFullReport();
-                    //EnableReady();
-                    //LoadSurveyAndSubdiv();
-
-                    //loadedFile = new LoadedFileDetail()
-                    //{
-                    //    FirkaName = txtFirka.Text.Trim(),
-                    //    MaavattamName = loadedFile.MaavattamName,
-                    //    MaavattamNameTamil = loadedFile.MaavattamNameTamil,
-                    //    MaavattamCode = loadedFile.MaavattamCode,
-                    //    VattamName = loadedFile.VattamName,
-                    //    VattamNameTamil = loadedFile.VattamNameTamil,
-                    //    VattamCode = loadedFile.VattamCode,
-                    //    VillageNameTamil = loadedFile.VillageNameTamil,
-                    //    VillageName = loadedFile.VillageName,
-                    //    VillageCode = loadedFile.VillageCode
-
-                    //};
-
+                    
                     DataAccess.AddNewLoadedFile(loadedFile);
                     LogMessage($"Add/Update Loaded File.");
-                    
+                    waitForm.Close();
+
                 }
                 else
                 {
@@ -1758,6 +1754,7 @@ namespace AdangalApp
                 }
                 btnReady.Enabled = true;
                 LogMessage($"STEP-2 - Completed - - First time Load");
+                
 
             }
             catch (Exception ex)
@@ -1818,6 +1815,10 @@ namespace AdangalApp
             {
                 MessageBox.Show($"File already processed for {loadedFile.VillageName}, Please use that?", "Already Exist", MessageBoxButtons.OK);
                 btnReadFile.Enabled = false;
+            }
+            else
+            {
+                btnReadFile.Enabled = true;
             }
         }
 

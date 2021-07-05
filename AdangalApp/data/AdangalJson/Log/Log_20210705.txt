@@ -1,0 +1,209 @@
+2021-07-05 02:02:07,688 [1] DEBUG - =================Monday, 05 July 2021 02:02:07========================
+2021-07-05 02:02:07,704 [1] DEBUG - STARTED....
+2021-07-05 02:02:12,463 [1] DEBUG - STEP-1 STARTED
+2021-07-05 02:02:14,570 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-05 02:02:20,035 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-05 02:02:22,574 [1] DEBUG - STEP - 1 - Village: 22-ACHUNTHANVAYAL
+2021-07-05 02:04:03,536 [1] DEBUG - =================Monday, 05 July 2021 02:04:03========================
+2021-07-05 02:04:03,552 [1] DEBUG - STARTED....
+2021-07-05 02:04:08,717 [1] DEBUG - STEP-1 STARTED
+2021-07-05 02:04:09,354 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-05 02:04:16,151 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-05 02:04:22,846 [1] DEBUG - STEP - 1 - Village: 22-ACHUNTHANVAYAL
+2021-07-05 02:04:25,829 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-05 02:04:37,758 [1] DEBUG - STEP-2 - VattamNameTamil: dsad FirkaName: sdd VillageNameTamil: sdsa
+2021-07-05 02:04:37,939 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-05 02:04:37,968 [1] DEBUG - STEP-2 - Completed - - First time Load
+2021-07-05 02:04:47,966 [5] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Achunthavayal\Chitta_Report-1.pdf
+2021-07-05 02:04:47,981 [5] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 2:04:47 AM
+2021-07-05 02:04:48,567 [5] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Achunthavayal\Chitta_Report-1.pdf
+2021-07-05 02:04:50,538 [5] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 2:04:50 AM
+2021-07-05 02:04:55,053 [5] DEBUG - COMPLETED PROCESSING CHITTA PDF FILE @ 2:04:55 AM
+2021-07-05 02:04:55,210 [5] DEBUG - STARTED PROCESSING AREG PDF FILE @ 2:04:55 AM
+2021-07-05 02:04:58,002 [5] DEBUG - COMPLETED PROCESSING AREG PDF FILE @ 2:04:58 AM
+2021-07-05 02:17:01,707 [1] DEBUG - =================Monday, 05 July 2021 02:17:01========================
+2021-07-05 02:17:01,800 [1] DEBUG - STARTED....
+2021-07-05 02:17:05,558 [1] DEBUG - STEP-1 STARTED
+2021-07-05 02:17:06,558 [1] DEBUG - STEP-1 - Maavattam: 12-Coimbatore
+2021-07-05 02:17:13,183 [1] DEBUG - STEP-1 - Vattam: 15-Anaimalai
+2021-07-05 02:17:20,477 [1] DEBUG - STEP - 1 - Village: 28-ANGALAKURICHI.
+2021-07-05 02:17:23,866 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-05 02:17:34,037 [1] DEBUG - STEP-2 - VattamNameTamil: gfj FirkaName: jhkj VillageNameTamil: hghj
+2021-07-05 02:17:34,218 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-05 09:42:49,206 [1] DEBUG - STARTED FULL REPORT
+2021-07-05 09:42:49,311 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-05 09:42:59,994 [5] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Achunthavayal\Chitta_Report-1.pdf
+2021-07-05 09:42:59,994 [5] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 9:42:59 AM
+2021-07-05 09:43:00,291 [5] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Achunthavayal\Chitta_Report-1.pdf
+2021-07-05 09:43:12,009 [1] DEBUG - Error @ LoadSurveyAndSubdiv - System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.GroupedEnumerable`3..ctor(IEnumerable`1 source, Func`2 keySelector, Func`2 elementSelector, IEqualityComparer`1 comparer)
+   at System.Linq.Enumerable.GroupBy[TSource,TKey](IEnumerable`1 source, Func`2 keySelector)
+   at AdangalApp.vao.LoadSurveyAndSubdiv() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1904
+2021-07-05 09:43:12,009 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-05 09:43:12,012 [1] DEBUG - STEP-2 - Completed - - First time Load
+2021-07-05 09:43:30,356 [1] DEBUG - =================Monday, 05 July 2021 09:43:30========================
+2021-07-05 09:43:30,372 [1] DEBUG - STARTED....
+2021-07-05 09:43:37,495 [1] DEBUG - STEP-1 STARTED
+2021-07-05 09:43:38,010 [1] DEBUG - STEP-1 STARTED
+2021-07-05 09:43:40,230 [1] DEBUG - No Internet Connection!
+2021-07-05 09:43:41,927 [1] DEBUG - No Internet Connection!
+2021-07-05 09:44:29,040 [1] DEBUG - STEP-1 STARTED
+2021-07-05 09:44:29,930 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-05 09:44:35,938 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-05 09:44:42,735 [1] DEBUG - STEP - 1 - Village: 22-ACHUNTHANVAYAL
+2021-07-05 09:44:45,539 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-05 09:45:25,900 [1] DEBUG - STEP-2 - VattamNameTamil: dasd FirkaName: asda VillageNameTamil: sada
+2021-07-05 09:45:26,084 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-05 09:45:31,254 [1] DEBUG - STARTED FULL REPORT
+2021-07-05 09:45:31,305 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-05 09:45:34,895 [1] DEBUG - Error @ LoadSurveyAndSubdiv - System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.GroupedEnumerable`3..ctor(IEnumerable`1 source, Func`2 keySelector, Func`2 elementSelector, IEqualityComparer`1 comparer)
+   at System.Linq.Enumerable.GroupBy[TSource,TKey](IEnumerable`1 source, Func`2 keySelector)
+   at AdangalApp.vao.LoadSurveyAndSubdiv() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1904
+2021-07-05 09:45:34,895 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-05 09:45:34,908 [1] DEBUG - STEP-2 - Completed - - First time Load
+2021-07-05 09:45:37,725 [6] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Achunthavayal\Chitta_Report-1.pdf
+2021-07-05 09:45:37,741 [6] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 9:45:37 AM
+2021-07-05 09:45:38,032 [6] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Achunthavayal\Chitta_Report-1.pdf
+2021-07-05 09:45:44,920 [6] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 9:45:44 AM
+2021-07-05 09:45:49,536 [6] DEBUG - COMPLETED PROCESSING CHITTA PDF FILE @ 9:45:49 AM
+2021-07-05 09:45:49,677 [6] DEBUG - STARTED PROCESSING AREG PDF FILE @ 9:45:49 AM
+2021-07-05 09:45:51,880 [6] DEBUG - COMPLETED PROCESSING AREG PDF FILE @ 9:45:51 AM
+2021-07-05 09:45:52,411 [6] DEBUG - Add/Update Loaded File.
+2021-07-05 09:46:54,934 [1] DEBUG - =================Monday, 05 July 2021 09:46:54========================
+2021-07-05 09:46:54,950 [1] DEBUG - STARTED....
+2021-07-05 10:52:13,251 [1] DEBUG - =================Monday, 05 July 2021 10:52:13========================
+2021-07-05 10:52:13,315 [1] DEBUG - STARTED....
+2021-07-05 10:52:20,615 [1] DEBUG - STEP-1 STARTED
+2021-07-05 10:52:22,207 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-05 10:52:32,144 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-05 10:52:34,384 [1] DEBUG - STEP - 1 - Village: 22-ACHUNTHANVAYAL
+2021-07-05 10:53:35,014 [1] DEBUG - =================Monday, 05 July 2021 10:53:35========================
+2021-07-05 10:53:35,036 [1] DEBUG - STARTED....
+2021-07-05 10:53:38,287 [1] DEBUG - STEP-1 STARTED
+2021-07-05 10:53:38,610 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-05 10:53:43,079 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-05 10:53:45,152 [1] DEBUG - STEP - 1 - Village: 22-ACHUNTHANVAYAL
+2021-07-05 10:53:51,252 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-05 10:59:21,544 [1] DEBUG - =================Monday, 05 July 2021 10:59:21========================
+2021-07-05 10:59:21,561 [1] DEBUG - STARTED....
+2021-07-05 10:59:24,100 [1] DEBUG - STEP-1 STARTED
+2021-07-05 10:59:24,984 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-05 10:59:32,131 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-05 10:59:34,039 [1] DEBUG - STEP - 1 - Village: 22-ACHUNTHANVAYAL
+2021-07-05 10:59:40,389 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-05 11:00:45,003 [1] DEBUG - =================Monday, 05 July 2021 11:00:44========================
+2021-07-05 11:00:45,022 [1] DEBUG - STARTED....
+2021-07-05 11:00:47,742 [1] DEBUG - STEP-1 STARTED
+2021-07-05 11:00:49,011 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-05 11:00:56,674 [1] DEBUG - STEP-1 STARTED
+2021-07-05 11:00:56,894 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-05 11:01:00,676 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-05 11:01:01,291 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-05 11:01:03,656 [1] DEBUG - STEP - 1 - Village: 22-ACHUNTHANVAYAL
+2021-07-05 11:01:10,491 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-05 11:17:46,951 [1] DEBUG - =================Monday, 05 July 2021 11:17:46========================
+2021-07-05 11:17:47,473 [1] DEBUG - STARTED....
+2021-07-05 11:17:52,616 [1] DEBUG - STEP-1 STARTED
+2021-07-05 11:17:56,647 [1] DEBUG - STEP-1 - Maavattam: 2-Chennai
+2021-07-05 11:18:01,571 [1] DEBUG - Error @ ddlDistrict_SelectedIndexChanged - System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at Common.WebReader.xmlToDynamic(String xml, String key) in F:\AssemblySimpleApp\Common\WebReader.cs:line 71
+   at AdangalApp.vao.ddlDistrict_SelectedIndexChanged(Object sender, EventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1434
+2021-07-05 11:18:03,595 [1] DEBUG - STEP-1 STARTED
+2021-07-05 11:18:03,761 [1] DEBUG - STEP-1 - Maavattam: 18-Cuddalore
+2021-07-05 11:18:06,036 [1] DEBUG - STEP-1 - Vattam: 3-Chidambaram
+2021-07-05 11:18:11,480 [1] DEBUG - STEP - 1 - Village: 69-Agaranallur
+2021-07-05 11:18:14,798 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-05 11:20:03,870 [1] DEBUG - =================Monday, 05 July 2021 11:20:03========================
+2021-07-05 11:20:03,890 [1] DEBUG - STARTED....
+2021-07-05 11:20:06,592 [1] DEBUG - STEP-1 STARTED
+2021-07-05 11:20:07,052 [1] DEBUG - STEP-1 - Maavattam: 35-Sengalpattu
+2021-07-05 11:20:11,085 [1] DEBUG - STEP-1 - Vattam: 4-Chengalpattu
+2021-07-05 11:20:16,038 [1] DEBUG - STEP - 1 - Village: 216-AMMANAMBAKKAM
+2021-07-05 11:20:19,664 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-05 11:20:37,240 [1] DEBUG - STEP-2 - VattamNameTamil: jkh FirkaName: kjm VillageNameTamil: kjk
+2021-07-05 11:20:38,533 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-05 11:20:45,744 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Achunthavayal\Chitta_Report-1.pdf
+2021-07-05 11:20:45,750 [1] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 11:20:45 AM
+2021-07-05 11:20:46,107 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Achunthavayal\Chitta_Report-1.pdf
+2021-07-05 11:20:47,698 [1] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 11:20:47 AM
+2021-07-05 11:20:52,195 [1] DEBUG - COMPLETED PROCESSING CHITTA PDF FILE @ 11:20:52 AM
+2021-07-05 11:20:52,313 [1] DEBUG - STARTED PROCESSING AREG PDF FILE @ 11:20:52 AM
+2021-07-05 11:20:54,329 [1] DEBUG - COMPLETED PROCESSING AREG PDF FILE @ 11:20:54 AM
+2021-07-05 11:20:54,702 [1] DEBUG - STARTED FULL REPORT
+2021-07-05 11:21:17,139 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-05 11:21:17,276 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-05 11:21:17,284 [1] DEBUG - Add/Update Loaded File.
+2021-07-05 11:21:17,293 [1] DEBUG - STEP-2 - Completed - - First time Load
+2021-07-05 11:23:06,500 [1] DEBUG - =================Monday, 05 July 2021 11:23:06========================
+2021-07-05 11:23:06,523 [1] DEBUG - STARTED....
+2021-07-05 11:23:09,898 [1] DEBUG - STEP-1 STARTED
+2021-07-05 11:23:10,283 [1] DEBUG - STEP-1 - Maavattam: 3-Kanchipuram
+2021-07-05 11:23:13,701 [1] DEBUG - Error @ ddlDistrict_SelectedIndexChanged - System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at Common.WebReader.xmlToDynamic(String xml, String key) in F:\AssemblySimpleApp\Common\WebReader.cs:line 71
+   at AdangalApp.vao.ddlDistrict_SelectedIndexChanged(Object sender, EventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1435
+2021-07-05 11:23:15,709 [1] DEBUG - STEP-1 STARTED
+2021-07-05 11:23:15,829 [1] DEBUG - STEP-1 - Maavattam: 30-Kanniyakumari
+2021-07-05 11:23:17,578 [1] DEBUG - STEP-1 - Vattam: 6-Killiyoor
+2021-07-05 11:23:23,835 [1] DEBUG - STEP - 1 - Village: 2-ADAIKAKUZHI
+2021-07-05 11:23:26,391 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-05 11:23:32,873 [1] DEBUG - STEP-2 - VattamNameTamil: hgh FirkaName: jn VillageNameTamil: kj
+2021-07-05 11:23:32,883 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-05 11:23:37,924 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Achunthavayal\Chitta_Report-1.pdf
+2021-07-05 11:23:37,929 [1] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 11:23:37 AM
+2021-07-05 11:23:38,194 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Achunthavayal\Chitta_Report-1.pdf
+2021-07-05 11:23:43,373 [1] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 11:23:43 AM
+2021-07-05 11:23:47,531 [1] DEBUG - COMPLETED PROCESSING CHITTA PDF FILE @ 11:23:47 AM
+2021-07-05 11:23:47,576 [1] DEBUG - STARTED PROCESSING AREG PDF FILE @ 11:23:47 AM
+2021-07-05 11:23:49,325 [1] DEBUG - COMPLETED PROCESSING AREG PDF FILE @ 11:23:49 AM
+2021-07-05 11:23:49,645 [1] DEBUG - STARTED FULL REPORT
+2021-07-05 11:24:09,719 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-05 11:24:09,768 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-05 11:24:09,838 [1] DEBUG - Add/Update Loaded File.
+2021-07-05 11:24:09,851 [1] DEBUG - STEP-2 - Completed - - First time Load
+2021-07-05 11:31:42,656 [1] DEBUG - =================Monday, 05 July 2021 11:31:42========================
+2021-07-05 11:31:42,677 [1] DEBUG - STARTED....
+2021-07-05 11:33:26,416 [1] DEBUG - STEP-1 STARTED
+2021-07-05 11:33:28,466 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-05 11:33:30,613 [1] DEBUG - STEP-1 STARTED
+2021-07-05 11:33:31,292 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-05 11:33:34,905 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-05 11:33:35,566 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-05 11:33:38,659 [1] DEBUG - STEP - 1 - Village: 22-ACHUNTHANVAYAL
+2021-07-05 11:34:18,109 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-05 11:34:32,033 [1] DEBUG - STEP-2 - VattamNameTamil: ???????????? FirkaName: ???????????? VillageNameTamil: ??????????????
+2021-07-05 11:34:32,230 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-05 11:34:38,347 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Achunthavayal\Chitta_Report-1.pdf
+2021-07-05 11:34:38,353 [1] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 11:34:38 AM
+2021-07-05 11:34:38,624 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Achunthavayal\Chitta_Report-1.pdf
+2021-07-05 11:34:45,295 [1] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 11:34:45 AM
+2021-07-05 11:34:49,653 [1] DEBUG - COMPLETED PROCESSING CHITTA PDF FILE @ 11:34:49 AM
+2021-07-05 11:34:49,750 [1] DEBUG - STARTED PROCESSING AREG PDF FILE @ 11:34:49 AM
+2021-07-05 11:34:51,621 [1] DEBUG - COMPLETED PROCESSING AREG PDF FILE @ 11:34:51 AM
+2021-07-05 11:34:51,998 [1] DEBUG - STARTED FULL REPORT
+2021-07-05 11:35:12,363 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-05 11:35:12,427 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-05 11:35:12,482 [1] DEBUG - Add/Update Loaded File.
+2021-07-05 11:35:12,494 [1] DEBUG - STEP-2 - Completed - - First time Load
+2021-07-05 11:35:22,025 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-05 11:35:22,146 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-05 11:35:22,246 [1] DEBUG - ready: False STATUS: ADD:315
+DELETE:87
+NAME ISSUE :155
+SomeDots ISSUE :7
+
+2021-07-05 11:35:22,302 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-05 11:35:40,727 [1] DEBUG - STEP-4 - Add Started
+2021-07-05 11:35:40,731 [1] DEBUG - STEP-4 - Add Completed
+2021-07-05 11:39:59,912 [1] DEBUG - =================Monday, 05 July 2021 11:39:59========================
+2021-07-05 11:39:59,927 [1] DEBUG - STARTED....
+2021-07-05 11:40:09,482 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-05 11:40:10,700 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-05 11:40:22,804 [1] DEBUG - STARTED FULL REPORT
+2021-07-05 11:40:34,388 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-05 11:40:34,542 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-05 11:40:34,566 [1] DEBUG - STEP-2 - Completed - Existing file Load
