@@ -25,6 +25,7 @@ namespace WaitWnd
         /// <param name="parent">父窗体</param>
         public void Show(Form parent)
         {
+            if (loadthread != null) return;
             loadthread = new Thread(new ParameterizedThreadStart(LoadingProcessEx));
             loadthread.Start(parent);
         }

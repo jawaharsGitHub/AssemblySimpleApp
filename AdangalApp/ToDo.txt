@@ -1,4 +1,4 @@
-
+﻿
 =======================================================================================
 move all my projects into single assembly - so that easy to use all common methods.
 ========================================================================================
@@ -49,7 +49,31 @@ thread process for long running process...please wait loading...percentage messa
 product and publisher name
 logic for production and testing purpose.
 password patterns
+group purambokku data by its name. - not mandatory!
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+***********************************************************
+total is only for nansai, punsai and maanaavari not for porambokku 
+Data analysis Report
+	patta count
+	land count(survey no)
+	siru guru vivasaayi
+	peru vivasaayi
+	siru guru vivasaayi -> owner(father name) -> land details and count.
+
+nansai = nansai + punsai
+
+option to edit and update the total land parappu (if needed)
+Log in panchayat level
+modal popup for progress bar?
+govt building table
+summary table.
+upadte first time percentage of a file.
+தற்காலதலைவர்‌ யாதவசமூகத்திற்குபாத்தியமான வகை
+parallel working especially - for getting subdiv details.
+pagenumber tracking for all land types.
+
+
 
 ***********************************************************
 softcopy version & hardcopy version
@@ -58,12 +82,7 @@ grid paging - should be same as adangal book.
 order by survey and sub div no.
 replace an existing exe (replace or overwrite)
 ***********************************************************
-total is only for nansai, punsai and maanaavari not for porambokku
-extra data : ??? -> siru guru vivasaayi -> owner(father name) -> land details and count.
-nansai = nansai + punsai
-group purambokku data by its name.
-option to edit and update the total land parappu (if needed)
-***********************************************************
+
 
 provide correct space in header. (top header space and alignment.)
 right and left table height should be same
@@ -80,11 +99,7 @@ Manual Work:
 	Add missed survey details
 	Update name
 Surveyor name
-Data analysis Report
-	patta count
-	land count(survey no)
-	siru guru vivasaayi
-	peru vivasaayi
+
 
 Total sama panthi kanakku
 Correction history table.
@@ -134,6 +149,17 @@ STEPS:
 4) overrite exe (or delete an existing)
 5) while print - margin  0 , A4, scale default, portrait etc.,
 folder structure...
+
+manual check:
+	look at percentage.
+	delete
+	wrong name correction
+	porambaokku correction
+	add new (bulk update)
+	manual full check.
+
+
+
 
 
 

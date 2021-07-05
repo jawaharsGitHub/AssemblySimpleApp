@@ -168,26 +168,35 @@ namespace AdangalApp
 
         public static List<Adangal> GetNameIssueAdangal()
         {
-            return ReadFileAsObjects<Adangal>(JsonPath).Where(w => w.LandStatus == LandStatus.WrongName).ToList();
+            return ReadFileAsObjects<Adangal>(JsonPath).Where(w => w.LandStatus == LandStatus.WrongName).OrderBy(o => o.CorrectNameRow).ToList();
         }
 
-        public static List<Adangal> UpdateOwnerName(Adangal adn, string ownerName)
+        public static void UpdateOwnerName(Adangal adn, string ownerName)
         {
             var data = ReadFileAsObjects<Adangal>(JsonPath);
 
             var existingName = data.Where(w => w.PattaEn == adn.PattaEn).First().OwnerName;
 
-            data.Where(w => w.LandStatus == LandStatus.WrongName &&
-                            w.OwnerName == existingName).ToList().ForEach(fe =>
-                            {
-                                fe.OwnerName = ownerName;
-                                fe.LandStatus = LandStatus.NameEdited;
-                            });
+            if (adn.PattaEn == 0)
+            {
+                data.Where(w => w.LandType == LandType.Porambokku &&
+                                w.NilaAlavaiEn == adn.NilaAlavaiEn && w.UtpirivuEn == adn.UtpirivuEn).ToList().ForEach(fe =>
+                                {
+                                    fe.OwnerName = ownerName;
+                                    fe.LandStatus = LandStatus.NameEdited;
+                                });
+            }
+            else
+            {
+                data.Where(w => w.LandStatus == LandStatus.WrongName &&
+                                w.OwnerName == existingName && w.PattaEn == adn.PattaEn).ToList().ForEach(fe =>
+                                {
+                                    fe.OwnerName = ownerName;
+                                    fe.LandStatus = LandStatus.NameEdited;
+                                });
+            }
 
             WriteObjectsToFile(data, JsonPath);
-
-            return GetNameIssueAdangal();
-
         }
 
 
@@ -225,7 +234,9 @@ namespace AdangalApp
             var filePath = GetTablePath("RevDistrict");
             try
             {
-                return ReadFileAsObjects<ComboData>(filePath);
+                var data =  ReadFileAsObjects<ComboData>(filePath).OrderBy(o => o.Display).ToList();
+                data.Insert(0, new ComboData() { Display = "--select--", Value = -1 });
+                return data;
             }
             catch (Exception ex)
             {

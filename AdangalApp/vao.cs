@@ -99,7 +99,6 @@ namespace AdangalApp
                     BindDropdown(ddlDistrict, DataAccess.GetDistricts(), "Display", "Value");
 
                     var processedFiles = DataAccess.GetLoadedFile();
-
                     if (processedFiles.Count > 0)
                         BindDropdown(ddlProcessedFiles, processedFiles, "VillageName", "VillageCode");
 
@@ -164,6 +163,8 @@ namespace AdangalApp
                                             w.Contains("Page") == false &&
                                             w.Contains("Taluk") == false &&
                                             w.Contains("District") == false &&
+                                            w.Contains("| | | ற றவு") == false &&
+                                            w.Contains(pdfvillageName) == false &&
                                             w.Trim() != empty).ToList();
 
                 List<KeyValue> nameAndPatta = new List<KeyValue>();
@@ -316,13 +317,9 @@ namespace AdangalApp
                 pdfvillageName = data.First().Split(':')[3].Trim();
                 SetVillage();
 
-                waitForm.Close();
-                if (DialogResult.No == MessageBox.Show($"{pdfvillageName} village?", "Confirm", MessageBoxButtons.YesNo))
-                {
-                    LogMessage($"REJECTED THE  VILLAGE PDF FILE- {pdfvillageName}");
-                    return;
-                }
-                waitForm.Show(this);
+                //waitForm.Close();
+                
+                //waitForm.Show(this);
 
                 data.RemoveAt(0); // first is empty data
 
@@ -632,7 +629,7 @@ namespace AdangalApp
                         if (correctArr.Contains(wrongArr[ci]))
                             flagCount += 1;
                     }
-                    perc = correctArr.Count.PercentageBtwNo(flagCount);
+                    perc = correctArr.Count.PercentageBtwIntNo(flagCount);
                 }
 
                 if (perc >= 60 || isSame)
@@ -665,9 +662,10 @@ namespace AdangalApp
                 BindDropdown(ddlPattaTypes, fr.CountData, "DisplayMember", "Id");
                 BindDropdown(ddlLandTypes, GetLandTypes(), "DisplayMember", "Id");
                 BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
-                
+                BindDropdown(cmbLandStatus, GetLandStatusOptions(), "DisplayMember", "Id");
+
                 LoadSurveyAndSubdiv();
-                btnReady.Enabled = cmbFulfilled.Enabled = true;
+                btnReady.Enabled = cmbFulfilled.Enabled = chkEdit.Enabled = true;
 
                 if (fr.IsFullProcessed == false)
                 {
@@ -1029,6 +1027,12 @@ namespace AdangalApp
                     dataGridView1.DataSource = fullAdangalFromjson.OrderBy(o => o.NilaAlavaiEn).ToList();
                 else
                     dataGridView1.DataSource = fullAdangalFromjson.Where(w => (int)w.LandType == selItem.Id).OrderBy(o => o.NilaAlavaiEn).ToList();
+
+                if (selItem.Id == 3 || selItem.Id == 4) // porambokku/porambokku error
+                {
+                    GridColumnVisibility(true);
+                    dataGridView1.Columns["OwnerName"].DisplayIndex = 3;
+                }
                 waitForm.Close();
             }
         }
@@ -1482,20 +1486,32 @@ namespace AdangalApp
             }
 
         }
+
+        int ddlValue = 0;
         private void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
-            {            
-                LogMessage("STEP-1 STARTED");
-                if (NoInternet()) return;
+            {
+                var selItem = (ComboData)ddlDistrict.SelectedItem;
+                if (ddlDistrict.SelectedIndex == 0 || ddlValue == selItem.Value) 
+                    return;
 
+                ddlValue = selItem.Value;
                 waitForm.Show(this);
+                LogMessage("STEP-1 STARTED");
+                if (NoInternet())
+                {
+                    waitForm.Close();
+                    return;
+                }
+
+                
                 if (ddlDistrict.SelectedItem != null)
                 {                  
-                    var selValue = ((ComboData)ddlDistrict.SelectedItem).Value;
-                    LogMessage($"STEP-1 - Maavattam: {selValue}-{((ComboData)ddlDistrict.SelectedItem).Display}");
+                    
+                    LogMessage($"STEP-1 - Maavattam: {selItem.Value}-{selItem.Display}");
 
-                    var url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=taluk&districtCode={selValue}";
+                    var url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=taluk&districtCode={selItem.Value}";
                     var response = WebReader.CallHttpWebRequest(url);
 
                     BindDropdown(cmbTaluk, WebReader.xmlToDynamic(response, "taluk"), "Display", "Value");
@@ -1577,8 +1593,9 @@ namespace AdangalApp
 
                 btnDelete.Enabled = (notInOnlineToBeDeleted.Count > 0);
                 btnAdd.Enabled = (notInPdfToBeAdded.Count > 0);
+                var wrongNameCount = fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.WrongName).Count();
 
-                var percCompleted = onlineData.Count.PercentageBtwNo(actualLandDetails.Count - notInOnlineToBeDeleted.Count);
+                var percCompleted = onlineData.Count.PercentageBtwDecNo(actualLandDetails.Count - (notInOnlineToBeDeleted.Count+ wrongNameCount), 2);
 
                 btnPercentage.Text = percCompleted.ToString() + "%";
 
@@ -1680,6 +1697,16 @@ namespace AdangalApp
                     lblPattaCheckError.Visible = true;
                     result = false;
                 }
+
+                var needChangePorambokku = fullAdangalFromjson.Where(w => w.LandType == LandType.Porambokku || w.LandType == LandType.Porambokku)
+                    .Where(w => w.LandStatus == LandStatus.NoChange).Count();
+
+                if (needChangePorambokku > 0)
+                {
+                    status.AppendLine($"Porambokku: {needChangePorambokku}");
+                    result = false;
+                }
+
 
                 LogMessage($"ready: {result} STATUS: {status.ToString()}");
             }
@@ -1830,6 +1857,16 @@ namespace AdangalApp
 
                     chittaContent = chittaPdfFile.GetPdfContent();
                     LoadPdfPattaNo();
+                    //**
+                    var pattaas = chittaContent.Replace("பட்டா எண்    :", "$"); //("பட்டா எண்", "$");
+                    var data = pattaas.Split('$').ToList();
+                    pdfvillageName = data.First().Split(':')[3].Trim();
+                    if (DialogResult.No == MessageBox.Show($"{pdfvillageName} village?", "Confirm", MessageBoxButtons.YesNo))
+                    {
+                        LogMessage($"REJECTED THE  VILLAGE PDF FILE- {pdfvillageName}");
+                        return;
+                    }
+                    //**
                     ProcessNames();
                     ProcessChittaFile(); // Nansai, Pun, Maa,
                     ProcessAreg();  // Puram
@@ -1980,24 +2017,24 @@ namespace AdangalApp
             var selectedVattam = (cmbTaluk.SelectedItem as ComboData);
             var selectedVillage = (cmbVillages.SelectedItem as ComboData);
             
-            var isVillageSelected = (selectedVillage.Value != -1);
+            //var isVillageSelected = (selectedVillage.Value != -1);
             loadedFile.MaavattamNameTamil = selectedMaavatta.DisplayTamil;
             loadedFile.MaavattamCode = selectedMaavatta.Value;
             loadedFile.VattamCode = selectedVattam.Value;
             loadedFile.VillageName = selectedVillage.Display;
             loadedFile.VillageCode = selectedVillage.Value;
 
-            var canEnable = (isVillageSelected && ddlListType.SelectedValue.ToInt32() == 4);
+            //var canEnable = (isVillageSelected && ddlListType.SelectedValue.ToInt32() == 4);
 
-            if (canEnable)
-                BindDropdown(cmbLandStatus, GetLandStatusOptions(), "DisplayMember", "Id");
+            //if (canEnable)
+                //BindDropdown(cmbLandStatus, GetLandStatusOptions(), "DisplayMember", "Id");
 
-            btnReadFile.Enabled = isVillageSelected;
+            //btnReadFile.Enabled = isVillageSelected;
         }
 
         private void EnableReadyForExist()
         {
-            if ((ddlListType.SelectedValue.ToInt32() == 4))
+            //if ((ddlListType.SelectedValue.ToInt32() == 4))
                 BindDropdown(cmbLandStatus, GetLandStatusOptions(), "DisplayMember", "Id");
         }
 
@@ -2068,7 +2105,7 @@ namespace AdangalApp
         {
             try
             {
-                if (ddlListType.SelectedIndex != 3) return;
+                if (ddlListType.SelectedIndex != 0) return;
 
                 if (IsEnterKey == false)
                 {
@@ -2091,7 +2128,10 @@ namespace AdangalApp
                 // Edit Name
                 if (owningColumnName == "OwnerName")
                 {
-                    dataGridView1.DataSource = DataAccess.UpdateOwnerName(cus, cellValue);
+                    //dataGridView1.DataSource = DataAccess.UpdateOwnerName(cus, cellValue);
+                    DataAccess.UpdateOwnerName(cus, cellValue);
+                    EditSuccess();
+                    button2_Click_1(null, null);
                 }
 
             }
@@ -2306,6 +2346,13 @@ namespace AdangalApp
             waitForm.Show(this);
             var visibility = !chkEdit.Checked;
 
+            dataGridView1.Columns["CorrectNameRow"].DisplayIndex = 0;
+            GridColumnVisibility(visibility);
+            waitForm.Close();
+        }
+
+        private void GridColumnVisibility(bool visibility)
+        {
             dataGridView1.Columns["NilaAlavaiEn"].Visible = visibility;
             dataGridView1.Columns["UtpirivuEn"].Visible = visibility;
             dataGridView1.Columns["Parappu"].Visible = visibility;
@@ -2313,8 +2360,6 @@ namespace AdangalApp
             dataGridView1.Columns["Anupathaarar"].Visible = visibility;
             dataGridView1.Columns["LandType"].Visible = visibility;
             dataGridView1.Columns["IsFullfilled"].Visible = visibility;
-
-            waitForm.Close();
         }
 
 
@@ -2349,7 +2394,7 @@ namespace AdangalApp
             WholeLandList = DataAccess.GetWholeLandList();
 
             ProcessFullReport();
-            EnableReadyForExist();
+            //EnableReadyForExist();
             LogMessage($"STEP-2 - Completed - Existing file Load");
             waitForm.Close();
         }

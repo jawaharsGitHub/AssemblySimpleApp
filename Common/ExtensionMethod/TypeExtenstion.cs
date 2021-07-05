@@ -91,9 +91,14 @@ namespace Common.ExtensionMethod
             return list[indexOf == list.Count - 1 ? 0 : indexOf + 1];
         }
 
-        public static int PercentageBtwNo(this int bigValue, int smallValue)
+        public static int PercentageBtwIntNo(this int bigValue, int smallValue)
         {
             return Convert.ToInt32(Math.Round(Convert.ToDecimal(smallValue) / Convert.ToDecimal(bigValue) * 100));
+        }
+
+        public static decimal PercentageBtwDecNo(this int bigValue, int smallValue, int decimalRoundCount)
+        {
+            return Math.Round((Convert.ToDecimal(smallValue) / Convert.ToDecimal(bigValue)) * 100, decimalRoundCount);
         }
 
         public static bool IsOdd(this int value)

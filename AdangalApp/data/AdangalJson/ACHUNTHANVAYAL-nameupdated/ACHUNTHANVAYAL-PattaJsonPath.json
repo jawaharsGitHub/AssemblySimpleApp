@@ -3703,7 +3703,7 @@
     "landDetails": [
       {
         "PattaEn": 84,
-        "OwnerName": "முத்தையா தந்‌ைத",
+        "OwnerName": " கார்த்திைக சொமி",
         "PulaEn": "19-5",
         "SurveyNo": 19,
         "Subdivision": "5",
@@ -3716,16 +3716,16 @@
         "LandType": 2,
         "Parappu": "1.15.00",
         "Theervai": "3.18",
-        "Anupathaarar": "84 - முத்தையா தந்‌ைத",
-        "LandStatus": 0,
-        "CorrectNameRow": "  1  முத்தையா  தந்‌ைத  கார்த்திகை சாமி "
+        "Anupathaarar": "84 -  கார்த்திைக சொமி",
+        "LandStatus": 4,
+        "CorrectNameRow": "\fACHUTHANVAYAL"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "முத்தையா தந்‌ைத",
+    "PattaTharar": " கார்த்திைக சொமி",
     "FullData": "   84\r\nமுத்ைதயா தந்தைத கார்த்திைக சொமி\r\n1 1\r\n1 19     - 5 0 - 0.00 0.00 0 - 0.00 0 1 - 15.00 3.18 \u0000 \u0000 \u0000 \u0000 \u0000 \u0000 \u0000 \u0000\r\nTOTAL 0 - 0.00 0.00 0 - 0.00 0.00 1 - 15.00 3.18",
-    "NameRow": "  1  முத்தையா  தந்‌ைத  கார்த்திகை சாமி "
+    "NameRow": "\fACHUTHANVAYAL"
   },
   {
     "PattaEn": 85,
@@ -6177,7 +6177,7 @@
     "landDetails": [
       {
         "PattaEn": 149,
-        "OwnerName": "சந்தவழியான்‌",
+        "OwnerName": " செந்ததவழியான",
         "PulaEn": "105-2A",
         "SurveyNo": 105,
         "Subdivision": "2A",
@@ -6190,16 +6190,16 @@
         "LandType": 0,
         "Parappu": "0.60.50",
         "Theervai": "12.70",
-        "Anupathaarar": "149 - சந்தவழியான்‌",
-        "LandStatus": 0,
-        "CorrectNameRow": " fia  ஆறுமுகம்‌ கோன்‌  தந்த சந்தவழியான்‌"
+        "Anupathaarar": "149 -  செந்ததவழியான",
+        "LandStatus": 4,
+        "CorrectNameRow": "\fACHUTHANVAYAL"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "சந்தவழியான்‌",
+    "PattaTharar": " செந்ததவழியான",
     "FullData": "   149\r\nஆறுமுகம ோகான தந்தைத செந்ததவழியான\r\n1 1\r\n1 105    - 2A 0 - 60.50 12.70 0 - 0.00 0.00 0 - 0.00 0.00\r\nTOTAL 0 - 60.50 12.70 0 - 0.00 0.00 0 - 0.00 0.00",
-    "NameRow": " fia  ஆறுமுகம்‌ கோன்‌  தந்த சந்தவழியான்‌"
+    "NameRow": "\fACHUTHANVAYAL"
   },
   {
     "PattaEn": 150,
@@ -12472,7 +12472,7 @@
     "landDetails": [
       {
         "PattaEn": 314,
-        "OwnerName": "தந்‌ைத முத்து",
+        "OwnerName": " முத்து மைணி",
         "PulaEn": "137-4B",
         "SurveyNo": 137,
         "Subdivision": "4B",
@@ -12485,16 +12485,16 @@
         "LandType": 0,
         "Parappu": "0.42.50",
         "Theervai": "8.93",
-        "Anupathaarar": "314 - தந்‌ைத முத்து",
-        "LandStatus": 0,
-        "CorrectNameRow": " 1 ட  ஆண்டி  தந்‌ைத  முத்து மணி "
+        "Anupathaarar": "314 -  முத்து மைணி",
+        "LandStatus": 4,
+        "CorrectNameRow": "\fACHUTHANVAYAL"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "தந்‌ைத முத்து",
+    "PattaTharar": " முத்து மைணி",
     "FullData": "   314\r\nஆண்டி தந்தைத முத்து மைணி\r\n1 1\r\n1 137    - 4B 0 - 42.50 8.93 0 - 0.00 0.00 0 - 0.00 0.00\r\nTOTAL 0 - 42.50 8.93 0 - 0.00 0.00 0 - 0.00 0.00",
-    "NameRow": " 1 ட  ஆண்டி  தந்‌ைத  முத்து மணி "
+    "NameRow": "\fACHUTHANVAYAL"
   },
   {
     "PattaEn": 315,
@@ -13146,7 +13146,7 @@
     "landDetails": [
       {
         "PattaEn": 333,
-        "OwnerName": "ராக்கம்மாள்‌",
+        "OwnerName": " ராக்ககமமைாள",
         "PulaEn": "18-3E",
         "SurveyNo": 18,
         "Subdivision": "3E",
@@ -13159,16 +13159,16 @@
         "LandType": 2,
         "Parappu": "0.10.50",
         "Theervai": "0.29",
-        "Anupathaarar": "333 - ராக்கம்மாள்‌",
-        "LandStatus": 0,
-        "CorrectNameRow": "  1  அழகர்‌ கோன்‌  கணவன்‌  ராக்கம்மாள்‌ "
+        "Anupathaarar": "333 -  ராக்ககமமைாள",
+        "LandStatus": 4,
+        "CorrectNameRow": "ACHUTHANVAYAL"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "ராக்கம்மாள்‌",
+    "PattaTharar": " ராக்ககமமைாள",
     "FullData": "   333\r\nஅழகர் ோகான கணவன ராக்ககமமைாள\r\n1 1\r\n1 18     - 3E 0 - 0.00 0.00 0 - 0.00 0 0 - 10.50 0.29\r\nTOTAL 0 - 0.00 0.00 0 - 0.00 0.00 0 - 10.50 0.29",
-    "NameRow": "  1  அழகர்‌ கோன்‌  கணவன்‌  ராக்கம்மாள்‌ "
+    "NameRow": "ACHUTHANVAYAL"
   },
   {
     "PattaEn": 334,
@@ -14475,7 +14475,7 @@
     "landDetails": [
       {
         "PattaEn": 369,
-        "OwnerName": "வீரையாக்கோன்‌",
+        "OwnerName": " வீைரயாக்கோகான",
         "PulaEn": "21-1C",
         "SurveyNo": 21,
         "Subdivision": "1C",
@@ -14488,16 +14488,16 @@
         "LandType": 2,
         "Parappu": "0.54.00",
         "Theervai": "1.50",
-        "Anupathaarar": "369 - வீரையாக்கோன்‌",
-        "LandStatus": 0,
-        "CorrectNameRow": "  1  கிழவக்கோன்‌  தந்‌ைத  வீரையாக்கோன்‌ "
+        "Anupathaarar": "369 -  வீைரயாக்கோகான",
+        "LandStatus": 4,
+        "CorrectNameRow": "\fACHUTHANVAYAL"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "வீரையாக்கோன்‌",
+    "PattaTharar": " வீைரயாக்கோகான",
     "FullData": "   369\r\nகிழவக்கோகான தந்தைத வீைரயாக்கோகான\r\n1 1\r\n1 21     - 1C 0 - 0.00 0.00 0 - 0.00 0 0 - 54.00 1.50\r\nTOTAL 0 - 0.00 0.00 0 - 0.00 0.00 0 - 54.00 1.50",
-    "NameRow": "  1  கிழவக்கோன்‌  தந்‌ைத  வீரையாக்கோன்‌ "
+    "NameRow": "\fACHUTHANVAYAL"
   },
   {
     "PattaEn": 370,
@@ -16239,7 +16239,7 @@
     "landDetails": [
       {
         "PattaEn": 422,
-        "OwnerName": "யசோதை வகை",
+        "OwnerName": " யோசொைத வகை",
         "PulaEn": "11-",
         "SurveyNo": 11,
         "Subdivision": "-",
@@ -16252,13 +16252,13 @@
         "LandType": 2,
         "Parappu": "2.28.00",
         "Theervai": "6.32",
-        "Anupathaarar": "422 - யசோதை வகை",
-        "LandStatus": 0,
-        "CorrectNameRow": "1 1 கருங்கு கோன்‌ கணவன்‌ யசோதை"
+        "Anupathaarar": "422 -  யோசொைத வகை",
+        "LandStatus": 4,
+        "CorrectNameRow": "ACHUTHANVAYAL"
       },
       {
         "PattaEn": 422,
-        "OwnerName": "யசோதை வகை",
+        "OwnerName": " யோசொைத வகை",
         "PulaEn": "10-3",
         "SurveyNo": 10,
         "Subdivision": "3",
@@ -16271,13 +16271,13 @@
         "LandType": 2,
         "Parappu": "1.92.50",
         "Theervai": "5.34",
-        "Anupathaarar": "422 - யசோதை வகை",
-        "LandStatus": 0,
-        "CorrectNameRow": "1 1 கருங்கு கோன்‌ கணவன்‌ யசோதை"
+        "Anupathaarar": "422 -  யோசொைத வகை",
+        "LandStatus": 4,
+        "CorrectNameRow": "ACHUTHANVAYAL"
       },
       {
         "PattaEn": 422,
-        "OwnerName": "யசோதை வகை",
+        "OwnerName": " யோசொைத வகை",
         "PulaEn": "36-5",
         "SurveyNo": 36,
         "Subdivision": "5",
@@ -16290,13 +16290,13 @@
         "LandType": 2,
         "Parappu": "0.44.00",
         "Theervai": "1.21",
-        "Anupathaarar": "422 - யசோதை வகை",
-        "LandStatus": 0,
-        "CorrectNameRow": "1 1 கருங்கு கோன்‌ கணவன்‌ யசோதை"
+        "Anupathaarar": "422 -  யோசொைத வகை",
+        "LandStatus": 4,
+        "CorrectNameRow": "ACHUTHANVAYAL"
       },
       {
         "PattaEn": 422,
-        "OwnerName": "யசோதை வகை",
+        "OwnerName": " யோசொைத வகை",
         "PulaEn": "20-1",
         "SurveyNo": 20,
         "Subdivision": "1",
@@ -16309,16 +16309,16 @@
         "LandType": 2,
         "Parappu": "1.63.50",
         "Theervai": "4.52",
-        "Anupathaarar": "422 - யசோதை வகை",
-        "LandStatus": 0,
-        "CorrectNameRow": "1 1 கருங்கு கோன்‌ கணவன்‌ யசோதை"
+        "Anupathaarar": "422 -  யோசொைத வகை",
+        "LandStatus": 4,
+        "CorrectNameRow": "ACHUTHANVAYAL"
       }
     ],
-    "PattaType": 2,
+    "PattaType": 12,
     "isVagai": true,
-    "PattaTharar": "யசோதை",
+    "PattaTharar": " யோசொைத",
     "FullData": "   422\r\nகருங்கு ோகான கணவன யோசொைத\r\n1 1\r\nஅங்கமுத்து ோகான கணவன கருங்கமமைாள\r\n2 2\r\nரத்தினம கணவன ோகாமைதி\r\n3 3\r\n1 11     - - 0 - 0.00 0.00 0 - 0.00 0 2 - 28.00 6.32\r\n2 10     - 3 0 - 0.00 0.00 0 - 0.00 0 1 - 92.50 5.34\r\n3 36     - 5 0 - 0.00 0.00 0 - 0.00 0 0 - 44.00 1.21 \u0000 \u0000 \u0000 \u0000 \u0000 \u0000 \u0000 \u0000\r\n4 20     - 1 0 - 0.00 0.00 0 - 0.00 0 1 - 63.50 4.52 \u0000 \u0000 \u0000 \u0000 \u0000 \u0000 \u0000 \u0000\r\nTOTAL 0 - 0.00 0.00 0 - 0.00 0.00 6 - 28.00 17.39",
-    "NameRow": "1 1 கருங்கு கோன்‌ கணவன்‌ யசோதை"
+    "NameRow": "ACHUTHANVAYAL"
   },
   {
     "PattaEn": 423,
@@ -17693,7 +17693,7 @@
     "landDetails": [
       {
         "PattaEn": 464,
-        "OwnerName": "சுப்பிரமணியன்‌",
+        "OwnerName": " சுப்பிரமைணியன",
         "PulaEn": "109-3",
         "SurveyNo": 109,
         "Subdivision": "3",
@@ -17706,16 +17706,16 @@
         "LandType": 0,
         "Parappu": "0.20.00",
         "Theervai": "4.17",
-        "Anupathaarar": "464 - சுப்பிரமணியன்‌",
-        "LandStatus": 0,
-        "CorrectNameRow": "  1  ஆறுமுகம்‌  தந்‌ைத  சுப்பிரமணியன்‌ "
+        "Anupathaarar": "464 -  சுப்பிரமைணியன",
+        "LandStatus": 4,
+        "CorrectNameRow": "\fACHUTHANVAYAL"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "சுப்பிரமணியன்‌",
+    "PattaTharar": " சுப்பிரமைணியன",
     "FullData": "   464\r\nஆறுமுகம தந்தைத சுப்பிரமைணியன\r\n1 1\r\n1 109    - 3 0 - 20.00 4.17 0 - 0.00 0.00 0 - 0.00 0.00\r\nTOTAL 0 - 20.00 4.17 0 - 0.00 0.00 0 - 0.00 0.00",
-    "NameRow": "  1  ஆறுமுகம்‌  தந்‌ைத  சுப்பிரமணியன்‌ "
+    "NameRow": "\fACHUTHANVAYAL"
   },
   {
     "PattaEn": 465,
@@ -18814,7 +18814,7 @@
     "landDetails": [
       {
         "PattaEn": 502,
-        "OwnerName": "பெர்க்மான்ஸ்‌",
+        "OwnerName": " ெபர்க்கமைானஸ்ட",
         "PulaEn": "76-28",
         "SurveyNo": 76,
         "Subdivision": "28",
@@ -18827,16 +18827,16 @@
         "LandType": 1,
         "Parappu": "0.1.00",
         "Theervai": "0.10",
-        "Anupathaarar": "502 - பெர்க்மான்ஸ்‌",
-        "LandStatus": 0,
-        "CorrectNameRow": "  1  திவ்வியநாதன்‌  தந்‌ைத  பெர்க்மான்ஸ்‌ "
+        "Anupathaarar": "502 -  ெபர்க்கமைானஸ்ட",
+        "LandStatus": 4,
+        "CorrectNameRow": "\fACHUTHANVAYAL"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "பெர்க்மான்ஸ்‌",
+    "PattaTharar": " ெபர்க்கமைானஸ்ட",
     "FullData": "   502\r\nதிவவியநாதன தந்தைத ெபர்க்கமைானஸ்ட\r\n1 1\r\n1 76     - 28 0 - 0.00 0.00 0 - 1.00 0.10 0 - 0.00 0.00\r\nTOTAL 0 - 0.00 0.00 0 - 1.00 0.10 0 - 0.00 0.00",
-    "NameRow": "  1  திவ்வியநாதன்‌  தந்‌ைத  பெர்க்மான்ஸ்‌ "
+    "NameRow": "\fACHUTHANVAYAL"
   },
   {
     "PattaEn": 503,
@@ -19394,7 +19394,7 @@
     "landDetails": [
       {
         "PattaEn": 522,
-        "OwnerName": "ம ராமமூர்த்தி",
+        "OwnerName": " மை ராமைமூர்த்தி",
         "PulaEn": "76-50",
         "SurveyNo": 76,
         "Subdivision": "50",
@@ -19407,16 +19407,16 @@
         "LandType": 1,
         "Parappu": "0.1.00",
         "Theervai": "0.10",
-        "Anupathaarar": "522 - ம ராமமூர்த்தி",
-        "LandStatus": 0,
-        "CorrectNameRow": "  1  மங்களசாமி  தந்‌ைத  ம ராமமூர்த்தி "
+        "Anupathaarar": "522 -  மை ராமைமூர்த்தி",
+        "LandStatus": 4,
+        "CorrectNameRow": "\fACHUTHANVAYAL"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "ம ராமமூர்த்தி",
+    "PattaTharar": " மை ராமைமூர்த்தி",
     "FullData": "   522\r\nமைங்களசொமி தந்தைத மை ராமைமூர்த்தி\r\n1 1\r\n1 76     - 50 0 - 0.00 0.00 0 - 1.00 0.10 0 - 0.00 0.00\r\nTOTAL 0 - 0.00 0.00 0 - 1.00 0.10 0 - 0.00 0.00",
-    "NameRow": "  1  மங்களசாமி  தந்‌ைத  ம ராமமூர்த்தி "
+    "NameRow": "\fACHUTHANVAYAL"
   },
   {
     "PattaEn": 523,
@@ -24965,7 +24965,7 @@
     "landDetails": [
       {
         "PattaEn": 705,
-        "OwnerName": "சரஸ்வதி",
+        "OwnerName": " செரஸ்டவதி",
         "PulaEn": "75-7G",
         "SurveyNo": 75,
         "Subdivision": "7G",
@@ -24978,16 +24978,16 @@
         "LandType": 1,
         "Parappu": "0.4.00",
         "Theervai": "0.17",
-        "Anupathaarar": "705 - சரஸ்வதி",
-        "LandStatus": 0,
-        "CorrectNameRow": "  1  இராசு  கணவன்‌ சரஸ்வதி "
+        "Anupathaarar": "705 -  செரஸ்டவதி",
+        "LandStatus": 4,
+        "CorrectNameRow": "   ற றவு"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "சரஸ்வதி",
+    "PattaTharar": " செரஸ்டவதி",
     "FullData": "   705\r\nஇராசு கணவன செரஸ்டவதி\r\n1 1\r\n1 75     - 7G 0 - 0.00 0.00 0 - 4.00 0.17 0 - 0.00 0.00\r\nTOTAL 0 - 0.00 0.00 0 - 4.00 0.17 0 - 0.00 0.00",
-    "NameRow": "  1  இராசு  கணவன்‌ சரஸ்வதி "
+    "NameRow": "   ற றவு"
   },
   {
     "PattaEn": 706,
@@ -25139,7 +25139,7 @@
     "landDetails": [
       {
         "PattaEn": 711,
-        "OwnerName": "நீதி",
+        "OwnerName": " நீதி",
         "PulaEn": "173-32",
         "SurveyNo": 173,
         "Subdivision": "32",
@@ -25152,16 +25152,16 @@
         "LandType": 0,
         "Parappu": "0.2.50",
         "Theervai": "0.42",
-        "Anupathaarar": "711 - நீதி",
-        "LandStatus": 0,
-        "CorrectNameRow": "   பாலன்நாடார்‌  தந்‌ைத நீதி"
+        "Anupathaarar": "711 -  நீதி",
+        "LandStatus": 4,
+        "CorrectNameRow": "\fACHUTHANVAYAL"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "நீதி",
+    "PattaTharar": " நீதி",
     "FullData": "   711\r\nபாலனநாடார் தந்தைத நீதி\r\n1 1\r\n1 173    - 32 0 - 2.50 0.42 0 - 0.00 0.00 0 - 0.00 0.00\r\nTOTAL 0 - 2.50 0.42 0 - 0.00 0.00 0 - 0.00 0.00",
-    "NameRow": "   பாலன்நாடார்‌  தந்‌ைத நீதி"
+    "NameRow": "\fACHUTHANVAYAL"
   },
   {
     "PattaEn": 712,
@@ -26362,7 +26362,7 @@
     "landDetails": [
       {
         "PattaEn": 725,
-        "OwnerName": "போஸ்‌",
+        "OwnerName": " ோபாஸ்ட",
         "PulaEn": "90-2A1",
         "SurveyNo": 90,
         "Subdivision": "2A1",
@@ -26375,13 +26375,13 @@
         "LandType": 1,
         "Parappu": "0.2.50",
         "Theervai": "0.10",
-        "Anupathaarar": "725 - போஸ்‌",
-        "LandStatus": 0,
-        "CorrectNameRow": "  1  அய்யாக்கண்ணு  தந்‌ைத  போஸ்‌ "
+        "Anupathaarar": "725 -  ோபாஸ்ட",
+        "LandStatus": 4,
+        "CorrectNameRow": "\fACHUTHANVAYAL"
       },
       {
         "PattaEn": 725,
-        "OwnerName": "போஸ்‌",
+        "OwnerName": " ோபாஸ்ட",
         "PulaEn": "50-5B",
         "SurveyNo": 50,
         "Subdivision": "5B",
@@ -26394,16 +26394,16 @@
         "LandType": 1,
         "Parappu": "0.27.50",
         "Theervai": "0.76",
-        "Anupathaarar": "725 - போஸ்‌",
-        "LandStatus": 0,
-        "CorrectNameRow": "  1  அய்யாக்கண்ணு  தந்‌ைத  போஸ்‌ "
+        "Anupathaarar": "725 -  ோபாஸ்ட",
+        "LandStatus": 4,
+        "CorrectNameRow": "\fACHUTHANVAYAL"
       }
     ],
-    "PattaType": 9,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "போஸ்‌",
+    "PattaTharar": " ோபாஸ்ட",
     "FullData": "   725\r\nஅயயாக்ககண்ணு தந்தைத ோபாஸ்ட\r\n1 1\r\n1 90     - 0 - 0.00 0.00 0 - 2.50 0.10 0 - 0.00 0.00\r\n2A1\r\n2 50     - 5B 0 - 0.00 0.00 0 - 27.50 0.76 0 - 0.00 0.00\r\nTOTAL 0 - 0.00 0.00 0 - 30.00 0.86 0 - 0.00 0.00",
-    "NameRow": "  1  அய்யாக்கண்ணு  தந்‌ைத  போஸ்‌ "
+    "NameRow": "\fACHUTHANVAYAL"
   },
   {
     "PattaEn": 726,
@@ -34163,7 +34163,7 @@
     "landDetails": [
       {
         "PattaEn": 956,
-        "OwnerName": "கணவன்‌",
+        "OwnerName": " தங்கவதி",
         "PulaEn": "174-34",
         "SurveyNo": 174,
         "Subdivision": "34",
@@ -34176,16 +34176,16 @@
         "LandType": 1,
         "Parappu": "0.2.50",
         "Theervai": "0.10",
-        "Anupathaarar": "956 - கணவன்‌",
-        "LandStatus": 0,
-        "CorrectNameRow": "  1  பாஸ்கரன்‌  கணவன்‌ தங்கவதி"
+        "Anupathaarar": "956 -  தங்கவதி",
+        "LandStatus": 4,
+        "CorrectNameRow": "ACHUTHANVAYAL"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "கணவன்‌",
+    "PattaTharar": " தங்கவதி",
     "FullData": "   956\r\nபாஸ்டகரன கணவன தங்கவதி\r\n1 1\r\n1 174    - 34 0 - 0.00 0.00 0 - 2.50 0.10 0 - 0.00 0.00\r\nTOTAL 0 - 0.00 0.00 0 - 2.50 0.10 0 - 0.00 0.00",
-    "NameRow": "  1  பாஸ்கரன்‌  கணவன்‌ தங்கவதி"
+    "NameRow": "ACHUTHANVAYAL"
   },
   {
     "PattaEn": 957,
@@ -35438,7 +35438,7 @@
     "landDetails": [
       {
         "PattaEn": 998,
-        "OwnerName": "கோவிந்தராஜ்‌",
+        "OwnerName": " ோகாவிந்ததராஜ்",
         "PulaEn": "76-59B",
         "SurveyNo": 76,
         "Subdivision": "59B",
@@ -35451,16 +35451,16 @@
         "LandType": 1,
         "Parappu": "0.1.00",
         "Theervai": "0.10",
-        "Anupathaarar": "998 - கோவிந்தராஜ்‌",
-        "LandStatus": 0,
-        "CorrectNameRow": "  1  கருப்பையா  தந்‌ைத  கோவிந்தராஜ்‌ "
+        "Anupathaarar": "998 -  ோகாவிந்ததராஜ்",
+        "LandStatus": 4,
+        "CorrectNameRow": "\fACHUTHANVAYAL"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "கோவிந்தராஜ்‌",
+    "PattaTharar": " ோகாவிந்ததராஜ்",
     "FullData": "   998\r\nகருப்ைபயா தந்தைத ோகாவிந்ததராஜ்\r\n1 1\r\n1 76     - 0 - 0.00 0.00 0 - 1.00 0.10 0 - 0.00 0.00\r\n59B\r\nTOTAL 0 - 0.00 0.00 0 - 1.00 0.10 0 - 0.00 0.00",
-    "NameRow": "  1  கருப்பையா  தந்‌ைத  கோவிந்தராஜ்‌ "
+    "NameRow": "\fACHUTHANVAYAL"
   },
   {
     "PattaEn": 999,
@@ -35998,7 +35998,7 @@
     "landDetails": [
       {
         "PattaEn": 1016,
-        "OwnerName": "செல்வராஜ்‌",
+        "OwnerName": " ெசெல்லவராஜ்",
         "PulaEn": "76-84",
         "SurveyNo": 76,
         "Subdivision": "84",
@@ -36011,16 +36011,16 @@
         "LandType": 1,
         "Parappu": "0.1.00",
         "Theervai": "0.10",
-        "Anupathaarar": "1016 - செல்வராஜ்‌",
-        "LandStatus": 0,
-        "CorrectNameRow": "  1  காயாம்பு  தந்‌ைத செல்வராஜ்‌"
+        "Anupathaarar": "1016 -  ெசெல்லவராஜ்",
+        "LandStatus": 4,
+        "CorrectNameRow": "ACHUTHANVAYAL"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "செல்வராஜ்‌",
+    "PattaTharar": " ெசெல்லவராஜ்",
     "FullData": "   1016\r\nகாயாமபு தந்தைத ெசெல்லவராஜ்\r\n1 1\r\n1 76     - 84 0 - 0.00 0.00 0 - 1.00 0.10 0 - 0.00 0.00\r\nTOTAL 0 - 0.00 0.00 0 - 1.00 0.10 0 - 0.00 0.00",
-    "NameRow": "  1  காயாம்பு  தந்‌ைத செல்வராஜ்‌"
+    "NameRow": "ACHUTHANVAYAL"
   },
   {
     "PattaEn": 1017,
@@ -36500,7 +36500,7 @@
     "landDetails": [
       {
         "PattaEn": 1032,
-        "OwnerName": "ரவிச்சந்திரன்‌",
+        "OwnerName": " ரவிச்செந்ததிரன",
         "PulaEn": "174-39",
         "SurveyNo": 174,
         "Subdivision": "39",
@@ -36513,16 +36513,16 @@
         "LandType": 1,
         "Parappu": "0.1.50",
         "Theervai": "0.10",
-        "Anupathaarar": "1032 - ரவிச்சந்திரன்‌",
-        "LandStatus": 0,
-        "CorrectNameRow": " 1  ஆறுமுகம்‌  தந்த  ரவிச்சந்திரன்‌ "
+        "Anupathaarar": "1032 -  ரவிச்செந்ததிரன",
+        "LandStatus": 4,
+        "CorrectNameRow": "   ற றவு"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "ரவிச்சந்திரன்‌",
+    "PattaTharar": " ரவிச்செந்ததிரன",
     "FullData": "   1032\r\nஆறுமுகம தந்தைத ரவிச்செந்ததிரன\r\n1 1\r\n1 174    - 39 0 - 0.00 0.00 0 - 1.50 0.10 0 - 0.00 0.00\r\nTOTAL 0 - 0.00 0.00 0 - 1.50 0.10 0 - 0.00 0.00",
-    "NameRow": " 1  ஆறுமுகம்‌  தந்த  ரவிச்சந்திரன்‌ "
+    "NameRow": "   ற றவு"
   },
   {
     "PattaEn": 1033,
@@ -38015,7 +38015,7 @@
     "landDetails": [
       {
         "PattaEn": 1080,
-        "OwnerName": "மாரிமுத்து",
+        "OwnerName": " மைாரிமமுத்து",
         "PulaEn": "99-2A2B",
         "SurveyNo": 99,
         "Subdivision": "2A2B",
@@ -38028,23 +38028,23 @@
         "LandType": 0,
         "Parappu": "0.5.50",
         "Theervai": "1.20",
-        "Anupathaarar": "1080 - மாரிமுத்து",
-        "LandStatus": 0,
-        "CorrectNameRow": " 1  முனியசாமி  தந்‌ைத  மாரிமுத்து"
+        "Anupathaarar": "1080 -  மைாரிமமுத்து",
+        "LandStatus": 4,
+        "CorrectNameRow": "   ற றவு"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "மாரிமுத்து",
+    "PattaTharar": " மைாரிமமுத்து",
     "FullData": "   1080\r\nமுனியசொமி தந்தைத மைாரிமமுத்து\r\n1 2\r\n1 99     - 0 - 5.50 1.20 0 - 0.00 0.00 0 - 0.00 0.00\r\n2A2B\r\nTOTAL 0 - 5.50 1.20 0 - 0.00 0.00 0 - 0.00 0.00",
-    "NameRow": " 1  முனியசாமி  தந்‌ைத  மாரிமுத்து"
+    "NameRow": "   ற றவு"
   },
   {
     "PattaEn": 1081,
     "landDetails": [
       {
         "PattaEn": 1081,
-        "OwnerName": "மாரிமுத்து",
+        "OwnerName": " மைாரிமமுத்து",
         "PulaEn": "99-15",
         "SurveyNo": 99,
         "Subdivision": "15",
@@ -38057,16 +38057,16 @@
         "LandType": 0,
         "Parappu": "0.5.00",
         "Theervai": "1.05",
-        "Anupathaarar": "1081 - மாரிமுத்து",
-        "LandStatus": 0,
-        "CorrectNameRow": " i  முனியசாமி  தந்‌ைத  மாரிமுத்து"
+        "Anupathaarar": "1081 -  மைாரிமமுத்து",
+        "LandStatus": 4,
+        "CorrectNameRow": "   ற றவு"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "மாரிமுத்து",
+    "PattaTharar": " மைாரிமமுத்து",
     "FullData": "   1081\r\n1 1 முனியசொமி தந்தைத மைாரிமமுத்து\r\n1 99     - 15 0 - 5.00 1.05 0 - 0.00 0.00 0 - 0.00 0.00\r\nTOTAL 0 - 5.00 1.05 0 - 0.00 0.00 0 - 0.00 0.00",
-    "NameRow": " i  முனியசாமி  தந்‌ைத  மாரிமுத்து"
+    "NameRow": "   ற றவு"
   },
   {
     "PattaEn": 1082,
@@ -39057,7 +39057,7 @@
     "landDetails": [
       {
         "PattaEn": 1113,
-        "OwnerName": "கஸ்தூரி",
+        "OwnerName": " கஸ்டதூரிம",
         "PulaEn": "100-36",
         "SurveyNo": 100,
         "Subdivision": "36",
@@ -39070,16 +39070,16 @@
         "LandType": 0,
         "Parappu": "0.2.00",
         "Theervai": "0.42",
-        "Anupathaarar": "1113 - கஸ்தூரி",
-        "LandStatus": 0,
-        "CorrectNameRow": "  1  இராஜேந்திரன்‌ஆசாரி  கணவன்‌ கஸ்தூரி "
+        "Anupathaarar": "1113 -  கஸ்டதூரிம",
+        "LandStatus": 4,
+        "CorrectNameRow": "   ற றவு"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "கஸ்தூரி",
+    "PattaTharar": " கஸ்டதூரிம",
     "FullData": "   1113\r\nஇராோஜந்ததிரனஆசொரிம கணவன கஸ்டதூரிம\r\n1 1\r\n1 100    - 36 0 - 2.00 0.42 0 - 0.00 0.00 0 - 0.00 0.00\r\nTOTAL 0 - 2.00 0.42 0 - 0.00 0.00 0 - 0.00 0.00",
-    "NameRow": "  1  இராஜேந்திரன்‌ஆசாரி  கணவன்‌ கஸ்தூரி "
+    "NameRow": "   ற றவு"
   },
   {
     "PattaEn": 1114,
@@ -40021,7 +40021,7 @@
     "landDetails": [
       {
         "PattaEn": 1141,
-        "OwnerName": "இராஜேந்திரன்‌",
+        "OwnerName": " இராோஜந்ததிரன",
         "PulaEn": "76-125",
         "SurveyNo": 76,
         "Subdivision": "125",
@@ -40034,16 +40034,16 @@
         "LandType": 1,
         "Parappu": "0.1.00",
         "Theervai": "0.10",
-        "Anupathaarar": "1141 - இராஜேந்திரன்‌",
-        "LandStatus": 0,
-        "CorrectNameRow": " 1  ராமுஆச்சாரி  தந்த இராஜேந்திரன்‌"
+        "Anupathaarar": "1141 -  இராோஜந்ததிரன",
+        "LandStatus": 4,
+        "CorrectNameRow": "\fACHUTHANVAYAL"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "இராஜேந்திரன்‌",
+    "PattaTharar": " இராோஜந்ததிரன",
     "FullData": "   1141\r\nராமுஆச்சொரிம தந்தைத இராோஜந்ததிரன\r\n1 1\r\n1 76     - 0 - 0.00 0.00 0 - 1.00 0.10 0 - 0.00 0.00\r\n125\r\nTOTAL 0 - 0.00 0.00 0 - 1.00 0.10 0 - 0.00 0.00",
-    "NameRow": " 1  ராமுஆச்சாரி  தந்த இராஜேந்திரன்‌"
+    "NameRow": "\fACHUTHANVAYAL"
   },
   {
     "PattaEn": 1142,
@@ -40412,14 +40412,14 @@
         "Theervai": "0.10",
         "Anupathaarar": "1152 -  ெசெல்லலச்சொமி",
         "LandStatus": 4,
-        "CorrectNameRow": "  1  கருப்பையா  தந்‌ைத செல்லச்சாமி"
+        "CorrectNameRow": "\fACHUTHANVAYAL"
       }
     ],
     "PattaType": 12,
     "isVagai": false,
     "PattaTharar": " ெசெல்லலச்சொமி",
     "FullData": "   1152\r\nகருப்ைபயா தந்தைத ெசெல்லலச்சொமி\r\n1 1\r\n1 174    - 49 0 - 0.00 0.00 0 - 1.50 0.10 0 - 0.00 0.00\r\nTOTAL 0 - 0.00 0.00 0 - 1.50 0.10 0 - 0.00 0.00",
-    "NameRow": "  1  கருப்பையா  தந்‌ைத செல்லச்சாமி"
+    "NameRow": "\fACHUTHANVAYAL"
   },
   {
     "PattaEn": 1153,
@@ -40764,7 +40764,7 @@
     "landDetails": [
       {
         "PattaEn": 1164,
-        "OwnerName": "முகம்மதுமரைக்காயர்‌",
+        "OwnerName": " முகமமைதுமைைரக்ககாயர்",
         "PulaEn": "68-7C2",
         "SurveyNo": 68,
         "Subdivision": "7C2",
@@ -40777,16 +40777,16 @@
         "LandType": 1,
         "Parappu": "0.5.00",
         "Theervai": "0.14",
-        "Anupathaarar": "1164 - முகம்மதுமரைக்காயர்‌",
-        "LandStatus": 0,
-        "CorrectNameRow": " 2  சாகுல்ஹமீது  தந்தை  முகம்மதுமரைக்காயர்‌ "
+        "Anupathaarar": "1164 -  முகமமைதுமைைரக்ககாயர்",
+        "LandStatus": 4,
+        "CorrectNameRow": "\fACHUTHANVAYAL"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "முகம்மதுமரைக்காயர்‌",
+    "PattaTharar": " முகமமைதுமைைரக்ககாயர்",
     "FullData": "   1164\r\nசொகுல்லஹமீது தந்தைத முகமமைதுமைைரக்ககாயர்\r\n1 2\r\n1 68     - 0 - 0.00 0.00 0 - 5.00 0.14 0 - 0.00 0.00\r\n7C2\r\nTOTAL 0 - 0.00 0.00 0 - 5.00 0.14 0 - 0.00 0.00",
-    "NameRow": " 2  சாகுல்ஹமீது  தந்தை  முகம்மதுமரைக்காயர்‌ "
+    "NameRow": "\fACHUTHANVAYAL"
   },
   {
     "PattaEn": 1165,
@@ -41498,7 +41498,7 @@
     "landDetails": [
       {
         "PattaEn": 1188,
-        "OwnerName": "பன்னீர்‌ செல்வம்‌",
+        "OwnerName": " பனனீர் ெசெல்லவம",
         "PulaEn": "76-53",
         "SurveyNo": 76,
         "Subdivision": "53",
@@ -41511,16 +41511,16 @@
         "LandType": 1,
         "Parappu": "0.1.00",
         "Theervai": "0.10",
-        "Anupathaarar": "1188 - பன்னீர்‌ செல்வம்‌",
-        "LandStatus": 0,
-        "CorrectNameRow": "  1  செல்லையா  தந்‌ைத  பன்னீர்‌ செல்வம்‌ "
+        "Anupathaarar": "1188 -  பனனீர் ெசெல்லவம",
+        "LandStatus": 4,
+        "CorrectNameRow": "\fACHUTHANVAYAL"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "பன்னீர்‌ செல்வம்‌",
+    "PattaTharar": " பனனீர் ெசெல்லவம",
     "FullData": "   1188\r\nெசெல்லைலயா தந்தைத பனனீர் ெசெல்லவம\r\n1 1\r\n1 76     - 53 0 - 0.00 0.00 0 - 1.00 0.10 0 - 0.00 0.00\r\nTOTAL 0 - 0.00 0.00 0 - 1.00 0.10 0 - 0.00 0.00",
-    "NameRow": "  1  செல்லையா  தந்‌ைத  பன்னீர்‌ செல்வம்‌ "
+    "NameRow": "\fACHUTHANVAYAL"
   },
   {
     "PattaEn": 1189,
@@ -42905,7 +42905,7 @@
     "landDetails": [
       {
         "PattaEn": 1228,
-        "OwnerName": "ஷோபனா",
+        "OwnerName": " ோஷோபனா",
         "PulaEn": "174-55A3",
         "SurveyNo": 174,
         "Subdivision": "55A3",
@@ -42918,16 +42918,16 @@
         "LandType": 1,
         "Parappu": "0.1.24",
         "Theervai": "0.10",
-        "Anupathaarar": "1228 - ஷோபனா",
-        "LandStatus": 0,
-        "CorrectNameRow": "   திலகராஜன்‌  கணவன்‌  ஷோபனா "
+        "Anupathaarar": "1228 -  ோஷோபனா",
+        "LandStatus": 4,
+        "CorrectNameRow": "\fACHUTHANVAYAL"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "ஷோபனா",
+    "PattaTharar": " ோஷோபனா",
     "FullData": "   1228\r\nதிலகராஜன கணவன ோஷோபனா\r\n1 1\r\n1 174    - 0 - 0.00 0.00 0 - 1.24 0.10 0 - 0.00 0.00\r\n55A3\r\nTOTAL 0 - 0.00 0.00 0 - 1.24 0.10 0 - 0.00 0.00",
-    "NameRow": "   திலகராஜன்‌  கணவன்‌  ஷோபனா "
+    "NameRow": "\fACHUTHANVAYAL"
   },
   {
     "PattaEn": 1229,
@@ -45163,7 +45163,7 @@
     "landDetails": [
       {
         "PattaEn": 1298,
-        "OwnerName": "சாரதா",
+        "OwnerName": " சொரதா",
         "PulaEn": "88-3A5A",
         "SurveyNo": 88,
         "Subdivision": "3A5A",
@@ -45176,23 +45176,23 @@
         "LandType": 1,
         "Parappu": "0.1.08",
         "Theervai": "0.10",
-        "Anupathaarar": "1298 - சாரதா",
-        "LandStatus": 0,
-        "CorrectNameRow": "  1  செல்லக்கருங்கு  கணவன்‌  சாரதா "
+        "Anupathaarar": "1298 -  சொரதா",
+        "LandStatus": 4,
+        "CorrectNameRow": "   ற றவு"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "சாரதா",
+    "PattaTharar": " சொரதா",
     "FullData": "   1298\r\nெசெல்லலக்ககருங்கு கணவன சொரதா\r\n1 1\r\n1 88     - 0 - 0.00 0.00 0 - 1.08 0.10 0 - 0.00 0.00\r\n3A5A\r\nTOTAL 0 - 0.00 0.00 0 - 1.08 0.10 0 - 0.00 0.00",
-    "NameRow": "  1  செல்லக்கருங்கு  கணவன்‌  சாரதா "
+    "NameRow": "   ற றவு"
   },
   {
     "PattaEn": 1299,
     "landDetails": [
       {
         "PattaEn": 1299,
-        "OwnerName": "காசி",
+        "OwnerName": " காசிக",
         "PulaEn": "76-129",
         "SurveyNo": 76,
         "Subdivision": "129",
@@ -45205,16 +45205,16 @@
         "LandType": 1,
         "Parappu": "0.1.00",
         "Theervai": "0.10",
-        "Anupathaarar": "1299 - காசி",
-        "LandStatus": 0,
-        "CorrectNameRow": "   உடைச்சித்தேவர்‌  தந்‌ைத  காசி "
+        "Anupathaarar": "1299 -  காசிக",
+        "LandStatus": 4,
+        "CorrectNameRow": "   ற றவு"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "காசி",
+    "PattaTharar": " காசிக",
     "FullData": "   1299\r\nஉைடச்சிகத்ோதவர் தந்தைத காசிக\r\n1 2\r\n1 76     - 0 - 0.00 0.00 0 - 1.00 0.10 0 - 0.00 0.00\r\n129\r\nTOTAL 0 - 0.00 0.00 0 - 1.00 0.10 0 - 0.00 0.00",
-    "NameRow": "   உடைச்சித்தேவர்‌  தந்‌ைத  காசி "
+    "NameRow": "   ற றவு"
   },
   {
     "PattaEn": 1300,
@@ -47172,7 +47172,7 @@
     "landDetails": [
       {
         "PattaEn": 1364,
-        "OwnerName": "அந்தோனி",
+        "OwnerName": " அந்தோதானி",
         "PulaEn": "174-85",
         "SurveyNo": 174,
         "Subdivision": "85",
@@ -47185,16 +47185,16 @@
         "LandType": 1,
         "Parappu": "0.1.24",
         "Theervai": "0.02",
-        "Anupathaarar": "1364 - அந்தோனி",
-        "LandStatus": 0,
-        "CorrectNameRow": "  1  SOVUTE TE  தந்‌ைத  அந்தோனி "
+        "Anupathaarar": "1364 -  அந்தோதானி",
+        "LandStatus": 4,
+        "CorrectNameRow": "\fACHUTHANVAYAL"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "அந்தோனி",
+    "PattaTharar": " அந்தோதானி",
     "FullData": "   1364\r\nகஸ்டபாாாா்ம தந்தைத அந்தோதானி\r\n1 1\r\n1 174    - 85 0 - 0.00 0.00 0 - 1.24 0.02 0 - 0.00 0.00\r\nTOTAL 0 - 0.00 0.00 0 - 1.24 0.02 0 - 0.00 0.00",
-    "NameRow": "  1  SOVUTE TE  தந்‌ைத  அந்தோனி "
+    "NameRow": "\fACHUTHANVAYAL"
   },
   {
     "PattaEn": 1365,
@@ -47346,7 +47346,7 @@
     "landDetails": [
       {
         "PattaEn": 1370,
-        "OwnerName": "கலைச்செல்வி",
+        "OwnerName": " கைலச்ெசெல்லவி",
         "PulaEn": "166-1B",
         "SurveyNo": 166,
         "Subdivision": "1B",
@@ -47359,16 +47359,16 @@
         "LandType": 0,
         "Parappu": "0.1.69",
         "Theervai": "0.28",
-        "Anupathaarar": "1370 - கலைச்செல்வி",
-        "LandStatus": 0,
-        "CorrectNameRow": "  1  ராஜ்குமார்‌  கணவன்‌  கலைச்செல்வி "
+        "Anupathaarar": "1370 -  கைலச்ெசெல்லவி",
+        "LandStatus": 4,
+        "CorrectNameRow": "\fACHUTHANVAYAL"
       }
     ],
-    "PattaType": 0,
+    "PattaType": 12,
     "isVagai": false,
-    "PattaTharar": "கலைச்செல்வி",
+    "PattaTharar": " கைலச்ெசெல்லவி",
     "FullData": "   1370\r\nராஜ்குமைார் கணவன கைலச்ெசெல்லவி\r\n1 1\r\n1 166    - 1B 0 - 1.69 0.28 0 - 0.00 0.00 0 - 0.00 0.00\r\nTOTAL 0 - 1.69 0.28 0 - 0.00 0.00 0 - 0.00 0.00",
-    "NameRow": "  1  ராஜ்குமார்‌  கணவன்‌  கலைச்செல்வி "
+    "NameRow": "\fACHUTHANVAYAL"
   },
   {
     "PattaEn": 1371,
