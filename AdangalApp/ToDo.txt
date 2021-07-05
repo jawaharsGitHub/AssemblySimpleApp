@@ -72,9 +72,8 @@ upadte first time percentage of a file.
 தற்காலதலைவர்‌ யாதவசமூகத்திற்குபாத்தியமான வகை
 parallel working especially - for getting subdiv details.
 pagenumber tracking for all land types.
-
-
-
+manual check button and functionality.
+book view functionality.
 ***********************************************************
 softcopy version & hardcopy version
 STAGE-1:File loaded STAGE-2:LOADED WITHOU ISSUE STAGE-3:CORRECTED TO 100%
