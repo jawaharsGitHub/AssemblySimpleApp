@@ -6,7 +6,8 @@
         public string Parappu { get; set; }
         public string Vibaram { get; set; }
         public string BuildingName { get; set; }
+        public int GroupId { get; set; }
 
-        
+
     }
 }

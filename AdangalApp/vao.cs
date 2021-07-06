@@ -1354,8 +1354,9 @@ namespace AdangalApp
         {
             StringBuilder totalContent = new StringBuilder();
 
-            List<GovtBuilding> summaryList = DataAccess.GetGovtBuilding();
-
+            var gd = (from gb in DataAccess.GetGovtBuilding()
+                                                group gb by gb.GroupId into newGroup
+                                                select newGroup).ToList();
             try
             {
                 var tbl = FileContentReader.GovtBuildingTableTemplate;
@@ -1367,26 +1368,38 @@ namespace AdangalApp
                 if (isRightSide)
                     pageNumber += 1;
 
-                //pageNumber += 1;
                 string dataRows = "";
                 StringBuilder sb = new StringBuilder();
 
-                summaryList.ForEach(ff =>
-                {
-                    dataRows = row.Replace("[pulaen]", ff.PulaEn)
-                                          .Replace("[parappu]", ff.Parappu)
-                                          .Replace("[vibaram]", ff.Vibaram)
-                                          .Replace("[buildingname]", ff.BuildingName);
-                    sb.Append(dataRows);
+                gd.ForEach(fe => {
+
+                    List<GovtBuilding> govtBuildings = fe.ToList();
+
+                    for (int ff  = 0; ff <= govtBuildings.Count-1; ff++)
+                    {
+                        dataRows = row.Replace("[pulaen]", govtBuildings[ff].PulaEn)
+                                              .Replace("[parappu]", govtBuildings[ff].Parappu);
+
+                        if (ff == 0)
+                        {
+                            dataRows = dataRows.Replace("[vibaram]", govtBuildings[ff].Vibaram)
+                                              .Replace("[buildingname]", govtBuildings[ff].BuildingName)
+                                              .Replace("[rowspan]", govtBuildings.Count().ToString());
+
+                        }
+                        else
+                        {
+                            dataRows = dataRows.Replace("<td rowspan='[rowspan]' style='vertical-align:middle;'>[vibaram]</td>", empty)
+                                               .Replace("<td rowspan='[rowspan]' style='vertical-align:middle;'>[buildingname]</td>", empty);
+                        }
+                        
+                        sb.Append(dataRows);
+
+                    }
 
                 });
 
-                //var totalRows = row.Replace("[pulaen]", $"<b>{kiraamaMoththam}</b>")
-                //                          .Replace("[parappu]", empty)
-                //                          .Replace("[parappu]", $"<b>{AdangalFn.GetSumThreeDotNo(summaryList.Where(w => w.Id != -1).Select(s => s.Parappu).ToList())}</b>");
-
                 tbl = tbl.Replace("[datarows]", sb.ToString());
-                //tbl = tbl.Replace("[totalrow]", totalRows);
                 tbl = tbl.Replace("[header]", updatedHeader);
                 tbl = tbl.Replace("[pageNo]", isRightSide ? pageNumber.ToString() : empty);
                 tbl = tbl.Replace("[landtype]", "அரசு கட்டிடங்கள் விபரம்");

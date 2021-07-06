@@ -155,4 +155,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>copy "$(SolutionDir)\Common\HTMLTemplate\*.*" "$(ProjectDir)\Common\HTMLTemplate\"</PreBuildEvent>
+  </PropertyGroup>
 </Project>
