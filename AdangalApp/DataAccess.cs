@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Common.ExtensionMethod;
 
 namespace AdangalApp
 {
@@ -15,6 +16,8 @@ namespace AdangalApp
         public static string PattaJsonPath = "";
         public static string WholeLandListJsonPath = "";
         public static string AdangalOriginalPath = "";
+        public static string SummaryPath = ""; 
+            public static string GovtBuildingPath = "";
 
         public static void SetVillageName()
         {
@@ -23,6 +26,8 @@ namespace AdangalApp
             WholeLandListJsonPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-WholeLandListJsonPath.json");
             SubDivPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-subdiv.json");
             AdangalOriginalPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-OriginalAdangal.json");
+            SummaryPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-Summary.json");
+            GovtBuildingPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-GovtBuilding.json");
 
 
             if (Directory.Exists(Directory.GetParent(JsonPath).FullName) == false)
@@ -42,22 +47,11 @@ namespace AdangalApp
 
         public static List<LoadedFileDetail> GetLoadedFile()
         {
-            
             LoadedFile = AppConfiguration.GetDynamicPath($"AdangalJson/LoadedFile.json");
+            General.CreateFileIfNotExist(LoadedFile);
 
-
-            List<LoadedFileDetail> data = new List<LoadedFileDetail>();
-
-            if (File.Exists(LoadedFile) == false)
-            {
-                File.Create(LoadedFile).Close();
-            }
-            else
-            {
-                data = ReadFileAsObjects<LoadedFileDetail>(LoadedFile);
-                data = data.Where(w => File.Exists(AppConfiguration.GetDynamicPath($"AdangalJson/{w.VillageName}/{w.VillageName}.json"))).ToList();
-            }
-
+            var data = ReadFileAsObjects<LoadedFileDetail>(LoadedFile);
+            data = data.Where(w => File.Exists(AppConfiguration.GetDynamicPath($"AdangalJson/{w.VillageName}/{w.VillageName}.json"))).ToList();
             data.Insert(0, new LoadedFileDetail() { VillageCode = -1, VillageName = "--select--" });
             return data;
         }
@@ -66,12 +60,13 @@ namespace AdangalApp
         {
             var JsonFileFolder = AppConfiguration.GetDynamicPath($"AdangalJson");
             var files = (from f in Directory.GetFiles(JsonFileFolder).ToList()
-                        select new ComboDataStr() { 
+                         select new ComboDataStr()
+                         {
                              Value = f.Replace("-subdiv", ""),
                              Display = Path.ChangeExtension(new FileInfo(f).Name, null)
-                        }).Distinct().ToList();
+                         }).Distinct().ToList();
 
-             files.Insert(0, new ComboDataStr() { Value = "", Display = "--select--" });
+            files.Insert(0, new ComboDataStr() { Value = "", Display = "--select--" });
             return files;
         }
 
@@ -86,37 +81,86 @@ namespace AdangalApp
 
         public static List<Adangal> AdangalToJson(List<Adangal> adangalData)
         {
-            if (File.Exists(JsonPath) == false)
-                File.Create(JsonPath).Close();
+            string path = JsonPath;
+            General.CreateFileIfNotExist(path);
 
-            WriteObjectsToFile<Adangal>(adangalData, JsonPath);
+            WriteObjectsToFile<Adangal>(adangalData, path);
 
             var data = GetActiveAdangal();
             return data;
         }
 
+        public static void SaveSummary(List<Summary> summaryData)
+        {
+            string path = SummaryPath;
+            var totaPunsaiParappu = AdangalFn.GetSumThreeDotNo(summaryData.Skip(1).Take(2).Select(s => s.Parappu).ToList());
+            var totalPunsaiPages = summaryData[1].Pakkam.Split('-')[0] + "-" + summaryData[2].Pakkam.Split('-')[1];
+
+            List<Summary> data = null;
+            if (File.Exists(path) == false)
+            {
+                var myFile = File.Create(path);
+                myFile.Close();
+
+                data = summaryData;
+                data[0].Vibaram = $"மொத்த {data[0].Vibaram}";
+                data.Insert(3,
+                    new Summary()
+                    {
+                        Id = -1,
+                        Parappu = totaPunsaiParappu,
+                        Vibaram = "மொத்த புன்செய் (புன்செய் + மானாவாரி)",
+                        Pakkam = totalPunsaiPages
+                    });
+            }
+            else
+            {
+                data = GetSummary();
+                for (int i = 0; i <= 3; i++)
+                {
+                    data.Where(w => w.Id == i).First().Parappu = summaryData[i].Parappu;
+                    data.Where(w => w.Id == i).First().Pakkam = summaryData[i].Pakkam;
+                }
+
+                data.Where(w => w.Id == -1).First().Parappu = totaPunsaiParappu;
+                data.Where(w => w.Id == -1).First().Pakkam = totalPunsaiPages;
+            }
+
+            WriteObjectsToFile<Summary>(data, path);
+        }
+
+        public static List<Summary> GetSummary()
+        {
+            return ReadFileAsObjects<Summary>(SummaryPath);
+        }
+
+        public static List<GovtBuilding> GetGovtBuilding()
+        {
+            return ReadFileAsObjects<GovtBuilding>(GovtBuildingPath);
+        }
+
         public static void SavePattaList(PattaList pattaList)
         {
-            if (File.Exists(PattaJsonPath) == false)
-                File.Create(PattaJsonPath).Close();
+            var path = PattaJsonPath;
+            General.CreateFileIfNotExist(path);
 
-            WriteObjectsToFile<PattaList>(pattaList, PattaJsonPath);
+            WriteObjectsToFile<PattaList>(pattaList, path);
         }
 
         public static void SaveWholeLandList(List<LandDetail> landDetails)
         {
-            if (File.Exists(WholeLandListJsonPath) == false)
-                File.Create(WholeLandListJsonPath).Close();
+            var path = WholeLandListJsonPath;
+            General.CreateFileIfNotExist(path);
 
-            WriteObjectsToFile<LandDetail>(landDetails, WholeLandListJsonPath);
+            WriteObjectsToFile<LandDetail>(landDetails, path);
         }
 
         public static void SaveAdangalOriginalList(List<Adangal> adangal)
         {
-            if (File.Exists(AdangalOriginalPath) == false)
-                File.Create(AdangalOriginalPath).Close();
+            var path = AdangalOriginalPath;
+            General.CreateFileIfNotExist(path);
 
-            WriteObjectsToFile<Adangal>(adangal, AdangalOriginalPath);
+            WriteObjectsToFile<Adangal>(adangal, path);
         }
 
         public static PattaList GetPattaList()
@@ -217,15 +261,15 @@ namespace AdangalApp
         {
             var data = ReadFileAsObjects<LoadedFileDetail>(LoadedFile);
 
-                var itemToDelete = data.Where(w => w.MaavattamCode == loadedFileDetail.MaavattamCode &&
-                                w.VattamCode == loadedFileDetail.VattamCode &&
-                                w.VillageCode == loadedFileDetail.VillageCode).FirstOrDefault();
+            var itemToDelete = data.Where(w => w.MaavattamCode == loadedFileDetail.MaavattamCode &&
+                            w.VattamCode == loadedFileDetail.VattamCode &&
+                            w.VillageCode == loadedFileDetail.VillageCode).FirstOrDefault();
 
-                if(itemToDelete != null)
-                {
-                    data.Remove(itemToDelete);
-                    WriteObjectsToFile(data, LoadedFile);
-                }
+            if (itemToDelete != null)
+            {
+                data.Remove(itemToDelete);
+                WriteObjectsToFile(data, LoadedFile);
+            }
         }
 
 
@@ -234,7 +278,7 @@ namespace AdangalApp
             var filePath = GetTablePath("RevDistrict");
             try
             {
-                var data =  ReadFileAsObjects<ComboData>(filePath).OrderBy(o => o.Display).ToList();
+                var data = ReadFileAsObjects<ComboData>(filePath).OrderBy(o => o.Display).ToList();
                 data.Insert(0, new ComboData() { Display = "--select--", Value = -1 });
                 return data;
             }

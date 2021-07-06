@@ -1,6 +1,7 @@
 ﻿
 =======================================================================================
 move all my projects into single assembly - so that easy to use all common methods.
+Total sama-panthi kanakku
 ========================================================================================
 
 disable delete button by default.
@@ -50,9 +51,13 @@ product and publisher name
 logic for production and testing purpose.
 password patterns
 group purambokku data by its name. - not mandatory!
+தற்காலதலைவர்‌ யாதவசமூகத்திற்குபாத்தியமான வகை - will be manually verified.
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 ***********************************************************
+govt building table
+summary table.
+upadte first time percentage of a file.
 total is only for nansai, punsai and maanaavari not for porambokku 
 Data analysis Report
 	patta count
@@ -60,16 +65,12 @@ Data analysis Report
 	siru guru vivasaayi
 	peru vivasaayi
 	siru guru vivasaayi -> owner(father name) -> land details and count.
-
 nansai = nansai + punsai
-
 option to edit and update the total land parappu (if needed)
 Log in panchayat level
 modal popup for progress bar?
-govt building table
-summary table.
-upadte first time percentage of a file.
-தற்காலதலைவர்‌ யாதவசமூகத்திற்குபாத்தியமான வகை
+
+
 parallel working especially - for getting subdiv details.
 pagenumber tracking for all land types.
 manual check button and functionality.
@@ -97,10 +98,8 @@ Manual Work:
 	update porambokku data
 	Add missed survey details
 	Update name
-Surveyor name
+Surveyor Issue
 
-
-Total sama panthi kanakku
 Correction history table.
 
 -----------------------------------------------------------------------------------------------------

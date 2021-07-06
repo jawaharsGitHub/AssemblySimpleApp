@@ -75,6 +75,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdangalTypes\GovtBuilding.cs" />
+    <Compile Include="AdangalTypes\Summary.cs" />
     <Compile Include="AdangalTypes\AdangalConstant.cs" />
     <Compile Include="AdangalTypes\LoadedFileDetail.cs" />
     <Compile Include="AdangalTypes\LandStatus.cs" />

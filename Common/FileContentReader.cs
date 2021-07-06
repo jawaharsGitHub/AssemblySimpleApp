@@ -37,6 +37,12 @@ namespace Common
         public static string PageOverallTotalTableTemplate { get; } = GetHtmlFileContent("PageOverallTotalTableTemplate.htm");
         public static string PageOverallTotalRowTemplate { get; } = GetHtmlFileContent("PageOverallTotalRowTemplate.htm");
 
+        public static string SummaryTableTemplate { get; } = GetHtmlFileContent("SummaryTableTemplate.htm");
+        public static string SummayRowTemplate { get; } = GetHtmlFileContent("SummayRowTemplate.htm");
+
+        public static string GovtBuildingTableTemplate { get; } = GetHtmlFileContent("GovtBuildingTableTemplate.htm");
+        public static string GovtBuildingRowTemplate { get; } = GetHtmlFileContent("GovtBuildingRowTemplate.htm");
+
         public static string CertifiedContent { get; } = GetHtmlFileContent("Certified.txt");
 
 

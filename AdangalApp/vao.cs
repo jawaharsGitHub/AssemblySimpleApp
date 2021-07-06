@@ -28,11 +28,11 @@ namespace AdangalApp
         readonly int pageTotalrecordPerPage = 25;
         readonly string empty = "";
         readonly string tamilMoththam = "மொத்தம்";
+        readonly string kiraamaMoththam = "கிராம மொத்தம்";
         readonly string ERROR = "ERROR";
 
         string pdfvillageName = "";
-        int pasali = 1430;
-        int prepasali;
+        
 
         string chittaPdfFile = "";
         string chittaTxtFile = "";
@@ -68,14 +68,16 @@ namespace AdangalApp
         string reqFileFolderPath = "";
         string updatedHeader = "";
 
-        public static string title = ConfigurationManager.AppSettings["title"];
-        public static string header = ConfigurationManager.AppSettings["header"];
-        public static bool isTestingMode = Convert.ToBoolean(ConfigurationManager.AppSettings["isTesting"]);
-        public static int TestingPage = ConfigurationManager.AppSettings["TestingPage"].ToInt32();
-        public static string ChittaPdfFile = ConfigurationManager.AppSettings["ChittaPdfFile"];
-        public static string ChittaTxtFile = ConfigurationManager.AppSettings["ChittaTxtFile"];
-        public static string AregFile = ConfigurationManager.AppSettings["AregFile"]; 
-        public static bool needTheervaiTest = Convert.ToBoolean(ConfigurationManager.AppSettings["needTheervaiTest"]);
+        string title = ConfigurationManager.AppSettings["title"];
+        string header = ConfigurationManager.AppSettings["header"];
+        bool isTestingMode = Convert.ToBoolean(ConfigurationManager.AppSettings["isTesting"]);
+        int TestingPage = ConfigurationManager.AppSettings["TestingPage"].ToInt32();
+        string ChittaPdfFile = ConfigurationManager.AppSettings["ChittaPdfFile"];
+        string ChittaTxtFile = ConfigurationManager.AppSettings["ChittaTxtFile"];
+        string AregFile = ConfigurationManager.AppSettings["AregFile"]; 
+        bool needTheervaiTest = Convert.ToBoolean(ConfigurationManager.AppSettings["needTheervaiTest"]);
+        int pasali = Convert.ToInt32(ConfigurationManager.AppSettings["PasaliEn"]);
+        int prepasali;
 
         List<KeyValue> wrongName = new List<KeyValue>();
         List<KeyValue> correctName = new List<KeyValue>();
@@ -961,41 +963,7 @@ namespace AdangalApp
             }
 
         }
-        private string GetSumThreeDotNo(List<string> nos)
-        {
-            try
-            {
-                var decimalList = new List<decimal>();
-                var intList = new List<int>();
-
-                nos.ForEach(fe =>
-                {
-                    decimalList.Add(Convert.ToDecimal(fe.Substring(fe.IndexOf(".") + 1).Trim()));
-                    intList.Add(Convert.ToInt32(fe.Split('.')[0]));
-                });
-
-                var addedData = decimalList.Sum();
-                var intAddedData = intList.Sum();
-
-                var finalData = addedData + (intAddedData * 100);
-
-                if (finalData >= 100)
-                {
-                    var firstPart = Convert.ToDecimal(Convert.ToInt32(finalData.ToString().Split('.')[0])) / Convert.ToDecimal(100);
-                    var secPart = $"{finalData.ToString().Split('.')[1]}";
-                    return $"{firstPart}.{secPart}";
-                }
-
-                return $"0.{finalData}";
-
-            }
-            catch (Exception ex)
-            {
-                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
-                return "Error";
-            }
-
-        }
+        
         private void ddlListType_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selected = ((KeyValue)ddlListType.SelectedItem).Id;
@@ -1250,13 +1218,13 @@ namespace AdangalApp
                             totalTheervai = temData.Sum(s => s.TheervaiTotal).ToString();
 
                         var totalRows = row.Replace("[pageNo]", $"<b>{tamilMoththam}</b>")
-                                                  .Replace("[parappu]", $"<b>{GetSumThreeDotNo(temData.Select(s => s.ParappuTotal).ToList())}</b>")
+                                                  .Replace("[parappu]", $"<b>{AdangalFn.GetSumThreeDotNo(temData.Select(s => s.ParappuTotal).ToList())}</b>")
                                                   .Replace("[theervai]", $"<b>{totalTheervai}</b>");
 
                         // Created a sub list item!
                         destination.Add(new PageTotal()
                         {
-                            ParappuTotal = GetSumThreeDotNo(temData.Select(s => s.ParappuTotal).ToList()),
+                            ParappuTotal = AdangalFn.GetSumThreeDotNo(temData.Select(s => s.ParappuTotal).ToList()),
                             TheervaiTotal = temData.Sum(s => s.TheervaiTotal),
                             LandType = fe.Key,
                             PageNo = pageNumber
@@ -1280,14 +1248,70 @@ namespace AdangalApp
 
             return totalContent.ToString();
         }
-        private string GetOverallTotal(List<PageTotal> source)
+        private void GetOverallTotal(List<PageTotal> source)
         {
-            StringBuilder totalContent = new StringBuilder();
+            //StringBuilder totalContent = new StringBuilder();
+            List<Summary> summaryList = new List<Summary>();
 
             try
             {
-                var tbl = FileContentReader.PageOverallTotalTableTemplate;
-                var row = FileContentReader.PageOverallTotalRowTemplate;
+                //var tbl = FileContentReader.PageOverallTotalTableTemplate;
+                //var row = FileContentReader.PageOverallTotalRowTemplate;
+
+                //totalPageIndexTracker += 1;
+                //var isRightSide = totalPageIndexTracker.IsEven();
+
+                //if (isRightSide)
+                //    pageNumber += 1;
+
+                //string dataRows = "";
+                //StringBuilder sb = new StringBuilder();
+
+                source.ForEach(ff =>
+                {
+                    //dataRows = row.Replace("[vibaram]", ff.LandType.ToName())
+                    //                      .Replace("[parappu]", ff.ParappuTotal)
+                    //                      .Replace("[theervai]", ff.TheervaiTotal.ToString());
+                    //sb.Append(dataRows);
+
+                    summaryList.Add(new Summary() 
+                    {
+                        Id = (int)ff.LandType,
+                        Parappu = ff.ParappuTotal,
+                        Pakkam = pageRangeList[(int)ff.LandType].Caption,
+                        Vibaram = ff.LandType.ToName()
+                    });
+                });
+
+                //var totalRows = row.Replace("[vibaram]", $"<b>{tamilMoththam}</b>")
+                //                          .Replace("[parappu]", $"<b>{AdangalFn.GetSumThreeDotNo(source.Select(s => s.ParappuTotal).ToList())}</b>")
+                //                          .Replace("[theervai]", $"<b>{source.Sum(s => s.TheervaiTotal).ToString()}</b>");
+
+                //tbl = tbl.Replace("[datarows]", sb.ToString());
+                //tbl = tbl.Replace("[totalrow]", totalRows);
+                //tbl = tbl.Replace("[header]", updatedHeader);
+                //tbl = tbl.Replace("[pageNo]", isRightSide ? pageNumber.ToString() : empty);
+                //totalContent.Append(tbl);
+                DataAccess.SaveSummary(summaryList);
+
+            }
+            catch (Exception ex)
+            {
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
+            }
+            //return totalContent.ToString();
+        }
+
+        private string GetSummaryPage()
+        {
+            StringBuilder totalContent = new StringBuilder();
+
+            List<Summary> summaryList = DataAccess.GetSummary();
+
+            try
+            {
+                var tbl = FileContentReader.SummaryTableTemplate;
+                var row = FileContentReader.SummayRowTemplate;
 
                 totalPageIndexTracker += 1;
                 var isRightSide = totalPageIndexTracker.IsEven();
@@ -1299,24 +1323,74 @@ namespace AdangalApp
                 string dataRows = "";
                 StringBuilder sb = new StringBuilder();
 
-                source.ForEach(ff =>
+                summaryList.ForEach(ff =>
                 {
-                    dataRows = row.Replace("[vibaram]", ff.LandType.ToName())
-                                          .Replace("[parappu]", ff.ParappuTotal)
-                                          .Replace("[theervai]", ff.TheervaiTotal.ToString());
+                    dataRows = row.Replace("[vibaram]", ff.Vibaram)
+                                          .Replace("[pageNo]", ff.Pakkam)
+                                          .Replace("[parappu]", ff.Parappu);
                     sb.Append(dataRows);
+
                 });
 
-                var totalRows = row.Replace("[vibaram]", $"<b>{tamilMoththam}</b>")
-                                          .Replace("[parappu]", $"<b>{GetSumThreeDotNo(source.Select(s => s.ParappuTotal).ToList())}</b>")
-                                          .Replace("[theervai]", $"<b>{source.Sum(s => s.TheervaiTotal).ToString()}</b>");
+                var totalRows = row.Replace("[vibaram]", $"<b>{kiraamaMoththam}</b>")
+                                          .Replace("[pageNo]", empty)
+                                          .Replace("[parappu]", $"<b>{AdangalFn.GetSumThreeDotNo(summaryList.Where(w => w.Id != -1).Select(s => s.Parappu).ToList())}</b>");
 
                 tbl = tbl.Replace("[datarows]", sb.ToString());
                 tbl = tbl.Replace("[totalrow]", totalRows);
                 tbl = tbl.Replace("[header]", updatedHeader);
                 tbl = tbl.Replace("[pageNo]", isRightSide ? pageNumber.ToString() : empty);
+                tbl = tbl.Replace("[landtype]", "மொத்த விபரம்");
                 totalContent.Append(tbl);
+            }
+            catch (Exception ex)
+            {
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
+            }
+            return totalContent.ToString();
+        }
 
+        private string GetGovtBuildingPage()
+        {
+            StringBuilder totalContent = new StringBuilder();
+
+            List<GovtBuilding> summaryList = DataAccess.GetGovtBuilding();
+
+            try
+            {
+                var tbl = FileContentReader.GovtBuildingTableTemplate;
+                var row = FileContentReader.GovtBuildingRowTemplate;
+
+                totalPageIndexTracker += 1;
+                var isRightSide = totalPageIndexTracker.IsEven();
+
+                if (isRightSide)
+                    pageNumber += 1;
+
+                //pageNumber += 1;
+                string dataRows = "";
+                StringBuilder sb = new StringBuilder();
+
+                summaryList.ForEach(ff =>
+                {
+                    dataRows = row.Replace("[pulaen]", ff.PulaEn)
+                                          .Replace("[parappu]", ff.Parappu)
+                                          .Replace("[vibaram]", ff.Vibaram)
+                                          .Replace("[buildingname]", ff.BuildingName);
+                    sb.Append(dataRows);
+
+                });
+
+                //var totalRows = row.Replace("[pulaen]", $"<b>{kiraamaMoththam}</b>")
+                //                          .Replace("[parappu]", empty)
+                //                          .Replace("[parappu]", $"<b>{AdangalFn.GetSumThreeDotNo(summaryList.Where(w => w.Id != -1).Select(s => s.Parappu).ToList())}</b>");
+
+                tbl = tbl.Replace("[datarows]", sb.ToString());
+                //tbl = tbl.Replace("[totalrow]", totalRows);
+                tbl = tbl.Replace("[header]", updatedHeader);
+                tbl = tbl.Replace("[pageNo]", isRightSide ? pageNumber.ToString() : empty);
+                tbl = tbl.Replace("[landtype]", "அரசு கட்டிடங்கள் விபரம்");
+                totalContent.Append(tbl);
             }
             catch (Exception ex)
             {
@@ -1335,6 +1409,8 @@ namespace AdangalApp
             pc.ToList().ForEach(c => result += (c.ToString().ToInt32()+1));
             return result;
         }
+
+        List<KeyValue> pageRangeList = new List<KeyValue>();
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
@@ -1386,6 +1462,7 @@ namespace AdangalApp
                     var pageCount = dataToProcess.Count / recordPerPage;
                     if (dataToProcess.Count % recordPerPage > 0) pageCount += 1;
                     var landType = fe.Key.ToName();
+                    string pageRange = "";
                     
                     if (isTestingMode)
                     {
@@ -1418,7 +1495,7 @@ namespace AdangalApp
                         leftPage = leftPage.Replace("[datarows]", sb.ToString());
 
                         //LEFT PAGE TOTAL
-                        var totalparappu = GetSumThreeDotNo(temData.Select(s => s.Parappu).ToList());
+                        var totalparappu = AdangalFn.GetSumThreeDotNo(temData.Select(s => s.Parappu).ToList());
                         //var totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai));
 
                         decimal totalTheervai = 0;
@@ -1427,13 +1504,22 @@ namespace AdangalApp
 
                         var total = totalTemplate.Replace("[moththaparappu]", totalparappu).Replace("[moththatheervai]", totalTheervai.ToString());
 
-
                         leftPage = leftPage.Replace("[totalrow]", total);
                         leftPage = leftPage.Replace("[landtype]", landType);
                         leftPage = leftPage.Replace("[header]", updatedHeader);
 
                         allContent.Append(leftPage);
                         allContent.Append(GetRightEmptyPage()); // right page
+
+                        if (i == 0)
+                        {
+                            pageRange = $"{pageNumber}-";
+                        }
+                        if (i == pageCount - 1)
+                        {
+                            pageRange += $"{pageNumber}";
+                            pageRangeList.Add(new KeyValue() { Id = (int)fe.Key, Caption = pageRange });
+                        }
 
                         pageTotalList.Add(new PageTotal()
                         {
@@ -1447,8 +1533,20 @@ namespace AdangalApp
 
                 allContent.Append(GetEmptyPages(1));  // add 4 empty pages.
                 allContent.Append(GetPageTotal(pageTotalList, pageTotal2List));
-                allContent.Append(GetPageTotal(pageTotal2List, pageTotal3List));
-                allContent.Append(GetOverallTotal(pageTotal3List));
+                if (isTestingMode == false)
+                {
+                    allContent.Append(GetPageTotal(pageTotal2List, pageTotal3List));
+                    GetOverallTotal(pageTotal3List);
+                    //allContent.Append(GetOverallTotal(pageTotal3List));
+                }
+                else
+                {
+                    GetOverallTotal(pageTotal2List);
+                    //allContent.Append(GetOverallTotal(pageTotal2List));
+                }
+                
+                allContent.Append(GetSummaryPage());
+                allContent.Append(GetGovtBuildingPage());
 
                 mainHtml = mainHtml.Replace("[allPageData]", allContent.ToString());
                 mainHtml = mainHtml.Replace("[certifed]", GetCertifiedContent());
@@ -1602,13 +1700,15 @@ namespace AdangalApp
                 if(percCompleted == 100)
                 {
                     btnGenerate.Enabled = true;
-                    btnPercentage.BackColor = Color.Green;
+                    btnPercentage.BackColor  = Color.Green;
                 }
                 else
                 {
                     btnGenerate.Enabled = false;
                     btnPercentage.BackColor = Color.Red;
                 }
+
+                btnGenerate.Enabled = isTestingMode;
 
                 cmbItemToBeAdded.DataSource = notInPdfToBeAdded;
                 LogMessage($"STEP-3 - Raedy For Print - Completed");

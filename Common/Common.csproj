@@ -107,6 +107,7 @@
     <Compile Include="DataCorrector.cs" />
     <Compile Include="DateHelper.cs" />
     <Compile Include="DocxToText.cs" />
+    <Compile Include="ExtensionMethod\AdangalExtension.cs" />
     <Compile Include="ExtensionMethod\PdfExtension.cs" />
     <Compile Include="ExtensionMethod\StringExtension.cs" />
     <Compile Include="ExtensionMethod\DataExtension.cs" />
@@ -153,8 +154,12 @@
     <Content Include="HTMLTemplate\Certified.txt" />
     <Content Include="HTMLTemplate\FirstPageTemplate.htm" />
     <Content Include="HTMLTemplate\LeftPageCertTableTemplate.htm" />
+    <Content Include="HTMLTemplate\GovtBuildingTableTemplate.htm" />
+    <Content Include="HTMLTemplate\GovtBuildingRowTemplate.htm" />
+    <Content Include="HTMLTemplate\SummayRowTemplate.htm" />
     <Content Include="HTMLTemplate\PageTotalRowTemplate.htm" />
     <Content Include="HTMLTemplate\PageOverallTotalTableTemplate.htm" />
+    <Content Include="HTMLTemplate\SummaryTableTemplate.htm" />
     <Content Include="HTMLTemplate\PageTotalTableTemplate.htm" />
     <Content Include="HTMLTemplate\PageOverallTotalRowTemplate.htm" />
     <Content Include="HTMLTemplate\RightPageTableTemplate.htm" />
