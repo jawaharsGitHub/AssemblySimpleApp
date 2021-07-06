@@ -1,26 +1,30 @@
 [
   {
-    "MaavattamCode": 35,
-    "MaavattamName": "Sengalpattu",
-    "MaavattamNameTamil": "செங்கல்பட்டு",
-    "VattamCode": 4,
-    "VattamName": "Chengalpattu",
-    "VattamNameTamil": "jkh",
-    "FirkaName": "kjm",
-    "VillageCode": 216,
-    "VillageName": "AMMANAMBAKKAM",
-    "VillageNameTamil": "kjk"
+    "MaavattamCode": 0,
+    "MaavattamName": null,
+    "MaavattamNameTamil": null,
+    "VattamCode": 0,
+    "VattamName": null,
+    "VattamNameTamil": null,
+    "FirkaName": null,
+    "VillageCode": -1,
+    "VillageName": "--select--",
+    "VillageNameTamil": null,
+    "InitialPercentage": null,
+    "CorrectedPercentage": null
   },
   {
-    "MaavattamCode": 30,
-    "MaavattamName": "Kanniyakumari",
-    "MaavattamNameTamil": "கன்னியாகுமரி",
-    "VattamCode": 6,
-    "VattamName": "Killiyoor",
-    "VattamNameTamil": "hgh",
-    "FirkaName": "jn",
-    "VillageCode": 2,
-    "VillageName": "ADAIKAKUZHI",
-    "VillageNameTamil": "kj"
+    "MaavattamCode": 27,
+    "MaavattamName": "Ramanathapuram",
+    "MaavattamNameTamil": "இராமநாதபுரம்",
+    "VattamCode": 11,
+    "VattamName": "RAMANATHAPURAM",
+    "VattamNameTamil": "இராமநாதபுரம்",
+    "FirkaName": "இராமநாதபுரம்",
+    "VillageCode": 22,
+    "VillageName": "ACHUNTHANVAYAL",
+    "VillageNameTamil": "அச்சுந்தன்வயல்",
+    "InitialPercentage": 78.15,
+    "CorrectedPercentage": 85.86
   }
 ]

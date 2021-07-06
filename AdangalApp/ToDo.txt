@@ -145,6 +145,7 @@ STEPS:
 4) overrite exe (or delete an existing)
 5) while print - margin  0 , A4, scale default, portrait etc.,
 folder structure...
+6) browser certificate expires message/issue.
 
 manual check:
 	look at percentage.

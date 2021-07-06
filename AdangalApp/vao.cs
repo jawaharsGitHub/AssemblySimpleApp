@@ -32,7 +32,7 @@ namespace AdangalApp
         readonly string ERROR = "ERROR";
 
         string pdfvillageName = "";
-        
+
 
         string chittaPdfFile = "";
         string chittaTxtFile = "";
@@ -74,7 +74,7 @@ namespace AdangalApp
         int TestingPage = ConfigurationManager.AppSettings["TestingPage"].ToInt32();
         string ChittaPdfFile = ConfigurationManager.AppSettings["ChittaPdfFile"];
         string ChittaTxtFile = ConfigurationManager.AppSettings["ChittaTxtFile"];
-        string AregFile = ConfigurationManager.AppSettings["AregFile"]; 
+        string AregFile = ConfigurationManager.AppSettings["AregFile"];
         bool needTheervaiTest = Convert.ToBoolean(ConfigurationManager.AppSettings["needTheervaiTest"]);
         int pasali = Convert.ToInt32(ConfigurationManager.AppSettings["PasaliEn"]);
         int prepasali;
@@ -89,6 +89,7 @@ namespace AdangalApp
             try
             {
                 InitializeComponent();
+                ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
                 SetTestMode();
                 BindDropdown(cmbFulfilled, GetFullfilledOptions(), "Caption", "Id");
                 prepasali = (pasali - 1);
@@ -152,7 +153,7 @@ namespace AdangalApp
             }
         }
 
-        
+
 
         private void ProcessNames()
         {
@@ -320,7 +321,7 @@ namespace AdangalApp
                 SetVillage();
 
                 //waitForm.Close();
-                
+
                 //waitForm.Show(this);
 
                 data.RemoveAt(0); // first is empty data
@@ -558,26 +559,26 @@ namespace AdangalApp
 
                 WholeLandList = pattaList.SelectMany(x => x.landDetails.Select(y => y)).ToList();
 
-                
+
 
                 AdangalOriginalList = (from wl in WholeLandList
                                    .Where(w => w.LandType != LandType.Zero)
                                                .OrderBy(o => o.LandType)
                                                .ThenBy(o => o.SurveyNo)
                                                .ThenBy(t => t.Subdivision, new AlphanumericComparer()).ToList()
-                               select new Adangal()
-                               {
-                                   NilaAlavaiEn = wl.SurveyNo,
-                                   UtpirivuEn = wl.Subdivision,
-                                   OwnerName = wl.OwnerName,
-                                   Parappu = wl.Parappu,
-                                   Theervai = wl.Theervai,
-                                   //Anupathaarar = wl.Anupathaarar,
-                                   LandType = wl.LandType,
-                                   LandStatus = wl.LandStatus,
-                                   PattaEn = wl.PattaEn,
-                                   CorrectNameRow = wl.CorrectNameRow
-                               }).ToList();
+                                       select new Adangal()
+                                       {
+                                           NilaAlavaiEn = wl.SurveyNo,
+                                           UtpirivuEn = wl.Subdivision,
+                                           OwnerName = wl.OwnerName,
+                                           Parappu = wl.Parappu,
+                                           Theervai = wl.Theervai,
+                                           //Anupathaarar = wl.Anupathaarar,
+                                           LandType = wl.LandType,
+                                           LandStatus = wl.LandStatus,
+                                           PattaEn = wl.PattaEn,
+                                           CorrectNameRow = wl.CorrectNameRow
+                                       }).ToList();
             }
             catch (Exception ex)
             {
@@ -689,7 +690,7 @@ namespace AdangalApp
                 new KeyValue() { Id = 1, Caption = "PATTA" },
                 new KeyValue() { Id = 2, Caption = "LANDDETAIL" },
                 new KeyValue() { Id = 3, Caption = "ADANGAL" },
-                
+
             };
 
         }
@@ -963,7 +964,7 @@ namespace AdangalApp
             }
 
         }
-        
+
         private void ddlListType_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selected = ((KeyValue)ddlListType.SelectedItem).Id;
@@ -983,7 +984,7 @@ namespace AdangalApp
 
 
         }
-        
+
         private void ddlLandTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlLandTypes.SelectedIndex == 0) return;
@@ -1043,7 +1044,7 @@ namespace AdangalApp
             var selected = ddlPattaTypes.SelectedItem as KeyValue;
 
             //if (selected == 1)
-                dataGridView1.DataSource = pattaList.Where(w => (int)w.PattaType == selected.Id).ToList();
+            dataGridView1.DataSource = pattaList.Where(w => (int)w.PattaType == selected.Id).ToList();
             //else if (selected == 2)
             //    dataGridView1.DataSource = pattaList.Where(w => (int)w.PattaType == ddlPattaTypes.SelectedValue.ToInt32()).ToList()
             //                                .SelectMany(x => x.landDetails.Select(y => y)).ToList();
@@ -1274,7 +1275,7 @@ namespace AdangalApp
                     //                      .Replace("[theervai]", ff.TheervaiTotal.ToString());
                     //sb.Append(dataRows);
 
-                    summaryList.Add(new Summary() 
+                    summaryList.Add(new Summary()
                     {
                         Id = (int)ff.LandType,
                         Parappu = ff.ParappuTotal,
@@ -1355,8 +1356,8 @@ namespace AdangalApp
             StringBuilder totalContent = new StringBuilder();
 
             var gd = (from gb in DataAccess.GetGovtBuilding()
-                                                group gb by gb.GroupId into newGroup
-                                                select newGroup).ToList();
+                      group gb by gb.GroupId into newGroup
+                      select newGroup).ToList();
             try
             {
                 var tbl = FileContentReader.GovtBuildingTableTemplate;
@@ -1371,11 +1372,12 @@ namespace AdangalApp
                 string dataRows = "";
                 StringBuilder sb = new StringBuilder();
 
-                gd.ForEach(fe => {
+                gd.ForEach(fe =>
+                {
 
                     List<GovtBuilding> govtBuildings = fe.ToList();
 
-                    for (int ff  = 0; ff <= govtBuildings.Count-1; ff++)
+                    for (int ff = 0; ff <= govtBuildings.Count - 1; ff++)
                     {
                         dataRows = row.Replace("[pulaen]", govtBuildings[ff].PulaEn)
                                               .Replace("[parappu]", govtBuildings[ff].Parappu);
@@ -1392,7 +1394,7 @@ namespace AdangalApp
                             dataRows = dataRows.Replace("<td rowspan='[rowspan]' style='vertical-align:middle;'>[vibaram]</td>", empty)
                                                .Replace("<td rowspan='[rowspan]' style='vertical-align:middle;'>[buildingname]</td>", empty);
                         }
-                        
+
                         sb.Append(dataRows);
 
                     }
@@ -1473,7 +1475,7 @@ namespace AdangalApp
             var pc = (1983 + now.Month + now.Day + now.Hour + quarter + now.Minute).ToString();
 
             string result = "";
-            pc.ToList().ForEach(c => result += (c.ToString().ToInt32()+1));
+            pc.ToList().ForEach(c => result += (c.ToString().ToInt32() + 1));
             return result;
         }
 
@@ -1484,7 +1486,7 @@ namespace AdangalApp
             LogMessage($"STEP-5 - Generate Started");
             string actualCode = "";
             string expectedCode = "";
-           
+
             actualCode = General.ShowPrompt("Passcode", "Verification");
             expectedCode = GetPasscode();
 
@@ -1530,7 +1532,7 @@ namespace AdangalApp
                     if (dataToProcess.Count % recordPerPage > 0) pageCount += 1;
                     var landType = fe.Key.ToName();
                     string pageRange = "";
-                    
+
                     if (isTestingMode)
                     {
                         pageCount = pageCount >= TestingPage ? TestingPage : pageCount;
@@ -1611,7 +1613,7 @@ namespace AdangalApp
                     GetOverallTotal(pageTotal2List);
                     //allContent.Append(GetOverallTotal(pageTotal2List));
                 }
-                
+
                 allContent.Append(GetSummaryPage());
                 allContent.Append(GetGovtBuildingPage());
                 allContent.Append(GetGovtBuildingPage());
@@ -1619,7 +1621,7 @@ namespace AdangalApp
                 mainHtml = mainHtml.Replace("[allPageData]", allContent.ToString());
                 mainHtml = mainHtml.Replace("[certifed]", GetCertifiedContent());
 
-                var fPath = AdangalConstant.CreateAndReadPath($"{loadedFile.VillageName}-Result"); 
+                var fPath = AdangalConstant.CreateAndReadPath($"{loadedFile.VillageName}-Result");
                 var filePath = Path.Combine(fPath, $"{loadedFile.VillageName}-{DateTime.Now.ToString("MM-dd-yyyy HH-mm-ss")}.htm");
                 File.AppendAllText(filePath, mainHtml);
 
@@ -1659,7 +1661,7 @@ namespace AdangalApp
             try
             {
                 var selItem = (ComboData)ddlDistrict.SelectedItem;
-                if (ddlDistrict.SelectedIndex == 0 || ddlValue == selItem.Value) 
+                if (ddlDistrict.SelectedIndex == 0 || ddlValue == selItem.Value)
                     return;
 
                 ddlValue = selItem.Value;
@@ -1671,17 +1673,17 @@ namespace AdangalApp
                     return;
                 }
 
-                
+
                 if (ddlDistrict.SelectedItem != null)
-                {                  
-                    
+                {
+
                     LogMessage($"STEP-1 - Maavattam: {selItem.Value}-{selItem.Display}");
 
                     var url = $"https://eservices.tn.gov.in/eservicesnew/land/ajax.html?page=taluk&districtCode={selItem.Value}";
                     var response = WebReader.CallHttpWebRequest(url);
 
                     BindDropdown(cmbTaluk, WebReader.xmlToDynamic(response, "taluk"), "Display", "Value");
-                    cmbTaluk.SelectedIndexChanged += new EventHandler(cmbTaluk_SelectedIndexChanged);                  
+                    cmbTaluk.SelectedIndexChanged += new EventHandler(cmbTaluk_SelectedIndexChanged);
                 }
                 waitForm.Close();
             }
@@ -1726,7 +1728,7 @@ namespace AdangalApp
         {
 
             try
-            {                
+            {
                 LogMessage($"STEP-3 - Raedy For Print - Started");
                 List<KeyValue> onlineData;
 
@@ -1761,24 +1763,24 @@ namespace AdangalApp
                 btnAdd.Enabled = (notInPdfToBeAdded.Count > 0);
                 var wrongNameCount = fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.WrongName).Count();
 
-                var percCompleted = onlineData.Count.PercentageBtwDecNo(actualLandDetails.Count - (notInOnlineToBeDeleted.Count+ wrongNameCount), 2);
-                
-                if(loadedFile.InitialPercentage == null)
+                var percCompleted = onlineData.Count.PercentageBtwDecNo(actualLandDetails.Count - (notInOnlineToBeDeleted.Count + wrongNameCount), 2);
+
+                if (loadedFile.InitialPercentage == null)
                 {
-                    DataAccess.UpdatePercentage(loadedFile, percCompleted);
+                    loadedFile = DataAccess.UpdatePercentage(loadedFile, percCompleted);
                 }
-                if(percCompleted.ToInt32() == 100)
+                if (percCompleted.ToInt32() == 100)
                 {
                     var correctedCount = fullAdangalFromjson.Where(w => w.LandStatus != LandStatus.NoChange).Count();
-                    var correctedPerc = onlineData.Count.PercentageBtwDecNo(correctedCount, 2);
-                    DataAccess.UpdateCorrectedPerc(loadedFile, correctedPerc);
+                    var correctedPerc = 100 - onlineData.Count.PercentageBtwDecNo(correctedCount, 2);
+                    loadedFile = DataAccess.UpdateCorrectedPerc(loadedFile, correctedPerc);
                 }
                 btnPercentage.Text = percCompleted.ToString() + "%";
 
-                if(percCompleted == 100)
+                if (percCompleted == 100)
                 {
                     btnGenerate.Enabled = true;
-                    btnPercentage.BackColor  = Color.Green;
+                    btnPercentage.BackColor = Color.Green;
                 }
                 else
                 {
@@ -1841,7 +1843,7 @@ namespace AdangalApp
                 // Validate Land Type.
                 lblLandTypeError.Visible = lblLandStatusError.Visible = lblPattaCheckError.Visible = false;
                 var totalAdangal = fullAdangalFromjson.Count;
-                
+
                 var landTypeCheck = ddlLandTypes.DataSource as List<KeyValue>;
                 var totalLandTypes = (landTypeCheck[2].Value + landTypeCheck[3].Value + landTypeCheck[4].Value + landTypeCheck[5].Value);
 
@@ -1993,7 +1995,7 @@ namespace AdangalApp
             loadedFile.VillageName = selectedVillage.Display;
             loadedFile.VillageNameTamil = txtVaruvai.Text.Trim();
 
-            
+
         }
 
         WaitWnd.WaitWndFun waitForm = new WaitWnd.WaitWndFun();
@@ -2054,7 +2056,7 @@ namespace AdangalApp
                     DataAccess.SaveAdangalOriginalList(AdangalOriginalList);
                     EnableReadyForNew();
                     ProcessFullReport();
-                    
+
                     DataAccess.AddNewLoadedFile(loadedFile);
                     LogMessage($"Add/Update Loaded File.");
                     waitForm.Close();
@@ -2065,9 +2067,9 @@ namespace AdangalApp
                     LogMessage($"Some file missing in the folder?");
                     MessageBox.Show("Some file missing in the folder?");
                 }
-                
+
                 LogMessage($"STEP-2 - Completed - - First time Load");
-                
+
 
             }
             catch (Exception ex)
@@ -2117,7 +2119,7 @@ namespace AdangalApp
             if (selItem.Value != -1)
                 LogMessage($"STEP - 1 - Village: {selItem.Value}-{selItem.Display}");
 
-            
+
             CheckJsonExist();
         }
 
@@ -2194,7 +2196,7 @@ namespace AdangalApp
             var selectedMaavatta = (ddlDistrict.SelectedItem as ComboData);
             var selectedVattam = (cmbTaluk.SelectedItem as ComboData);
             var selectedVillage = (cmbVillages.SelectedItem as ComboData);
-            
+
             //var isVillageSelected = (selectedVillage.Value != -1);
             loadedFile.MaavattamNameTamil = selectedMaavatta.DisplayTamil;
             loadedFile.MaavattamCode = selectedMaavatta.Value;
@@ -2205,7 +2207,7 @@ namespace AdangalApp
             //var canEnable = (isVillageSelected && ddlListType.SelectedValue.ToInt32() == 4);
 
             //if (canEnable)
-                //BindDropdown(cmbLandStatus, GetLandStatusOptions(), "DisplayMember", "Id");
+            //BindDropdown(cmbLandStatus, GetLandStatusOptions(), "DisplayMember", "Id");
 
             //btnReadFile.Enabled = isVillageSelected;
         }
@@ -2213,14 +2215,14 @@ namespace AdangalApp
         private void EnableReadyForExist()
         {
             //if ((ddlListType.SelectedValue.ToInt32() == 4))
-                BindDropdown(cmbLandStatus, GetLandStatusOptions(), "DisplayMember", "Id");
+            BindDropdown(cmbLandStatus, GetLandStatusOptions(), "DisplayMember", "Id");
         }
 
         private void SetTestMode()
         {
-            ddlPattaTypes.Visible = cmbFulfilled.Visible = 
-                lblPattaCheck.Visible = btnGenerate.Enabled = 
-                btnSoftGen.Enabled  = isTestingMode;
+            ddlPattaTypes.Visible = cmbFulfilled.Visible =
+                lblPattaCheck.Visible = btnGenerate.Enabled =
+                btnSoftGen.Enabled = isTestingMode;
 
             grpTheervaiTest.Visible = needTheervaiTest;
         }
@@ -2240,7 +2242,7 @@ namespace AdangalApp
             return fullAdangalFromjson.Where(w => w.UtpirivuEn.Contains("ே") || w.UtpirivuEn.Contains("\0")).ToList();
         }
 
-        
+
         private List<Adangal> GetFullfilledAdangal()
         {
             return fullAdangalFromjson.Where(w => string.IsNullOrEmpty(w.UtpirivuEn) || w.UtpirivuEn == "-").ToList();
@@ -2594,9 +2596,9 @@ namespace AdangalApp
 
         private void ddlListType_DataSourceChanged(object sender, EventArgs e)
         {
-                ddlListType.Enabled = isTestingMode;
+            ddlListType.Enabled = isTestingMode;
         }
-        
+
     }
 
 }

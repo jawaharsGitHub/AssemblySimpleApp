@@ -254,24 +254,26 @@ namespace AdangalApp
             return true;
         }
 
-        public static void UpdatePercentage(LoadedFileDetail loadedFileDetail, decimal percentage)
+        public static LoadedFileDetail UpdatePercentage(LoadedFileDetail loadedFileDetail, decimal percentage)
         {
             List<LoadedFileDetail> list = GetLoadedFile();
             var u = list.Where(ld => ld.MaavattamCode == loadedFileDetail.MaavattamCode &&
                               ld.VattamCode == loadedFileDetail.VattamCode &&
-                              ld.VillageCode == loadedFileDetail.VattamCode).First();
+                              ld.VillageCode == loadedFileDetail.VillageCode).First();
             u.InitialPercentage = percentage;
             WriteObjectsToFile(list, LoadedFile);
+            return u;
         }
 
-        public static void UpdateCorrectedPerc(LoadedFileDetail loadedFileDetail, decimal percentage)
+        public static LoadedFileDetail UpdateCorrectedPerc(LoadedFileDetail loadedFileDetail, decimal percentage)
         {
             List<LoadedFileDetail> list = GetLoadedFile();
             var u = list.Where(ld => ld.MaavattamCode == loadedFileDetail.MaavattamCode &&
                               ld.VattamCode == loadedFileDetail.VattamCode &&
-                              ld.VillageCode == loadedFileDetail.VattamCode).First();
+                              ld.VillageCode == loadedFileDetail.VillageCode).First();
             u.CorrectedPercentage = percentage;
             WriteObjectsToFile(list, LoadedFile);
+            return u;
         }
 
         public static void DeleteLoadedFile(LoadedFileDetail loadedFileDetail)

@@ -5,9 +5,9 @@ namespace Common
     public static class FileContentReader
     {
         public static string EmailBodyHtml { get; } = GetHtmlFileContent("EmailBody.htm");
-        public static string DataPageHtml { get; } = GetHtmlFileContent("adangal-DataPage.htm");
+        //public static string DataPageHtml { get; } = GetHtmlFileContent("adangal-DataPage.htm");
 
-        public static string pageListHtml { get; } = GetHtmlFileContent("adangal-PageList.htm");
+        //public static string pageListHtml { get; } = GetHtmlFileContent("adangal-PageList.htm");
 
         public static string MemberContactHtml { get; } = GetHtmlFileContent("MemberContact.htm");
 

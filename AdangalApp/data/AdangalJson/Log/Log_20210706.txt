@@ -1585,3 +1585,206 @@ Porambokku: 1
 2021-07-06 22:36:28,850 [1] DEBUG - STARTED....
 2021-07-06 22:36:32,718 [1] DEBUG - STEP-1 STARTED
 2021-07-06 22:36:33,756 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-06 22:47:12,965 [1] DEBUG - =================Tuesday, 06 July 2021 22:47:12========================
+2021-07-06 22:47:13,060 [1] DEBUG - STARTED....
+2021-07-06 22:47:25,331 [1] DEBUG - STEP-1 STARTED
+2021-07-06 22:47:26,532 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-06 22:47:49,494 [1] DEBUG - Error @ ddlDistrict_SelectedIndexChanged - System.Net.WebException: The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel. ---> System.Security.Authentication.AuthenticationException: The remote certificate is invalid according to the validation procedure.
+   at System.Net.Security.SslState.StartSendAuthResetSignal(ProtocolToken message, AsyncProtocolRequest asyncRequest, Exception exception)
+   at System.Net.Security.SslState.CheckCompletionBeforeNextReceive(ProtocolToken message, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReadFrame(Byte[] buffer, Int32 readBytes, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.CheckCompletionBeforeNextReceive(ProtocolToken message, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReadFrame(Byte[] buffer, Int32 readBytes, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.CheckCompletionBeforeNextReceive(ProtocolToken message, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReadFrame(Byte[] buffer, Int32 readBytes, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.CheckCompletionBeforeNextReceive(ProtocolToken message, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ForceAuthentication(Boolean receiveFirst, Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessAuthentication(LazyAsyncResult lazyResult)
+   at System.Net.TlsStream.CallProcessAuthentication(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Net.TlsStream.ProcessAuthentication(LazyAsyncResult result)
+   at System.Net.TlsStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.PooledStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.ConnectStream.WriteHeaders(Boolean async)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at Common.WebReader.CallHttpWebRequest(String URL) in F:\AssemblySimpleApp\Common\WebReader.cs:line 22
+   at AdangalApp.vao.ddlDistrict_SelectedIndexChanged(Object sender, EventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1681
+2021-07-06 22:57:31,835 [1] DEBUG - =================Tuesday, 06 July 2021 22:57:31========================
+2021-07-06 22:57:32,471 [1] DEBUG - STARTED....
+2021-07-06 22:57:42,977 [1] DEBUG - STEP-1 STARTED
+2021-07-06 22:57:57,753 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-06 23:04:03,505 [1] DEBUG - =================Tuesday, 06 July 2021 23:04:03========================
+2021-07-06 23:04:03,529 [1] DEBUG - STARTED....
+2021-07-06 23:04:07,382 [1] DEBUG - STEP-1 STARTED
+2021-07-06 23:04:09,220 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-06 23:04:37,685 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-06 23:04:42,533 [1] DEBUG - STEP - 1 - Village: 22-ACHUNTHANVAYAL
+2021-07-06 23:04:46,789 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-06 23:04:48,425 [1] DEBUG - STEP-2 - Value missing: Vattam, Firka and Village in tamil font
+2021-07-06 23:05:12,544 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-06 23:05:42,352 [1] DEBUG - STEP-2 - VattamNameTamil: ???????????? FirkaName: ???????????? VillageNameTamil: ??????????????
+2021-07-06 23:07:36,139 [1] DEBUG - Error @ btnReadFile_Click - System.TypeInitializationException: The type initializer for 'Common.FileContentReader' threw an exception. ---> System.IO.FileNotFoundException: Could not find file 'F:\AssemblySimpleApp\AdangalApp\Common\HTMLTemplate\adangal-DataPage.htm'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Common.FileContentReader.GetHtmlFileContent(String fileName) in F:\AssemblySimpleApp\Common\FileContentReader.cs:line 54
+   at Common.FileContentReader..cctor() in F:\AssemblySimpleApp\Common\FileContentReader.cs:line 8
+   --- End of inner exception stack trace ---
+   at Common.FileContentReader.get_FirstPageTemplate()
+   at AdangalApp.vao.PreLoadFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1965
+   at AdangalApp.vao.btnReadFile_Click(Object sender, EventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 2025
+2021-07-06 23:08:16,499 [1] DEBUG - =================Tuesday, 06 July 2021 23:08:16========================
+2021-07-06 23:08:16,530 [1] DEBUG - STARTED....
+2021-07-06 23:08:21,043 [1] DEBUG - STEP-1 STARTED
+2021-07-06 23:08:22,143 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-06 23:08:34,291 [1] DEBUG - STEP-1 - Vattam: 15-RAJASINGAMANGALAM
+2021-07-06 23:08:36,282 [1] DEBUG - STEP-1 - Vattam: 15-RAJASINGAMANGALAM
+2021-07-06 23:08:46,408 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-06 23:08:50,484 [1] DEBUG - STEP - 1 - Village: 22-ACHUNTHANVAYAL
+2021-07-06 23:09:06,995 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-06 23:09:17,817 [1] DEBUG - STEP-2 - VattamNameTamil: ???????????? FirkaName: ???????????? VillageNameTamil: ??????????????
+2021-07-06 23:09:17,896 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-06 23:09:24,976 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Achunthavayal\Chitta_Report-1.pdf
+2021-07-06 23:09:24,992 [1] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 11:09:24 PM
+2021-07-06 23:09:27,418 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Achunthavayal\Chitta_Report-1.pdf
+2021-07-06 23:09:27,418 [1] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 11:09:27 PM
+2021-07-06 23:09:31,683 [1] DEBUG - COMPLETED PROCESSING CHITTA PDF FILE @ 11:09:31 PM
+2021-07-06 23:09:31,793 [1] DEBUG - STARTED PROCESSING AREG PDF FILE @ 11:09:31 PM
+2021-07-06 23:09:33,746 [1] DEBUG - COMPLETED PROCESSING AREG PDF FILE @ 11:09:33 PM
+2021-07-06 23:09:34,214 [1] DEBUG - STARTED FULL REPORT
+2021-07-06 23:09:45,160 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-06 23:09:45,201 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-06 23:09:45,249 [1] DEBUG - Add/Update Loaded File.
+2021-07-06 23:09:45,249 [1] DEBUG - STEP-2 - Completed - - First time Load
+2021-07-06 23:10:10,091 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-06 23:10:10,201 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-06 23:10:10,285 [1] DEBUG - ready: False STATUS: ADD:315
+DELETE:87
+NAME ISSUE :124
+SomeDots ISSUE :7
+Porambokku: 160
+
+2021-07-06 23:14:09,418 [1] DEBUG - =================Tuesday, 06 July 2021 23:14:09========================
+2021-07-06 23:14:09,444 [1] DEBUG - STARTED....
+2021-07-06 23:14:24,190 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-06 23:14:24,626 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-06 23:14:34,023 [1] DEBUG - STARTED FULL REPORT
+2021-07-06 23:14:34,081 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-06 23:14:34,162 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-06 23:14:34,162 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-06 23:14:35,969 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-06 23:14:36,032 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-06 23:14:36,161 [1] DEBUG - ready: False STATUS: ADD:315
+DELETE:87
+NAME ISSUE :124
+SomeDots ISSUE :7
+Porambokku: 160
+
+2021-07-06 23:14:47,220 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-06 23:14:56,867 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-06 23:14:56,914 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-06 23:14:56,988 [1] DEBUG - ready: False STATUS: ADD:315
+DELETE:87
+NAME ISSUE :124
+SomeDots ISSUE :7
+Porambokku: 160
+
+2021-07-06 23:17:15,252 [1] DEBUG - =================Tuesday, 06 July 2021 23:17:15========================
+2021-07-06 23:17:15,299 [1] DEBUG - STARTED....
+2021-07-06 23:17:19,615 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-06 23:17:19,826 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-06 23:17:29,285 [1] DEBUG - STARTED FULL REPORT
+2021-07-06 23:17:29,342 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-06 23:17:29,392 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-06 23:17:29,392 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-06 23:17:31,573 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-06 23:17:31,636 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-06 23:17:31,720 [1] DEBUG - ready: False STATUS: ADD:315
+DELETE:87
+NAME ISSUE :124
+SomeDots ISSUE :7
+Porambokku: 160
+
+2021-07-06 23:17:31,784 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-06 23:18:05,609 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-06 23:18:05,656 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-06 23:18:05,719 [1] DEBUG - ready: False STATUS: ADD:315
+DELETE:87
+NAME ISSUE :124
+SomeDots ISSUE :7
+Porambokku: 160
+
+2021-07-06 23:19:44,709 [1] DEBUG - =================Tuesday, 06 July 2021 23:19:44========================
+2021-07-06 23:19:44,725 [1] DEBUG - STARTED....
+2021-07-06 23:19:49,577 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-06 23:19:49,709 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-06 23:19:58,619 [1] DEBUG - STARTED FULL REPORT
+2021-07-06 23:19:58,671 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-06 23:19:58,704 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-06 23:19:58,704 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-06 23:20:00,363 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-06 23:20:00,425 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-06 23:20:00,510 [1] DEBUG - ready: False STATUS: ADD:315
+
+2021-07-06 23:21:45,679 [1] DEBUG - =================Tuesday, 06 July 2021 23:21:45========================
+2021-07-06 23:21:45,711 [1] DEBUG - STARTED....
+2021-07-06 23:21:49,702 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-06 23:21:49,891 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-06 23:21:59,316 [1] DEBUG - STARTED FULL REPORT
+2021-07-06 23:21:59,371 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-06 23:21:59,413 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-06 23:21:59,413 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-06 23:22:01,276 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-06 23:22:01,307 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-06 23:22:01,407 [1] DEBUG - ready: False STATUS: ADD:315
+
+2021-07-06 23:22:47,204 [1] DEBUG - =================Tuesday, 06 July 2021 23:22:47========================
+2021-07-06 23:22:47,236 [1] DEBUG - STARTED....
+2021-07-06 23:22:51,764 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-06 23:22:51,949 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-06 23:23:01,149 [1] DEBUG - STARTED FULL REPORT
+2021-07-06 23:23:01,195 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-06 23:23:01,227 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-06 23:23:01,227 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-06 23:23:02,626 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-06 23:23:02,689 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-06 23:23:02,772 [1] DEBUG - ready: False STATUS: ADD:315
+
+2021-07-06 23:26:37,507 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-06 23:26:44,863 [1] DEBUG - STEP-5 - Generate Started
+2021-07-06 23:27:19,931 [1] DEBUG - STARTED HTML GENERATION @ 11:27:19 PM
+2021-07-06 23:27:20,307 [1] DEBUG - COMPLETED HTML GENERATION @ F:\AssemblySimpleApp\AdangalApp\data\AdangalJson/ACHUNTHANVAYAL/ACHUNTHANVAYAL-Result\ACHUNTHANVAYAL-07-06-2021 23-27-20.htm
+2021-07-06 23:27:20,307 [1] DEBUG - STEP-5 - Generate Completed
+2021-07-06 23:36:48,151 [1] DEBUG - =================Tuesday, 06 July 2021 23:36:48========================
+2021-07-06 23:36:48,176 [1] DEBUG - STARTED....
+2021-07-06 23:36:53,884 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-06 23:36:54,265 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-06 23:37:03,725 [1] DEBUG - STARTED FULL REPORT
+2021-07-06 23:37:03,786 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-06 23:37:03,841 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-06 23:37:03,841 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-06 23:37:05,266 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-06 23:37:05,388 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-06 23:37:05,499 [1] DEBUG - ready: False STATUS: ADD:315
+
+2021-07-06 23:37:05,558 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-06 23:37:07,763 [1] DEBUG - STEP-5 - Generate Started
+2021-07-06 23:37:40,625 [1] DEBUG - STARTED HTML GENERATION @ 11:37:40 PM
+2021-07-06 23:37:40,877 [1] DEBUG - COMPLETED HTML GENERATION @ F:\AssemblySimpleApp\AdangalApp\data\AdangalJson/ACHUNTHANVAYAL/ACHUNTHANVAYAL-Result\ACHUNTHANVAYAL-07-06-2021 23-37-40.htm
+2021-07-06 23:37:40,877 [1] DEBUG - STEP-5 - Generate Completed
