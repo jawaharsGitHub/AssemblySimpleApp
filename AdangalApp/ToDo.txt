@@ -52,57 +52,55 @@ logic for production and testing purpose.
 password patterns
 group purambokku data by its name. - not mandatory!
 தற்காலதலைவர்‌ யாதவசமூகத்திற்குபாத்தியமான வகை - will be manually verified.
-&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-
-***********************************************************
+nansai = nansai + punsai
+total is only for nansai, punsai and maanaavari not for porambokku - not correct, its for all
 govt building table
 summary table.
-upadte first time percentage of a file.
-total is only for nansai, punsai and maanaavari not for porambokku 
-Data analysis Report
-	patta count
-	land count(survey no)
-	siru guru vivasaayi
-	peru vivasaayi
-	siru guru vivasaayi -> owner(father name) -> land details and count.
-nansai = nansai + punsai
+upadte first time  and corrected percentage of a file.
+pagenumber tracking for all land types.
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+************************V-1***********************************
 option to edit and update the total land parappu (if needed)
 Log in panchayat level
 modal popup for progress bar?
-
-
+page total header font sze.
 parallel working especially - for getting subdiv details.
-pagenumber tracking for all land types.
 manual check button and functionality.
-book view functionality.
-***********************************************************
-softcopy version & hardcopy version
-STAGE-1:File loaded STAGE-2:LOADED WITHOU ISSUE STAGE-3:CORRECTED TO 100%
-grid paging - should be same as adangal book.
 order by survey and sub div no.
-replace an existing exe (replace or overwrite)
-***********************************************************
-
-
+replace an existing exe (replace or overwrite)?
 provide correct space in header. (top header space and alignment.)
 right and left table height should be same
 what about last page page number if right side page? need testing.
 tamil font style in html pages?
 update porambokku name (manually?)
 while update name - should maintian a dictionary of correct and wrong name
-firka database
 for texting use the constant value.
 isvagai testing scenario
 column which need mre width.
+-----------------------------------------------------------------------------------------------------
+v-2
+---
+book view functionality. (grid paging - should be same as adangal book.)
+Surveyor Issue
+Correction history table.
 Manual Work:
+	Delete not needed
 	update porambokku data
 	Add missed survey details
-	Update name
-Surveyor Issue
+	Update name(first only or both first and last)
+firka database
+softcopy version & hardcopy version
+STAGE-1:File loaded STAGE-2:LOADED WITHOU ISSUE STAGE-3:CORRECTED TO 100%
+Data analysis Report
+	patta count
+	land count(survey no)
+	siru guru vivasaayi
+	peru vivasaayi
+	siru guru vivasaayi -> owner(father name) -> land details and count.
 
-Correction history table.
 
------------------------------------------------------------------------------------------------------
 marketing:
 ----------
 
@@ -155,6 +153,7 @@ manual check:
 	porambaokku correction
 	add new (bulk update)
 	manual full check.
+	update total numbers if they want via html (before PRINT)
 
 
 

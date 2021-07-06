@@ -150,7 +150,6 @@
     <None Include="PL file\RUNNING NOTES.ods" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="HTMLTemplate\adangal-PageList.htm" />
     <Content Include="HTMLTemplate\Certified.txt" />
     <Content Include="HTMLTemplate\FirstPageTemplate.htm" />
     <Content Include="HTMLTemplate\LeftPageCertTableTemplate.htm" />

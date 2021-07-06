@@ -17,5 +17,5 @@ packages
 /tnMapWebApp/node_modules
 /tnMapWebApp/obj
 /AdangalApp/data/AdangalJson/ACHUNTHANVAYAL/ACHUNTHANVAYAL-Result
-/AdangalApp/bin
-/AdangalApp/obj
+/AdangalApp/bin/Debug
+/AdangalApp/obj/Debug

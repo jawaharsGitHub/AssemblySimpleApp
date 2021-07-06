@@ -73,7 +73,7 @@ namespace AdangalApp
         public static List<KeyValue> SubdivToJson(List<KeyValue> subdivData)
         {
             if (File.Exists(SubDivPath) == false)
-                WriteObjectsToFile<KeyValue>(subdivData, SubDivPath);
+                WriteObjectsToFile(subdivData, SubDivPath);
 
             var data = ReadFileAsObjects<KeyValue>(SubDivPath);
             return data;
@@ -84,7 +84,7 @@ namespace AdangalApp
             string path = JsonPath;
             General.CreateFileIfNotExist(path);
 
-            WriteObjectsToFile<Adangal>(adangalData, path);
+            WriteObjectsToFile(adangalData, path);
 
             var data = GetActiveAdangal();
             return data;
@@ -126,7 +126,7 @@ namespace AdangalApp
                 data.Where(w => w.Id == -1).First().Pakkam = totalPunsaiPages;
             }
 
-            WriteObjectsToFile<Summary>(data, path);
+            WriteObjectsToFile(data, path);
         }
 
         public static List<Summary> GetSummary()
@@ -143,24 +143,21 @@ namespace AdangalApp
         {
             var path = PattaJsonPath;
             General.CreateFileIfNotExist(path);
-
-            WriteObjectsToFile<PattaList>(pattaList, path);
+            WriteObjectsToFile(pattaList, path);
         }
 
         public static void SaveWholeLandList(List<LandDetail> landDetails)
         {
             var path = WholeLandListJsonPath;
             General.CreateFileIfNotExist(path);
-
-            WriteObjectsToFile<LandDetail>(landDetails, path);
+            WriteObjectsToFile(landDetails, path);
         }
 
         public static void SaveAdangalOriginalList(List<Adangal> adangal)
         {
             var path = AdangalOriginalPath;
             General.CreateFileIfNotExist(path);
-
-            WriteObjectsToFile<Adangal>(adangal, path);
+            WriteObjectsToFile(adangal, path);
         }
 
         public static PattaList GetPattaList()
@@ -255,6 +252,26 @@ namespace AdangalApp
             DeleteLoadedFile(loadedFileDetail);
             InsertSingleObjectToListJson<LoadedFileDetail>(LoadedFile, loadedFileDetail);
             return true;
+        }
+
+        public static void UpdatePercentage(LoadedFileDetail loadedFileDetail, decimal percentage)
+        {
+            List<LoadedFileDetail> list = GetLoadedFile();
+            var u = list.Where(ld => ld.MaavattamCode == loadedFileDetail.MaavattamCode &&
+                              ld.VattamCode == loadedFileDetail.VattamCode &&
+                              ld.VillageCode == loadedFileDetail.VattamCode).First();
+            u.InitialPercentage = percentage;
+            WriteObjectsToFile(list, LoadedFile);
+        }
+
+        public static void UpdateCorrectedPerc(LoadedFileDetail loadedFileDetail, decimal percentage)
+        {
+            List<LoadedFileDetail> list = GetLoadedFile();
+            var u = list.Where(ld => ld.MaavattamCode == loadedFileDetail.MaavattamCode &&
+                              ld.VattamCode == loadedFileDetail.VattamCode &&
+                              ld.VillageCode == loadedFileDetail.VattamCode).First();
+            u.CorrectedPercentage = percentage;
+            WriteObjectsToFile(list, LoadedFile);
         }
 
         public static void DeleteLoadedFile(LoadedFileDetail loadedFileDetail)

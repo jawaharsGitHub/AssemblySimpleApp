@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace Common
@@ -25,7 +23,6 @@ namespace Common
             Stream ReceiveStream = result.GetResponseStream();
             StreamReader reader = new StreamReader(ReceiveStream, System.Text.Encoding.ASCII);
             string respHTML = reader.ReadToEnd();
-            //Response.Write(respHTML);
             reader.Close();
             return respHTML;
 

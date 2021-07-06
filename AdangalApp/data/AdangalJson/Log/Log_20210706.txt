@@ -1508,3 +1508,80 @@ Porambokku: 1
 2021-07-06 18:37:42,384 [1] DEBUG - STARTED HTML GENERATION @ 6:37:42 PM
 2021-07-06 18:37:42,525 [1] DEBUG - COMPLETED HTML GENERATION @ F:\AssemblySimpleApp\AdangalApp\data\AdangalJson/ACHUNTHANVAYAL/ACHUNTHANVAYAL-Result\ACHUNTHANVAYAL-07-06-2021 18-37-42.htm
 2021-07-06 18:37:42,525 [1] DEBUG - STEP-5 - Generate Completed
+2021-07-06 19:10:09,214 [1] DEBUG - =================Tuesday, 06 July 2021 19:10:09========================
+2021-07-06 19:10:09,245 [1] DEBUG - STARTED....
+2021-07-06 19:17:45,652 [1] DEBUG - =================Tuesday, 06 July 2021 19:17:45========================
+2021-07-06 19:17:45,668 [1] DEBUG - STARTED....
+2021-07-06 19:18:22,700 [1] DEBUG - STEP-1 STARTED
+2021-07-06 19:18:25,454 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-06 19:18:40,563 [1] DEBUG - Error @ ddlDistrict_SelectedIndexChanged - System.Net.WebException: The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel. ---> System.Security.Authentication.AuthenticationException: The remote certificate is invalid according to the validation procedure.
+   at System.Net.Security.SslState.StartSendAuthResetSignal(ProtocolToken message, AsyncProtocolRequest asyncRequest, Exception exception)
+   at System.Net.Security.SslState.CheckCompletionBeforeNextReceive(ProtocolToken message, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReadFrame(Byte[] buffer, Int32 readBytes, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.CheckCompletionBeforeNextReceive(ProtocolToken message, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReadFrame(Byte[] buffer, Int32 readBytes, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.CheckCompletionBeforeNextReceive(ProtocolToken message, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReadFrame(Byte[] buffer, Int32 readBytes, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.CheckCompletionBeforeNextReceive(ProtocolToken message, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ForceAuthentication(Boolean receiveFirst, Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessAuthentication(LazyAsyncResult lazyResult)
+   at System.Net.TlsStream.CallProcessAuthentication(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Net.TlsStream.ProcessAuthentication(LazyAsyncResult result)
+   at System.Net.TlsStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.PooledStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.ConnectStream.WriteHeaders(Boolean async)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at Common.WebReader.CallHttpWebRequest(String URL) in F:\AssemblySimpleApp\Common\WebReader.cs:line 24
+   at AdangalApp.vao.ddlDistrict_SelectedIndexChanged(Object sender, EventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1681
+2021-07-06 19:18:55,178 [1] DEBUG - =================Tuesday, 06 July 2021 19:18:55========================
+2021-07-06 19:18:55,203 [1] DEBUG - STARTED....
+2021-07-06 19:19:01,060 [1] DEBUG - STEP-1 STARTED
+2021-07-06 19:19:03,102 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-06 19:20:01,002 [1] DEBUG - =================Tuesday, 06 July 2021 19:20:01========================
+2021-07-06 19:20:01,017 [1] DEBUG - STARTED....
+2021-07-06 19:20:11,857 [1] DEBUG - STEP-1 STARTED
+2021-07-06 19:20:14,263 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-06 22:25:23,156 [1] DEBUG - =================Tuesday, 06 July 2021 22:25:23========================
+2021-07-06 22:25:23,703 [1] DEBUG - STARTED....
+2021-07-06 22:26:08,403 [1] DEBUG - =================Tuesday, 06 July 2021 22:26:08========================
+2021-07-06 22:26:08,419 [1] DEBUG - STARTED....
+2021-07-06 22:26:33,209 [1] DEBUG - STEP-1 STARTED
+2021-07-06 22:26:39,197 [1] DEBUG - No Internet Connection!
+2021-07-06 22:29:48,426 [1] DEBUG - =================Tuesday, 06 July 2021 22:29:48========================
+2021-07-06 22:29:48,441 [1] DEBUG - STARTED....
+2021-07-06 22:29:52,229 [1] DEBUG - STEP-1 STARTED
+2021-07-06 22:29:52,597 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-06 22:31:32,499 [1] DEBUG - =================Tuesday, 06 July 2021 22:31:32========================
+2021-07-06 22:31:32,518 [1] DEBUG - STARTED....
+2021-07-06 22:31:58,384 [1] DEBUG - STEP-1 STARTED
+2021-07-06 22:32:00,624 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-06 22:32:41,492 [1] DEBUG - =================Tuesday, 06 July 2021 22:32:41========================
+2021-07-06 22:32:41,523 [1] DEBUG - STARTED....
+2021-07-06 22:32:57,322 [1] DEBUG - STEP-1 STARTED
+2021-07-06 22:33:24,724 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-06 22:34:10,495 [1] DEBUG - =================Tuesday, 06 July 2021 22:34:10========================
+2021-07-06 22:34:10,515 [1] DEBUG - STARTED....
+2021-07-06 22:34:18,251 [1] DEBUG - STEP-1 STARTED
+2021-07-06 22:34:19,799 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-06 22:34:57,429 [1] DEBUG - =================Tuesday, 06 July 2021 22:34:57========================
+2021-07-06 22:34:57,445 [1] DEBUG - STARTED....
+2021-07-06 22:35:06,400 [1] DEBUG - STEP-1 STARTED
+2021-07-06 22:35:06,875 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-06 22:36:28,818 [1] DEBUG - =================Tuesday, 06 July 2021 22:36:28========================
+2021-07-06 22:36:28,850 [1] DEBUG - STARTED....
+2021-07-06 22:36:32,718 [1] DEBUG - STEP-1 STARTED
+2021-07-06 22:36:33,756 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram

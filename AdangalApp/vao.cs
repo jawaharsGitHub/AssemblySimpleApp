@@ -1412,6 +1412,60 @@ namespace AdangalApp
             return totalContent.ToString();
         }
 
+        //private string GetDataAnalysisPage()
+        //{
+        //    StringBuilder totalContent = new StringBuilder();
+
+        //    // more data analysis
+        //    var pattaCount = pattaList.Count;
+        //    var landCount = fullAdangalFromjson.Count;
+        //    var nanseiCount = fullAdangalFromjson.Where(w => w.LandType == LandType.Nansai).Count();
+        //    var punsaiCount = fullAdangalFromjson.Where(w => w.LandType == LandType.Punsai) .Count();
+        //    var maanavariCount = fullAdangalFromjson.Where(w => w.LandType == LandType.Maanaavari).Count();
+        //    var poramCount = fullAdangalFromjson.Where(w => w.LandType == LandType.Porambokku).Count();
+
+        //    try
+        //    {
+        //        var tbl = FileContentReader.SummaryTableTemplate;
+        //        var row = FileContentReader.SummayRowTemplate;
+
+        //        totalPageIndexTracker += 1;
+        //        var isRightSide = totalPageIndexTracker.IsEven();
+
+        //        if (isRightSide)
+        //            pageNumber += 1;
+
+        //        //pageNumber += 1;
+        //        string dataRows = "";
+        //        StringBuilder sb = new StringBuilder();
+
+        //        summaryList.ForEach(ff =>
+        //        {
+        //            dataRows = row.Replace("[vibaram]", ff.Vibaram)
+        //                                  .Replace("[pageNo]", ff.Pakkam)
+        //                                  .Replace("[parappu]", ff.Parappu);
+        //            sb.Append(dataRows);
+
+        //        });
+
+        //        var totalRows = row.Replace("[vibaram]", $"<b>{kiraamaMoththam}</b>")
+        //                                  .Replace("[pageNo]", empty)
+        //                                  .Replace("[parappu]", $"<b>{AdangalFn.GetSumThreeDotNo(summaryList.Where(w => w.Id != -1).Select(s => s.Parappu).ToList())}</b>");
+
+        //        tbl = tbl.Replace("[datarows]", sb.ToString());
+        //        tbl = tbl.Replace("[totalrow]", totalRows);
+        //        tbl = tbl.Replace("[header]", updatedHeader);
+        //        tbl = tbl.Replace("[pageNo]", isRightSide ? pageNumber.ToString() : empty);
+        //        tbl = tbl.Replace("[landtype]", "மொத்த விபரம்");
+        //        totalContent.Append(tbl);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
+        //    }
+        //    return totalContent.ToString();
+        //}
+
         private string GetPasscode()
         {
             var now = DateTime.Now;
@@ -1560,6 +1614,7 @@ namespace AdangalApp
                 
                 allContent.Append(GetSummaryPage());
                 allContent.Append(GetGovtBuildingPage());
+                allContent.Append(GetGovtBuildingPage());
 
                 mainHtml = mainHtml.Replace("[allPageData]", allContent.ToString());
                 mainHtml = mainHtml.Replace("[certifed]", GetCertifiedContent());
@@ -1707,7 +1762,17 @@ namespace AdangalApp
                 var wrongNameCount = fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.WrongName).Count();
 
                 var percCompleted = onlineData.Count.PercentageBtwDecNo(actualLandDetails.Count - (notInOnlineToBeDeleted.Count+ wrongNameCount), 2);
-
+                
+                if(loadedFile.InitialPercentage == null)
+                {
+                    DataAccess.UpdatePercentage(loadedFile, percCompleted);
+                }
+                if(percCompleted.ToInt32() == 100)
+                {
+                    var correctedCount = fullAdangalFromjson.Where(w => w.LandStatus != LandStatus.NoChange).Count();
+                    var correctedPerc = onlineData.Count.PercentageBtwDecNo(correctedCount, 2);
+                    DataAccess.UpdateCorrectedPerc(loadedFile, correctedPerc);
+                }
                 btnPercentage.Text = percCompleted.ToString() + "%";
 
                 if(percCompleted == 100)
