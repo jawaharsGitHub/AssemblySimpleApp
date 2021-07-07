@@ -17,7 +17,8 @@ namespace AdangalApp
         public static string WholeLandListJsonPath = "";
         public static string AdangalOriginalPath = "";
         public static string SummaryPath = ""; 
-            public static string GovtBuildingPath = "";
+        public static string GovtBuildingPath = "";
+        public static string MissedAdangalPath = "";
 
         public static void SetVillageName()
         {
@@ -28,7 +29,7 @@ namespace AdangalApp
             AdangalOriginalPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-OriginalAdangal.json");
             SummaryPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-Summary.json");
             GovtBuildingPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-GovtBuilding.json");
-
+            MissedAdangalPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-MissedAdangal.json");
 
             if (Directory.Exists(Directory.GetParent(JsonPath).FullName) == false)
                 Directory.CreateDirectory(Directory.GetParent(JsonPath).FullName);
@@ -88,6 +89,13 @@ namespace AdangalApp
 
             var data = GetActiveAdangal();
             return data;
+        }
+
+        public static void SaveMissedAdangal(Adangal adangalData)
+        {
+            string path = MissedAdangalPath;
+            General.CreateFileIfNotExist(MissedAdangalPath);
+            InsertSingleObjectToListJson<Adangal>(path, adangalData);
         }
 
         public static void SaveSummary(List<Summary> summaryData)
@@ -244,6 +252,7 @@ namespace AdangalApp
         public static bool AddNewAdangal(Adangal adangal)
         {
             InsertSingleObjectToListJson<Adangal>(JsonPath, adangal);
+            SaveMissedAdangal(adangal);
             return true;
         }
 

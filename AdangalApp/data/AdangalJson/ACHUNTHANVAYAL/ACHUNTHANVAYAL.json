@@ -23151,5 +23151,31 @@
     "LandStatus": 5,
     "PattaEn": 0,
     "CorrectNameRow": null
+  },
+  {
+    "NilaAlavaiEn": 90,
+    "UtpirivuEn": "16",
+    "Parappu": "0.6.82",
+    "Theervai": "0.29",
+    "Anupathaarar": "38 - உடையக்காள்",
+    "OwnerName": "உடையக்காள்",
+    "LandType": 1,
+    "IsFullfilled": false,
+    "LandStatus": 2,
+    "PattaEn": 38,
+    "CorrectNameRow": null
+  },
+  {
+    "NilaAlavaiEn": 3,
+    "UtpirivuEn": "2A",
+    "Parappu": "0.39.50",
+    "Theervai": "1.09",
+    "Anupathaarar": "38 - உடையக்காள்",
+    "OwnerName": "உடையக்காள்",
+    "LandType": 2,
+    "IsFullfilled": false,
+    "LandStatus": 2,
+    "PattaEn": 38,
+    "CorrectNameRow": null
   }
 ]

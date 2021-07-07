@@ -55,14 +55,18 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnLoadProcessed = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             this.ddlProcessedFiles = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnPercentage = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnSoftGen = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.lblPattaCheckError = new System.Windows.Forms.Label();
+            this.lblLandStatusError = new System.Windows.Forms.Label();
+            this.lblLandTypeError = new System.Windows.Forms.Label();
             this.cmbLandStatus = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -76,11 +80,8 @@
             this.lblSurveyNo = new System.Windows.Forms.Label();
             this.lblSubdiv = new System.Windows.Forms.Label();
             this.chkEdit = new System.Windows.Forms.CheckBox();
-            this.lblLandTypeError = new System.Windows.Forms.Label();
-            this.lblLandStatusError = new System.Windows.Forms.Label();
-            this.lblPattaCheckError = new System.Windows.Forms.Label();
             this.grpTheervaiTest = new System.Windows.Forms.GroupBox();
-            this.btnSoftGen = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -149,7 +150,7 @@
             // 
             this.ddlListType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlListType.FormattingEnabled = true;
-            this.ddlListType.Location = new System.Drawing.Point(402, 403);
+            this.ddlListType.Location = new System.Drawing.Point(334, 403);
             this.ddlListType.Name = "ddlListType";
             this.ddlListType.Size = new System.Drawing.Size(121, 21);
             this.ddlListType.TabIndex = 5;
@@ -180,7 +181,7 @@
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(644, 406);
+            this.lblMessage.Location = new System.Drawing.Point(585, 406);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(66, 13);
             this.lblMessage.TabIndex = 8;
@@ -369,15 +370,6 @@
             this.btnLoadProcessed.UseVisualStyleBackColor = true;
             this.btnLoadProcessed.Click += new System.EventHandler(this.btnLoadProcessed_Click);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(108, 284);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(23, 13);
-            this.label5.TabIndex = 34;
-            this.label5.Text = "OR";
-            // 
             // ddlProcessedFiles
             // 
             this.ddlProcessedFiles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -387,6 +379,15 @@
             this.ddlProcessedFiles.Size = new System.Drawing.Size(198, 21);
             this.ddlProcessedFiles.TabIndex = 7;
             this.ddlProcessedFiles.SelectedIndexChanged += new System.EventHandler(this.ddlProcessedFiles_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(108, 284);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(23, 13);
+            this.label5.TabIndex = 34;
+            this.label5.Text = "OR";
             // 
             // groupBox3
             // 
@@ -447,6 +448,16 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "STEP-5 (LAST)";
             // 
+            // btnSoftGen
+            // 
+            this.btnSoftGen.Enabled = false;
+            this.btnSoftGen.Location = new System.Drawing.Point(115, 112);
+            this.btnSoftGen.Name = "btnSoftGen";
+            this.btnSoftGen.Size = new System.Drawing.Size(74, 40);
+            this.btnSoftGen.TabIndex = 19;
+            this.btnSoftGen.Text = "Soft Copy";
+            this.btnSoftGen.UseVisualStyleBackColor = true;
+            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.lblPattaCheckError);
@@ -465,6 +476,42 @@
             this.groupBox6.TabIndex = 25;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "STEP-4";
+            // 
+            // lblPattaCheckError
+            // 
+            this.lblPattaCheckError.AutoSize = true;
+            this.lblPattaCheckError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPattaCheckError.ForeColor = System.Drawing.Color.Red;
+            this.lblPattaCheckError.Location = new System.Drawing.Point(209, 126);
+            this.lblPattaCheckError.Name = "lblPattaCheckError";
+            this.lblPattaCheckError.Size = new System.Drawing.Size(15, 13);
+            this.lblPattaCheckError.TabIndex = 38;
+            this.lblPattaCheckError.Text = "!!";
+            this.lblPattaCheckError.Visible = false;
+            // 
+            // lblLandStatusError
+            // 
+            this.lblLandStatusError.AutoSize = true;
+            this.lblLandStatusError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLandStatusError.ForeColor = System.Drawing.Color.Red;
+            this.lblLandStatusError.Location = new System.Drawing.Point(206, 83);
+            this.lblLandStatusError.Name = "lblLandStatusError";
+            this.lblLandStatusError.Size = new System.Drawing.Size(15, 13);
+            this.lblLandStatusError.TabIndex = 37;
+            this.lblLandStatusError.Text = "!!";
+            this.lblLandStatusError.Visible = false;
+            // 
+            // lblLandTypeError
+            // 
+            this.lblLandTypeError.AutoSize = true;
+            this.lblLandTypeError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLandTypeError.ForeColor = System.Drawing.Color.Red;
+            this.lblLandTypeError.Location = new System.Drawing.Point(206, 34);
+            this.lblLandTypeError.Name = "lblLandTypeError";
+            this.lblLandTypeError.Size = new System.Drawing.Size(15, 13);
+            this.lblLandTypeError.TabIndex = 36;
+            this.lblLandTypeError.Text = "!!";
+            this.lblLandTypeError.Visible = false;
             // 
             // cmbLandStatus
             // 
@@ -510,12 +557,12 @@
             this.txtAddNewSurvey.Location = new System.Drawing.Point(28, 43);
             this.txtAddNewSurvey.Multiline = true;
             this.txtAddNewSurvey.Name = "txtAddNewSurvey";
-            this.txtAddNewSurvey.Size = new System.Drawing.Size(408, 278);
+            this.txtAddNewSurvey.Size = new System.Drawing.Size(408, 267);
             this.txtAddNewSurvey.TabIndex = 26;
             // 
             // btnAddNewSurvey
             // 
-            this.btnAddNewSurvey.Location = new System.Drawing.Point(153, 348);
+            this.btnAddNewSurvey.Location = new System.Drawing.Point(155, 17);
             this.btnAddNewSurvey.Name = "btnAddNewSurvey";
             this.btnAddNewSurvey.Size = new System.Drawing.Size(75, 23);
             this.btnAddNewSurvey.TabIndex = 27;
@@ -529,9 +576,9 @@
             this.groupBox7.Controls.Add(this.txtAddNewSurvey);
             this.groupBox7.Controls.Add(this.btnAddNewSurvey);
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.Location = new System.Drawing.Point(753, 23);
+            this.groupBox7.Location = new System.Drawing.Point(750, 12);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(455, 382);
+            this.groupBox7.Size = new System.Drawing.Size(455, 332);
             this.groupBox7.TabIndex = 28;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Add Missed Survey";
@@ -540,7 +587,7 @@
             // 
             this.cmbItemToBeAdded.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbItemToBeAdded.FormattingEnabled = true;
-            this.cmbItemToBeAdded.Location = new System.Drawing.Point(315, 16);
+            this.cmbItemToBeAdded.Location = new System.Drawing.Point(28, 19);
             this.cmbItemToBeAdded.Name = "cmbItemToBeAdded";
             this.cmbItemToBeAdded.Size = new System.Drawing.Size(121, 21);
             this.cmbItemToBeAdded.TabIndex = 29;
@@ -549,7 +596,7 @@
             // 
             this.cmbSurveyNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSurveyNo.FormattingEnabled = true;
-            this.cmbSurveyNo.Location = new System.Drawing.Point(226, 404);
+            this.cmbSurveyNo.Location = new System.Drawing.Point(175, 404);
             this.cmbSurveyNo.Name = "cmbSurveyNo";
             this.cmbSurveyNo.Size = new System.Drawing.Size(65, 21);
             this.cmbSurveyNo.TabIndex = 29;
@@ -558,7 +605,7 @@
             // 
             this.cmbSubdivNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSubdivNo.FormattingEnabled = true;
-            this.cmbSubdivNo.Location = new System.Drawing.Point(309, 404);
+            this.cmbSubdivNo.Location = new System.Drawing.Point(258, 404);
             this.cmbSubdivNo.Name = "cmbSubdivNo";
             this.cmbSubdivNo.Size = new System.Drawing.Size(57, 21);
             this.cmbSubdivNo.TabIndex = 30;
@@ -566,7 +613,7 @@
             // lblSurveyNo
             // 
             this.lblSurveyNo.AutoSize = true;
-            this.lblSurveyNo.Location = new System.Drawing.Point(226, 388);
+            this.lblSurveyNo.Location = new System.Drawing.Point(175, 388);
             this.lblSurveyNo.Name = "lblSurveyNo";
             this.lblSurveyNo.Size = new System.Drawing.Size(52, 13);
             this.lblSurveyNo.TabIndex = 31;
@@ -575,7 +622,7 @@
             // lblSubdiv
             // 
             this.lblSubdiv.AutoSize = true;
-            this.lblSubdiv.Location = new System.Drawing.Point(307, 389);
+            this.lblSubdiv.Location = new System.Drawing.Point(256, 389);
             this.lblSubdiv.Name = "lblSubdiv";
             this.lblSubdiv.Size = new System.Drawing.Size(53, 13);
             this.lblSubdiv.TabIndex = 32;
@@ -584,49 +631,13 @@
             // chkEdit
             // 
             this.chkEdit.AutoSize = true;
-            this.chkEdit.Location = new System.Drawing.Point(533, 406);
+            this.chkEdit.Location = new System.Drawing.Point(478, 406);
             this.chkEdit.Name = "chkEdit";
             this.chkEdit.Size = new System.Drawing.Size(92, 17);
             this.chkEdit.TabIndex = 20;
             this.chkEdit.Text = "EDIT MODE?";
             this.chkEdit.UseVisualStyleBackColor = true;
             this.chkEdit.CheckedChanged += new System.EventHandler(this.chkEdit_CheckedChanged);
-            // 
-            // lblLandTypeError
-            // 
-            this.lblLandTypeError.AutoSize = true;
-            this.lblLandTypeError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLandTypeError.ForeColor = System.Drawing.Color.Red;
-            this.lblLandTypeError.Location = new System.Drawing.Point(206, 34);
-            this.lblLandTypeError.Name = "lblLandTypeError";
-            this.lblLandTypeError.Size = new System.Drawing.Size(15, 13);
-            this.lblLandTypeError.TabIndex = 36;
-            this.lblLandTypeError.Text = "!!";
-            this.lblLandTypeError.Visible = false;
-            // 
-            // lblLandStatusError
-            // 
-            this.lblLandStatusError.AutoSize = true;
-            this.lblLandStatusError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLandStatusError.ForeColor = System.Drawing.Color.Red;
-            this.lblLandStatusError.Location = new System.Drawing.Point(206, 83);
-            this.lblLandStatusError.Name = "lblLandStatusError";
-            this.lblLandStatusError.Size = new System.Drawing.Size(15, 13);
-            this.lblLandStatusError.TabIndex = 37;
-            this.lblLandStatusError.Text = "!!";
-            this.lblLandStatusError.Visible = false;
-            // 
-            // lblPattaCheckError
-            // 
-            this.lblPattaCheckError.AutoSize = true;
-            this.lblPattaCheckError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPattaCheckError.ForeColor = System.Drawing.Color.Red;
-            this.lblPattaCheckError.Location = new System.Drawing.Point(209, 126);
-            this.lblPattaCheckError.Name = "lblPattaCheckError";
-            this.lblPattaCheckError.Size = new System.Drawing.Size(15, 13);
-            this.lblPattaCheckError.TabIndex = 38;
-            this.lblPattaCheckError.Text = "!!";
-            this.lblPattaCheckError.Visible = false;
             // 
             // grpTheervaiTest
             // 
@@ -640,21 +651,22 @@
             this.grpTheervaiTest.TabStop = false;
             this.grpTheervaiTest.Text = "TEST-Theervai Sum";
             // 
-            // btnSoftGen
+            // button2
             // 
-            this.btnSoftGen.Enabled = false;
-            this.btnSoftGen.Location = new System.Drawing.Point(115, 112);
-            this.btnSoftGen.Name = "btnSoftGen";
-            this.btnSoftGen.Size = new System.Drawing.Size(74, 40);
-            this.btnSoftGen.TabIndex = 19;
-            this.btnSoftGen.Text = "Soft Copy";
-            this.btnSoftGen.UseVisualStyleBackColor = true;
+            this.button2.Enabled = false;
+            this.button2.Location = new System.Drawing.Point(657, 403);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(74, 22);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "Hard Copy";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // vao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1217, 684);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.grpTheervaiTest);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.chkEdit);
@@ -752,5 +764,6 @@
         private System.Windows.Forms.Label lblLandStatusError;
         private System.Windows.Forms.GroupBox grpTheervaiTest;
         private System.Windows.Forms.Button btnSoftGen;
+        private System.Windows.Forms.Button button2;
     }
 }

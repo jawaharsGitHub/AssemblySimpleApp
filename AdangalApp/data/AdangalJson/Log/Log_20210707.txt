@@ -529,3 +529,40 @@
 2021-07-07 18:46:41,857 [1] DEBUG - STARTED HTML GENERATION @ 6:46:41 PM
 2021-07-07 18:46:42,091 [1] DEBUG - COMPLETED HTML GENERATION @ F:\AssemblySimpleApp\AdangalApp\data\AdangalJson/ACHUNTHANVAYAL/ACHUNTHANVAYAL-Result\ACHUNTHANVAYAL-07-07-2021 18-46-42.htm
 2021-07-07 18:46:43,091 [1] DEBUG - STEP-5 - Generate Completed
+2021-07-07 19:35:12,680 [1] DEBUG - =================Wednesday, 07 July 2021 19:35:12========================
+2021-07-07 19:35:12,743 [1] DEBUG - STARTED....
+2021-07-07 19:35:42,166 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-07 19:35:42,635 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-07 19:35:52,263 [1] DEBUG - STARTED FULL REPORT
+2021-07-07 19:35:52,314 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 19:35:52,395 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-07 19:35:52,395 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-07 19:35:58,637 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-07 19:35:58,778 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 19:35:58,957 [1] DEBUG - ready: False STATUS: ADD:315
+
+2021-07-07 19:35:59,047 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-07 19:37:07,758 [1] DEBUG - =================Wednesday, 07 July 2021 19:37:07========================
+2021-07-07 19:37:07,789 [1] DEBUG - STARTED....
+2021-07-07 19:37:20,379 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-07 19:37:20,440 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-07 19:37:29,822 [1] DEBUG - STARTED FULL REPORT
+2021-07-07 19:37:29,878 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 19:37:29,931 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-07 19:37:29,931 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-07 19:37:32,758 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-07 19:37:32,821 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 19:37:32,908 [1] DEBUG - ready: False STATUS: ADD:315
+
+2021-07-07 19:37:32,974 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-07 19:37:34,146 [1] DEBUG - STEP-4 - Add Started
+2021-07-07 19:37:34,151 [1] DEBUG - STEP-4 - Add Completed
+2021-07-07 19:42:14,653 [1] DEBUG - Added new land 90-16    0.6.82   0.29 (Punsai)38 - ??????????
+2021-07-07 19:42:14,888 [1] DEBUG - Added new land 3-2A    0.39.50   1.09 (Maanaavari)38 - ??????????
+2021-07-07 19:42:17,048 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-07 19:42:17,099 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 19:42:17,187 [1] DEBUG - ready: False STATUS: ADD:313
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-07 19:42:17,235 [1] DEBUG - STEP-3 - Raedy For Print - Completed

@@ -2176,7 +2176,7 @@ namespace AdangalApp
         private void SetTestMode()
         {
             ddlPattaTypes.Visible = cmbFulfilled.Visible =
-                lblPattaCheck.Visible = btnGenerate.Enabled =
+                lblPattaCheck.Visible = ddlListType.Visible =  btnGenerate.Enabled =
                 btnSoftGen.Enabled = isTestingMode;
 
             grpTheervaiTest.Visible = needTheervaiTest;
@@ -2295,8 +2295,6 @@ namespace AdangalApp
         {
             try
             {
-
-
                 var newData = txtAddNewSurvey.Text;
 
                 var splitData = newData.Replace("உரிமையாளர்கள் பெயர்", "$").Split('$');
@@ -2323,17 +2321,11 @@ namespace AdangalApp
                     var rowData = fe.Split('\t').ToList();
                     var adangal = GetAdangalFromCopiedData(rowData, pattaEn, name);
 
-                    //if ((rowData[0] == surveysubdiv[0] && rowData[1] == surveysubdiv[1]))
                     if (notInPdfToBeAdded.Contains($"{adangal.NilaAlavaiEn}~{adangal.UtpirivuEn}"))
                     {
-                        //if (MessageBox.Show(adangal.ToString(), "சரியா?", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        //{
                         DataAccess.AddNewAdangal(adangal);
                         addedCount += 1;
                         LogMessage($"Added new land {adangal.ToString()}");
-
-                        //cmbItemToBeAdded.SelectedIndex += 1;
-                        //}
                     }
                 });
 
