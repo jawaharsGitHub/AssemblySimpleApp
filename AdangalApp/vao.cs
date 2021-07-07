@@ -976,12 +976,7 @@ namespace AdangalApp
             else if (selected == 3)
                 dataGridView1.DataSource = AdangalOriginalList;
             else if (selected == 4)
-            {
                 dataGridView1.DataSource = fullAdangalFromjson;
-                //EnableReady();
-
-            }
-
 
         }
 
@@ -1095,12 +1090,17 @@ namespace AdangalApp
                                     .Replace("[varuvvaikiraamam]", $"{loadedFile.VillageCode} - {loadedFile.VillageNameTamil}")
                                     .Replace("[t]", "&emsp;&emsp;");
         }
-        private string GetLeftCertPage()
+
+        /// <summary>
+        /// left and right cert pages.
+        /// </summary>
+        /// <returns></returns>
+        private string GetPage2()
         {
+            pageNumber += 1;
             var sb = new StringBuilder();
             sb.Append(leftCertEmpty);
-            sb.Append(GetRightEmptyPage());
-            //pageNumber += 1;
+            sb.Append(rightCertEmpty.Replace("[pageNo]", pageNumber.ToString()));
             return sb.ToString();
         }
         private string GetRightEmptyPage()
@@ -1131,28 +1131,45 @@ namespace AdangalApp
 
             return rightPage;
         }
-        private string GetRightCertPage()
+
+        /// <summary>
+        /// Left cert and summary page.
+        /// </summary>
+        /// <returns></returns>
+        private string GetPage3()
         {
             pageNumber += 1;
             var sb = new StringBuilder();
-            sb.Append(leftEmpty);
-            sb.Append(rightCertEmpty.Replace("[pageNo]", pageNumber.ToString()));
+            //sb.Append(leftEmpty);
+            //sb.Append(rightCertEmpty.Replace("[pageNo]", pageNumber.ToString()));
+            sb.Append(leftCertEmpty);
+            sb.Append("[summaryPages]");
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Building and right empty pages
+        /// </summary>
+        /// <returns></returns>
+        private string GetPage4()
+        {
+            //pageNumber += 1;
+            var sb = new StringBuilder();
+            sb.Append("[building]");
+            sb.Append(GetRightEmptyPage());
             return sb.ToString();
         }
         private string GetInitialPages()
         {
-            // FIRST PAGE.
             var initialPages = new StringBuilder();
+
             initialPages.Append(firstPage);
-
             initialPages.Append(GetEmptyPages(1));
-            initialPages.Append(GetLeftCertPage());
-            initialPages.Append(GetRightCertPage());
-            initialPages.Append(GetRightCertPage());
-            initialPages.Append("[summaryPages]");
-            initialPages.Append("[building]");
-
-            initialPages.Append(GetEmptyPages(6));
+            initialPages.Append(GetPage2());
+            initialPages.Append(GetPage3());
+            initialPages.Append(GetPage4());
+            int InitialEmptyPages = Convert.ToInt32(ConfigurationManager.AppSettings["InitialEmptyPages"]);
+            initialPages.Append(GetEmptyPages(InitialEmptyPages));
 
             return initialPages.ToString();
 
@@ -1244,6 +1261,11 @@ namespace AdangalApp
                         tbl = tbl.Replace("[landtype]", landType);
                         tbl = tbl.Replace("[header]", updatedHeader);
                         tbl = tbl.Replace("[pageNo]", isRightSide ? pageNumber.ToString() : empty);
+
+                        if(fe.Key == LandType.Porambokku)
+                        {
+                            tbl = tbl.Replace("சாகுபடி", fe.Key.ToName());
+                        }
                         totalContent.Append(tbl);
                     }
 
@@ -1256,32 +1278,14 @@ namespace AdangalApp
 
             return totalContent.ToString();
         }
-        private void GetOverallTotal(List<PageTotal> source)
+        private void SetSummaryPageDetails(List<PageTotal> source)
         {
-            //StringBuilder totalContent = new StringBuilder();
             List<Summary> summaryList = new List<Summary>();
 
             try
             {
-                //var tbl = FileContentReader.PageOverallTotalTableTemplate;
-                //var row = FileContentReader.PageOverallTotalRowTemplate;
-
-                //totalPageIndexTracker += 1;
-                //var isRightSide = totalPageIndexTracker.IsEven();
-
-                //if (isRightSide)
-                //    pageNumber += 1;
-
-                //string dataRows = "";
-                //StringBuilder sb = new StringBuilder();
-
                 source.ForEach(ff =>
                 {
-                    //dataRows = row.Replace("[vibaram]", ff.LandType.ToName())
-                    //                      .Replace("[parappu]", ff.ParappuTotal)
-                    //                      .Replace("[theervai]", ff.TheervaiTotal.ToString());
-                    //sb.Append(dataRows);
-
                     summaryList.Add(new Summary()
                     {
                         Id = (int)ff.LandType,
@@ -1290,16 +1294,6 @@ namespace AdangalApp
                         Vibaram = ff.LandType.ToName()
                     });
                 });
-
-                //var totalRows = row.Replace("[vibaram]", $"<b>{tamilMoththam}</b>")
-                //                          .Replace("[parappu]", $"<b>{AdangalFn.GetSumThreeDotNo(source.Select(s => s.ParappuTotal).ToList())}</b>")
-                //                          .Replace("[theervai]", $"<b>{source.Sum(s => s.TheervaiTotal).ToString()}</b>");
-
-                //tbl = tbl.Replace("[datarows]", sb.ToString());
-                //tbl = tbl.Replace("[totalrow]", totalRows);
-                //tbl = tbl.Replace("[header]", updatedHeader);
-                //tbl = tbl.Replace("[pageNo]", isRightSide ? pageNumber.ToString() : empty);
-                //totalContent.Append(tbl);
                 DataAccess.SaveSummary(summaryList);
 
             }
@@ -1307,10 +1301,9 @@ namespace AdangalApp
             {
                 LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
-            //return totalContent.ToString();
         }
 
-        private string GetSummaryPage()
+        private string GetSummaryPage(bool isInitialSummaryPage3 = false)
         {
             StringBuilder totalContent = new StringBuilder();
 
@@ -1326,8 +1319,7 @@ namespace AdangalApp
 
                 if (isRightSide)
                     pageNumber += 1;
-
-                //pageNumber += 1;
+                
                 string dataRows = "";
                 StringBuilder sb = new StringBuilder();
 
@@ -1340,15 +1332,18 @@ namespace AdangalApp
 
                 });
 
-                var totalRows = row.Replace("[vibaram]", $"<b>{kiraamaMoththam}</b>")
+                var totalRows = row.Replace("[vibaram]", $"<span style='font - size:20px;'><b>{kiraamaMoththam}</b></span>")
                                           .Replace("[pageNo]", empty)
-                                          .Replace("[parappu]", $"<b>{AdangalFn.GetSumThreeDotNo(summaryList.Where(w => w.Id != -1).Select(s => s.Parappu).ToList())}</b>");
+                                          .Replace("[parappu]", $"<span style='font - size:20px;'><b>{AdangalFn.GetSumThreeDotNo(summaryList.Where(w => w.Id != -1).Select(s => s.Parappu).ToList())}</b></span>");
 
                 tbl = tbl.Replace("[datarows]", sb.ToString());
                 tbl = tbl.Replace("[totalrow]", totalRows);
                 tbl = tbl.Replace("[header]", updatedHeader);
-                tbl = tbl.Replace("[pageNo]", isRightSide ? pageNumber.ToString() : empty);
-                tbl = tbl.Replace("[landtype]", "மொத்த விபரம்");
+                if (isInitialSummaryPage3)
+                    tbl = tbl.Replace("[pageNo]", "3");
+                else
+                    tbl = tbl.Replace("[pageNo]", isRightSide ? pageNumber.ToString() : empty);
+                tbl = tbl.Replace("[landtype]", "மொத்த கிராம விபரம்");
                 totalContent.Append(tbl);
             }
             catch (Exception ex)
@@ -1421,60 +1416,6 @@ namespace AdangalApp
             return totalContent.ToString();
         }
 
-        //private string GetDataAnalysisPage()
-        //{
-        //    StringBuilder totalContent = new StringBuilder();
-
-        //    // more data analysis
-        //    var pattaCount = pattaList.Count;
-        //    var landCount = fullAdangalFromjson.Count;
-        //    var nanseiCount = fullAdangalFromjson.Where(w => w.LandType == LandType.Nansai).Count();
-        //    var punsaiCount = fullAdangalFromjson.Where(w => w.LandType == LandType.Punsai) .Count();
-        //    var maanavariCount = fullAdangalFromjson.Where(w => w.LandType == LandType.Maanaavari).Count();
-        //    var poramCount = fullAdangalFromjson.Where(w => w.LandType == LandType.Porambokku).Count();
-
-        //    try
-        //    {
-        //        var tbl = FileContentReader.SummaryTableTemplate;
-        //        var row = FileContentReader.SummayRowTemplate;
-
-        //        totalPageIndexTracker += 1;
-        //        var isRightSide = totalPageIndexTracker.IsEven();
-
-        //        if (isRightSide)
-        //            pageNumber += 1;
-
-        //        //pageNumber += 1;
-        //        string dataRows = "";
-        //        StringBuilder sb = new StringBuilder();
-
-        //        summaryList.ForEach(ff =>
-        //        {
-        //            dataRows = row.Replace("[vibaram]", ff.Vibaram)
-        //                                  .Replace("[pageNo]", ff.Pakkam)
-        //                                  .Replace("[parappu]", ff.Parappu);
-        //            sb.Append(dataRows);
-
-        //        });
-
-        //        var totalRows = row.Replace("[vibaram]", $"<b>{kiraamaMoththam}</b>")
-        //                                  .Replace("[pageNo]", empty)
-        //                                  .Replace("[parappu]", $"<b>{AdangalFn.GetSumThreeDotNo(summaryList.Where(w => w.Id != -1).Select(s => s.Parappu).ToList())}</b>");
-
-        //        tbl = tbl.Replace("[datarows]", sb.ToString());
-        //        tbl = tbl.Replace("[totalrow]", totalRows);
-        //        tbl = tbl.Replace("[header]", updatedHeader);
-        //        tbl = tbl.Replace("[pageNo]", isRightSide ? pageNumber.ToString() : empty);
-        //        tbl = tbl.Replace("[landtype]", "மொத்த விபரம்");
-        //        totalContent.Append(tbl);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
-        //    }
-        //    return totalContent.ToString();
-        //}
-
         private string GetPasscode()
         {
             var now = DateTime.Now;
@@ -1497,15 +1438,15 @@ namespace AdangalApp
             actualCode = General.ShowPrompt("Passcode", "Verification");
             expectedCode = GetPasscode();
 
-            if (actualCode != expectedCode)
-            {
-                MessageBox.Show("Sorry , wrong code!");
-                return;
-            }
-            else
-            {
-                MessageBox.Show("Success!");
-            }
+            //if (actualCode != expectedCode)
+            //{
+            //    MessageBox.Show("Sorry , wrong code!");
+            //    return;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Success!");
+            //}
 
             try
             {
@@ -1578,7 +1519,7 @@ namespace AdangalApp
                         if (fe.Key != LandType.Porambokku)
                             totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai));
 
-                        var total = totalTemplate.Replace("[moththaparappu]", totalparappu).Replace("[moththatheervai]", totalTheervai.ToString());
+                        var total = totalTemplate.Replace("[moththaparappu]", totalparappu).Replace("[moththatheervai]", totalTheervai == 0 ? "" : totalTheervai.ToString());
 
                         leftPage = leftPage.Replace("[totalrow]", total);
                         leftPage = leftPage.Replace("[landtype]", landType);
@@ -1612,19 +1553,21 @@ namespace AdangalApp
                 if (isTestingMode == false)
                 {
                     allContent.Append(GetPageTotal(pageTotal2List, pageTotal3List));
-                    GetOverallTotal(pageTotal3List);
+                    SetSummaryPageDetails(pageTotal3List);
                     //allContent.Append(GetOverallTotal(pageTotal3List));
                 }
                 else
                 {
-                    GetOverallTotal(pageTotal2List);
+                    SetSummaryPageDetails(pageTotal2List);
                     //allContent.Append(GetOverallTotal(pageTotal2List));
                 }
 
                 allContent.Append(GetSummaryPage());
+                int FinalEmptyPages = Convert.ToInt32(ConfigurationManager.AppSettings["FinalEmptyPages"]);
+                allContent.Append(GetEmptyPages(FinalEmptyPages));
 
                 // Final Touch
-                mainHtml = mainHtml.Replace("[summaryPages]", GetSummaryPage());
+                mainHtml = mainHtml.Replace("[summaryPages]", GetSummaryPage(true));
                 mainHtml = mainHtml.Replace("[building]", GetGovtBuildingPage());
                 mainHtml = mainHtml.Replace("[allPageData]", allContent.ToString());
                 mainHtml = mainHtml.Replace("[certifed]", GetCertifiedContent());
@@ -2051,11 +1994,13 @@ namespace AdangalApp
                     var pattaas = chittaContent.Replace("பட்டா எண்    :", "$"); //("பட்டா எண்", "$");
                     var data = pattaas.Split('$').ToList();
                     pdfvillageName = data.First().Split(':')[3].Trim();
+                    waitForm.Close();
                     if (DialogResult.No == MessageBox.Show($"{pdfvillageName} village?", "Confirm", MessageBoxButtons.YesNo))
                     {
                         LogMessage($"REJECTED THE  VILLAGE PDF FILE- {pdfvillageName}");
                         return;
                     }
+                    waitForm.Show(this);
                     //**
                     ProcessNames();
                     ProcessChittaFile(); // Nansai, Pun, Maa,

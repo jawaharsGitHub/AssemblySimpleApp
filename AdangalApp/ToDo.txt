@@ -70,7 +70,6 @@ move the summary and govt building pages to initial pages?
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 -----V-1-----
-
 save new survey number.
 order by survey and sub div no.
 book view functionality. (grid paging - should be same as adangal book.)
