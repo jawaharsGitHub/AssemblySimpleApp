@@ -66,6 +66,7 @@ column which need mroe width.
 tamil font style in html pages?
 certified text alignment - ok
 move the summary and govt building pages to initial pages?
+parallel working especially - for getting subdiv details.
 
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
@@ -73,10 +74,13 @@ move the summary and govt building pages to initial pages?
 save new survey number.
 order by survey and sub div no.
 book view functionality. (grid paging - should be same as adangal book.)
+CRUD operation
+upload or sync newly added survey nos.
+soft copy.
+AdangalJson Folder.
 *****************************************
 option to edit and update the total land parappu (if needed)
 Log in panchayat level
-parallel working especially - for getting subdiv details.
 manual check button and functionality.
 replace an existing exe (replace or overwrite)?
 what about last page page number if right side page? need testing.

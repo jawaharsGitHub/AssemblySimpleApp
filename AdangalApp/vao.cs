@@ -76,6 +76,7 @@ namespace AdangalApp
         string ChittaTxtFile = ConfigurationManager.AppSettings["ChittaTxtFile"];
         string AregFile = ConfigurationManager.AppSettings["AregFile"];
         bool needTheervaiTest = Convert.ToBoolean(ConfigurationManager.AppSettings["needTheervaiTest"]);
+        bool canAddMissedSurvey = Convert.ToBoolean(ConfigurationManager.AppSettings["canAddMissedSurvey"]);
         int pasali = Convert.ToInt32(ConfigurationManager.AppSettings["PasaliEn"]);
         int prepasali;
 
@@ -91,6 +92,7 @@ namespace AdangalApp
                 InitializeComponent();
                 ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
                 SetTestMode();
+                txtRecCount.Text = recordPerPage.ToString();
                 BindDropdown(cmbFulfilled, GetFullfilledOptions(), "Caption", "Id");
                 prepasali = (pasali - 1);
 
@@ -669,6 +671,7 @@ namespace AdangalApp
 
                 LoadSurveyAndSubdiv();
                 btnReady.Enabled = cmbFulfilled.Enabled = chkEdit.Enabled = true;
+                CalculateTotalPages(recordPerPage);
 
                 if (fr.IsFullProcessed == false)
                 {
@@ -1707,13 +1710,22 @@ namespace AdangalApp
                 notInPdfToBeAdded = expLandDetails.Except(actualLandDetails).ToList();
                 notInOnlineToBeDeleted = actualLandDetails.Except(expLandDetails).ToList();
 
+                if (canAddMissedSurvey)
+                {
+                    cmbItemToBeAdded.DataSource = notInPdfToBeAdded;
+                    return;
+                }
+
+                
+
+                btnDelete.Enabled = (notInOnlineToBeDeleted.Count > 0);
+                btnAdd.Enabled = (notInPdfToBeAdded.Count > 0);
 
                 var (r, status) = IsReadyToPrint();
                 btnStatusCheck.Text = status;
                 btnStatusCheck.BackColor = r ? Color.Green : Color.Red;
 
-                btnDelete.Enabled = (notInOnlineToBeDeleted.Count > 0);
-                btnAdd.Enabled = (notInPdfToBeAdded.Count > 0);
+               
                 var wrongNameCount = fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.WrongName).Count();
 
                 var percCompleted = onlineData.Count.PercentageBtwDecNo(actualLandDetails.Count - (notInOnlineToBeDeleted.Count + wrongNameCount), 2);
@@ -2180,6 +2192,7 @@ namespace AdangalApp
                 btnSoftGen.Enabled = isTestingMode;
 
             grpTheervaiTest.Visible = needTheervaiTest;
+            txtAddNewSurvey.Enabled = btnReady.Enabled  = canAddMissedSurvey;
         }
         private void cmbFulfilled_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2295,6 +2308,11 @@ namespace AdangalApp
         {
             try
             {
+                if(txtAddNewSurvey.Text.Trim() == empty)
+                {
+                    MessageBox.Show("Please provide data to process");
+                    return;
+                }
                 var newData = txtAddNewSurvey.Text;
 
                 var splitData = newData.Replace("உரிமையாளர்கள் பெயர்", "$").Split('$');
@@ -2517,12 +2535,20 @@ namespace AdangalApp
             LogMessage($"READED DATA FROM EXISTING JSON FILE");
             dataGridView1.DataSource = fullAdangalFromjson;
 
-            pattaList = DataAccess.GetPattaList();
-            WholeLandList = DataAccess.GetWholeLandList();
+            if (canAddMissedSurvey)
+            {
+                LogMessage($"STEP-2 - LOADING JUST ADANGAL FOR ADDING NEW SURVEY ONLY.");
+            }
+            else
+            {
+                pattaList = DataAccess.GetPattaList();
+                WholeLandList = DataAccess.GetWholeLandList();
 
-            ProcessFullReport();
+                ProcessFullReport();
+                LogMessage($"STEP-2 - Completed - Existing file Load");
+            }
             //EnableReadyForExist();
-            LogMessage($"STEP-2 - Completed - Existing file Load");
+            
             waitForm.Close();
         }
 
@@ -2546,6 +2572,97 @@ namespace AdangalApp
             ddlListType.Enabled = isTestingMode;
         }
 
+        private void btnBookView_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private int PgSize = 0;
+        private int CurrentPageIndex = 1;
+        private int TotalPage = 0;
+        private int startPage = 7;
+
+        private void CalculateTotalPages(int rec)
+        {
+            if (fullAdangalFromjson != null)
+            {
+                PgSize = rec;
+                int rowCount = fullAdangalFromjson.Count;
+                TotalPage = (rowCount / PgSize);
+                // if any row left after calculated pages, add one more page 
+                if (rowCount % PgSize > 0)
+                    TotalPage += 1;
+            }
+
+            
+        }
+
+        private List<Adangal> GetCurrentRecords(int page)
+        {
+            List<Adangal> curentRecords;
+
+            if (page == 1)
+            {
+                curentRecords = fullAdangalFromjson.Take(PgSize).ToList();
+            }
+            else
+            {
+                int PreviousPageOffSet = (page - 1) * PgSize;
+                curentRecords = fullAdangalFromjson.Skip(PreviousPageOffSet).Take(PgSize).ToList();
+            }
+           
+            return curentRecords;
+        }
+
+        private void btnFirstPage_Click(object sender, EventArgs e)
+        {
+            if (fullAdangalFromjson == null) return;
+            CurrentPageIndex = 1;
+            dataGridView1.DataSource = GetCurrentRecords(CurrentPageIndex);
+
+        }
+
+        private void btnNextPage_Click(object sender, EventArgs e)
+        {
+            if (fullAdangalFromjson == null) return;
+            if (CurrentPageIndex < TotalPage)
+            {
+                CurrentPageIndex++;
+                dataGridView1.DataSource = GetCurrentRecords(CurrentPageIndex);
+            }
+
+        }
+
+        private void btnPrevPage_Click(object sender, EventArgs e)
+        {
+            if (fullAdangalFromjson == null) return;
+            if (CurrentPageIndex > 1)
+            {
+                CurrentPageIndex--;
+                dataGridView1.DataSource = GetCurrentRecords(CurrentPageIndex);
+            }
+
+        }
+
+        private void btnLastPage_Click(object sender, EventArgs e)
+        {
+            if (fullAdangalFromjson == null) return;
+            CurrentPageIndex = TotalPage;
+            dataGridView1.DataSource = GetCurrentRecords(CurrentPageIndex);
+
+        }
+
+        private void btnGoToPage_Click(object sender, EventArgs e)
+        {
+            if (fullAdangalFromjson == null) return;
+            dataGridView1.DataSource = GetCurrentRecords(txtGoto.Text.ToInt32());
+        }
+
+        private void txtRecCount_TextChanged(object sender, EventArgs e)
+        {
+            CalculateTotalPages(txtRecCount.Text.ToInt32());
+
+        }
     }
 
 }

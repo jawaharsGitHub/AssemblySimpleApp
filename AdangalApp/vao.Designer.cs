@@ -81,7 +81,16 @@
             this.lblSubdiv = new System.Windows.Forms.Label();
             this.chkEdit = new System.Windows.Forms.CheckBox();
             this.grpTheervaiTest = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnBookView = new System.Windows.Forms.Button();
+            this.grpPaging = new System.Windows.Forms.GroupBox();
+            this.btnGoToPage = new System.Windows.Forms.Button();
+            this.txtGoto = new System.Windows.Forms.TextBox();
+            this.btnLastPage = new System.Windows.Forms.Button();
+            this.btnPrevPage = new System.Windows.Forms.Button();
+            this.btnNextPage = new System.Windows.Forms.Button();
+            this.btnFirstPage = new System.Windows.Forms.Button();
+            this.txtRecCount = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -91,6 +100,7 @@
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.grpTheervaiTest.SuspendLayout();
+            this.grpPaging.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -578,7 +588,7 @@
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.Location = new System.Drawing.Point(750, 12);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(455, 332);
+            this.groupBox7.Size = new System.Drawing.Size(455, 322);
             this.groupBox7.TabIndex = 28;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Add Missed Survey";
@@ -651,22 +661,114 @@
             this.grpTheervaiTest.TabStop = false;
             this.grpTheervaiTest.Text = "TEST-Theervai Sum";
             // 
-            // button2
+            // btnBookView
             // 
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(657, 403);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(74, 22);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Hard Copy";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnBookView.Location = new System.Drawing.Point(154, 58);
+            this.btnBookView.Name = "btnBookView";
+            this.btnBookView.Size = new System.Drawing.Size(74, 22);
+            this.btnBookView.TabIndex = 20;
+            this.btnBookView.Text = "Book View";
+            this.btnBookView.UseVisualStyleBackColor = true;
+            this.btnBookView.Click += new System.EventHandler(this.btnBookView_Click);
+            // 
+            // grpPaging
+            // 
+            this.grpPaging.Controls.Add(this.btnGoToPage);
+            this.grpPaging.Controls.Add(this.txtGoto);
+            this.grpPaging.Controls.Add(this.btnLastPage);
+            this.grpPaging.Controls.Add(this.btnPrevPage);
+            this.grpPaging.Controls.Add(this.btnNextPage);
+            this.grpPaging.Controls.Add(this.btnFirstPage);
+            this.grpPaging.Controls.Add(this.txtRecCount);
+            this.grpPaging.Controls.Add(this.label6);
+            this.grpPaging.Controls.Add(this.btnBookView);
+            this.grpPaging.Location = new System.Drawing.Point(750, 340);
+            this.grpPaging.Name = "grpPaging";
+            this.grpPaging.Size = new System.Drawing.Size(369, 84);
+            this.grpPaging.TabIndex = 35;
+            this.grpPaging.TabStop = false;
+            this.grpPaging.Text = "Paging";
+            // 
+            // btnGoToPage
+            // 
+            this.btnGoToPage.Location = new System.Drawing.Point(239, 56);
+            this.btnGoToPage.Name = "btnGoToPage";
+            this.btnGoToPage.Size = new System.Drawing.Size(78, 22);
+            this.btnGoToPage.TabIndex = 26;
+            this.btnGoToPage.Text = "Go To Page";
+            this.btnGoToPage.UseVisualStyleBackColor = true;
+            this.btnGoToPage.Click += new System.EventHandler(this.btnGoToPage_Click);
+            // 
+            // txtGoto
+            // 
+            this.txtGoto.Location = new System.Drawing.Point(326, 56);
+            this.txtGoto.Name = "txtGoto";
+            this.txtGoto.Size = new System.Drawing.Size(33, 20);
+            this.txtGoto.TabIndex = 25;
+            // 
+            // btnLastPage
+            // 
+            this.btnLastPage.Location = new System.Drawing.Point(269, 23);
+            this.btnLastPage.Name = "btnLastPage";
+            this.btnLastPage.Size = new System.Drawing.Size(74, 22);
+            this.btnLastPage.TabIndex = 24;
+            this.btnLastPage.Text = "Last Page";
+            this.btnLastPage.UseVisualStyleBackColor = true;
+            this.btnLastPage.Click += new System.EventHandler(this.btnLastPage_Click);
+            // 
+            // btnPrevPage
+            // 
+            this.btnPrevPage.Location = new System.Drawing.Point(189, 23);
+            this.btnPrevPage.Name = "btnPrevPage";
+            this.btnPrevPage.Size = new System.Drawing.Size(74, 22);
+            this.btnPrevPage.TabIndex = 23;
+            this.btnPrevPage.Text = "< Previous";
+            this.btnPrevPage.UseVisualStyleBackColor = true;
+            this.btnPrevPage.Click += new System.EventHandler(this.btnPrevPage_Click);
+            // 
+            // btnNextPage
+            // 
+            this.btnNextPage.Location = new System.Drawing.Point(107, 23);
+            this.btnNextPage.Name = "btnNextPage";
+            this.btnNextPage.Size = new System.Drawing.Size(74, 22);
+            this.btnNextPage.TabIndex = 22;
+            this.btnNextPage.Text = "Next  >";
+            this.btnNextPage.UseVisualStyleBackColor = true;
+            this.btnNextPage.Click += new System.EventHandler(this.btnNextPage_Click);
+            // 
+            // btnFirstPage
+            // 
+            this.btnFirstPage.Location = new System.Drawing.Point(17, 25);
+            this.btnFirstPage.Name = "btnFirstPage";
+            this.btnFirstPage.Size = new System.Drawing.Size(74, 22);
+            this.btnFirstPage.TabIndex = 21;
+            this.btnFirstPage.Text = "First Page";
+            this.btnFirstPage.UseVisualStyleBackColor = true;
+            this.btnFirstPage.Click += new System.EventHandler(this.btnFirstPage_Click);
+            // 
+            // txtRecCount
+            // 
+            this.txtRecCount.Location = new System.Drawing.Point(95, 60);
+            this.txtRecCount.Name = "txtRecCount";
+            this.txtRecCount.Size = new System.Drawing.Size(34, 20);
+            this.txtRecCount.TabIndex = 18;
+            this.txtRecCount.TextChanged += new System.EventHandler(this.txtRecCount_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(17, 63);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(73, 13);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Record Count";
             // 
             // vao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1217, 684);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.grpPaging);
             this.Controls.Add(this.grpTheervaiTest);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.chkEdit);
@@ -703,6 +805,8 @@
             this.groupBox7.PerformLayout();
             this.grpTheervaiTest.ResumeLayout(false);
             this.grpTheervaiTest.PerformLayout();
+            this.grpPaging.ResumeLayout(false);
+            this.grpPaging.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -764,6 +868,15 @@
         private System.Windows.Forms.Label lblLandStatusError;
         private System.Windows.Forms.GroupBox grpTheervaiTest;
         private System.Windows.Forms.Button btnSoftGen;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnBookView;
+        private System.Windows.Forms.GroupBox grpPaging;
+        private System.Windows.Forms.TextBox txtRecCount;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnLastPage;
+        private System.Windows.Forms.Button btnPrevPage;
+        private System.Windows.Forms.Button btnNextPage;
+        private System.Windows.Forms.Button btnFirstPage;
+        private System.Windows.Forms.Button btnGoToPage;
+        private System.Windows.Forms.TextBox txtGoto;
     }
 }

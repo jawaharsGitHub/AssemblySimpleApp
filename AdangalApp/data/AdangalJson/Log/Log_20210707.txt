@@ -566,3 +566,219 @@ LandType ISSUE
 LandStatus ISSUE
 
 2021-07-07 19:42:17,235 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-07 20:07:45,773 [1] DEBUG - =================Wednesday, 07 July 2021 20:07:45========================
+2021-07-07 20:07:46,007 [1] DEBUG - STARTED....
+2021-07-07 20:07:52,860 [1] DEBUG - Error @ btnAddNewSurvey_Click - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.btnAddNewSurvey_Click(Object sender, EventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 2303
+2021-07-07 20:44:26,866 [1] DEBUG - =================Wednesday, 07 July 2021 20:44:26========================
+2021-07-07 20:44:27,022 [1] DEBUG - STARTED....
+2021-07-07 20:44:31,147 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-07 20:44:31,896 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-07 20:44:42,114 [1] DEBUG - STEP-2 - LOADING JUST ADANGAL FOR ADDING NEW SURVEY ONLY.
+2021-07-07 20:44:49,364 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-07 20:44:49,458 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 20:48:30,775 [1] DEBUG - =================Wednesday, 07 July 2021 20:48:30========================
+2021-07-07 20:48:30,806 [1] DEBUG - STARTED....
+2021-07-07 20:48:35,993 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-07 20:48:36,149 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-07 20:48:44,742 [1] DEBUG - STEP-2 - LOADING JUST ADANGAL FOR ADDING NEW SURVEY ONLY.
+2021-07-07 20:48:47,289 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-07 20:48:47,336 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 20:49:31,945 [1] DEBUG - =================Wednesday, 07 July 2021 20:49:31========================
+2021-07-07 20:49:31,976 [1] DEBUG - STARTED....
+2021-07-07 20:49:35,851 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-07 20:49:35,976 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-07 20:49:44,975 [1] DEBUG - STEP-2 - LOADING JUST ADANGAL FOR ADDING NEW SURVEY ONLY.
+2021-07-07 20:49:46,303 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-07 20:49:46,366 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 20:49:59,412 [1] DEBUG - Error @ btnAddNewSurvey_Click - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.btnAddNewSurvey_Click(Object sender, EventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 2312
+2021-07-07 23:14:40,378 [1] DEBUG - =================Wednesday, 07 July 2021 23:14:40========================
+2021-07-07 23:14:40,424 [1] DEBUG - STARTED....
+2021-07-07 23:14:46,025 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-07 23:14:46,447 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-07 23:17:19,235 [1] DEBUG - =================Wednesday, 07 July 2021 23:17:19========================
+2021-07-07 23:17:19,266 [1] DEBUG - STARTED....
+2021-07-07 23:17:24,976 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-07 23:17:26,722 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-07 23:17:37,627 [1] DEBUG - STEP-2 - LOADING JUST ADANGAL FOR ADDING NEW SURVEY ONLY.
+2021-07-07 23:19:41,595 [1] DEBUG - =================Wednesday, 07 July 2021 23:19:41========================
+2021-07-07 23:19:41,642 [1] DEBUG - STARTED....
+2021-07-07 23:19:45,431 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-07 23:19:46,641 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-07 23:19:57,141 [1] DEBUG - STEP-2 - LOADING JUST ADANGAL FOR ADDING NEW SURVEY ONLY.
+2021-07-07 23:20:44,832 [1] DEBUG - =================Wednesday, 07 July 2021 23:20:44========================
+2021-07-07 23:20:44,863 [1] DEBUG - STARTED....
+2021-07-07 23:20:48,461 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-07 23:20:48,570 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-07 23:20:58,527 [1] DEBUG - STEP-2 - LOADING JUST ADANGAL FOR ADDING NEW SURVEY ONLY.
+2021-07-07 23:21:29,514 [1] DEBUG - =================Wednesday, 07 July 2021 23:21:29========================
+2021-07-07 23:21:29,530 [1] DEBUG - STARTED....
+2021-07-07 23:21:32,957 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-07 23:21:33,100 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-07 23:21:44,252 [1] DEBUG - STARTED FULL REPORT
+2021-07-07 23:21:44,313 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:21:48,516 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-07 23:21:48,516 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-07 23:30:11,893 [1] DEBUG - =================Wednesday, 07 July 2021 23:30:11========================
+2021-07-07 23:30:11,940 [1] DEBUG - STARTED....
+2021-07-07 23:30:17,310 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-07 23:30:17,638 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-07 23:30:28,234 [1] DEBUG - STARTED FULL REPORT
+2021-07-07 23:30:28,314 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:30:32,692 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-07 23:30:32,692 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-07 23:35:11,398 [1] DEBUG - =================Wednesday, 07 July 2021 23:35:11========================
+2021-07-07 23:35:11,429 [1] DEBUG - STARTED....
+2021-07-07 23:37:07,082 [1] DEBUG - =================Wednesday, 07 July 2021 23:37:07========================
+2021-07-07 23:37:07,098 [1] DEBUG - STARTED....
+2021-07-07 23:37:13,350 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-07 23:37:13,568 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-07 23:37:24,082 [1] DEBUG - STARTED FULL REPORT
+2021-07-07 23:37:24,133 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:37:28,597 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-07 23:37:28,597 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-07 23:39:30,527 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-07 23:39:30,699 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:39:30,855 [1] DEBUG - ready: False STATUS: ADD:313
+
+2021-07-07 23:39:30,927 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-07 23:43:50,470 [1] DEBUG - STEP-4 - Add Started
+2021-07-07 23:43:50,482 [1] DEBUG - STEP-4 - Add Completed
+2021-07-07 23:43:56,238 [1] DEBUG - Added new land 174-88A2    0.1.29   0.10 (Punsai)1440 - ?????????
+2021-07-07 23:43:57,801 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-07 23:43:58,001 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:43:58,146 [1] DEBUG - ready: False STATUS: ADD:312
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-07 23:43:58,218 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-07 23:44:58,918 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-07 23:44:59,124 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-07 23:45:09,709 [1] DEBUG - STARTED FULL REPORT
+2021-07-07 23:45:09,745 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:45:09,783 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-07 23:45:09,783 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-07 23:45:31,776 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-07 23:45:31,829 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-07 23:45:42,222 [1] DEBUG - STARTED FULL REPORT
+2021-07-07 23:45:42,272 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:45:42,310 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-07 23:45:42,310 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-07 23:46:22,494 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-07 23:46:24,447 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:46:24,538 [1] DEBUG - ready: False STATUS: ADD:312
+
+2021-07-07 23:46:24,587 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-07 23:47:36,650 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-07 23:47:36,705 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:47:36,825 [1] DEBUG - ready: False STATUS: ADD:312
+
+2021-07-07 23:47:36,903 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-07 23:48:22,018 [1] DEBUG - Added new land 174-110    0.1.20   0.10 (Punsai)1698 - ????????????
+2021-07-07 23:48:24,217 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-07 23:48:24,254 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:48:32,597 [1] DEBUG - ready: False STATUS: ADD:311
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-07 23:48:32,663 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-07 23:48:36,148 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-07 23:48:36,195 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:48:36,276 [1] DEBUG - ready: False STATUS: ADD:311
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-07 23:48:36,333 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-07 23:48:38,692 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-07 23:48:38,723 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:48:38,806 [1] DEBUG - ready: False STATUS: ADD:311
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-07 23:48:38,881 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-07 23:48:40,054 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-07 23:48:40,098 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-07 23:48:49,403 [1] DEBUG - STARTED FULL REPORT
+2021-07-07 23:48:49,433 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:48:49,466 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-07 23:48:49,466 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-07 23:48:51,436 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-07 23:48:51,483 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:48:51,559 [1] DEBUG - ready: False STATUS: ADD:311
+
+2021-07-07 23:48:51,624 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-07 23:49:46,747 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-07 23:49:52,275 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:49:52,358 [1] DEBUG - ready: False STATUS: ADD:311
+
+2021-07-07 23:49:52,423 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-07 23:50:37,343 [1] DEBUG - Added new land 174-109    0.2.78   0.10 (Punsai)1697 - ???????
+2021-07-07 23:50:38,634 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-07 23:50:45,734 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:51:12,453 [1] DEBUG - ready: False STATUS: ADD:310
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-07 23:52:59,715 [1] DEBUG - ready: False STATUS: ADD:310
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-07 23:52:59,779 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-07 23:53:53,321 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-07 23:53:55,564 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:53:55,657 [1] DEBUG - ready: False STATUS: ADD:310
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-07 23:53:55,718 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-07 23:54:32,967 [1] DEBUG - Added new land 174-105    0.1.80   0.10 (Punsai)1635 - ????????????
+2021-07-07 23:54:33,721 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-07 23:54:37,716 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:54:37,802 [1] DEBUG - ready: False STATUS: ADD:309
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-07 23:54:37,863 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-07 23:55:18,705 [1] DEBUG - Added new land 174-106    1.56.91   3.14 (Punsai)412 - ??????
+2021-07-07 23:55:18,796 [1] DEBUG - Added new land 173-71A    1.24.40   20.75 (Nansai)412 - ??????
+2021-07-07 23:55:20,528 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-07 23:55:20,561 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:55:20,659 [1] DEBUG - ready: False STATUS: ADD:307
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-07 23:55:20,734 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-07 23:56:16,398 [1] DEBUG - Added new land 174-107    0.0.41   0.10 (Punsai)1695 - ?????
+2021-07-07 23:56:17,326 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-07 23:56:17,369 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:56:17,462 [1] DEBUG - ready: False STATUS: ADD:306
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-07 23:56:17,508 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-07 23:56:47,984 [1] DEBUG - Added new land 174-108    0.1.39   0.10 (Punsai)1696 - ????????????
+2021-07-07 23:56:49,065 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-07 23:56:49,086 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:56:49,173 [1] DEBUG - ready: False STATUS: ADD:305
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-07 23:56:49,233 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-07 23:56:53,923 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-07 23:56:53,995 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-07 23:57:03,527 [1] DEBUG - STARTED FULL REPORT
+2021-07-07 23:57:03,560 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:57:03,594 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-07 23:57:03,594 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-07 23:57:06,617 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-07 23:57:06,663 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-07 23:57:06,749 [1] DEBUG - ready: False STATUS: ADD:305
+
+2021-07-07 23:57:06,797 [1] DEBUG - STEP-3 - Raedy For Print - Completed
