@@ -65,13 +65,14 @@ update porambokku name (manually?) - added in manual steps?
 
 -----V-1-----
 provide correct space in header. (top header space and alignment.) - ok
+right and left table height should be same - ok
+column which need mroe width.
 tamil font style in html pages?
-right and left table height should be same
-column which need mre width.
 save new survey number.
 order by survey and sub div no.
 book view functionality. (grid paging - should be same as adangal book.)
 modal popup for progress bar?
+move the summary and govt building pages to initial pages?
 *****************************************
 option to edit and update the total land parappu (if needed)
 Log in panchayat level
