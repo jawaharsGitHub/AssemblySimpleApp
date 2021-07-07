@@ -1372,7 +1372,7 @@ namespace AdangalApp
                 tbl = tbl.Replace("[totalrow]", totalRows);
                 tbl = tbl.Replace("[header]", updatedHeader);
 
-                if(isSoftCopy)
+                if (isSoftCopy)
                     tbl = tbl.Replace("[pageNo]", empty);
                 if (isInitialSummaryPage3)
                     tbl = tbl.Replace("[pageNo]", "3");
@@ -1731,15 +1731,31 @@ namespace AdangalApp
                                     .ThenBy(o => o.Caption, new AlphanumericComparer())
                                     .Select(s => (s.Value.ToString().Trim() + "~" + s.Caption.Trim()).Trim())).ToList();
 
-                var actualLandDetails = fullAdangalFromjson
-                                        .OrderBy(o => o.NilaAlavaiEn)
-                                        .ThenBy(o => o.UtpirivuEn, new AlphanumericComparer())
-                                        .Select(s =>
-                                        (s.NilaAlavaiEn.ToString().Trim() + "~" + s.UtpirivuEn.Trim()).Trim())
-                                        .ToList();
+                List<string> actualLandDetails;
+                if (SortByDesc)
+                {
+                    actualLandDetails = fullAdangalFromjson
+                                           .OrderByDescending(o => o.NilaAlavaiEn)
+                                           .ThenBy(o => o.UtpirivuEn, new AlphanumericComparer())
+                                           .Select(s =>
+                                           (s.NilaAlavaiEn.ToString().Trim() + "~" + s.UtpirivuEn.Trim()).Trim())
+                                           .ToList();
+                }
+                else
+                {
+                    actualLandDetails = fullAdangalFromjson
+                                           .OrderBy(o => o.NilaAlavaiEn)
+                                           .ThenBy(o => o.UtpirivuEn, new AlphanumericComparer())
+                                           .Select(s =>
+                                           (s.NilaAlavaiEn.ToString().Trim() + "~" + s.UtpirivuEn.Trim()).Trim())
+                                           .ToList();
+
+                }
 
                 notInPdfToBeAdded = expLandDetails.Except(actualLandDetails).ToList();
                 notInOnlineToBeDeleted = actualLandDetails.Except(expLandDetails).ToList();
+
+                //notInPdfToBeAdded =  notInPdfToBeAdded.OrderByDescending(o => o).ThenByDescending(o => o.UtpirivuEn, new AlphanumericComparer());
 
                 if (canAddMissedSurvey)
                 {
@@ -2088,7 +2104,7 @@ namespace AdangalApp
 
                 var filesCount = files.Count();
 
-                if (filesCount != 4)
+                if (filesCount != 3)
                 {
                     MessageBox.Show("Some file missing!");
                     return false;
@@ -2097,7 +2113,12 @@ namespace AdangalApp
                 var pdffilesCount = files.Where(w => w.EndsWith(".pdf")).Count();
                 var txtfilesCount = files.Where(w => w.EndsWith(".txt")).Count();
 
-                if (pdffilesCount != 2 || txtfilesCount != 2)
+                if (pdffilesCount != 2)
+                {
+                    MessageBox.Show("Some txt pdf file missing!");
+                    return false;
+                }
+                if (txtfilesCount != 1)
                 {
                     MessageBox.Show("Some txt or pdf file missing!");
                     return false;
@@ -2698,12 +2719,14 @@ namespace AdangalApp
 
         }
 
+        bool SortByDesc = false;
         private void btnSwap_Click(object sender, EventArgs e)
         {
+            SortByDesc = !SortByDesc;
+
             var data = (cmbItemToBeAdded.DataSource as List<string>);
-            data.Reverse();
-            //cmbItemToBeAdded.DataSource = data;
-            //cmbItemToBeAdded.Refresh();
+            if (SortByDesc)
+                data.Reverse();
             cmbItemToBeAdded.DataSource = null;
             cmbItemToBeAdded.DataSource = data;
         }

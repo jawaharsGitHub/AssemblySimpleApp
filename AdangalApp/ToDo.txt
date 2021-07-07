@@ -74,12 +74,11 @@ AdangalJson Folder.
 upload or sync newly added survey nos.
 install in another laptop and test.
 reverse dropdown data.
+soft copy.
 
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 -----V-1-----
-soft copy.
-*****************************************
 option to edit and update the total land parappu (if needed)
 Log in panchayat level
 manual check button and functionality.
@@ -87,6 +86,8 @@ replace an existing exe (replace or overwrite)?
 what about last page page number if right side page? need testing.
 for texting use the constant value.
 isvagai testing scenario
+*****************************************
+
 ---
 v-2
 ---

@@ -23281,5 +23281,70 @@
     "LandStatus": 2,
     "PattaEn": 1696,
     "CorrectNameRow": null
+  },
+  {
+    "NilaAlavaiEn": 174,
+    "UtpirivuEn": "104C",
+    "Parappu": "0.2.55",
+    "Theervai": "0.10",
+    "Anupathaarar": "1656 - அனார்கலி",
+    "OwnerName": "அனார்கலி",
+    "LandType": 1,
+    "IsFullfilled": false,
+    "LandStatus": 2,
+    "PattaEn": 1656,
+    "CorrectNameRow": null
+  },
+  {
+    "NilaAlavaiEn": 174,
+    "UtpirivuEn": "104B",
+    "Parappu": "0.1.34",
+    "Theervai": "0.10",
+    "Anupathaarar": "1655 - சந்திரசேகரன்",
+    "OwnerName": "சந்திரசேகரன்",
+    "LandType": 1,
+    "IsFullfilled": false,
+    "LandStatus": 2,
+    "PattaEn": 1655,
+    "CorrectNameRow": null
+  },
+  {
+    "NilaAlavaiEn": 174,
+    "UtpirivuEn": "104A2",
+    "Parappu": "0.1.20",
+    "Theervai": "0.10",
+    "Anupathaarar": "1660 - ராம்குமார்",
+    "OwnerName": "ராம்குமார்",
+    "LandType": 1,
+    "IsFullfilled": false,
+    "LandStatus": 2,
+    "PattaEn": 1660,
+    "CorrectNameRow": null
+  },
+  {
+    "NilaAlavaiEn": 174,
+    "UtpirivuEn": "104A1B",
+    "Parappu": "0.1.16",
+    "Theervai": "0.10",
+    "Anupathaarar": "1676 - ராஜ்குமார்",
+    "OwnerName": "ராஜ்குமார்",
+    "LandType": 1,
+    "IsFullfilled": false,
+    "LandStatus": 2,
+    "PattaEn": 1676,
+    "CorrectNameRow": null
+  },
+  {
+    "NilaAlavaiEn": 174,
+    "UtpirivuEn": "104A1C",
+    "Parappu": "0.1.37",
+    "Theervai": "0.10",
+    "Anupathaarar": "1677 - கிருஷ்ணன்",
+    "OwnerName": "கிருஷ்ணன்",
+    "LandType": 1,
+    "IsFullfilled": false,
+    "LandStatus": 2,
+    "PattaEn": 1677,
+    "CorrectNameRow": null
   }
 ]
