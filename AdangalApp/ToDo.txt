@@ -64,11 +64,13 @@ provide correct space in header. (top header space and alignment.) - ok
 right and left table height should be same - ok
 column which need mroe width.
 tamil font style in html pages?
+certified text alignment - ok
+move the summary and govt building pages to initial pages?
 
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 -----V-1-----
-move the summary and govt building pages to initial pages?
+
 save new survey number.
 order by survey and sub div no.
 book view functionality. (grid paging - should be same as adangal book.)

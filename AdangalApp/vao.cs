@@ -1149,6 +1149,9 @@ namespace AdangalApp
             initialPages.Append(GetLeftCertPage());
             initialPages.Append(GetRightCertPage());
             initialPages.Append(GetRightCertPage());
+            initialPages.Append("[summaryPages]");
+            initialPages.Append("[building]");
+
             initialPages.Append(GetEmptyPages(6));
 
             return initialPages.ToString();
@@ -1619,9 +1622,10 @@ namespace AdangalApp
                 }
 
                 allContent.Append(GetSummaryPage());
-                allContent.Append(GetGovtBuildingPage());
-                allContent.Append(GetGovtBuildingPage());
 
+                // Final Touch
+                mainHtml = mainHtml.Replace("[summaryPages]", GetSummaryPage());
+                mainHtml = mainHtml.Replace("[building]", GetGovtBuildingPage());
                 mainHtml = mainHtml.Replace("[allPageData]", allContent.ToString());
                 mainHtml = mainHtml.Replace("[certifed]", GetCertifiedContent());
 

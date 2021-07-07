@@ -156,6 +156,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>copy "$(SolutionDir)\Common\HTMLTemplate\*.*" "$(ProjectDir)\Common\HTMLTemplate\"</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(SolutionDir)\Common\HTMLTemplate\*.*" "$(ProjectDir)\Common\HTMLTemplate\"</PostBuildEvent>
   </PropertyGroup>
 </Project>

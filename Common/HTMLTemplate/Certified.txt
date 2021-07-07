@@ -1,4 +1,4 @@
-﻿            <table style="border:hidden;width:70%;margin:auto;">
+﻿            <table style="border:hidden;width:95%;margin:auto;">
                 <tr>
                     <td style="font-size:36px; font-weight: bold; text-align:center;border:hidden;height:150px; vertical-align:middle;">பசலி : [pasali]</td>
                 </tr>
