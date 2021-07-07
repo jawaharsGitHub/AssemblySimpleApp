@@ -1,5 +1,14 @@
-﻿[vattam] வட்டம், [firka] உள்வட்டம், [varuvaikiraamam] குரூப், [pasali]ம் பசலி
-அடங்கல் பக்கம் 1 முதல் [totalpages] வரை பக்கங்களை கொண்டது.
+﻿            <table style="border:hidden;width:70%;margin:auto;">
+                <tr>
+                    <td style="font-size:36px; font-weight: bold; text-align:center;border:hidden;height:100px;">பசலி : [pasali]</td>
+                </tr>
+                <tr>
+                    <td style="font-size:20px; font-weight: bold; text-align: justify;border:hidden;">
+                        &emsp;&emsp;[vattam] வட்டம், [firka] உள்வட்டம், [varuvaikiraamam] குரூப், [pasali]ம் பசலி
+                        அடங்கல் பக்கம் 1 முதல் [totalpages] வரை பக்கங்களை கொண்டது.
 
-இவ்வடங்கள் "அ" பதிவேடு 10 (i) மற்றும் சென்ற பசலி [last-pasali]ம் பசலி அடங்கல் ஆகியவற்றுடன் ஒப்பிட்டு
-சரிபார்த்து எழுதப்பட்டுள்ளது என சான்றளிக்கிறேன்.
+                        இவ்வடங்கள் 'அ' பதிவேடு 10-I மற்றும் சென்ற பசலி [last-pasali]ம் பசலி அடங்கல் ஆகியவற்றுடன் ஒப்பிட்டு
+                        சரிபார்த்து எழுதப்பட்டுள்ளது என சான்றளிக்கிறேன்.
+                    </td>
+                </tr>
+            </table>
