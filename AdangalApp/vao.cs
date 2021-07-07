@@ -1089,7 +1089,11 @@ namespace AdangalApp
 
         private void SetHeader()
         {
-            updatedHeader = header.Replace("[pasali]", pasali.ToString()).Replace("[maavattam]", loadedFile.MaavattamNameTamil).Replace("[vattam]", loadedFile.VattamNameTamil).Replace("[varuvvaikiraamam]", $"{loadedFile.VillageCode} - {loadedFile.VillageNameTamil}");
+            updatedHeader = header.Replace("[pasali]", pasali.ToString())
+                                    .Replace("[maavattam]", loadedFile.MaavattamNameTamil)
+                                    .Replace("[vattam]", loadedFile.VattamNameTamil)
+                                    .Replace("[varuvvaikiraamam]", $"{loadedFile.VillageCode} - {loadedFile.VillageNameTamil}")
+                                    .Replace("[t]", "&emsp;&emsp;");
         }
         private string GetLeftCertPage()
         {
@@ -1626,6 +1630,8 @@ namespace AdangalApp
                 File.AppendAllText(filePath, mainHtml);
 
                 LogMessage($"COMPLETED HTML GENERATION @ {filePath}");
+                Process.Start(filePath);
+
                 LogMessage($"STEP-5 - Generate Completed");
             }
             catch (Exception ex)

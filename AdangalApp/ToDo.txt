@@ -58,31 +58,35 @@ govt building table
 summary table.
 upadte first time  and corrected percentage of a file.
 pagenumber tracking for all land types.
+page total header font sze.
+update porambokku name (manually?) - added in manual steps?
 
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
-************************V-1***********************************
+-----V-1-----
+provide correct space in header. (top header space and alignment.) - ok
+tamil font style in html pages?
+right and left table height should be same
+column which need mre width.
+save new survey number.
+order by survey and sub div no.
+book view functionality. (grid paging - should be same as adangal book.)
+modal popup for progress bar?
+*****************************************
 option to edit and update the total land parappu (if needed)
 Log in panchayat level
-modal popup for progress bar?
-page total header font sze.
 parallel working especially - for getting subdiv details.
 manual check button and functionality.
-order by survey and sub div no.
 replace an existing exe (replace or overwrite)?
-provide correct space in header. (top header space and alignment.)
-right and left table height should be same
 what about last page page number if right side page? need testing.
-tamil font style in html pages?
-update porambokku name (manually?)
-while update name - should maintian a dictionary of correct and wrong name
 for texting use the constant value.
 isvagai testing scenario
-column which need mre width.
------------------------------------------------------------------------------------------------------
+
+---
 v-2
 ---
-book view functionality. (grid paging - should be same as adangal book.)
+while update name - should maintian a dictionary of correct and wrong name
+
 Surveyor Issue
 Correction history table.
 Manual Work:
@@ -99,11 +103,10 @@ Data analysis Report
 	siru guru vivasaayi
 	peru vivasaayi
 	siru guru vivasaayi -> owner(father name) -> land details and count.
-
+tamil names 
 
 marketing:
 ----------
-
 should be cheap that current price.
 time is money - how much is time is important?
 how much you spent?
@@ -115,15 +118,8 @@ manulal update list:
 	-> porampoakku pages photo
 	-> what is the final total number need to be?
 	-> land details group by kanmaai, meenu pidi etc.,
-	
-	
-	tamil names 
-	space for headers
-
-
-
-
 PRE-requisites:
+-----------------
 laptop
 .net 4.7.2
 rar 
@@ -132,22 +128,18 @@ internet access
 notepad++
 google input tool -  tamil 
 https://ramanathapuram.nic.in/ta/%e0%ae%a8%e0%ae%bf%e0%ae%b0%e0%af%8d%e0%ae%b5%e0%ae%be%e0%ae%95-%e0%ae%85%e0%ae%ae%e0%af%88%e0%ae%aa%e0%af%8d%e0%ae%aa%e0%af%81/%e0%ae%95%e0%af%8b%e0%ae%9f%e0%af%8d%e0%ae%9f%e0%ae%ae%e0%af%8d-%e0%ae%ae%e0%ae%b1%e0%af%8d%e0%ae%b1%e0%af%81%e0%ae%ae%e0%af%8d-%e0%ae%b5%e0%ae%9f%e0%af%8d%e0%ae%9f%e0%ae%ae%e0%af%8d/ - for knowing firkas
-
 https://cdn.s3waas.gov.in/s3f9b902fc3289af4dd08de5d1de54f68f/uploads/2018/06/2018061484.pdf - firka details
 
-
-
-
 STEPS:
+------
 1) 2 pdf files - 1. Chitta_Report-1.pdf 2. Areg_Report-1.pdf (naming convention is very important!!!)
 2) convet both files to txt -> https://www.pdf2go.com/pdf-to-text (please take a back up for future use if file may get corrupted)
 3) move those 2 files into that panchayat folder (newly created) --> F:\AUTO-ADANGAL
 4) overrite exe (or delete an existing)
 5) while print - margin  0 , A4, scale default, portrait etc.,
 folder structure...
-6) browser certificate expires message/issue.
-
-manual check:
+6) browser certificate expires message/issue. (SOLVED)
+7)manual check:
 	look at percentage.
 	delete
 	wrong name correction
