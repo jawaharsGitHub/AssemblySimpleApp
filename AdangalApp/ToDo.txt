@@ -95,11 +95,7 @@ modal popup for progress bar?
 while update name - should maintian a dictionary of correct and wrong name
 Surveyor Issue
 Correction history table.
-Manual Work:
-	Delete not needed
-	update porambokku data
-	Add missed survey details
-	Update name(first only or both first and last)
+
 firka database
 softcopy version & hardcopy version
 STAGE-1:File loaded STAGE-2:LOADED WITHOU ISSUE STAGE-3:CORRECTED TO 100%
@@ -124,6 +120,7 @@ manulal update list:
 	-> porampoakku pages photo
 	-> what is the final total number need to be?
 	-> land details group by kanmaai, meenu pidi etc.,
+
 PRE-requisites:
 -----------------
 laptop
@@ -153,6 +150,12 @@ folder structure...
 	add new (bulk update)
 	manual full check.
 	update total numbers if they want via html (before PRINT)
+Manual Work: (same as above)
+	Delete not needed
+	update porambokku data
+	Add missed survey details
+	Update name(first only or both first and last)
+
 8) NOT FULLY PRODUCT _ SO PLEASE BARE AND JUST FOLLOW WHAT WE WANT FOR NOW!!
 
 

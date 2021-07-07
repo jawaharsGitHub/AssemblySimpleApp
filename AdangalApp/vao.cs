@@ -41,6 +41,7 @@ namespace AdangalApp
         string aRegContent = "";
 
         int pageNumber = 0;
+        //int pageNumberSoft = 0;
         bool IsEnterKey = false;
 
         List<LandDetail> WholeLandList;
@@ -1106,6 +1107,8 @@ namespace AdangalApp
             sb.Append(rightCertEmpty.Replace("[pageNo]", pageNumber.ToString()));
             return sb.ToString();
         }
+
+
         private string GetRightEmptyPage()
         {
             string rightPage = null;
@@ -1143,8 +1146,6 @@ namespace AdangalApp
         {
             pageNumber += 1;
             var sb = new StringBuilder();
-            //sb.Append(leftEmpty);
-            //sb.Append(rightCertEmpty.Replace("[pageNo]", pageNumber.ToString()));
             sb.Append(leftCertEmpty);
             sb.Append("[summaryPages]");
             return sb.ToString();
@@ -1162,6 +1163,15 @@ namespace AdangalApp
             sb.Append(GetRightEmptyPage());
             return sb.ToString();
         }
+
+        private string GetPage4SoftCopy()
+        {
+            //pageNumber += 1;
+            var sb = new StringBuilder();
+            sb.Append("[building]");
+            //sb.Append(GetRightEmptyPage());
+            return sb.ToString();
+        }
         private string GetInitialPages()
         {
             var initialPages = new StringBuilder();
@@ -1173,6 +1183,22 @@ namespace AdangalApp
             initialPages.Append(GetPage4());
             int InitialEmptyPages = Convert.ToInt32(ConfigurationManager.AppSettings["InitialEmptyPages"]);
             initialPages.Append(GetEmptyPages(InitialEmptyPages));
+
+            return initialPages.ToString();
+
+        }
+
+        private string GetInitialPagesSoftCopy()
+        {
+            var initialPages = new StringBuilder();
+
+            initialPages.Append(firstPage);
+            //initialPages.Append(GetEmptyPages(1));
+            initialPages.Append(leftCertEmpty);
+            initialPages.Append("[summaryPages]");
+            initialPages.Append("[building]");
+            //int InitialEmptyPages = Convert.ToInt32(ConfigurationManager.AppSettings["InitialEmptyPages"]);
+            //initialPages.Append(GetEmptyPages(InitialEmptyPages));
 
             return initialPages.ToString();
 
@@ -1193,7 +1219,7 @@ namespace AdangalApp
         }
 
         int totalPageIndexTracker = 0;
-        private string GetPageTotal(List<PageTotal> source, List<PageTotal> destination)
+        private string GetPageTotal(List<PageTotal> source, List<PageTotal> destination, bool isSoftCopy = false)
         {
             StringBuilder totalContent = new StringBuilder();
 
@@ -1263,9 +1289,12 @@ namespace AdangalApp
                         tbl = tbl.Replace("[totalrow]", totalRows);
                         tbl = tbl.Replace("[landtype]", landType);
                         tbl = tbl.Replace("[header]", updatedHeader);
-                        tbl = tbl.Replace("[pageNo]", isRightSide ? pageNumber.ToString() : empty);
+                        if (isSoftCopy)
+                            tbl = tbl.Replace("[pageNo]", empty);
+                        else
+                            tbl = tbl.Replace("[pageNo]", isRightSide ? pageNumber.ToString() : empty);
 
-                        if(fe.Key == LandType.Porambokku)
+                        if (fe.Key == LandType.Porambokku)
                         {
                             tbl = tbl.Replace("சாகுபடி", fe.Key.ToName());
                         }
@@ -1306,7 +1335,7 @@ namespace AdangalApp
             }
         }
 
-        private string GetSummaryPage(bool isInitialSummaryPage3 = false)
+        private string GetSummaryPage(bool isInitialSummaryPage3 = false, bool isSoftCopy = false)
         {
             StringBuilder totalContent = new StringBuilder();
 
@@ -1322,7 +1351,7 @@ namespace AdangalApp
 
                 if (isRightSide)
                     pageNumber += 1;
-                
+
                 string dataRows = "";
                 StringBuilder sb = new StringBuilder();
 
@@ -1342,6 +1371,9 @@ namespace AdangalApp
                 tbl = tbl.Replace("[datarows]", sb.ToString());
                 tbl = tbl.Replace("[totalrow]", totalRows);
                 tbl = tbl.Replace("[header]", updatedHeader);
+
+                if(isSoftCopy)
+                    tbl = tbl.Replace("[pageNo]", empty);
                 if (isInitialSummaryPage3)
                     tbl = tbl.Replace("[pageNo]", "3");
                 else
@@ -1435,12 +1467,11 @@ namespace AdangalApp
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             LogMessage($"STEP-5 - Generate Started");
+
             string actualCode = "";
             string expectedCode = "";
-
-            actualCode = General.ShowPrompt("Passcode", "Verification");
-            expectedCode = GetPasscode();
-
+            //actualCode = General.ShowPrompt("Passcode", "Verification");
+            //expectedCode = GetPasscode();
             //if (actualCode != expectedCode)
             //{
             //    MessageBox.Show("Sorry , wrong code!");
@@ -1716,7 +1747,7 @@ namespace AdangalApp
                     return;
                 }
 
-                
+
 
                 btnDelete.Enabled = (notInOnlineToBeDeleted.Count > 0);
                 btnAdd.Enabled = (notInPdfToBeAdded.Count > 0);
@@ -1725,7 +1756,7 @@ namespace AdangalApp
                 btnStatusCheck.Text = status;
                 btnStatusCheck.BackColor = r ? Color.Green : Color.Red;
 
-               
+
                 var wrongNameCount = fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.WrongName).Count();
 
                 var percCompleted = onlineData.Count.PercentageBtwDecNo(actualLandDetails.Count - (notInOnlineToBeDeleted.Count + wrongNameCount), 2);
@@ -2146,7 +2177,7 @@ namespace AdangalApp
                          where ng.NilaAlavaiEn == cmbSurveyNo.SelectedItem.ToInt32()
                          select ng.UtpirivuEn).ToList();
 
-                cmbSubdivNo.DataSource = d.OrderBy(o => o, new AlphanumericComparer()).ToList(); 
+                cmbSubdivNo.DataSource = d.OrderBy(o => o, new AlphanumericComparer()).ToList();
 
                 cmbSubdivNo.SelectedIndexChanged += CmbSubdivNo_SelectedIndexChanged;
             }
@@ -2191,11 +2222,11 @@ namespace AdangalApp
         private void SetTestMode()
         {
             ddlPattaTypes.Visible = cmbFulfilled.Visible =
-                lblPattaCheck.Visible = ddlListType.Visible =  btnGenerate.Enabled =
+                lblPattaCheck.Visible = ddlListType.Visible = btnGenerate.Enabled =
                 btnSoftGen.Enabled = isTestingMode;
 
             grpTheervaiTest.Visible = needTheervaiTest;
-            txtAddNewSurvey.Enabled = btnReady.Enabled  = canAddMissedSurvey;
+            txtAddNewSurvey.Enabled = btnReady.Enabled = canAddMissedSurvey;
         }
         private void cmbFulfilled_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2311,7 +2342,7 @@ namespace AdangalApp
         {
             try
             {
-                if(txtAddNewSurvey.Text.Trim() == empty)
+                if (txtAddNewSurvey.Text.Trim() == empty)
                 {
                     MessageBox.Show("Please provide data to process");
                     return;
@@ -2551,7 +2582,7 @@ namespace AdangalApp
                 LogMessage($"STEP-2 - Completed - Existing file Load");
             }
             //EnableReadyForExist();
-            
+
             waitForm.Close();
         }
 
@@ -2597,7 +2628,7 @@ namespace AdangalApp
                     TotalPage += 1;
             }
 
-            
+
         }
 
         private List<Adangal> GetCurrentRecords(int page)
@@ -2613,7 +2644,7 @@ namespace AdangalApp
                 int PreviousPageOffSet = (page - 1) * PgSize;
                 curentRecords = fullAdangalFromjson.Skip(PreviousPageOffSet).Take(PgSize).ToList();
             }
-           
+
             return curentRecords;
         }
 
@@ -2682,10 +2713,12 @@ namespace AdangalApp
             var selectedFiles = General.SelectFilesInDialog(Directory.GetParent(DataAccess.MissedAdangalPath).FullName, "MissedAdangal");
             int addedCount = 0;
             int existCount = 0;
-            selectedFiles.ForEach(fe => {
+            selectedFiles.ForEach(fe =>
+            {
 
                 var missedJsonData = DataAccess.GetMissedAdangal(fe);
-                missedJsonData.ForEach(loop => {
+                missedJsonData.ForEach(loop =>
+                {
 
                     if (DataAccess.AddNewAdangal(loop))
                     {
@@ -2701,7 +2734,167 @@ namespace AdangalApp
             });
 
             MessageBox.Show($"Added: {addedCount}{Environment.NewLine}Exist Not Added: {existCount}");
-            
+
+        }
+
+        private void btnSoftGen_Click(object sender, EventArgs e)
+        {
+            LogMessage($"STEP-5 - Soft Copy Generate Started");
+
+            string actualCode = "";
+            string expectedCode = "";
+            //actualCode = General.ShowPrompt("Passcode", "Verification");
+            //expectedCode = GetPasscode();
+            //if (actualCode != expectedCode)
+            //{
+            //    MessageBox.Show("Sorry , wrong code!");
+            //    return;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Success!");
+            //}
+
+            try
+            {
+                LogMessage($"STARTED HTML GENERATION @ {DateTime.Now.ToLongTimeString()}");
+                pageNumber = 6;
+
+                StringBuilder allContent = new StringBuilder();
+                pageTotalList = new List<PageTotal>();
+                pageTotal2List = new List<PageTotal>();
+                pageTotal3List = new List<PageTotal>();
+
+                var mainHtml = FileContentReader.MainHtml;
+                string initialPages = GetInitialPagesSoftCopy();
+
+                mainHtml = mainHtml.Replace("[initialPages]", initialPages);
+
+                var landTypeGroup = (from wl in fullAdangalFromjson
+                                     where wl.LandType != LandType.Zero
+                                     group wl by wl.LandType into newGrp
+                                     select newGrp).ToList();
+
+                var rowTemplate22 = FileContentReader.LeftPageRowTemplate;
+                var totalTemplate22 = FileContentReader.LeftPageTotalTemplate;
+                var tableTemplate22 = FileContentReader.LeftPageTableTemplateSoftCopy;
+
+                landTypeGroup.ForEach(fe =>
+                {
+                    var dataToProcess = fe.ToList();
+
+                    var pageCount = dataToProcess.Count / recordPerPage;
+                    if (dataToProcess.Count % recordPerPage > 0) pageCount += 1;
+                    var landType = fe.Key.ToName();
+                    string pageRange = "";
+
+                    if (isTestingMode)
+                    {
+                        pageCount = pageCount >= TestingPage ? TestingPage : pageCount;
+                    }
+
+                    for (int i = 0; i <= pageCount - 1; i++)
+                    {
+                        var leftPage = tableTemplate22;
+                        var rowTemplate = rowTemplate22;
+                        var totalTemplate = totalTemplate22;
+
+                        string dataRows = "";
+                        StringBuilder sb = new StringBuilder();
+
+                        var temData = dataToProcess.Skip(i * recordPerPage).Take(recordPerPage).ToList();
+
+                        temData.ForEach(ff =>
+                        {
+                            dataRows = rowTemplate.Replace("[pulaen]", ff.NilaAlavaiEn.ToString())
+                                                  .Replace("[utpirivu]", ff.UtpirivuEn)
+                                                  .Replace("[parappu]", ff.Parappu)
+                                                   .Replace("[theervai]", ff.Theervai)
+                                                   .Replace("[pattaen-name]", ff.Anupathaarar);
+
+                            sb.Append(dataRows);
+                        });
+
+                        // LEFT PAGE ROWS
+                        leftPage = leftPage.Replace("[datarows]", sb.ToString());
+
+                        //LEFT PAGE TOTAL
+                        var totalparappu = AdangalFn.GetSumThreeDotNo(temData.Select(s => s.Parappu).ToList());
+                        //var totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai));
+
+                        decimal totalTheervai = 0;
+                        if (fe.Key != LandType.Porambokku)
+                            totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai));
+
+                        var total = totalTemplate.Replace("[moththaparappu]", totalparappu).Replace("[moththatheervai]", totalTheervai == 0 ? "" : totalTheervai.ToString());
+
+                        leftPage = leftPage.Replace("[totalrow]", total);
+                        leftPage = leftPage.Replace("[landtype]", landType);
+                        leftPage = leftPage.Replace("[header]", updatedHeader);
+                        pageNumber += 1;
+                        leftPage = leftPage.Replace("[pageNo]", pageNumber.ToString());
+
+
+                        allContent.Append(leftPage);
+                        //allContent.Append(GetRightEmptyPage()); // right page
+
+                        if (i == 0)
+                        {
+                            pageRange = $"{pageNumber}-";
+                        }
+                        if (i == pageCount - 1)
+                        {
+                            pageRange += $"{pageNumber}";
+                            pageRangeList.Add(new KeyValue() { Id = (int)fe.Key, Caption = pageRange });
+                        }
+
+                        pageTotalList.Add(new PageTotal()
+                        {
+                            PageNo = pageNumber,
+                            ParappuTotal = totalparappu,
+                            TheervaiTotal = totalTheervai,
+                            LandType = fe.Key
+                        });
+                    }
+                });
+
+                //allContent.Append(GetEmptyPages(1));  // add 4 empty pages.
+                allContent.Append(GetPageTotal(pageTotalList, pageTotal2List, true));
+                if (isTestingMode == false)
+                {
+                    allContent.Append(GetPageTotal(pageTotal2List, pageTotal3List, true));
+                    SetSummaryPageDetails(pageTotal3List);
+                    //allContent.Append(GetOverallTotal(pageTotal3List));
+                }
+                else
+                {
+                    SetSummaryPageDetails(pageTotal2List);
+                    //allContent.Append(GetOverallTotal(pageTotal2List));
+                }
+
+                allContent.Append(GetSummaryPage(isSoftCopy: true));
+                int FinalEmptyPages = Convert.ToInt32(ConfigurationManager.AppSettings["FinalEmptyPages"]);
+                //allContent.Append(GetEmptyPages(FinalEmptyPages));
+
+                // Final Touch
+                mainHtml = mainHtml.Replace("[summaryPages]", GetSummaryPage(true, isSoftCopy: true));
+                mainHtml = mainHtml.Replace("[building]", GetGovtBuildingPage());
+                mainHtml = mainHtml.Replace("[allPageData]", allContent.ToString());
+                mainHtml = mainHtml.Replace("[certifed]", GetCertifiedContent());
+
+                var fPath = AdangalConstant.CreateAndReadPath($"{loadedFile.VillageName}-Result");
+                var filePath = Path.Combine(fPath, $"{loadedFile.VillageName}-{DateTime.Now.ToString("MM-dd-yyyy HH-mm-ss")}.htm");
+                File.AppendAllText(filePath, mainHtml);
+
+                LogMessage($"COMPLETED HTML GENERATION @ {filePath}");
+                Process.Start(filePath);
+
+                LogMessage($"STEP-5 - Generate Completed");
+            }
+            catch
+            {
+
+            }
         }
     }
 

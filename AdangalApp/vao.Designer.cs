@@ -469,6 +469,7 @@
             this.btnSoftGen.TabIndex = 19;
             this.btnSoftGen.Text = "Soft Copy";
             this.btnSoftGen.UseVisualStyleBackColor = true;
+            this.btnSoftGen.Click += new System.EventHandler(this.btnSoftGen_Click);
             // 
             // groupBox6
             // 

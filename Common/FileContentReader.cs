@@ -17,7 +17,8 @@ namespace Common
         public static string MainHtml { get; } = GetHtmlFileContent("MainHtml.htm");
 
         public static string LeftPageTableTemplate { get; } = GetHtmlFileContent("LeftPageTableTemplate.htm");
-        
+        public static string LeftPageTableTemplateSoftCopy { get; } = GetHtmlFileContent("LeftPageTableTemplateSoftCopy.htm");
+
         public static string RightPageTableTemplate { get; } = GetHtmlFileContent("RightPageTableTemplate.htm");
 
         public static string LeftPageRowTemplate { get; } = GetHtmlFileContent("LeftPageRowTemplate.htm");

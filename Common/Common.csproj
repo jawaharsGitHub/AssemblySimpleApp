@@ -155,6 +155,7 @@
     <Content Include="HTMLTemplate\LeftPageCertTableTemplate.htm" />
     <Content Include="HTMLTemplate\GovtBuildingTableTemplate.htm" />
     <Content Include="HTMLTemplate\GovtBuildingRowTemplate.htm" />
+    <Content Include="HTMLTemplate\LeftPageTableTemplateSoftCopy.htm" />
     <Content Include="HTMLTemplate\SummayRowTemplate.htm" />
     <Content Include="HTMLTemplate\PageTotalRowTemplate.htm" />
     <Content Include="HTMLTemplate\PageOverallTotalTableTemplate.htm" />
