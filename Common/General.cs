@@ -1,10 +1,12 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Mail;
 using System.Reflection;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace Common
 {
@@ -61,10 +63,7 @@ namespace Common
                 default:
                     return "th";
             }
-        }
-
-
-        //static string path = @"E:\Test\NTK_Support\MyLog.txt";    
+        }  
 
         public static string GetDataFolder(string dataAccessPath)
         {
@@ -186,5 +185,28 @@ namespace Common
             return Path.Combine(path1, path2).Replace("%20", " ");
         }
 
+        public static string SelectFolderPath()
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+
+            if (DialogResult.OK == fbd.ShowDialog())
+                return fbd.SelectedPath;
+            else
+                return null;
+
+        }
+
+        public static List<string> SelectFilesInDialog(string defaultPath = null, string pattern = null)
+        {
+            OpenFileDialog fbd = new OpenFileDialog();
+            fbd.InitialDirectory = defaultPath;
+            fbd.Filter = $"json files (*.*)|*{pattern}*"; // pattern;
+
+            if (DialogResult.OK == fbd.ShowDialog())
+                return fbd.FileNames.ToList();
+            else
+                return null;
+
+        }
     }
 }

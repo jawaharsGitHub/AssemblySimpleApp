@@ -98,6 +98,11 @@ namespace AdangalApp
             InsertSingleObjectToListJson<Adangal>(path, adangalData);
         }
 
+        public static List<Adangal> GetMissedAdangal(string missedSurveysPath)
+        {
+            return ReadFileAsObjects<Adangal>(missedSurveysPath);
+        }
+
         public static void SaveSummary(List<Summary> summaryData)
         {
             string path = SummaryPath;
@@ -161,6 +166,14 @@ namespace AdangalApp
             WriteObjectsToFile(landDetails, path);
         }
 
+        private static bool IsAdangalAlreadyExist(Adangal adangal)
+        {
+            return GetActiveAdangal()
+                .Where(w => w.NilaAlavaiEn == adangal.NilaAlavaiEn && w.UtpirivuEn.Trim() == adangal.UtpirivuEn)
+                .Count() == 1;
+
+        }
+
         public static void SaveAdangalOriginalList(List<Adangal> adangal)
         {
             var path = AdangalOriginalPath;
@@ -196,7 +209,7 @@ namespace AdangalApp
             return GetActiveAdangal();
         }
 
-        public static bool IsAdangalExist()
+        public static bool IsAdangalFileExist()
         {
             return File.Exists(JsonPath);
         }
@@ -251,9 +264,13 @@ namespace AdangalApp
 
         public static bool AddNewAdangal(Adangal adangal)
         {
-            InsertSingleObjectToListJson<Adangal>(JsonPath, adangal);
-            SaveMissedAdangal(adangal);
-            return true;
+            if (IsAdangalAlreadyExist(adangal) == false)
+            {
+                InsertSingleObjectToListJson<Adangal>(JsonPath, adangal);
+                SaveMissedAdangal(adangal);
+                return true;
+            }
+            return false;
         }
 
         public static bool AddNewLoadedFile(LoadedFileDetail loadedFileDetail)

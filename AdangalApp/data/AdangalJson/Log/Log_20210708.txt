@@ -1,0 +1,201 @@
+2021-07-08 00:00:44,870 [1] DEBUG - =================Thursday, 08 July 2021 00:00:44========================
+2021-07-08 00:00:44,901 [1] DEBUG - STARTED....
+2021-07-08 00:00:51,725 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 00:00:52,154 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 00:01:02,449 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 00:01:02,507 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 00:01:02,595 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 00:01:02,595 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 00:01:32,721 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 00:01:32,877 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 00:01:32,985 [1] DEBUG - ready: False STATUS: ADD:305
+
+2021-07-08 00:01:33,073 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 00:01:33,077 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 00:01:33,105 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 00:01:33,182 [1] DEBUG - ready: False STATUS: ADD:305
+
+2021-07-08 00:01:33,235 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 00:03:55,146 [1] DEBUG - =================Thursday, 08 July 2021 00:03:55========================
+2021-07-08 00:03:55,178 [1] DEBUG - STARTED....
+2021-07-08 00:04:08,059 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 00:04:08,200 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 00:04:18,085 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 00:04:18,212 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 00:04:18,259 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 00:04:18,259 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 00:06:03,204 [1] DEBUG - =================Thursday, 08 July 2021 00:06:03========================
+2021-07-08 00:06:03,235 [1] DEBUG - STARTED....
+2021-07-08 00:08:58,314 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 00:08:58,434 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 00:09:07,588 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 00:09:07,655 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 00:09:07,700 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 00:09:07,700 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 00:09:10,404 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 00:09:10,451 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 00:09:10,537 [1] DEBUG - ready: False STATUS: ADD:305
+
+2021-07-08 00:09:10,603 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 00:13:04,500 [1] DEBUG - =================Thursday, 08 July 2021 00:13:04========================
+2021-07-08 00:13:04,531 [1] DEBUG - STARTED....
+2021-07-08 00:13:17,483 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 00:13:17,573 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 00:13:26,966 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 00:13:27,011 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 00:13:27,064 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 00:13:27,064 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 00:13:28,955 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 00:13:29,002 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 00:13:29,090 [1] DEBUG - ready: False STATUS: ADD:305
+
+2021-07-08 00:13:29,155 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 00:14:29,479 [1] DEBUG - =================Thursday, 08 July 2021 00:14:29========================
+2021-07-08 00:14:29,494 [1] DEBUG - STARTED....
+2021-07-08 00:14:33,701 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 00:14:33,855 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 00:14:43,736 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 00:14:43,800 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 00:14:43,847 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 00:14:43,847 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 00:14:47,390 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 00:14:47,453 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 00:14:47,536 [1] DEBUG - ready: False STATUS: ADD:305
+
+2021-07-08 00:14:47,595 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 00:17:03,304 [1] DEBUG - =================Thursday, 08 July 2021 00:17:03========================
+2021-07-08 00:17:03,335 [1] DEBUG - STARTED....
+2021-07-08 00:17:06,742 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 00:17:06,881 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 00:17:17,108 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 00:17:17,162 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 00:17:17,208 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 00:17:17,208 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 00:17:18,610 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 00:17:18,657 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 00:17:18,749 [1] DEBUG - ready: False STATUS: ADD:305
+
+2021-07-08 00:17:18,803 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 00:38:30,454 [1] DEBUG - =================Thursday, 08 July 2021 00:38:30========================
+2021-07-08 00:38:30,517 [1] DEBUG - STARTED....
+2021-07-08 00:38:34,395 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 00:38:36,992 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 00:38:47,442 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 00:38:47,671 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 00:38:47,784 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 00:38:47,784 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 00:38:50,730 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 00:38:50,809 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 00:38:50,949 [1] DEBUG - ready: False STATUS: ADD:305
+
+2021-07-08 00:38:51,107 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 00:41:43,166 [1] DEBUG - =================Thursday, 08 July 2021 00:41:43========================
+2021-07-08 00:41:43,181 [1] DEBUG - STARTED....
+2021-07-08 00:41:57,231 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 00:41:58,617 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 00:42:08,668 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 00:42:08,827 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 00:42:09,027 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 00:42:09,027 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 00:42:13,698 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 00:42:13,791 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 00:42:13,942 [1] DEBUG - ready: False STATUS: ADD:305
+
+2021-07-08 00:42:14,075 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 00:45:19,298 [1] DEBUG - =================Thursday, 08 July 2021 00:45:19========================
+2021-07-08 00:45:19,332 [1] DEBUG - STARTED....
+2021-07-08 00:45:30,556 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 00:45:31,235 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 00:45:41,172 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 00:45:41,326 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 00:45:41,530 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 00:45:41,530 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 00:45:43,986 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 00:45:44,064 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 00:45:44,217 [1] DEBUG - ready: False STATUS: ADD:305
+
+2021-07-08 00:45:44,288 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 00:47:23,657 [1] DEBUG - =================Thursday, 08 July 2021 00:47:23========================
+2021-07-08 00:47:23,673 [1] DEBUG - STARTED....
+2021-07-08 00:47:46,324 [1] DEBUG - =================Thursday, 08 July 2021 00:47:46========================
+2021-07-08 00:47:46,355 [1] DEBUG - STARTED....
+2021-07-08 00:47:52,151 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 00:47:52,320 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 00:48:02,978 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 00:48:03,038 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 00:48:03,138 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 00:48:03,138 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 00:48:26,497 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 00:48:26,544 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 00:48:26,636 [1] DEBUG - ready: False STATUS: ADD:305
+
+2021-07-08 00:48:26,705 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 00:49:09,733 [1] DEBUG - =================Thursday, 08 July 2021 00:49:09========================
+2021-07-08 00:49:09,759 [1] DEBUG - STARTED....
+2021-07-08 00:49:13,649 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 00:49:15,646 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 00:49:27,951 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 00:49:28,305 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 00:49:28,579 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 00:49:28,579 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 01:07:26,761 [1] DEBUG - =================Thursday, 08 July 2021 01:07:26========================
+2021-07-08 01:07:26,844 [1] DEBUG - STARTED....
+2021-07-08 01:07:30,972 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 01:07:31,359 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 01:07:41,315 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 01:07:41,418 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 01:07:41,560 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 01:07:41,560 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 01:07:43,501 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 01:07:43,576 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 01:07:43,688 [1] DEBUG - ready: False STATUS: ADD:305
+
+2021-07-08 01:07:43,831 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 01:07:45,744 [1] DEBUG - STEP-4 - Add Started
+2021-07-08 01:07:45,748 [1] DEBUG - STEP-4 - Add Completed
+2021-07-08 01:08:18,986 [1] DEBUG - Adangal already exist for sur-no: 90 subdiv-no: 16
+2021-07-08 01:08:19,550 [1] DEBUG - Adangal already exist for sur-no: 3 subdiv-no: 2A
+2021-07-08 01:08:20,023 [1] DEBUG - Adangal already exist for sur-no: 174 subdiv-no: 88A2
+2021-07-08 01:08:20,409 [1] DEBUG - Adangal already exist for sur-no: 174 subdiv-no: 110
+2021-07-08 01:08:20,896 [1] DEBUG - Adangal already exist for sur-no: 174 subdiv-no: 109
+2021-07-08 01:08:21,158 [1] DEBUG - Adangal already exist for sur-no: 174 subdiv-no: 105
+2021-07-08 01:08:21,356 [1] DEBUG - Adangal already exist for sur-no: 174 subdiv-no: 106
+2021-07-08 01:08:21,556 [1] DEBUG - Adangal already exist for sur-no: 173 subdiv-no: 71A
+2021-07-08 01:08:21,768 [1] DEBUG - Adangal already exist for sur-no: 174 subdiv-no: 107
+2021-07-08 01:08:21,943 [1] DEBUG - Adangal already exist for sur-no: 174 subdiv-no: 108
+2021-07-08 01:13:19,188 [1] DEBUG - =================Thursday, 08 July 2021 01:13:19========================
+2021-07-08 01:13:19,280 [1] DEBUG - STARTED....
+2021-07-08 01:13:22,628 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 01:13:22,966 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 01:13:32,998 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 01:13:33,101 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 01:13:33,235 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 01:13:33,235 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 01:13:35,631 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 01:13:35,714 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 01:13:35,874 [1] DEBUG - ready: False STATUS: ADD:305
+
+2021-07-08 01:13:35,978 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 01:13:43,510 [1] DEBUG - Adangal already exist for sur-no: 90 subdiv-no: 16
+2021-07-08 01:13:43,549 [1] DEBUG - Adangal already exist for sur-no: 3 subdiv-no: 2A
+2021-07-08 01:13:43,599 [1] DEBUG - Adangal already exist for sur-no: 174 subdiv-no: 88A2
+2021-07-08 01:13:43,629 [1] DEBUG - Adangal already exist for sur-no: 174 subdiv-no: 110
+2021-07-08 01:13:43,658 [1] DEBUG - Adangal already exist for sur-no: 174 subdiv-no: 109
+2021-07-08 01:13:43,683 [1] DEBUG - Adangal already exist for sur-no: 174 subdiv-no: 105
+2021-07-08 01:13:43,719 [1] DEBUG - Adangal already exist for sur-no: 174 subdiv-no: 106
+2021-07-08 01:13:43,750 [1] DEBUG - Adangal already exist for sur-no: 173 subdiv-no: 71A
+2021-07-08 01:13:43,781 [1] DEBUG - Adangal already exist for sur-no: 174 subdiv-no: 107
+2021-07-08 01:13:43,815 [1] DEBUG - Adangal already exist for sur-no: 174 subdiv-no: 108
+2021-07-08 01:25:53,121 [1] DEBUG - =================Thursday, 08 July 2021 01:25:53========================
+2021-07-08 01:25:53,163 [1] DEBUG - STARTED....
+2021-07-08 01:25:57,526 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 01:25:58,133 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 01:26:08,161 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 01:26:08,292 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 01:26:08,485 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 01:26:08,485 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 01:26:12,129 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 01:26:12,201 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 01:26:12,358 [1] DEBUG - ready: False STATUS: ADD:305
+
+2021-07-08 01:26:12,514 [1] DEBUG - STEP-3 - Raedy For Print - Completed

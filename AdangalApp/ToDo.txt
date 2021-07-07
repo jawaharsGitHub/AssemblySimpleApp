@@ -67,17 +67,18 @@ tamil font style in html pages?
 certified text alignment - ok
 move the summary and govt building pages to initial pages?
 parallel working especially - for getting subdiv details.
+save new survey number.
+order by survey and sub div no.
+book view functionality. (grid paging - should be same as adangal book.)
+AdangalJson Folder.
+upload or sync newly added survey nos.
+install in another laptop and test.
+reverse dropdown data.
 
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 -----V-1-----
-save new survey number.
-order by survey and sub div no.
-book view functionality. (grid paging - should be same as adangal book.)
-CRUD operation
-upload or sync newly added survey nos.
 soft copy.
-AdangalJson Folder.
 *****************************************
 option to edit and update the total land parappu (if needed)
 Log in panchayat level
@@ -86,11 +87,10 @@ replace an existing exe (replace or overwrite)?
 what about last page page number if right side page? need testing.
 for texting use the constant value.
 isvagai testing scenario
-instal in another laptop and test.
-
 ---
 v-2
 ---
+CRUD operation(Delete if needed)
 modal popup for progress bar?
 while update name - should maintian a dictionary of correct and wrong name
 Surveyor Issue
@@ -153,6 +153,7 @@ folder structure...
 	add new (bulk update)
 	manual full check.
 	update total numbers if they want via html (before PRINT)
+8) NOT FULLY PRODUCT _ SO PLEASE BARE AND JUST FOLLOW WHAT WE WANT FOR NOW!!
 
 
 

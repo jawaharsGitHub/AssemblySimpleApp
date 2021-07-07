@@ -1977,12 +1977,15 @@ namespace AdangalApp
                     return;
                 }
 
-                FolderBrowserDialog fbd = new FolderBrowserDialog();
+                //FolderBrowserDialog fbd = new FolderBrowserDialog();
+                //if (DialogResult.OK == fbd.ShowDialog())
+                //    reqFileFolderPath = fbd.SelectedPath;
+                //else
+                //return;
 
-                if (DialogResult.OK == fbd.ShowDialog())
-                    reqFileFolderPath = fbd.SelectedPath;
-                else
-                    return;
+                var selectedFolder = General.SelectFolderPath();
+                if (selectedFolder == null) return;
+                reqFileFolderPath = selectedFolder;
 
                 // Loading basic file details...
                 LoadFileDetails();
@@ -2093,7 +2096,7 @@ namespace AdangalApp
         private void CheckJsonExist()
         {
             SetVillage();
-            if (DataAccess.IsAdangalExist())
+            if (DataAccess.IsAdangalFileExist())
             {
                 MessageBox.Show($"File already processed for {loadedFile.VillageName}, Please use that?", "Already Exist", MessageBoxButtons.OK);
                 btnReadFile.Enabled = false;
@@ -2121,7 +2124,7 @@ namespace AdangalApp
 
                 var surevyNos = d.Select(s => s.Key).ToList();
 
-                cmbSurveyNo.DataSource = d.Select(s => s.Key).ToList();
+                cmbSurveyNo.DataSource = d.Select(s => s.Key).OrderBy(o => o).ToList();
                 lblSurveyNo.Text = $"survey no({surevyNos.Count})";
                 cmbSurveyNo.SelectedIndexChanged += CmbSurveyNo_SelectedIndexChanged;
 
@@ -2143,7 +2146,7 @@ namespace AdangalApp
                          where ng.NilaAlavaiEn == cmbSurveyNo.SelectedItem.ToInt32()
                          select ng.UtpirivuEn).ToList();
 
-                cmbSubdivNo.DataSource = d.ToList(); //.Where(w => w.Key == cmbSurveyNo.SelectedItem.ToInt32()).Select(s => s.ToList().Select(u => u.UtpirivuEn).ToList();
+                cmbSubdivNo.DataSource = d.OrderBy(o => o, new AlphanumericComparer()).ToList(); 
 
                 cmbSubdivNo.SelectedIndexChanged += CmbSubdivNo_SelectedIndexChanged;
             }
@@ -2662,6 +2665,43 @@ namespace AdangalApp
         {
             CalculateTotalPages(txtRecCount.Text.ToInt32());
 
+        }
+
+        private void btnSwap_Click(object sender, EventArgs e)
+        {
+            var data = (cmbItemToBeAdded.DataSource as List<string>);
+            data.Reverse();
+            //cmbItemToBeAdded.DataSource = data;
+            //cmbItemToBeAdded.Refresh();
+            cmbItemToBeAdded.DataSource = null;
+            cmbItemToBeAdded.DataSource = data;
+        }
+
+        private void btnSyncNew_Click(object sender, EventArgs e)
+        {
+            var selectedFiles = General.SelectFilesInDialog(Directory.GetParent(DataAccess.MissedAdangalPath).FullName, "MissedAdangal");
+            int addedCount = 0;
+            int existCount = 0;
+            selectedFiles.ForEach(fe => {
+
+                var missedJsonData = DataAccess.GetMissedAdangal(fe);
+                missedJsonData.ForEach(loop => {
+
+                    if (DataAccess.AddNewAdangal(loop))
+                    {
+                        addedCount += 1;
+                    }
+                    else
+                    {
+                        LogMessage($"Adangal already exist for sur-no: {loop.NilaAlavaiEn} subdiv-no: {loop.UtpirivuEn}");
+                        existCount += 1;
+                    }
+
+                });
+            });
+
+            MessageBox.Show($"Added: {addedCount}{Environment.NewLine}Exist Not Added: {existCount}");
+            
         }
     }
 

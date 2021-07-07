@@ -74,6 +74,8 @@
             this.txtAddNewSurvey = new System.Windows.Forms.TextBox();
             this.btnAddNewSurvey = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.btnSyncNew = new System.Windows.Forms.Button();
+            this.btnSwap = new System.Windows.Forms.Button();
             this.cmbItemToBeAdded = new System.Windows.Forms.ComboBox();
             this.cmbSurveyNo = new System.Windows.Forms.ComboBox();
             this.cmbSubdivNo = new System.Windows.Forms.ComboBox();
@@ -582,6 +584,8 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.btnSyncNew);
+            this.groupBox7.Controls.Add(this.btnSwap);
             this.groupBox7.Controls.Add(this.cmbItemToBeAdded);
             this.groupBox7.Controls.Add(this.txtAddNewSurvey);
             this.groupBox7.Controls.Add(this.btnAddNewSurvey);
@@ -592,6 +596,26 @@
             this.groupBox7.TabIndex = 28;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Add Missed Survey";
+            // 
+            // btnSyncNew
+            // 
+            this.btnSyncNew.Location = new System.Drawing.Point(326, 16);
+            this.btnSyncNew.Name = "btnSyncNew";
+            this.btnSyncNew.Size = new System.Drawing.Size(91, 23);
+            this.btnSyncNew.TabIndex = 31;
+            this.btnSyncNew.Text = "SyncNew...";
+            this.btnSyncNew.UseVisualStyleBackColor = true;
+            this.btnSyncNew.Click += new System.EventHandler(this.btnSyncNew_Click);
+            // 
+            // btnSwap
+            // 
+            this.btnSwap.Location = new System.Drawing.Point(4, 19);
+            this.btnSwap.Name = "btnSwap";
+            this.btnSwap.Size = new System.Drawing.Size(18, 21);
+            this.btnSwap.TabIndex = 30;
+            this.btnSwap.Text = "ᛨ";
+            this.btnSwap.UseVisualStyleBackColor = true;
+            this.btnSwap.Click += new System.EventHandler(this.btnSwap_Click);
             // 
             // cmbItemToBeAdded
             // 
@@ -878,5 +902,7 @@
         private System.Windows.Forms.Button btnFirstPage;
         private System.Windows.Forms.Button btnGoToPage;
         private System.Windows.Forms.TextBox txtGoto;
+        private System.Windows.Forms.Button btnSwap;
+        private System.Windows.Forms.Button btnSyncNew;
     }
 }
