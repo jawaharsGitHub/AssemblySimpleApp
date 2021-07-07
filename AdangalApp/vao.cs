@@ -227,12 +227,14 @@ namespace AdangalApp
                 int randomNo = 0;
                 foreach (var item in aregPatta)
                 {
-                    var d = item.Split(' ').Where(w => w.Trim() != "").ToList();
-                    var pointedIndex = d.LastIndexOf("0");
-                    var parappu = $"{d[pointedIndex - 4]}.{d[pointedIndex - 3]}";
 
+                    List<string> d = null;
                     try
                     {
+                        d = item.Split(' ').Where(w => w.Trim() != "").ToList();
+                        var pointedIndex = d.LastIndexOf("0");
+                        var parappu = $"{d[pointedIndex - 4]}.{d[pointedIndex - 3]}";
+
                         //Debug.WriteLine($"{d[0]}    {d[1]}  {parappu}   {d.Last()}");
                         if (randomNo >= 9)
                             randomNo = 0;
@@ -251,13 +253,21 @@ namespace AdangalApp
                     }
                     catch (Exception ex)
                     {
-                        PurambokkuAdangalList.Add(new Adangal()
+                        if (d.Count >= 2)
                         {
-                            NilaAlavaiEn = d[0].ToInt32(),
-                            UtpirivuEn = d[1],
-                            LandType = LandType.PorambokkuError
-                        });
-                        LogMessage($"Error Processing Purambokku record @ {d[0].ToInt32()} - {ex.ToString()}");
+                            PurambokkuAdangalList.Add(new Adangal()
+                            {
+                                NilaAlavaiEn = d[0].ToInt32(),
+                                UtpirivuEn = d[1],
+                                LandType = LandType.PorambokkuError
+                            });
+                            LogMessage($"Error Processing Purambokku record @ {d[0].ToInt32()} - {ex.ToString()}");
+                        }
+                        else
+                        {
+                            LogMessage($"Big Error Processing Purambokku record @ {d.Count()} items - {ex.ToString()}");
+                        }
+                        
                     }
                 }
 
@@ -1920,7 +1930,7 @@ namespace AdangalApp
                 if (loadedFile.VillageCode > 0)
                 {
                     var disValue = loadedFile.MaavattamCode;
-                    var talValue = loadedFile.VattamCode;
+                    var talValue = loadedFile.VattamCode.ToString().PadLeft(2, '0');
                     var villageValue = loadedFile.VillageCode.ToString().PadLeft(3, '0');
 
                     var url = "";

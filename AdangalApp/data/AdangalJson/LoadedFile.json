@@ -26,5 +26,19 @@
     "VillageNameTamil": "அச்சுந்தன்வயல்",
     "InitialPercentage": 78.15,
     "CorrectedPercentage": 85.86
+  },
+  {
+    "MaavattamCode": 27,
+    "MaavattamName": "Ramanathapuram",
+    "MaavattamNameTamil": "இராமநாதபுரம்",
+    "VattamCode": 11,
+    "VattamName": "RAMANATHAPURAM",
+    "VattamNameTamil": "இராமநாதபுரம்",
+    "FirkaName": "மண்டபம்",
+    "VillageCode": 62,
+    "VillageName": "ENMANAMKONDAN",
+    "VillageNameTamil": "என்மனங்கொன்டாண்",
+    "InitialPercentage": 44.16,
+    "CorrectedPercentage": null
   }
 ]

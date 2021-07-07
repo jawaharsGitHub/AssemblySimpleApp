@@ -137,8 +137,8 @@ https://cdn.s3waas.gov.in/s3f9b902fc3289af4dd08de5d1de54f68f/uploads/2018/06/201
 STEPS:
 ------
 1) 2 pdf files - 1. Chitta_Report-1.pdf 2. Areg_Report-1.pdf (naming convention is very important!!!)
-2) convet both files to txt -> https://www.pdf2go.com/pdf-to-text (please take a back up for future use if file may get corrupted)
-3) move those 2 files into that panchayat folder (newly created) --> F:\AUTO-ADANGAL
+2) convet Chitta_Report-1.pdf file alone to txt -> https://www.pdf2go.com/pdf-to-text 
+3) move those 2+1 files into that panchayat folder (newly created) --> F:\AUTO-ADANGAL
 4) overrite exe (or delete an existing)
 5) while print - margin  0 , A4, scale default, portrait etc.,
 folder structure...
