@@ -9,6 +9,8 @@ namespace AdangalApp.AdangalTypes
         Added,
         Error,
         WrongName,
-        NameEdited
+        NameEdited,
+        NeedToVerify,
+        
     }
 }

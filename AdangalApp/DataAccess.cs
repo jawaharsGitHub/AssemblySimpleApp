@@ -252,8 +252,8 @@ namespace AdangalApp
             }
             else
             {
-                data.Where(w => w.LandStatus == LandStatus.WrongName &&
-                                w.OwnerName == existingName && w.PattaEn == adn.PattaEn).ToList().ForEach(fe =>
+                data.Where(w => 
+                                w.NilaAlavaiEn == adn.NilaAlavaiEn && w.UtpirivuEn == adn.UtpirivuEn).ToList().ForEach(fe =>
                                 {
                                     fe.OwnerName = ownerName;
                                     fe.LandStatus = LandStatus.NameEdited;
@@ -261,6 +261,26 @@ namespace AdangalApp
             }
 
             WriteObjectsToFile(data, JsonPath);
+        }
+
+        public static void UpdateLandStatus(Adangal adn)
+        {
+            List<Adangal> list = GetActiveAdangal();
+            var u = list.Where(ld => ld.NilaAlavaiEn == adn.NilaAlavaiEn &&
+                              ld.UtpirivuEn == adn.UtpirivuEn).First();
+            u.LandStatus = adn.LandStatus;
+            u.LandStatus = LandStatus.NameEdited;
+            WriteObjectsToFile(list, JsonPath);
+        }
+
+        public static void UpdatePattaEN(Adangal adn)
+        {
+            List<Adangal> list = GetActiveAdangal();
+            var u = list.Where(ld => ld.NilaAlavaiEn == adn.NilaAlavaiEn &&
+                              ld.UtpirivuEn == adn.UtpirivuEn).First();
+            u.PattaEn = adn.PattaEn;
+            u.LandStatus = LandStatus.NameEdited;
+            WriteObjectsToFile(list, JsonPath);
         }
 
 

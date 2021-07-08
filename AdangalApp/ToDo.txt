@@ -75,14 +75,17 @@ upload or sync newly added survey nos.
 install in another laptop and test.
 reverse dropdown data.
 soft copy.
+Log in panchayat level
+grid page no.
+missed file json name with computer name.
 
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 -----V-1-----
-Log in panchayat level
+
 working status email
-missed file json name with computer name.
-grid page no. 
+passcode - enable.
+
 HANDLE NATHTHAM PORAMBOKKU ?
 
 option to edit and update the total land parappu (if needed)

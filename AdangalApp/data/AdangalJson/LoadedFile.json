@@ -26,19 +26,5 @@
     "VillageNameTamil": "அச்சுந்தன்வயல்",
     "InitialPercentage": 78.15,
     "CorrectedPercentage": 85.86
-  },
-  {
-    "MaavattamCode": 27,
-    "MaavattamName": "Ramanathapuram",
-    "MaavattamNameTamil": "இராமநாதபுரம்",
-    "VattamCode": 11,
-    "VattamName": "RAMANATHAPURAM",
-    "VattamNameTamil": "JN",
-    "FirkaName": "JKNJ",
-    "VillageCode": 62,
-    "VillageName": "ENMANAMKONDAN",
-    "VillageNameTamil": "JNJ",
-    "InitialPercentage": 63.81,
-    "CorrectedPercentage": null
   }
 ]

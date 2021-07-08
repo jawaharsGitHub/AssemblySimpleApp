@@ -43,11 +43,11 @@
     "UtpirivuEn": "1A1D",
     "Parappu": "0.4.00",
     "Theervai": "0.84",
-    "Anupathaarar": "1235 - கோவிந்தராஜ்‌",
-    "OwnerName": "கோவிந்தராஜ்‌",
+    "Anupathaarar": "1235 - ராஜேஸ்வரி ",
+    "OwnerName": "ராஜேஸ்வரி ",
     "LandType": 0,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 5,
     "PattaEn": 1235,
     "CorrectNameRow": "  1  கோவிந்தராஜ்‌  கணவன்‌  ராஜேஸ்வரி "
   },
@@ -69,11 +69,11 @@
     "UtpirivuEn": "1A1F",
     "Parappu": "0.21.00",
     "Theervai": "4.41",
-    "Anupathaarar": "1220 - கருப்பையா",
-    "OwnerName": "கருப்பையா",
+    "Anupathaarar": "1220 - மாணிக்கம்",
+    "OwnerName": "மாணிக்கம்",
     "LandType": 0,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 5,
     "PattaEn": 1220,
     "CorrectNameRow": "  3  கருப்பையா  தந்‌ைத மாணிக்கம்‌ "
   },
@@ -108,11 +108,11 @@
     "UtpirivuEn": "1A2",
     "Parappu": "0.10.00",
     "Theervai": "2.10",
-    "Anupathaarar": "735 - தற்காலதலைவர்‌ யாதவசமூகத்திற்குபாத்தியமான வகை",
-    "OwnerName": "தற்காலதலைவர்‌ யாதவசமூகத்திற்குபாத்தியமான வகை",
+    "Anupathaarar": "735 - கண்ணன் கோவில் ",
+    "OwnerName": "கண்ணன் கோவில் ",
     "LandType": 0,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 5,
     "PattaEn": 735,
     "CorrectNameRow": "1 1 அச்சுந்தன்வயல்‌ காப்பாளர்‌ தற்காலதலைவர்‌ யாதவசமூகத்திற்குபாத்தியமான"
   },
@@ -173,11 +173,11 @@
     "UtpirivuEn": "2B2A",
     "Parappu": "0.35.18",
     "Theervai": "7.56",
-    "Anupathaarar": "976 - தங்கராஜ்‌",
-    "OwnerName": "தங்கராஜ்‌",
+    "Anupathaarar": "976 - தங்கராஜ்‌ வகை",
+    "OwnerName": "தங்கராஜ்‌ வகை",
     "LandType": 0,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 5,
     "PattaEn": 976,
     "CorrectNameRow": "1 1 காயாம்புத்தேவர்‌ தந்தை தங்கராஜ்‌"
   },
@@ -199,11 +199,11 @@
     "UtpirivuEn": "2B3A",
     "Parappu": "0.8.59",
     "Theervai": "1.89",
-    "Anupathaarar": "1223 - கருப்பையா",
-    "OwnerName": "கருப்பையா",
+    "Anupathaarar": "1223 - மாணிக்கம்",
+    "OwnerName": "மாணிக்கம்",
     "LandType": 0,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 5,
     "PattaEn": 1223,
     "CorrectNameRow": "  1  கருப்பையா  தந்‌ைத  மாணிக்கம்‌ "
   },
@@ -216,7 +216,7 @@
     "OwnerName": "பெரி லெ சதக்கு ஆமினாள்‌ ",
     "LandType": 0,
     "IsFullfilled": false,
-    "LandStatus": 5,
+    "LandStatus": 6,
     "PattaEn": 148,
     "CorrectNameRow": " 1  செ மு அகமது ஜலாலுதீன்‌  கணவன்‌ பெரி லெ சதக்கு ஆமினாள்‌ "
   },
@@ -229,7 +229,7 @@
     "OwnerName": "பெரி லெ சதக்கு ஆமினாள்‌ ",
     "LandType": 0,
     "IsFullfilled": false,
-    "LandStatus": 5,
+    "LandStatus": 6,
     "PattaEn": 148,
     "CorrectNameRow": " 1  செ மு அகமது ஜலாலுதீன்‌  கணவன்‌ பெரி லெ சதக்கு ஆமினாள்‌ "
   },
@@ -268,7 +268,7 @@
     "OwnerName": "பஞ்சவர்ணம்‌",
     "LandType": 0,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 5,
     "PattaEn": 234,
     "CorrectNameRow": "  1  குப்புச்சாமி கோன்‌  கணவன்‌  பஞ்சவர்ணம்‌"
   },
@@ -281,7 +281,7 @@
     "OwnerName": "பஞ்சவர்ணம்‌",
     "LandType": 0,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 5,
     "PattaEn": 234,
     "CorrectNameRow": "  1  குப்புச்சாமி கோன்‌  கணவன்‌  பஞ்சவர்ணம்‌"
   },
@@ -333,7 +333,7 @@
     "OwnerName": "நாகரெத்தினம்‌",
     "LandType": 0,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 5,
     "PattaEn": 590,
     "CorrectNameRow": "  1  நாகரெத்தினம்‌  கணவன்‌  ரெத்தினம்மாள்‌ "
   },
@@ -381,11 +381,11 @@
     "UtpirivuEn": "2A2",
     "Parappu": "0.3.00",
     "Theervai": "0.64",
-    "Anupathaarar": "8 - அய்யப்பன்‌ டெக்ஸ்டைல்‌",
-    "OwnerName": "அய்யப்பன்‌ டெக்ஸ்டைல்‌",
+    "Anupathaarar": "8 - அய்யப்பன்‌ டெக்ஸ்டைல் மில்ஸ்  ‌",
+    "OwnerName": "அய்யப்பன்‌ டெக்ஸ்டைல் மில்ஸ்  ‌",
     "LandType": 0,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 5,
     "PattaEn": 8,
     "CorrectNameRow": " 1  அச்சுந்தன்வயல்‌  காப்பாளர்‌  அய்யப்பன்‌ டெக்ஸ்டைல்‌ மில்ஸ்‌ "
   },
@@ -511,12 +511,12 @@
     "UtpirivuEn": "1D",
     "Parappu": "0.2.00",
     "Theervai": "0.42",
-    "Anupathaarar": "585 - மலைராஜ்‌",
-    "OwnerName": "மலைராஜ்‌",
+    "Anupathaarar": "1626 - கார்த்திக்",
+    "OwnerName": "கார்த்திக்",
     "LandType": 0,
     "IsFullfilled": false,
-    "LandStatus": 0,
-    "PattaEn": 585,
+    "LandStatus": 5,
+    "PattaEn": 1626,
     "CorrectNameRow": " fa  அழகர்‌  தந்த  மலைராஜ்‌ "
   },
   {
@@ -563,11 +563,11 @@
     "UtpirivuEn": "2",
     "Parappu": "0.30.50",
     "Theervai": "6.40",
-    "Anupathaarar": "8 - அய்யப்பன்‌ டெக்ஸ்டைல்‌",
-    "OwnerName": "அய்யப்பன்‌ டெக்ஸ்டைல்‌",
+    "Anupathaarar": "8 - அய்யப்பன்‌ டெக்ஸ்டைல்  மில்ஸ்‌",
+    "OwnerName": "அய்யப்பன்‌ டெக்ஸ்டைல்  மில்ஸ்‌",
     "LandType": 0,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 5,
     "PattaEn": 8,
     "CorrectNameRow": " 1  அச்சுந்தன்வயல்‌  காப்பாளர்‌  அய்யப்பன்‌ டெக்ஸ்டைல்‌ மில்ஸ்‌ "
   },
@@ -609,19 +609,6 @@
     "LandStatus": 0,
     "PattaEn": 61,
     "CorrectNameRow": "   பசிர்‌ அகமது  கணவன்‌  ஹபிபத்தூள்‌ அலிமா "
-  },
-  {
-    "NilaAlavaiEn": 96,
-    "UtpirivuEn": "6A",
-    "Parappu": "0.31.87",
-    "Theervai": "6.69",
-    "Anupathaarar": "292 - மீனாள்‌",
-    "OwnerName": "மீனாள்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 292,
-    "CorrectNameRow": "  1  உடையார்‌ மருது  கணவன்‌ மீனாள்‌ "
   },
   {
     "NilaAlavaiEn": 96,
@@ -687,19 +674,6 @@
     "LandStatus": 0,
     "PattaEn": 1115,
     "CorrectNameRow": "  1  உடையார்‌  தந்‌ைத பூமிநாதன்‌ "
-  },
-  {
-    "NilaAlavaiEn": 99,
-    "UtpirivuEn": "1A2",
-    "Parappu": "0.4.50",
-    "Theervai": "0.94",
-    "Anupathaarar": "971 - சேதுராமன்‌",
-    "OwnerName": "சேதுராமன்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 971,
-    "CorrectNameRow": " 1 1  சேதுராமன்‌  தந்‌ைத அர்ச்சுணன்‌ "
   },
   {
     "NilaAlavaiEn": 99,
@@ -1028,19 +1002,6 @@
   },
   {
     "NilaAlavaiEn": 99,
-    "UtpirivuEn": "6D1A",
-    "Parappu": "0.2.05",
-    "Theervai": "0.51",
-    "Anupathaarar": "36 - உடையக்காள்‌",
-    "OwnerName": "உடையக்காள்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 36,
-    "CorrectNameRow": "  1  ஆண்டிக்கோன்‌  கணவன்‌  உடையக்காள்‌ "
-  },
-  {
-    "NilaAlavaiEn": 99,
     "UtpirivuEn": "6D1B",
     "Parappu": "0.1.97",
     "Theervai": "0.42",
@@ -1262,32 +1223,6 @@
   },
   {
     "NilaAlavaiEn": 100,
-    "UtpirivuEn": "1B",
-    "Parappu": "0.3.50",
-    "Theervai": "0.68",
-    "Anupathaarar": "77 - காந்திமதியஅம்மாள்‌",
-    "OwnerName": "காந்திமதியஅம்மாள்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 77,
-    "CorrectNameRow": "  1  ரெத்தினசபாபதி செட்டியார்‌  கணவன்‌ காந்திமதியஅம்மாள்‌"
-  },
-  {
-    "NilaAlavaiEn": 100,
-    "UtpirivuEn": "2A1A",
-    "Parappu": "0.3.00",
-    "Theervai": "0.63",
-    "Anupathaarar": "77 - காந்திமதியஅம்மாள்‌",
-    "OwnerName": "காந்திமதியஅம்மாள்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 77,
-    "CorrectNameRow": "  1  ரெத்தினசபாபதி செட்டியார்‌  கணவன்‌ காந்திமதியஅம்மாள்‌"
-  },
-  {
-    "NilaAlavaiEn": 100,
     "UtpirivuEn": "2A1B",
     "Parappu": "0.2.50",
     "Theervai": "0.53",
@@ -1431,32 +1366,6 @@
   },
   {
     "NilaAlavaiEn": 100,
-    "UtpirivuEn": "4A2",
-    "Parappu": "0.3.50",
-    "Theervai": "0.74",
-    "Anupathaarar": "1021 - பாண்டியம்மாள்‌",
-    "OwnerName": "பாண்டியம்மாள்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 1021,
-    "CorrectNameRow": "  1  உடையார்‌  கணவன்‌ பாண்டியம்மாள்‌"
-  },
-  {
-    "NilaAlavaiEn": 100,
-    "UtpirivuEn": "4A3A",
-    "Parappu": "0.4.50",
-    "Theervai": "0.95",
-    "Anupathaarar": "77 - காந்திமதியஅம்மாள்‌",
-    "OwnerName": "காந்திமதியஅம்மாள்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 77,
-    "CorrectNameRow": "  1  ரெத்தினசபாபதி செட்டியார்‌  கணவன்‌ காந்திமதியஅம்மாள்‌"
-  },
-  {
-    "NilaAlavaiEn": 100,
     "UtpirivuEn": "4A3B",
     "Parappu": "0.2.00",
     "Theervai": "0.42",
@@ -1561,19 +1470,6 @@
   },
   {
     "NilaAlavaiEn": 100,
-    "UtpirivuEn": "5B1A",
-    "Parappu": "0.15.00",
-    "Theervai": "3.15",
-    "Anupathaarar": "77 - காந்திமதியஅம்மாள்‌",
-    "OwnerName": "காந்திமதியஅம்மாள்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 77,
-    "CorrectNameRow": "  1  ரெத்தினசபாபதி செட்டியார்‌  கணவன்‌ காந்திமதியஅம்மாள்‌"
-  },
-  {
-    "NilaAlavaiEn": 100,
     "UtpirivuEn": "5B1B",
     "Parappu": "0.2.00",
     "Theervai": "0.10",
@@ -1662,19 +1558,6 @@
     "LandStatus": 0,
     "PattaEn": 839,
     "CorrectNameRow": "  1  ஆறுமுகம்‌  தந்தை  கருணாகரன்‌ "
-  },
-  {
-    "NilaAlavaiEn": 100,
-    "UtpirivuEn": "7B",
-    "Parappu": "0.8.50",
-    "Theervai": "1.79",
-    "Anupathaarar": "586 - ஏ.ஆர்‌. செந்தில்குமார்‌",
-    "OwnerName": "ஏ.ஆர்‌. செந்தில்குமார்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 586,
-    "CorrectNameRow": "  1  ரெத்தினசபாபதி செட்டியார்‌  தந்‌ைத  ஏ.ஆர்‌. செந்தில்குமார்‌ "
   },
   {
     "NilaAlavaiEn": 100,
@@ -2042,19 +1925,6 @@
   },
   {
     "NilaAlavaiEn": 100,
-    "UtpirivuEn": "31",
-    "Parappu": "0.4.00",
-    "Theervai": "3.50",
-    "Anupathaarar": "1022 - கருப்பசாமி",
-    "OwnerName": "கருப்பசாமி",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 1022,
-    "CorrectNameRow": "  1  கருப்பசாமி  தந்‌ைத கரிகாலன்‌ "
-  },
-  {
-    "NilaAlavaiEn": 100,
     "UtpirivuEn": "32",
     "Parappu": "0.2.00",
     "Theervai": "0.42",
@@ -2065,45 +1935,6 @@
     "LandStatus": 0,
     "PattaEn": 1030,
     "CorrectNameRow": " !  முத்தழகு  தந்‌ைத  சுரேஷ்‌ "
-  },
-  {
-    "NilaAlavaiEn": 100,
-    "UtpirivuEn": "33",
-    "Parappu": "0.21.00",
-    "Theervai": "4.41",
-    "Anupathaarar": "77 - காந்திமதியஅம்மாள்‌",
-    "OwnerName": "காந்திமதியஅம்மாள்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 77,
-    "CorrectNameRow": "  1  ரெத்தினசபாபதி செட்டியார்‌  கணவன்‌ காந்திமதியஅம்மாள்‌"
-  },
-  {
-    "NilaAlavaiEn": 100,
-    "UtpirivuEn": "34",
-    "Parappu": "0.2.00",
-    "Theervai": "0.42",
-    "Anupathaarar": "1112 - சதீஸ்‌",
-    "OwnerName": "சதீஸ்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 1112,
-    "CorrectNameRow": " 1  காளிமுத்தன்‌ தந்தை  சதீஸ்‌ "
-  },
-  {
-    "NilaAlavaiEn": 100,
-    "UtpirivuEn": "35",
-    "Parappu": "0.14.50",
-    "Theervai": "3.05",
-    "Anupathaarar": "77 - காந்திமதியஅம்மாள்‌",
-    "OwnerName": "காந்திமதியஅம்மாள்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 77,
-    "CorrectNameRow": "  1  ரெத்தினசபாபதி செட்டியார்‌  கணவன்‌ காந்திமதியஅம்மாள்‌"
   },
   {
     "NilaAlavaiEn": 100,
@@ -2250,19 +2081,6 @@
   },
   {
     "NilaAlavaiEn": 101,
-    "UtpirivuEn": "4",
-    "Parappu": "0.35.41",
-    "Theervai": "7.44",
-    "Anupathaarar": "1171 - அங்கமுத்து வகை",
-    "OwnerName": "அங்கமுத்து வகை",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 1171,
-    "CorrectNameRow": "1 1 அங்கமுத்து கோன்‌ கணவன்‌ கருங்கம்மாள்‌"
-  },
-  {
-    "NilaAlavaiEn": 101,
     "UtpirivuEn": "5",
     "Parappu": "0.1.80",
     "Theervai": "0.38",
@@ -2286,19 +2104,6 @@
     "LandStatus": 0,
     "PattaEn": 1401,
     "CorrectNameRow": " 1 1  மேகவாஃணம்‌  கணவன்‌  இராஜேஸ்வா:ஃ  "
-  },
-  {
-    "NilaAlavaiEn": 102,
-    "UtpirivuEn": "1",
-    "Parappu": "0.58.50",
-    "Theervai": "12.33",
-    "Anupathaarar": "275 - மணி",
-    "OwnerName": "மணி",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 275,
-    "CorrectNameRow": "  1  நாச்சியப்பன்‌ கோன்‌  தந்‌ைத மணி "
   },
   {
     "NilaAlavaiEn": 102,
@@ -2782,19 +2587,6 @@
     "CorrectNameRow": " 1 1  சுப்பிரமணியன்‌  கணவன்‌ செல்லம்மாள்‌ "
   },
   {
-    "NilaAlavaiEn": 108,
-    "UtpirivuEn": "2B3",
-    "Parappu": "0.29.54",
-    "Theervai": "6.20",
-    "Anupathaarar": "201 - செல்லம்மாள்‌",
-    "OwnerName": "செல்லம்மாள்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 201,
-    "CorrectNameRow": " 1 1  சுப்பிரமணியன்‌  கணவன்‌ செல்லம்மாள்‌ "
-  },
-  {
     "NilaAlavaiEn": 109,
     "UtpirivuEn": "1A",
     "Parappu": "0.14.50",
@@ -2845,19 +2637,6 @@
     "LandStatus": 0,
     "PattaEn": 1341,
     "CorrectNameRow": "  1  முத்துக்கோனாஃாஈ:்‌  தந்‌ைத  இராமநாதன்‌"
-  },
-  {
-    "NilaAlavaiEn": 109,
-    "UtpirivuEn": "3",
-    "Parappu": "0.20.00",
-    "Theervai": "4.17",
-    "Anupathaarar": "464 - சுப்பிரமணியன்‌",
-    "OwnerName": "சுப்பிரமணியன்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 464,
-    "CorrectNameRow": "  1  ஆறுமுகம்‌  தந்‌ைத  சுப்பிரமணியன்‌ "
   },
   {
     "NilaAlavaiEn": 109,
@@ -2926,32 +2705,6 @@
   },
   {
     "NilaAlavaiEn": 110,
-    "UtpirivuEn": "2A",
-    "Parappu": "1.9.50",
-    "Theervai": "22.95",
-    "Anupathaarar": "393 - ஹபிபத்தூள்‌ அலிமா வகை",
-    "OwnerName": "ஹபிபத்தூள்‌ அலிமா வகை",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 393,
-    "CorrectNameRow": "  1  பசிர்‌ அகம்மது  கணவன்‌  ஹபிபத்தூள்‌ அலிமா "
-  },
-  {
-    "NilaAlavaiEn": 110,
-    "UtpirivuEn": "2B",
-    "Parappu": "1.9.50",
-    "Theervai": "22.95",
-    "Anupathaarar": "393 - ஹபிபத்தூள்‌ அலிமா வகை",
-    "OwnerName": "ஹபிபத்தூள்‌ அலிமா வகை",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 393,
-    "CorrectNameRow": "  1  பசிர்‌ அகம்மது  கணவன்‌  ஹபிபத்தூள்‌ அலிமா "
-  },
-  {
-    "NilaAlavaiEn": 110,
     "UtpirivuEn": "3A",
     "Parappu": "0.35.50",
     "Theervai": "7.46",
@@ -3014,45 +2767,6 @@
     "LandStatus": 0,
     "PattaEn": 782,
     "CorrectNameRow": "  1  விஜயகுமார்‌  கணவன்‌ வாசுகி "
-  },
-  {
-    "NilaAlavaiEn": 110,
-    "UtpirivuEn": "4A",
-    "Parappu": "0.56.00",
-    "Theervai": "11.73",
-    "Anupathaarar": "68 - ஜெ மு",
-    "OwnerName": "ஜெ மு",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 68,
-    "CorrectNameRow": "  1  பெரி லெ ஷேகு அபூபக்கர்‌ சாகிபு  கணவன்‌  ஜெ மு கதிஜா அம்மாள்‌ "
-  },
-  {
-    "NilaAlavaiEn": 110,
-    "UtpirivuEn": "4B1",
-    "Parappu": "0.48.00",
-    "Theervai": "10.12",
-    "Anupathaarar": "68 - ஜெ மு",
-    "OwnerName": "ஜெ மு",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 68,
-    "CorrectNameRow": "  1  பெரி லெ ஷேகு அபூபக்கர்‌ சாகிபு  கணவன்‌  ஜெ மு கதிஜா அம்மாள்‌ "
-  },
-  {
-    "NilaAlavaiEn": 110,
-    "UtpirivuEn": "4B2A",
-    "Parappu": "0.43.78",
-    "Theervai": "9.19",
-    "Anupathaarar": "68 - ஜெ மு",
-    "OwnerName": "ஜெ மு",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 68,
-    "CorrectNameRow": "  1  பெரி லெ ஷேகு அபூபக்கர்‌ சாகிபு  கணவன்‌  ஜெ மு கதிஜா அம்மாள்‌ "
   },
   {
     "NilaAlavaiEn": 110,
@@ -3211,32 +2925,6 @@
     "CorrectNameRow": " fa  முத்தழகு  தந்த  பாலகிருஷ்னன்‌ "
   },
   {
-    "NilaAlavaiEn": 112,
-    "UtpirivuEn": "2A",
-    "Parappu": "0.60.50",
-    "Theervai": "10.08",
-    "Anupathaarar": "257 - புலையப்பன்‌",
-    "OwnerName": "புலையப்பன்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 257,
-    "CorrectNameRow": "  1  பெரியகருப்பன்‌  தந்‌ைத புலையப்பன்‌"
-  },
-  {
-    "NilaAlavaiEn": 112,
-    "UtpirivuEn": "2B",
-    "Parappu": "0.50.00",
-    "Theervai": "8.28",
-    "Anupathaarar": "372 - மணிக்கோனார்‌",
-    "OwnerName": "மணிக்கோனார்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 372,
-    "CorrectNameRow": "1] 1 மணிக்கோனார்‌ தந்‌ைத கார்மேகம்‌"
-  },
-  {
     "NilaAlavaiEn": 115,
     "UtpirivuEn": "1",
     "Parappu": "0.71.00",
@@ -3287,32 +2975,6 @@
     "LandStatus": 0,
     "PattaEn": 808,
     "CorrectNameRow": "  1  ராஜேஸ்கண்ணன்‌  கணவன்‌ சத்யா "
-  },
-  {
-    "NilaAlavaiEn": 115,
-    "UtpirivuEn": "3A",
-    "Parappu": "0.53.50",
-    "Theervai": "8.91",
-    "Anupathaarar": "641 - கோவிந்தராஜ்‌",
-    "OwnerName": "கோவிந்தராஜ்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 641,
-    "CorrectNameRow": " J i  நாகுக்கோன்‌  தந்‌ைத  கோவிந்தராஜ்‌ "
-  },
-  {
-    "NilaAlavaiEn": 115,
-    "UtpirivuEn": "3B",
-    "Parappu": "0.44.00",
-    "Theervai": "7.43",
-    "Anupathaarar": "641 - கோவிந்தராஜ்‌",
-    "OwnerName": "கோவிந்தராஜ்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 641,
-    "CorrectNameRow": " J i  நாகுக்கோன்‌  தந்‌ைத  கோவிந்தராஜ்‌ "
   },
   {
     "NilaAlavaiEn": 116,
@@ -3666,45 +3328,6 @@
     "CorrectNameRow": "1 1 ஆண்டிக்கோன்‌ தந்‌ைத சத்தியமூர்த்தி"
   },
   {
-    "NilaAlavaiEn": 120,
-    "UtpirivuEn": "2A",
-    "Parappu": "0.20.50",
-    "Theervai": "4.30",
-    "Anupathaarar": "594 - ராஜேந்திரன்‌",
-    "OwnerName": "ராஜேந்திரன்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 594,
-    "CorrectNameRow": " fa  ஆறுமுகக்கோன்‌  தந்‌ைத  ராஜேந்திரன்‌ "
-  },
-  {
-    "NilaAlavaiEn": 120,
-    "UtpirivuEn": "2B",
-    "Parappu": "0.20.50",
-    "Theervai": "4.30",
-    "Anupathaarar": "593 - முத்துகணபதி",
-    "OwnerName": "முத்துகணபதி",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 593,
-    "CorrectNameRow": " fa  ஆறுமுகக்கோன்‌  தந்‌ைத  முத்துகணபதி "
-  },
-  {
-    "NilaAlavaiEn": 120,
-    "UtpirivuEn": "2C1 \u0000ேேேே\u0000 \u0000 \u0000 \u0000 \u0000 \u0000 \u0000",
-    "Parappu": "0.42.24",
-    "Theervai": "8.87",
-    "Anupathaarar": "592 - முத்துராமலிங்கம்‌",
-    "OwnerName": "முத்துராமலிங்கம்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 592,
-    "CorrectNameRow": "  1  ஆறுமுகக்கோன்‌  தந்தை  முத்துராமலிங்கம்‌ "
-  },
-  {
     "NilaAlavaiEn": 121,
     "UtpirivuEn": "1",
     "Parappu": "0.29.00",
@@ -3794,19 +3417,6 @@
     "LandStatus": 0,
     "PattaEn": 642,
     "CorrectNameRow": "  1  கஜேந்திரன்‌  கணவன்‌  வசந்தா "
-  },
-  {
-    "NilaAlavaiEn": 122,
-    "UtpirivuEn": "3",
-    "Parappu": "0.66.50",
-    "Theervai": "13.94",
-    "Anupathaarar": "296 - மீனாள்‌ அம்மாள்‌",
-    "OwnerName": "மீனாள்‌ அம்மாள்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 296,
-    "CorrectNameRow": "  1  கருப்பையா கோன்‌  கணவன்‌ மீனாள்‌ அம்மாள்‌ "
   },
   {
     "NilaAlavaiEn": 123,
@@ -4277,32 +3887,6 @@
     "CorrectNameRow": "  1  கண்னையா  கணவன்‌ காளியம்மாள்‌ "
   },
   {
-    "NilaAlavaiEn": 131,
-    "UtpirivuEn": "5B",
-    "Parappu": "0.12.66",
-    "Theervai": "2.66",
-    "Anupathaarar": "367 - விநாயக சண்முகவேலு",
-    "OwnerName": "விநாயக சண்முகவேலு",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 367,
-    "CorrectNameRow": "  1  கிருஷ்ணசாமி சேர்வை  தந்‌ைத  விநாயக சண்முகவேலு சேர்வை "
-  },
-  {
-    "NilaAlavaiEn": 132,
-    "UtpirivuEn": "1A",
-    "Parappu": "0.20.79",
-    "Theervai": "4.37",
-    "Anupathaarar": "337 - பாலசுந்தரமூர்த்தி",
-    "OwnerName": "பாலசுந்தரமூர்த்தி",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 337,
-    "CorrectNameRow": " 1 1  இராமசாமி சேர்வை  தந்‌ைத  பாலசுந்தரமூர்த்தி "
-  },
-  {
     "NilaAlavaiEn": 132,
     "UtpirivuEn": "2A1",
     "Parappu": "0.5.35",
@@ -4327,19 +3911,6 @@
     "LandStatus": 0,
     "PattaEn": 576,
     "CorrectNameRow": "  1  கருங்கு கோன்‌  தந்‌ைத செல்லம்‌ "
-  },
-  {
-    "NilaAlavaiEn": 132,
-    "UtpirivuEn": "2B2",
-    "Parappu": "0.40.10",
-    "Theervai": "8.42",
-    "Anupathaarar": "367 - விநாயக சண்முகவேலு",
-    "OwnerName": "விநாயக சண்முகவேலு",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 367,
-    "CorrectNameRow": "  1  கிருஷ்ணசாமி சேர்வை  தந்‌ைத  விநாயக சண்முகவேலு சேர்வை "
   },
   {
     "NilaAlavaiEn": 133,
@@ -4639,19 +4210,6 @@
     "LandStatus": 0,
     "PattaEn": 1411,
     "CorrectNameRow": "  1  நாகலிங்கம்‌  தந்‌ைத விஸ்வநாதன்‌ "
-  },
-  {
-    "NilaAlavaiEn": 135,
-    "UtpirivuEn": "2B2 \u0000ேேேே\u0000 \u0000 \u0000 \u0000 \u0000 \u0000 \u0000",
-    "Parappu": "0.34.00",
-    "Theervai": "7.14",
-    "Anupathaarar": "269 - பெருமாள்‌",
-    "OwnerName": "பெருமாள்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 269,
-    "CorrectNameRow": "  1  முத்துக்கோன்‌  தந்‌ைத பெருமாள்‌ "
   },
   {
     "NilaAlavaiEn": 136,
@@ -5032,19 +4590,6 @@
   },
   {
     "NilaAlavaiEn": 143,
-    "UtpirivuEn": "3A1A",
-    "Parappu": "0.33.44",
-    "Theervai": "5.58",
-    "Anupathaarar": "209 - ஹமீது நூகு",
-    "OwnerName": "ஹமீது நூகு",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 209,
-    "CorrectNameRow": "  a  சேகு நூர்தீன்‌ ட தந்த ஹமீது நூகு "
-  },
-  {
-    "NilaAlavaiEn": 143,
     "UtpirivuEn": "3A1B",
     "Parappu": "0.5.04",
     "Theervai": "0.84",
@@ -5083,19 +4628,6 @@
     "CorrectNameRow": "  1  சலாகுதீன்‌  கணவன்‌  அஸ்கர்‌ ஜஹான்‌ "
   },
   {
-    "NilaAlavaiEn": 143,
-    "UtpirivuEn": "4",
-    "Parappu": "0.75.50",
-    "Theervai": "12.62",
-    "Anupathaarar": "402 - என்‌ சேகு",
-    "OwnerName": "என்‌ சேகு",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 402,
-    "CorrectNameRow": "1 1 இல்லை காப்பாளர்‌ என்‌ சேகு நூர்தீன்‌"
-  },
-  {
     "NilaAlavaiEn": 144,
     "UtpirivuEn": "1A",
     "Parappu": "0.16.50",
@@ -5123,19 +4655,6 @@
   },
   {
     "NilaAlavaiEn": 144,
-    "UtpirivuEn": "1B2A1",
-    "Parappu": "0.26.99",
-    "Theervai": "4.50",
-    "Anupathaarar": "209 - ஹமீது நூகு",
-    "OwnerName": "ஹமீது நூகு",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 209,
-    "CorrectNameRow": "  a  சேகு நூர்தீன்‌ ட தந்த ஹமீது நூகு "
-  },
-  {
-    "NilaAlavaiEn": 144,
     "UtpirivuEn": "1B2B",
     "Parappu": "0.2.50",
     "Theervai": "0.42",
@@ -5159,19 +4678,6 @@
     "LandStatus": 0,
     "PattaEn": 1197,
     "CorrectNameRow": "  3  ஜெயவீரபாண்டியன்‌  தந்தை கல்யாணசுந்தரம்‌"
-  },
-  {
-    "NilaAlavaiEn": 144,
-    "UtpirivuEn": "2",
-    "Parappu": "0.19.00",
-    "Theervai": "3.17",
-    "Anupathaarar": "209 - ஹமீது நூகு",
-    "OwnerName": "ஹமீது நூகு",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 209,
-    "CorrectNameRow": "  a  சேகு நூர்தீன்‌ ட தந்த ஹமீது நூகு "
   },
   {
     "NilaAlavaiEn": 144,
@@ -5539,19 +5045,6 @@
   },
   {
     "NilaAlavaiEn": 149,
-    "UtpirivuEn": "3B3",
-    "Parappu": "0.10.00",
-    "Theervai": "1.66",
-    "Anupathaarar": "203 - வள்ளிமயில்‌",
-    "OwnerName": "வள்ளிமயில்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 203,
-    "CorrectNameRow": "  1  சம்பத்‌  கணவன்‌ வள்ளிமயில்‌ "
-  },
-  {
-    "NilaAlavaiEn": 149,
     "UtpirivuEn": "4",
     "Parappu": "0.22.50",
     "Theervai": "3.71",
@@ -5614,19 +5107,6 @@
     "LandStatus": 0,
     "PattaEn": 127,
     "CorrectNameRow": "   செங்காலன்‌  கணவன்‌ குருவம்மாள்‌ "
-  },
-  {
-    "NilaAlavaiEn": 151,
-    "UtpirivuEn": "1",
-    "Parappu": "0.52.50",
-    "Theervai": "8.78",
-    "Anupathaarar": "32 - முனீஸ்வரி",
-    "OwnerName": "முனீஸ்வரி",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 32,
-    "CorrectNameRow": "  1  சேதுராமன்‌  கணவன்‌  முனீஸ்வரி "
   },
   {
     "NilaAlavaiEn": 151,
@@ -6254,19 +5734,6 @@
   },
   {
     "NilaAlavaiEn": 159,
-    "UtpirivuEn": "5B1A",
-    "Parappu": "0.24.00",
-    "Theervai": "4.00",
-    "Anupathaarar": "431 - சீப்பன்கூரி வகை",
-    "OwnerName": "சீப்பன்கூரி வகை",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 431,
-    "CorrectNameRow": "1 1 சீப்பன்கூரி தந்‌ைத சீப்பன்கூரி"
-  },
-  {
-    "NilaAlavaiEn": 159,
     "UtpirivuEn": "5B1B",
     "Parappu": "0.3.00",
     "Theervai": "0.51",
@@ -6345,19 +5812,6 @@
   },
   {
     "NilaAlavaiEn": 166,
-    "UtpirivuEn": "1A1A",
-    "Parappu": "0.27.67",
-    "Theervai": "4.62",
-    "Anupathaarar": "346 - இராமன்‌",
-    "OwnerName": "இராமன்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 346,
-    "CorrectNameRow": "  1  செங்காலன்‌  தந்‌ைத இராமன்‌ "
-  },
-  {
-    "NilaAlavaiEn": 166,
     "UtpirivuEn": "1A1B",
     "Parappu": "0.1.62",
     "Theervai": "0.27",
@@ -6394,19 +5848,6 @@
     "LandStatus": 0,
     "PattaEn": 1370,
     "CorrectNameRow": "  1  ராஜ்குமார்‌  கணவன்‌  கலைச்செல்வி "
-  },
-  {
-    "NilaAlavaiEn": 166,
-    "UtpirivuEn": "2F1",
-    "Parappu": "0.30.00",
-    "Theervai": "5.00",
-    "Anupathaarar": "17 - முருகேசன்‌ அசன்‌",
-    "OwnerName": "முருகேசன்‌ அசன்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 17,
-    "CorrectNameRow": "  1  சுப்பிரமணியன்‌  தந்‌ைத முருகேசன்‌ அசன்‌ முகம்மது "
   },
   {
     "NilaAlavaiEn": 166,
@@ -6566,19 +6007,6 @@
   },
   {
     "NilaAlavaiEn": 169,
-    "UtpirivuEn": "1",
-    "Parappu": "0.21.50",
-    "Theervai": "3.58",
-    "Anupathaarar": "216 - தங்கராசு",
-    "OwnerName": "தங்கராசு",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 216,
-    "CorrectNameRow": "  1  கருப்பன்‌  தந்‌ைத தங்கராசு "
-  },
-  {
-    "NilaAlavaiEn": 169,
     "UtpirivuEn": "2A",
     "Parappu": "0.9.50",
     "Theervai": "1.62",
@@ -6602,19 +6030,6 @@
     "LandStatus": 0,
     "PattaEn": 28,
     "CorrectNameRow": "  a  கருப்பன்‌  தந்‌ைத ஆறுமுகம்‌ "
-  },
-  {
-    "NilaAlavaiEn": 169,
-    "UtpirivuEn": "3A1A",
-    "Parappu": "0.25.36",
-    "Theervai": "4.23",
-    "Anupathaarar": "1305 - முகம்மது ஷரீப்‌",
-    "OwnerName": "முகம்மது ஷரீப்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 1305,
-    "CorrectNameRow": "   இஸ்மாயில்‌  தந்த  முகம்மது ஷரீப்‌ "
   },
   {
     "NilaAlavaiEn": 169,
@@ -6758,19 +6173,6 @@
     "LandStatus": 0,
     "PattaEn": 999,
     "CorrectNameRow": " fa  குப்பு  தந்‌ைத  பாஸ்கரன்‌ "
-  },
-  {
-    "NilaAlavaiEn": 170,
-    "UtpirivuEn": "3A",
-    "Parappu": "0.6.00",
-    "Theervai": "1.00",
-    "Anupathaarar": "132 - கூரி",
-    "OwnerName": "கூரி",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 132,
-    "CorrectNameRow": " 1 1  சண்முகம்‌  தந்‌ைத கூரி "
   },
   {
     "NilaAlavaiEn": 170,
@@ -6979,19 +6381,6 @@
     "LandStatus": 0,
     "PattaEn": 797,
     "CorrectNameRow": "  1  கடம்பன்‌  தந்தை சண்முகநாதன்‌"
-  },
-  {
-    "NilaAlavaiEn": 170,
-    "UtpirivuEn": "9",
-    "Parappu": "0.4.00",
-    "Theervai": "0.67",
-    "Anupathaarar": "824 - இந்திரா",
-    "OwnerName": "இந்திரா",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 824,
-    "CorrectNameRow": "பட மட] செனந்திபாண்டி ட கணவன்‌  இந்திரா "
   },
   {
     "NilaAlavaiEn": 170,
@@ -7330,19 +6719,6 @@
     "LandStatus": 0,
     "PattaEn": 1273,
     "CorrectNameRow": "  2  Pippen  தந்‌ைத ரெத்தினம்‌"
-  },
-  {
-    "NilaAlavaiEn": 170,
-    "UtpirivuEn": "34",
-    "Parappu": "0.30.44",
-    "Theervai": "5.08",
-    "Anupathaarar": "352 - ரோஜம்மாள்‌",
-    "OwnerName": "ரோஜம்மாள்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 352,
-    "CorrectNameRow": "  1  கணபதி  கணவன்‌  ரோஜம்மாள்‌"
   },
   {
     "NilaAlavaiEn": 170,
@@ -7697,19 +7073,6 @@
   },
   {
     "NilaAlavaiEn": 172,
-    "UtpirivuEn": "3D2 ே\u0000ேேே \u0000 \u0000 \u0000 \u0000 \u0000 \u0000 \u0000",
-    "Parappu": "0.32.00",
-    "Theervai": "5.33",
-    "Anupathaarar": "1008 - ரவிராஜேந்திரன்‌",
-    "OwnerName": "ரவிராஜேந்திரன்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 1008,
-    "CorrectNameRow": " fa  மாயழகு  தந்த  ரவிராஜேந்திரன்‌ "
-  },
-  {
-    "NilaAlavaiEn": 172,
     "UtpirivuEn": "4",
     "Parappu": "0.1.00",
     "Theervai": "0.17",
@@ -7798,19 +7161,6 @@
     "LandStatus": 0,
     "PattaEn": 840,
     "CorrectNameRow": " J i  அப்துல்மஜீது  தந்‌ைத  அயுப்கான்‌ "
-  },
-  {
-    "NilaAlavaiEn": 173,
-    "UtpirivuEn": "1A1B",
-    "Parappu": "0.41.50",
-    "Theervai": "6.92",
-    "Anupathaarar": "601 - டாக்டர்‌ எஸ்‌",
-    "OwnerName": "டாக்டர்‌ எஸ்‌",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 601,
-    "CorrectNameRow": " fa  சேதுரகுநாதன்‌  தந்த  டாக்டர்‌ எஸ்‌ நல்லமுத்து "
   },
   {
     "NilaAlavaiEn": 173,
@@ -8789,19 +8139,6 @@
   },
   {
     "NilaAlavaiEn": 173,
-    "UtpirivuEn": "68A1",
-    "Parappu": "1.34.26",
-    "Theervai": "22.39",
-    "Anupathaarar": "412 - பிரம்ம கிருஷ்ண",
-    "OwnerName": "பிரம்ம கிருஷ்ண",
-    "LandType": 0,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 412,
-    "CorrectNameRow": "  1  ராமநாதசேதுபதி  தந்‌ைத  பிரம்ம கிருஷ்ண ராஜராஜேஸ்வரி "
-  },
-  {
-    "NilaAlavaiEn": 173,
     "UtpirivuEn": "68A2",
     "Parappu": "0.2.55",
     "Theervai": "0.43",
@@ -8877,32 +8214,6 @@
     "LandStatus": 0,
     "PattaEn": 1087,
     "CorrectNameRow": "   அசோக்குமார்கண்னோடியா  தந்‌ைத ராகவ்‌ கண்ணோடியா "
-  },
-  {
-    "NilaAlavaiEn": 42,
-    "UtpirivuEn": "2B",
-    "Parappu": "3.58.13",
-    "Theervai": "14.97",
-    "Anupathaarar": "8 - அய்யப்பன்‌ டெக்ஸ்டைல்‌",
-    "OwnerName": "அய்யப்பன்‌ டெக்ஸ்டைல்‌",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 8,
-    "CorrectNameRow": " 1  அச்சுந்தன்வயல்‌  காப்பாளர்‌  அய்யப்பன்‌ டெக்ஸ்டைல்‌ மில்ஸ்‌ "
-  },
-  {
-    "NilaAlavaiEn": 43,
-    "UtpirivuEn": "-",
-    "Parappu": "2.92.50",
-    "Theervai": "12.22",
-    "Anupathaarar": "1086 - அன்கித்தாகண்ணோடியா",
-    "OwnerName": "அன்கித்தாகண்ணோடியா",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 1086,
-    "CorrectNameRow": "   ராகவ்‌ கண்னோடியா  கணவன்‌ அன்கித்தாகண்ணோடியா "
   },
   {
     "NilaAlavaiEn": 44,
@@ -9280,19 +8591,6 @@
     "LandStatus": 0,
     "PattaEn": 357,
     "CorrectNameRow": "  1  எம்‌.எஸ்‌. சுப்ரமணியன்‌  தந்‌ைத  விஜயகுமார்‌ "
-  },
-  {
-    "NilaAlavaiEn": 53,
-    "UtpirivuEn": "2A1 \u0000ேேேே\u0000 \u0000 \u0000 \u0000 \u0000 \u0000 \u0000",
-    "Parappu": "0.9.50",
-    "Theervai": "0.21",
-    "Anupathaarar": "1330 - விஜயகுமார்‌ வகை",
-    "OwnerName": "விஜயகுமார்‌ வகை",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 1330,
-    "CorrectNameRow": "3] 1 விஜயகுமார்‌ தந்தை துவாரகநாத்‌"
   },
   {
     "NilaAlavaiEn": 53,
@@ -10492,32 +9790,6 @@
   },
   {
     "NilaAlavaiEn": 65,
-    "UtpirivuEn": "1A",
-    "Parappu": "0.28.00",
-    "Theervai": "0.78",
-    "Anupathaarar": "1217 - செட்டியார்‌",
-    "OwnerName": "செட்டியார்‌",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 1217,
-    "CorrectNameRow": "  1  தொந்தி செட்டியார்‌  தந்‌ைத பாண்டியராஜன்‌ "
-  },
-  {
-    "NilaAlavaiEn": 65,
-    "UtpirivuEn": "1B",
-    "Parappu": "0.28.00",
-    "Theervai": "0.78",
-    "Anupathaarar": "1217 - செட்டியார்‌",
-    "OwnerName": "செட்டியார்‌",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 1217,
-    "CorrectNameRow": "  1  தொந்தி செட்டியார்‌  தந்‌ைத பாண்டியராஜன்‌ "
-  },
-  {
-    "NilaAlavaiEn": 65,
     "UtpirivuEn": "1C",
     "Parappu": "0.28.00",
     "Theervai": "0.77",
@@ -10580,19 +9852,6 @@
     "LandStatus": 0,
     "PattaEn": 261,
     "CorrectNameRow": "1] 1 நாகுக்கோனார்‌ கணவன்‌ சுலோக்சனா"
-  },
-  {
-    "NilaAlavaiEn": 66,
-    "UtpirivuEn": "1A1A",
-    "Parappu": "1.67.78",
-    "Theervai": "4.65",
-    "Anupathaarar": "294 - மீனாட்சி வகை",
-    "OwnerName": "மீனாட்சி வகை",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 294,
-    "CorrectNameRow": "1 1 நாச்சியப்பன்‌ கணவன்‌ மீனாட்சி"
   },
   {
     "NilaAlavaiEn": 66,
@@ -11545,19 +10804,6 @@
   },
   {
     "NilaAlavaiEn": 68,
-    "UtpirivuEn": "3B",
-    "Parappu": "0.6.50",
-    "Theervai": "0.18",
-    "Anupathaarar": "670 - மெஹர்‌ நிஷா",
-    "OwnerName": "மெஹர்‌ நிஷா",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 670,
-    "CorrectNameRow": "  1  முகம்மது அன்வர்‌  கணவன்‌ மெஹர்‌ நிஷா "
-  },
-  {
-    "NilaAlavaiEn": 68,
     "UtpirivuEn": "4A1B",
     "Parappu": "0.1.50",
     "Theervai": "0.10",
@@ -11698,19 +10944,6 @@
     "LandStatus": 0,
     "PattaEn": 413,
     "CorrectNameRow": "1 1 குருந்தப்பன்‌ தந்‌ைத முத்தழகு"
-  },
-  {
-    "NilaAlavaiEn": 68,
-    "UtpirivuEn": "7A1",
-    "Parappu": "0.66.00",
-    "Theervai": "1.83",
-    "Anupathaarar": "438 - இந்துராணி",
-    "OwnerName": "இந்துராணி",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 438,
-    "CorrectNameRow": "  1  சாத்தையா  கணவன்‌ இந்துராணி"
   },
   {
     "NilaAlavaiEn": 68,
@@ -12582,19 +11815,6 @@
     "LandStatus": 0,
     "PattaEn": 1381,
     "CorrectNameRow": "  1  அங்குமுத்துசேர்வை  தந்‌ைத காமாட்சி "
-  },
-  {
-    "NilaAlavaiEn": 75,
-    "UtpirivuEn": "62A",
-    "Parappu": "0.30.11",
-    "Theervai": "1.26",
-    "Anupathaarar": "276 - கிருஷ்ணன்‌",
-    "OwnerName": "கிருஷ்ணன்‌",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 276,
-    "CorrectNameRow": "  1  பதினெட்டுக்கோன்‌  தந்‌ைத கிருஷ்ணன்‌ "
   },
   {
     "NilaAlavaiEn": 75,
@@ -14340,19 +13560,6 @@
   },
   {
     "NilaAlavaiEn": 76,
-    "UtpirivuEn": "131A",
-    "Parappu": "1.72.50",
-    "Theervai": "7.19",
-    "Anupathaarar": "436 - காதர்‌இபுராகீம்‌ வகை",
-    "OwnerName": "காதர்‌இபுராகீம்‌ வகை",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 436,
-    "CorrectNameRow": "1 1 கா.சீ.முகம்மதுகனி தந்‌ைத காதர்‌இபுராகீம்‌"
-  },
-  {
-    "NilaAlavaiEn": 76,
     "UtpirivuEn": "131B",
     "Parappu": "0.1.00",
     "Theervai": "0.10",
@@ -14483,19 +13690,6 @@
   },
   {
     "NilaAlavaiEn": 87,
-    "UtpirivuEn": "5B1A",
-    "Parappu": "0.7.93",
-    "Theervai": "0.33",
-    "Anupathaarar": "69 - கருப்பையா வகை",
-    "OwnerName": "கருப்பையா வகை",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 69,
-    "CorrectNameRow": "1 1 சாத்தையா கோன்‌ தந்தை கருப்பையா"
-  },
-  {
-    "NilaAlavaiEn": 87,
     "UtpirivuEn": "5B1B",
     "Parappu": "0.4.07",
     "Theervai": "0.17",
@@ -14535,19 +13729,6 @@
   },
   {
     "NilaAlavaiEn": 87,
-    "UtpirivuEn": "6B1A",
-    "Parappu": "0.6.19",
-    "Theervai": "0.27",
-    "Anupathaarar": "467 - கருங்கம்மாள்‌ வகை",
-    "OwnerName": "கருங்கம்மாள்‌ வகை",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 467,
-    "CorrectNameRow": "1 1 ஆண்டி கணவன்‌ கருங்கம்மாள்‌"
-  },
-  {
-    "NilaAlavaiEn": 87,
     "UtpirivuEn": "6B2A",
     "Parappu": "0.6.14",
     "Theervai": "0.27",
@@ -14571,32 +13752,6 @@
     "LandStatus": 0,
     "PattaEn": 47,
     "CorrectNameRow": "  1  ராமசாமி  கணவன்‌  வசந்தாள்‌ "
-  },
-  {
-    "NilaAlavaiEn": 87,
-    "UtpirivuEn": "7A1A \u0000ேேேே\u0000 \u0000 \u0000 \u0000 \u0000 \u0000 \u0000",
-    "Parappu": "0.4.00",
-    "Theervai": "0.17",
-    "Anupathaarar": "673 - கோபால்‌",
-    "OwnerName": "கோபால்‌",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 673,
-    "CorrectNameRow": "  1  ஆறுமுகக்கோன்‌  தந்‌ைத கோபால்‌ "
-  },
-  {
-    "NilaAlavaiEn": 87,
-    "UtpirivuEn": "7A1B",
-    "Parappu": "0.3.00",
-    "Theervai": "0.13",
-    "Anupathaarar": "42 - உடையக்காள்‌",
-    "OwnerName": "உடையக்காள்‌",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 42,
-    "CorrectNameRow": "  1  ஆறுமுகம்‌ கணவன்‌  உடையக்காள்‌ "
   },
   {
     "NilaAlavaiEn": 87,
@@ -14639,19 +13794,6 @@
   },
   {
     "NilaAlavaiEn": 87,
-    "UtpirivuEn": "8A1A",
-    "Parappu": "0.6.23",
-    "Theervai": "0.27",
-    "Anupathaarar": "345 - இராமசாமி",
-    "OwnerName": "இராமசாமி",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 345,
-    "CorrectNameRow": "  1  குருநாதன்‌  தந்தை  இராமசாமி "
-  },
-  {
-    "NilaAlavaiEn": 87,
     "UtpirivuEn": "8A2",
     "Parappu": "0.1.00",
     "Theervai": "0.10",
@@ -14662,19 +13804,6 @@
     "LandStatus": 0,
     "PattaEn": 616,
     "CorrectNameRow": "  1  மலைராஜ்‌  கணவன்‌  பாப்பாள்‌ அம்மாள்‌ "
-  },
-  {
-    "NilaAlavaiEn": 87,
-    "UtpirivuEn": "8B1A",
-    "Parappu": "0.5.00",
-    "Theervai": "0.21",
-    "Anupathaarar": "353 - லெட்சுமி",
-    "OwnerName": "லெட்சுமி",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 353,
-    "CorrectNameRow": "  1  சுப்பிரமணியன்‌  கணவன்‌  லெட்சுமி"
   },
   {
     "NilaAlavaiEn": 87,
@@ -14727,19 +13856,6 @@
     "LandStatus": 0,
     "PattaEn": 1263,
     "CorrectNameRow": " J 3  பாலாறு  தந்‌ைத இராமு"
-  },
-  {
-    "NilaAlavaiEn": 87,
-    "UtpirivuEn": "9A4",
-    "Parappu": "0.2.25",
-    "Theervai": "0.10",
-    "Anupathaarar": "1264 - தந்‌ைத",
-    "OwnerName": "தந்‌ைத",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 1264,
-    "CorrectNameRow": " 1 உ  பாலாறு  தந்‌ைத  கூத்தர்‌ "
   },
   {
     "NilaAlavaiEn": 87,
@@ -14808,19 +13924,6 @@
   },
   {
     "NilaAlavaiEn": 87,
-    "UtpirivuEn": "12A1",
-    "Parappu": "0.11.00",
-    "Theervai": "0.46",
-    "Anupathaarar": "112 - கிருஷ்ணம்மாள்‌",
-    "OwnerName": "கிருஷ்ணம்மாள்‌",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 112,
-    "CorrectNameRow": "  1  ராக்கு  கணவன்‌ கிருஷ்ணம்மாள்‌ "
-  },
-  {
-    "NilaAlavaiEn": 87,
     "UtpirivuEn": "12A2",
     "Parappu": "0.2.00",
     "Theervai": "0.10",
@@ -14847,19 +13950,6 @@
   },
   {
     "NilaAlavaiEn": 87,
-    "UtpirivuEn": "14A1",
-    "Parappu": "0.7.00",
-    "Theervai": "0.30",
-    "Anupathaarar": "37 - உடையம்மை",
-    "OwnerName": "உடையம்மை",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 37,
-    "CorrectNameRow": "  1  கிருஷ்ணன்‌  கணவன்‌ உடையம்மை"
-  },
-  {
-    "NilaAlavaiEn": 87,
     "UtpirivuEn": "15",
     "Parappu": "0.24.50",
     "Theervai": "1.00",
@@ -14870,19 +13960,6 @@
     "LandStatus": 0,
     "PattaEn": 78,
     "CorrectNameRow": "  1  சேமணி  கணவன்‌  காஞ்சம்மை "
-  },
-  {
-    "NilaAlavaiEn": 87,
-    "UtpirivuEn": "16A",
-    "Parappu": "0.19.47",
-    "Theervai": "0.81",
-    "Anupathaarar": "121 - குப்புச்சாமிக்கோன்‌",
-    "OwnerName": "குப்புச்சாமிக்கோன்‌",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 121,
-    "CorrectNameRow": "  1  அழகர்‌ கோன்‌  தந்‌ைத குப்புச்சாமிக்கோன்‌ "
   },
   {
     "NilaAlavaiEn": 87,
@@ -14909,19 +13986,6 @@
     "LandStatus": 0,
     "PattaEn": 43,
     "CorrectNameRow": "  1  ராக்கு கணவன்‌  உடையக்காள்‌ "
-  },
-  {
-    "NilaAlavaiEn": 87,
-    "UtpirivuEn": "19A1",
-    "Parappu": "0.7.50",
-    "Theervai": "0.31",
-    "Anupathaarar": "44 - உடையார்‌ வகை",
-    "OwnerName": "உடையார்‌ வகை",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 44,
-    "CorrectNameRow": "1 1 பெரியகருப்பன்‌ தந்‌ைத உடையார்‌"
   },
   {
     "NilaAlavaiEn": 87,
@@ -15094,19 +14158,6 @@
   },
   {
     "NilaAlavaiEn": 87,
-    "UtpirivuEn": "31",
-    "Parappu": "0.2.00",
-    "Theervai": "0.10",
-    "Anupathaarar": "1114 - அர்ச்சுணன்‌",
-    "OwnerName": "அர்ச்சுணன்‌",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 1114,
-    "CorrectNameRow": "  1  மேகவர்ணம்‌  தந்‌ைத அர்ச்சுணன்‌ "
-  },
-  {
-    "NilaAlavaiEn": 87,
     "UtpirivuEn": "32",
     "Parappu": "0.3.00",
     "Theervai": "0.12",
@@ -15156,32 +14207,6 @@
     "LandStatus": 0,
     "PattaEn": 832,
     "CorrectNameRow": " fa  முத்துக்கிருஷ்ணன்‌ ட தந்தை நாகலிங்கம்‌ "
-  },
-  {
-    "NilaAlavaiEn": 88,
-    "UtpirivuEn": "1B",
-    "Parappu": "0.4.00",
-    "Theervai": "0.16",
-    "Anupathaarar": "695 - ஆறுமுகம்‌",
-    "OwnerName": "ஆறுமுகம்‌",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 695,
-    "CorrectNameRow": "  1  விளாங்கார்‌  தந்‌ைத ஆறுமுகம்‌ "
-  },
-  {
-    "NilaAlavaiEn": 88,
-    "UtpirivuEn": "2A1A",
-    "Parappu": "0.4.50",
-    "Theervai": "0.10",
-    "Anupathaarar": "458 - அமிர்தம்மாள்‌",
-    "OwnerName": "அமிர்தம்மாள்‌",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 458,
-    "CorrectNameRow": " 1 1  ஆண்டிக்கோன்‌  கணவன்‌  அமிர்தம்மாள்‌ "
   },
   {
     "NilaAlavaiEn": 88,
@@ -15497,45 +14522,6 @@
   },
   {
     "NilaAlavaiEn": 88,
-    "UtpirivuEn": "9B4B",
-    "Parappu": "0.3.50",
-    "Theervai": "0.15",
-    "Anupathaarar": "118 - இராமசாமி",
-    "OwnerName": "இராமசாமி",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 118,
-    "CorrectNameRow": " 1 1  மணி  தந்‌ைத இராமசாமி "
-  },
-  {
-    "NilaAlavaiEn": 88,
-    "UtpirivuEn": "9B5",
-    "Parappu": "0.5.50",
-    "Theervai": "0.22",
-    "Anupathaarar": "170 - கார்மேகம்‌",
-    "OwnerName": "கார்மேகம்‌",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 170,
-    "CorrectNameRow": "  1  மணி  தந்‌ைத கார்மேகம்‌"
-  },
-  {
-    "NilaAlavaiEn": 88,
-    "UtpirivuEn": "9B6A \u0000ேேேே\u0000 \u0000 \u0000 \u0000 \u0000 \u0000 \u0000",
-    "Parappu": "0.1.64",
-    "Theervai": "0.10",
-    "Anupathaarar": "597 - சேதுராமன்‌",
-    "OwnerName": "சேதுராமன்‌",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 597,
-    "CorrectNameRow": " 1 ட  காளிமுத்து  தந்‌ைத  சேதுராமன்‌ "
-  },
-  {
-    "NilaAlavaiEn": 88,
     "UtpirivuEn": "9B7A",
     "Parappu": "0.2.94",
     "Theervai": "0.13",
@@ -15585,32 +14571,6 @@
     "LandStatus": 0,
     "PattaEn": 389,
     "CorrectNameRow": "  1  வடிவேலு கோன்‌  தந்‌ைத  மதியழகன்‌ "
-  },
-  {
-    "NilaAlavaiEn": 88,
-    "UtpirivuEn": "12A ே\u0000ேேே \u0000 \u0000 \u0000 \u0000 \u0000 \u0000 \u0000",
-    "Parappu": "0.1.61",
-    "Theervai": "0.10",
-    "Anupathaarar": "241 - கஜேந்திரன்‌",
-    "OwnerName": "கஜேந்திரன்‌",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 241,
-    "CorrectNameRow": "  1  கருப்பையாக்‌ கோன்‌  தந்‌ைத  கஜேந்திரன்‌ "
-  },
-  {
-    "NilaAlavaiEn": 88,
-    "UtpirivuEn": "13",
-    "Parappu": "0.2.00",
-    "Theervai": "0.10",
-    "Anupathaarar": "1034 - அழகர்‌",
-    "OwnerName": "அழகர்‌",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 1034,
-    "CorrectNameRow": " fa  வேலு  தந்த  அழகர்‌"
   },
   {
     "NilaAlavaiEn": 88,
@@ -15741,19 +14701,6 @@
     "LandStatus": 5,
     "PattaEn": 1290,
     "CorrectNameRow": "  2  இராமையா  தந்‌ைத செல்லக்கருங்கு "
-  },
-  {
-    "NilaAlavaiEn": 88,
-    "UtpirivuEn": "23A",
-    "Parappu": "0.27.90",
-    "Theervai": "1.17",
-    "Anupathaarar": "575 - இராக்கம்மாள்‌",
-    "OwnerName": "இராக்கம்மாள்‌",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 575,
-    "CorrectNameRow": "  1  முத்தையா  கணவன்‌ இராக்கம்மாள்‌ "
   },
   {
     "NilaAlavaiEn": 88,
@@ -15926,19 +14873,6 @@
   },
   {
     "NilaAlavaiEn": 89,
-    "UtpirivuEn": "4A1A1",
-    "Parappu": "0.7.50",
-    "Theervai": "0.31",
-    "Anupathaarar": "152 - சண்முகம்‌",
-    "OwnerName": "சண்முகம்‌",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 152,
-    "CorrectNameRow": " 1 1  இராமுக்கோன்‌  தந்‌ைத சண்முகம்‌"
-  },
-  {
-    "NilaAlavaiEn": 89,
     "UtpirivuEn": "4A1B",
     "Parappu": "0.2.00",
     "Theervai": "0.10",
@@ -16014,19 +14948,6 @@
     "LandStatus": 0,
     "PattaEn": 940,
     "CorrectNameRow": "  1  பெரியகருப்பன்‌  தந்‌ைத கருப்பையா "
-  },
-  {
-    "NilaAlavaiEn": 89,
-    "UtpirivuEn": "4D1A",
-    "Parappu": "0.9.00",
-    "Theervai": "0.38",
-    "Anupathaarar": "177 - சாவித்திரி",
-    "OwnerName": "சாவித்திரி",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 177,
-    "CorrectNameRow": "  1  பச்சைமால்‌ கோன்‌  கணவன்‌  சாவித்திரி "
   },
   {
     "NilaAlavaiEn": 89,
@@ -16563,19 +15484,6 @@
   },
   {
     "NilaAlavaiEn": 90,
-    "UtpirivuEn": "9C1A",
-    "Parappu": "0.6.50",
-    "Theervai": "0.27",
-    "Anupathaarar": "279 - மருது பாண்டியன்‌",
-    "OwnerName": "மருது பாண்டியன்‌",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 279,
-    "CorrectNameRow": "  1  மருதப்பக்கோன்‌  தந்தை மருது பாண்டியன்‌ "
-  },
-  {
-    "NilaAlavaiEn": 90,
     "UtpirivuEn": "9C2A1",
     "Parappu": "0.1.50",
     "Theervai": "0.10",
@@ -16755,19 +15663,6 @@
     "LandStatus": 0,
     "PattaEn": 413,
     "CorrectNameRow": "1 1 குருந்தப்பன்‌ தந்‌ைத முத்தழகு"
-  },
-  {
-    "NilaAlavaiEn": 90,
-    "UtpirivuEn": "14A2",
-    "Parappu": "0.11.50",
-    "Theervai": "0.49",
-    "Anupathaarar": "38 - உடையக்காள்‌",
-    "OwnerName": "உடையக்காள்‌",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 38,
-    "CorrectNameRow": "  1  இராமு  கணவன்‌ உடையக்காள்‌"
   },
   {
     "NilaAlavaiEn": 90,
@@ -18630,19 +17525,6 @@
   },
   {
     "NilaAlavaiEn": 174,
-    "UtpirivuEn": "88A",
-    "Parappu": "2.18.24",
-    "Theervai": "4.36",
-    "Anupathaarar": "412 - பிரம்ம கிருஷ்ண",
-    "OwnerName": "பிரம்ம கிருஷ்ண",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 412,
-    "CorrectNameRow": "  1  ராமநாதசேதுபதி  தந்‌ைத  பிரம்ம கிருஷ்ண ராஜராஜேஸ்வரி "
-  },
-  {
-    "NilaAlavaiEn": 174,
     "UtpirivuEn": "88B",
     "Parappu": "0.1.02",
     "Theervai": "0.02",
@@ -18835,19 +17717,6 @@
     "LandStatus": 0,
     "PattaEn": 715,
     "CorrectNameRow": " 1  தங்கமுத்து  தந்த பிரதாபன்‌"
-  },
-  {
-    "NilaAlavaiEn": 3,
-    "UtpirivuEn": "2",
-    "Parappu": "0.79.00",
-    "Theervai": "2.18",
-    "Anupathaarar": "38 - உடையக்காள்‌",
-    "OwnerName": "உடையக்காள்‌",
-    "LandType": 2,
-    "IsFullfilled": false,
-    "LandStatus": 1,
-    "PattaEn": 38,
-    "CorrectNameRow": "  1  இராமு  கணவன்‌ உடையக்காள்‌"
   },
   {
     "NilaAlavaiEn": 4,

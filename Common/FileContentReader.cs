@@ -44,7 +44,13 @@ namespace Common
         public static string GovtBuildingTableTemplate { get; } = GetHtmlFileContent("GovtBuildingTableTemplate.htm");
         public static string GovtBuildingRowTemplate { get; } = GetHtmlFileContent("GovtBuildingRowTemplate.htm");
 
-        public static string CertifiedContent { get; } = GetHtmlFileContent("Certified.txt");
+        public static string CertifiedContent { get; } = GetHtmlFileContent("Certified.htm");
+
+        public static string CertPageTemplate { get; } = GetHtmlFileContent("CertPageTemplate.htm");
+
+        public static string EmptyPageTemplate { get; } = GetHtmlFileContent("EmptyPageTemplate.htm");
+
+        public static string NotesPageTemplate { get; } = GetHtmlFileContent("NotesPageTemplate.htm");
 
 
         private static string GetHtmlFileContent(string fileName)

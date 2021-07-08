@@ -1,9 +1,6 @@
-﻿using Common;
+﻿using AdangalApp.AdangalTypes;
+using Common;
 using Common.ExtensionMethod;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
-using iTextSharp.tool.xml;
-using AdangalApp.AdangalTypes;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -15,17 +12,14 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using System.Xml;
-using System.Threading;
 
 namespace AdangalApp
 {
     public partial class vao : Form
     {
-        readonly int recordPerPage = 8;
-        readonly int pageTotalrecordPerPage = 25;
+        readonly int recordPerPage = Convert.ToInt32(ConfigurationManager.AppSettings["PageRecordCount"]);
+        readonly int pageTotalrecordPerPage = Convert.ToInt32(ConfigurationManager.AppSettings["pageTotalrecordPerPage"]);
         readonly string empty = "";
         readonly string tamilMoththam = "மொத்தம்";
         readonly string kiraamaMoththam = "கிராம மொத்தம்";
@@ -41,7 +35,6 @@ namespace AdangalApp
         string aRegContent = "";
 
         int pageNumber = 0;
-        //int pageNumberSoft = 0;
         bool IsEnterKey = false;
 
         List<LandDetail> WholeLandList;
@@ -55,6 +48,9 @@ namespace AdangalApp
         LogHelper logHelper;
 
         string firstPage;
+        string plainPage;
+        string certSinglePage;
+        string notesPage;
         string leftEmpty;
         string leftCertEmpty;
         string rightCertEmpty;
@@ -78,7 +74,9 @@ namespace AdangalApp
         string AregFile = ConfigurationManager.AppSettings["AregFile"];
         bool needTheervaiTest = Convert.ToBoolean(ConfigurationManager.AppSettings["needTheervaiTest"]);
         bool canAddMissedSurvey = Convert.ToBoolean(ConfigurationManager.AppSettings["canAddMissedSurvey"]);
-        int pasali = Convert.ToInt32(ConfigurationManager.AppSettings["PasaliEn"]);
+        bool pcEnabled = Convert.ToBoolean(ConfigurationManager.AppSettings["pc"]);
+        int pasali = Convert.ToInt32(ConfigurationManager.AppSettings["PasaliEn"]); 
+            
         int prepasali;
 
         List<KeyValue> wrongName = new List<KeyValue>();
@@ -96,6 +94,8 @@ namespace AdangalApp
                 txtRecCount.Text = recordPerPage.ToString();
                 BindDropdown(cmbFulfilled, GetFullfilledOptions(), "Caption", "Id");
                 prepasali = (pasali - 1);
+                dataGridView1.RowsDefaultCellStyle.SelectionBackColor = Color.Blue;
+                dataGridView1.RowsDefaultCellStyle.SelectionForeColor = Color.Yellow;
 
                 //var logFolder = AdangalConstant.CreateAndReadPath($"Log");
                 //logHelper = new LogHelper("AdangalLog", logFolder);
@@ -741,7 +741,7 @@ namespace AdangalApp
                 });
             }
 
-            landStatusSource.Add(new KeyValue() { Id = 6, Caption = "SomeDots" });
+            landStatusSource.Add(new KeyValue() { Id = 100, Caption = "SomeDots" });
             return landStatusSource;
         }
 
@@ -1032,7 +1032,7 @@ namespace AdangalApp
                 var selItem = (cmbLandStatus.SelectedItem as KeyValue);
 
                 waitForm.Show(this);
-                if (selItem.Id == 6)
+                if (selItem.Id == 100)
                     dataGridView1.DataSource = GetAdangalForSomeDots();
                 if (selItem.Id == 1) // Deleted
                     dataGridView1.DataSource = DataAccess.GetDeletedAdangal();
@@ -1127,6 +1127,17 @@ namespace AdangalApp
             return sb.ToString();
         }
 
+        private string GetCertPage()
+        {
+            pageNumber += 1;
+            var sb = new StringBuilder();
+            //sb.Append(leftCertEmpty);
+            sb.Append(certSinglePage.Replace("[pageNo]", pageNumber.ToString()));
+            return sb.ToString();
+        }
+
+       
+
 
         private string GetRightEmptyPage()
         {
@@ -1170,6 +1181,15 @@ namespace AdangalApp
             return sb.ToString();
         }
 
+        private string GetSumPage()
+        {
+            pageNumber += 1;
+            var sb = new StringBuilder();
+            //sb.Append(leftCertEmpty);
+            sb.Append("[summaryPages]");
+            return sb.ToString();
+        }
+
         /// <summary>
         /// Building and right empty pages
         /// </summary>
@@ -1180,6 +1200,15 @@ namespace AdangalApp
             var sb = new StringBuilder();
             sb.Append("[building]");
             sb.Append(GetRightEmptyPage());
+            return sb.ToString();
+        }
+
+        private string GetBuildingPg()
+        {
+            //pageNumber += 1;
+            var sb = new StringBuilder();
+            sb.Append("[building]");
+            //sb.Append(GetRightEmptyPage());
             return sb.ToString();
         }
 
@@ -1196,10 +1225,17 @@ namespace AdangalApp
             var initialPages = new StringBuilder();
 
             initialPages.Append(firstPage);
-            initialPages.Append(GetEmptyPages(1));
-            initialPages.Append(GetPage2());
-            initialPages.Append(GetPage3());
-            initialPages.Append(GetPage4());
+            initialPages.Append(plainPage);
+            initialPages.Append(GetCertPage());
+            //initialPages.Append(GetEmptyPages(1));
+            //initialPages.Append(GetPage2());
+            //initialPages.Append(GetPage3());
+            initialPages.Append(GetBuildingPg());
+            initialPages.Append(GetSumPage());
+            initialPages.Append(GetNotesPages(4));
+            //initialPages.Append(GetPage4());
+
+
             int InitialEmptyPages = Convert.ToInt32(ConfigurationManager.AppSettings["InitialEmptyPages"]);
             initialPages.Append(GetEmptyPages(InitialEmptyPages));
 
@@ -1216,6 +1252,7 @@ namespace AdangalApp
             initialPages.Append(leftCertEmpty);
             initialPages.Append("[summaryPages]");
             initialPages.Append("[building]");
+            initialPages.Append(GetNotesPages(4));
             //int InitialEmptyPages = Convert.ToInt32(ConfigurationManager.AppSettings["InitialEmptyPages"]);
             //initialPages.Append(GetEmptyPages(InitialEmptyPages));
 
@@ -1231,6 +1268,19 @@ namespace AdangalApp
                 sb.Append(leftEmpty);
                 sb.Append(GetRightEmptyPage());
                 //pageNumber += 1;
+            }
+
+            return sb.ToString();
+
+        }
+
+        private string GetNotesPages(int pageCount)
+        {
+            var sb = new StringBuilder();
+
+            for (int i = 1; i <= pageCount; i++)
+            {
+                sb.Append(notesPage);
             }
 
             return sb.ToString();
@@ -1470,15 +1520,32 @@ namespace AdangalApp
             return totalContent.ToString();
         }
 
-        private string GetPasscode()
+        private bool IsUserAuthenticated()
         {
+            string actualCode = "";
+            //string expectedCode = "";
+            actualCode = General.ShowPrompt("Passcode", "Verification");
+
             var now = DateTime.Now;
             var quarter = now.Minute % 15 == 0 ? (now.Minute / 15) : (now.Minute / 15) + 1;
             var pc = (1983 + now.Month + now.Day + now.Hour + quarter + now.Minute).ToString();
 
-            string result = "";
-            pc.ToList().ForEach(c => result += (c.ToString().ToInt32() + 1));
-            return result;
+            string expectedCode = "";
+            pc.ToList().ForEach(c => expectedCode += (c.ToString().ToInt32() + 1));
+            //expectedCode = expectedCode;
+
+            if (actualCode != expectedCode)
+            {
+                MessageBox.Show("Sorry , wrong code!");
+                return false; ;
+            }
+            else
+            {
+                MessageBox.Show("Success!");
+                return true;
+            }
+
+           
         }
 
         List<KeyValue> pageRangeList = new List<KeyValue>();
@@ -1487,19 +1554,10 @@ namespace AdangalApp
         {
             LogMessage($"STEP-5 - Generate Started");
 
-            string actualCode = "";
-            string expectedCode = "";
-            //actualCode = General.ShowPrompt("Passcode", "Verification");
-            //expectedCode = GetPasscode();
-            //if (actualCode != expectedCode)
-            //{
-            //    MessageBox.Show("Sorry , wrong code!");
-            //    return;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Success!");
-            //}
+            if (pcEnabled)
+            {
+                if (IsUserAuthenticated() == false) return;
+            }
 
             try
             {
@@ -1986,14 +2044,15 @@ namespace AdangalApp
         {
             SetHeader();
             firstPage = FileContentReader.FirstPageTemplate;
+            notesPage = FileContentReader.NotesPageTemplate;
+
             title = title.Replace("[pasali]", pasali.ToString()).Replace("[br]", "</br>").Replace("[varuvvaikiraamam]", loadedFile.VillageNameTamil);
             firstPage = firstPage.Replace("[title]", title);
-
+            plainPage = FileContentReader.EmptyPageTemplate;
+            certSinglePage = FileContentReader.CertPageTemplate;
             leftEmpty = GetLeftEmptyPage();
-
             leftCertEmpty = FileContentReader.LeftPageCertTableTemplate;
             leftCertEmpty = leftCertEmpty.Replace("[header]", updatedHeader);
-
             rightCertEmpty = FileContentReader.RightPageCertTableTemplate;
         }
 
@@ -2351,10 +2410,26 @@ namespace AdangalApp
                 // Edit Name
                 if (owningColumnName == "OwnerName")
                 {
-                    //dataGridView1.DataSource = DataAccess.UpdateOwnerName(cus, cellValue);
                     DataAccess.UpdateOwnerName(cus, cellValue);
                     EditSuccess();
                     button2_Click_1(null, null);
+                    return;
+                }
+
+                if (owningColumnName == "LandStatus")
+                {
+                    DataAccess.UpdateLandStatus(cus);
+                    EditSuccess();
+                    button2_Click_1(null, null);
+                    return;
+                }
+
+                if (owningColumnName == "PattaEn")
+                {
+                    DataAccess.UpdatePattaEN(cus);
+                    EditSuccess();
+                    button2_Click_1(null, null);
+                    return;
                 }
 
             }
@@ -2799,19 +2874,10 @@ namespace AdangalApp
         {
             LogMessage($"STEP-5 - Soft Copy Generate Started");
 
-            string actualCode = "";
-            string expectedCode = "";
-            //actualCode = General.ShowPrompt("Passcode", "Verification");
-            //expectedCode = GetPasscode();
-            //if (actualCode != expectedCode)
-            //{
-            //    MessageBox.Show("Sorry , wrong code!");
-            //    return;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Success!");
-            //}
+            if (pcEnabled)
+            {
+                if (IsUserAuthenticated() == false) return;
+            }
 
             try
             {

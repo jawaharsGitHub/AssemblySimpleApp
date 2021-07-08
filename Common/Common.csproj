@@ -150,8 +150,12 @@
     <None Include="PL file\RUNNING NOTES.ods" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="HTMLTemplate\Certified.txt" />
+    <Content Include="HTMLTemplate\Certified - Copy.txt" />
+    <Content Include="HTMLTemplate\Certified.htm" />
+    <Content Include="HTMLTemplate\NotesPageTemplate.htm" />
+    <Content Include="HTMLTemplate\EmptyPageTemplate.htm" />
     <Content Include="HTMLTemplate\FirstPageTemplate.htm" />
+    <Content Include="HTMLTemplate\CertPageTemplate.htm" />
     <Content Include="HTMLTemplate\LeftPageCertTableTemplate.htm" />
     <Content Include="HTMLTemplate\GovtBuildingTableTemplate.htm" />
     <Content Include="HTMLTemplate\GovtBuildingRowTemplate.htm" />
