@@ -182,7 +182,7 @@
             // btnGenerate
             // 
             this.btnGenerate.Enabled = false;
-            this.btnGenerate.Location = new System.Drawing.Point(20, 112);
+            this.btnGenerate.Location = new System.Drawing.Point(34, 105);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(74, 40);
             this.btnGenerate.TabIndex = 7;
@@ -465,7 +465,7 @@
             // btnSoftGen
             // 
             this.btnSoftGen.Enabled = false;
-            this.btnSoftGen.Location = new System.Drawing.Point(115, 112);
+            this.btnSoftGen.Location = new System.Drawing.Point(129, 105);
             this.btnSoftGen.Name = "btnSoftGen";
             this.btnSoftGen.Size = new System.Drawing.Size(74, 40);
             this.btnSoftGen.TabIndex = 19;

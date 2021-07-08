@@ -97,8 +97,8 @@ namespace AdangalApp
                 BindDropdown(cmbFulfilled, GetFullfilledOptions(), "Caption", "Id");
                 prepasali = (pasali - 1);
 
-                var logFolder = AdangalConstant.CreateAndReadPath($"Log");
-                logHelper = new LogHelper("AdangalLog", logFolder);
+                //var logFolder = AdangalConstant.CreateAndReadPath($"Log");
+                //logHelper = new LogHelper("AdangalLog", logFolder);
 
                 try
                 {
@@ -2143,11 +2143,20 @@ namespace AdangalApp
             }
 
         }
+
+        private void UpadteLogPath(string villageName)
+        {
+            var logFolder = AdangalConstant.CreateAndReadPath($"{villageName}-Log", villageName);
+            //logHelper  =null;
+            logHelper = new LogHelper("AdangalLog", logFolder, Environment.UserName, villageName);
+        }
         private void cmbVillages_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (cmbVillages.SelectedIndex == 0) return;
 
             var selItem = (ComboData)cmbVillages.SelectedItem;
+
+            UpadteLogPath(selItem.Display);
 
             if (selItem.Value != -1)
                 LogMessage($"STEP - 1 - Village: {selItem.Value}-{selItem.Display}");
@@ -2408,6 +2417,7 @@ namespace AdangalApp
                     if (notInPdfToBeAdded.Contains($"{adangal.NilaAlavaiEn}~{adangal.UtpirivuEn}"))
                     {
                         DataAccess.AddNewAdangal(adangal);
+                        DataAccess.SaveMissedAdangal(adangal);
                         addedCount += 1;
                         LogMessage($"Added new land {adangal.ToString()}");
                     }
@@ -2525,6 +2535,7 @@ namespace AdangalApp
         {
             try
             {
+                if(logHelper != null)
                 logHelper.WriteAdangalLog(message);
             }
             catch (Exception ex)
@@ -2541,7 +2552,8 @@ namespace AdangalApp
             try
             {
                 MessageBox.Show(message);
-                logHelper.WriteAdangalLog(message);
+                if (logHelper != null)
+                    logHelper.WriteAdangalLog(message);
             }
             catch (Exception ex)
             {
@@ -2628,6 +2640,7 @@ namespace AdangalApp
 
             // Load Basic Details
             loadedFile = (ddlProcessedFiles.SelectedItem as LoadedFileDetail);
+            UpadteLogPath(loadedFile.VillageName);
 
             btnLoadProcessed.Enabled = true;
             SetVillage();
@@ -2677,7 +2690,7 @@ namespace AdangalApp
                 curentRecords = fullAdangalFromjson.Skip(PreviousPageOffSet).Take(PgSize).ToList();
             }
 
-            lblPageNo.Text = $"பக்கம்: {page + 6}";
+            lblPageNo.Text = $"பக்கம்: {page + 6} / {TotalPage+6}";
 
             return curentRecords;
         }
@@ -2723,7 +2736,7 @@ namespace AdangalApp
         private void btnGoToPage_Click(object sender, EventArgs e)
         {
             if (fullAdangalFromjson == null) return;
-            dataGridView1.DataSource = GetCurrentRecords(txtGoto.Text.ToInt32());
+            dataGridView1.DataSource = GetCurrentRecords(txtGoto.Text.ToInt32()-6);
         }
 
         private void txtRecCount_TextChanged(object sender, EventArgs e)

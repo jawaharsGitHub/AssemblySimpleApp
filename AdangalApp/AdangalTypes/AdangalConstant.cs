@@ -20,5 +20,15 @@ namespace AdangalApp
 
             return path;
         }
+
+        public static string CreateAndReadPath(string folderName, string _villageName)
+        {
+            var path = AppConfiguration.GetDynamicPath($"AdangalJson/{_villageName}/{folderName}");
+
+            if (Directory.Exists(path) == false)
+                Directory.CreateDirectory(path);
+
+            return path;
+        }
     }
 }

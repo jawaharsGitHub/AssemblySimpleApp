@@ -22,14 +22,16 @@ namespace AdangalApp
 
         public static void SetVillageName()
         {
-            JsonPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}.json");
-            PattaJsonPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-PattaJsonPath.json");
-            WholeLandListJsonPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-WholeLandListJsonPath.json");
-            SubDivPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-subdiv.json");
-            AdangalOriginalPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-OriginalAdangal.json");
-            SummaryPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-Summary.json");
-            GovtBuildingPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-GovtBuilding.json");
-            MissedAdangalPath = AppConfiguration.GetDynamicPath($"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}-MissedAdangal.json");
+            var vnPath = $"AdangalJson/{AdangalConstant.villageName}/{AdangalConstant.villageName}";
+
+            JsonPath = AppConfiguration.GetDynamicPath($"{vnPath}.json");
+            PattaJsonPath = AppConfiguration.GetDynamicPath($"{vnPath}-PattaJsonPath.json");
+            WholeLandListJsonPath = AppConfiguration.GetDynamicPath($"{vnPath}-WholeLandListJsonPath.json");
+            SubDivPath = AppConfiguration.GetDynamicPath($"{vnPath}-subdiv.json");
+            AdangalOriginalPath = AppConfiguration.GetDynamicPath($"{vnPath}-OriginalAdangal.json");
+            SummaryPath = AppConfiguration.GetDynamicPath($"{vnPath}-Summary.json");
+            GovtBuildingPath = AppConfiguration.GetDynamicPath($"{vnPath}-GovtBuilding.json");
+            MissedAdangalPath = AppConfiguration.GetDynamicPath($"{vnPath}-{Environment.UserName}-MissedAdangal.json");
 
             if (Directory.Exists(Directory.GetParent(JsonPath).FullName) == false)
                 Directory.CreateDirectory(Directory.GetParent(JsonPath).FullName);
@@ -267,7 +269,7 @@ namespace AdangalApp
             if (IsAdangalAlreadyExist(adangal) == false)
             {
                 InsertSingleObjectToListJson<Adangal>(JsonPath, adangal);
-                SaveMissedAdangal(adangal);
+                //SaveMissedAdangal(adangal);
                 return true;
             }
             return false;

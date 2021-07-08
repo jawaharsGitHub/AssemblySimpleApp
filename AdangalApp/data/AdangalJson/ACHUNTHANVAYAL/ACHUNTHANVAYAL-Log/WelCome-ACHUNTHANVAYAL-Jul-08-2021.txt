@@ -1,0 +1,53 @@
+2021-07-08 15:47:01,997 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 15:47:02,197 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 15:47:13,245 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 15:47:13,343 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 15:47:13,408 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 15:47:13,408 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 15:47:24,402 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 15:47:24,621 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 15:47:24,756 [1] DEBUG - ready: False STATUS: ADD:286
+
+2021-07-08 15:47:24,898 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 16:06:47,790 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 16:06:51,734 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 16:07:03,816 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 16:07:03,964 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 16:07:04,116 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 16:07:04,116 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 16:07:12,880 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 16:07:12,989 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 16:07:13,091 [1] DEBUG - ready: False STATUS: ADD:286
+
+2021-07-08 16:07:13,243 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 16:07:56,365 [1] DEBUG - STEP-4 - Add Started
+2021-07-08 16:07:56,372 [1] DEBUG - STEP-4 - Add Completed
+2021-07-08 16:07:59,447 [1] DEBUG - Added new land 174-90A2    0.2.84   0.10 (Punsai)1450 - ????????????
+2021-07-08 16:08:00,972 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 16:08:01,043 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 16:08:01,151 [1] DEBUG - ready: False STATUS: ADD:285
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-08 16:08:01,303 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 16:12:10,349 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 16:12:10,555 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 16:12:21,945 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 16:12:22,044 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 16:12:22,152 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 16:12:22,153 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 16:12:30,599 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 16:12:30,677 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 16:12:30,841 [1] DEBUG - ready: False STATUS: ADD:285
+
+2021-07-08 16:12:30,959 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 16:13:07,534 [1] DEBUG - STEP-4 - Add Started
+2021-07-08 16:13:07,556 [1] DEBUG - STEP-4 - Add Completed
+2021-07-08 16:13:11,757 [1] DEBUG - Added new land 174-90B    0.1.08   0.10 (Punsai)1447 - ????????????
+2021-07-08 16:13:13,494 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 16:13:13,533 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 16:13:13,640 [1] DEBUG - ready: False STATUS: ADD:284
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-08 16:13:13,732 [1] DEBUG - STEP-3 - Raedy For Print - Completed
