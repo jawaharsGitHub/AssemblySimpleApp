@@ -121,7 +121,11 @@ namespace AdangalApp
                         "கணவன",
                         "காப்பாளர்",
                         "மைகன",
-                        "மைைனவி"
+                        "மைைனவி",
+                        //2
+                        "கணவன்ச",
+                        "மைகன்ச",
+                        "தாய"
                     };
                 relationTypesCorrect = new List<string>() {
                         "தந்தை",
@@ -185,7 +189,7 @@ namespace AdangalApp
                         {
                             var pattaENRow = pdfPattaNo[processedRow];
                             var nameRow = filteredContent[i + 1];
-                            var nm = relationTypesCorrect.Intersect(nameRow.Split('|').ToList());
+                            //var nm = relationTypesCorrect.Intersect(nameRow.Split('|').ToList());
                             var lst = nameRow.Split('|').ToList().Where(w => w.Trim() != "").ToList();
                             txtPattaNo.Add(pattaENRow.Split(' ').Last());
                             correctName.Add(new KeyValue(nameRow, pattaENRow.ToInt32()));
@@ -235,7 +239,6 @@ namespace AdangalApp
                         var pointedIndex = d.LastIndexOf("0");
                         var parappu = $"{d[pointedIndex - 4]}.{d[pointedIndex - 3]}";
 
-                        //Debug.WriteLine($"{d[0]}    {d[1]}  {parappu}   {d.Last()}");
                         if (randomNo >= 9)
                             randomNo = 0;
                         PurambokkuAdangalList.Add(new Adangal()
@@ -244,8 +247,6 @@ namespace AdangalApp
                             UtpirivuEn = d[1],
                             OwnerName = d.Last(), //names[randomNo],
                             Parappu = parappu,
-                            //Theervai = $"{d[11]}.{d[12]}",
-                            //Anupathaarar = d.Last(), // names[randomNo]
                             LandType = LandType.Porambokku
                         });
                         randomNo += 1;
@@ -259,12 +260,19 @@ namespace AdangalApp
                             {
                                 NilaAlavaiEn = d[0].ToInt32(),
                                 UtpirivuEn = d[1],
-                                LandType = LandType.PorambokkuError
+                                LandType = LandType.PorambokkuError,
+                                CorrectNameRow = d.ListToString("%")
                             });
                             LogMessage($"Error Processing Purambokku record @ {d[0].ToInt32()} - {ex.ToString()}");
                         }
                         else
                         {
+                            PurambokkuAdangalList.Add(new Adangal()
+                            {
+                                NilaAlavaiEn = 0,
+                                UtpirivuEn = "$",
+                                LandType = LandType.PorambokkuError
+                            });
                             LogMessage($"Big Error Processing Purambokku record @ {d.Count()} items - {ex.ToString()}");
                         }
                         
@@ -803,6 +811,7 @@ namespace AdangalApp
             catch (Exception ex)
             {
                 LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
+                throw ex;
             }
             return landList;
 
@@ -1742,17 +1751,7 @@ namespace AdangalApp
                                     .Select(s => (s.Value.ToString().Trim() + "~" + s.Caption.Trim()).Trim())).ToList();
 
                 List<string> actualLandDetails;
-                if (SortByDesc)
-                {
-                    actualLandDetails = fullAdangalFromjson
-                                           .OrderByDescending(o => o.NilaAlavaiEn)
-                                           .ThenBy(o => o.UtpirivuEn, new AlphanumericComparer())
-                                           .Select(s =>
-                                           (s.NilaAlavaiEn.ToString().Trim() + "~" + s.UtpirivuEn.Trim()).Trim())
-                                           .ToList();
-                }
-                else
-                {
+                
                     actualLandDetails = fullAdangalFromjson
                                            .OrderBy(o => o.NilaAlavaiEn)
                                            .ThenBy(o => o.UtpirivuEn, new AlphanumericComparer())
@@ -1760,7 +1759,7 @@ namespace AdangalApp
                                            (s.NilaAlavaiEn.ToString().Trim() + "~" + s.UtpirivuEn.Trim()).Trim())
                                            .ToList();
 
-                }
+                
 
                 notInPdfToBeAdded = expLandDetails.Except(actualLandDetails).ToList();
                 notInOnlineToBeDeleted = actualLandDetails.Except(expLandDetails).ToList();
@@ -1770,6 +1769,7 @@ namespace AdangalApp
                 if (canAddMissedSurvey)
                 {
                     cmbItemToBeAdded.DataSource = notInPdfToBeAdded;
+                    SortMissedSurveys();
                     return;
                 }
 
@@ -1813,6 +1813,7 @@ namespace AdangalApp
                 btnGenerate.Enabled = isTestingMode;
 
                 cmbItemToBeAdded.DataSource = notInPdfToBeAdded;
+                SortMissedSurveys();
                 LogMessage($"STEP-3 - Raedy For Print - Completed");
             }
             catch (Exception ex)
@@ -2676,6 +2677,8 @@ namespace AdangalApp
                 curentRecords = fullAdangalFromjson.Skip(PreviousPageOffSet).Take(PgSize).ToList();
             }
 
+            lblPageNo.Text = $"பக்கம்: {page + 6}";
+
             return curentRecords;
         }
 
@@ -2726,19 +2729,28 @@ namespace AdangalApp
         private void txtRecCount_TextChanged(object sender, EventArgs e)
         {
             CalculateTotalPages(txtRecCount.Text.ToInt32());
+        }
 
+
+        private void SortMissedSurveys()
+        {
+            var dc = (cmbItemToBeAdded.DataSource as List<string>);
+            List<string> data;
+
+            if (SortByDesc)
+                data = dc.OrderByDescending(o => o.Split('~')[0].ToInt32()).ThenBy(o => o.Split('~')[1], new AlphanumericComparer()).ToList();
+            else
+                data = dc.OrderBy(o => o.Split('~')[0].ToInt32()).ThenBy(o => o.Split('~')[1], new AlphanumericComparer()).ToList();
+
+            cmbItemToBeAdded.DataSource = null;
+            cmbItemToBeAdded.DataSource = data;
         }
 
         bool SortByDesc = false;
         private void btnSwap_Click(object sender, EventArgs e)
         {
             SortByDesc = !SortByDesc;
-
-            var data = (cmbItemToBeAdded.DataSource as List<string>);
-            if (SortByDesc)
-                data.Reverse();
-            cmbItemToBeAdded.DataSource = null;
-            cmbItemToBeAdded.DataSource = data;
+            SortMissedSurveys();
         }
 
         private void btnSyncNew_Click(object sender, EventArgs e)

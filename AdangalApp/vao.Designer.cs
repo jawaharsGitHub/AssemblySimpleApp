@@ -83,7 +83,6 @@
             this.lblSubdiv = new System.Windows.Forms.Label();
             this.chkEdit = new System.Windows.Forms.CheckBox();
             this.grpTheervaiTest = new System.Windows.Forms.GroupBox();
-            this.btnBookView = new System.Windows.Forms.Button();
             this.grpPaging = new System.Windows.Forms.GroupBox();
             this.btnGoToPage = new System.Windows.Forms.Button();
             this.txtGoto = new System.Windows.Forms.TextBox();
@@ -93,6 +92,7 @@
             this.btnFirstPage = new System.Windows.Forms.Button();
             this.txtRecCount = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.lblPageNo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -193,9 +193,11 @@
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(585, 406);
+            this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessage.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblMessage.Location = new System.Drawing.Point(460, 374);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(66, 13);
+            this.lblMessage.Size = new System.Drawing.Size(99, 17);
             this.lblMessage.TabIndex = 8;
             this.lblMessage.Text = "[lblMessage]";
             // 
@@ -686,16 +688,6 @@
             this.grpTheervaiTest.TabStop = false;
             this.grpTheervaiTest.Text = "TEST-Theervai Sum";
             // 
-            // btnBookView
-            // 
-            this.btnBookView.Location = new System.Drawing.Point(154, 58);
-            this.btnBookView.Name = "btnBookView";
-            this.btnBookView.Size = new System.Drawing.Size(74, 22);
-            this.btnBookView.TabIndex = 20;
-            this.btnBookView.Text = "Book View";
-            this.btnBookView.UseVisualStyleBackColor = true;
-            this.btnBookView.Click += new System.EventHandler(this.btnBookView_Click);
-            // 
             // grpPaging
             // 
             this.grpPaging.Controls.Add(this.btnGoToPage);
@@ -706,7 +698,6 @@
             this.grpPaging.Controls.Add(this.btnFirstPage);
             this.grpPaging.Controls.Add(this.txtRecCount);
             this.grpPaging.Controls.Add(this.label6);
-            this.grpPaging.Controls.Add(this.btnBookView);
             this.grpPaging.Location = new System.Drawing.Point(750, 340);
             this.grpPaging.Name = "grpPaging";
             this.grpPaging.Size = new System.Drawing.Size(369, 84);
@@ -773,7 +764,7 @@
             // 
             // txtRecCount
             // 
-            this.txtRecCount.Location = new System.Drawing.Point(95, 60);
+            this.txtRecCount.Location = new System.Drawing.Point(96, 56);
             this.txtRecCount.Name = "txtRecCount";
             this.txtRecCount.Size = new System.Drawing.Size(34, 20);
             this.txtRecCount.TabIndex = 18;
@@ -782,17 +773,28 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(17, 63);
+            this.label6.Location = new System.Drawing.Point(18, 59);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 13);
             this.label6.TabIndex = 19;
             this.label6.Text = "Record Count";
+            // 
+            // lblPageNo
+            // 
+            this.lblPageNo.AutoSize = true;
+            this.lblPageNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPageNo.Location = new System.Drawing.Point(657, 410);
+            this.lblPageNo.Name = "lblPageNo";
+            this.lblPageNo.Size = new System.Drawing.Size(61, 17);
+            this.lblPageNo.TabIndex = 27;
+            this.lblPageNo.Text = "பக்கம் -";
             // 
             // vao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1217, 684);
+            this.Controls.Add(this.lblPageNo);
             this.Controls.Add(this.grpPaging);
             this.Controls.Add(this.grpTheervaiTest);
             this.Controls.Add(this.label5);
@@ -893,7 +895,6 @@
         private System.Windows.Forms.Label lblLandStatusError;
         private System.Windows.Forms.GroupBox grpTheervaiTest;
         private System.Windows.Forms.Button btnSoftGen;
-        private System.Windows.Forms.Button btnBookView;
         private System.Windows.Forms.GroupBox grpPaging;
         private System.Windows.Forms.TextBox txtRecCount;
         private System.Windows.Forms.Label label6;
@@ -905,5 +906,6 @@
         private System.Windows.Forms.TextBox txtGoto;
         private System.Windows.Forms.Button btnSwap;
         private System.Windows.Forms.Button btnSyncNew;
+        private System.Windows.Forms.Label lblPageNo;
     }
 }

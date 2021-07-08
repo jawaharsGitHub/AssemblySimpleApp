@@ -79,8 +79,13 @@ soft copy.
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 -----V-1-----
-option to edit and update the total land parappu (if needed)
 Log in panchayat level
+working status email
+missed file json name with computer name.
+grid page no. 
+HANDLE NATHTHAM PORAMBOKKU ?
+
+option to edit and update the total land parappu (if needed)
 manual check button and functionality.
 replace an existing exe (replace or overwrite)?
 what about last page page number if right side page? need testing.
@@ -147,15 +152,14 @@ folder structure...
 	look at percentage.
 	delete
 	wrong name correction
-	porambaokku correction
+	porambaokku correction (MANUAL CHECK)
 	add new (bulk update)
 	manual full check.
 	update total numbers if they want via html (before PRINT)
 Manual Work: (same as above)
-	Delete not needed
 	update porambokku data
 	Add missed survey details
-	Update name(first only or both first and last)
+	(v2)Update name(first only or both first and last)
 
 8) NOT FULLY PRODUCT _ SO PLEASE BARE AND JUST FOLLOW WHAT WE WANT FOR NOW!!
 

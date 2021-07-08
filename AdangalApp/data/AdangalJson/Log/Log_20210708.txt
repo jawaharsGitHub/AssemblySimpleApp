@@ -402,3 +402,1593 @@ LandStatus ISSUE
 2021-07-08 02:54:08,479 [1] DEBUG - STEP-3 - Raedy For Print - Completed
 2021-07-08 02:54:51,799 [1] DEBUG - STEP-1 STARTED
 2021-07-08 02:54:53,378 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-08 02:56:58,010 [1] DEBUG - =================Thursday, 08 July 2021 02:56:58========================
+2021-07-08 02:56:58,034 [1] DEBUG - STARTED....
+2021-07-08 02:57:00,768 [1] DEBUG - STEP-1 STARTED
+2021-07-08 02:57:01,781 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-08 02:57:12,362 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-08 02:57:16,641 [1] DEBUG - STEP - 1 - Village: 62-ENMANAMKONDAN
+2021-07-08 03:04:33,800 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-08 03:04:52,051 [1] DEBUG - STEP-2 - VattamNameTamil: ???????????? FirkaName: ??????? VillageNameTamil: ???????????????
+2021-07-08 03:04:52,571 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-08 03:05:12,440 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 03:05:12,471 [1] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 3:05:12 AM
+2021-07-08 03:05:19,049 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 03:05:19,060 [1] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 3:05:19 AM
+2021-07-08 03:05:25,178 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 768
+2021-07-08 03:05:30,917 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 768
+2021-07-08 03:05:31,966 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 768
+2021-07-08 03:05:37,841 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 768
+2021-07-08 03:05:38,515 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 768
+2021-07-08 03:05:40,786 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 768
+2021-07-08 03:05:43,270 [1] DEBUG - COMPLETED PROCESSING CHITTA PDF FILE @ 3:05:43 AM
+2021-07-08 03:05:43,504 [1] DEBUG - STARTED PROCESSING AREG PDF FILE @ 3:05:43 AM
+2021-07-08 03:06:02,892 [1] DEBUG - Error @ ProcessAreg - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 232
+2021-07-08 03:06:03,585 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 03:06:05,914 [1] DEBUG - Error @ ProcessFullReport - System.NullReferenceException: Object reference not set to an instance of an object.
+   at AdangalApp.vao.GetLandTypes() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 734
+   at AdangalApp.vao.ProcessFullReport() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 669
+2021-07-08 03:06:30,358 [1] DEBUG - Add/Update Loaded File.
+2021-07-08 03:06:30,358 [1] DEBUG - STEP-2 - Completed - - First time Load
+2021-07-08 03:06:51,392 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-08 03:09:22,220 [1] DEBUG - STEP-2 - VattamNameTamil: ???????????? FirkaName: ??????? VillageNameTamil: ???????????????
+2021-07-08 03:09:22,222 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-08 03:09:29,315 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 03:09:29,330 [1] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 3:09:29 AM
+2021-07-08 03:10:03,589 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 03:10:03,599 [1] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 3:10:03 AM
+2021-07-08 03:11:55,435 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 768
+2021-07-08 03:12:02,730 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 768
+2021-07-08 03:12:03,605 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 768
+2021-07-08 03:12:05,477 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 768
+2021-07-08 03:12:06,027 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 768
+2021-07-08 03:12:06,528 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 768
+2021-07-08 03:12:09,020 [1] DEBUG - COMPLETED PROCESSING CHITTA PDF FILE @ 3:12:09 AM
+2021-07-08 03:12:09,035 [1] DEBUG - STARTED PROCESSING AREG PDF FILE @ 3:12:09 AM
+2021-07-08 03:12:23,327 [1] DEBUG - Error @ ProcessAreg - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 232
+2021-07-08 03:12:23,523 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 03:12:26,745 [1] DEBUG - Error @ ProcessFullReport - System.NullReferenceException: Object reference not set to an instance of an object.
+   at AdangalApp.vao.GetLandTypes() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 734
+   at AdangalApp.vao.ProcessFullReport() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 669
+2021-07-08 03:12:26,812 [1] DEBUG - Add/Update Loaded File.
+2021-07-08 03:12:26,812 [1] DEBUG - STEP-2 - Completed - - First time Load
+2021-07-08 03:13:15,435 [1] DEBUG - =================Thursday, 08 July 2021 03:13:15========================
+2021-07-08 03:13:15,455 [1] DEBUG - STARTED....
+2021-07-08 03:13:35,174 [1] DEBUG - STEP-1 STARTED
+2021-07-08 03:13:36,345 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-08 03:13:44,893 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-08 03:14:33,566 [1] DEBUG - STEP - 1 - Village: 62-ENMANAMKONDAN
+2021-07-08 03:14:34,593 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-08 03:14:43,328 [1] DEBUG - STEP-2 - VattamNameTamil: ???????????? FirkaName: ??????? VillageNameTamil: ???????????????
+2021-07-08 03:14:43,367 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-08 03:14:51,067 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 03:14:51,083 [1] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 3:14:51 AM
+2021-07-08 03:14:55,660 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 03:14:55,676 [1] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 3:14:55 AM
+2021-07-08 03:14:58,346 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 768
+2021-07-08 03:14:59,235 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 768
+2021-07-08 03:14:59,920 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 768
+2021-07-08 03:15:00,483 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 768
+2021-07-08 03:15:01,005 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 768
+2021-07-08 03:15:01,467 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 768
+2021-07-08 03:15:04,152 [1] DEBUG - COMPLETED PROCESSING CHITTA PDF FILE @ 3:15:04 AM
+2021-07-08 03:15:04,183 [1] DEBUG - STARTED PROCESSING AREG PDF FILE @ 3:15:04 AM
+2021-07-08 03:22:18,161 [1] DEBUG - =================Thursday, 08 July 2021 03:22:18========================
+2021-07-08 03:22:18,176 [1] DEBUG - STARTED....
+2021-07-08 03:22:27,751 [1] DEBUG - STEP-1 STARTED
+2021-07-08 03:22:29,922 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-08 03:22:42,440 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-08 03:23:20,372 [1] DEBUG - STEP - 1 - Village: 62-ENMANAMKONDAN
+2021-07-08 03:23:40,065 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-08 03:23:50,231 [1] DEBUG - STEP-2 - VattamNameTamil: ???????????? FirkaName: ??????? VillageNameTamil: ???????????????
+2021-07-08 03:23:50,290 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-08 03:23:56,675 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Achunthavayal\Chitta_Report-1.pdf
+2021-07-08 03:23:56,690 [1] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 3:23:56 AM
+2021-07-08 03:24:01,114 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Achunthavayal\Chitta_Report-1.pdf
+2021-07-08 03:24:01,114 [1] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 3:24:01 AM
+2021-07-08 03:24:05,798 [1] DEBUG - COMPLETED PROCESSING CHITTA PDF FILE @ 3:24:05 AM
+2021-07-08 03:24:05,967 [1] DEBUG - STARTED PROCESSING AREG PDF FILE @ 3:24:05 AM
+2021-07-08 03:24:14,471 [1] DEBUG - COMPLETED PROCESSING AREG PDF FILE @ 3:24:14 AM
+2021-07-08 03:24:15,237 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 03:24:26,925 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 03:24:27,058 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 03:24:27,158 [1] DEBUG - Add/Update Loaded File.
+2021-07-08 03:24:27,158 [1] DEBUG - STEP-2 - Completed - - First time Load
+2021-07-08 03:24:34,863 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 03:24:35,218 [1] DEBUG - GETTING LAND COUNT - FROM INTERNET
+2021-07-08 03:25:34,451 [1] DEBUG - =================Thursday, 08 July 2021 03:25:34========================
+2021-07-08 03:25:34,490 [1] DEBUG - STARTED....
+2021-07-08 03:25:37,661 [1] DEBUG - STEP-1 STARTED
+2021-07-08 03:25:39,363 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-08 03:25:43,285 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-08 03:25:46,331 [1] DEBUG - STEP - 1 - Village: 62-ENMANAMKONDAN
+2021-07-08 03:26:05,911 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-08 03:26:13,559 [1] DEBUG - STEP-2 - VattamNameTamil: ???????????? FirkaName: ??????? VillageNameTamil: ???????????????
+2021-07-08 03:26:13,567 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-08 03:26:21,347 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 03:26:21,394 [1] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 3:26:21 AM
+2021-07-08 03:26:25,265 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 03:26:25,280 [1] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 3:26:25 AM
+2021-07-08 03:26:30,119 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 778
+2021-07-08 03:26:31,230 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 778
+2021-07-08 03:26:32,015 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 778
+2021-07-08 03:26:32,629 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 778
+2021-07-08 03:26:33,228 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 778
+2021-07-08 03:26:33,772 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 778
+2021-07-08 03:26:36,285 [1] DEBUG - COMPLETED PROCESSING CHITTA PDF FILE @ 3:26:36 AM
+2021-07-08 03:26:36,313 [1] DEBUG - STARTED PROCESSING AREG PDF FILE @ 3:26:36 AM
+2021-07-08 03:26:38,940 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 236
+2021-07-08 03:26:38,956 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 236
+2021-07-08 03:26:38,987 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 236
+2021-07-08 03:26:39,018 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 236
+2021-07-08 03:26:41,081 [1] DEBUG - COMPLETED PROCESSING AREG PDF FILE @ 3:26:41 AM
+2021-07-08 03:26:41,489 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 03:26:51,238 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 03:26:51,290 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 03:26:51,302 [1] DEBUG - Add/Update Loaded File.
+2021-07-08 03:26:51,302 [1] DEBUG - STEP-2 - Completed - - First time Load
+2021-07-08 03:26:59,674 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 03:26:59,863 [1] DEBUG - GETTING LAND COUNT - FROM INTERNET
+2021-07-08 03:28:16,362 [1] DEBUG - GETTING LAND COUNT - COMPLETED
+2021-07-08 03:28:16,612 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 03:28:40,736 [1] DEBUG - ready: False STATUS: ADD:1502
+DELETE:178
+NAME ISSUE :138
+SomeDots ISSUE :6
+Porambokku: 145
+
+2021-07-08 03:28:41,004 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 03:34:59,768 [1] DEBUG - =================Thursday, 08 July 2021 03:34:59========================
+2021-07-08 03:34:59,784 [1] DEBUG - STARTED....
+2021-07-08 03:35:09,238 [1] DEBUG - STEP-1 STARTED
+2021-07-08 03:35:10,346 [1] DEBUG - STEP-1 - Maavattam: 38-Mayiladudurai
+2021-07-08 03:35:16,127 [1] DEBUG - STEP-1 - Vattam: 5-Mayiladuthurai
+2021-07-08 03:35:22,548 [1] DEBUG - STEP - 1 - Village: 64-Agarakeerangudi
+2021-07-08 03:35:25,565 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-08 03:35:34,996 [1] DEBUG - STEP-2 - VattamNameTamil: dsad FirkaName: asda VillageNameTamil: asda
+2021-07-08 03:35:35,007 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-08 03:35:42,612 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 03:35:42,643 [1] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 3:35:42 AM
+2021-07-08 03:35:50,068 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 03:35:50,084 [1] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 3:35:50 AM
+2021-07-08 03:35:56,948 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 778
+2021-07-08 03:36:00,739 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 778
+2021-07-08 03:36:01,534 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 778
+2021-07-08 03:36:02,098 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 778
+2021-07-08 03:36:02,683 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 778
+2021-07-08 03:36:03,247 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 778
+2021-07-08 03:36:05,815 [1] DEBUG - COMPLETED PROCESSING CHITTA PDF FILE @ 3:36:05 AM
+2021-07-08 03:36:05,846 [1] DEBUG - STARTED PROCESSING AREG PDF FILE @ 3:36:05 AM
+2021-07-08 03:38:10,144 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 236
+2021-07-08 03:38:15,598 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 236
+2021-07-08 03:38:16,483 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 236
+2021-07-08 03:38:17,166 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 236
+2021-07-08 03:38:17,166 [1] DEBUG - COMPLETED PROCESSING AREG PDF FILE @ 3:38:17 AM
+2021-07-08 03:38:17,668 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 03:38:26,580 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 03:38:26,629 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 03:38:26,629 [1] DEBUG - Add/Update Loaded File.
+2021-07-08 03:38:26,629 [1] DEBUG - STEP-2 - Completed - - First time Load
+2021-07-08 03:38:31,439 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 03:38:32,028 [1] DEBUG - GETTING LAND COUNT - FROM INTERNET
+2021-07-08 03:38:45,440 [1] DEBUG - GETTING LAND COUNT - COMPLETED
+2021-07-08 03:38:45,518 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 03:38:45,631 [1] DEBUG - ready: False STATUS: DELETE:1602
+NAME ISSUE :138
+SomeDots ISSUE :6
+Porambokku: 145
+
+2021-07-08 03:38:49,509 [1] DEBUG - Error @ button2_Click_1 - System.DivideByZeroException: Attempted to divide by zero.
+   at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at Common.ExtensionMethod.TypeExtenstion.PercentageBtwDecNo(Int32 bigValue, Int32 smallValue, Int32 decimalRoundCount) in F:\AssemblySimpleApp\Common\ExtensionMethod\TypeExtenstion.cs:line 101
+   at AdangalApp.vao.button2_Click_1(Object sender, EventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1788
+2021-07-08 03:41:00,862 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 03:41:00,909 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 03:41:02,940 [1] DEBUG - ready: False STATUS: DELETE:1602
+NAME ISSUE :138
+SomeDots ISSUE :6
+Porambokku: 145
+
+2021-07-08 03:41:11,626 [1] DEBUG - Error @ button2_Click_1 - System.DivideByZeroException: Attempted to divide by zero.
+   at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at Common.ExtensionMethod.TypeExtenstion.PercentageBtwDecNo(Int32 bigValue, Int32 smallValue, Int32 decimalRoundCount) in F:\AssemblySimpleApp\Common\ExtensionMethod\TypeExtenstion.cs:line 101
+   at AdangalApp.vao.button2_Click_1(Object sender, EventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1788
+2021-07-08 03:41:12,847 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 03:41:12,878 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 03:41:14,472 [1] DEBUG - ready: False STATUS: DELETE:1602
+NAME ISSUE :138
+SomeDots ISSUE :6
+Porambokku: 145
+
+2021-07-08 03:41:41,323 [1] DEBUG - Error @ button2_Click_1 - System.DivideByZeroException: Attempted to divide by zero.
+   at System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at Common.ExtensionMethod.TypeExtenstion.PercentageBtwDecNo(Int32 bigValue, Int32 smallValue, Int32 decimalRoundCount) in F:\AssemblySimpleApp\Common\ExtensionMethod\TypeExtenstion.cs:line 101
+   at AdangalApp.vao.button2_Click_1(Object sender, EventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1788
+2021-07-08 03:41:43,486 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 03:42:37,316 [1] DEBUG - Error @ button2_Click_1 - System.IO.FileNotFoundException: Could not find file 'F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\Agarakeerangudi\Agarakeerangudi-subdiv.json'.
+File name: 'F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\Agarakeerangudi\Agarakeerangudi-subdiv.json'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Common.BaseClass.ReadFileAsObjects[T](String filePath) in F:\AssemblySimpleApp\Common\BaseTypes\BaseClass.cs:line 37
+   at AdangalApp.DataAccess.GetSubdiv() in F:\AssemblySimpleApp\AdangalApp\DataAccess.cs:line 45
+   at AdangalApp.vao.button2_Click_1(Object sender, EventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1732
+2021-07-08 03:42:38,435 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 03:42:47,024 [1] DEBUG - GETTING LAND COUNT - FROM INTERNET
+2021-07-08 03:43:01,206 [1] DEBUG - GETTING LAND COUNT - COMPLETED
+2021-07-08 03:43:08,243 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 03:43:12,056 [1] DEBUG - ready: False STATUS: DELETE:1602
+NAME ISSUE :138
+SomeDots ISSUE :6
+Porambokku: 145
+
+2021-07-08 03:43:58,513 [1] DEBUG - GETTING LAND COUNT - FROM INTERNET
+2021-07-08 03:46:32,288 [1] DEBUG - =================Thursday, 08 July 2021 03:46:32========================
+2021-07-08 03:46:32,304 [1] DEBUG - STARTED....
+2021-07-08 03:48:50,193 [1] DEBUG - =================Thursday, 08 July 2021 03:48:50========================
+2021-07-08 03:48:50,213 [1] DEBUG - STARTED....
+2021-07-08 03:49:00,362 [1] DEBUG - STEP-1 STARTED
+2021-07-08 03:49:01,628 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-08 03:49:09,439 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-08 03:49:13,439 [1] DEBUG - STEP - 1 - Village: 62-ENMANAMKONDAN
+2021-07-08 03:49:52,173 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-08 03:50:58,924 [1] DEBUG - STEP-2 - VattamNameTamil: ???????????? FirkaName: ??????? VillageNameTamil: ???????????????
+2021-07-08 03:50:58,971 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-08 03:51:07,705 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 03:51:07,719 [1] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 3:51:07 AM
+2021-07-08 03:51:12,099 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 03:51:12,114 [1] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 3:51:12 AM
+2021-07-08 03:51:53,659 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 778
+2021-07-08 03:52:12,409 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 778
+2021-07-08 03:52:32,518 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 778
+2021-07-08 03:52:46,674 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 778
+2021-07-08 03:52:52,331 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 778
+2021-07-08 03:52:53,331 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 778
+2021-07-08 03:52:55,784 [1] DEBUG - COMPLETED PROCESSING CHITTA PDF FILE @ 3:52:55 AM
+2021-07-08 03:52:55,924 [1] DEBUG - STARTED PROCESSING AREG PDF FILE @ 3:52:55 AM
+2021-07-08 03:53:05,894 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 236
+2021-07-08 03:53:05,913 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 236
+2021-07-08 03:53:05,934 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 236
+2021-07-08 03:53:05,953 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 236
+2021-07-08 03:53:05,954 [1] DEBUG - COMPLETED PROCESSING AREG PDF FILE @ 3:53:05 AM
+2021-07-08 03:53:06,606 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 03:53:17,987 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 03:53:18,080 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 03:53:18,143 [1] DEBUG - Add/Update Loaded File.
+2021-07-08 03:53:18,143 [1] DEBUG - STEP-2 - Completed - - First time Load
+2021-07-08 03:53:32,079 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 03:53:32,751 [1] DEBUG - GETTING LAND COUNT - FROM INTERNET
+2021-07-08 03:54:49,606 [1] DEBUG - GETTING LAND COUNT - COMPLETED
+2021-07-08 03:54:49,778 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 03:54:49,887 [1] DEBUG - ready: False STATUS: ADD:1502
+DELETE:178
+NAME ISSUE :138
+SomeDots ISSUE :6
+Porambokku: 145
+
+2021-07-08 03:54:56,278 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 10:59:01,323 [1] DEBUG - =================Thursday, 08 July 2021 10:59:01========================
+2021-07-08 10:59:01,510 [1] DEBUG - STARTED....
+2021-07-08 10:59:13,806 [1] DEBUG - STEP-1 STARTED
+2021-07-08 10:59:25,284 [1] DEBUG - No Internet Connection!
+2021-07-08 11:01:58,671 [1] DEBUG - STEP-1 STARTED
+2021-07-08 11:02:00,430 [1] DEBUG - STEP-1 - Maavattam: 37-Ranipettai
+2021-07-08 11:05:22,117 [1] DEBUG - STEP-1 STARTED
+2021-07-08 11:05:23,700 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-08 11:05:34,595 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-08 11:05:35,498 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-08 11:05:38,647 [1] DEBUG - STEP - 1 - Village: 62-ENMANAMKONDAN
+2021-07-08 11:05:46,987 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-08 11:06:08,416 [1] DEBUG - STEP-2 - VattamNameTamil: asda FirkaName: sdas VillageNameTamil: sads
+2021-07-08 11:06:08,648 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-08 11:06:20,302 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 11:06:20,376 [1] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 11:06:20 AM
+2021-07-08 11:28:11,101 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 11:28:11,110 [1] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 11:28:11 AM
+2021-07-08 11:40:33,784 [1] DEBUG - =================Thursday, 08 July 2021 11:40:33========================
+2021-07-08 11:40:33,841 [1] DEBUG - STARTED....
+2021-07-08 11:40:48,539 [1] DEBUG - STEP-1 STARTED
+2021-07-08 11:40:49,633 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-08 11:40:58,672 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-08 11:41:01,375 [1] DEBUG - STEP - 1 - Village: 62-ENMANAMKONDAN
+2021-07-08 11:41:08,562 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-08 11:41:19,795 [1] DEBUG - STEP-2 - VattamNameTamil: sax FirkaName: zx VillageNameTamil: zx
+2021-07-08 11:41:19,842 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-08 11:41:32,499 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 11:41:32,531 [1] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 11:41:32 AM
+2021-07-08 11:42:03,263 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 11:42:03,263 [1] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 11:42:03 AM
+2021-07-08 11:43:06,476 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 779
+2021-07-08 11:43:08,069 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 779
+2021-07-08 11:43:08,788 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 779
+2021-07-08 11:43:09,397 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 779
+2021-07-08 11:43:09,929 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 779
+2021-07-08 11:43:10,319 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 779
+2021-07-08 11:46:02,081 [1] DEBUG - =================Thursday, 08 July 2021 11:46:02========================
+2021-07-08 11:46:02,113 [1] DEBUG - STARTED....
+2021-07-08 11:46:05,222 [1] DEBUG - STEP-1 STARTED
+2021-07-08 11:46:05,987 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-08 11:46:09,722 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-08 11:46:14,379 [1] DEBUG - STEP - 1 - Village: 62-ENMANAMKONDAN
+2021-07-08 11:46:21,003 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-08 11:46:30,002 [1] DEBUG - STEP-2 - VattamNameTamil: fsd FirkaName: asfas VillageNameTamil: asfa
+2021-07-08 11:46:30,127 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-08 11:46:38,018 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 11:46:38,033 [1] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 11:46:38 AM
+2021-07-08 11:46:55,128 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 11:46:55,160 [1] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 11:46:55 AM
+2021-07-08 11:46:58,003 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 782
+2021-07-08 11:46:59,144 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 782
+2021-07-08 11:46:59,894 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 782
+2021-07-08 11:47:00,456 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 782
+2021-07-08 11:47:01,159 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 782
+2021-07-08 11:47:01,628 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 782
+2021-07-08 11:47:06,440 [1] DEBUG - COMPLETED PROCESSING CHITTA PDF FILE @ 11:47:06 AM
+2021-07-08 11:47:06,503 [1] DEBUG - STARTED PROCESSING AREG PDF FILE @ 11:47:06 AM
+2021-07-08 11:47:10,206 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 240
+2021-07-08 11:47:10,221 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 240
+2021-07-08 11:47:10,237 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 240
+2021-07-08 11:47:10,252 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 240
+2021-07-08 11:47:10,252 [1] DEBUG - COMPLETED PROCESSING AREG PDF FILE @ 11:47:10 AM
+2021-07-08 11:47:10,690 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 11:47:23,642 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 11:47:23,673 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 11:47:23,705 [1] DEBUG - Add/Update Loaded File.
+2021-07-08 11:47:23,705 [1] DEBUG - STEP-2 - Completed - - First time Load
+2021-07-08 11:47:28,361 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 11:47:28,579 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 11:47:28,704 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:243
+NAME ISSUE :188
+SomeDots ISSUE :13
+Porambokku: 145
+
+2021-07-08 11:47:28,829 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 11:50:57,903 [1] DEBUG - =================Thursday, 08 July 2021 11:50:57========================
+2021-07-08 11:50:57,950 [1] DEBUG - STARTED....
+2021-07-08 11:51:01,340 [1] DEBUG - STEP-1 STARTED
+2021-07-08 11:51:01,793 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-08 11:51:04,749 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-08 11:51:07,092 [1] DEBUG - STEP - 1 - Village: 62-ENMANAMKONDAN
+2021-07-08 11:51:13,201 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-08 11:51:21,263 [1] DEBUG - STEP-2 - VattamNameTamil: sd FirkaName: sad VillageNameTamil: dsa
+2021-07-08 11:51:21,310 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-08 11:51:28,950 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 11:51:28,966 [1] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 11:51:28 AM
+2021-07-08 11:51:43,758 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 11:51:43,774 [1] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 11:51:43 AM
+2021-07-08 11:52:19,146 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 11:53:46,064 [1] DEBUG - =================Thursday, 08 July 2021 11:53:46========================
+2021-07-08 11:53:46,096 [1] DEBUG - STARTED....
+2021-07-08 11:54:08,483 [1] DEBUG - STEP-1 STARTED
+2021-07-08 11:54:08,836 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-08 11:54:11,734 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-08 11:54:15,026 [1] DEBUG - STEP - 1 - Village: 62-ENMANAMKONDAN
+2021-07-08 11:54:20,085 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-08 11:54:39,074 [1] DEBUG - STEP-2 - VattamNameTamil: dfs FirkaName: sfs VillageNameTamil: fd
+2021-07-08 11:54:39,148 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-08 11:54:46,968 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 11:54:46,984 [1] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 11:54:46 AM
+2021-07-08 11:55:07,908 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 11:55:07,924 [1] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 11:55:07 AM
+2021-07-08 11:55:20,996 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 11:58:12,301 [1] DEBUG - ERROR WHILE PROCESS patta - 318 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 11:58:18,624 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 11:58:18,630 [1] DEBUG - ERROR WHILE PROCESS patta - 554 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 11:58:19,471 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 11:58:19,496 [1] DEBUG - ERROR WHILE PROCESS patta - 699 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 11:58:20,045 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 11:58:20,066 [1] DEBUG - ERROR WHILE PROCESS patta - 760 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 11:58:20,621 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 11:58:20,639 [1] DEBUG - ERROR WHILE PROCESS patta - 761 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 11:58:21,093 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 11:58:21,113 [1] DEBUG - ERROR WHILE PROCESS patta - 762 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 11:58:25,035 [1] DEBUG - COMPLETED PROCESSING CHITTA PDF FILE @ 11:58:25 AM
+2021-07-08 11:58:25,082 [1] DEBUG - STARTED PROCESSING AREG PDF FILE @ 11:58:25 AM
+2021-07-08 11:59:08,460 [1] DEBUG - Error @ ProcessAreg - System.FormatException: Input string was not in a correct format.
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Convert.ToInt32(String value)
+   at Common.ExtensionMethod.TypeExtenstion.ToInt32(String value) in F:\AssemblySimpleApp\Common\ExtensionMethod\TypeExtenstion.cs:line 15
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 269
+2021-07-08 11:59:08,686 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 11:59:13,888 [1] DEBUG - Error @ ProcessFullReport - System.NullReferenceException: Object reference not set to an instance of an object.
+   at AdangalApp.vao.GetLandTypes() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 751
+   at AdangalApp.vao.ProcessFullReport() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 686
+2021-07-08 11:59:13,892 [1] DEBUG - Add/Update Loaded File.
+2021-07-08 11:59:13,892 [1] DEBUG - STEP-2 - Completed - - First time Load
+2021-07-08 11:59:44,780 [1] DEBUG - =================Thursday, 08 July 2021 11:59:44========================
+2021-07-08 11:59:44,796 [1] DEBUG - STARTED....
+2021-07-08 12:00:10,745 [1] DEBUG - STEP-1 STARTED
+2021-07-08 12:00:11,155 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-08 12:00:14,843 [1] DEBUG - STEP-1 - Vattam: 15-RAJASINGAMANGALAM
+2021-07-08 12:00:16,766 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-08 12:00:20,101 [1] DEBUG - STEP - 1 - Village: 62-ENMANAMKONDAN
+2021-07-08 12:00:27,246 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-08 12:00:33,069 [1] DEBUG - STEP-2 - VattamNameTamil: gfg FirkaName: g VillageNameTamil: hgh
+2021-07-08 12:00:33,081 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-08 12:00:40,594 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 12:00:40,609 [1] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 12:00:40 PM
+2021-07-08 12:00:45,515 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 12:00:45,546 [1] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 12:00:45 PM
+2021-07-08 12:01:18,066 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:01:18,089 [1] DEBUG - ERROR WHILE PROCESS patta - 318 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:01:19,464 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:01:19,471 [1] DEBUG - ERROR WHILE PROCESS patta - 554 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:01:20,542 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:01:20,561 [1] DEBUG - ERROR WHILE PROCESS patta - 699 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:01:21,348 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:01:21,356 [1] DEBUG - ERROR WHILE PROCESS patta - 760 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:01:21,973 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:01:21,978 [1] DEBUG - ERROR WHILE PROCESS patta - 761 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:01:22,546 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:01:22,553 [1] DEBUG - ERROR WHILE PROCESS patta - 762 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:01:26,490 [1] DEBUG - COMPLETED PROCESSING CHITTA PDF FILE @ 12:01:26 PM
+2021-07-08 12:01:26,537 [1] DEBUG - STARTED PROCESSING AREG PDF FILE @ 12:01:26 PM
+2021-07-08 12:02:01,137 [1] DEBUG - Error @ ProcessAreg - System.FormatException: Input string was not in a correct format.
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Convert.ToInt32(String value)
+   at Common.ExtensionMethod.TypeExtenstion.ToInt32(String value) in F:\AssemblySimpleApp\Common\ExtensionMethod\TypeExtenstion.cs:line 15
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 269
+2021-07-08 12:02:01,394 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 12:03:06,860 [1] DEBUG - =================Thursday, 08 July 2021 12:03:06========================
+2021-07-08 12:03:06,872 [1] DEBUG - STARTED....
+2021-07-08 12:03:14,599 [1] DEBUG - STEP-1 STARTED
+2021-07-08 12:03:15,105 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-08 12:03:19,631 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-08 12:03:27,692 [1] DEBUG - STEP - 1 - Village: 62-ENMANAMKONDAN
+2021-07-08 12:03:30,807 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-08 12:03:40,263 [1] DEBUG - STEP-2 - VattamNameTamil: gfghJHGH FirkaName: HJVBHJ VillageNameTamil: HGVH
+2021-07-08 12:03:40,264 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-08 12:03:47,778 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 12:03:47,809 [1] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 12:03:47 PM
+2021-07-08 12:03:50,534 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 12:03:50,565 [1] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 12:03:50 PM
+2021-07-08 12:03:53,520 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:03:53,541 [1] DEBUG - ERROR WHILE PROCESS patta - 318 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:03:54,443 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:03:54,463 [1] DEBUG - ERROR WHILE PROCESS patta - 554 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:03:55,140 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:03:55,146 [1] DEBUG - ERROR WHILE PROCESS patta - 699 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:03:55,753 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:03:55,775 [1] DEBUG - ERROR WHILE PROCESS patta - 760 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:03:56,263 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:03:56,284 [1] DEBUG - ERROR WHILE PROCESS patta - 761 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:03:56,826 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:03:56,846 [1] DEBUG - ERROR WHILE PROCESS patta - 762 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:04:00,908 [1] DEBUG - COMPLETED PROCESSING CHITTA PDF FILE @ 12:04:00 PM
+2021-07-08 12:04:00,955 [1] DEBUG - STARTED PROCESSING AREG PDF FILE @ 12:04:00 PM
+2021-07-08 12:05:00,331 [1] DEBUG - =================Thursday, 08 July 2021 12:05:00========================
+2021-07-08 12:05:00,362 [1] DEBUG - STARTED....
+2021-07-08 12:05:44,157 [1] DEBUG - STEP-1 STARTED
+2021-07-08 12:05:44,575 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-08 12:05:49,162 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-08 12:05:55,871 [1] DEBUG - STEP - 1 - Village: 62-ENMANAMKONDAN
+2021-07-08 12:05:59,949 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-08 12:06:06,680 [1] DEBUG - STEP-2 - VattamNameTamil: GFG FirkaName: HGH VillageNameTamil: GFG
+2021-07-08 12:06:06,723 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-08 12:06:14,218 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 12:06:14,249 [1] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 12:06:14 PM
+2021-07-08 12:06:19,230 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 12:06:19,246 [1] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 12:06:19 PM
+2021-07-08 12:06:23,565 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:06:23,585 [1] DEBUG - ERROR WHILE PROCESS patta - 318 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:06:24,988 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:06:25,008 [1] DEBUG - ERROR WHILE PROCESS patta - 554 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:06:25,711 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:06:25,732 [1] DEBUG - ERROR WHILE PROCESS patta - 699 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:06:26,273 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:06:26,293 [1] DEBUG - ERROR WHILE PROCESS patta - 760 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:06:26,785 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:06:26,806 [1] DEBUG - ERROR WHILE PROCESS patta - 761 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:06:27,245 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:06:27,268 [1] DEBUG - ERROR WHILE PROCESS patta - 762 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:06:31,531 [1] DEBUG - COMPLETED PROCESSING CHITTA PDF FILE @ 12:06:31 PM
+2021-07-08 12:06:31,563 [1] DEBUG - STARTED PROCESSING AREG PDF FILE @ 12:06:31 PM
+2021-07-08 12:06:34,047 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 240
+2021-07-08 12:06:34,063 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 240
+2021-07-08 12:06:34,078 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 240
+2021-07-08 12:06:34,094 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 240
+2021-07-08 12:06:34,094 [1] DEBUG - COMPLETED PROCESSING AREG PDF FILE @ 12:06:34 PM
+2021-07-08 12:06:34,422 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 12:07:03,562 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:07:03,618 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 12:07:03,647 [1] DEBUG - Add/Update Loaded File.
+2021-07-08 12:07:03,647 [1] DEBUG - STEP-2 - Completed - - First time Load
+2021-07-08 12:07:13,166 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:07:13,228 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:07:13,412 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:244
+ERROR REC:4
+NAME ISSUE :188
+SomeDots ISSUE :13
+LandType ISSUE
+Patta ISSUE
+Porambokku: 145
+
+2021-07-08 12:07:13,547 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:11:20,504 [1] DEBUG - =================Thursday, 08 July 2021 12:11:20========================
+2021-07-08 12:11:20,531 [1] DEBUG - STARTED....
+2021-07-08 12:11:30,625 [1] DEBUG - STEP-1 STARTED
+2021-07-08 12:11:31,019 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-08 12:11:33,732 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-08 12:11:36,870 [1] DEBUG - STEP - 1 - Village: 62-ENMANAMKONDAN
+2021-07-08 12:11:42,262 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-08 12:11:48,178 [1] DEBUG - STEP-2 - VattamNameTamil: JN FirkaName: JKNJ VillageNameTamil: JNJ
+2021-07-08 12:11:48,190 [1] DEBUG - You have all required valid files to proceed process.
+2021-07-08 12:11:55,846 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 12:11:55,877 [1] DEBUG - STARTED PATTA NO FROM PDF via CHITTA PDF FILE @ 12:11:55 PM
+2021-07-08 12:11:59,208 [1] DEBUG - READING DATA FROM CHITTA PDF fILE - F:\AUTO-ADANGAL\Enmanamkondan\Chitta_Report-1.pdf
+2021-07-08 12:11:59,240 [1] DEBUG - STARTED PROCESSING CHITTA PDF FILE @ 12:11:59 PM
+2021-07-08 12:12:05,896 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:12:05,913 [1] DEBUG - ERROR WHILE PROCESS patta - 318 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:12:07,046 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:12:07,065 [1] DEBUG - ERROR WHILE PROCESS patta - 554 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:12:07,906 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:12:07,927 [1] DEBUG - ERROR WHILE PROCESS patta - 699 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:12:08,515 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:12:08,536 [1] DEBUG - ERROR WHILE PROCESS patta - 760 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:12:09,084 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:12:09,104 [1] DEBUG - ERROR WHILE PROCESS patta - 761 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:12:09,641 [1] DEBUG - Error @ ProcessLandType - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 785
+2021-07-08 12:12:09,662 [1] DEBUG - ERROR WHILE PROCESS patta - 762 - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at AdangalApp.vao.ProcessLandType(List`1 actualData, List`1 breakData) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 813
+   at AdangalApp.vao.ProcessChittaFile() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 544
+2021-07-08 12:12:15,101 [1] DEBUG - COMPLETED PROCESSING CHITTA PDF FILE @ 12:12:15 PM
+2021-07-08 12:12:15,164 [1] DEBUG - STARTED PROCESSING AREG PDF FILE @ 12:12:15 PM
+2021-07-08 12:23:01,513 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 240
+2021-07-08 12:23:03,056 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 240
+2021-07-08 12:23:36,758 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 240
+2021-07-08 12:23:40,577 [1] DEBUG - Big Error Processing Purambokku record @ 1 items - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.ProcessAreg() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 240
+2021-07-08 12:23:40,578 [1] DEBUG - COMPLETED PROCESSING AREG PDF FILE @ 12:23:40 PM
+2021-07-08 12:23:40,942 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 12:23:57,407 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:23:57,457 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 12:23:57,469 [1] DEBUG - Add/Update Loaded File.
+2021-07-08 12:23:57,470 [1] DEBUG - STEP-2 - Completed - - First time Load
+2021-07-08 12:24:59,310 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:24:59,373 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:24:59,484 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:244
+ERROR REC:4
+NAME ISSUE :188
+SomeDots ISSUE :13
+LandType ISSUE
+Patta ISSUE
+Porambokku: 145
+
+2021-07-08 12:24:59,596 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:25:15,673 [1] DEBUG - STEP-4 - Delete Started
+2021-07-08 12:25:26,969 [1] DEBUG - set delete flag to 244 land
+2021-07-08 12:25:26,969 [1] DEBUG - STEP-4 - Delete Completed
+2021-07-08 12:25:29,682 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:25:29,729 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:25:29,821 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:7
+ERROR REC:3
+NAME ISSUE :165
+LandType ISSUE
+LandStatus ISSUE
+Patta ISSUE
+Porambokku: 145
+
+2021-07-08 12:25:29,914 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:25:36,565 [1] DEBUG - STEP-4 - Delete Started
+2021-07-08 12:25:47,343 [1] DEBUG - set delete flag to 7 land
+2021-07-08 12:25:47,343 [1] DEBUG - STEP-4 - Delete Completed
+2021-07-08 12:25:51,561 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:25:51,624 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:25:51,715 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:7
+ERROR REC:3
+NAME ISSUE :165
+LandType ISSUE
+LandStatus ISSUE
+Patta ISSUE
+Porambokku: 145
+
+2021-07-08 12:25:51,814 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:28:23,469 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:28:23,563 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:28:23,702 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:7
+ERROR REC:3
+NAME ISSUE :165
+LandType ISSUE
+LandStatus ISSUE
+Patta ISSUE
+Porambokku: 145
+
+2021-07-08 12:28:23,825 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:34:44,017 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:34:44,314 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:34:44,440 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:7
+ERROR REC:3
+NAME ISSUE :164
+LandType ISSUE
+LandStatus ISSUE
+Patta ISSUE
+Porambokku: 145
+
+2021-07-08 12:34:44,545 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:35:53,662 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:35:53,725 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:35:53,819 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:7
+ERROR REC:3
+NAME ISSUE :163
+LandType ISSUE
+LandStatus ISSUE
+Patta ISSUE
+Porambokku: 145
+
+2021-07-08 12:35:53,927 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:36:00,766 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:36:00,844 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:36:00,946 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:7
+ERROR REC:3
+NAME ISSUE :162
+LandType ISSUE
+LandStatus ISSUE
+Patta ISSUE
+Porambokku: 145
+
+2021-07-08 12:36:01,057 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:36:04,933 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:36:04,996 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:36:05,105 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:7
+ERROR REC:3
+NAME ISSUE :161
+LandType ISSUE
+LandStatus ISSUE
+Patta ISSUE
+Porambokku: 145
+
+2021-07-08 12:36:05,203 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:36:07,768 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:36:07,831 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:36:07,934 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:7
+ERROR REC:3
+NAME ISSUE :160
+LandType ISSUE
+LandStatus ISSUE
+Patta ISSUE
+Porambokku: 145
+
+2021-07-08 12:36:08,038 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:36:20,528 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:36:20,606 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:36:20,698 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:7
+ERROR REC:3
+NAME ISSUE :159
+LandType ISSUE
+LandStatus ISSUE
+Patta ISSUE
+Porambokku: 145
+
+2021-07-08 12:36:20,822 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:36:52,047 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:36:52,109 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:36:52,213 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:7
+ERROR REC:3
+NAME ISSUE :157
+LandType ISSUE
+LandStatus ISSUE
+Patta ISSUE
+Porambokku: 145
+
+2021-07-08 12:36:52,313 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:37:09,074 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:37:09,136 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:37:09,228 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:7
+ERROR REC:3
+NAME ISSUE :156
+LandType ISSUE
+LandStatus ISSUE
+Patta ISSUE
+Porambokku: 145
+
+2021-07-08 12:37:09,343 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:37:24,021 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:37:24,068 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:37:24,183 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:7
+ERROR REC:3
+NAME ISSUE :156
+LandType ISSUE
+LandStatus ISSUE
+Patta ISSUE
+Porambokku: 145
+
+2021-07-08 12:37:24,379 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:37:33,928 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:37:33,991 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:37:34,079 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:7
+ERROR REC:3
+NAME ISSUE :155
+LandType ISSUE
+LandStatus ISSUE
+Patta ISSUE
+Porambokku: 145
+
+2021-07-08 12:37:34,191 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:37:36,503 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:37:36,596 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:37:36,684 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:7
+ERROR REC:3
+NAME ISSUE :153
+LandType ISSUE
+LandStatus ISSUE
+Patta ISSUE
+Porambokku: 145
+
+2021-07-08 12:37:36,792 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:37:39,181 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:37:39,244 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:37:39,332 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:7
+ERROR REC:3
+NAME ISSUE :153
+LandType ISSUE
+LandStatus ISSUE
+Patta ISSUE
+Porambokku: 145
+
+2021-07-08 12:37:39,449 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:37:49,418 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:37:49,480 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:37:49,569 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:7
+ERROR REC:3
+NAME ISSUE :152
+LandType ISSUE
+LandStatus ISSUE
+Patta ISSUE
+Porambokku: 145
+
+2021-07-08 12:37:49,688 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:38:14,294 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:38:14,356 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:38:14,449 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:7
+ERROR REC:3
+NAME ISSUE :151
+LandType ISSUE
+LandStatus ISSUE
+Patta ISSUE
+Porambokku: 145
+
+2021-07-08 12:38:14,563 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:38:21,225 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:38:21,288 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:38:21,377 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:7
+ERROR REC:3
+NAME ISSUE :150
+LandType ISSUE
+LandStatus ISSUE
+Patta ISSUE
+Porambokku: 145
+
+2021-07-08 12:38:21,496 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:38:28,005 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:38:28,068 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:38:28,174 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:7
+ERROR REC:3
+NAME ISSUE :149
+LandType ISSUE
+LandStatus ISSUE
+Patta ISSUE
+Porambokku: 145
+
+2021-07-08 12:38:28,288 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:39:02,996 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 12:39:03,044 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 12:39:08,684 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 12:39:08,733 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:39:08,776 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 12:39:08,776 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 12:39:11,027 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:39:11,105 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:39:11,200 [1] DEBUG - ready: False STATUS: ADD:884
+DELETE:7
+ERROR REC:3
+NAME ISSUE :149
+LandType ISSUE
+Patta ISSUE
+Porambokku: 145
+
+2021-07-08 12:39:11,746 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:45:51,085 [1] DEBUG - =================Thursday, 08 July 2021 12:45:51========================
+2021-07-08 12:45:51,210 [1] DEBUG - STARTED....
+2021-07-08 12:48:43,947 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 12:48:47,220 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 12:48:57,889 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 12:48:57,999 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:48:58,092 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 12:48:58,092 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 12:51:24,869 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:51:25,244 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:51:25,398 [1] DEBUG - ready: False STATUS: ADD:300
+
+2021-07-08 12:51:25,479 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:55:08,718 [1] DEBUG - STEP-4 - Add Started
+2021-07-08 12:55:08,721 [1] DEBUG - STEP-4 - Add Completed
+2021-07-08 12:55:12,128 [1] DEBUG - Added new land 174-104A1J    0.1.14   0.10 (Punsai)1681 - ????????
+2021-07-08 12:55:13,823 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:55:13,923 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:55:14,069 [1] DEBUG - ready: False STATUS: ADD:299
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-08 12:55:14,159 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:55:17,380 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:55:17,458 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:55:17,605 [1] DEBUG - ready: False STATUS: ADD:299
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-08 12:55:17,675 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:56:20,569 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:56:20,616 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:56:20,703 [1] DEBUG - ready: False STATUS: ADD:299
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-08 12:56:20,772 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:57:35,667 [1] DEBUG - Added new land 174-104A1D    0.1.27   0.10 (Punsai)1678 - ???????????
+2021-07-08 12:57:35,854 [1] DEBUG - Added new land 174-104A1E    0.1.16   0.10 (Punsai)1678 - ???????????
+2021-07-08 12:57:36,073 [1] DEBUG - Added new land 174-104A1H    0.1.72   0.10 (Punsai)1678 - ???????????
+2021-07-08 12:57:37,548 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:57:37,595 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:57:37,679 [1] DEBUG - ready: False STATUS: ADD:296
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-08 12:57:37,762 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:58:34,207 [1] DEBUG - Added new land 174-104A1F    0.1.09   0.10 (Punsai)1679 - ???????
+2021-07-08 12:58:34,351 [1] DEBUG - Added new land 174-104A1G    0.1.10   0.10 (Punsai)1679 - ???????
+2021-07-08 12:58:35,298 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:58:35,345 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:58:35,435 [1] DEBUG - ready: False STATUS: ADD:294
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-08 12:58:35,501 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 12:59:21,179 [1] DEBUG - Added new land 174-104A1I    0.1.58   0.10 (Punsai)1680 - ??????????
+2021-07-08 12:59:21,816 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 12:59:21,864 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 12:59:21,937 [1] DEBUG - ready: False STATUS: ADD:293
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-08 12:59:22,015 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:00:14,110 [1] DEBUG - Added new land 174-103    0.1.26   0.10 (Punsai)1611 - ??????????????
+2021-07-08 13:00:19,625 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:00:19,672 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:00:19,770 [1] DEBUG - ready: False STATUS: ADD:292
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-08 13:00:19,841 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:01:03,651 [1] DEBUG - Added new land 174-102B    0.2.22   0.10 (Punsai)1622 - 
+2021-07-08 13:01:04,106 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:01:04,137 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:01:04,244 [1] DEBUG - ready: False STATUS: ADD:291
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-08 13:01:04,318 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:01:36,413 [1] DEBUG - Added new land 174-102C    0.2.83   0.10 (Punsai)1623 - ?????????
+2021-07-08 13:01:38,540 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:01:38,603 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:01:38,690 [1] DEBUG - ready: False STATUS: ADD:290
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-08 13:01:38,745 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:02:51,442 [1] DEBUG - Added new land 174-101    0.1.28   0.10 (Punsai)1596 - ??????????
+2021-07-08 13:02:52,300 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:02:52,344 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:02:52,435 [1] DEBUG - ready: False STATUS: ADD:289
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-08 13:02:52,499 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:03:51,091 [1] DEBUG - Added new land 174-100A2    0.1.30   0.10 (Punsai)1607 - ????????
+2021-07-08 13:03:51,656 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:03:51,705 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:03:51,796 [1] DEBUG - ready: False STATUS: ADD:288
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-08 13:03:51,865 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:04:41,687 [1] DEBUG - Added new land 174-100B    0.1.41   0.10 (Punsai)1605 - ??????????
+2021-07-08 13:04:42,544 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:04:42,591 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:04:42,693 [1] DEBUG - ready: False STATUS: ADD:287
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-08 13:04:42,748 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:10:09,548 [1] DEBUG - =================Thursday, 08 July 2021 13:10:09========================
+2021-07-08 13:10:09,564 [1] DEBUG - STARTED....
+2021-07-08 13:10:14,232 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 13:10:14,584 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 13:10:24,632 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 13:10:24,696 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:10:24,796 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 13:10:24,796 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 13:10:34,525 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:10:34,572 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:10:34,685 [1] DEBUG - ready: False STATUS: ADD:287
+
+2021-07-08 13:10:34,763 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:11:48,736 [1] DEBUG - =================Thursday, 08 July 2021 13:11:48========================
+2021-07-08 13:11:48,782 [1] DEBUG - STARTED....
+2021-07-08 13:11:55,400 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 13:11:55,528 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 13:12:04,872 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 13:12:04,936 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:12:05,001 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 13:12:05,001 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 13:12:06,404 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:12:06,452 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:12:06,557 [1] DEBUG - ready: False STATUS: ADD:287
+
+2021-07-08 13:12:06,622 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:14:10,397 [1] DEBUG - STEP-4 - Add Started
+2021-07-08 13:14:10,402 [1] DEBUG - STEP-4 - Add Completed
+2021-07-08 13:14:25,036 [1] DEBUG - Added new land 174-95    0.1.35   0.10 (Punsai)1509 - ?????????
+2021-07-08 13:14:26,403 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:14:26,459 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:14:26,626 [1] DEBUG - ready: False STATUS: ADD:286
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-08 13:14:26,696 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:14:57,650 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:14:57,712 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:14:57,811 [1] DEBUG - ready: False STATUS: ADD:286
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-08 13:14:57,877 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:15:01,053 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:15:01,100 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:15:01,200 [1] DEBUG - ready: False STATUS: ADD:286
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-08 13:15:01,274 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:15:02,493 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:15:02,524 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:15:02,639 [1] DEBUG - ready: False STATUS: ADD:286
+LandType ISSUE
+LandStatus ISSUE
+
+2021-07-08 13:15:02,701 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:20:29,281 [1] DEBUG - =================Thursday, 08 July 2021 13:20:29========================
+2021-07-08 13:20:29,312 [1] DEBUG - STARTED....
+2021-07-08 13:20:33,183 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 13:20:33,345 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 13:20:43,608 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 13:20:43,683 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:20:43,739 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 13:20:43,739 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 13:20:46,141 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:20:46,204 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:20:46,306 [1] DEBUG - ready: False STATUS: ADD:286
+
+2021-07-08 13:20:46,376 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:21:14,471 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:21:14,518 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:21:23,091 [1] DEBUG - ready: False STATUS: ADD:286
+
+2021-07-08 13:21:23,185 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:30:14,354 [1] DEBUG - =================Thursday, 08 July 2021 13:30:14========================
+2021-07-08 13:30:14,570 [1] DEBUG - STARTED....
+2021-07-08 13:30:18,208 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 13:30:19,565 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 13:30:32,531 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 13:30:32,613 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:30:32,764 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 13:30:32,764 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 13:30:35,173 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:30:35,254 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:30:35,500 [1] DEBUG - ready: False STATUS: ADD:286
+
+2021-07-08 13:30:35,684 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:30:43,254 [1] DEBUG - STEP-4 - Add Started
+2021-07-08 13:30:43,258 [1] DEBUG - STEP-4 - Add Completed
+2021-07-08 13:38:42,565 [1] DEBUG - =================Thursday, 08 July 2021 13:38:42========================
+2021-07-08 13:38:42,619 [1] DEBUG - STARTED....
+2021-07-08 13:39:30,663 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 13:39:31,149 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 13:39:41,869 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 13:39:42,839 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:39:44,986 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 13:39:44,986 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 13:39:48,136 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:39:48,245 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:39:48,400 [1] DEBUG - ready: False STATUS: ADD:286
+
+2021-07-08 13:39:48,584 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:45:06,851 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:45:07,086 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:45:07,175 [1] DEBUG - ready: False STATUS: ADD:286
+
+2021-07-08 13:45:07,295 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:45:07,687 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:45:07,718 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:45:07,810 [1] DEBUG - ready: False STATUS: ADD:286
+
+2021-07-08 13:45:07,920 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:45:07,952 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:45:07,999 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:45:08,084 [1] DEBUG - ready: False STATUS: ADD:286
+
+2021-07-08 13:45:08,209 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:45:10,480 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:45:10,527 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:45:10,624 [1] DEBUG - ready: False STATUS: ADD:286
+
+2021-07-08 13:45:10,752 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:45:10,910 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:45:10,956 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:45:11,058 [1] DEBUG - ready: False STATUS: ADD:286
+
+2021-07-08 13:45:11,171 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:45:11,177 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:45:11,203 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:45:11,291 [1] DEBUG - ready: False STATUS: ADD:286
+
+2021-07-08 13:45:11,422 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:45:11,427 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:45:11,486 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:45:11,568 [1] DEBUG - ready: False STATUS: ADD:286
+
+2021-07-08 13:45:11,700 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:45:11,705 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:45:11,748 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:45:11,848 [1] DEBUG - ready: False STATUS: ADD:286
+
+2021-07-08 13:45:11,954 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-08 13:56:34,510 [1] DEBUG - =================Thursday, 08 July 2021 13:56:34========================
+2021-07-08 13:56:34,633 [1] DEBUG - STARTED....
+2021-07-08 13:57:36,063 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-08 13:57:36,703 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-08 13:57:46,580 [1] DEBUG - STARTED FULL REPORT
+2021-07-08 13:57:46,698 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:57:46,906 [1] DEBUG - COMPLETED FULL REPORT
+2021-07-08 13:57:46,907 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-08 13:57:48,768 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-08 13:57:48,844 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-08 13:57:48,974 [1] DEBUG - ready: False STATUS: ADD:286
+
+2021-07-08 13:57:49,203 [1] DEBUG - STEP-3 - Raedy For Print - Completed
