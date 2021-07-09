@@ -46,3 +46,12 @@ F:\AssemblySimpleApp\AdangalApp\obj\Debug\AdangalApp.csproj.CopyComplete
 F:\AssemblySimpleApp\AdangalApp\obj\Debug\AdangalApp.exe
 F:\AssemblySimpleApp\AdangalApp\obj\Debug\AdangalApp.pdb
 F:\AssemblySimpleApp\AdangalApp\obj\Debug\AdangalApp.vao.resources
+F:\AssemblySimpleApp\AdangalApp\bin\Debug\WebDriver.dll
+F:\AssemblySimpleApp\AdangalApp\bin\Debug\WebDriver.xml
+F:\AssemblySimpleApp\AdangalApp\bin\Debug\WebDriver.Support.dll
+F:\AssemblySimpleApp\AdangalApp\bin\Debug\WebDriver.Support.xml
+F:\AssemblySimpleApp\AdangalApp\bin\Debug\x86\leptonica-1.80.0.dll
+F:\AssemblySimpleApp\AdangalApp\bin\Debug\x86\tesseract41.dll
+F:\AssemblySimpleApp\AdangalApp\bin\Debug\x64\leptonica-1.80.0.dll
+F:\AssemblySimpleApp\AdangalApp\bin\Debug\x64\tesseract41.dll
+F:\AssemblySimpleApp\AdangalApp\bin\Debug\Tesseract.dll
