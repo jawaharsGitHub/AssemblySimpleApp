@@ -37,19 +37,19 @@ namespace AdangalApp
 
             List<KeyValue> list = new List<KeyValue>() {
 
-                new KeyValue() { Caption = "100", Caption2 = "2B2" }
-                 //new KeyValue() { Caption = "100", Caption2 = "2A2" },
-                 // new KeyValue() { Caption = "100", Caption2 = "3B" },
+                new KeyValue() { Caption = "100", Caption2 = "2B2" },
+                 new KeyValue() { Caption = "100", Caption2 = "2A2" },
+                 new KeyValue() { Caption = "100", Caption2 = "3B" },
 
             };
 
 
-            for (int i = 0; i < list.Count - 1; i++)
+            IWebDriver driver = new ChromeDriver();
+            driver.Navigate().GoToUrl("https://eservices.tn.gov.in/eservicesnew/land/chitta.html?lan=en");
+
+            for (int i = 0; i <= list.Count - 1; i++)
             {
-
-                IWebDriver driver = new ChromeDriver();
-                driver.Navigate().GoToUrl("https://eservices.tn.gov.in/eservicesnew/land/chitta.html?lan=en");
-
+                driver = driver.SwitchTo().Window(driver.WindowHandles[0]);
                 //select district
                 var district = driver.FindElement(By.Name("districtCode"));
                 var selectElement = new SelectElement(district);
@@ -75,57 +75,66 @@ namespace AdangalApp
                 RadioButtons fmbCategory = new RadioButtons(driver, driver.FindElements(By.Name("viewOption")));
                 fmbCategory.SelectValue("view");
 
-                //// select village
-                //var village = driver.FindElement(By.Name("villageCode"));
-                //var vilageElement = new SelectElement(village);
-                //while (vilageElement.WrappedElement.Text == "Please Select ...")
-                //{
-                //    village = driver.FindElement(By.Name("villageCode"));
-                //    vilageElement = new SelectElement(village);
-                //}
-                //vilageElement.SelectByValue("022");
-
-                bool isVaillLoaded = false;
-
-                while (isVaillLoaded)
+                // select village
+                var village = driver.FindElement(By.Name("villageCode"));
+                var vilageElement = new SelectElement(village);
+                while (vilageElement.WrappedElement.Text == "Please Select ...")
                 {
-                    // select taluk
-                    var village = driver.FindElement(By.Name("villageCode"));
-                    var vilageElement = new SelectElement(village);
-                    isVaillLoaded = vilageElement.WrappedElement.Text == "Please Select ...";
-
-                    if (isVaillLoaded)
-                    {
-                        vilageElement.SelectByValue("022");
-                    }
-
+                    village = driver.FindElement(By.Name("villageCode"));
+                    vilageElement = new SelectElement(village);
                 }
+                vilageElement.SelectByValue("022");
+
+                //bool isVaillLoaded = false;
+
+                //while (isVaillLoaded)
+                //{
+                //    // select taluk
+                //    var village = driver.FindElement(By.Name("villageCode"));
+                //    var vilageElement = new SelectElement(village);
+                //    isVaillLoaded = vilageElement.WrappedElement.Text != "Please Select ...";
+
+                //    if (isVaillLoaded)
+                //    {
+                //        vilageElement.SelectByValue("022");
+                //    }
+
+                //}
 
                 //enter survey no
                 var txt = driver.FindElement(By.Name("surveyNo"));
                 txt.SendKeys(list[i].Caption);
 
-                bool isLoaded = false;
-                while (isLoaded)
-                {
-                    // select taluk
-                    var subDiv = driver.FindElement(By.Name("subdivNo"));
-                    var subDivElement = new SelectElement(subDiv);
-                    isLoaded = subDivElement.WrappedElement.Text != "Please Select ...";
+                //bool isLoaded = false;
+                //var subDiv = driver.FindElement(By.Name("subdivNo"));
+                //var subDivElement = new SelectElement(subDiv);
+                //while (isLoaded == false)
+                //{
+                //    isLoaded = subDivElement.WrappedElement.Text != "Please Select ...";
+                //    if (isLoaded)
+                //    {
+                //        subDivElement.SelectByValue(list[i].Caption2);
+                //    }
 
-                    if (isLoaded)
-                    {
-                        subDivElement.SelectByValue(list[i].Caption2);
-                    }
-
-                }
-
+                //}
 
                 var text = GenerateSnapshot(driver, @"E:\imageTest\");
 
                 //enter captcha
                 var txtCap = driver.FindElement(By.Name("captcha"));
                 txtCap.SendKeys(text);
+
+                var subDiv = driver.FindElement(By.Name("subdivNo"));
+                var subDivElement = new SelectElement(subDiv);
+                while (subDivElement.WrappedElement.Text == "Please Select ...")
+                {
+                    subDiv = driver.FindElement(By.Name("subdivNo"));
+                    subDivElement = new SelectElement(subDiv);
+                }
+                subDivElement.SelectByValue(list[i].Caption2);
+
+
+               
                 //button click
                 driver.FindElement(By.ClassName("button")).Click();
 
