@@ -86,6 +86,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdangalTypes\AdangalConverter.cs" />
     <Compile Include="AdangalTypes\GovtBuilding.cs" />
     <Compile Include="AdangalTypes\Summary.cs" />
     <Compile Include="AdangalTypes\AdangalConstant.cs" />

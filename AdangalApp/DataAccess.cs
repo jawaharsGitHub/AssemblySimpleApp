@@ -42,8 +42,9 @@ namespace AdangalApp
             return AppConfiguration.GetDynamicPath($"database/{tableName}.json");
         }
 
-        public static List<KeyValue> GetSubdiv()
+        public static List<KeyValue> GetSubdiv(string path = null)
         {
+            SubDivPath = path;
             var data = ReadFileAsObjects<KeyValue>(SubDivPath);
             return data;
         }
