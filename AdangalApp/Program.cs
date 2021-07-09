@@ -85,42 +85,12 @@ namespace AdangalApp
                 }
                 vilageElement.SelectByValue("022");
 
-                //bool isVaillLoaded = false;
-
-                //while (isVaillLoaded)
-                //{
-                //    // select taluk
-                //    var village = driver.FindElement(By.Name("villageCode"));
-                //    var vilageElement = new SelectElement(village);
-                //    isVaillLoaded = vilageElement.WrappedElement.Text != "Please Select ...";
-
-                //    if (isVaillLoaded)
-                //    {
-                //        vilageElement.SelectByValue("022");
-                //    }
-
-                //}
-
                 //enter survey no
                 var txt = driver.FindElement(By.Name("surveyNo"));
                 txt.SendKeys(list[i].Caption);
 
-                //bool isLoaded = false;
-                //var subDiv = driver.FindElement(By.Name("subdivNo"));
-                //var subDivElement = new SelectElement(subDiv);
-                //while (isLoaded == false)
-                //{
-                //    isLoaded = subDivElement.WrappedElement.Text != "Please Select ...";
-                //    if (isLoaded)
-                //    {
-                //        subDivElement.SelectByValue(list[i].Caption2);
-                //    }
-
-                //}
-
-                var text = GenerateSnapshot(driver, @"E:\imageTest\");
-
                 //enter captcha
+                var text = GenerateSnapshot(driver, @"E:\imageTest\");
                 var txtCap = driver.FindElement(By.Name("captcha"));
                 txtCap.SendKeys(text);
 
@@ -132,14 +102,11 @@ namespace AdangalApp
                     subDivElement = new SelectElement(subDiv);
                 }
                 subDivElement.SelectByValue(list[i].Caption2);
-
-
                
                 //button click
                 driver.FindElement(By.ClassName("button")).Click();
 
                 var isCapchaCorrect = (driver.WindowHandles.Count == 2);
-
                 if (isCapchaCorrect == false)
                 {
                     i -= 1;
