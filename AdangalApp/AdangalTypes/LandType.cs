@@ -14,6 +14,7 @@ namespace AdangalApp.AdangalTypes
         Porambokku,
         PorambokkuError,        
         Zero,
+        CLRBhoodanLands,
         //NameError
     }
 }

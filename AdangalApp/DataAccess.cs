@@ -169,10 +169,20 @@ namespace AdangalApp
             WriteObjectsToFile(landDetails, path);
         }
 
+
+        public static bool IsAdangalAlreadyExist(int NilaAlavaiEn, string UtpirivuEn, string path)
+        {
+            JsonPath = path;
+            return GetActiveAdangal()
+                .Where(w => w.NilaAlavaiEn == NilaAlavaiEn && w.UtpirivuEn.Trim() == UtpirivuEn && w.LandStatus != LandStatus.Error)
+                .Count() == 1;
+
+        }
+
         private static bool IsAdangalAlreadyExist(Adangal adangal)
         {
             return GetActiveAdangal()
-                .Where(w => w.NilaAlavaiEn == adangal.NilaAlavaiEn && w.UtpirivuEn.Trim() == adangal.UtpirivuEn)
+                .Where(w => w.NilaAlavaiEn == adangal.NilaAlavaiEn && w.UtpirivuEn.Trim() == adangal.UtpirivuEn && w.LandStatus != LandStatus.Error)
                 .Count() == 1;
 
         }
@@ -233,7 +243,7 @@ namespace AdangalApp
 
         public static List<Adangal> GetNameIssueAdangal()
         {
-            return ReadFileAsObjects<Adangal>(JsonPath).Where(w => w.LandStatus == LandStatus.WrongName).OrderBy(o => o.CorrectNameRow).ToList();
+            return ReadFileAsObjects<Adangal>(JsonPath).Where(w => w.LandStatus == LandStatus.WrongName).ToList(); //.OrderBy(o => o.CorrectNameRow).ToList();
         }
 
         public static void UpdateOwnerName(Adangal adn, string ownerName)
@@ -285,8 +295,10 @@ namespace AdangalApp
         }
 
 
-        public static bool AddNewAdangal(Adangal adangal)
+        public static bool AddNewAdangal(Adangal adangal, string path = null)
         {
+            JsonPath = path;
+
             if (IsAdangalAlreadyExist(adangal) == false)
             {
                 InsertSingleObjectToListJson<Adangal>(JsonPath, adangal);

@@ -262,7 +262,7 @@ namespace AdangalApp
                                 NilaAlavaiEn = d[0].ToInt32(),
                                 UtpirivuEn = d[1],
                                 LandType = LandType.PorambokkuError,
-                                CorrectNameRow = d.ListToString("%")
+                                //CorrectNameRow = d.ListToString("%")
                             });
                             LogMessage($"Error Processing Purambokku record @ {d[0].ToInt32()} - {ex.ToString()}");
                         }
@@ -599,7 +599,7 @@ namespace AdangalApp
                                            LandType = wl.LandType,
                                            LandStatus = wl.LandStatus,
                                            PattaEn = wl.PattaEn,
-                                           CorrectNameRow = wl.CorrectNameRow
+                                           //CorrectNameRow = wl.CorrectNameRow
                                        }).ToList();
             }
             catch (Exception ex)
