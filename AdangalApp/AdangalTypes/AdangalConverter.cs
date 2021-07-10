@@ -42,25 +42,20 @@ namespace AdangalApp.AdangalTypes
 
 
         static BackgroundWorker bw = new BackgroundWorker();
-        public static void ProcessAdangal(LogHelper _logHelper, string villageName)
+        public static void ProcessAdangal(List<KeyValue> list, bool isCorrection = false)
         {
             int minute = DateTime.Now.Minute;
 
-            logHelper = _logHelper;
+            logHelper = Program.logHelper;
             string districCode = ConfigurationManager.AppSettings["districCode"];
             string talukCode = ConfigurationManager.AppSettings["talukCode"];
             string villageCode = ConfigurationManager.AppSettings["villageCode"];
-            
 
-            
-            var list = new List<KeyValue>() { 
-                new KeyValue() { Value = 66, Caption = "2E" } ,
-                new KeyValue() { Value = 37, Caption = "4" }
-            };
-            //var isTest = true;
 
-            // Read subdiv file
-            //List<KeyValue> list= DataAccess.GetSubdiv($@"F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\{villageName}\{villageName}-subdiv.json");
+            //var list = new List<KeyValue>() { 
+            //    new KeyValue() { Value = 66, Caption = "2E" } ,
+            //    new KeyValue() { Value = 37, Caption = "2E" }
+            //};
 
             try
             {
@@ -70,8 +65,11 @@ namespace AdangalApp.AdangalTypes
 
                 for (int i = 0; i <= list.Count - 1; i++)
                 {
-                    //if (IsExist(list[i].Value, list[i].Caption)) // && isTest == false)
-                    //    continue;
+                    if (isCorrection == false)
+                    {
+                        if (IsExist(list[i].Value, list[i].Caption)) // && isTest == false)
+                            continue;
+                    }
 
                     driver = driver.SwitchTo().Window(driver.WindowHandles[0]);
                     //select district
@@ -148,8 +146,7 @@ namespace AdangalApp.AdangalTypes
                         continue;
                     }
 
-                    File.AppendAllText($@"F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\{villageName}\{villageName}-10-1.txt", copiedText);
-
+                    File.AppendAllText($@"F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\{Program.villageName}\{Program.villageName}-10-1.txt", copiedText);
 
                     if (copiedText.ToLower().Contains("bhoodan"))
                     {
@@ -169,26 +166,28 @@ namespace AdangalApp.AdangalTypes
                     LogMessage($"DONE:[index-{i}]/{list.Count}");
 
                     driver.Close();
-                   
-                    
-                    
-                    aTimer.Elapsed += (a,o) => {
-                        bw.DoWork += (s, e) =>
+
+                    if (isCorrection == false)
+                    {
+                        aTimer.Elapsed += (a, o) =>
                         {
-                            var perc = list.Count.PercentageBtwIntNo(i);
-                            var sub = $"{perc}% - {villageName}- DONE:[{i}] out of {list.Count}";
-                            AppCommunication.SendAdangalUpdate($"{perc}% - {villageName}- DONE:[{i}] out of {list.Count}"); // Email
+                            bw.DoWork += (s, e) =>
+                            {
+                                var perc = list.Count.PercentageBtwIntNo(i);
+                                var sub = $"{perc}% - {Program.villageName}- DONE:[{i}] out of {list.Count}";
+                                AppCommunication.SendAdangalUpdate($"{perc}% - {Program.villageName}- DONE:[{i}] out of {list.Count}");
+                            };
+
+                            bw.RunWorkerAsync();
+
                         };
-
-                        bw.RunWorkerAsync();
-
-                    };
+                    }
 
                     aTimer.AutoReset = true;
                     aTimer.Enabled = true;
                     aTimer.Start();
 
-                    
+
                 }
 
                 var processed = DataAccess.GetActiveAdangalNew(AdangalConverter.villagPath);
@@ -202,6 +201,7 @@ namespace AdangalApp.AdangalTypes
 
             }
         }
+
 
 
         private static void LogMessage(string message)
@@ -273,7 +273,7 @@ namespace AdangalApp.AdangalTypes
                 var third = sec.Split(Environment.NewLine.ToCharArray()).Where(w => w.Trim() != "").ToList();
 
                 var hecIndex = third.FindIndex(f => f.Contains("ஹெக்"));
-                bool isVagai = (hecIndex > 3);
+                //bool isVagai = (hecIndex > 3);
                 var totalIndex = third.Count - 1;
 
                 var neededData = third.Skip(hecIndex + 1);
@@ -286,8 +286,8 @@ namespace AdangalApp.AdangalTypes
                 {
                     var rowData = fe.Split('\t').ToList();
                     var adangal = GetAdangalFromCopiedData(rowData, pattaEn, names);
-                    adangal.RegisterDate = createdTime;
-                    adangal.IsVagai = isVagai;
+                    adangal.RegisterDate = GetRegisterDate(rowData);
+                    adangal.IsVagai = (hecIndex > 3);
                     if (DataAccess.AddNewAdangal(adangal, villagPath))
                         addedCount += 1;
                 });
@@ -304,6 +304,13 @@ namespace AdangalApp.AdangalTypes
 
             }
 
+        }
+
+        private static string GetRegisterDate(List<string> rowData)
+        {
+            var DateData = rowData.Last().Split('-');
+            var dateCount = DateData.Count();
+            return $"{DateData[dateCount - 3].Trim()}-{DateData[dateCount - 2].Trim()}-{DateData[dateCount - 1].Trim()}";
         }
 
         public static void AddPorambokkuData(int survey, string subdiv)
@@ -330,14 +337,12 @@ namespace AdangalApp.AdangalTypes
 
         }
 
-
-
         public static bool IsExist(int NilaAlavaiEn, string UtpirivuEn)
         {
             return DataAccess.IsAdangalAlreadyExist(NilaAlavaiEn, UtpirivuEn, villagPath);
         }
 
-        private static Adangal GetAdangalFromCopiedData(List<string> data, string pattaEn, KeyValue ownerName)
+        public static Adangal GetAdangalFromCopiedData(List<string> data, string pattaEn, KeyValue ownerName)
         {
             var adangal = new Adangal();
             try
@@ -405,7 +410,7 @@ namespace AdangalApp.AdangalTypes
             return (ld, parappu, theervai);
         }
 
-        private static KeyValue GetOwnerName(string paramNameRow)
+        public static KeyValue GetOwnerName(string paramNameRow)
         {
             try
             {
@@ -423,7 +428,7 @@ namespace AdangalApp.AdangalTypes
                         //name = nameRow.Replace(delimit, "$").Split('$')[1];
                         var d = nameRow.Replace(delimit, "$").Split('$');
                         kv.Caption = $"{d[1].Replace("\t", "").Replace("-", "")}";
-                        kv.Caption2 = $"{d[0].Replace("\t", "").Replace("-", "")}";
+                        kv.Caption2 = $"{d[0].Replace("\t", "").Replace("-", "").Replace(Environment.NewLine, "").Replace("2", "")}";
                     }
                     else
                     {

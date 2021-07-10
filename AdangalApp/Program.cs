@@ -17,7 +17,8 @@ namespace AdangalApp
     static class Program
     {
 
-        static LogHelper logHelper;
+        public static LogHelper logHelper;
+        public static string villageName;
 
         /// <summary>
         /// The main entry point for the application.
@@ -28,17 +29,18 @@ namespace AdangalApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            string villageName = ConfigurationManager.AppSettings["villName"];
+            villageName = ConfigurationManager.AppSettings["villName"];
             AdangalConverter.SetGlobalVillagePath($@"F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\{villageName}\{villageName}.json");
             var logFolder = $@"F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\{villageName}\{villageName}-Log";
             logHelper = new LogHelper("AdangalLog", logFolder, Environment.UserName, villageName);
             logHelper.WriteAdangalLog($"================={DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss")}========================");
             bool isApp = Convert.ToBoolean(ConfigurationManager.AppSettings["isApp"]);
 
-            
+
             if (isApp == false)
             {
-                AdangalConverter.ProcessAdangal(logHelper, villageName);
+                List<KeyValue> list = DataAccess.GetSubdiv($@"F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\{villageName}\{villageName}-subdiv.json");
+                AdangalConverter.ProcessAdangal(list);
             }
             else
             {

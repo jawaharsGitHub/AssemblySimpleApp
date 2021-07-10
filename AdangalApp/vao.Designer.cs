@@ -147,6 +147,7 @@
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.DataSourceChanged += new System.EventHandler(this.dataGridView1_DataSourceChanged);
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
+            this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // ddlPattaTypes
             // 
@@ -568,7 +569,6 @@
             // 
             // txtAddNewSurvey
             // 
-            this.txtAddNewSurvey.Enabled = false;
             this.txtAddNewSurvey.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtAddNewSurvey.Location = new System.Drawing.Point(28, 43);
             this.txtAddNewSurvey.Multiline = true;

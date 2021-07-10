@@ -82,6 +82,11 @@ missed file json name with computer name.
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 -----V-1-----
+created date is taken from wrong place....
+adding intial
+2.vagai
+100-7B2A - 0.2 or 0.02
+adding last name also into adangal.
 
 working status email
 passcode - enable.

@@ -105,9 +105,11 @@ namespace AdangalApp
                 {
                     BindDropdown(ddlDistrict, DataAccess.GetDistricts(), "Display", "Value");
 
-                    var processedFiles = DataAccess.GetLoadedFile();
+                    var processedFiles = DataAccess.GetLoadedFileDetails();
                     if (processedFiles.Count > 0)
-                        BindDropdown(ddlProcessedFiles, processedFiles, "VillageName", "VillageCode");
+                        ddlProcessedFiles.DataSource = processedFiles;
+
+                        //BindDropdown(ddlProcessedFiles, processedFiles, "VillageName", "VillageCode");
 
                 }
                 catch (Exception ex)
@@ -742,7 +744,23 @@ namespace AdangalApp
                 });
             }
 
-            landStatusSource.Add(new KeyValue() { Id = 100, Caption = "SomeDots" });
+            landStatusSource.Add(new KeyValue()
+            {
+                Caption = "Issue",
+                Value = fullAdangalFromjson.Where(w => w.LandType != LandType.Porambokku && w.PattaEn == 0).Count(),
+                Id = 101
+            });
+
+            //var cd = fullAdangalFromjson.Where(w => w.LandType != LandType.Porambokku && w.PattaEn == 0).ToList();
+
+            //cd.ForEach(fee => {
+
+            //    DataAccess.DeleteAdangalFile(fee);end
+            //    });
+
+            //MessageBox.Show("Deleted!");
+
+            //landStatusSource.Add(new KeyValue() { Id = 100, Caption = "SomeDots" });
             return landStatusSource;
         }
 
@@ -1028,6 +1046,9 @@ namespace AdangalApp
         private void cmbLandStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbLandStatus.SelectedIndex == 0) return;
+
+            fullAdangalFromjson = dataGridView1.DataSource as List<Adangal>;
+
             if (fullAdangalFromjson != null)
             {
                 var selItem = (cmbLandStatus.SelectedItem as KeyValue);
@@ -1035,8 +1056,11 @@ namespace AdangalApp
                 waitForm.Show(this);
                 if (selItem.Id == 100)
                     dataGridView1.DataSource = GetAdangalForSomeDots();
-                if (selItem.Id == 1) // Deleted
-                    dataGridView1.DataSource = DataAccess.GetDeletedAdangal();
+                else if (selItem.Id == 101)
+                    dataGridView1.DataSource = fullAdangalFromjson.Where(w => w.LandType != LandType.Porambokku && w.PattaEn == 0).ToList();
+
+                //if (selItem.Id == 1) // Deleted
+                //    dataGridView1.DataSource = DataAccess.GetDeletedAdangal();
                 else
                     dataGridView1.DataSource = fullAdangalFromjson.Where(w => (int)w.LandStatus == selItem.Id).OrderBy(o => o.NilaAlavaiEn).ToList();
 
@@ -2241,7 +2265,7 @@ namespace AdangalApp
 
         private void SetVillage()
         {
-            AdangalConstant.villageName = loadedFile.VillageName;
+            AdangalConstant.villageName = ddlProcessedFiles.SelectedItem.ToString();
             DataAccess.SetVillageName();
         }
         private void LoadSurveyAndSubdiv()
@@ -2318,6 +2342,7 @@ namespace AdangalApp
         {
             //if ((ddlListType.SelectedValue.ToInt32() == 4))
             BindDropdown(cmbLandStatus, GetLandStatusOptions(), "DisplayMember", "Id");
+            BindDropdown(ddlLandTypes, GetLandTypes(), "DisplayMember", "Id");
         }
 
         private void SetTestMode()
@@ -2327,7 +2352,7 @@ namespace AdangalApp
                 btnSoftGen.Enabled = isTestingMode;
 
             grpTheervaiTest.Visible = needTheervaiTest;
-            txtAddNewSurvey.Enabled = btnReady.Enabled = canAddMissedSurvey;
+            //txtAddNewSurvey.Enabled = btnReady.Enabled = canAddMissedSurvey;
         }
         private void cmbFulfilled_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2388,7 +2413,7 @@ namespace AdangalApp
         {
             try
             {
-                if (ddlListType.SelectedIndex != 0) return;
+                //if (ddlListType.SelectedIndex != 0) return;
 
                 if (IsEnterKey == false)
                 {
@@ -2413,7 +2438,7 @@ namespace AdangalApp
                 {
                     DataAccess.UpdateOwnerName(cus, cellValue);
                     EditSuccess();
-                    button2_Click_1(null, null);
+                    //button2_Click_1(null, null);
                     return;
                 }
 
@@ -2421,7 +2446,7 @@ namespace AdangalApp
                 {
                     DataAccess.UpdateLandStatus(cus);
                     EditSuccess();
-                    button2_Click_1(null, null);
+                    //button2_Click_1(null, null);
                     return;
                 }
 
@@ -2429,7 +2454,7 @@ namespace AdangalApp
                 {
                     DataAccess.UpdatePattaEN(cus);
                     EditSuccess();
-                    button2_Click_1(null, null);
+                    //button2_Click_1(null, null);
                     return;
                 }
 
@@ -2483,15 +2508,15 @@ namespace AdangalApp
                 var neededData = third.Skip(hecIndex + 1);
                 neededData = neededData.Take(neededData.Count() - 1);
 
-                var name = GetOwnerName(sec.Replace("புல எண்", "$").Split('$').ToList()[0]);
+                var name = AdangalConverter.GetOwnerName(sec.Replace("புல எண்", "$").Split('$').ToList()[0]);
 
-                var surveysubdiv = cmbItemToBeAdded.SelectedItem.ToString().Split('~').ToList();
+                //var surveysubdiv = cmbItemToBeAdded.SelectedItem.ToString().Split('~').ToList();
 
                 int addedCount = 0;
                 neededData.ToList().ForEach(fe =>
                 {
                     var rowData = fe.Split('\t').ToList();
-                    var adangal = GetAdangalFromCopiedData(rowData, pattaEn, name);
+                    var adangal = AdangalConverter.GetAdangalFromCopiedData(rowData, pattaEn, name);
 
                     if (notInPdfToBeAdded.Contains($"{adangal.NilaAlavaiEn}~{adangal.UtpirivuEn}"))
                     {
@@ -2512,104 +2537,104 @@ namespace AdangalApp
                 LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
         }
-        private string GetOwnerName(string nameRow)
-        {
-            try
-            {
-                nameRow = nameRow.Split(' ').ToList().Where(w => w.Trim() != "").ToList()[1];
-                string name = "";
-                if (relationTypesCorrect.Any(a => nameRow.Split('\t').ToList().Contains(a))) // have valid names.
-                {
-                    var delitList = relationTypesCorrect.Intersect(nameRow.Split('\t').ToList()).ToList();
+        //private string GetOwnerName(string nameRow)
+        //{
+        //    try
+        //    {
+        //        nameRow = nameRow.Split(' ').ToList().Where(w => w.Trim() != "").ToList()[1];
+        //        string name = "";
+        //        if (relationTypesCorrect.Any(a => nameRow.Split('\t').ToList().Contains(a))) // have valid names.
+        //        {
+        //            var delitList = relationTypesCorrect.Intersect(nameRow.Split('\t').ToList()).ToList();
 
-                    if (delitList.Count == 1)
-                    {
-                        var delimit = delitList[0];
-                        name = nameRow.Replace(delimit, "$").Split('$')[1];
-                        var d = nameRow.Replace(delimit, "$").Split('$');
-                        name = $"{d[1]}";
-                    }
-                    else
-                    {
-                        // ERROR!
-                        MessageBox.Show("Error!");
-                    }
-                }
+        //            if (delitList.Count == 1)
+        //            {
+        //                var delimit = delitList[0];
+        //                name = nameRow.Replace(delimit, "$").Split('$')[1];
+        //                var d = nameRow.Replace(delimit, "$").Split('$');
+        //                name = $"{d[1]}";
+        //            }
+        //            else
+        //            {
+        //                // ERROR!
+        //                MessageBox.Show("Error!");
+        //            }
+        //        }
 
-                return name.Trim().Replace("\t", "").Replace("-", "");
-            }
-            catch (Exception ex)
-            {
-                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
-                return null;
-            }
-        }
-        private Adangal GetAdangalFromCopiedData(List<string> data, string pattaEn, string ownerName)
-        {
-            var adangal = new Adangal();
-            try
-            {
-                // Test for both fullfilled and extend also
-                adangal.NilaAlavaiEn = data[0].ToInt32();
-                adangal.UtpirivuEn = data[1];
+        //        return name.Trim().Replace("\t", "").Replace("-", "");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
+        //        return null;
+        //    }
+        //}
+        //private Adangal GetAdangalFromCopiedData(List<string> data, string pattaEn, string ownerName)
+        //{
+        //    var adangal = new Adangal();
+        //    try
+        //    {
+        //        // Test for both fullfilled and extend also
+        //        adangal.NilaAlavaiEn = data[0].ToInt32();
+        //        adangal.UtpirivuEn = data[1];
 
-                var (lt, par, thee) = GetLandDetails(data);
-                adangal.Parappu = par.Trim().Replace(" ", "").Replace("-", ".");
-                adangal.Theervai = thee;
-                adangal.LandType = lt;
-                //adangal.Anupathaarar = $"{pattaEn}-{ownerName}";
-                adangal.OwnerName = ownerName;
-                adangal.PattaEn = pattaEn.ToInt32();
-                adangal.LandStatus = LandStatus.Added;
-            }
-            catch (Exception ex)
-            {
-                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
-            }
+        //        var (lt, par, thee) = GetLandDetails(data);
+        //        adangal.Parappu = par.Trim().Replace(" ", "").Replace("-", ".");
+        //        adangal.Theervai = thee;
+        //        adangal.LandType = lt;
+        //        //adangal.Anupathaarar = $"{pattaEn}-{ownerName}";
+        //        adangal.OwnerName = ownerName;
+        //        adangal.PattaEn = pattaEn.ToInt32();
+        //        adangal.LandStatus = LandStatus.Added;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
+        //    }
 
-            return adangal;
-        }
-        private (LandType lt, string par, string thee) GetLandDetails(List<string> data)
-        {
-            LandType ld = LandType.Zero;
-            var parappu = "";
-            var theervai = "";
-            try
-            {
-                int i = 0;
-                if (data[2] != "--" && data[3] != "--")
-                {
-                    ld = LandType.Punsai;
-                    parappu = data[2];
-                    theervai = data[3];
-                    i += 1;
-                }
-                if (data[4] != "--" && data[5] != "--")
-                {
-                    ld = LandType.Nansai;
-                    parappu = data[4];
-                    theervai = data[5];
-                    i += 1;
-                }
-                if (data[6] != "--" && data[7] != "--")
-                {
-                    ld = LandType.Maanaavari;
-                    parappu = data[6];
-                    theervai = data[7];
-                    i += 1;
-                }
-                if (i > 1)
-                {
-                    ld = LandType.Zero;
-                }
-            }
-            catch (Exception ex)
-            {
-                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
-            }
+        //    return adangal;
+        //}
+        //private (LandType lt, string par, string thee) GetLandDetails(List<string> data)
+        //{
+        //    LandType ld = LandType.Zero;
+        //    var parappu = "";
+        //    var theervai = "";
+        //    try
+        //    {
+        //        int i = 0;
+        //        if (data[2] != "--" && data[3] != "--")
+        //        {
+        //            ld = LandType.Punsai;
+        //            parappu = data[2];
+        //            theervai = data[3];
+        //            i += 1;
+        //        }
+        //        if (data[4] != "--" && data[5] != "--")
+        //        {
+        //            ld = LandType.Nansai;
+        //            parappu = data[4];
+        //            theervai = data[5];
+        //            i += 1;
+        //        }
+        //        if (data[6] != "--" && data[7] != "--")
+        //        {
+        //            ld = LandType.Maanaavari;
+        //            parappu = data[6];
+        //            theervai = data[7];
+        //            i += 1;
+        //        }
+        //        if (i > 1)
+        //        {
+        //            ld = LandType.Zero;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
+        //    }
 
-            return (ld, parappu, theervai);
-        }
+        //    return (ld, parappu, theervai);
+        //}
         private void LogMessage(string message)
         {
             try
@@ -2686,12 +2711,14 @@ namespace AdangalApp
 
             waitForm.Show(this);
             LogMessage($"STEP-2 - Started - Existing file Load");
-            PreLoadFile();
+           
 
             fullAdangalFromjson = DataAccess.GetActiveAdangal();
             LogMessage($"READED DATA FROM EXISTING JSON FILE");
-            dataGridView1.DataSource = fullAdangalFromjson.OrderBy(o => o.NilaAlavaiEn)
-                                               .ThenBy(t => t.UtpirivuEn, new AlphanumericComparer()).ToList();
+            dataGridView1.DataSource = fullAdangalFromjson;
+            LoadSurveyAndSubdiv();
+            PreLoadFile();
+            CalculateTotalPages(recordPerPage);
 
             //if (canAddMissedSurvey)
             //{
@@ -2721,8 +2748,8 @@ namespace AdangalApp
             }
 
             // Load Basic Details
-            loadedFile = (ddlProcessedFiles.SelectedItem as LoadedFileDetail);
-            UpadteLogPath(loadedFile.VillageName);
+            //loadedFile = (ddlProcessedFiles.SelectedItem as LoadedFileDetail);
+            UpadteLogPath(ddlProcessedFiles.SelectedItem.ToString());
 
             btnLoadProcessed.Enabled = true;
             SetVillage();
@@ -3027,6 +3054,46 @@ namespace AdangalApp
 
             }
         }
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 1 && e.Button == MouseButtons.Right)
+            {
+                ContextMenuStrip strip = new ContextMenuStrip();
+
+                var selectedRow = dataGridView1.SelectedRows[0];
+                strip.Tag = (Adangal)selectedRow.DataBoundItem;
+                strip.Items.Add("ReCreate").Name = "ReCreateName";
+                strip.Items.Add("Delete").Name = "DeleteName";
+                strip.Show(dataGridView1, new Point(e.X, e.Y));
+
+                strip.ItemClicked += Strip_ItemClicked;
+
+            }
+        }
+
+        private void Strip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            var txn = (Adangal)((ContextMenuStrip)sender).Tag;
+            var kv = new KeyValue(){ Value = txn.NilaAlavaiEn, Caption = txn.UtpirivuEn };
+            var list = new List<KeyValue>() { kv };
+
+            if (e.ClickedItem.Name == "ReCreateName")
+            {
+                AdangalConverter.ProcessAdangal(list, true);
+            }
+            else if (e.ClickedItem.Name == "DeleteName")
+            {
+                waitForm.Show(this);
+                DataAccess.DeleteAdangalFile(txn);
+                dataGridView1.DataSource = DataAccess.GetActiveAdangal();
+                waitForm.Close();
+            }
+
+
+        }
+
+        
     }
 
 }
