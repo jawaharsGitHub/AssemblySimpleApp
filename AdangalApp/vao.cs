@@ -2690,21 +2690,24 @@ namespace AdangalApp
 
             fullAdangalFromjson = DataAccess.GetActiveAdangal();
             LogMessage($"READED DATA FROM EXISTING JSON FILE");
-            dataGridView1.DataSource = fullAdangalFromjson;
+            dataGridView1.DataSource = fullAdangalFromjson.OrderBy(o => o.NilaAlavaiEn)
+                                               .ThenBy(t => t.UtpirivuEn, new AlphanumericComparer()).ToList();
 
-            if (canAddMissedSurvey)
-            {
-                LogMessage($"STEP-2 - LOADING JUST ADANGAL FOR ADDING NEW SURVEY ONLY.");
-            }
-            else
-            {
-                pattaList = DataAccess.GetPattaList();
-                WholeLandList = DataAccess.GetWholeLandList();
+            //if (canAddMissedSurvey)
+            //{
+            //    LogMessage($"STEP-2 - LOADING JUST ADANGAL FOR ADDING NEW SURVEY ONLY.");
+            //}
+            //else
+            //{
+            //    pattaList = DataAccess.GetPattaList();
+            //    WholeLandList = DataAccess.GetWholeLandList();
 
-                ProcessFullReport();
-                LogMessage($"STEP-2 - Completed - Existing file Load");
-            }
-            //EnableReadyForExist();
+            //    ProcessFullReport();
+            //    LogMessage($"STEP-2 - Completed - Existing file Load");
+            //}
+
+            LogMessage($"STEP-2 - Completed - Existing file Load");
+            EnableReadyForExist();
 
             waitForm.Close();
         }

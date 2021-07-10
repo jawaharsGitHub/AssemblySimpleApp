@@ -18,11 +18,13 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Tesseract;
+using System.ComponentModel;
 
 namespace AdangalApp.AdangalTypes
 {
     public static class AdangalConverter
     {
+        static LogHelper logHelper;
         static List<string> relationTypesCorrect;
         public static string villagPath; // = @"F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\ACHUNTHANVAYAL\ACHUNTHANVAYAL-full.json";
         static AdangalConverter()
@@ -35,7 +37,187 @@ namespace AdangalApp.AdangalTypes
                         "மனைவி"
                     };
 
+
+        }
+
+
+        static BackgroundWorker bw = new BackgroundWorker();
+        public static void ProcessAdangal(LogHelper _logHelper, string villageName)
+        {
+            int minute = DateTime.Now.Minute;
+
+            logHelper = _logHelper;
+            string districCode = ConfigurationManager.AppSettings["districCode"];
+            string talukCode = ConfigurationManager.AppSettings["talukCode"];
+            string villageCode = ConfigurationManager.AppSettings["villageCode"];
             
+
+            
+            var list = new List<KeyValue>() { 
+                new KeyValue() { Value = 66, Caption = "2E" } ,
+                new KeyValue() { Value = 37, Caption = "4" }
+            };
+            //var isTest = true;
+
+            // Read subdiv file
+            //List<KeyValue> list= DataAccess.GetSubdiv($@"F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\{villageName}\{villageName}-subdiv.json");
+
+            try
+            {
+                System.Timers.Timer aTimer = new System.Timers.Timer(10 * 60 * 1000);
+                IWebDriver driver = new ChromeDriver();
+                driver.Navigate().GoToUrl("https://eservices.tn.gov.in/eservicesnew/land/chitta.html?lan=en");
+
+                for (int i = 0; i <= list.Count - 1; i++)
+                {
+                    //if (IsExist(list[i].Value, list[i].Caption)) // && isTest == false)
+                    //    continue;
+
+                    driver = driver.SwitchTo().Window(driver.WindowHandles[0]);
+                    //select district
+                    var district = driver.FindElement(By.Name("districtCode"));
+                    var selectElement = new SelectElement(district);
+                    selectElement.SelectByValue(districCode);
+
+                    //choose rural
+                    RadioButtons categories = new RadioButtons(driver, driver.FindElements(By.Name("areaType")));
+                    categories.SelectValue("rural");
+
+                    //button click
+                    driver.FindElement(By.ClassName("button")).Click();
+
+                    // select taluk
+                    var taluk = driver.FindElement(By.Name("talukCode"));
+                    var talukElement = new SelectElement(taluk);
+                    talukElement.SelectByValue(talukCode);
+
+                    //choose survey
+                    RadioButtons pattaCategory = new RadioButtons(driver, driver.FindElements(By.Name("viewOpt")));
+                    pattaCategory.SelectValue("sur");
+
+                    //choose survey
+                    RadioButtons fmbCategory = new RadioButtons(driver, driver.FindElements(By.Name("viewOption")));
+                    fmbCategory.SelectValue("view");
+
+                    // select village
+                    var village = driver.FindElement(By.Name("villageCode"));
+                    var vilageElement = new SelectElement(village);
+                    while (vilageElement.WrappedElement.Text == "Please Select ...")
+                    {
+                        village = driver.FindElement(By.Name("villageCode"));
+                        vilageElement = new SelectElement(village);
+                    }
+                    vilageElement.SelectByValue(villageCode);
+
+                    //enter survey no
+                    var txt = driver.FindElement(By.Name("surveyNo"));
+                    txt.SendKeys(list[i].Value.ToString());
+
+                    //enter captcha
+                    var text = AdangalConverter.GenerateSnapshot(driver, @"E:\imageTest\");
+                    var txtCap = driver.FindElement(By.Name("captcha"));
+                    txtCap.SendKeys(text);
+
+                    var subDiv = driver.FindElement(By.Name("subdivNo"));
+                    var subDivElement = new SelectElement(subDiv);
+                    while (subDivElement.WrappedElement.Text == "Please Select ...")
+                    {
+                        subDiv = driver.FindElement(By.Name("subdivNo"));
+                        subDivElement = new SelectElement(subDiv);
+                    }
+                    subDivElement.SelectByValue(list[i].Caption);
+
+                    //button click
+                    driver.FindElement(By.ClassName("button")).Click();
+
+                    driver = driver.SwitchTo().Window(driver.WindowHandles[1]);
+                    Actions action = new Actions(driver);
+                    action.KeyDown(OpenQA.Selenium.Keys.Control).SendKeys("a").KeyUp(OpenQA.Selenium.Keys.Control).Build().Perform();
+                    action.KeyDown(OpenQA.Selenium.Keys.Control).SendKeys("c").KeyUp(OpenQA.Selenium.Keys.Control).Build().Perform();
+
+                    var copiedText = Clipboard.GetText();
+
+                    if (copiedText.ToLower().Contains("district") == true &&
+                        copiedText.ToLower().Contains("government") == false &&
+                        copiedText.ToLower().Contains("bhoodan") == false)
+                    {
+                        logHelper.WriteAdangalLog($"Wrong Captcha: {text}: {list[i].Value}-{list[i].Caption}");
+                        //MessageBox.Show($"Retry for {list[i].Value}-{list[i].Caption}!");
+                        i -= 1;
+                        driver.Close();
+                        continue;
+                    }
+
+                    File.AppendAllText($@"F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\{villageName}\{villageName}-10-1.txt", copiedText);
+
+
+                    if (copiedText.ToLower().Contains("bhoodan"))
+                    {
+                        AddBhoodanData(list[i].Value, list[i].Caption);
+                        logHelper.WriteAdangalLog($"added bhoodan land - {list[i].Value}-{list[i].Caption}");
+                    }
+                    else if (copiedText.ToLower().Contains("government"))
+                    {
+                        AddPorambokkuData(list[i].Value, list[i].Caption);
+                        logHelper.WriteAdangalLog($"added govt land - {list[i].Value}-{list[i].Caption}");
+                    }
+                    else
+                    {
+                        TextToAdangal(copiedText, list[i].Value, list[i].Caption, logHelper);
+                    }
+
+                    LogMessage($"DONE:[index-{i}]/{list.Count}");
+
+                    driver.Close();
+                   
+                    
+                    
+                    aTimer.Elapsed += (a,o) => {
+                        bw.DoWork += (s, e) =>
+                        {
+                            var perc = list.Count.PercentageBtwIntNo(i);
+                            var sub = $"{perc}% - {villageName}- DONE:[{i}] out of {list.Count}";
+                            AppCommunication.SendAdangalUpdate($"{perc}% - {villageName}- DONE:[{i}] out of {list.Count}"); // Email
+                        };
+
+                        bw.RunWorkerAsync();
+
+                    };
+
+                    aTimer.AutoReset = true;
+                    aTimer.Enabled = true;
+                    aTimer.Start();
+
+                    
+                }
+
+                var processed = DataAccess.GetActiveAdangalNew(AdangalConverter.villagPath);
+                MessageBox.Show($"Completed: {processed.Count} out of {list.Count}", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                LogMessage("ERROR:" + ex.ToString());
+
+            }
+        }
+
+
+        private static void LogMessage(string message)
+        {
+            try
+            {
+                if (logHelper != null)
+                    logHelper.WriteAdangalLog(message);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("erro" + ex.ToString());
+            }
+
+
         }
 
         public static void SetGlobalVillagePath(string path)
@@ -148,7 +330,7 @@ namespace AdangalApp.AdangalTypes
 
         }
 
-        
+
 
         public static bool IsExist(int NilaAlavaiEn, string UtpirivuEn)
         {
@@ -175,7 +357,7 @@ namespace AdangalApp.AdangalTypes
             }
             catch (Exception ex)
             {
-                //LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
+                throw ex;
             }
 
             return adangal;
@@ -223,13 +405,13 @@ namespace AdangalApp.AdangalTypes
             return (ld, parappu, theervai);
         }
 
-        private static KeyValue GetOwnerName(string nameRow)
+        private static KeyValue GetOwnerName(string paramNameRow)
         {
             try
             {
                 KeyValue kv = new KeyValue();
-
-                nameRow = nameRow.Split(' ').ToList().Where(w => w.Trim() != "").ToList()[1];
+                var nameRow = paramNameRow;
+                nameRow = nameRow.Split('.').ToList().Where(w => w.Trim() != "").ToList()[1].Trim();
                 string name = "";
                 if (relationTypesCorrect.Any(a => nameRow.Split('\t').ToList().Contains(a))) // have valid names.
                 {

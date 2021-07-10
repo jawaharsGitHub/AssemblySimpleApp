@@ -231,6 +231,11 @@ namespace AdangalApp
             return ReadFileAsObjects<Adangal>(JsonPath).Where(w => w.LandStatus != LandStatus.Deleted).ToList();
         }
 
+        public static List<Adangal> GetActiveAdangalNew(string path)
+        {
+            return ReadFileAsObjects<Adangal>(path).ToList();
+        }
+
         public static List<Adangal> GetDeletedAdangal()
         {
             return ReadFileAsObjects<Adangal>(JsonPath).Where(w => w.LandStatus == LandStatus.Deleted).ToList();
