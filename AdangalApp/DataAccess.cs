@@ -33,7 +33,8 @@ namespace AdangalApp
             SummaryPath = AppConfiguration.GetDynamicPath($"{vnPath}-Summary.json");
             GovtBuildingPath = AppConfiguration.GetDynamicPath($"{vnPath}-GovtBuilding.json");
             MissedAdangalPath = AppConfiguration.GetDynamicPath($"{vnPath}-{Environment.UserName}-MissedAdangal.json");
-            CopiedTextFile = AppConfiguration.GetDynamicPath($"{vnPath}-{Environment.UserName}-10-1.json");
+            CopiedTextFile = AppConfiguration.GetDynamicPath($"{vnPath}-{Environment.UserName}-10-1.txt");
+            LoadedFile  = AppConfiguration.GetDynamicPath($"{vnPath}-Detail.json");
 
             if (Directory.Exists(Directory.GetParent(JsonPath).FullName) == false)
                 Directory.CreateDirectory(Directory.GetParent(JsonPath).FullName);
@@ -53,7 +54,7 @@ namespace AdangalApp
 
         public static List<LoadedFileDetail> GetLoadedFile()
         {
-            LoadedFile = AppConfiguration.GetDynamicPath($"AdangalJson/LoadedFile.json");
+            //LoadedFile = AppConfiguration.GetDynamicPath($"AdangalJson/LoadedFile.json");
             General.CreateFileIfNotExist(LoadedFile);
 
             var data = ReadFileAsObjects<LoadedFileDetail>(LoadedFile);
@@ -61,6 +62,30 @@ namespace AdangalApp
 
             data.Insert(0, new LoadedFileDetail() { VillageCode = -1, VillageName = "--select--" });
             return data;
+        }
+
+        public static LoadedFileDetail GetVillageDetail()
+        {
+            //LoadedFile = AppConfiguration.GetDynamicPath($"AdangalJson/LoadedFile.json");
+            //General.CreateFileIfNotExist(LoadedFile);
+
+            var data = ReadFileAsSingleObject<LoadedFileDetail>(LoadedFile);
+            //data = data.Where(w => File.Exists(AppConfiguration.GetDynamicPath($"AdangalJson/{w.VillageName}/{w.VillageName}.json"))).ToList();
+
+            //data.Insert(0, new LoadedFileDetail() { VillageCode = -1, VillageName = "--select--" });
+            return data;
+        }
+
+        public static void SaveVillageDetail(LoadedFileDetail ld)
+        {
+            if (File.Exists(LoadedFile) == false)
+            {
+                General.CreateFileIfNotExist(LoadedFile);
+                //var data = ReadFileAsSingleObject<LoadedFileDetail>(LoadedFile);
+                //data = ld;
+                WriteSingleObjectToFile(ld, LoadedFile);
+            }
+            //return data;
         }
 
         public static List<string> GetLoadedFileDetails()
@@ -192,6 +217,7 @@ namespace AdangalApp
 
         public static bool IsAdangalAlreadyExist(int NilaAlavaiEn, string UtpirivuEn)
         {
+            if (File.Exists(JsonPath) == false) return false;
             //JsonPath = path;
             return GetActiveAdangal()
                 .Where(w => w.NilaAlavaiEn == NilaAlavaiEn && w.UtpirivuEn.Trim() == UtpirivuEn) // && w.LandStatus != LandStatus.Error)
@@ -204,13 +230,14 @@ namespace AdangalApp
 
             var data = GetActiveAdangal();
             var itemToDelete = data.Where(w => w.NilaAlavaiEn == adangal.NilaAlavaiEn &&
-                            w.UtpirivuEn.Trim() == adangal.UtpirivuEn &&
-                            w.LandStatus == LandStatus.Error).FirstOrDefault();
+                            w.UtpirivuEn.Trim() == adangal.UtpirivuEn 
+                            //&& w.LandStatus == LandStatus.Error
+                            ).FirstOrDefault();
 
             if (itemToDelete != null)
             {
                 data.Remove(itemToDelete);
-                WriteObjectsToFile(data, LoadedFile);
+                WriteObjectsToFile(data, JsonPath);
             }
 
             data = GetActiveAdangal();
@@ -220,9 +247,9 @@ namespace AdangalApp
 
         }
 
-        private static void DeleteExistAdangal(Adangal adangal, string path)
+        private static void DeleteExistAdangal(Adangal adangal)
         {
-            var data = ReadFileAsObjects<Adangal>(path);
+            var data = ReadFileAsObjects<Adangal>(JsonPath);
 
             var itemToDelete = data.Where(w => w.NilaAlavaiEn == adangal.NilaAlavaiEn &&
                             w.UtpirivuEn.Trim() == adangal.UtpirivuEn &&
@@ -231,7 +258,7 @@ namespace AdangalApp
             if (itemToDelete != null)
             {
                 data.Remove(itemToDelete);
-                WriteObjectsToFile(data, LoadedFile);
+                WriteObjectsToFile(data, JsonPath);
             }
         }
 
@@ -285,9 +312,9 @@ namespace AdangalApp
             //return ReadFileAsObjects<Adangal>(JsonPath).Where(w => w.LandStatus != LandStatus.Deleted).ToList();
         }
 
-        public static List<Adangal> GetActiveAdangalNew(string path)
+        public static List<Adangal> GetActiveAdangalNew()
         {
-            return ReadFileAsObjects<Adangal>(path).Where(w => w.LandStatus == LandStatus.Added).ToList();
+            return ReadFileAsObjects<Adangal>(JsonPath).Where(w => w.LandStatus == LandStatus.Added).ToList();
         }
 
         public static List<Adangal> GetDeletedAdangal()
@@ -366,8 +393,9 @@ namespace AdangalApp
 
         public static bool AddNewLoadedFile(LoadedFileDetail loadedFileDetail)
         {
-            DeleteLoadedFile(loadedFileDetail);
-            InsertSingleObjectToListJson<LoadedFileDetail>(LoadedFile, loadedFileDetail);
+            //DeleteLoadedFile(loadedFileDetail);
+            //InsertSingleObjectToListJson<LoadedFileDetail>(LoadedFile, loadedFileDetail);
+            WriteSingleObjectToFile(loadedFileDetail, LoadedFile);
             return true;
         }
 

@@ -16,6 +16,6 @@ namespace AdangalApp.AdangalTypes
         Zero,
         CLRBhoodanLands,
         Dash,
-        //NameError
+        UnKnown
     }
 }

@@ -2101,6 +2101,8 @@ namespace AdangalApp
             loadedFile.VillageName = selectedVillage.Display;
             loadedFile.VillageNameTamil = txtVaruvai.Text.Trim();
 
+            DataAccess.AddNewLoadedFile(loadedFile);
+
 
         }
 
@@ -2111,12 +2113,12 @@ namespace AdangalApp
             try
             {
                 LogMessage($"STEP-2 - Started - First time Load");
-                if (txtVattam.Text.Trim() == empty || txtFirka.Text.Trim() == empty || txtVaruvai.Text.Trim() == empty)
-                {
-                    MessageBox.Show("Vattam, Firka and Village in tamil font is mandatory!");
-                    LogMessage($"STEP-2 - Value missing: Vattam, Firka and Village in tamil font");
-                    return;
-                }
+                //if (txtVattam.Text.Trim() == empty || txtFirka.Text.Trim() == empty || txtVaruvai.Text.Trim() == empty)
+                //{
+                //    MessageBox.Show("Vattam, Firka and Village in tamil font is mandatory!");
+                //    LogMessage($"STEP-2 - Value missing: Vattam, Firka and Village in tamil font");
+                //    return;
+                //}
 
                 // Getting subdiv file
                 //List<KeyValue> onlineData;
@@ -2264,24 +2266,25 @@ namespace AdangalApp
         }
         private void cmbVillages_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            if (cmbVillages.SelectedIndex == 0) return;
+            if (cmbVillages.SelectedIndex == 0)
+            {
+                btnLoadFirstTIme.Enabled = false;
+                return; 
+            }
             var selItem = (ComboData)cmbVillages.SelectedItem;
-            LoadFileDetails();
+            DataAccess.SetVillageName();
             AdangalConstant.villageName = selItem.Display;
             UpadteLogPath(selItem.Display);
-            DataAccess.SetVillageName();
-
-            if (selItem.Value != -1)
-                LogMessage($"STEP - 1 - Village: {selItem.Value}-{selItem.Display}");
-
+            LoadFileDetails();
+            
+            //loadedFile = DataAccess.GetVillageDetail();
+            LogMessage($"STEP - 1 - Village: {selItem.Value}-{selItem.Display}");
 
             var fileStatus = AdangalConverter.IsSync();
-
             MessageBox.Show(fileStatus);
 
             btnLoadFirstTIme.Enabled = true;
-
-            //btnReadFile.Enabled = (DataAccess.IsSubDivFileExist() == false);
+            
 
             //CheckJsonExist();
 
@@ -2526,11 +2529,16 @@ namespace AdangalApp
         {
             try
             {
+                
+
                 if (txtAddNewSurvey.Text.Trim() == empty)
                 {
                     MessageBox.Show("Please provide data to process");
                     return;
                 }
+
+                AdangalConverter.TextToAdangal(txtAddNewSurvey.Text, 0, "");
+
                 var newData = txtAddNewSurvey.Text;
 
                 var splitData = newData.Replace("உரிமையாளர்கள் பெயர்", "$").Split('$');
@@ -2790,17 +2798,24 @@ namespace AdangalApp
                 return;
             }
 
-            // Load Basic Details
-            //loadedFile = (ddlProcessedFiles.SelectedItem as LoadedFileDetail);
-            UpadteLogPath(ddlProcessedFiles.SelectedItem.ToString());
-
+            //var selItem = (ComboData)cb.SelectedItem;
+            AdangalConstant.villageName = ddlProcessedFiles.SelectedItem.ToString();
+            UpadteLogPath(AdangalConstant.villageName);
+            DataAccess.SetVillageName();
+            loadedFile = DataAccess.GetVillageDetail();
+            LogMessage($"STEP - 1 - Village: {AdangalConstant.villageName}");
             btnLoadProcessed.Enabled = true;
-            SetVillage();
+            //SetVillage();
         }
 
         private void ddlListType_DataSourceChanged(object sender, EventArgs e)
         {
             ddlListType.Enabled = isTestingMode;
+        }
+
+        private void OnVillageChange(object cb)
+        {
+            
         }
 
         private void btnBookView_Click(object sender, EventArgs e)
@@ -3156,9 +3171,9 @@ namespace AdangalApp
         private void btnLoadFirstTIme_Click(object sender, EventArgs e)
         {
 
-            //var list = new List<KeyValue>() { 
-            //    new KeyValue() { Value = 66, Caption = "2E" } ,
-            //    new KeyValue() { Value = 37, Caption = "2E" }
+            //var list = new List<KeyValue>() {
+            //    new KeyValue() { Value = 9, Caption = "3B3" } ,
+            //    //new KeyValue() { Value = 37, Caption = "2E" }
             //};
 
             List<KeyValue> list = DataAccess.GetSubdiv();

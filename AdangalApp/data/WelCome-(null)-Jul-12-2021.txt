@@ -1,0 +1,442 @@
+2021-07-12 00:01:29,899 [1] DEBUG - =================Monday, 12 July 2021 00:01:29========================
+2021-07-12 00:02:24,935 [1] DEBUG - =================Monday, 12 July 2021 00:02:24========================
+2021-07-12 00:03:08,265 [1] DEBUG - =================Monday, 12 July 2021 00:03:08========================
+2021-07-12 00:06:57,488 [1] DEBUG - =================Monday, 12 July 2021 00:06:57========================
+2021-07-12 00:07:23,914 [1] DEBUG - STEP - 1 - Village: 55-KARAN
+2021-07-12 00:07:54,012 [1] DEBUG - STEP - 1 - Village: 55-KARAN
+2021-07-12 00:16:59,333 [1] DEBUG - =================Monday, 12 July 2021 00:16:59========================
+2021-07-12 00:18:10,782 [1] DEBUG - =================Monday, 12 July 2021 00:18:10========================
+2021-07-12 00:23:07,101 [1] DEBUG - =================Monday, 12 July 2021 00:23:07========================
+2021-07-12 00:23:22,104 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-12 00:23:51,344 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 00:23:51,531 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 00:23:54,242 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 00:23:55,091 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 00:24:02,711 [1] DEBUG - STEP-1 STARTED
+2021-07-12 00:24:03,290 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-12 00:24:07,443 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-12 00:24:15,494 [1] DEBUG - STEP - 1 - Village: 55-KARAN
+2021-07-12 00:25:51,278 [1] DEBUG - ERROR:System.ArgumentNullException: Value cannot be null.
+Parameter name: path
+   at System.IO.File.ReadAllText(String path)
+   at Common.BaseClass.ReadFileAsObjects[T](String filePath) in F:\AssemblySimpleApp\Common\BaseTypes\BaseClass.cs:line 37
+   at AdangalApp.DataAccess.GetActiveAdangalNew(String path) in F:\AssemblySimpleApp\AdangalApp\DataAccess.cs:line 304
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 218
+2021-07-12 00:28:11,060 [1] DEBUG - =================Monday, 12 July 2021 00:28:11========================
+2021-07-12 00:28:24,943 [1] DEBUG - STEP - 1 - Village: 55-KARAN
+2021-07-12 00:29:23,229 [1] DEBUG - Added (1) out of (1) for 7-1C
+2021-07-12 00:29:23,229 [1] DEBUG - DONE:[index-0]/1
+2021-07-12 00:31:41,370 [1] DEBUG - =================Monday, 12 July 2021 00:31:41========================
+2021-07-12 00:31:49,597 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-12 00:31:54,813 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 00:31:54,951 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 00:31:57,491 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 00:31:57,985 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 00:33:02,340 [1] DEBUG - Added (0) out of (1) for 40-4
+2021-07-12 00:33:02,340 [1] DEBUG - DONE:[index-0]/7
+2021-07-12 00:33:08,973 [1] DEBUG - Added (0) out of (3) for 40-1A
+2021-07-12 00:33:08,973 [1] DEBUG - DONE:[index-1]/7
+2021-07-12 00:33:14,117 [1] DEBUG - Added (0) out of (2) for 31-2
+2021-07-12 00:33:14,117 [1] DEBUG - DONE:[index-2]/7
+2021-07-12 00:33:19,849 [1] DEBUG - Added (0) out of (1) for 24-4B
+2021-07-12 00:33:19,849 [1] DEBUG - DONE:[index-3]/7
+2021-07-12 00:33:24,982 [1] DEBUG - Added (0) out of (3) for 20-2D
+2021-07-12 00:33:24,982 [1] DEBUG - DONE:[index-4]/7
+2021-07-12 00:33:30,168 [1] DEBUG - Added (0) out of (3) for 20-2A
+2021-07-12 00:33:30,168 [1] DEBUG - DONE:[index-5]/7
+2021-07-12 00:33:35,182 [1] DEBUG - Added (0) out of (2) for 9-3B3
+2021-07-12 00:33:35,182 [1] DEBUG - DONE:[index-6]/7
+2021-07-12 00:34:16,964 [1] DEBUG - ERROR:System.IO.FileNotFoundException: Could not find file 'F:\AssemblySimpleApp\AdangalApp\bin\Debug\KARAN'.
+File name: 'F:\AssemblySimpleApp\AdangalApp\bin\Debug\KARAN'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Common.BaseClass.ReadFileAsObjects[T](String filePath) in F:\AssemblySimpleApp\Common\BaseTypes\BaseClass.cs:line 37
+   at AdangalApp.DataAccess.GetActiveAdangalNew(String path) in F:\AssemblySimpleApp\AdangalApp\DataAccess.cs:line 304
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 218
+2021-07-12 00:34:18,665 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 00:34:18,681 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 00:34:20,911 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 00:34:20,949 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 00:35:32,218 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 00:35:32,233 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 00:35:34,411 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 00:35:34,439 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 00:37:07,572 [1] DEBUG - =================Monday, 12 July 2021 00:37:07========================
+2021-07-12 00:38:07,108 [1] DEBUG - =================Monday, 12 July 2021 00:38:07========================
+2021-07-12 00:43:46,791 [1] DEBUG - =================Monday, 12 July 2021 00:43:46========================
+2021-07-12 00:53:05,263 [1] DEBUG - =================Monday, 12 July 2021 00:53:05========================
+2021-07-12 00:54:10,615 [1] DEBUG - =================Monday, 12 July 2021 00:54:10========================
+2021-07-12 00:56:00,292 [1] DEBUG - =================Monday, 12 July 2021 00:56:00========================
+2021-07-12 00:56:27,249 [1] DEBUG - STEP - 1 - Village: 55-KARAN
+2021-07-12 00:56:54,105 [1] DEBUG - STEP - 1 - Village: 55-KARAN
+2021-07-12 00:57:35,495 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-12 00:57:38,810 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 00:57:38,826 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 00:57:41,040 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 00:57:41,303 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 00:58:23,560 [1] DEBUG - Added (1) out of (2) for 9-3B3
+2021-07-12 00:58:26,879 [1] DEBUG - DONE:[index-0]/1
+2021-07-12 00:58:43,199 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 00:58:43,215 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 00:58:45,328 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 00:58:45,390 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 00:58:47,459 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 00:58:47,490 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 00:58:49,596 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 00:58:49,628 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 00:59:25,490 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 00:59:25,506 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 00:59:27,648 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 00:59:27,696 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 01:09:58,224 [1] DEBUG - =================Monday, 12 July 2021 01:09:58========================
+2021-07-12 01:10:26,799 [1] DEBUG - STEP - 1 - Village: 55-KARAN
+2021-07-12 01:10:35,844 [1] DEBUG - STEP - 1 - Village: 55-KARAN
+2021-07-12 01:10:41,375 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-12 01:10:44,037 [1] DEBUG - STEP - 1 - Village: 62-ENMANAMKONDAN
+2021-07-12 01:10:51,754 [1] DEBUG - STEP - 1 - Village: 55-KARAN
+2021-07-12 01:11:07,025 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-12 01:11:07,965 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 01:11:08,012 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 01:11:10,534 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 01:11:11,038 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 01:11:16,654 [1] DEBUG - STEP - 1 - Village: 55-KARAN
+2021-07-12 01:12:25,249 [1] DEBUG - Added (3) out of (3) for 20-2A
+2021-07-12 01:12:25,249 [1] DEBUG - added new record - 20-2A
+2021-07-12 01:12:25,249 [1] DEBUG - DONE:[index-214]/3632
+2021-07-12 01:12:32,128 [1] DEBUG - Added (1) out of (1) for 24-4B
+2021-07-12 01:12:32,128 [1] DEBUG - added new record - 24-4B
+2021-07-12 01:12:32,128 [1] DEBUG - DONE:[index-273]/3632
+2021-07-12 01:12:38,853 [1] DEBUG - Added (1) out of (2) for 31-2
+2021-07-12 01:12:38,853 [1] DEBUG - added new record - 31-2
+2021-07-12 01:12:38,853 [1] DEBUG - DONE:[index-381]/3632
+2021-07-12 01:12:45,305 [1] DEBUG - Added (1) out of (1) for 40-4
+2021-07-12 01:12:45,305 [1] DEBUG - added new record - 40-4
+2021-07-12 01:12:45,305 [1] DEBUG - DONE:[index-453]/3632
+2021-07-12 01:12:50,346 [1] DEBUG - Added (2) out of (2) for 42-4
+2021-07-12 01:12:50,346 [1] DEBUG - added new record - 42-4
+2021-07-12 01:12:50,346 [1] DEBUG - DONE:[index-462]/3632
+2021-07-12 01:12:55,935 [1] DEBUG - Added (2) out of (2) for 42-6A
+2021-07-12 01:12:55,935 [1] DEBUG - added new record - 42-6A
+2021-07-12 01:12:55,935 [1] DEBUG - DONE:[index-464]/3632
+2021-07-12 01:13:02,715 [1] DEBUG - ERROR in names: namerow-
+1.  	???????????????????????????????????????????????????????????????????????????????????	...	???????????????????????? ???? ??????????????????????? ???????????????	-
+
+2021-07-12 01:13:04,319 [1] DEBUG - ERROR: 42-6B - System.NullReferenceException: Object reference not set to an instance of an object.
+   at AdangalApp.AdangalTypes.AdangalConverter.GetAdangalFromCopiedData(List`1 data, String pattaEn, KeyValue ownerName) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 413
+   at AdangalApp.AdangalTypes.AdangalConverter.<>c__DisplayClass11_0.<TextToAdangal>b__2(String fe) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 346
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at AdangalApp.AdangalTypes.AdangalConverter.TextToAdangal(String text, Int32 surveyNo, String subdivNo) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 343
+2021-07-12 01:13:04,319 [1] DEBUG - added new record - 42-6B
+2021-07-12 01:13:04,319 [1] DEBUG - DONE:[index-465]/3632
+2021-07-12 01:13:12,411 [1] DEBUG - Added (1) out of (1) for 42-7A
+2021-07-12 01:13:12,411 [1] DEBUG - added new record - 42-7A
+2021-07-12 01:13:12,411 [1] DEBUG - DONE:[index-466]/3632
+2021-07-12 01:13:18,631 [1] DEBUG - Added (2) out of (2) for 42-7B
+2021-07-12 01:13:18,631 [1] DEBUG - added new record - 42-7B
+2021-07-12 01:13:18,631 [1] DEBUG - DONE:[index-467]/3632
+2021-07-12 01:13:23,351 [1] DEBUG - added govt land - 43-1
+2021-07-12 01:13:23,351 [1] DEBUG - DONE:[index-469]/3632
+2021-07-12 01:13:27,145 [1] DEBUG - added unknown - 43-2A
+2021-07-12 01:13:27,145 [1] DEBUG - DONE:[index-470]/3632
+2021-07-12 01:13:30,818 [1] DEBUG - added unknown - 43-2B
+2021-07-12 01:13:30,818 [1] DEBUG - DONE:[index-471]/3632
+2021-07-12 01:13:35,823 [1] DEBUG - Added (3) out of (4) for 43-2C1
+2021-07-12 01:13:35,823 [1] DEBUG - added new record - 43-2C1
+2021-07-12 01:13:35,823 [1] DEBUG - DONE:[index-472]/3632
+2021-07-12 01:13:41,035 [1] DEBUG - Added (3) out of (3) for 43-2C2
+2021-07-12 01:13:41,035 [1] DEBUG - added new record - 43-2C2
+2021-07-12 01:13:41,035 [1] DEBUG - DONE:[index-473]/3632
+2021-07-12 01:13:45,014 [1] DEBUG - added govt land - 43-3
+2021-07-12 01:13:45,014 [1] DEBUG - DONE:[index-478]/3632
+2021-07-12 01:13:50,055 [1] DEBUG - Added (1) out of (1) for 43-4
+2021-07-12 01:13:50,055 [1] DEBUG - added new record - 43-4
+2021-07-12 01:13:50,055 [1] DEBUG - DONE:[index-479]/3632
+2021-07-12 01:13:55,059 [1] DEBUG - Added (1) out of (1) for 43-5
+2021-07-12 01:13:55,059 [1] DEBUG - added new record - 43-5
+2021-07-12 01:13:55,059 [1] DEBUG - DONE:[index-480]/3632
+2021-07-12 01:13:59,952 [1] DEBUG - DONE:[index-481]/3632
+2021-07-12 01:14:04,635 [1] DEBUG - Added (1) out of (1) for 44-3
+2021-07-12 01:14:04,635 [1] DEBUG - added new record - 44-3
+2021-07-12 01:14:04,635 [1] DEBUG - DONE:[index-483]/3632
+2021-07-12 01:14:08,780 [1] DEBUG - added unknown - 44-6
+2021-07-12 01:14:08,780 [1] DEBUG - DONE:[index-486]/3632
+2021-07-12 01:14:13,051 [1] DEBUG - added govt land - 44-9
+2021-07-12 01:14:13,051 [1] DEBUG - DONE:[index-493]/3632
+2021-07-12 01:14:16,880 [1] DEBUG - added unknown - 44-10A
+2021-07-12 01:14:16,880 [1] DEBUG - DONE:[index-494]/3632
+2021-07-12 01:14:22,301 [1] DEBUG - Added (4) out of (4) for 44-10B
+2021-07-12 01:14:22,301 [1] DEBUG - added new record - 44-10B
+2021-07-12 01:14:22,301 [1] DEBUG - DONE:[index-495]/3632
+2021-07-12 01:14:28,739 [1] DEBUG - Added (4) out of (4) for 44-10C
+2021-07-12 01:14:28,739 [1] DEBUG - added new record - 44-10C
+2021-07-12 01:14:28,739 [1] DEBUG - DONE:[index-496]/3632
+2021-07-12 01:14:34,442 [1] DEBUG - Added (5) out of (5) for 44-10D
+2021-07-12 01:14:34,442 [1] DEBUG - added new record - 44-10D
+2021-07-12 01:14:34,442 [1] DEBUG - DONE:[index-497]/3632
+2021-07-12 01:14:40,850 [1] DEBUG - Added (5) out of (6) for 44-10E
+2021-07-12 01:14:40,850 [1] DEBUG - added new record - 44-10E
+2021-07-12 01:14:40,850 [1] DEBUG - DONE:[index-498]/3632
+2021-07-12 01:14:47,174 [1] DEBUG - Added (1) out of (1) for 44-10F
+2021-07-12 01:14:47,174 [1] DEBUG - added new record - 44-10F
+2021-07-12 01:14:47,174 [1] DEBUG - DONE:[index-499]/3632
+2021-07-12 01:14:53,822 [1] DEBUG - Added (4) out of (4) for 44-10G
+2021-07-12 01:14:53,822 [1] DEBUG - added new record - 44-10G
+2021-07-12 01:14:53,822 [1] DEBUG - DONE:[index-500]/3632
+2021-07-12 01:14:58,965 [1] DEBUG - Added (2) out of (2) for 44-11
+2021-07-12 01:14:58,965 [1] DEBUG - added new record - 44-11
+2021-07-12 01:14:58,965 [1] DEBUG - DONE:[index-502]/3632
+2021-07-12 01:15:04,597 [1] DEBUG - Added (2) out of (2) for 44-12A
+2021-07-12 01:15:04,597 [1] DEBUG - added new record - 44-12A
+2021-07-12 01:15:04,597 [1] DEBUG - DONE:[index-503]/3632
+2021-07-12 01:15:11,033 [1] DEBUG - Added (1) out of (1) for 44-12B1
+2021-07-12 01:15:11,033 [1] DEBUG - added new record - 44-12B1
+2021-07-12 01:15:11,033 [1] DEBUG - DONE:[index-504]/3632
+2021-07-12 01:15:15,904 [1] DEBUG - ERROR:OpenQA.Selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElementByName(String name)
+   at OpenQA.Selenium.By.<>c__DisplayClass18_0.<Name>b__0(ISearchContext context)
+   at OpenQA.Selenium.By.FindElement(ISearchContext context)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(By by)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 111
+2021-07-12 01:15:23,181 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 01:15:23,196 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 01:15:25,535 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 01:15:25,563 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 01:18:04,899 [1] DEBUG - Added (0) out of (6) for 44-10A
+2021-07-12 01:18:05,559 [1] DEBUG - added new record - 44-10A
+2021-07-12 01:18:07,079 [1] DEBUG - DONE:[index-0]/26
+2021-07-12 01:18:19,336 [1] DEBUG - Added (1) out of (3) for 44-6
+2021-07-12 01:18:20,654 [1] DEBUG - added new record - 44-6
+2021-07-12 01:18:20,654 [1] DEBUG - DONE:[index-1]/26
+2021-07-12 01:18:47,772 [1] DEBUG - Added (0) out of (1) for 43-2B
+2021-07-12 01:18:47,772 [1] DEBUG - added new record - 43-2B
+2021-07-12 01:18:50,839 [1] DEBUG - DONE:[index-2]/26
+2021-07-12 01:18:59,050 [1] DEBUG - Added (0) out of (4) for 43-2A
+2021-07-12 01:18:59,050 [1] DEBUG - added new record - 43-2A
+2021-07-12 01:19:00,363 [1] DEBUG - DONE:[index-3]/26
+2021-07-12 01:19:09,203 [1] DEBUG - Added (0) out of (1) for 38-2A
+2021-07-12 01:19:09,203 [1] DEBUG - added new record - 38-2A
+2021-07-12 01:19:10,049 [1] DEBUG - DONE:[index-4]/26
+2021-07-12 01:19:29,919 [1] DEBUG - Added (0) out of (3) for 36-3
+2021-07-12 01:19:29,919 [1] DEBUG - added new record - 36-3
+2021-07-12 01:19:30,948 [1] DEBUG - DONE:[index-5]/26
+2021-07-12 01:19:41,600 [1] DEBUG - Added (0) out of (4) for 30-8B
+2021-07-12 01:19:41,600 [1] DEBUG - added new record - 30-8B
+2021-07-12 01:19:43,051 [1] DEBUG - DONE:[index-6]/26
+2021-07-12 01:19:51,738 [1] DEBUG - Added (0) out of (14) for 30-4
+2021-07-12 01:19:51,738 [1] DEBUG - added new record - 30-4
+2021-07-12 01:19:52,698 [1] DEBUG - DONE:[index-7]/26
+2021-07-12 01:20:01,945 [1] DEBUG - Added (0) out of (2) for 30-1B
+2021-07-12 01:20:01,945 [1] DEBUG - added new record - 30-1B
+2021-07-12 01:20:03,581 [1] DEBUG - DONE:[index-8]/26
+2021-07-12 01:29:09,416 [1] DEBUG - =================Monday, 12 July 2021 01:29:09========================
+2021-07-12 01:29:26,439 [1] DEBUG - STEP - 1 - Village: 55-KARAN
+2021-07-12 01:29:32,091 [1] DEBUG - STEP - 1 - Village: 55-KARAN
+2021-07-12 01:29:40,113 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-12 01:29:41,760 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 01:29:41,775 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 01:29:44,171 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 01:29:44,714 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 01:31:10,942 [1] DEBUG - ERROR in names: namerow-
+1.  	???????????????????????????????????????????????????????????????????????????????????	...	???????????????????????? ???? ??????????????????????? ???????????????	-
+
+2021-07-12 01:31:26,276 [1] DEBUG - ERROR: 42-6B - System.NullReferenceException: Object reference not set to an instance of an object.
+   at AdangalApp.AdangalTypes.AdangalConverter.GetAdangalFromCopiedData(List`1 data, String pattaEn, KeyValue ownerName) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 428
+   at AdangalApp.AdangalTypes.AdangalConverter.<>c__DisplayClass12_0.<TextToAdangal>b__2(String fe) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 361
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at AdangalApp.AdangalTypes.AdangalConverter.TextToAdangal(String text, Int32 surveyNo, String subdivNo) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 358
+2021-07-12 01:32:11,601 [1] DEBUG - ERROR in names: namerow-
+1.  	???????????????????????????????????????????????????????????????????????????????????	...	???????????????????????? ???? ??????????????????????? ???????????????	-
+
+2021-07-12 01:33:21,452 [1] DEBUG - ERROR in names: namerow-
+1.  	???????????????????????????????????????????????????????????????????????????????????	...	???????????????????????? ???? ??????????????????????? ???????????????	-
+
+2021-07-12 01:33:28,931 [1] DEBUG - ERROR: 42-6B - System.NullReferenceException: Object reference not set to an instance of an object.
+   at AdangalApp.AdangalTypes.AdangalConverter.GetAdangalFromCopiedData(List`1 data, String pattaEn, KeyValue ownerName) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 428
+   at AdangalApp.AdangalTypes.AdangalConverter.<>c__DisplayClass12_0.<TextToAdangal>b__2(String fe) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 361
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at AdangalApp.AdangalTypes.AdangalConverter.TextToAdangal(String text, Int32 surveyNo, String subdivNo) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 358
+2021-07-12 01:33:28,931 [1] DEBUG - added new record - 42-6B
+2021-07-12 01:33:30,031 [1] DEBUG - DONE:[index-0]/1
+2021-07-12 01:33:36,304 [1] DEBUG - ERROR:OpenQA.Selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Close()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 226
+2021-07-12 01:33:38,619 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 01:33:38,650 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 01:33:41,116 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 01:33:41,169 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 01:35:11,940 [1] DEBUG - Added (0) out of (6) for 44-10A
+2021-07-12 01:35:11,940 [1] DEBUG - added new record - 44-10A
+2021-07-12 01:35:15,112 [1] DEBUG - DONE:[index-0]/26
+2021-07-12 01:35:35,926 [1] DEBUG - Added (0) out of (3) for 44-6
+2021-07-12 01:35:35,926 [1] DEBUG - added new record - 44-6
+2021-07-12 01:35:39,676 [1] DEBUG - DONE:[index-1]/26
+2021-07-12 01:35:44,742 [1] DEBUG - Wrong Captcha: EDH2CU: 43-2B
+2021-07-12 01:37:42,458 [1] DEBUG - Added (0) out of (1) for 44-6
+2021-07-12 01:37:42,458 [1] DEBUG - added new record - 44-6
+2021-07-12 01:37:42,458 [1] DEBUG - DONE:[index-1]/26
+2021-07-12 01:37:55,148 [1] DEBUG - Added (0) out of (3) for 43-2B
+2021-07-12 01:37:55,148 [1] DEBUG - added new record - 43-2B
+2021-07-12 01:37:55,148 [1] DEBUG - DONE:[index-2]/26
+2021-07-12 01:37:59,327 [1] DEBUG - Wrong Captcha: FNV3PM: 43-2A
+2021-07-12 01:38:42,381 [1] DEBUG - Wrong Captcha: DWDPBQ: 43-2A
+2021-07-12 01:40:39,043 [1] DEBUG - Added (0) out of (4) for 43-2B
+2021-07-12 01:40:39,043 [1] DEBUG - added new record - 43-2B
+2021-07-12 01:40:39,043 [1] DEBUG - DONE:[index-2]/26
+2021-07-12 01:40:42,982 [1] DEBUG - Wrong Captcha: RHYPUV: 43-2A
+2021-07-12 01:54:16,517 [1] DEBUG - =================Monday, 12 July 2021 01:54:16========================
+2021-07-12 01:55:07,384 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-12 01:55:08,593 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 01:55:08,702 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 01:55:11,174 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 01:55:11,591 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 01:55:50,031 [1] DEBUG - Added (0) out of (2) for 6-3A
+2021-07-12 01:55:50,031 [1] DEBUG - added new record - 6-3A
+2021-07-12 01:55:50,031 [1] DEBUG - DONE:[index-0]/6
+2021-07-12 01:55:57,395 [1] DEBUG - Added (0) out of (1) for 3-21C
+2021-07-12 01:55:57,395 [1] DEBUG - added new record - 3-21C
+2021-07-12 01:55:57,395 [1] DEBUG - DONE:[index-1]/6
+2021-07-12 01:56:04,556 [1] DEBUG - Added (0) out of (1) for 3-3B1A
+2021-07-12 01:56:04,556 [1] DEBUG - added new record - 3-3B1A
+2021-07-12 01:56:04,556 [1] DEBUG - DONE:[index-2]/6
+2021-07-12 01:56:11,439 [1] DEBUG - Added (0) out of (2) for 3-2B2
+2021-07-12 01:56:11,439 [1] DEBUG - added new record - 3-2B2
+2021-07-12 01:56:11,439 [1] DEBUG - DONE:[index-3]/6
+2021-07-12 01:56:42,257 [1] DEBUG - added govt land - 2-1
+2021-07-12 01:56:42,258 [1] DEBUG - DONE:[index-4]/6
+2021-07-12 01:57:10,707 [1] DEBUG - Added (0) out of (1) for 1-5
+2021-07-12 01:57:35,310 [1] DEBUG - added new record - 1-5
+2021-07-12 01:57:35,310 [1] DEBUG - DONE:[index-5]/6
+2021-07-12 01:57:49,106 [1] DEBUG - ERROR:OpenQA.Selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Close()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 222
+2021-07-12 01:57:58,209 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 01:57:58,225 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 01:58:00,759 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 01:58:00,790 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 01:58:54,214 [1] DEBUG - Wrong Captcha: FPEN3W: 1-5
+2021-07-12 02:02:25,225 [1] DEBUG - =================Monday, 12 July 2021 02:02:25========================
+2021-07-12 02:02:31,635 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-12 02:02:35,671 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 02:02:35,717 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 02:02:38,202 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 02:02:38,650 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 02:04:31,350 [1] DEBUG - Added (6) out of (6) for 44-10A
+2021-07-12 02:04:31,350 [1] DEBUG - added new record - 44-10A
+2021-07-12 02:04:31,393 [1] DEBUG - DONE:[index-0]/27
+2021-07-12 02:04:45,744 [1] DEBUG - added dash - 44-6
+2021-07-12 02:04:45,745 [1] DEBUG - DONE:[index-1]/27
+2021-07-12 02:05:40,644 [1] DEBUG - ERROR:OpenQA.Selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebElement.Execute(String commandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebElement.Click()
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 133
+2021-07-12 02:05:55,309 [1] DEBUG - =================Monday, 12 July 2021 02:05:55========================
+2021-07-12 02:06:12,090 [1] DEBUG - STEP - 1 - Village: 55-KARAN
+2021-07-12 02:06:20,940 [1] DEBUG - STEP - 1 - Village: 55-KARAN
+2021-07-12 02:06:27,445 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-12 02:06:28,213 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 02:06:28,229 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 02:06:30,702 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 02:06:30,954 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 02:07:42,504 [1] DEBUG - Added (3) out of (3) for 44-6
+2021-07-12 02:07:42,504 [1] DEBUG - added new record - 44-6
+2021-07-12 02:07:42,504 [1] DEBUG - DONE:[index-0]/26
+2021-07-12 02:07:47,512 [1] DEBUG - Added (1) out of (1) for 43-2B
+2021-07-12 02:07:47,512 [1] DEBUG - added new record - 43-2B
+2021-07-12 02:07:47,512 [1] DEBUG - DONE:[index-1]/26
+2021-07-12 02:07:51,455 [1] DEBUG - Wrong Captcha: 4DNCzZV: 43-2A
+2021-07-12 02:07:56,520 [1] DEBUG - Added (4) out of (4) for 43-2A
+2021-07-12 02:07:56,520 [1] DEBUG - added new record - 43-2A
+2021-07-12 02:07:56,520 [1] DEBUG - DONE:[index-2]/26
+2021-07-12 02:08:01,443 [1] DEBUG - Added (1) out of (1) for 38-2A
+2021-07-12 02:08:01,443 [1] DEBUG - added new record - 38-2A
+2021-07-12 02:08:01,482 [1] DEBUG - DONE:[index-3]/26
+2021-07-12 02:08:06,727 [1] DEBUG - Added (3) out of (3) for 36-3
+2021-07-12 02:08:06,727 [1] DEBUG - added new record - 36-3
+2021-07-12 02:08:06,727 [1] DEBUG - DONE:[index-4]/26
+2021-07-12 02:08:12,382 [1] DEBUG - Added (4) out of (4) for 30-8B
+2021-07-12 02:08:12,382 [1] DEBUG - added new record - 30-8B
+2021-07-12 02:08:12,506 [1] DEBUG - DONE:[index-5]/26
+2021-07-12 02:08:18,806 [1] DEBUG - Added (14) out of (14) for 30-4
+2021-07-12 02:08:18,806 [1] DEBUG - added new record - 30-4
+2021-07-12 02:08:18,806 [1] DEBUG - DONE:[index-6]/26
+2021-07-12 02:08:23,625 [1] DEBUG - Added (2) out of (2) for 30-1B
+2021-07-12 02:08:23,625 [1] DEBUG - added new record - 30-1B
+2021-07-12 02:08:23,625 [1] DEBUG - DONE:[index-7]/26
+2021-07-12 02:08:50,239 [1] DEBUG - =================Monday, 12 July 2021 02:08:50========================
+2021-07-12 02:08:57,243 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-12 02:08:58,813 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 02:08:58,906 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 02:09:02,247 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 02:09:02,514 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 02:10:10,654 [1] DEBUG - Added (1) out of (1) for 29-6A
+2021-07-12 02:10:10,654 [1] DEBUG - added new record - 29-6A
+2021-07-12 02:10:10,670 [1] DEBUG - DONE:[index-0]/18
+2021-07-12 02:10:15,956 [1] DEBUG - Added (2) out of (2) for 29-5A1
+2021-07-12 02:10:15,956 [1] DEBUG - added new record - 29-5A1
+2021-07-12 02:10:15,956 [1] DEBUG - DONE:[index-1]/18
+2021-07-12 02:10:22,204 [1] DEBUG - Wrong Captcha: QH2MS5F: 28-1D
+2021-07-12 02:10:26,274 [1] DEBUG - Wrong Captcha: 8uU64M8: 28-1D
+2021-07-12 02:10:30,122 [1] DEBUG - Wrong Captcha: S5DNX2E: 28-1D
+2021-07-12 02:10:35,713 [1] DEBUG - Added (2) out of (2) for 28-1A
+2021-07-12 02:10:35,713 [1] DEBUG - added new record - 28-1A
+2021-07-12 02:10:35,713 [1] DEBUG - DONE:[index-3]/18
+2021-07-12 02:10:40,775 [1] DEBUG - Added (1) out of (1) for 24-9B
+2021-07-12 02:10:40,775 [1] DEBUG - added new record - 24-9B
+2021-07-12 02:10:40,790 [1] DEBUG - DONE:[index-4]/18
+2021-07-12 02:10:45,370 [1] DEBUG - Added (2) out of (2) for 18-3
+2021-07-12 02:10:45,370 [1] DEBUG - added new record - 18-3
+2021-07-12 02:10:45,370 [1] DEBUG - DONE:[index-5]/18
+2021-07-12 02:10:50,224 [1] DEBUG - Added (2) out of (2) for 17-1B
+2021-07-12 02:10:50,224 [1] DEBUG - added new record - 17-1B
+2021-07-12 02:10:50,224 [1] DEBUG - DONE:[index-6]/18
+2021-07-12 02:11:40,038 [1] DEBUG - =================Monday, 12 July 2021 02:11:40========================
+2021-07-12 02:11:46,275 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-12 02:11:47,256 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 02:11:47,412 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 02:11:50,633 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 02:11:51,022 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 02:12:21,033 [1] DEBUG - Added (2) out of (2) for 28-1D
+2021-07-12 02:12:21,033 [1] DEBUG - added new record - 28-1D
+2021-07-12 02:12:21,033 [1] DEBUG - DONE:[index-0]/1
+2021-07-12 02:12:33,711 [1] DEBUG - ERROR:OpenQA.Selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Close()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 222
+2021-07-12 02:12:35,686 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 02:12:35,702 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 02:12:38,059 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 02:12:38,110 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 02:14:04,621 [1] DEBUG - =================Monday, 12 July 2021 02:14:04========================
+2021-07-12 02:14:11,792 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-12 02:14:12,769 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 02:14:12,831 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 02:14:15,682 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 02:14:16,163 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 02:14:43,161 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 02:14:43,177 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 02:14:45,539 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 02:14:45,573 [1] DEBUG - STEP-2 - Completed - Existing file Load

@@ -22,7 +22,7 @@ namespace AdangalApp.AdangalTypes
     {
         //static LogHelper logHelper;
         static List<string> relationTypesCorrect;
-        public static string villagPath; // = @"F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\ACHUNTHANVAYAL\ACHUNTHANVAYAL-full.json";
+        //public static string villagPath; // = @"F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\ACHUNTHANVAYAL\ACHUNTHANVAYAL-full.json";
         static AdangalConverter()
         {
             relationTypesCorrect = new List<string>() {
@@ -44,196 +44,203 @@ namespace AdangalApp.AdangalTypes
 
         public static void ProcessAdangal(List<KeyValue> list, bool isCorrection = false)
         {
+            var lf = vao.loadedFile;
+            string districCode = lf.MaavattamCode.ToString();
+            string talukCode = lf.VattamCode.ToString().PadLeft(2, '0');
+            string villageCode = lf.VillageCode.ToString().PadLeft(3, '0');
 
-            bwFull.DoWork += (ss, ee) =>
+            testdataPath = ConfigurationManager.AppSettings["testdataPath"];
+
+            try
             {
+                var di = (from d in DriveInfo.GetDrives().ToList()
+                          where d.Name.ToLower().Contains("c") == false
+                          select d).First().Name;
+                var imgPath = Path.Combine(di, "imageTest\\");
 
-                var lf = vao.loadedFile;
-                //logHelper = Program.logHelper;
-                string districCode = lf.MaavattamCode.ToString(); //  ConfigurationManager.AppSettings["districCode"];
-                string talukCode = lf.VattamCode.ToString().PadLeft(2, '0');  //ConfigurationManager.AppSettings["talukCode"];
-                string villageCode = lf.VillageCode.ToString().PadLeft(3, '0'); //ConfigurationManager.AppSettings["villageCode"];
+                int retryCount = 0;
+                System.Timers.Timer aTimer = new System.Timers.Timer(10 * 60 * 1000);
+                IWebDriver driver = new ChromeDriver();
+                driver.Navigate().GoToUrl("https://eservices.tn.gov.in/eservicesnew/land/chitta.html?lan=en");
 
-                testdataPath = ConfigurationManager.AppSettings["testdataPath"]; 
-
-                try
+                for (int i = 0; i <= list.Count - 1; i++)
                 {
-                    var di = (from d in DriveInfo.GetDrives().ToList()
-                              where d.Name.ToLower().Contains("c") == false
-                              select d).First().Name;
-                    var imgPath = Path.Combine(di, "imageTest\\");
-
-                    int retryCount = 0;
-                    System.Timers.Timer aTimer = new System.Timers.Timer(10 * 60 * 1000);
-                    IWebDriver driver = new ChromeDriver();
-                    driver.Navigate().GoToUrl("https://eservices.tn.gov.in/eservicesnew/land/chitta.html?lan=en");
-
-                    for (int i = 0; i <= list.Count - 1; i++)
+                    if (isCorrection == false)
                     {
-                        //if (vao.bthThread.InvokeRequired)
-                        //{
-                        //    vao.bthThread.Invoke(new Action(() => vao.bthThread.Text = $"Processing index {i + 1} of {list.Count}"));
-                        //}
-
-                        if (isCorrection == false)
-                        {
-                            if (IsExist(list[i].Value, list[i].Caption)) // && isTest == false)
-                                continue;
-                        }
-
-                        driver = driver.SwitchTo().Window(driver.WindowHandles[0]);
-                        //select district
-                        var district = driver.FindElement(By.Name("districtCode"));
-                        var selectElement = new SelectElement(district);
-                        selectElement.SelectByValue(districCode);
-
-                        //choose rural
-                        RadioButtons categories = new RadioButtons(driver, driver.FindElements(By.Name("areaType")));
-                        categories.SelectValue("rural");
-
-                        //button click
-                        driver.FindElement(By.ClassName("button")).Click();
-
-                        // select taluk
-                        var taluk = driver.FindElement(By.Name("talukCode"));
-                        var talukElement = new SelectElement(taluk);
-                        talukElement.SelectByValue(talukCode);
-
-                        //choose survey
-                        RadioButtons pattaCategory = new RadioButtons(driver, driver.FindElements(By.Name("viewOpt")));
-                        pattaCategory.SelectValue("sur");
-
-                        //choose survey
-                        RadioButtons fmbCategory = new RadioButtons(driver, driver.FindElements(By.Name("viewOption")));
-                        fmbCategory.SelectValue("view");
-
-                        // select village
-                        var village = driver.FindElement(By.Name("villageCode"));
-                        var vilageElement = new SelectElement(village);
-                        while (vilageElement.WrappedElement.Text == "Please Select ...")
-                        {
-                            village = driver.FindElement(By.Name("villageCode"));
-                            vilageElement = new SelectElement(village);
-                        }
-                        vilageElement.SelectByValue(villageCode);
-
-                        //enter survey no
-                        var txt = driver.FindElement(By.Name("surveyNo"));
-                        txt.SendKeys(list[i].Value.ToString());
-
-                        //enter captcha
-                        var text = GenerateSnapshot(driver, imgPath);
-                        var txtCap = driver.FindElement(By.Name("captcha"));
-                        txtCap.SendKeys(text);
-
-                        var subDiv = driver.FindElement(By.Name("subdivNo"));
-                        var subDivElement = new SelectElement(subDiv);
-                        int iterationCount = 0;
-                        while (subDivElement.WrappedElement.Text == "Please Select ...")
-                        {
-                            subDiv = driver.FindElement(By.Name("subdivNo"));
-                            subDivElement = new SelectElement(subDiv);
-                            iterationCount += 1;
-
-                            if (iterationCount >= 100)
-                            {
-                                MessageBox.Show("Website not working!!");
-                            }
-                        }
-                        subDivElement.SelectByValue(list[i].Caption);
-
-                        //button click
-                        driver.FindElement(By.ClassName("button")).Click();
-
-                        driver = driver.SwitchTo().Window(driver.WindowHandles[1]);
-                        Actions action = new Actions(driver);
-                        action.KeyDown(SnKeys.Control).SendKeys("a").KeyUp(SnKeys.Control).Build().Perform();
-                        action.KeyDown(SnKeys.Control).SendKeys("c").KeyUp(SnKeys.Control).Build().Perform();
-
-                        var copiedText = Clipboard.GetText();
-
-                        if (copiedText.ToLower().Contains("district") == true &&
-                            copiedText.ToLower().Contains("government") == false &&
-                            copiedText.ToLower().Contains("bhoodan") == false &&
-                            copiedText.ToLower().Contains("-") == false)
-                        {
-                            vao.logHelper.WriteAdangalLog($"Wrong Captcha: {text}: {list[i].Value}-{list[i].Caption}");
-                            //MessageBox.Show($"Retry for {list[i].Value}-{list[i].Caption}!");
-                            retryCount += 1;
-                            if (retryCount <= 2)
-                                i -= 1;
-                            driver.Close();
+                        if (IsExist(list[i].Value, list[i].Caption)) // && isTest == false)
                             continue;
-                        }
-                        retryCount = 0;
-
-                        //File.AppendAllText($@"F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\{lf.VillageName}\{lf.VillageName}-10-1.txt", copiedText);
-
-                        DataAccess.SaveCopiedText(copiedText);
-
-                        if (copiedText.ToLower().Contains("bhoodan"))
-                        {
-                            AddOtherLandType(list[i].Value, list[i].Caption, LandType.CLRBhoodanLands);
-                            vao.logHelper.WriteAdangalLog($"added bhoodan land - {list[i].Value}-{list[i].Caption}");
-                        }
-                        else if (copiedText.ToLower().Contains("government"))
-                        {
-                            AddOtherLandType(list[i].Value, list[i].Caption, LandType.Porambokku);
-                            vao.logHelper.WriteAdangalLog($"added govt land - {list[i].Value}-{list[i].Caption}");
-                        }
-                        else if (copiedText.ToLower().Contains("-"))
-                        {
-                            AddOtherLandType(list[i].Value, list[i].Caption, LandType.Dash);
-                            vao.logHelper.WriteAdangalLog($"added unknown - {list[i].Value}-{list[i].Caption}");
-                        }
-                        else
-                        {
-                            TextToAdangal(copiedText, list[i].Value, list[i].Caption);
-                        }
-
-                        vao.LogMessage($"DONE:[index-{i}]/{list.Count}");
-
-                        driver.Close();
-
-                        if (isCorrection == false)
-                        {
-                            aTimer.Elapsed += (a, o) =>
-                            {
-                                bw.DoWork += (s, e) =>
-                                {
-                                    var perc = list.Count.PercentageBtwIntNo(i);
-                                    var sub = $"{perc}% - {vao.loadedFile.VillageName}- DONE:[{i}] out of {list.Count}";
-                                    AppCommunication.SendAdangalUpdate($"{perc}% - {vao.loadedFile.VillageName}- DONE:{i} of {list.Count}");
-                                };
-
-                                bw.RunWorkerAsync();
-                            };
-
-                            aTimer.AutoReset = true;
-                            aTimer.Enabled = true;
-                            aTimer.Start();
-                        }
-
                     }
 
-                    var processed = DataAccess.GetActiveAdangalNew(villagPath);
-                    bw.DoWork += (s, e) =>
+                    driver = driver.SwitchTo().Window(driver.WindowHandles[0]);
+                    //select district
+                    var district = driver.FindElement(By.Name("districtCode"));
+                    var selectElement = new SelectElement(district);
+                    selectElement.SelectByValue(districCode);
+
+                    //choose rural
+                    RadioButtons categories = new RadioButtons(driver, driver.FindElements(By.Name("areaType")));
+                    categories.SelectValue("rural");
+
+                    //button click
+                    driver.FindElement(By.ClassName("button")).Click();
+
+                    // select taluk
+                    var taluk = driver.FindElement(By.Name("talukCode"));
+                    var talukElement = new SelectElement(taluk);
+                    talukElement.SelectByValue(talukCode);
+
+                    //choose survey
+                    RadioButtons pattaCategory = new RadioButtons(driver, driver.FindElements(By.Name("viewOpt")));
+                    pattaCategory.SelectValue("sur");
+
+                    //choose survey
+                    RadioButtons fmbCategory = new RadioButtons(driver, driver.FindElements(By.Name("viewOption")));
+                    fmbCategory.SelectValue("view");
+
+                    // select village
+                    var village = driver.FindElement(By.Name("villageCode"));
+                    var vilageElement = new SelectElement(village);
+                    while (vilageElement.WrappedElement.Text == "Please Select ...")
                     {
-                        AppCommunication.SendAdangalUpdate($"{vao.loadedFile.VillageName} Completed-{processed} of {list.Count}");
-                    };
-                    bw.RunWorkerAsync();
+                        village = driver.FindElement(By.Name("villageCode"));
+                        vilageElement = new SelectElement(village);
+                    }
+                    vilageElement.SelectByValue(villageCode);
 
-                    MessageBox.Show($"Completed: {processed.Count} out of {list.Count}", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //enter survey no
+                    var txt = driver.FindElement(By.Name("surveyNo"));
+                    txt.SendKeys(list[i].Value.ToString());
+
+                    //enter captcha
+                    var text = GenerateSnapshot(driver, imgPath);
+                    var txtCap = driver.FindElement(By.Name("captcha"));
+                    txtCap.SendKeys(text);
+
+                    var subDiv = driver.FindElement(By.Name("subdivNo"));
+                    var subDivElement = new SelectElement(subDiv);
+                    int iterationCount = 0;
+                    while (subDivElement.WrappedElement.Text == "Please Select ...")
+                    {
+                        subDiv = driver.FindElement(By.Name("subdivNo"));
+                        subDivElement = new SelectElement(subDiv);
+                        iterationCount += 1;
+
+                        if (iterationCount >= 100)
+                        {
+                            MessageBox.Show("Website not working!!");
+                        }
+                    }
+                    subDivElement.SelectByValue(list[i].Caption);
+
+                    //button click
+                    driver.FindElement(By.ClassName("button")).Click();
+
+                    driver = driver.SwitchTo().Window(driver.WindowHandles[1]);
+                    Actions action = new Actions(driver);
+                    action.KeyDown(SnKeys.Control).SendKeys("a").KeyUp(SnKeys.Control).Build().Perform();
+                    action.KeyDown(SnKeys.Control).SendKeys("c").KeyUp(SnKeys.Control).Build().Perform();
+
+                    var copiedText = Clipboard.GetText();
+
+
+
+                    
+
+                    if (copiedText.Contains("உரிமையாளர்கள் பெயர்"))
+                    {
+                        TextToAdangal(copiedText, list[i].Value, list[i].Caption);
+                        vao.logHelper.WriteAdangalLog($"added new record - {list[i].Value}-{list[i].Caption}");
+                    }
+                    else if (IsHave(copiedText, "government"))
+                    {
+                        AddOtherLandType(list[i].Value, list[i].Caption, LandType.Porambokku);
+                        vao.logHelper.WriteAdangalLog($"added govt land - {list[i].Value}-{list[i].Caption}");
+                    }
+                    else if (IsHave(copiedText, "bhoodan"))
+                    {
+                        AddOtherLandType(list[i].Value, list[i].Caption, LandType.CLRBhoodanLands);
+                        vao.logHelper.WriteAdangalLog($"added bhoodan land - {list[i].Value}-{list[i].Caption}");
+                    }
+                    else if (IsDash(copiedText))
+                    {
+                        AddOtherLandType(list[i].Value, list[i].Caption, LandType.Dash);
+                        vao.logHelper.WriteAdangalLog($"added dash - {list[i].Value}-{list[i].Caption}");
+                    }
+                    else if (copiedText.ToLower().Contains("district") == true &&
+                            copiedText.ToLower().Contains("government") == false &&
+                            copiedText.ToLower().Contains("bhoodan") == false)
+                    {
+                        vao.logHelper.WriteAdangalLog($"Wrong Captcha: {text}: {list[i].Value}-{list[i].Caption}");
+                        retryCount += 1;
+                        if (retryCount <= 2)
+                            i -= 1;
+                        driver.Close();
+                        continue;
+                    }
+                    else
+                    {
+                        AddOtherLandType(list[i].Value, list[i].Caption, LandType.UnKnown);
+                        vao.logHelper.WriteAdangalLog($"added unknown - {list[i].Value}-{list[i].Caption}");
+                    }
+                    retryCount = 0;
+
+                    DataAccess.SaveCopiedText(copiedText);
+
+                    vao.LogMessage($"DONE:[index-{i}]/{list.Count}");
+
+                    driver.Close();
+
+                    if (isCorrection == false)
+                    {
+                        aTimer.Elapsed += (a, o) =>
+                        {
+                            bw.DoWork += (s, e) =>
+                            {
+                                var perc = list.Count.PercentageBtwIntNo(i);
+                                var sub = $"{perc}% - {vao.loadedFile.VillageName}- DONE:[{i}] out of {list.Count}";
+                                AppCommunication.SendAdangalUpdate($"{perc}% - {vao.loadedFile.VillageName}- DONE:{i} of {list.Count}");
+                            };
+
+                            bw.RunWorkerAsync();
+                        };
+
+                        aTimer.AutoReset = true;
+                        aTimer.Enabled = true;
+                        aTimer.Start();
+                    }
+
                 }
-                catch (Exception ex)
+
+                var processed = DataAccess.GetActiveAdangalNew();
+                bw.DoWork += (s, e) =>
                 {
-                    MessageBox.Show(ex.ToString());
-                    vao.LogMessage("ERROR:" + ex.ToString());
+                    AppCommunication.SendAdangalUpdate($"{vao.loadedFile.VillageName} Completed-{processed} of {list.Count}");
+                };
+                bw.RunWorkerAsync();
 
-                }
-                
-            };
-            bwFull.RunWorkerAsync();
+                MessageBox.Show($"Completed: {processed.Count} out of {list.Count}", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //driver.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                vao.LogMessage("ERROR:" + ex.ToString());
+
+            }
+
+
+        }
+
+        private static bool IsHave(string copiedText, string searchedText)
+        {
+            return copiedText.ToLower().Contains("district") == true && copiedText.ToLower().Contains(searchedText);
+        }
+
+        private static bool IsDash(string copiedText)
+        {
+            return
+                copiedText.Split(Environment.NewLine.ToCharArray()).ToList()
+                .Where(w => w.Trim() != "").Select(s => s).ToList()[1].ToString().Trim() == "-";
         }
 
         public enum FileStatus
@@ -277,12 +284,12 @@ namespace AdangalApp.AdangalTypes
             return $"{status.ToName()}-{error}";
         }
 
-        
+
 
         public static void SetGlobalVillagePath(string path)
         {
-            villagPath = path;
-            General.CreateFileIfNotExist(villagPath);
+            //villagPath = path;
+            //General.CreateFileIfNotExist(villagPath);
         }
 
 
