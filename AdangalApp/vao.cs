@@ -2918,34 +2918,34 @@ namespace AdangalApp
             SortMissedSurveys();
         }
 
-        private void btnSyncNew_Click(object sender, EventArgs e)
-        {
-            var selectedFiles = General.SelectFilesInDialog(Directory.GetParent(DataAccess.MissedAdangalPath).FullName, "MissedAdangal");
-            int addedCount = 0;
-            int existCount = 0;
-            selectedFiles.ForEach(fe =>
-            {
+        //private void btnSyncNew_Click(object sender, EventArgs e)
+        //{
+        //    var selectedFiles = General.SelectFilesInDialog(Directory.GetParent(DataAccess.MissedAdangalPath).FullName, "MissedAdangal");
+        //    int addedCount = 0;
+        //    int existCount = 0;
+        //    selectedFiles.ForEach(fe =>
+        //    {
 
-                var missedJsonData = DataAccess.GetMissedAdangal(fe);
-                missedJsonData.ForEach(loop =>
-                {
+        //        var missedJsonData = DataAccess.GetMissedAdangal(fe);
+        //        missedJsonData.ForEach(loop =>
+        //        {
 
-                    if (DataAccess.AddNewAdangal(loop))
-                    {
-                        addedCount += 1;
-                    }
-                    else
-                    {
-                        LogMessage($"Adangal already exist for sur-no: {loop.NilaAlavaiEn} subdiv-no: {loop.UtpirivuEn}");
-                        existCount += 1;
-                    }
+        //            if (DataAccess.AddNewAdangal(loop))
+        //            {
+        //                addedCount += 1;
+        //            }
+        //            else
+        //            {
+        //                LogMessage($"Adangal already exist for sur-no: {loop.NilaAlavaiEn} subdiv-no: {loop.UtpirivuEn}");
+        //                existCount += 1;
+        //            }
 
-                });
-            });
+        //        });
+        //    });
 
-            MessageBox.Show($"Added: {addedCount}{Environment.NewLine}Exist Not Added: {existCount}");
+        //    MessageBox.Show($"Added: {addedCount}{Environment.NewLine}Exist Not Added: {existCount}");
 
-        }
+        //}
 
         private void btnSoftGen_Click(object sender, EventArgs e)
         {

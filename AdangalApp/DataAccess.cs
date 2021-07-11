@@ -10,15 +10,16 @@ namespace AdangalApp
 {
     public class DataAccess : BaseClass
     {
-        public static string JsonPath = "";
-        public static string SubDivPath = "";
-        public static string LoadedFile = "";
-        public static string PattaJsonPath = "";
-        public static string WholeLandListJsonPath = "";
-        public static string AdangalOriginalPath = "";
-        public static string SummaryPath = "";
-        public static string GovtBuildingPath = "";
-        public static string MissedAdangalPath = "";
+        static string JsonPath = "";
+        static string SubDivPath = "";
+        static string LoadedFile = "";
+        static string PattaJsonPath = "";
+        static string WholeLandListJsonPath = "";
+        static string AdangalOriginalPath = "";
+        static string SummaryPath = "";
+        static string GovtBuildingPath = "";
+        static string MissedAdangalPath = "";
+        static string CopiedTextFile = "";
 
         public static void SetVillageName()
         {
@@ -32,6 +33,7 @@ namespace AdangalApp
             SummaryPath = AppConfiguration.GetDynamicPath($"{vnPath}-Summary.json");
             GovtBuildingPath = AppConfiguration.GetDynamicPath($"{vnPath}-GovtBuilding.json");
             MissedAdangalPath = AppConfiguration.GetDynamicPath($"{vnPath}-{Environment.UserName}-MissedAdangal.json");
+            CopiedTextFile = AppConfiguration.GetDynamicPath($"{vnPath}-{Environment.UserName}-10-1.json");
 
             if (Directory.Exists(Directory.GetParent(JsonPath).FullName) == false)
                 Directory.CreateDirectory(Directory.GetParent(JsonPath).FullName);
@@ -109,6 +111,14 @@ namespace AdangalApp
             string path = MissedAdangalPath;
             General.CreateFileIfNotExist(MissedAdangalPath);
             InsertSingleObjectToListJson<Adangal>(path, adangalData);
+        }
+
+        public static void SaveCopiedText(string copiedText)
+        {
+            string path = CopiedTextFile;
+            General.CreateFileIfNotExist(path);
+            File.AppendAllText(path, copiedText);
+            //InsertSingleObjectToListJson<Adangal>(path, adangalData);
         }
 
         public static List<Adangal> GetMissedAdangal(string missedSurveysPath)

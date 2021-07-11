@@ -94,7 +94,6 @@
             this.txtRecCount = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lblPageNo = new System.Windows.Forms.Label();
-            //this.bthThread = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -419,7 +418,6 @@
             // 
             // groupBox3
             // 
-            //this.groupBox3.Controls.Add(bthThread);
             this.groupBox3.Controls.Add(this.btnReady);
             this.groupBox3.Controls.Add(this.btnStatusCheck);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -622,7 +620,6 @@
             this.btnSyncNew.TabIndex = 31;
             this.btnSyncNew.Text = "SyncNew...";
             this.btnSyncNew.UseVisualStyleBackColor = true;
-            this.btnSyncNew.Click += new System.EventHandler(this.btnSyncNew_Click);
             // 
             // btnSwap
             // 
@@ -803,18 +800,9 @@
             this.lblPageNo.TabIndex = 27;
             this.lblPageNo.Text = "பக்கம் -";
             // 
-            // bthThread
-            // 
-            //this.bthThread.Enabled = false;
-            //bthThread.Location = new System.Drawing.Point(45, -15);
-            //bthThread.Name = "bthThread";
-            //bthThread.Size = new System.Drawing.Size(133, 148);
-            //bthThread.TabIndex = 13;
-            //bthThread.Text = "status";
-            //bthThread.UseVisualStyleBackColor = true;
-            // 
             // vao
             // 
+            this.AcceptButton = this.btnNextPage;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1217, 684);

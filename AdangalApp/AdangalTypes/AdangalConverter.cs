@@ -167,7 +167,9 @@ namespace AdangalApp.AdangalTypes
                         }
                         retryCount = 0;
 
-                        File.AppendAllText($@"F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\{lf.VillageName}\{lf.VillageName}-10-1.txt", copiedText);
+                        //File.AppendAllText($@"F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\{lf.VillageName}\{lf.VillageName}-10-1.txt", copiedText);
+
+                        DataAccess.SaveCopiedText(copiedText);
 
                         if (copiedText.ToLower().Contains("bhoodan"))
                         {
