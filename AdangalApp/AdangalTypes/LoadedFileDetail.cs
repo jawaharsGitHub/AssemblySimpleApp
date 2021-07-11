@@ -5,8 +5,6 @@ namespace AdangalApp.AdangalTypes
 {
     public class LoadedFileDetail
     {
-        
-
         public int MaavattamCode { get; set; }
         public string MaavattamName { get; set; }
         public string MaavattamNameTamil { get; set; }
@@ -23,6 +21,8 @@ namespace AdangalApp.AdangalTypes
 
         public decimal? InitialPercentage { get; set; }
         public decimal? CorrectedPercentage { get; set; }
+
+        
 
     }
 }

@@ -49,6 +49,7 @@
             this.cmbFulfilled = new System.Windows.Forms.ComboBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnLoadFirstTIme = new System.Windows.Forms.Button();
             this.txtVaruvai = new System.Windows.Forms.TextBox();
             this.txtVattam = new System.Windows.Forms.TextBox();
             this.txtFirka = new System.Windows.Forms.TextBox();
@@ -93,6 +94,7 @@
             this.txtRecCount = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lblPageNo = new System.Windows.Forms.Label();
+            //this.bthThread = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -280,12 +282,11 @@
             // 
             // btnReadFile
             // 
-            this.btnReadFile.Enabled = false;
-            this.btnReadFile.Location = new System.Drawing.Point(51, 235);
+            this.btnReadFile.Location = new System.Drawing.Point(17, 236);
             this.btnReadFile.Name = "btnReadFile";
-            this.btnReadFile.Size = new System.Drawing.Size(112, 23);
+            this.btnReadFile.Size = new System.Drawing.Size(96, 23);
             this.btnReadFile.TabIndex = 6;
-            this.btnReadFile.Text = "Process Folder...";
+            this.btnReadFile.Text = "Create SubDiv";
             this.btnReadFile.UseVisualStyleBackColor = true;
             this.btnReadFile.Click += new System.EventHandler(this.btnReadFile_Click);
             // 
@@ -313,6 +314,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnLoadFirstTIme);
             this.groupBox1.Controls.Add(this.txtVaruvai);
             this.groupBox1.Controls.Add(this.txtVattam);
             this.groupBox1.Controls.Add(this.txtFirka);
@@ -327,10 +329,21 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(17, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(231, 264);
+            this.groupBox1.Size = new System.Drawing.Size(231, 277);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "STEP-1";
+            // 
+            // btnLoadFirstTIme
+            // 
+            this.btnLoadFirstTIme.Enabled = false;
+            this.btnLoadFirstTIme.Location = new System.Drawing.Point(119, 236);
+            this.btnLoadFirstTIme.Name = "btnLoadFirstTIme";
+            this.btnLoadFirstTIme.Size = new System.Drawing.Size(95, 23);
+            this.btnLoadFirstTIme.TabIndex = 18;
+            this.btnLoadFirstTIme.Text = "Load FirstTime";
+            this.btnLoadFirstTIme.UseVisualStyleBackColor = true;
+            this.btnLoadFirstTIme.Click += new System.EventHandler(this.btnLoadFirstTIme_Click);
             // 
             // txtVaruvai
             // 
@@ -406,6 +419,7 @@
             // 
             // groupBox3
             // 
+            //this.groupBox3.Controls.Add(bthThread);
             this.groupBox3.Controls.Add(this.btnReady);
             this.groupBox3.Controls.Add(this.btnStatusCheck);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -789,9 +803,18 @@
             this.lblPageNo.TabIndex = 27;
             this.lblPageNo.Text = "பக்கம் -";
             // 
+            // bthThread
+            // 
+            //this.bthThread.Enabled = false;
+            //bthThread.Location = new System.Drawing.Point(45, -15);
+            //bthThread.Name = "bthThread";
+            //bthThread.Size = new System.Drawing.Size(133, 148);
+            //bthThread.TabIndex = 13;
+            //bthThread.Text = "status";
+            //bthThread.UseVisualStyleBackColor = true;
+            // 
             // vao
             // 
-            this.AcceptButton = this.btnAddNewSurvey;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1217, 684);
@@ -853,7 +876,7 @@
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.ComboBox ddlDistrict;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnStatusCheck;
+        public System.Windows.Forms.Button btnStatusCheck;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbTaluk;
         private System.Windows.Forms.Label label3;
@@ -908,5 +931,7 @@
         private System.Windows.Forms.Button btnSwap;
         private System.Windows.Forms.Button btnSyncNew;
         private System.Windows.Forms.Label lblPageNo;
+        private System.Windows.Forms.Button btnLoadFirstTIme;
+        //public System.Windows.Forms.Button bthThread;
     }
 }

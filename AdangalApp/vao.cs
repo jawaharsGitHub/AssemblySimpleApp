@@ -46,7 +46,8 @@ namespace AdangalApp
         List<string> relationTypesCorrect;
         PattaList pattaList;
         Patta pattaSingle;
-        LogHelper logHelper;
+        public static LogHelper logHelper;
+        //LogHelper CommonlogHelper;
 
         string firstPage;
         string plainPage;
@@ -59,7 +60,7 @@ namespace AdangalApp
         List<PageTotal> pageTotalList = null;
         List<PageTotal> pageTotal2List = null;
         List<PageTotal> pageTotal3List = null;
-        LoadedFileDetail loadedFile = new LoadedFileDetail();
+        public static LoadedFileDetail loadedFile = new LoadedFileDetail();
 
         List<string> notInPdfToBeAdded;
         List<string> notInOnlineToBeDeleted;
@@ -89,6 +90,8 @@ namespace AdangalApp
         {
             try
             {
+                
+
                 InitializeComponent();
                 ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
                 SetTestMode();
@@ -96,15 +99,11 @@ namespace AdangalApp
                 BindDropdown(cmbFulfilled, GetFullfilledOptions(), "Caption", "Id");
                 prepasali = (pasali - 1);
                 dataGridView1.RowsDefaultCellStyle.SelectionBackColor = Color.Blue;
-                dataGridView1.RowsDefaultCellStyle.SelectionForeColor = Color.Yellow;
-
-                //var logFolder = AdangalConstant.CreateAndReadPath($"Log");
-                //logHelper = new LogHelper("AdangalLog", logFolder);
+                dataGridView1.RowsDefaultCellStyle.SelectionForeColor = Color.Yellow;                
 
                 try
                 {
                     BindDropdown(ddlDistrict, DataAccess.GetDistricts(), "Display", "Value");
-
                     var processedFiles = DataAccess.GetLoadedFileDetails();
                     if (processedFiles.Count > 0)
                         ddlProcessedFiles.DataSource = processedFiles;
@@ -1821,9 +1820,9 @@ namespace AdangalApp
                 LogMessage($"STEP-3 - Raedy For Print - Started");
                 List<KeyValue> onlineData;
 
-                if (DataAccess.IsSubDivExist()) onlineData = DataAccess.GetSubdiv();
+                if (DataAccess.IsSubDivFileExist()) onlineData = DataAccess.GetSubdiv();
                 else if (NoInternet()) return;
-                else onlineData = GetLandCount();
+                else onlineData = SaveLandCount();
 
                 fullAdangalFromjson = DataAccess.GetActiveAdangal();
                 LoadSurveyAndSubdiv();
@@ -2003,7 +2002,7 @@ namespace AdangalApp
             return (result, status.ToString());
 
         }
-        private List<KeyValue> GetLandCount()
+        private List<KeyValue> SaveLandCount()
         {
             try
             {
@@ -2119,66 +2118,95 @@ namespace AdangalApp
                     return;
                 }
 
+                // Getting subdiv file
+                //List<KeyValue> onlineData;
+                //if (DataAccess.IsSubDivFileExist()) onlineData = DataAccess.GetSubdiv();
+
+                if (NoInternet()) return;
+                if (DataAccess.IsSubDivFileExist() == false)
+                {
+                    SaveLandCount();
+                    btnLoadFirstTIme.Enabled = true;
+                }
+                else
+                {
+
+
+
+
+                    //List<KeyValue> list = DataAccess.GetSubdiv();
+                    //AdangalConverter.ProcessAdangal(list);
+
+                }
+
+                // Check for adangal data sync!
+
+
                 //FolderBrowserDialog fbd = new FolderBrowserDialog();
                 //if (DialogResult.OK == fbd.ShowDialog())
                 //    reqFileFolderPath = fbd.SelectedPath;
                 //else
                 //return;
 
-                var selectedFolder = General.SelectFolderPath();
-                if (selectedFolder == null) return;
-                reqFileFolderPath = selectedFolder;
+                //var selectedFolder = General.SelectFolderPath();
+                //if (selectedFolder == null) return;
+                //reqFileFolderPath = ""; // DataAccess.GetSubdiv();
 
                 // Loading basic file details...
                 LoadFileDetails();
                 LogMessage($"STEP-2 - VattamNameTamil: {loadedFile.VattamNameTamil} FirkaName: {loadedFile.FirkaName} VillageNameTamil: {loadedFile.VillageNameTamil}");
                 PreLoadFile();
 
-                if (haveValidFiles(reqFileFolderPath))
+                //if (haveValidFiles(reqFileFolderPath))
+                //{
+
+                //LogMessage($"You have all required valid files to proceed process.");
+
+
+
+                /*
+                 * 
+                 * //waitForm.Show(this);
+                 * pattaList = new PattaList();
+
+                chittaPdfFile = General.CombinePath(reqFileFolderPath, ChittaPdfFile);
+                chittaTxtFile = General.CombinePath(reqFileFolderPath, ChittaTxtFile);
+                aRegFile = General.CombinePath(reqFileFolderPath, AregFile);
+                chittaContent = chittaPdfFile.GetPdfContent();
+                LoadPdfPattaNo();
+                //**
+                var pattaas = chittaContent.Replace("பட்டா எண்    :", "$"); //("பட்டா எண்", "$");
+                var data = pattaas.Split('$').ToList();
+                pdfvillageName = data.First().Split(':')[3].Trim();
+                waitForm.Close();
+                if (DialogResult.No == MessageBox.Show($"{pdfvillageName} village?", "Confirm", MessageBoxButtons.YesNo))
                 {
-                    waitForm.Show(this);
-                    LogMessage($"You have all required valid files to proceed process.");
-                    pattaList = new PattaList();
-
-                    chittaPdfFile = General.CombinePath(reqFileFolderPath, ChittaPdfFile);
-                    chittaTxtFile = General.CombinePath(reqFileFolderPath, ChittaTxtFile);
-                    aRegFile = General.CombinePath(reqFileFolderPath, AregFile);
-
-
-                    chittaContent = chittaPdfFile.GetPdfContent();
-                    LoadPdfPattaNo();
-                    //**
-                    var pattaas = chittaContent.Replace("பட்டா எண்    :", "$"); //("பட்டா எண்", "$");
-                    var data = pattaas.Split('$').ToList();
-                    pdfvillageName = data.First().Split(':')[3].Trim();
-                    waitForm.Close();
-                    if (DialogResult.No == MessageBox.Show($"{pdfvillageName} village?", "Confirm", MessageBoxButtons.YesNo))
-                    {
-                        LogMessage($"REJECTED THE  VILLAGE PDF FILE- {pdfvillageName}");
-                        return;
-                    }
-                    waitForm.Show(this);
-                    //**
-                    ProcessNames();
-                    ProcessChittaFile(); // Nansai, Pun, Maa,
-                    ProcessAreg();  // Puram
-
-                    DataAccess.SavePattaList(pattaList);
-                    DataAccess.SaveWholeLandList(WholeLandList);
-                    DataAccess.SaveAdangalOriginalList(AdangalOriginalList);
-                    EnableReadyForNew();
-                    ProcessFullReport();
-
-                    DataAccess.AddNewLoadedFile(loadedFile);
-                    LogMessage($"Add/Update Loaded File.");
-                    waitForm.Close();
-
+                    LogMessage($"REJECTED THE  VILLAGE PDF FILE- {pdfvillageName}");
+                    return;
                 }
-                else
-                {
-                    LogMessage($"Some file missing in the folder?");
-                    MessageBox.Show("Some file missing in the folder?");
-                }
+                waitForm.Show(this);
+                //**
+                ProcessNames();
+                ProcessChittaFile(); // Nansai, Pun, Maa,
+                ProcessAreg();  // Puram
+
+                DataAccess.SavePattaList(pattaList);
+                DataAccess.SaveWholeLandList(WholeLandList);
+                DataAccess.SaveAdangalOriginalList(AdangalOriginalList);
+                EnableReadyForNew();
+                ProcessFullReport();
+
+                DataAccess.AddNewLoadedFile(loadedFile);
+                LogMessage($"Add/Update Loaded File.");
+                waitForm.Close();
+                */
+
+                //}
+                //else
+                //{
+                //  LogMessage($"Some file missing in the folder?");
+                //MessageBox.Show("Some file missing in the folder?");
+                //}
 
                 LogMessage($"STEP-2 - Completed - - First time Load");
 
@@ -2237,16 +2265,27 @@ namespace AdangalApp
         private void cmbVillages_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (cmbVillages.SelectedIndex == 0) return;
-
             var selItem = (ComboData)cmbVillages.SelectedItem;
-
+            LoadFileDetails();
+            AdangalConstant.villageName = selItem.Display;
             UpadteLogPath(selItem.Display);
+            DataAccess.SetVillageName();
 
             if (selItem.Value != -1)
                 LogMessage($"STEP - 1 - Village: {selItem.Value}-{selItem.Display}");
 
 
-            CheckJsonExist();
+            var fileStatus = AdangalConverter.IsSync();
+
+            MessageBox.Show(fileStatus);
+
+            btnLoadFirstTIme.Enabled = true;
+
+            //btnReadFile.Enabled = (DataAccess.IsSubDivFileExist() == false);
+
+            //CheckJsonExist();
+
+
         }
 
         private void CheckJsonExist()
@@ -2639,7 +2678,7 @@ namespace AdangalApp
 
         //    return (ld, parappu, theervai);
         //}
-        private void LogMessage(string message)
+        public static void LogMessage(string message)
         {
             try
             {
@@ -3114,7 +3153,17 @@ namespace AdangalApp
 
         }
 
+        private void btnLoadFirstTIme_Click(object sender, EventArgs e)
+        {
 
+            //var list = new List<KeyValue>() { 
+            //    new KeyValue() { Value = 66, Caption = "2E" } ,
+            //    new KeyValue() { Value = 37, Caption = "2E" }
+            //};
+
+            List<KeyValue> list = DataAccess.GetSubdiv();
+            AdangalConverter.ProcessAdangal(list);
+        }
     }
 
 }

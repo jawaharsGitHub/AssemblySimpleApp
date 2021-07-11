@@ -67,7 +67,6 @@ namespace Common
 
         public static string GetDataFolder(string dataAccessPath)
         {
-            //File.WriteAllText(path, "");
             string exeFile = (new Uri(Assembly.GetEntryAssembly().CodeBase)).AbsolutePath;
             return General.CombinePath(Path.GetDirectoryName(exeFile).Replace("\\bin\\Debug", ""), dataAccessPath);
 

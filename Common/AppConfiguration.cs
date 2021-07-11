@@ -71,6 +71,10 @@ namespace Common
             return General.CombinePath(ConfigurationManager.AppSettings["SourceFolder"], fullPath);
         }
 
+        public static string GetSourceFolderPath()
+        {
+            return ConfigurationManager.AppSettings["SourceFolder"];
+        }
 
         public static bool AddOrUpdateAppSettings(string key, string value)
         {

@@ -29,6 +29,16 @@ namespace Common
             XmlConfigurator.Configure();
         }
 
+        public LogHelper(string logKey, string logPath, string user)
+        {
+            //logger names are mentioned in <log4net> section of config file
+            GlobalContext.Properties["LogPath"] = logPath;
+            GlobalContext.Properties["UserName"] = user;
+            _debugLogger = GetLogger(logKey);
+            //GlobalContext.Properties["LogFileName"] = filePath; //log file path 
+            XmlConfigurator.Configure();
+        }
+
         /// <summary>
         /// This method will write log in Log_USERNAME_date{yyyyMMdd}.log file
         /// </summary>

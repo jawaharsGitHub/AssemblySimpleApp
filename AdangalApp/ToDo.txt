@@ -84,7 +84,7 @@ missed file json name with computer name.
 -----V-1-----
 created date is taken from wrong place....
 adding intial
-2.vagai
+auto project for taking phone numbers.
 100-7B2A - 0.2 or 0.02
 adding last name also into adangal.
 

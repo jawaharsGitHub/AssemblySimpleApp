@@ -42,9 +42,9 @@ namespace AdangalApp
             return AppConfiguration.GetDynamicPath($"database/{tableName}.json");
         }
 
-        public static List<KeyValue> GetSubdiv(string path = null)
+        public static List<KeyValue> GetSubdiv()
         {
-            SubDivPath = path;
+            //SubDivPath = path;
             var data = ReadFileAsObjects<KeyValue>(SubDivPath);
             return data;
         }
@@ -86,7 +86,7 @@ namespace AdangalApp
 
         public static List<KeyValue> SubdivToJson(List<KeyValue> subdivData)
         {
-            if (File.Exists(SubDivPath) == false)
+            if (IsSubDivFileExist() == false)
                 WriteObjectsToFile(subdivData, SubDivPath);
 
             var data = ReadFileAsObjects<KeyValue>(SubDivPath);
@@ -180,16 +180,16 @@ namespace AdangalApp
         }
 
 
-        public static bool IsAdangalAlreadyExist(int NilaAlavaiEn, string UtpirivuEn, string path)
+        public static bool IsAdangalAlreadyExist(int NilaAlavaiEn, string UtpirivuEn)
         {
-            JsonPath = path;
+            //JsonPath = path;
             return GetActiveAdangal()
                 .Where(w => w.NilaAlavaiEn == NilaAlavaiEn && w.UtpirivuEn.Trim() == UtpirivuEn) // && w.LandStatus != LandStatus.Error)
                 .Count() == 1;
 
         }
 
-        private static bool IsAdangalAlreadyExist(Adangal adangal)
+        private static bool IsErrorAdangalAlreadyExist(Adangal adangal)
         {
 
             var data = GetActiveAdangal();
@@ -242,10 +242,7 @@ namespace AdangalApp
             return ReadFileAsObjects<LandDetail>(WholeLandListJsonPath);
         }
 
-        public static bool IsSubDivExist()
-        {
-            return File.Exists(SubDivPath);
-        }
+        
 
         public static List<Adangal> SetDeleteFlag(List<string> adangalToBeDelete)
         {
@@ -264,6 +261,11 @@ namespace AdangalApp
         {
             return File.Exists(JsonPath);
         }
+
+        public static bool IsSubDivFileExist()
+        {
+            return File.Exists(SubDivPath);
+        }
         public static List<Adangal> GetActiveAdangal()
         {
             return ReadFileAsObjects<Adangal>(JsonPath).OrderBy(o => o.LandType)
@@ -275,7 +277,7 @@ namespace AdangalApp
 
         public static List<Adangal> GetActiveAdangalNew(string path)
         {
-            return ReadFileAsObjects<Adangal>(path).ToList();
+            return ReadFileAsObjects<Adangal>(path).Where(w => w.LandStatus == LandStatus.Added).ToList();
         }
 
         public static List<Adangal> GetDeletedAdangal()
@@ -342,11 +344,9 @@ namespace AdangalApp
         }
 
 
-        public static bool AddNewAdangal(Adangal adangal, string path = null)
+        public static bool AddNewAdangal(Adangal adangal)
         {
-            JsonPath = path;
-
-            if (IsAdangalAlreadyExist(adangal) == false)
+            if (IsErrorAdangalAlreadyExist(adangal) == false)
             {
                 InsertSingleObjectToListJson<Adangal>(JsonPath, adangal);
                 return true;

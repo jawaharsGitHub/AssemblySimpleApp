@@ -1,0 +1,23 @@
+2021-07-11 16:08:57,414 [1] DEBUG - =================Sunday, 11 July 2021 16:08:57========================
+2021-07-11 16:09:46,514 [1] DEBUG - STEP - 1 - Village: 22-ACHUNTHANVAYAL
+2021-07-11 16:09:57,836 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-11 16:09:57,890 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-11 16:10:06,379 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-11 16:10:07,767 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-11 16:59:00,635 [1] DEBUG - =================Sunday, 11 July 2021 16:59:00========================
+2021-07-11 16:59:58,655 [1] DEBUG - STEP - 1 - Village: 22-ACHUNTHANVAYAL
+2021-07-11 17:02:57,477 [1] DEBUG - =================Sunday, 11 July 2021 17:02:57========================
+2021-07-11 17:03:13,632 [1] DEBUG - STEP - 1 - Village: 22-ACHUNTHANVAYAL
+2021-07-11 17:04:50,074 [1] DEBUG - =================Sunday, 11 July 2021 17:04:50========================
+2021-07-11 17:05:03,066 [1] DEBUG - STEP - 1 - Village: 62-ENMANAMKONDAN
+2021-07-11 17:05:03,941 [1] DEBUG - STEP - 1 - Village: 62-ENMANAMKONDAN
+2021-07-11 17:11:09,202 [1] DEBUG - =================Sunday, 11 July 2021 17:11:09========================
+2021-07-11 17:11:28,137 [1] DEBUG - STEP - 1 - Village: 62-ENMANAMKONDAN
+2021-07-11 17:13:06,850 [1] DEBUG - =================Sunday, 11 July 2021 17:13:06========================
+2021-07-11 17:13:28,995 [1] DEBUG - STEP - 1 - Village: 62-ENMANAMKONDAN
+2021-07-11 17:16:10,198 [8] DEBUG - ERROR: 45-3 - System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at AdangalApp.AdangalTypes.AdangalConverter.TextToAdangal(String text, Int32 surveyNo, String subdivNo) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 324
+2021-07-11 17:16:10,198 [8] DEBUG - DONE:[index-1375]/2926
+2021-07-11 17:16:18,720 [8] DEBUG - ERROR: 45-4B - System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at AdangalApp.AdangalTypes.AdangalConverter.TextToAdangal(String text, Int32 surveyNo, String subdivNo) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 324
+2021-07-11 17:16:18,720 [8] DEBUG - DONE:[index-1376]/2926
