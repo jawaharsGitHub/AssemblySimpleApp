@@ -76,8 +76,8 @@ namespace AdangalApp
         bool needTheervaiTest = Convert.ToBoolean(ConfigurationManager.AppSettings["needTheervaiTest"]);
         bool canAddMissedSurvey = Convert.ToBoolean(ConfigurationManager.AppSettings["canAddMissedSurvey"]);
         bool pcEnabled = Convert.ToBoolean(ConfigurationManager.AppSettings["pc"]);
-        int pasali = Convert.ToInt32(ConfigurationManager.AppSettings["PasaliEn"]); 
-            
+        int pasali = Convert.ToInt32(ConfigurationManager.AppSettings["PasaliEn"]);
+
         int prepasali;
 
         List<KeyValue> wrongName = new List<KeyValue>();
@@ -109,7 +109,7 @@ namespace AdangalApp
                     if (processedFiles.Count > 0)
                         ddlProcessedFiles.DataSource = processedFiles;
 
-                        //BindDropdown(ddlProcessedFiles, processedFiles, "VillageName", "VillageCode");
+                    //BindDropdown(ddlProcessedFiles, processedFiles, "VillageName", "VillageCode");
 
                 }
                 catch (Exception ex)
@@ -278,7 +278,7 @@ namespace AdangalApp
                             });
                             LogMessage($"Big Error Processing Purambokku record @ {d.Count()} items - {ex.ToString()}");
                         }
-                        
+
                     }
                 }
 
@@ -1161,7 +1161,7 @@ namespace AdangalApp
             return sb.ToString();
         }
 
-       
+
 
 
         private string GetRightEmptyPage()
@@ -1570,7 +1570,7 @@ namespace AdangalApp
                 return true;
             }
 
-           
+
         }
 
         List<KeyValue> pageRangeList = new List<KeyValue>();
@@ -1834,15 +1834,15 @@ namespace AdangalApp
                                     .Select(s => (s.Value.ToString().Trim() + "~" + s.Caption.Trim()).Trim())).ToList();
 
                 List<string> actualLandDetails;
-                
-                    actualLandDetails = fullAdangalFromjson
-                                           .OrderBy(o => o.NilaAlavaiEn)
-                                           .ThenBy(o => o.UtpirivuEn, new AlphanumericComparer())
-                                           .Select(s =>
-                                           (s.NilaAlavaiEn.ToString().Trim() + "~" + s.UtpirivuEn.Trim()).Trim())
-                                           .ToList();
 
-                
+                actualLandDetails = fullAdangalFromjson
+                                       .OrderBy(o => o.NilaAlavaiEn)
+                                       .ThenBy(o => o.UtpirivuEn, new AlphanumericComparer())
+                                       .Select(s =>
+                                       (s.NilaAlavaiEn.ToString().Trim() + "~" + s.UtpirivuEn.Trim()).Trim())
+                                       .ToList();
+
+
 
                 notInPdfToBeAdded = expLandDetails.Except(actualLandDetails).ToList();
                 notInOnlineToBeDeleted = actualLandDetails.Except(expLandDetails).ToList();
@@ -2507,8 +2507,12 @@ namespace AdangalApp
 
                 var neededData = third.Skip(hecIndex + 1);
                 neededData = neededData.Take(neededData.Count() - 1);
-
-                var name = AdangalConverter.GetOwnerName(sec.Replace("புல எண்", "$").Split('$').ToList()[0]);
+                var firstRowWithName = sec.Replace("புல எண்", "$").Split('$').ToList()[0];
+                if (firstRowWithName.Contains("2."))
+                {
+                    firstRowWithName = firstRowWithName.Replace("2.", "$").Split('$')[0];
+                }
+                var name = AdangalConverter.GetOwnerName(firstRowWithName);
 
                 //var surveysubdiv = cmbItemToBeAdded.SelectedItem.ToString().Split('~').ToList();
 
@@ -2639,8 +2643,8 @@ namespace AdangalApp
         {
             try
             {
-                if(logHelper != null)
-                logHelper.WriteAdangalLog(message);
+                if (logHelper != null)
+                    logHelper.WriteAdangalLog(message);
             }
             catch (Exception ex)
             {
@@ -2711,7 +2715,7 @@ namespace AdangalApp
 
             waitForm.Show(this);
             LogMessage($"STEP-2 - Started - Existing file Load");
-           
+
 
             fullAdangalFromjson = DataAccess.GetActiveAdangal();
             LogMessage($"READED DATA FROM EXISTING JSON FILE");
@@ -2799,7 +2803,7 @@ namespace AdangalApp
                 curentRecords = fullAdangalFromjson.Skip(PreviousPageOffSet).Take(PgSize).ToList();
             }
 
-            lblPageNo.Text = $"பக்கம்: {page + 6} / {TotalPage+6}";
+            lblPageNo.Text = $"பக்கம்: {page + 6} / {TotalPage + 6}";
 
             return curentRecords;
         }
@@ -2845,7 +2849,7 @@ namespace AdangalApp
         private void btnGoToPage_Click(object sender, EventArgs e)
         {
             if (fullAdangalFromjson == null) return;
-            dataGridView1.DataSource = GetCurrentRecords(txtGoto.Text.ToInt32()-6);
+            dataGridView1.DataSource = GetCurrentRecords(txtGoto.Text.ToInt32() - 6);
         }
 
         private void txtRecCount_TextChanged(object sender, EventArgs e)
@@ -3057,12 +3061,21 @@ namespace AdangalApp
 
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count == 1 && e.Button == MouseButtons.Right)
+            //if (dataGridView1.SelectedRows.Count == 1 && e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right)
             {
                 ContextMenuStrip strip = new ContextMenuStrip();
 
-                var selectedRow = dataGridView1.SelectedRows[0];
-                strip.Tag = (Adangal)selectedRow.DataBoundItem;
+                var selectedRow = dataGridView1.SelectedRows;
+
+                List<Adangal> selectedAdangal = new List<Adangal>();
+
+                foreach (DataGridViewRow item in selectedRow)
+                {
+                    selectedAdangal.Add((Adangal)item.DataBoundItem);
+                }
+
+                strip.Tag = selectedAdangal;
                 strip.Items.Add("ReCreate").Name = "ReCreateName";
                 strip.Items.Add("Delete").Name = "DeleteName";
                 strip.Show(dataGridView1, new Point(e.X, e.Y));
@@ -3074,9 +3087,17 @@ namespace AdangalApp
 
         private void Strip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            var txn = (Adangal)((ContextMenuStrip)sender).Tag;
-            var kv = new KeyValue(){ Value = txn.NilaAlavaiEn, Caption = txn.UtpirivuEn };
-            var list = new List<KeyValue>() { kv };
+            var txn = (List<Adangal>)((ContextMenuStrip)sender).Tag;
+
+            var kv = new List<KeyValue>(); // { Value = txn.NilaAlavaiEn, Caption = txn.UtpirivuEn };
+
+            txn.ForEach(fe =>
+            {
+                kv.Add(new KeyValue() { Value = fe.NilaAlavaiEn, Caption = fe.UtpirivuEn });
+            });
+
+
+            var list = new List<KeyValue>(kv); // { kv };
 
             if (e.ClickedItem.Name == "ReCreateName")
             {
@@ -3093,7 +3114,7 @@ namespace AdangalApp
 
         }
 
-        
+
     }
 
 }

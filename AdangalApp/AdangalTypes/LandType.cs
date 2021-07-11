@@ -15,6 +15,7 @@ namespace AdangalApp.AdangalTypes
         PorambokkuError,        
         Zero,
         CLRBhoodanLands,
+        Dash,
         //NameError
     }
 }

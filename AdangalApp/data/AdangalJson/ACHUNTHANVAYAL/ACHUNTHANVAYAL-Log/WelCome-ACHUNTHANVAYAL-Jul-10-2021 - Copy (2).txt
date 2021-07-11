@@ -1,0 +1,375 @@
+2021-07-10 00:38:53,375 [1] DEBUG - =================Saturday, 10 July 2021 00:38:53========================
+2021-07-10 00:39:49,840 [1] DEBUG - Added (17) out of 17 for 1-1A
+2021-07-10 00:39:49,840 [1] DEBUG - DONE:[index-0]
+2021-07-10 00:39:55,536 [1] DEBUG - Added (6) out of 6 for 1-1B
+2021-07-10 00:39:55,536 [1] DEBUG - DONE:[index-1]
+2021-07-10 00:40:00,711 [1] DEBUG - Added (1) out of 1 for 1-1C
+2021-07-10 00:40:00,711 [1] DEBUG - DONE:[index-2]
+2021-07-10 00:40:04,528 [1] DEBUG - index: 3
+2021-07-10 00:40:04,528 [1] DEBUG - index: 2
+2021-07-10 00:40:04,528 [1] DEBUG - Wrong Captcha: DMA4PE6: 1-1C
+2021-07-10 00:40:08,119 [1] DEBUG - index: 3
+2021-07-10 00:40:08,119 [1] DEBUG - index: 2
+2021-07-10 00:40:08,121 [1] DEBUG - Wrong Captcha: 5XRUGH: 1-1C
+2021-07-10 00:40:12,032 [1] DEBUG - index: 3
+2021-07-10 00:40:12,032 [1] DEBUG - index: 2
+2021-07-10 00:40:12,032 [1] DEBUG - Wrong Captcha: 8BGZEU: 1-1C
+2021-07-10 00:40:15,847 [1] DEBUG - index: 3
+2021-07-10 00:40:15,847 [1] DEBUG - index: 2
+2021-07-10 00:40:15,847 [1] DEBUG - Wrong Captcha: ZHCUPH: 1-1C
+2021-07-10 00:40:19,300 [1] DEBUG - index: 3
+2021-07-10 00:40:19,300 [1] DEBUG - index: 2
+2021-07-10 00:40:19,300 [1] DEBUG - Wrong Captcha: W52E57: 1-1C
+2021-07-10 00:40:22,862 [1] DEBUG - index: 3
+2021-07-10 00:40:22,862 [1] DEBUG - index: 2
+2021-07-10 00:40:22,862 [1] DEBUG - Wrong Captcha: 6NB3WM: 1-1C
+2021-07-10 00:40:26,514 [1] DEBUG - index: 3
+2021-07-10 00:40:26,514 [1] DEBUG - index: 2
+2021-07-10 00:40:26,514 [1] DEBUG - Wrong Captcha: 237FER: 1-1C
+2021-07-10 00:40:29,935 [1] DEBUG - index: 3
+2021-07-10 00:40:29,935 [1] DEBUG - index: 2
+2021-07-10 00:40:29,936 [1] DEBUG - Wrong Captcha: WRDHX3: 1-1C
+2021-07-10 00:40:33,323 [1] DEBUG - index: 3
+2021-07-10 00:40:33,323 [1] DEBUG - index: 2
+2021-07-10 00:40:33,323 [1] DEBUG - Wrong Captcha: 388E6D: 1-1C
+2021-07-10 00:40:36,838 [1] DEBUG - index: 3
+2021-07-10 00:40:36,838 [1] DEBUG - index: 2
+2021-07-10 00:40:36,838 [1] DEBUG - Wrong Captcha: cacwac: 1-1C
+2021-07-10 00:40:40,444 [1] DEBUG - index: 3
+2021-07-10 00:40:40,444 [1] DEBUG - index: 2
+2021-07-10 00:40:40,444 [1] DEBUG - Wrong Captcha: 7VHVZE: 1-1C
+2021-07-10 00:40:44,049 [1] DEBUG - index: 3
+2021-07-10 00:40:44,049 [1] DEBUG - index: 2
+2021-07-10 00:40:44,049 [1] DEBUG - Wrong Captcha: YNEX4H: 1-1C
+2021-07-10 00:40:47,566 [1] DEBUG - index: 3
+2021-07-10 00:40:47,566 [1] DEBUG - index: 2
+2021-07-10 00:40:47,566 [1] DEBUG - Wrong Captcha: 44B5UP: 1-1C
+2021-07-10 00:40:51,242 [1] DEBUG - index: 3
+2021-07-10 00:40:51,242 [1] DEBUG - index: 2
+2021-07-10 00:40:51,242 [1] DEBUG - Wrong Captcha: QXYEVM: 1-1C
+2021-07-10 00:40:54,770 [1] DEBUG - index: 3
+2021-07-10 00:40:54,771 [1] DEBUG - index: 2
+2021-07-10 00:40:54,771 [1] DEBUG - Wrong Captcha: V5586Y: 1-1C
+2021-07-10 00:40:58,166 [1] DEBUG - index: 3
+2021-07-10 00:40:58,166 [1] DEBUG - index: 2
+2021-07-10 00:40:58,166 [1] DEBUG - Wrong Captcha: VVES53R: 1-1C
+2021-07-10 00:41:02,123 [1] DEBUG - index: 3
+2021-07-10 00:41:02,124 [1] DEBUG - index: 2
+2021-07-10 00:41:02,124 [1] DEBUG - Wrong Captcha: 2G2FHW: 1-1C
+2021-07-10 00:41:05,930 [1] DEBUG - index: 3
+2021-07-10 00:41:05,931 [1] DEBUG - index: 2
+2021-07-10 00:41:05,931 [1] DEBUG - Wrong Captcha: YDMFRV: 1-1C
+2021-07-10 00:41:09,277 [1] DEBUG - index: 3
+2021-07-10 00:41:09,277 [1] DEBUG - index: 2
+2021-07-10 00:41:09,277 [1] DEBUG - Wrong Captcha: VN8MXX: 1-1C
+2021-07-10 00:41:34,346 [1] DEBUG - index: 3
+2021-07-10 00:41:35,296 [1] DEBUG - index: 2
+2021-07-10 00:41:35,504 [1] DEBUG - Wrong Captcha: 22F427: 1-1C
+2021-07-10 00:43:59,314 [1] DEBUG - =================Saturday, 10 July 2021 00:43:59========================
+2021-07-10 00:44:16,570 [1] DEBUG - index: 0
+2021-07-10 00:44:16,570 [1] DEBUG - index: -1
+2021-07-10 00:44:29,717 [1] DEBUG - ERROR:System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.Program.Main() in F:\AssemblySimpleApp\AdangalApp\Program.cs:line 130
+2021-07-10 00:45:13,318 [1] DEBUG - =================Saturday, 10 July 2021 00:45:13========================
+2021-07-10 00:45:42,309 [1] DEBUG - Added (0) out of 17 for 1-1A
+2021-07-10 00:45:42,309 [1] DEBUG - DONE:[index-0]
+2021-07-10 00:45:47,943 [1] DEBUG - Added (0) out of 6 for 1-1B
+2021-07-10 00:45:47,943 [1] DEBUG - DONE:[index-1]
+2021-07-10 00:45:54,160 [1] DEBUG - Added (0) out of 1 for 1-1C
+2021-07-10 00:45:54,160 [1] DEBUG - DONE:[index-2]
+2021-07-10 00:45:58,973 [1] DEBUG - Added (1) out of 1 for 1-1D
+2021-07-10 00:45:58,973 [1] DEBUG - DONE:[index-3]
+2021-07-10 00:46:03,491 [1] DEBUG - Added (2) out of 2 for 1-2
+2021-07-10 00:46:03,491 [1] DEBUG - DONE:[index-4]
+2021-07-10 00:46:10,091 [1] DEBUG - ERROR: 2-1 - System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at AdangalApp.AdangalTypes.AdangalConverter.TextToAdangal(String text, Int32 surveyNo, String subdivNo, LogHelper logHelper) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 80
+2021-07-10 00:46:10,091 [1] DEBUG - DONE:[index-5]
+2021-07-10 00:46:14,840 [1] DEBUG - Added (2) out of 2 for 2-2
+2021-07-10 00:46:14,840 [1] DEBUG - DONE:[index-6]
+2021-07-10 00:46:18,858 [1] DEBUG - index: 7
+2021-07-10 00:46:18,858 [1] DEBUG - index: 6
+2021-07-10 00:46:18,858 [1] DEBUG - Wrong Captcha: B6EMWXY: 2-2
+2021-07-10 00:46:22,359 [1] DEBUG - index: 7
+2021-07-10 00:46:22,359 [1] DEBUG - index: 6
+2021-07-10 00:46:22,359 [1] DEBUG - Wrong Captcha: MWVFUC: 2-2
+2021-07-10 00:46:27,301 [1] DEBUG - index: 7
+2021-07-10 00:46:27,301 [1] DEBUG - index: 6
+2021-07-10 00:46:27,302 [1] DEBUG - Wrong Captcha: ND55PY: 2-2
+2021-07-10 00:46:31,150 [1] DEBUG - index: 7
+2021-07-10 00:46:31,150 [1] DEBUG - index: 6
+2021-07-10 00:46:31,150 [1] DEBUG - Wrong Captcha: NX4QXx7: 2-2
+2021-07-10 00:46:34,674 [1] DEBUG - index: 7
+2021-07-10 00:46:34,674 [1] DEBUG - index: 6
+2021-07-10 00:46:34,674 [1] DEBUG - Wrong Captcha: YNGVRP: 2-2
+2021-07-10 00:46:38,049 [1] DEBUG - index: 7
+2021-07-10 00:46:38,049 [1] DEBUG - index: 6
+2021-07-10 00:46:38,049 [1] DEBUG - Wrong Captcha: 6PV4VY: 2-2
+2021-07-10 00:46:41,765 [1] DEBUG - index: 7
+2021-07-10 00:46:41,765 [1] DEBUG - index: 6
+2021-07-10 00:46:41,765 [1] DEBUG - Wrong Captcha: W2ERSV: 2-2
+2021-07-10 00:46:45,931 [1] DEBUG - index: 7
+2021-07-10 00:46:45,931 [1] DEBUG - index: 6
+2021-07-10 00:46:45,931 [1] DEBUG - Wrong Captcha: 84BE37: 2-2
+2021-07-10 00:46:49,672 [1] DEBUG - index: 7
+2021-07-10 00:46:49,672 [1] DEBUG - index: 6
+2021-07-10 00:46:49,672 [1] DEBUG - Wrong Captcha: 6WHU42: 2-2
+2021-07-10 00:46:53,156 [1] DEBUG - index: 7
+2021-07-10 00:46:53,156 [1] DEBUG - index: 6
+2021-07-10 00:46:53,156 [1] DEBUG - Wrong Captcha: 7UHREY: 2-2
+2021-07-10 00:46:57,176 [1] DEBUG - index: 7
+2021-07-10 00:46:57,177 [1] DEBUG - index: 6
+2021-07-10 00:46:57,177 [1] DEBUG - Wrong Captcha: 8ZZQYQ: 2-2
+2021-07-10 00:47:01,136 [1] DEBUG - index: 7
+2021-07-10 00:47:01,136 [1] DEBUG - index: 6
+2021-07-10 00:47:01,136 [1] DEBUG - Wrong Captcha: GYFQQ5: 2-2
+2021-07-10 00:47:04,799 [1] DEBUG - index: 7
+2021-07-10 00:47:04,799 [1] DEBUG - index: 6
+2021-07-10 00:47:04,799 [1] DEBUG - Wrong Captcha: 6U6BP8: 2-2
+2021-07-10 00:47:08,079 [1] DEBUG - index: 7
+2021-07-10 00:47:08,079 [1] DEBUG - index: 6
+2021-07-10 00:47:08,080 [1] DEBUG - Wrong Captcha: XYVQRH: 2-2
+2021-07-10 00:47:11,620 [1] DEBUG - index: 7
+2021-07-10 00:47:11,620 [1] DEBUG - index: 6
+2021-07-10 00:47:11,620 [1] DEBUG - Wrong Captcha: GGXDBU: 2-2
+2021-07-10 00:49:32,696 [1] DEBUG - =================Saturday, 10 July 2021 00:49:32========================
+2021-07-10 00:50:28,004 [1] DEBUG - =================Saturday, 10 July 2021 00:50:27========================
+2021-07-10 00:51:00,981 [1] DEBUG - Added (11) out of 11 for 2-3A
+2021-07-10 00:51:00,982 [1] DEBUG - DONE:[index-7]
+2021-07-10 00:51:05,721 [1] DEBUG - Added (1) out of 1 for 2-3C
+2021-07-10 00:51:05,721 [1] DEBUG - DONE:[index-9]
+2021-07-10 00:51:10,773 [1] DEBUG - Added (1) out of 1 for 2-3D
+2021-07-10 00:51:10,773 [1] DEBUG - DONE:[index-10]
+2021-07-10 00:51:17,195 [1] DEBUG - Added (12) out of 12 for 3-1
+2021-07-10 00:51:17,195 [1] DEBUG - DONE:[index-11]
+2021-07-10 00:51:22,505 [1] DEBUG - Added (3) out of 3 for 3-2A
+2021-07-10 00:51:22,505 [1] DEBUG - DONE:[index-12]
+2021-07-10 00:51:29,058 [1] DEBUG - Added (2) out of 2 for 3-2B
+2021-07-10 00:51:29,058 [1] DEBUG - DONE:[index-13]
+2021-07-10 00:51:33,961 [1] DEBUG - Added (1) out of 1 for 4-1A
+2021-07-10 00:51:33,961 [1] DEBUG - DONE:[index-14]
+2021-07-10 00:51:38,931 [1] DEBUG - Added (1) out of 1 for 4-1B
+2021-07-10 00:51:38,931 [1] DEBUG - DONE:[index-15]
+2021-07-10 00:51:43,990 [1] DEBUG - Added (1) out of 1 for 4-1C
+2021-07-10 00:51:43,990 [1] DEBUG - DONE:[index-16]
+2021-07-10 00:51:49,128 [1] DEBUG - Added (2) out of 2 for 5-1A
+2021-07-10 00:51:49,128 [1] DEBUG - DONE:[index-18]
+2021-07-10 00:51:56,829 [1] DEBUG - Added (18) out of 18 for 5-1B
+2021-07-10 00:51:56,829 [1] DEBUG - DONE:[index-19]
+2021-07-10 00:52:01,684 [1] DEBUG - Added (2) out of 2 for 5-1C
+2021-07-10 00:52:01,684 [1] DEBUG - DONE:[index-20]
+2021-07-10 00:52:06,756 [1] DEBUG - Added (2) out of 2 for 5-2B
+2021-07-10 00:52:06,756 [1] DEBUG - DONE:[index-22]
+2021-07-10 00:52:13,175 [1] DEBUG - Added (2) out of 2 for 5-3
+2021-07-10 00:52:13,175 [1] DEBUG - DONE:[index-23]
+2021-07-10 00:52:18,003 [1] DEBUG - Added (6) out of 6 for 5-5B
+2021-07-10 00:52:18,004 [1] DEBUG - DONE:[index-26]
+2021-07-10 00:52:22,916 [1] DEBUG - Added (4) out of 4 for 5-5D
+2021-07-10 00:52:22,916 [1] DEBUG - DONE:[index-28]
+2021-07-10 00:52:27,232 [1] DEBUG - added govt land - 6--
+2021-07-10 00:52:27,232 [1] DEBUG - DONE:[index-29]
+2021-07-10 00:52:31,169 [1] DEBUG - index: 30
+2021-07-10 00:52:31,169 [1] DEBUG - index: 29
+2021-07-10 00:52:31,169 [1] DEBUG - Wrong Captcha: XYS5HCW: 6--
+2021-07-10 00:52:44,334 [1] DEBUG - Added (1) out of 1 for 7--
+2021-07-10 00:52:44,334 [1] DEBUG - DONE:[index-30]
+2021-07-10 00:52:49,296 [1] DEBUG - Added (3) out of 3 for 8-1A
+2021-07-10 00:52:49,296 [1] DEBUG - DONE:[index-31]
+2021-07-10 00:52:53,270 [1] DEBUG - Added (2) out of 2 for 8-1B
+2021-07-10 00:52:53,270 [1] DEBUG - DONE:[index-32]
+2021-07-10 00:52:57,924 [1] DEBUG - Added (2) out of 2 for 8-2
+2021-07-10 00:52:57,924 [1] DEBUG - DONE:[index-33]
+2021-07-10 00:53:02,411 [1] DEBUG - Added (1) out of 1 for 9-2C
+2021-07-10 00:53:02,411 [1] DEBUG - DONE:[index-39]
+2021-07-10 00:53:06,053 [1] DEBUG - index: 41
+2021-07-10 00:53:06,054 [1] DEBUG - index: 40
+2021-07-10 00:53:06,054 [1] DEBUG - Wrong Captcha: VEWSHD: 9-2D
+2021-07-10 00:53:18,076 [1] DEBUG - Added (1) out of 1 for 10-1A
+2021-07-10 00:53:18,076 [1] DEBUG - DONE:[index-41]
+2021-07-10 00:53:22,458 [1] DEBUG - Added (1) out of 1 for 10-1B
+2021-07-10 00:53:22,458 [1] DEBUG - DONE:[index-42]
+2021-07-10 00:53:28,484 [1] DEBUG - Added (1) out of 1 for 10-2
+2021-07-10 00:53:28,485 [1] DEBUG - DONE:[index-43]
+2021-07-10 00:53:33,173 [1] DEBUG - Added (4) out of 4 for 10-3
+2021-07-10 00:53:33,173 [1] DEBUG - DONE:[index-44]
+2021-07-10 00:53:37,371 [1] DEBUG - added govt land - 12--
+2021-07-10 00:53:37,371 [1] DEBUG - DONE:[index-46]
+2021-07-10 00:53:40,998 [1] DEBUG - added govt land - 15--
+2021-07-10 00:53:40,998 [1] DEBUG - DONE:[index-51]
+2021-07-10 00:53:45,612 [1] DEBUG - Added (1) out of 1 for 16-1
+2021-07-10 00:53:45,613 [1] DEBUG - DONE:[index-52]
+2021-07-10 00:53:49,290 [1] DEBUG - added govt land - 16-2
+2021-07-10 00:53:49,291 [1] DEBUG - DONE:[index-53]
+2021-07-10 00:53:54,021 [1] DEBUG - Added (4) out of 4 for 16-4
+2021-07-10 00:53:54,022 [1] DEBUG - DONE:[index-55]
+2021-07-10 00:53:58,935 [1] DEBUG - Added (2) out of 2 for 16-7
+2021-07-10 00:53:58,935 [1] DEBUG - DONE:[index-58]
+2021-07-10 00:54:03,600 [1] DEBUG - Added (2) out of 2 for 16-10
+2021-07-10 00:54:03,600 [1] DEBUG - DONE:[index-61]
+2021-07-10 00:54:08,072 [1] DEBUG - Added (1) out of 1 for 17-1A
+2021-07-10 00:54:08,072 [1] DEBUG - DONE:[index-62]
+2021-07-10 00:54:12,666 [1] DEBUG - Added (1) out of 1 for 17-1B
+2021-07-10 00:54:12,666 [1] DEBUG - DONE:[index-63]
+2021-07-10 00:54:17,122 [1] DEBUG - Added (1) out of 1 for 17-2
+2021-07-10 00:54:17,122 [1] DEBUG - DONE:[index-64]
+2021-07-10 00:54:22,092 [1] DEBUG - Added (1) out of 1 for 17-4
+2021-07-10 00:54:22,092 [1] DEBUG - DONE:[index-66]
+2021-07-10 00:54:27,586 [1] DEBUG - Added (13) out of 13 for 18-1D
+2021-07-10 00:54:27,586 [1] DEBUG - DONE:[index-74]
+2021-07-10 00:54:32,276 [1] DEBUG - Added (3) out of 3 for 18-1E
+2021-07-10 00:54:32,276 [1] DEBUG - DONE:[index-75]
+2021-07-10 00:54:36,153 [1] DEBUG - index: 81
+2021-07-10 00:54:36,153 [1] DEBUG - index: 80
+2021-07-10 00:54:36,153 [1] DEBUG - Wrong Captcha: S5RG2FN: 18-2E
+2021-07-10 00:54:44,971 [1] DEBUG - Added (8) out of 8 for 18-3A
+2021-07-10 00:54:44,971 [1] DEBUG - DONE:[index-81]
+2021-07-10 00:54:49,107 [1] DEBUG - Added (3) out of 3 for 18-3B
+2021-07-10 00:54:49,107 [1] DEBUG - DONE:[index-82]
+2021-07-10 00:54:52,878 [1] DEBUG - index: 83
+2021-07-10 00:54:52,878 [1] DEBUG - index: 82
+2021-07-10 00:54:52,878 [1] DEBUG - Wrong Captcha: ZusP2wW: 18-3B
+2021-07-10 00:55:06,820 [1] DEBUG - Added (2) out of 2 for 18-3C
+2021-07-10 00:55:06,821 [1] DEBUG - DONE:[index-83]
+2021-07-10 00:55:11,710 [1] DEBUG - Added (4) out of 4 for 18-3D
+2021-07-10 00:55:11,711 [1] DEBUG - DONE:[index-84]
+2021-07-10 00:55:16,375 [1] DEBUG - Added (1) out of 1 for 18-3E
+2021-07-10 00:55:16,375 [1] DEBUG - DONE:[index-85]
+2021-07-10 00:55:20,882 [1] DEBUG - Added (2) out of 2 for 18-3I
+2021-07-10 00:55:20,882 [1] DEBUG - DONE:[index-89]
+2021-07-10 00:55:25,284 [1] DEBUG - Added (1) out of 1 for 18-3J
+2021-07-10 00:55:25,285 [1] DEBUG - DONE:[index-90]
+2021-07-10 00:55:29,875 [1] DEBUG - Added (1) out of 1 for 19-2
+2021-07-10 00:55:29,876 [1] DEBUG - DONE:[index-97]
+2021-07-10 00:56:13,765 [1] DEBUG - =================Saturday, 10 July 2021 00:56:13========================
+2021-07-10 00:56:55,197 [1] DEBUG - Added (1) out of 1 for 19-4
+2021-07-10 00:56:55,197 [1] DEBUG - DONE:[index-99]
+2021-07-10 00:57:00,224 [1] DEBUG - Added (1) out of 1 for 19-5
+2021-07-10 00:57:00,224 [1] DEBUG - DONE:[index-100]
+2021-07-10 00:57:05,566 [1] DEBUG - Added (1) out of 1 for 20-2
+2021-07-10 00:57:05,566 [1] DEBUG - DONE:[index-102]
+2021-07-10 00:57:10,814 [1] DEBUG - Added (2) out of 2 for 21-1A
+2021-07-10 00:57:10,814 [1] DEBUG - DONE:[index-103]
+2021-07-10 00:57:15,374 [1] DEBUG - Added (2) out of 2 for 21-1B
+2021-07-10 00:57:15,374 [1] DEBUG - DONE:[index-104]
+2021-07-10 00:57:19,452 [1] DEBUG - Added (1) out of 1 for 21-1C
+2021-07-10 00:57:19,452 [1] DEBUG - DONE:[index-105]
+2021-07-10 00:57:25,112 [1] DEBUG - Added (2) out of 2 for 21-1D
+2021-07-10 00:57:25,112 [1] DEBUG - DONE:[index-106]
+2021-07-10 00:57:29,681 [1] DEBUG - Added (3) out of 3 for 21-3
+2021-07-10 00:57:29,681 [1] DEBUG - DONE:[index-108]
+2021-07-10 00:57:34,434 [1] DEBUG - Added (1) out of 1 for 22-1A
+2021-07-10 00:57:34,434 [1] DEBUG - DONE:[index-109]
+2021-07-10 00:57:39,512 [1] DEBUG - Added (3) out of 3 for 22-1B
+2021-07-10 00:57:39,512 [1] DEBUG - DONE:[index-110]
+2021-07-10 00:57:44,700 [1] DEBUG - Added (2) out of 2 for 22-2
+2021-07-10 00:57:44,700 [1] DEBUG - DONE:[index-113]
+2021-07-10 00:57:49,321 [1] DEBUG - Added (3) out of 3 for 22-3B
+2021-07-10 00:57:49,322 [1] DEBUG - DONE:[index-115]
+2021-07-10 00:57:54,076 [1] DEBUG - Added (1) out of 1 for 23--
+2021-07-10 00:57:54,076 [1] DEBUG - DONE:[index-117]
+2021-07-10 00:57:58,940 [1] DEBUG - Added (2) out of 2 for 24-1
+2021-07-10 00:57:58,940 [1] DEBUG - DONE:[index-118]
+2021-07-10 00:58:03,750 [1] DEBUG - Added (3) out of 3 for 24-2
+2021-07-10 00:58:03,750 [1] DEBUG - DONE:[index-119]
+2021-07-10 00:58:07,629 [1] DEBUG - index: 120
+2021-07-10 00:58:07,629 [1] DEBUG - index: 119
+2021-07-10 00:58:07,629 [1] DEBUG - Wrong Captcha: 7MUEWH: 24-2
+2021-07-10 00:58:30,806 [1] DEBUG - added govt land - 24-3
+2021-07-10 00:58:30,806 [1] DEBUG - DONE:[index-120]
+2021-07-10 00:58:35,383 [1] DEBUG - index: 126
+2021-07-10 00:58:35,383 [1] DEBUG - index: 125
+2021-07-10 00:58:35,383 [1] DEBUG - Wrong Captcha: BWWS87R: 27-1C
+2021-07-10 00:58:43,399 [1] DEBUG - Added (1) out of 1 for 27-2A
+2021-07-10 00:58:43,399 [1] DEBUG - DONE:[index-126]
+2021-07-10 00:58:47,635 [1] DEBUG - Added (1) out of 1 for 27-2B
+2021-07-10 00:58:47,635 [1] DEBUG - DONE:[index-127]
+2021-07-10 00:58:51,646 [1] DEBUG - index: 128
+2021-07-10 00:58:51,647 [1] DEBUG - index: 127
+2021-07-10 00:58:51,647 [1] DEBUG - Wrong Captcha: F66YWS5: 27-2B
+2021-07-10 00:58:59,344 [1] DEBUG - Added (1) out of 1 for 28-1
+2021-07-10 00:58:59,345 [1] DEBUG - DONE:[index-128]
+2021-07-10 00:59:04,312 [1] DEBUG - Added (2) out of 2 for 30-2
+2021-07-10 00:59:04,313 [1] DEBUG - DONE:[index-136]
+2021-07-10 00:59:09,307 [1] DEBUG - Added (1) out of 1 for 31-2
+2021-07-10 00:59:09,307 [1] DEBUG - DONE:[index-139]
+2021-07-10 00:59:13,770 [1] DEBUG - Added (1) out of 1 for 32-1
+2021-07-10 00:59:13,771 [1] DEBUG - DONE:[index-140]
+2021-07-10 00:59:19,076 [1] DEBUG - Added (3) out of 3 for 33-1B
+2021-07-10 00:59:19,076 [1] DEBUG - DONE:[index-144]
+2021-07-10 00:59:24,337 [1] DEBUG - Added (2) out of 2 for 33-2
+2021-07-10 00:59:24,337 [1] DEBUG - DONE:[index-146]
+2021-07-10 00:59:29,534 [1] DEBUG - Added (1) out of 1 for 35-1
+2021-07-10 00:59:29,534 [1] DEBUG - DONE:[index-158]
+2021-07-10 00:59:34,533 [1] DEBUG - Added (1) out of 1 for 35-2
+2021-07-10 00:59:34,533 [1] DEBUG - DONE:[index-159]
+2021-07-10 00:59:40,814 [1] DEBUG - Added (1) out of 1 for 36-2B
+2021-07-10 00:59:40,814 [1] DEBUG - DONE:[index-168]
+2021-07-10 00:59:45,365 [1] DEBUG - Added (1) out of 1 for 36-4E
+2021-07-10 00:59:45,365 [1] DEBUG - DONE:[index-175]
+2021-07-10 00:59:50,263 [1] DEBUG - Added (1) out of 1 for 36-4K
+2021-07-10 00:59:50,263 [1] DEBUG - DONE:[index-181]
+2021-07-10 00:59:53,960 [1] DEBUG - added govt land - 38-1
+2021-07-10 00:59:53,960 [1] DEBUG - DONE:[index-189]
+2021-07-10 00:59:57,923 [1] DEBUG - added govt land - 38-2
+2021-07-10 00:59:57,923 [1] DEBUG - DONE:[index-190]
+2021-07-10 01:00:02,363 [1] DEBUG - index: 191
+2021-07-10 01:00:02,363 [1] DEBUG - index: 190
+2021-07-10 01:00:02,363 [1] DEBUG - Wrong Captcha: GVA4TFY: 38-2
+2021-07-10 01:00:09,913 [1] DEBUG - added govt land - 38-3
+2021-07-10 01:00:09,913 [1] DEBUG - DONE:[index-191]
+2021-07-10 01:00:13,658 [1] DEBUG - added govt land - 38-4
+2021-07-10 01:00:13,659 [1] DEBUG - DONE:[index-192]
+2021-07-10 01:00:17,150 [1] DEBUG - added govt land - 38-5
+2021-07-10 01:00:17,150 [1] DEBUG - DONE:[index-193]
+2021-07-10 01:00:20,867 [1] DEBUG - added govt land - 39--
+2021-07-10 01:00:20,867 [1] DEBUG - DONE:[index-194]
+2021-07-10 01:02:59,999 [1] DEBUG - =================Saturday, 10 July 2021 01:02:59========================
+2021-07-10 01:03:17,484 [1] DEBUG - added govt land - 40--
+2021-07-10 01:03:17,487 [1] DEBUG - DONE:[index-195]
+2021-07-10 01:03:21,042 [1] DEBUG - added govt land - 41--
+2021-07-10 01:03:21,042 [1] DEBUG - DONE:[index-196]
+2021-07-10 01:03:24,792 [1] DEBUG - added govt land - 42-1A
+2021-07-10 01:03:24,792 [1] DEBUG - DONE:[index-197]
+2021-07-10 01:03:30,032 [1] DEBUG - Added (2) out of 2 for 42-1B
+2021-07-10 01:03:30,032 [1] DEBUG - DONE:[index-198]
+2021-07-10 01:03:33,913 [1] DEBUG - added govt land - 42-2A
+2021-07-10 01:03:33,913 [1] DEBUG - DONE:[index-199]
+2021-07-10 01:03:38,695 [1] DEBUG - Added (3) out of 3 for 42-2B1
+2021-07-10 01:03:38,695 [1] DEBUG - DONE:[index-200]
+2021-07-10 01:03:43,419 [1] DEBUG - Added (1) out of 1 for 42-2B2
+2021-07-10 01:03:43,419 [1] DEBUG - DONE:[index-201]
+2021-07-10 01:03:47,879 [1] DEBUG - Added (1) out of 1 for 43-1
+2021-07-10 01:03:47,879 [1] DEBUG - DONE:[index-202]
+2021-07-10 01:03:52,499 [1] DEBUG - Added (3) out of 3 for 43-2
+2021-07-10 01:03:52,499 [1] DEBUG - DONE:[index-203]
+2021-07-10 01:03:56,033 [1] DEBUG - added govt land - 45--
+2021-07-10 01:03:56,033 [1] DEBUG - DONE:[index-206]
+2021-07-10 01:03:59,834 [1] DEBUG - added govt land - 47--
+2021-07-10 01:03:59,834 [1] DEBUG - DONE:[index-208]
+2021-07-10 01:04:03,664 [1] DEBUG - added govt land - 48--
+2021-07-10 01:04:03,664 [1] DEBUG - DONE:[index-209]
+2021-07-10 01:04:07,424 [1] DEBUG - Wrong Captcha: H7wWQ22: 49--
+2021-07-10 01:04:18,024 [1] DEBUG - Wrong Captcha: EFUCTY: 49--
+2021-07-10 01:04:24,502 [1] DEBUG - added govt land - 49--
+2021-07-10 01:04:24,502 [1] DEBUG - DONE:[index-210]
+2021-07-10 01:04:29,543 [1] DEBUG - Added (23) out of 23 for 50-1
+2021-07-10 01:04:29,543 [1] DEBUG - DONE:[index-211]
+2021-07-10 01:04:34,874 [1] DEBUG - Added (1) out of 1 for 50-2B
+2021-07-10 01:04:34,874 [1] DEBUG - DONE:[index-213]
+2021-07-10 01:04:40,107 [1] DEBUG - ERROR: 50-3 - System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at AdangalApp.AdangalTypes.AdangalConverter.TextToAdangal(String text, Int32 surveyNo, String subdivNo, LogHelper logHelper) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 80
+2021-07-10 01:04:40,107 [1] DEBUG - DONE:[index-214]
+2021-07-10 01:04:43,776 [1] DEBUG - Wrong Captcha: 7TETM6V: 50-4A
+2021-07-10 01:04:50,019 [1] DEBUG - Added (1) out of 1 for 50-4A
+2021-07-10 01:04:50,019 [1] DEBUG - DONE:[index-215]
+2021-07-10 01:04:53,827 [1] DEBUG - Wrong Captcha: 4Ux4a27: 50-4C1
+2021-07-10 01:05:00,181 [1] DEBUG - Added (1) out of 1 for 50-4C1
+2021-07-10 01:05:00,181 [1] DEBUG - DONE:[index-217]
+2021-07-10 01:05:04,714 [1] DEBUG - Added (1) out of 1 for 50-4C2
+2021-07-10 01:05:04,714 [1] DEBUG - DONE:[index-218]
+2021-07-10 01:05:09,205 [1] DEBUG - Added (2) out of 2 for 50-5A1
+2021-07-10 01:05:09,205 [1] DEBUG - DONE:[index-219]
+2021-07-10 01:05:13,950 [1] DEBUG - Added (4) out of 4 for 50-5A2
+2021-07-10 01:05:13,950 [1] DEBUG - DONE:[index-220]

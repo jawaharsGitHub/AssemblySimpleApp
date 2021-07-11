@@ -34,7 +34,8 @@ namespace AdangalApp.AdangalTypes
                         "கணவன்",
                         "காப்பாளர்",
                         "மகன்",
-                        "மனைவி"
+                        "மனைவி",
+                        "மகள்"
                     };
 
 
@@ -59,6 +60,7 @@ namespace AdangalApp.AdangalTypes
 
             try
             {
+                int retryCount = 0;
                 System.Timers.Timer aTimer = new System.Timers.Timer(10 * 60 * 1000);
                 IWebDriver driver = new ChromeDriver();
                 driver.Navigate().GoToUrl("https://eservices.tn.gov.in/eservicesnew/land/chitta.html?lan=en");
@@ -137,26 +139,35 @@ namespace AdangalApp.AdangalTypes
 
                     if (copiedText.ToLower().Contains("district") == true &&
                         copiedText.ToLower().Contains("government") == false &&
-                        copiedText.ToLower().Contains("bhoodan") == false)
+                        copiedText.ToLower().Contains("bhoodan") == false &&
+                        copiedText.ToLower().Contains("-") == false)
                     {
                         logHelper.WriteAdangalLog($"Wrong Captcha: {text}: {list[i].Value}-{list[i].Caption}");
                         //MessageBox.Show($"Retry for {list[i].Value}-{list[i].Caption}!");
-                        i -= 1;
+                        retryCount += 1;
+                        if (retryCount <= 2)
+                            i -= 1;
                         driver.Close();
                         continue;
                     }
+                    retryCount = 0;
 
                     File.AppendAllText($@"F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\{Program.villageName}\{Program.villageName}-10-1.txt", copiedText);
 
                     if (copiedText.ToLower().Contains("bhoodan"))
                     {
-                        AddBhoodanData(list[i].Value, list[i].Caption);
+                        AddOtherLandType(list[i].Value, list[i].Caption, LandType.CLRBhoodanLands);
                         logHelper.WriteAdangalLog($"added bhoodan land - {list[i].Value}-{list[i].Caption}");
                     }
                     else if (copiedText.ToLower().Contains("government"))
                     {
-                        AddPorambokkuData(list[i].Value, list[i].Caption);
+                        AddOtherLandType(list[i].Value, list[i].Caption, LandType.Porambokku);
                         logHelper.WriteAdangalLog($"added govt land - {list[i].Value}-{list[i].Caption}");
+                    }
+                    else if (copiedText.ToLower().Contains("-"))
+                    {
+                        AddOtherLandType(list[i].Value, list[i].Caption, LandType.Dash);
+                        logHelper.WriteAdangalLog($"added unknown - {list[i].Value}-{list[i].Caption}");
                     }
                     else
                     {
@@ -279,13 +290,18 @@ namespace AdangalApp.AdangalTypes
                 var neededData = third.Skip(hecIndex + 1);
                 neededData = neededData.Take(neededData.Count() - 1);
 
-                var names = GetOwnerName(sec.Replace("புல எண்", "$").Split('$').ToList()[0]);
+                var firstRowWithName = sec.Replace("புல எண்", "$").Split('$').ToList()[0];
+                if (firstRowWithName.Contains("2."))
+                {
+                    firstRowWithName = firstRowWithName.Replace("2.", "$").Split('$')[0];
+                }
+                var name = GetOwnerName(firstRowWithName);
 
                 int addedCount = 0;
                 neededData.ToList().ForEach(fe =>
                 {
                     var rowData = fe.Split('\t').ToList();
-                    var adangal = GetAdangalFromCopiedData(rowData, pattaEn, names);
+                    var adangal = GetAdangalFromCopiedData(rowData, pattaEn, name);
                     adangal.RegisterDate = GetRegisterDate(rowData);
                     adangal.IsVagai = (hecIndex > 3);
                     if (DataAccess.AddNewAdangal(adangal, villagPath))
@@ -313,11 +329,11 @@ namespace AdangalApp.AdangalTypes
             return $"{DateData[dateCount - 3].Trim()}-{DateData[dateCount - 2].Trim()}-{DateData[dateCount - 1].Trim()}";
         }
 
-        public static void AddPorambokkuData(int survey, string subdiv)
+        public static void AddOtherLandType(int survey, string subdiv, LandType LandType)
         {
             DataAccess.AddNewAdangal(new Adangal()
             {
-                LandType = LandType.Porambokku,
+                LandType = LandType,
                 NilaAlavaiEn = survey,
                 UtpirivuEn = subdiv
 
@@ -325,17 +341,7 @@ namespace AdangalApp.AdangalTypes
 
         }
 
-        public static void AddBhoodanData(int survey, string subdiv)
-        {
-            DataAccess.AddNewAdangal(new Adangal()
-            {
-                LandType = LandType.CLRBhoodanLands,
-                NilaAlavaiEn = survey,
-                UtpirivuEn = subdiv
-
-            }, villagPath);
-
-        }
+        
 
         public static bool IsExist(int NilaAlavaiEn, string UtpirivuEn)
         {
@@ -416,7 +422,8 @@ namespace AdangalApp.AdangalTypes
             {
                 KeyValue kv = new KeyValue();
                 var nameRow = paramNameRow;
-                nameRow = nameRow.Split('.').ToList().Where(w => w.Trim() != "").ToList()[1].Trim();
+                //nameRow = nameRow.Split('.').ToList().Where(w => w.Trim() != "").ToList()[1].Trim();
+                nameRow = nameRow.Replace("1.", "$").Split('$').ToList().Where(w => w.Trim() != "").ToList()[0].Trim();
                 string name = "";
                 if (relationTypesCorrect.Any(a => nameRow.Split('\t').ToList().Contains(a))) // have valid names.
                 {
@@ -435,6 +442,10 @@ namespace AdangalApp.AdangalTypes
                         // ERROR!
                         MessageBox.Show("Error!");
                     }
+                }
+                else
+                {
+                    logHelper.WriteAdangalLog($"ERROR in names: namerow-{paramNameRow}");
                 }
 
                 return kv;
