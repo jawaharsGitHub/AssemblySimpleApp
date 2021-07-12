@@ -90,7 +90,7 @@ pasali not replaced.
 table alignment
 kurippu if any!
 starting page no?
-
+header height reduce(both right and left page)
 
 
 adding intial

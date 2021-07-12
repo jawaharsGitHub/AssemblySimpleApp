@@ -1154,7 +1154,14 @@ namespace AdangalApp
             pageNumber += 1;
             var sb = new StringBuilder();
             //sb.Append(leftCertEmpty);
-            sb.Append(certSinglePage.Replace("[pageNo]", pageNumber.ToString()));
+            certSinglePage = certSinglePage.Replace("[pageNo]", pageNumber.ToString());
+            certSinglePage = certSinglePage.Replace("[header]", updatedHeader);
+            certSinglePage = certSinglePage.Replace("[pasali]", pasali.ToString());
+            certSinglePage = certSinglePage.Replace("[maavattam]", loadedFile.MaavattamNameTamil);
+            certSinglePage = certSinglePage.Replace("[vattam]", loadedFile.VattamNameTamil);
+            certSinglePage = certSinglePage.Replace("[village]", loadedFile.MaavattamNameTamil);
+
+            sb.Append(certSinglePage.Replace("[pageNo]", pageNumber.ToString()).Replace("[header]", updatedHeader));
             return sb.ToString();
         }
 
@@ -1252,9 +1259,10 @@ namespace AdangalApp
             //initialPages.Append(GetEmptyPages(1));
             //initialPages.Append(GetPage2());
             //initialPages.Append(GetPage3());
-            initialPages.Append(GetBuildingPg());
-            initialPages.Append(GetSumPage());
+            //initialPages.Append(GetBuildingPg());
+            
             initialPages.Append(GetNotesPages(4));
+            initialPages.Append(GetSumPage());
             //initialPages.Append(GetPage4());
 
 
@@ -2174,7 +2182,20 @@ namespace AdangalApp
             firstPage = FileContentReader.FirstPageTemplate;
             notesPage = FileContentReader.NotesPageTemplate;
 
-            title = title.Replace("[pasali]", pasali.ToString()).Replace("[br]", "</br>").Replace("[varuvvaikiraamam]", loadedFile.VillageNameTamil);
+            notesPage = notesPage.Replace("[pageNo]", pageNumber.ToString());
+            notesPage = notesPage.Replace("[header]", updatedHeader);
+            notesPage = notesPage.Replace("[pasali]", pasali.ToString());
+            notesPage = notesPage.Replace("[maavattam]", loadedFile.MaavattamNameTamil);
+            notesPage = notesPage.Replace("[vattam]", loadedFile.VattamNameTamil);
+            notesPage = notesPage.Replace("[village]", loadedFile.MaavattamNameTamil);
+
+            title = title.Replace("[pasali]", pasali.ToString());
+            title = title.Replace("[br]", "</br>");
+            title = title.Replace("[varuvvaikiraamam]", loadedFile.VillageNameTamil);
+            title = title.Replace("[firka]", loadedFile.FirkaName);
+            title = title.Replace("[vattam]", loadedFile.VattamNameTamil);
+            title = title.Replace("[maavattam]", loadedFile.MaavattamNameTamil);
+
             firstPage = firstPage.Replace("[title]", title);
             plainPage = FileContentReader.EmptyPageTemplate;
             certSinglePage = FileContentReader.CertPageTemplate;
