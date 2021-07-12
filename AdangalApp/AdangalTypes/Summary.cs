@@ -7,6 +7,8 @@
         public string Parappu { get; set; }
         public int Id { get; set; }
 
-        
+        public LandType LandType { get; set; }
+
+
     }
 }

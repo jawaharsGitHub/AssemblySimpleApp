@@ -39,7 +39,7 @@ namespace AdangalApp.AdangalTypes
 
 
         static BackgroundWorker bw = new BackgroundWorker();
-        static BackgroundWorker bwFull = new BackgroundWorker();
+        //static BackgroundWorker bwFull = new BackgroundWorker();
         static string testdataPath = "";
 
         public static void ProcessAdangal(List<KeyValue> list, bool isCorrection = false)
@@ -50,7 +50,11 @@ namespace AdangalApp.AdangalTypes
             string villageCode = lf.VillageCode.ToString().PadLeft(3, '0');
 
             testdataPath = ConfigurationManager.AppSettings["testdataPath"];
-
+            int emailInterval = ConfigurationManager.AppSettings["emailInterval"].ToInt32();
+            System.Timers.Timer aTimer = new System.Timers.Timer(emailInterval * 60 * 1000);
+            aTimer.AutoReset = true;
+            aTimer.Enabled = true;
+            aTimer.Start();
 
             var di = (from d in DriveInfo.GetDrives().ToList()
                       where d.Name.ToLower().Contains("c") == false
@@ -58,17 +62,50 @@ namespace AdangalApp.AdangalTypes
             var imgPath = Path.Combine(di, "imageTest\\");
 
             int retryCount = 0;
-            System.Timers.Timer aTimer = new System.Timers.Timer(10 * 60 * 1000);
+            
             IWebDriver driver = new ChromeDriver();
             driver.Navigate().GoToUrl("https://eservices.tn.gov.in/eservicesnew/land/chitta.html?lan=en");
             int currentSurvey = 0;
             string currentSubDiv = "";
+
+            //bw.DoWork += (s, e) =>
+            //{
+            //    var perc = list.Count.PercentageBtwIntNo(i);
+            //    var sub = $"{perc}% - {vao.loadedFile.VillageName}- DONE:{i} of {list.Count}";
+            //    //var adn = DataAccess.GetActiveAdangal();
+            //    //var issueRec = adn.Where(w => w.LandType != LandType.Porambokku && w.LandType != LandType.Dash && w.PattaEn == 0).Count();
+            //    string bodyDtr = $"LastItem Procesed: {currentSurvey}-{currentSubDiv}";
+            //    AppCommunication.SendAdangalUpdate(sub, bodyDtr);
+            //};
+
+            //var startTime = DateTime.Now;
+            //var subFirst = $"Started for {vao.loadedFile.VillageName}";
+            //AppCommunication.SendAdangalUpdate(subFirst, subFirst);
+
             for (int i = 0; i <= list.Count - 1; i++)
             {
                 try
                 {
                     currentSurvey = list[i].Value;
-                    currentSubDiv = list[i].Caption;
+                    currentSubDiv = list[i].Caption;                    
+
+                    //if (isCorrection == false && DateTime.Now >= startTime.AddMinutes(1))
+                    //{
+                    //    var perc = list.Count.PercentageBtwIntNo(i);
+                    //    var sub = $"{perc}% - {vao.loadedFile.VillageName}- DONE:{i} of {list.Count}";
+                    //    //var adn = DataAccess.GetActiveAdangal();
+                    //    //var issueRec = adn.Where(w => w.LandType != LandType.Porambokku && w.LandType != LandType.Dash && w.PattaEn == 0).Count();
+                    //    string bodyDtr = $"LastItem Procesed: {currentSurvey}-{currentSubDiv}";
+                    //    AppCommunication.SendAdangalUpdate(sub, bodyDtr);
+                    //    startTime = DateTime.Now;
+
+                    //    //aTimer.Elapsed += (a, o) =>
+                    //    //{
+                    //    //    bw.RunWorkerAsync();
+                    //    //};
+                    //}
+
+                    
 
                     //LogEntries logEntries = driver.Manage().Logs.
 
@@ -192,25 +229,9 @@ namespace AdangalApp.AdangalTypes
 
                     DataAccess.SaveCopiedText($"{currentSurvey}-{currentSubDiv}{Environment.NewLine}{copiedText}");
 
+
+
                     
-
-                    bw.DoWork += (s, e) =>
-                    {
-                        var perc = list.Count.PercentageBtwIntNo(i);
-                        var sub = $"{perc}% - {vao.loadedFile.VillageName}- DONE:{i} of {list.Count}";
-                        AppCommunication.SendAdangalUpdate(sub, $"{currentSurvey}-{currentSubDiv}");
-                    };
-
-                    if (isCorrection == false)
-                    {
-                        aTimer.Elapsed += (a, o) =>
-                        {                          
-                            bw.RunWorkerAsync();
-                            aTimer.AutoReset = true;
-                            aTimer.Enabled = true;
-                            aTimer.Start();
-                        };
-                    }
 
                     vao.LogMessage($"DONE: {currentSurvey}-{currentSubDiv} [{i}/{list.Count}]");
                     driver.Close();
@@ -290,7 +311,7 @@ namespace AdangalApp.AdangalTypes
                     error = $"Error Record {notSyncCount}";
                 }
             }
-            return $"{status.ToName()}-{error}";
+            return $"{AdangalConstant.villageName} : {status.ToName()}-{error}";
         }
 
 
@@ -377,7 +398,7 @@ namespace AdangalApp.AdangalTypes
             catch (Exception ex)
             {
                 DataAccess.AddNewAdangal(new Adangal()
-                { LandStatus = LandStatus.Error, NilaAlavaiEn = surveyNo, UtpirivuEn = subdivNo });
+                { LandStatus = LandStatus.Error, LandType = LandType.UnKnown, NilaAlavaiEn = surveyNo, UtpirivuEn = subdivNo });
                 vao.LogMessage($"ERROR: {surveyNo}-{subdivNo} - {ex.ToString()}");
 
             }

@@ -94,6 +94,7 @@
             this.txtRecCount = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lblPageNo = new System.Windows.Forms.Label();
+            this.btnLoadFirstTime2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -270,7 +271,6 @@
             // 
             // btnReady
             // 
-            this.btnReady.Enabled = false;
             this.btnReady.Location = new System.Drawing.Point(19, 19);
             this.btnReady.Name = "btnReady";
             this.btnReady.Size = new System.Drawing.Size(133, 35);
@@ -376,6 +376,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnLoadFirstTime2);
             this.groupBox2.Controls.Add(this.btnLoadProcessed);
             this.groupBox2.Controls.Add(this.ddlProcessedFiles);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -389,11 +390,11 @@
             // btnLoadProcessed
             // 
             this.btnLoadProcessed.Enabled = false;
-            this.btnLoadProcessed.Location = new System.Drawing.Point(51, 48);
+            this.btnLoadProcessed.Location = new System.Drawing.Point(16, 45);
             this.btnLoadProcessed.Name = "btnLoadProcessed";
-            this.btnLoadProcessed.Size = new System.Drawing.Size(112, 23);
+            this.btnLoadProcessed.Size = new System.Drawing.Size(85, 23);
             this.btnLoadProcessed.TabIndex = 8;
-            this.btnLoadProcessed.Text = "Load Files";
+            this.btnLoadProcessed.Text = "Gird view";
             this.btnLoadProcessed.UseVisualStyleBackColor = true;
             this.btnLoadProcessed.Click += new System.EventHandler(this.btnLoadProcessed_Click);
             // 
@@ -800,6 +801,17 @@
             this.lblPageNo.TabIndex = 27;
             this.lblPageNo.Text = "பக்கம் -";
             // 
+            // btnLoadFirstTime2
+            // 
+            this.btnLoadFirstTime2.Enabled = false;
+            this.btnLoadFirstTime2.Location = new System.Drawing.Point(119, 45);
+            this.btnLoadFirstTime2.Name = "btnLoadFirstTime2";
+            this.btnLoadFirstTime2.Size = new System.Drawing.Size(95, 23);
+            this.btnLoadFirstTime2.TabIndex = 19;
+            this.btnLoadFirstTime2.Text = "Load FirstTime";
+            this.btnLoadFirstTime2.UseVisualStyleBackColor = true;
+            this.btnLoadFirstTime2.Click += new System.EventHandler(this.btnLoadFirstTime2_Click);
+            // 
             // vao
             // 
             this.AcceptButton = this.btnNextPage;
@@ -920,6 +932,7 @@
         private System.Windows.Forms.Button btnSyncNew;
         private System.Windows.Forms.Label lblPageNo;
         private System.Windows.Forms.Button btnLoadFirstTIme;
+        private System.Windows.Forms.Button btnLoadFirstTime2;
         //public System.Windows.Forms.Button bthThread;
     }
 }

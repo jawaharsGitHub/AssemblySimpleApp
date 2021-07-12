@@ -11,6 +11,7 @@ namespace AdangalApp
     public class DataAccess : BaseClass
     {
         static string JsonPath = "";
+        static string JsonFolderPath = "";
         static string SubDivPath = "";
         static string LoadedFile = "";
         static string PattaJsonPath = "";
@@ -93,6 +94,8 @@ namespace AdangalApp
             var data = (from d in Directory.GetDirectories(AppConfiguration.GetDynamicPath($"AdangalJson"))
                         select new DirectoryInfo(d).Name).ToList();
 
+            
+
             data.Insert(0, "--select--");
             return data;
         }
@@ -151,6 +154,61 @@ namespace AdangalApp
         }
 
         public static void SaveSummary(List<Summary> summaryData)
+        {
+            string path = SummaryPath;
+
+
+            //var totaPunsaiParappu = AdangalFn.GetSumThreeDotNo(summaryData.Skip(1).Take(2).Select(s => s.Parappu).ToList());
+
+            var totaPunsaiParappu = AdangalFn.GetSumThreeDotNo(summaryData.Where(w => w.LandType == LandType.Punsai ||
+            w.LandType == LandType.Maanaavari).Select(s => s.Parappu).ToList());
+
+            var punsaiPages = summaryData.Where(w => w.LandType == LandType.Punsai).First();
+            var maanaavariPages = summaryData.Where(w => w.LandType == LandType.Maanaavari).First();
+
+            var totalPunsaiPages = punsaiPages.Pakkam.Split('-')[0] + "-" + maanaavariPages.Pakkam.Split('-')[1];
+
+            List<Summary> data = null;
+            if (File.Exists(path) == false)
+            {
+                var myFile = File.Create(path);
+                myFile.Close();
+
+                data = summaryData;
+                data[0].Vibaram = $"மொத்த {data[0].Vibaram}";
+                data.Insert(3,
+                    new Summary()
+                    {
+                        Id = -1,
+                        Parappu = totaPunsaiParappu,
+                        Vibaram = "மொத்த புன்செய் (புன்செய் + மானாவாரி)",
+                        Pakkam = totalPunsaiPages
+                    });
+            }
+            else
+            {
+                data = GetSummary();
+
+                summaryData.ForEach(fe => {
+
+                    data.Where(w => w.Id == fe.Id).First().Parappu = fe.Parappu;
+                    data.Where(w => w.Id == fe.Id).First().Pakkam = fe.Pakkam;
+                });
+
+                //for (int i = 0; i <= 3; i++)
+                //{
+                //    data.Where(w => w.Id == i).First().Parappu = summaryData[i].Parappu;
+                //    data.Where(w => w.Id == i).First().Pakkam = summaryData[i].Pakkam;
+                //}
+
+                data.Where(w => w.Id == -1).First().Parappu = totaPunsaiParappu;
+                data.Where(w => w.Id == -1).First().Pakkam = totalPunsaiPages;
+            }
+
+            WriteObjectsToFile(data, path);
+        }
+
+        public static void SaveSummaryNonNansai(List<Summary> summaryData)
         {
             string path = SummaryPath;
             var totaPunsaiParappu = AdangalFn.GetSumThreeDotNo(summaryData.Skip(1).Take(2).Select(s => s.Parappu).ToList());
@@ -308,7 +366,6 @@ namespace AdangalApp
                                                           .ThenBy(o => o.NilaAlavaiEn)
                                                           .ThenBy(t => t.UtpirivuEn, new AlphanumericComparer())
                                                           .ToList();
-            //return ReadFileAsObjects<Adangal>(JsonPath).Where(w => w.LandStatus != LandStatus.Deleted).ToList();
         }
 
         public static List<Adangal> GetActiveAdangalNew()
@@ -376,6 +433,16 @@ namespace AdangalApp
                               ld.UtpirivuEn == adn.UtpirivuEn).First();
             u.PattaEn = adn.PattaEn;
             u.LandStatus = LandStatus.NameEdited;
+            WriteObjectsToFile(list, JsonPath);
+        }
+
+        public static void UpdateParappu(Adangal adn)
+        {
+            List<Adangal> list = GetActiveAdangal();
+            var u = list.Where(ld => ld.NilaAlavaiEn == adn.NilaAlavaiEn &&
+                              ld.UtpirivuEn == adn.UtpirivuEn).First();
+            u.Parappu = adn.Parappu;
+            u.LandStatus = LandStatus.ParappuEdited;
             WriteObjectsToFile(list, JsonPath);
         }
 

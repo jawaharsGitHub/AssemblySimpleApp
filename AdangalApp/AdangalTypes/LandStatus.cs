@@ -11,6 +11,7 @@ namespace AdangalApp.AdangalTypes
         WrongName,
         NameEdited,
         NeedToVerify,
-        
+        ParappuEdited,
+
     }
 }

@@ -1,0 +1,665 @@
+2021-07-12 10:30:31,492 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 10:30:32,505 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 10:30:33,103 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 10:30:39,363 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 10:30:40,272 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 10:30:47,346 [1] DEBUG - STEP-1 STARTED
+2021-07-12 10:30:47,898 [1] DEBUG - STEP-1 - Maavattam: 27-Ramanathapuram
+2021-07-12 10:30:51,808 [1] DEBUG - STEP-1 - Vattam: 11-RAMANATHAPURAM
+2021-07-12 10:31:00,208 [1] DEBUG - STEP - 1 - Village: 55-KARAN
+2021-07-12 10:32:21,269 [1] DEBUG - ERROR:OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: 7B
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 140
+2021-07-12 10:32:25,299 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: invalid session id
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 81
+2021-07-12 10:33:16,034 [1] DEBUG - STEP - 1 - Village: 62-ENMANAMKONDAN
+2021-07-12 10:33:21,173 [1] DEBUG - STEP - 1 - Village: 62-ENMANAMKONDAN
+2021-07-12 10:34:48,849 [1] DEBUG - STARTED: 50-7B [1525/2926]
+2021-07-12 10:34:48,850 [1] DEBUG - ------------------------------------
+2021-07-12 10:34:49,177 [1] DEBUG - Added (1) out of (1) for 50-7B
+2021-07-12 10:34:49,213 [1] DEBUG - DONE: 50-7B [1525/2926]
+2021-07-12 10:34:57,723 [1] DEBUG - STARTED: 50-8 [1526/2926]
+2021-07-12 10:34:57,723 [1] DEBUG - ------------------------------------
+2021-07-12 10:34:57,877 [1] DEBUG - Added (1) out of (1) for 50-8
+2021-07-12 10:34:57,977 [1] DEBUG - DONE: 50-8 [1526/2926]
+2021-07-12 10:35:02,966 [1] DEBUG - STARTED: 50-9A [1527/2926]
+2021-07-12 10:35:02,967 [1] DEBUG - ------------------------------------
+2021-07-12 10:35:03,104 [1] DEBUG - Added (1) out of (1) for 50-9A
+2021-07-12 10:35:03,113 [1] DEBUG - DONE: 50-9A [1527/2926]
+2021-07-12 10:35:08,171 [1] DEBUG - STARTED: 50-9B [1528/2926]
+2021-07-12 10:35:08,171 [1] DEBUG - ------------------------------------
+2021-07-12 10:35:08,302 [1] DEBUG - Added (1) out of (1) for 50-9B
+2021-07-12 10:35:08,311 [1] DEBUG - DONE: 50-9B [1528/2926]
+2021-07-12 10:35:12,692 [1] DEBUG - STARTED: 50-10A [1529/2926]
+2021-07-12 10:35:12,692 [1] DEBUG - ------------------------------------
+2021-07-12 10:35:12,857 [1] DEBUG - Added (1) out of (1) for 50-10A
+2021-07-12 10:35:12,867 [1] DEBUG - DONE: 50-10A [1529/2926]
+2021-07-12 10:35:18,181 [1] DEBUG - STARTED: 50-10B [1530/2926]
+2021-07-12 10:35:18,181 [1] DEBUG - ------------------------------------
+2021-07-12 10:35:18,327 [1] DEBUG - added govt land - 50-10B
+2021-07-12 10:35:18,342 [1] DEBUG - DONE: 50-10B [1530/2926]
+2021-07-12 10:35:23,024 [1] DEBUG - STARTED: 50-10C [1531/2926]
+2021-07-12 10:35:23,024 [1] DEBUG - ------------------------------------
+2021-07-12 10:35:23,159 [1] DEBUG - added govt land - 50-10C
+2021-07-12 10:35:23,296 [1] DEBUG - DONE: 50-10C [1531/2926]
+2021-07-12 10:35:27,918 [1] DEBUG - STARTED: 50-11A [1532/2926]
+2021-07-12 10:35:27,918 [1] DEBUG - ------------------------------------
+2021-07-12 10:35:28,078 [1] DEBUG - added govt land - 50-11A
+2021-07-12 10:35:28,090 [1] DEBUG - DONE: 50-11A [1532/2926]
+2021-07-12 10:35:32,650 [1] DEBUG - STARTED: 50-11B [1533/2926]
+2021-07-12 10:35:32,650 [1] DEBUG - ------------------------------------
+2021-07-12 10:35:32,794 [1] DEBUG - added govt land - 50-11B
+2021-07-12 10:35:32,846 [1] DEBUG - DONE: 50-11B [1533/2926]
+2021-07-12 10:35:36,959 [1] DEBUG - STARTED: 50-12 [1534/2926]
+2021-07-12 10:35:36,959 [1] DEBUG - ------------------------------------
+2021-07-12 10:35:37,106 [1] DEBUG - added govt land - 50-12
+2021-07-12 10:35:37,116 [1] DEBUG - DONE: 50-12 [1534/2926]
+2021-07-12 10:35:41,472 [1] DEBUG - STARTED: 50-13 [1535/2926]
+2021-07-12 10:35:41,472 [1] DEBUG - ------------------------------------
+2021-07-12 10:35:41,621 [1] DEBUG - added govt land - 50-13
+2021-07-12 10:35:41,709 [1] DEBUG - DONE: 50-13 [1535/2926]
+2021-07-12 10:35:46,650 [1] DEBUG - STARTED: 50-14A [1536/2926]
+2021-07-12 10:35:46,650 [1] DEBUG - ------------------------------------
+2021-07-12 10:35:47,182 [1] DEBUG - Added (4) out of (4) for 50-14A
+2021-07-12 10:35:47,191 [1] DEBUG - DONE: 50-14A [1536/2926]
+2021-07-12 10:35:53,062 [1] DEBUG - STARTED: 50-14B2 [1538/2926]
+2021-07-12 10:35:53,063 [1] DEBUG - ------------------------------------
+2021-07-12 10:35:53,200 [1] DEBUG - Added (1) out of (1) for 50-14B2
+2021-07-12 10:35:53,291 [1] DEBUG - DONE: 50-14B2 [1538/2926]
+2021-07-12 10:35:58,111 [1] DEBUG - STARTED: 50-14C2 [1540/2926]
+2021-07-12 10:35:58,111 [1] DEBUG - ------------------------------------
+2021-07-12 10:35:58,244 [1] DEBUG - Added (1) out of (1) for 50-14C2
+2021-07-12 10:35:58,255 [1] DEBUG - DONE: 50-14C2 [1540/2926]
+2021-07-12 10:36:02,743 [1] DEBUG - STARTED: 50-14 [1541/2926]
+2021-07-12 10:36:02,743 [1] DEBUG - ------------------------------------
+2021-07-12 10:36:02,903 [1] DEBUG - added govt land - 50-14
+2021-07-12 10:36:02,912 [1] DEBUG - DONE: 50-14 [1541/2926]
+2021-07-12 10:36:08,366 [1] DEBUG - STARTED: 50-15 [1542/2926]
+2021-07-12 10:36:08,366 [1] DEBUG - ------------------------------------
+2021-07-12 10:36:08,514 [1] DEBUG - added govt land - 50-15
+2021-07-12 10:36:08,571 [1] DEBUG - DONE: 50-15 [1542/2926]
+2021-07-12 10:36:12,420 [1] DEBUG - STARTED: 50-16 [1543/2926]
+2021-07-12 10:36:12,420 [1] DEBUG - ------------------------------------
+2021-07-12 10:36:12,568 [1] DEBUG - added govt land - 50-16
+2021-07-12 10:36:12,616 [1] DEBUG - DONE: 50-16 [1543/2926]
+2021-07-12 10:36:17,233 [1] DEBUG - STARTED: 50-17 [1544/2926]
+2021-07-12 10:36:17,234 [1] DEBUG - ------------------------------------
+2021-07-12 10:36:17,369 [1] DEBUG - added govt land - 50-17
+2021-07-12 10:36:17,382 [1] DEBUG - DONE: 50-17 [1544/2926]
+2021-07-12 10:36:22,244 [1] DEBUG - STARTED: 50-26A [1545/2926]
+2021-07-12 10:36:22,244 [1] DEBUG - ------------------------------------
+2021-07-12 10:36:22,548 [1] DEBUG - ERROR:System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.AdangalTypes.AdangalConverter.IsDash(String copiedText) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 252
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 170
+2021-07-12 10:36:27,427 [1] DEBUG - STARTED: 50-26B [1546/2926]
+2021-07-12 10:36:27,427 [1] DEBUG - ------------------------------------
+2021-07-12 10:36:27,562 [1] DEBUG - Added (1) out of (1) for 50-26B
+2021-07-12 10:36:27,572 [1] DEBUG - DONE: 50-26B [1546/2926]
+2021-07-12 10:36:32,369 [1] DEBUG - STARTED: 50-27 [1547/2926]
+2021-07-12 10:36:32,369 [1] DEBUG - ------------------------------------
+2021-07-12 10:36:32,513 [1] DEBUG - Added (1) out of (1) for 50-27
+2021-07-12 10:36:32,522 [1] DEBUG - DONE: 50-27 [1547/2926]
+2021-07-12 10:36:37,173 [1] DEBUG - STARTED: 50-28A [1548/2926]
+2021-07-12 10:36:37,173 [1] DEBUG - ------------------------------------
+2021-07-12 10:36:37,307 [1] DEBUG - Added (1) out of (1) for 50-28A
+2021-07-12 10:36:37,317 [1] DEBUG - DONE: 50-28A [1548/2926]
+2021-07-12 10:36:41,863 [1] DEBUG - STARTED: 50-28B [1549/2926]
+2021-07-12 10:36:41,864 [1] DEBUG - ------------------------------------
+2021-07-12 10:36:42,309 [1] DEBUG - Added (3) out of (3) for 50-28B
+2021-07-12 10:36:42,414 [1] DEBUG - DONE: 50-28B [1549/2926]
+2021-07-12 10:36:47,131 [1] DEBUG - STARTED: 50-30 [1551/2926]
+2021-07-12 10:36:47,131 [1] DEBUG - ------------------------------------
+2021-07-12 10:36:47,273 [1] DEBUG - Added (1) out of (1) for 50-30
+2021-07-12 10:36:47,283 [1] DEBUG - DONE: 50-30 [1551/2926]
+2021-07-12 10:36:51,789 [1] DEBUG - STARTED: 50-31 [1552/2926]
+2021-07-12 10:36:51,789 [1] DEBUG - ------------------------------------
+2021-07-12 10:36:51,813 [1] DEBUG - ERROR:System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.AdangalTypes.AdangalConverter.IsDash(String copiedText) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 252
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 170
+2021-07-12 10:36:57,048 [1] DEBUG - STARTED: 50-32 [1553/2926]
+2021-07-12 10:36:57,048 [1] DEBUG - ------------------------------------
+2021-07-12 10:36:57,225 [1] DEBUG - Added (1) out of (1) for 50-32
+2021-07-12 10:36:57,325 [1] DEBUG - DONE: 50-32 [1553/2926]
+2021-07-12 10:37:02,348 [1] DEBUG - STARTED: 50-33 [1554/2926]
+2021-07-12 10:37:02,348 [1] DEBUG - ------------------------------------
+2021-07-12 10:37:03,263 [1] DEBUG - Added (7) out of (7) for 50-33
+2021-07-12 10:37:03,273 [1] DEBUG - DONE: 50-33 [1554/2926]
+2021-07-12 10:37:07,990 [1] DEBUG - STARTED: 50-34 [1555/2926]
+2021-07-12 10:37:07,991 [1] DEBUG - ------------------------------------
+2021-07-12 10:37:08,128 [1] DEBUG - Added (1) out of (1) for 50-34
+2021-07-12 10:37:08,137 [1] DEBUG - DONE: 50-34 [1555/2926]
+2021-07-12 10:37:14,461 [1] DEBUG - STARTED: 50-35 [1556/2926]
+2021-07-12 10:37:14,461 [1] DEBUG - ------------------------------------
+2021-07-12 10:37:14,776 [1] DEBUG - Added (2) out of (2) for 50-35
+2021-07-12 10:37:14,786 [1] DEBUG - DONE: 50-35 [1556/2926]
+2021-07-12 10:37:20,185 [1] DEBUG - STARTED: 50-36 [1557/2926]
+2021-07-12 10:37:20,185 [1] DEBUG - ------------------------------------
+2021-07-12 10:37:20,314 [1] DEBUG - Added (1) out of (1) for 50-36
+2021-07-12 10:37:20,325 [1] DEBUG - DONE: 50-36 [1557/2926]
+2021-07-12 10:37:27,113 [1] DEBUG - STARTED: 50-38 [1559/2926]
+2021-07-12 10:37:27,113 [1] DEBUG - ------------------------------------
+2021-07-12 10:37:27,275 [1] DEBUG - Added (1) out of (1) for 50-38
+2021-07-12 10:37:27,285 [1] DEBUG - DONE: 50-38 [1559/2926]
+2021-07-12 10:37:31,974 [1] DEBUG - STARTED: 51-1 [1560/2926]
+2021-07-12 10:37:31,974 [1] DEBUG - ------------------------------------
+2021-07-12 10:37:32,126 [1] DEBUG - Added (1) out of (1) for 51-1
+2021-07-12 10:37:32,205 [1] DEBUG - DONE: 51-1 [1560/2926]
+2021-07-12 10:37:36,836 [1] DEBUG - STARTED: 51-2 [1561/2926]
+2021-07-12 10:37:36,836 [1] DEBUG - ------------------------------------
+2021-07-12 10:37:36,957 [1] DEBUG - Added (1) out of (1) for 51-2
+2021-07-12 10:37:36,969 [1] DEBUG - DONE: 51-2 [1561/2926]
+2021-07-12 10:37:42,898 [1] DEBUG - STARTED: 51-3 [1562/2926]
+2021-07-12 10:37:42,898 [1] DEBUG - ------------------------------------
+2021-07-12 10:37:43,027 [1] DEBUG - Added (1) out of (1) for 51-3
+2021-07-12 10:37:43,040 [1] DEBUG - DONE: 51-3 [1562/2926]
+2021-07-12 10:37:48,367 [1] DEBUG - STARTED: 51-4A1A [1563/2926]
+2021-07-12 10:37:48,367 [1] DEBUG - ------------------------------------
+2021-07-12 10:37:48,516 [1] DEBUG - Added (1) out of (1) for 51-4A1A
+2021-07-12 10:37:48,526 [1] DEBUG - DONE: 51-4A1A [1563/2926]
+2021-07-12 10:37:53,135 [1] DEBUG - STARTED: 51-4A1B [1564/2926]
+2021-07-12 10:37:53,135 [1] DEBUG - ------------------------------------
+2021-07-12 10:37:53,263 [1] DEBUG - Added (1) out of (1) for 51-4A1B
+2021-07-12 10:37:53,273 [1] DEBUG - DONE: 51-4A1B [1564/2926]
+2021-07-12 10:37:58,146 [1] DEBUG - STARTED: 51-4A2 [1565/2926]
+2021-07-12 10:37:58,146 [1] DEBUG - ------------------------------------
+2021-07-12 10:37:58,287 [1] DEBUG - Added (1) out of (1) for 51-4A2
+2021-07-12 10:37:58,296 [1] DEBUG - DONE: 51-4A2 [1565/2926]
+2021-07-12 10:38:03,084 [1] DEBUG - STARTED: 51-4A3A [1566/2926]
+2021-07-12 10:38:03,084 [1] DEBUG - ------------------------------------
+2021-07-12 10:38:03,213 [1] DEBUG - Added (1) out of (1) for 51-4A3A
+2021-07-12 10:38:03,224 [1] DEBUG - DONE: 51-4A3A [1566/2926]
+2021-07-12 10:38:08,468 [1] DEBUG - STARTED: 51-4A3B [1567/2926]
+2021-07-12 10:38:08,468 [1] DEBUG - ------------------------------------
+2021-07-12 10:38:08,618 [1] DEBUG - Added (1) out of (1) for 51-4A3B
+2021-07-12 10:38:08,627 [1] DEBUG - DONE: 51-4A3B [1567/2926]
+2021-07-12 10:38:12,697 [1] DEBUG - STARTED: 51-4B [1568/2926]
+2021-07-12 10:38:12,697 [1] DEBUG - ------------------------------------
+2021-07-12 10:38:12,698 [1] DEBUG - Wrong Captcha: MUGERR: 51-4B
+2021-07-12 10:38:16,774 [1] DEBUG - STARTED: 51-4B [1568/2926]
+2021-07-12 10:38:16,774 [1] DEBUG - ------------------------------------
+2021-07-12 10:38:16,919 [1] DEBUG - added govt land - 51-4B
+2021-07-12 10:38:16,928 [1] DEBUG - DONE: 51-4B [1568/2926]
+2021-07-12 10:38:20,980 [1] DEBUG - STARTED: 51-5 [1569/2926]
+2021-07-12 10:38:20,980 [1] DEBUG - ------------------------------------
+2021-07-12 10:38:21,131 [1] DEBUG - added govt land - 51-5
+2021-07-12 10:38:21,142 [1] DEBUG - DONE: 51-5 [1569/2926]
+2021-07-12 10:38:25,871 [1] DEBUG - STARTED: 51-6 [1570/2926]
+2021-07-12 10:38:25,871 [1] DEBUG - ------------------------------------
+2021-07-12 10:38:26,023 [1] DEBUG - Added (1) out of (1) for 51-6
+2021-07-12 10:38:26,032 [1] DEBUG - DONE: 51-6 [1570/2926]
+2021-07-12 10:38:30,794 [1] DEBUG - STARTED: 51-7A [1571/2926]
+2021-07-12 10:38:30,794 [1] DEBUG - ------------------------------------
+2021-07-12 10:38:30,929 [1] DEBUG - Added (1) out of (1) for 51-7A
+2021-07-12 10:38:30,944 [1] DEBUG - DONE: 51-7A [1571/2926]
+2021-07-12 10:38:36,072 [1] DEBUG - STARTED: 51-7B [1572/2926]
+2021-07-12 10:38:36,072 [1] DEBUG - ------------------------------------
+2021-07-12 10:38:36,203 [1] DEBUG - Added (1) out of (1) for 51-7B
+2021-07-12 10:38:36,212 [1] DEBUG - DONE: 51-7B [1572/2926]
+2021-07-12 10:38:41,355 [1] DEBUG - STARTED: 51-7C [1573/2926]
+2021-07-12 10:38:41,355 [1] DEBUG - ------------------------------------
+2021-07-12 10:38:41,487 [1] DEBUG - Added (1) out of (1) for 51-7C
+2021-07-12 10:38:41,496 [1] DEBUG - DONE: 51-7C [1573/2926]
+2021-07-12 10:38:46,126 [1] DEBUG - STARTED: 51-8 [1574/2926]
+2021-07-12 10:38:46,127 [1] DEBUG - ------------------------------------
+2021-07-12 10:38:46,263 [1] DEBUG - Added (1) out of (1) for 51-8
+2021-07-12 10:38:46,272 [1] DEBUG - DONE: 51-8 [1574/2926]
+2021-07-12 10:38:51,080 [1] DEBUG - STARTED: 52-1A1B [1575/2926]
+2021-07-12 10:38:51,080 [1] DEBUG - ------------------------------------
+2021-07-12 10:38:51,080 [1] DEBUG - Wrong Captcha: ZA477DN: 52-1A1B
+2021-07-12 10:38:56,438 [1] DEBUG - STARTED: 52-1A1B [1575/2926]
+2021-07-12 10:38:56,438 [1] DEBUG - ------------------------------------
+2021-07-12 10:38:56,465 [1] DEBUG - ERROR:System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.AdangalTypes.AdangalConverter.IsDash(String copiedText) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 252
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 170
+2021-07-12 10:39:01,555 [1] DEBUG - STARTED: 52-1A2 [1576/2926]
+2021-07-12 10:39:01,555 [1] DEBUG - ------------------------------------
+2021-07-12 10:39:01,725 [1] DEBUG - Added (1) out of (1) for 52-1A2
+2021-07-12 10:39:01,846 [1] DEBUG - DONE: 52-1A2 [1576/2926]
+2021-07-12 10:39:06,628 [1] DEBUG - STARTED: 52-1A3A [1577/2926]
+2021-07-12 10:39:06,629 [1] DEBUG - ------------------------------------
+2021-07-12 10:39:06,766 [1] DEBUG - Added (1) out of (1) for 52-1A3A
+2021-07-12 10:39:06,779 [1] DEBUG - DONE: 52-1A3A [1577/2926]
+2021-07-12 10:39:11,485 [1] DEBUG - STARTED: 52-1A3B [1578/2926]
+2021-07-12 10:39:11,485 [1] DEBUG - ------------------------------------
+2021-07-12 10:39:11,658 [1] DEBUG - Added (1) out of (1) for 52-1A3B
+2021-07-12 10:39:11,669 [1] DEBUG - DONE: 52-1A3B [1578/2926]
+2021-07-12 10:39:16,663 [1] DEBUG - STARTED: 52-1B [1579/2926]
+2021-07-12 10:39:16,664 [1] DEBUG - ------------------------------------
+2021-07-12 10:39:16,793 [1] DEBUG - Added (1) out of (1) for 52-1B
+2021-07-12 10:39:16,899 [1] DEBUG - DONE: 52-1B [1579/2926]
+2021-07-12 10:39:22,367 [1] DEBUG - STARTED: 52-1C [1580/2926]
+2021-07-12 10:39:22,367 [1] DEBUG - ------------------------------------
+2021-07-12 10:39:22,367 [1] DEBUG - Wrong Captcha: SDRNQB: 52-1C
+2021-07-12 10:39:28,238 [1] DEBUG - STARTED: 52-1C [1580/2926]
+2021-07-12 10:39:28,238 [1] DEBUG - ------------------------------------
+2021-07-12 10:39:28,381 [1] DEBUG - Added (1) out of (1) for 52-1C
+2021-07-12 10:39:29,015 [1] DEBUG - DONE: 52-1C [1580/2926]
+2021-07-12 10:39:35,121 [1] DEBUG - STARTED: 52-1D1A2 [1581/2926]
+2021-07-12 10:39:35,121 [1] DEBUG - ------------------------------------
+2021-07-12 10:39:35,251 [1] DEBUG - Added (1) out of (1) for 52-1D1A2
+2021-07-12 10:39:35,262 [1] DEBUG - DONE: 52-1D1A2 [1581/2926]
+2021-07-12 10:39:39,688 [1] DEBUG - STARTED: 52-1D1C [1582/2926]
+2021-07-12 10:39:39,689 [1] DEBUG - ------------------------------------
+2021-07-12 10:39:39,825 [1] DEBUG - Added (1) out of (1) for 52-1D1C
+2021-07-12 10:39:39,834 [1] DEBUG - DONE: 52-1D1C [1582/2926]
+2021-07-12 10:39:45,077 [1] DEBUG - STARTED: 52-1D1D [1583/2926]
+2021-07-12 10:39:45,077 [1] DEBUG - ------------------------------------
+2021-07-12 10:39:45,209 [1] DEBUG - Added (1) out of (1) for 52-1D1D
+2021-07-12 10:39:45,219 [1] DEBUG - DONE: 52-1D1D [1583/2926]
+2021-07-12 10:39:49,973 [1] DEBUG - STARTED: 52-1D1E [1584/2926]
+2021-07-12 10:39:49,973 [1] DEBUG - ------------------------------------
+2021-07-12 10:39:50,125 [1] DEBUG - Added (1) out of (1) for 52-1D1E
+2021-07-12 10:39:50,134 [1] DEBUG - DONE: 52-1D1E [1584/2926]
+2021-07-12 10:39:54,467 [1] DEBUG - STARTED: 52-1D1F [1585/2926]
+2021-07-12 10:39:54,467 [1] DEBUG - ------------------------------------
+2021-07-12 10:39:54,621 [1] DEBUG - Added (1) out of (1) for 52-1D1F
+2021-07-12 10:39:54,634 [1] DEBUG - DONE: 52-1D1F [1585/2926]
+2021-07-12 10:40:02,298 [1] DEBUG - STARTED: 52-1D2A [1586/2926]
+2021-07-12 10:40:02,298 [1] DEBUG - ------------------------------------
+2021-07-12 10:40:02,430 [1] DEBUG - Added (1) out of (1) for 52-1D2A
+2021-07-12 10:40:02,441 [1] DEBUG - DONE: 52-1D2A [1586/2926]
+2021-07-12 10:40:10,348 [1] DEBUG - ERROR:OpenQA.Selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.PerformActions(IList`1 actionSequenceList)
+   at OpenQA.Selenium.Interactions.Actions.Perform()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 148
+2021-07-12 10:55:14,529 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 10:55:26,075 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 10:55:26,136 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 10:55:32,413 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 10:55:32,943 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 11:10:25,579 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 11:11:05,399 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 11:11:10,526 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 11:11:10,572 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 11:11:16,612 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 11:11:16,700 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 11:11:49,504 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 11:11:49,542 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 11:11:54,328 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 11:11:54,356 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 11:12:00,947 [1] DEBUG - STEP-5 - Generate Started
+2021-07-12 11:12:01,730 [1] DEBUG - STARTED HTML GENERATION @ 11:12:01 AM
+2021-07-12 11:12:40,333 [1] DEBUG - Error @ btnGenerate_Click - System.NullReferenceException: Object reference not set to an instance of an object.
+   at Common.ExtensionMethod.AdangalFn.GetSumThreeDotNo(List`1 nos) in F:\AssemblySimpleApp\Common\ExtensionMethod\AdangalExtension.cs:line 41
+   at AdangalApp.vao.<>c__DisplayClass103_0.<btnGenerate_Click>b__3(IGrouping`2 fe) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1646
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at AdangalApp.vao.btnGenerate_Click(Object sender, EventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1606
+2021-07-12 11:13:19,744 [1] DEBUG - STEP-5 - Generate Started
+2021-07-12 11:13:19,744 [1] DEBUG - STARTED HTML GENERATION @ 11:13:19 AM
+2021-07-12 11:13:23,638 [1] DEBUG - Error @ btnGenerate_Click - System.NullReferenceException: Object reference not set to an instance of an object.
+   at Common.ExtensionMethod.AdangalFn.GetSumThreeDotNo(List`1 nos) in F:\AssemblySimpleApp\Common\ExtensionMethod\AdangalExtension.cs:line 41
+   at AdangalApp.vao.<>c__DisplayClass103_0.<btnGenerate_Click>b__3(IGrouping`2 fe) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1646
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at AdangalApp.vao.btnGenerate_Click(Object sender, EventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1606
+2021-07-12 11:13:53,529 [1] DEBUG - STEP-5 - Generate Started
+2021-07-12 11:13:53,529 [1] DEBUG - STARTED HTML GENERATION @ 11:13:53 AM
+2021-07-12 11:29:18,948 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 11:30:54,392 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 11:31:06,356 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 11:31:06,495 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 11:31:11,618 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 11:31:11,836 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 11:32:44,320 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 11:33:33,597 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 11:33:41,441 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 11:33:41,484 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 11:33:46,393 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 11:33:46,686 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 11:33:52,094 [1] DEBUG - STEP-5 - Generate Started
+2021-07-12 11:33:52,094 [1] DEBUG - STARTED HTML GENERATION @ 11:33:52 AM
+2021-07-12 11:34:01,166 [1] DEBUG - Error @ btnGenerate_Click - System.NullReferenceException: Object reference not set to an instance of an object.
+   at Common.ExtensionMethod.AdangalFn.GetSumThreeDotNo(List`1 nos) in F:\AssemblySimpleApp\Common\ExtensionMethod\AdangalExtension.cs:line 41
+   at AdangalApp.vao.<>c__DisplayClass103_0.<btnGenerate_Click>b__3(IGrouping`2 fe) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1646
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at AdangalApp.vao.btnGenerate_Click(Object sender, EventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1606
+2021-07-12 11:44:08,197 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 12:00:53,857 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 12:02:46,410 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 12:02:51,524 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 12:02:53,199 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 12:03:00,410 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 12:03:01,420 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 12:05:39,141 [1] DEBUG - STARTED: 31-13 [857/2926]
+2021-07-12 12:05:39,141 [1] DEBUG - ------------------------------------
+2021-07-12 12:05:41,084 [1] DEBUG - added dash - 31-13
+2021-07-12 12:05:41,900 [1] DEBUG - DONE: 31-13 [857/2926]
+2021-07-12 12:05:51,475 [1] DEBUG - STARTED: 31-14 [858/2926]
+2021-07-12 12:05:51,475 [1] DEBUG - ------------------------------------
+2021-07-12 12:05:51,475 [1] DEBUG - Wrong Captcha: uys27c: 31-14
+2021-07-12 12:05:58,669 [1] DEBUG - STARTED: 31-14 [858/2926]
+2021-07-12 12:05:58,669 [1] DEBUG - ------------------------------------
+2021-07-12 12:05:58,806 [1] DEBUG - added dash - 31-14
+2021-07-12 12:05:59,047 [1] DEBUG - DONE: 31-14 [858/2926]
+2021-07-12 12:06:05,643 [1] DEBUG - STARTED: 31-15 [859/2926]
+2021-07-12 12:06:05,643 [1] DEBUG - ------------------------------------
+2021-07-12 12:06:05,643 [1] DEBUG - Wrong Captcha: REFYCM: 31-15
+2021-07-12 12:06:13,979 [1] DEBUG - STARTED: 31-15 [859/2926]
+2021-07-12 12:06:13,979 [1] DEBUG - ------------------------------------
+2021-07-12 12:06:14,087 [1] DEBUG - added dash - 31-15
+2021-07-12 12:06:14,231 [1] DEBUG - DONE: 31-15 [859/2926]
+2021-07-12 12:06:22,438 [1] DEBUG - STARTED: 31-16 [860/2926]
+2021-07-12 12:06:22,438 [1] DEBUG - ------------------------------------
+2021-07-12 12:06:22,678 [1] DEBUG - added dash - 31-16
+2021-07-12 12:06:22,689 [1] DEBUG - DONE: 31-16 [860/2926]
+2021-07-12 12:49:16,528 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 12:49:45,761 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-12 12:52:21,720 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 12:52:28,561 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-12 12:52:51,635 [1] DEBUG - ready: False STATUS: 43%
+PBK NOT UPDATED:157 of 157
+DASH:4
+
+2021-07-12 12:52:51,659 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-12 12:53:39,960 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 12:53:40,038 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 12:53:45,539 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 12:53:46,067 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 13:00:16,044 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 13:02:45,886 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 13:04:37,005 [1] DEBUG - STARTED: 31-17 [861/2926]
+2021-07-12 13:04:37,005 [1] DEBUG - ------------------------------------
+2021-07-12 13:04:37,464 [1] DEBUG - added dash - 31-17
+2021-07-12 13:04:37,865 [1] DEBUG - DONE: 31-17 [861/2926]
+2021-07-12 13:07:08,115 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: The HTTP request to the remote WebDriver server for URL http://localhost:53580/session/9e5d09a51ca988e18c2ecd6711576128/element/d9b717c5-8942-4214-aa84-0e95864ad8e9/click timed out after 60 seconds. ---> System.Net.WebException: The operation has timed out
+   at System.Net.HttpWebRequest.GetResponse()
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   --- End of inner exception stack trace ---
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebElement.Execute(String commandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebElement.Click()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 93
+2021-07-12 13:07:51,051 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: invalid session id
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 82
+2021-07-12 13:09:29,234 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 13:09:35,677 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 13:09:35,705 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 13:09:41,478 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 13:09:42,058 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 13:15:10,400 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-12 13:15:10,464 [1] DEBUG - ready: False STATUS: 43%
+PBK NOT UPDATED:157 of 157
+DASH:5
+
+2021-07-12 13:15:10,495 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-12 13:15:47,133 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-12 13:15:47,175 [1] DEBUG - ready: False STATUS: 38%
+PBK NOT UPDATED:3 of 3
+DASH:5
+
+2021-07-12 13:15:47,175 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-12 13:16:03,528 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 13:16:03,557 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 13:16:07,951 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 13:16:07,985 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 13:32:17,569 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 13:32:23,034 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 13:32:23,069 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 13:32:28,104 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 13:32:29,229 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 13:40:12,432 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 13:40:16,352 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 13:40:16,409 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 13:40:21,425 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 13:40:21,786 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 14:06:06,872 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 14:06:11,844 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 14:06:11,886 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 14:06:17,150 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 14:06:17,370 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 14:20:40,838 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 14:20:45,388 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 14:20:45,513 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 14:20:50,618 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 14:20:51,122 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 14:20:55,798 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-12 14:20:55,842 [1] DEBUG - ready: False STATUS: 38%
+PBK NOT UPDATED:2 of 2
+DASH:5
+
+2021-07-12 14:20:55,870 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-12 14:22:11,781 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 14:22:15,325 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 14:22:15,369 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 14:22:21,078 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 14:22:21,214 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 14:23:24,257 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-12 14:23:24,300 [1] DEBUG - ready: False STATUS: 38%
+PBK NOT UPDATED:2 of 2
+DASH:5
+
+2021-07-12 14:23:24,301 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-12 14:23:39,407 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-12 14:23:39,451 [1] DEBUG - ready: False STATUS: 38%
+DASH:5
+
+2021-07-12 14:23:39,452 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-12 14:26:58,837 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 14:50:37,760 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 14:53:10,720 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 14:54:59,672 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 14:56:38,766 [1] DEBUG - STARTED: 1-- [0/2926]
+2021-07-12 14:56:39,097 [1] DEBUG - ------------------------------------
+2021-07-12 14:56:45,566 [1] DEBUG - added govt land - 1--
+2021-07-12 14:56:45,786 [1] DEBUG - DONE: 1-- [0/2926]
+2021-07-12 14:57:02,275 [1] DEBUG - STARTED: 2-- [1/2926]
+2021-07-12 14:57:02,275 [1] DEBUG - ------------------------------------
+2021-07-12 14:57:02,683 [1] DEBUG - added govt land - 2--
+2021-07-12 14:57:03,886 [1] DEBUG - DONE: 2-- [1/2926]
+2021-07-12 14:57:11,479 [1] DEBUG - STARTED: 3-- [2/2926]
+2021-07-12 14:57:11,479 [1] DEBUG - ------------------------------------
+2021-07-12 14:57:11,664 [1] DEBUG - added govt land - 3--
+2021-07-12 14:57:11,692 [1] DEBUG - DONE: 3-- [2/2926]
+2021-07-12 14:57:16,783 [1] DEBUG - STARTED: 4-- [3/2926]
+2021-07-12 14:57:16,783 [1] DEBUG - ------------------------------------
+2021-07-12 14:57:16,913 [1] DEBUG - added govt land - 4--
+2021-07-12 14:57:17,045 [1] DEBUG - DONE: 4-- [3/2926]
+2021-07-12 14:59:12,287 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 14:59:16,007 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 14:59:16,046 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 14:59:21,360 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 14:59:22,062 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 14:59:24,228 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-12 14:59:24,272 [1] DEBUG - ready: False STATUS: 38%
+PBK NOT UPDATED:4 of 4
+DASH:5
+
+2021-07-12 14:59:24,299 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-12 14:59:26,942 [1] DEBUG - STEP-5 - Generate Started
+2021-07-12 14:59:26,942 [1] DEBUG - STARTED HTML GENERATION @ 2:59:26 PM
+2021-07-12 14:59:34,864 [1] DEBUG - Error @ btnGenerate_Click - System.NullReferenceException: Object reference not set to an instance of an object.
+   at Common.ExtensionMethod.AdangalFn.GetSumThreeDotNo(List`1 nos) in F:\AssemblySimpleApp\Common\ExtensionMethod\AdangalExtension.cs:line 41
+   at AdangalApp.vao.<>c__DisplayClass103_0.<btnGenerate_Click>b__2(IGrouping`2 fe) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1649
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at AdangalApp.vao.btnGenerate_Click(Object sender, EventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1609
+2021-07-12 15:00:49,154 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-12 15:00:49,210 [1] DEBUG - ready: False STATUS: 38%
+PBK NOT UPDATED:4 of 4
+DASH:5
+
+2021-07-12 15:00:49,211 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-12 15:01:19,142 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-12 15:01:19,182 [1] DEBUG - ready: False STATUS: 38%
+DASH:5
+
+2021-07-12 15:01:19,183 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-12 15:01:21,351 [1] DEBUG - STEP-5 - Generate Started
+2021-07-12 15:01:21,351 [1] DEBUG - STARTED HTML GENERATION @ 3:01:21 PM
+2021-07-12 15:45:49,972 [1] DEBUG - Error @ SetSummaryPageDetails - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.<>c__DisplayClass98_0.<SetSummaryPageDetails>b__0(PageTotal ff) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1411
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at AdangalApp.vao.SetSummaryPageDetails(List`1 source) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1409
+2021-07-12 15:45:51,713 [1] DEBUG - Error @ btnGenerate_Click - System.IO.FileNotFoundException: Could not find file 'F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\ENMANAMKONDAN\ENMANAMKONDAN-Summary.json'.
+File name: 'F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\ENMANAMKONDAN\ENMANAMKONDAN-Summary.json'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Common.BaseClass.ReadFileAsObjects[T](String filePath) in F:\AssemblySimpleApp\Common\BaseTypes\BaseClass.cs:line 37
+   at AdangalApp.DataAccess.GetSummary() in F:\AssemblySimpleApp\AdangalApp\DataAccess.cs:line 197
+   at AdangalApp.vao.GetSummaryPage(Boolean isInitialSummaryPage3, Boolean isSoftCopy) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1432
+   at AdangalApp.vao.btnGenerate_Click(Object sender, EventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1699
+2021-07-12 15:45:53,523 [1] DEBUG - STEP-5 - Generate Started
+2021-07-12 15:45:53,523 [1] DEBUG - STARTED HTML GENERATION @ 3:45:53 PM
+2021-07-12 15:46:05,460 [1] DEBUG - Error @ btnGenerate_Click - System.IO.FileNotFoundException: Could not find file 'F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\ENMANAMKONDAN\ENMANAMKONDAN-GovtBuilding.json'.
+File name: 'F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\ENMANAMKONDAN\ENMANAMKONDAN-GovtBuilding.json'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Common.BaseClass.ReadFileAsObjects[T](String filePath) in F:\AssemblySimpleApp\Common\BaseTypes\BaseClass.cs:line 37
+   at AdangalApp.DataAccess.GetGovtBuilding() in F:\AssemblySimpleApp\AdangalApp\DataAccess.cs:line 202
+   at AdangalApp.vao.GetGovtBuildingPage() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1485
+   at AdangalApp.vao.btnGenerate_Click(Object sender, EventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1705
+2021-07-12 15:46:11,833 [1] DEBUG - STEP-5 - Generate Started
+2021-07-12 15:46:11,833 [1] DEBUG - STARTED HTML GENERATION @ 3:46:11 PM
+2021-07-12 15:46:15,115 [1] DEBUG - Error @ SetSummaryPageDetails - System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at AdangalApp.DataAccess.SaveSummary(List`1 summaryData) in F:\AssemblySimpleApp\AdangalApp\DataAccess.cs:line 184
+   at AdangalApp.vao.SetSummaryPageDetails(List`1 source) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1419
+2021-07-12 15:46:17,596 [1] DEBUG - Error @ btnGenerate_Click - System.IO.FileNotFoundException: Could not find file 'F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\ENMANAMKONDAN\ENMANAMKONDAN-GovtBuilding.json'.
+File name: 'F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\ENMANAMKONDAN\ENMANAMKONDAN-GovtBuilding.json'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Common.BaseClass.ReadFileAsObjects[T](String filePath) in F:\AssemblySimpleApp\Common\BaseTypes\BaseClass.cs:line 37
+   at AdangalApp.DataAccess.GetGovtBuilding() in F:\AssemblySimpleApp\AdangalApp\DataAccess.cs:line 202
+   at AdangalApp.vao.GetGovtBuildingPage() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1485
+   at AdangalApp.vao.btnGenerate_Click(Object sender, EventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1705
+2021-07-12 15:46:58,221 [1] DEBUG - STEP-5 - Generate Started
+2021-07-12 15:47:00,620 [1] DEBUG - STARTED HTML GENERATION @ 3:47:00 PM
+2021-07-12 15:49:30,960 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 15:49:34,223 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 15:49:34,255 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 15:49:39,357 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 15:49:39,939 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 15:49:43,504 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-12 15:49:43,582 [1] DEBUG - ready: False STATUS: 38%
+DASH:5
+
+2021-07-12 15:49:43,654 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-12 15:49:51,728 [1] DEBUG - STEP-5 - Generate Started
+2021-07-12 15:49:52,874 [1] DEBUG - STARTED HTML GENERATION @ 3:49:52 PM
+2021-07-12 15:55:15,376 [1] DEBUG - Error @ SetSummaryPageDetails - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.vao.<>c__DisplayClass98_0.<SetSummaryPageDetails>b__0(PageTotal ff) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1411
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at AdangalApp.vao.SetSummaryPageDetails(List`1 source) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1409
+2021-07-12 15:59:57,324 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 16:00:00,675 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 16:00:00,702 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 16:00:05,141 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 16:00:05,228 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 16:00:30,665 [1] DEBUG - STEP-5 - Generate Started
+2021-07-12 16:00:31,440 [1] DEBUG - STARTED HTML GENERATION @ 4:00:31 PM
+2021-07-12 16:05:46,243 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 16:05:50,243 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 16:05:50,287 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 16:05:55,168 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 16:05:55,494 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 16:06:00,461 [1] DEBUG - STEP-5 - Generate Started
+2021-07-12 16:06:00,461 [1] DEBUG - STARTED HTML GENERATION @ 4:06:00 PM
+2021-07-12 16:08:35,077 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 16:08:50,863 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 16:08:50,890 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 16:08:55,395 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 16:08:55,526 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 16:08:59,822 [1] DEBUG - STEP-5 - Generate Started
+2021-07-12 16:08:59,822 [1] DEBUG - STARTED HTML GENERATION @ 4:08:59 PM
+2021-07-12 16:16:41,350 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 16:16:44,777 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 16:16:44,814 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 16:16:49,354 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 16:16:49,454 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 16:16:54,823 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-12 16:16:54,865 [1] DEBUG - ready: False STATUS: 38%
+DASH:5
+
+2021-07-12 16:16:54,867 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-12 16:16:58,064 [1] DEBUG - STEP-5 - Generate Started
+2021-07-12 16:16:58,065 [1] DEBUG - STARTED HTML GENERATION @ 4:16:58 PM
+2021-07-12 16:20:43,607 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 16:20:46,539 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 16:20:46,581 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 16:20:51,959 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 16:20:52,049 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 16:20:53,677 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-12 16:20:53,720 [1] DEBUG - ready: False STATUS: 38%
+DASH:5
+
+2021-07-12 16:20:53,721 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-12 16:20:57,805 [1] DEBUG - STEP-5 - Generate Started
+2021-07-12 16:20:57,805 [1] DEBUG - STARTED HTML GENERATION @ 4:20:57 PM
+2021-07-12 16:21:42,566 [1] DEBUG - Error @ btnGenerate_Click - System.IO.FileNotFoundException: Could not find file 'F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\ENMANAMKONDAN\ENMANAMKONDAN-GovtBuilding.json'.
+File name: 'F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\ENMANAMKONDAN\ENMANAMKONDAN-GovtBuilding.json'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Common.BaseClass.ReadFileAsObjects[T](String filePath) in F:\AssemblySimpleApp\Common\BaseTypes\BaseClass.cs:line 37
+   at AdangalApp.DataAccess.GetGovtBuilding() in F:\AssemblySimpleApp\AdangalApp\DataAccess.cs:line 250
+   at AdangalApp.vao.GetGovtBuildingPage() in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1498
+   at AdangalApp.vao.btnGenerate_Click(Object sender, EventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1720
+2021-07-12 16:22:41,511 [1] DEBUG - STEP-5 - Generate Started
+2021-07-12 16:22:41,511 [1] DEBUG - STARTED HTML GENERATION @ 4:22:41 PM
+2021-07-12 16:31:27,375 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 16:31:30,323 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 16:31:30,366 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 16:31:35,912 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 16:31:36,016 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 16:31:38,382 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-12 16:31:38,434 [1] DEBUG - ready: False STATUS: 38%
+DASH:5
+
+2021-07-12 16:31:38,435 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-12 16:31:41,850 [1] DEBUG - STEP-5 - Generate Started
+2021-07-12 16:31:41,851 [1] DEBUG - STARTED HTML GENERATION @ 4:31:41 PM
+2021-07-12 16:34:49,204 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-12 16:34:53,477 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-12 16:34:53,505 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-12 16:34:57,986 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-12 16:34:58,313 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-12 16:35:24,762 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-12 16:35:24,805 [1] DEBUG - ready: False STATUS: 38%
+DASH:5
+
+2021-07-12 16:35:24,807 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-12 16:35:40,299 [1] DEBUG - STEP-5 - Generate Started
+2021-07-12 16:35:40,299 [1] DEBUG - STARTED HTML GENERATION @ 4:35:40 PM
+2021-07-12 16:35:47,657 [1] DEBUG - COMPLETED HTML GENERATION @ F:\AssemblySimpleApp\AdangalApp\data\AdangalJson/ENMANAMKONDAN/ENMANAMKONDAN-Result\ENMANAMKONDAN-07-12-2021 16-35-47.htm
+2021-07-12 16:35:49,230 [1] DEBUG - STEP-5 - Generate Completed

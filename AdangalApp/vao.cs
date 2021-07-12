@@ -12,6 +12,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 
@@ -77,7 +78,8 @@ namespace AdangalApp
         bool needTheervaiTest = Convert.ToBoolean(ConfigurationManager.AppSettings["needTheervaiTest"]);
         bool canAddMissedSurvey = Convert.ToBoolean(ConfigurationManager.AppSettings["canAddMissedSurvey"]);
         bool pcEnabled = Convert.ToBoolean(ConfigurationManager.AppSettings["pc"]);
-        int pasali = Convert.ToInt32(ConfigurationManager.AppSettings["PasaliEn"]);
+        int pasali = Convert.ToInt32(ConfigurationManager.AppSettings["PasaliEn"]); 
+        bool haveGovtBuilding = Convert.ToBoolean(ConfigurationManager.AppSettings["haveGovtBuilding"]);
 
         int prepasali;
 
@@ -90,7 +92,7 @@ namespace AdangalApp
         {
             try
             {
-                
+
 
                 InitializeComponent();
                 ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
@@ -99,7 +101,7 @@ namespace AdangalApp
                 BindDropdown(cmbFulfilled, GetFullfilledOptions(), "Caption", "Id");
                 prepasali = (pasali - 1);
                 dataGridView1.RowsDefaultCellStyle.SelectionBackColor = Color.Blue;
-                dataGridView1.RowsDefaultCellStyle.SelectionForeColor = Color.Yellow;                
+                dataGridView1.RowsDefaultCellStyle.SelectionForeColor = Color.Yellow;
 
                 try
                 {
@@ -1405,16 +1407,29 @@ namespace AdangalApp
 
             try
             {
-                source.ForEach(ff =>
+
+                for (int i = 0; i <= source.Count - 1; i++)
                 {
                     summaryList.Add(new Summary()
                     {
-                        Id = (int)ff.LandType,
-                        Parappu = ff.ParappuTotal,
-                        Pakkam = pageRangeList[(int)ff.LandType].Caption,
-                        Vibaram = ff.LandType.ToName()
+                        Id = (int)source[i].LandType,
+                        Parappu = source[i].ParappuTotal,
+                        Pakkam = pageRangeList[i].Caption,
+                        Vibaram = source[i].LandType.ToName(),
+                        LandType = source[i].LandType
                     });
-                });
+
+                }
+                //source.ForEach(ff =>
+                //{
+                //    summaryList.Add(new Summary()
+                //    {
+                //        Id = (int)ff.LandType,
+                //        Parappu = ff.ParappuTotal,
+                //        Pakkam = pageRangeList[(int)ff.LandType].Caption,
+                //        Vibaram = ff.LandType.ToName()
+                //    });
+                //});
                 DataAccess.SaveSummary(summaryList);
 
             }
@@ -1574,6 +1589,27 @@ namespace AdangalApp
         {
             LogMessage($"STEP-5 - Generate Started");
 
+            if (loadedFile.VattamNameTamil.Trim() == empty || 
+                loadedFile.FirkaName.Trim() == empty || 
+                loadedFile.VillageNameTamil.Trim() == empty)
+            {
+                if (txtVattam.Text.Trim() == empty || txtFirka.Text.Trim() == empty || txtVaruvai.Text.Trim() == empty)
+                {
+                    MessageBox.Show("Vattam, Firka and Village in tamil font is mandatory!");
+                    LogMessage($"Value missing: Vattam, Firka and Village in tamil font");
+                    return;
+
+                }
+            }
+
+            loadedFile.VattamNameTamil = txtVattam.Text.Trim();
+            loadedFile.FirkaName = txtFirka.Text.Trim();
+            loadedFile.VillageNameTamil = txtVaruvai.Text.Trim();
+
+            DataAccess.AddNewLoadedFile(loadedFile);
+
+            PreLoadFile();
+
             if (pcEnabled)
             {
                 if (IsUserAuthenticated() == false) return;
@@ -1594,8 +1630,12 @@ namespace AdangalApp
 
                 mainHtml = mainHtml.Replace("[initialPages]", initialPages);
 
+                fullAdangalFromjson = DataAccess.GetActiveAdangal();
+
                 var landTypeGroup = (from wl in fullAdangalFromjson
-                                     where wl.LandType != LandType.Zero
+                                     where 
+                                     //wl.LandType != LandType.Zero
+                                     wl.LandType != LandType.Dash
                                      group wl by wl.LandType into newGrp
                                      select newGrp).ToList();
 
@@ -1643,7 +1683,7 @@ namespace AdangalApp
                         leftPage = leftPage.Replace("[datarows]", sb.ToString());
 
                         //LEFT PAGE TOTAL
-                        var totalparappu = AdangalFn.GetSumThreeDotNo(temData.Select(s => s.Parappu).ToList());
+                        var totalparappu = "2.1.02"; // AdangalFn.GetSumThreeDotNo(temData.Select(s => s.Parappu).ToList());
                         //var totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai));
 
                         decimal totalTheervai = 0;
@@ -1699,7 +1739,14 @@ namespace AdangalApp
 
                 // Final Touch
                 mainHtml = mainHtml.Replace("[summaryPages]", GetSummaryPage(true));
-                mainHtml = mainHtml.Replace("[building]", GetGovtBuildingPage());
+                if (haveGovtBuilding)
+                {
+                    mainHtml = mainHtml.Replace("[building]", GetGovtBuildingPage());
+                }
+                else
+                {
+                    mainHtml = mainHtml.Replace("[building]", empty);
+                }
                 mainHtml = mainHtml.Replace("[allPageData]", allContent.ToString());
                 mainHtml = mainHtml.Replace("[certifed]", GetCertifiedContent());
 
@@ -1817,85 +1864,92 @@ namespace AdangalApp
             try
             {
                 LogMessage($"STEP-3 - Raedy For Print - Started");
-                List<KeyValue> onlineData;
-
-                if (DataAccess.IsSubDivFileExist()) onlineData = DataAccess.GetSubdiv();
-                else if (NoInternet()) return;
-                else onlineData = SaveLandCount();
-
-                fullAdangalFromjson = DataAccess.GetActiveAdangal();
-                LoadSurveyAndSubdiv();
-
-                var expLandDetails = (onlineData
-                                    .OrderBy(o => o.Value)
-                                    .ThenBy(o => o.Caption, new AlphanumericComparer())
-                                    .Select(s => (s.Value.ToString().Trim() + "~" + s.Caption.Trim()).Trim())).ToList();
-
-                List<string> actualLandDetails;
-
-                actualLandDetails = fullAdangalFromjson
-                                       .OrderBy(o => o.NilaAlavaiEn)
-                                       .ThenBy(o => o.UtpirivuEn, new AlphanumericComparer())
-                                       .Select(s =>
-                                       (s.NilaAlavaiEn.ToString().Trim() + "~" + s.UtpirivuEn.Trim()).Trim())
-                                       .ToList();
-
-
-
-                notInPdfToBeAdded = expLandDetails.Except(actualLandDetails).ToList();
-                notInOnlineToBeDeleted = actualLandDetails.Except(expLandDetails).ToList();
-
-                //notInPdfToBeAdded =  notInPdfToBeAdded.OrderByDescending(o => o).ThenByDescending(o => o.UtpirivuEn, new AlphanumericComparer());
-
-                if (canAddMissedSurvey)
-                {
-                    cmbItemToBeAdded.DataSource = notInPdfToBeAdded;
-                    SortMissedSurveys();
-                    return;
-                }
-
-
-
-                btnDelete.Enabled = (notInOnlineToBeDeleted.Count > 0);
-                btnAdd.Enabled = (notInPdfToBeAdded.Count > 0);
-
-                var (r, status) = IsReadyToPrint();
+                var (r, status) = IsReadyToPrintNew(); //IsReadyToPrint();
                 btnStatusCheck.Text = status;
                 btnStatusCheck.BackColor = r ? Color.Green : Color.Red;
-
-
-                var wrongNameCount = fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.WrongName).Count();
-
-                var percCompleted = onlineData.Count.PercentageBtwDecNo(actualLandDetails.Count - (notInOnlineToBeDeleted.Count + wrongNameCount), 2);
-
-                if (loadedFile.InitialPercentage == null)
-                {
-                    loadedFile = DataAccess.UpdatePercentage(loadedFile, percCompleted);
-                }
-                if (percCompleted.ToInt32() == 100)
-                {
-                    var correctedCount = fullAdangalFromjson.Where(w => w.LandStatus != LandStatus.NoChange).Count();
-                    var correctedPerc = 100 - onlineData.Count.PercentageBtwDecNo(correctedCount, 2);
-                    loadedFile = DataAccess.UpdateCorrectedPerc(loadedFile, correctedPerc);
-                }
-                btnPercentage.Text = percCompleted.ToString() + "%";
-
-                if (percCompleted == 100)
-                {
-                    btnGenerate.Enabled = true;
-                    btnPercentage.BackColor = Color.Green;
-                }
-                else
-                {
-                    btnGenerate.Enabled = false;
-                    btnPercentage.BackColor = Color.Red;
-                }
-
-                btnGenerate.Enabled = isTestingMode;
-
-                cmbItemToBeAdded.DataSource = notInPdfToBeAdded;
-                SortMissedSurveys();
                 LogMessage($"STEP-3 - Raedy For Print - Completed");
+                return;
+
+
+                //List<KeyValue> onlineData;
+
+                //if (DataAccess.IsSubDivFileExist()) onlineData = DataAccess.GetSubdiv();
+                //else if (NoInternet()) return;
+                //else onlineData = SaveLandCount();
+
+                //fullAdangalFromjson = DataAccess.GetActiveAdangal();
+                //LoadSurveyAndSubdiv();
+
+                //var expLandDetails = (onlineData
+                //                    .OrderBy(o => o.Value)
+                //                    .ThenBy(o => o.Caption, new AlphanumericComparer())
+                //                    .Select(s => (s.Value.ToString().Trim() + "~" + s.Caption.Trim()).Trim())).ToList();
+
+                //List<string> actualLandDetails;
+
+                //actualLandDetails = fullAdangalFromjson
+                //                       .OrderBy(o => o.NilaAlavaiEn)
+                //                       .ThenBy(o => o.UtpirivuEn, new AlphanumericComparer())
+                //                       .Select(s =>
+                //                       (s.NilaAlavaiEn.ToString().Trim() + "~" + s.UtpirivuEn.Trim()).Trim())
+                //                       .ToList();
+
+
+
+                //notInPdfToBeAdded = expLandDetails.Except(actualLandDetails).ToList();
+                //notInOnlineToBeDeleted = actualLandDetails.Except(expLandDetails).ToList();
+
+                ////notInPdfToBeAdded =  notInPdfToBeAdded.OrderByDescending(o => o).ThenByDescending(o => o.UtpirivuEn, new AlphanumericComparer());
+
+                //if (canAddMissedSurvey)
+                //{
+                //    cmbItemToBeAdded.DataSource = notInPdfToBeAdded;
+                //    SortMissedSurveys();
+                //    return;
+                //}
+
+
+
+                //btnDelete.Enabled = (notInOnlineToBeDeleted.Count > 0);
+                //btnAdd.Enabled = (notInPdfToBeAdded.Count > 0);
+
+                //var (r, status) = IsReadyToPrint();
+                //btnStatusCheck.Text = status;
+                //btnStatusCheck.BackColor = r ? Color.Green : Color.Red;
+
+
+                //var wrongNameCount = fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.WrongName).Count();
+
+                //var percCompleted = onlineData.Count.PercentageBtwDecNo(actualLandDetails.Count - (notInOnlineToBeDeleted.Count + wrongNameCount), 2);
+
+                //if (loadedFile.InitialPercentage == null)
+                //{
+                //    loadedFile = DataAccess.UpdatePercentage(loadedFile, percCompleted);
+                //}
+                //if (percCompleted.ToInt32() == 100)
+                //{
+                //    var correctedCount = fullAdangalFromjson.Where(w => w.LandStatus != LandStatus.NoChange).Count();
+                //    var correctedPerc = 100 - onlineData.Count.PercentageBtwDecNo(correctedCount, 2);
+                //    loadedFile = DataAccess.UpdateCorrectedPerc(loadedFile, correctedPerc);
+                //}
+                //btnPercentage.Text = percCompleted.ToString() + "%";
+
+                //if (percCompleted == 100)
+                //{
+                //    btnGenerate.Enabled = true;
+                //    btnPercentage.BackColor = Color.Green;
+                //}
+                //else
+                //{
+                //    btnGenerate.Enabled = false;
+                //    btnPercentage.BackColor = Color.Red;
+                //}
+
+                //btnGenerate.Enabled = isTestingMode;
+
+                //cmbItemToBeAdded.DataSource = notInPdfToBeAdded;
+                //SortMissedSurveys();
+                //LogMessage($"STEP-3 - Raedy For Print - Completed");
             }
             catch (Exception ex)
             {
@@ -1991,6 +2045,57 @@ namespace AdangalApp
                     result = false;
                 }
 
+
+                LogMessage($"ready: {result} STATUS: {status.ToString()}");
+            }
+            catch (Exception ex)
+            {
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
+            }
+            return (result, status.ToString());
+
+        }
+
+        private (bool r, string status) IsReadyToPrintNew()
+        {
+            StringBuilder status = new StringBuilder();
+            bool result = true;
+            try
+            {
+                var latestAdangal = DataAccess.GetActiveAdangal();
+
+                var totalProcessed = latestAdangal.Count;
+                var toBeProcessed = DataAccess.GetSubdiv().Count;
+
+                if (totalProcessed != toBeProcessed)
+                {
+                    status.AppendLine($"{toBeProcessed.PercentageBtwIntNo(totalProcessed)}%");
+                    result = false;
+                }
+
+                var porambokkuData = latestAdangal.Where(w => w.LandType == LandType.Porambokku).ToList();
+                var porambokkuNotUpdated = porambokkuData.Where(w => string.IsNullOrEmpty(w.Parappu)).Count();
+                if (porambokkuNotUpdated > 0)
+                {
+                    status.AppendLine($"PBK NOT UPDATED:{porambokkuNotUpdated} of {porambokkuNotUpdated}");
+                    result = false;
+                }
+
+                var dashedData = latestAdangal.Where(w => w.LandType == LandType.Dash).Count();
+
+                if (dashedData > 0)
+                {
+                    status.AppendLine($"DASH:{dashedData}");
+                    result = false;
+                }
+
+                var issueData = latestAdangal.Where(w => w.LandType != LandType.Porambokku && w.LandType != LandType.Dash && w.PattaEn == 0).Count();
+
+                if (issueData > 0)
+                {
+                    status.AppendLine($"ISSUE:{issueData}");
+                    result = false;
+                }
 
                 LogMessage($"ready: {result} STATUS: {status.ToString()}");
             }
@@ -2156,7 +2261,7 @@ namespace AdangalApp
                 // Loading basic file details...
                 LoadFileDetails();
                 LogMessage($"STEP-2 - VattamNameTamil: {loadedFile.VattamNameTamil} FirkaName: {loadedFile.FirkaName} VillageNameTamil: {loadedFile.VillageNameTamil}");
-                PreLoadFile();
+                //PreLoadFile();
 
                 //if (haveValidFiles(reqFileFolderPath))
                 //{
@@ -2267,14 +2372,14 @@ namespace AdangalApp
             if (cmbVillages.SelectedIndex == 0)
             {
                 btnLoadFirstTIme.Enabled = false;
-                return; 
+                return;
             }
             var selItem = (ComboData)cmbVillages.SelectedItem;
             DataAccess.SetVillageName();
             AdangalConstant.villageName = selItem.Display;
             UpadteLogPath(selItem.Display);
             LoadFileDetails();
-            
+
             //loadedFile = DataAccess.GetVillageDetail();
             LogMessage($"STEP - 1 - Village: {selItem.Value}-{selItem.Display}");
 
@@ -2282,7 +2387,7 @@ namespace AdangalApp
             MessageBox.Show(fileStatus);
 
             btnLoadFirstTIme.Enabled = true;
-            
+
 
             //CheckJsonExist();
 
@@ -2482,7 +2587,7 @@ namespace AdangalApp
                     return;
                 }
 
-                if (owningColumnName == "LandStatus")
+                else if (owningColumnName == "LandStatus")
                 {
                     DataAccess.UpdateLandStatus(cus);
                     EditSuccess();
@@ -2490,12 +2595,29 @@ namespace AdangalApp
                     return;
                 }
 
-                if (owningColumnName == "PattaEn")
+                else if (owningColumnName == "PattaEn")
                 {
                     DataAccess.UpdatePattaEN(cus);
                     EditSuccess();
                     //button2_Click_1(null, null);
                     return;
+                }
+                else if (owningColumnName == "Parappu")
+                {
+                    //string parappuPattern  = @"\d{1,}.\d{1,}.\d{2,}";
+
+                    //Match m = IsValidParappu(cus.Parappu); //Regex.Match(cus.Parappu, @"\d{1,}.\d{1,}.\d{2,}");
+                    if (IsValidParappu(cus.Parappu))
+                    {
+                        DataAccess.UpdateParappu(cus);
+                        EditSuccess();
+                        //button2_Click_1(null, null);
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"wrong format {cus.Parappu} Expect [d1,].[d1,].[d2,]");
+                    }
                 }
 
             }
@@ -2503,6 +2625,22 @@ namespace AdangalApp
             {
                 LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
+        }
+
+        private static bool IsValidParappu(string parappu)
+        {
+            var p = parappu.Contains(".");
+            if (p == false) return false;
+            var pp = parappu.Split('.');
+            if (pp.Count() != 3) return false;
+            if(pp[0].isNumber() && pp[1].isNumber() && pp[2].isNumber())
+            {
+                return true;
+            }
+            return false;
+
+
+
         }
         public static string GetGridCellValue(DataGridView grid, int rowIndex, string columnName)
         {
@@ -2527,7 +2665,7 @@ namespace AdangalApp
         {
             try
             {
-                
+
 
                 if (txtAddNewSurvey.Text.Trim() == empty)
                 {
@@ -2766,7 +2904,7 @@ namespace AdangalApp
             LogMessage($"READED DATA FROM EXISTING JSON FILE");
             dataGridView1.DataSource = fullAdangalFromjson;
             LoadSurveyAndSubdiv();
-            PreLoadFile();
+            //PreLoadFile();
             CalculateTotalPages(recordPerPage);
 
             //if (canAddMissedSurvey)
@@ -2800,9 +2938,23 @@ namespace AdangalApp
             AdangalConstant.villageName = ddlProcessedFiles.SelectedItem.ToString();
             UpadteLogPath(AdangalConstant.villageName);
             DataAccess.SetVillageName();
-            loadedFile = DataAccess.GetVillageDetail();
-            LogMessage($"STEP - 1 - Village: {AdangalConstant.villageName}");
-            btnLoadProcessed.Enabled = true;
+            try
+            {
+                loadedFile = DataAccess.GetVillageDetail();
+                txtVattam.Text = loadedFile.VattamNameTamil;
+                txtFirka.Text = loadedFile.FirkaName;
+                txtVaruvai.Text = loadedFile.VillageNameTamil;
+                LogMessage($"STEP - 1 - Village: {AdangalConstant.villageName}");
+                var fileStatus = AdangalConverter.IsSync();
+                MessageBox.Show(fileStatus);
+                btnLoadProcessed.Enabled = btnLoadFirstTime2.Enabled = true;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{AdangalConstant.villageName} not yet initiated.");
+            }
+
             //SetVillage();
         }
 
@@ -2813,7 +2965,7 @@ namespace AdangalApp
 
         private void OnVillageChange(object cb)
         {
-            
+
         }
 
         private void btnBookView_Click(object sender, EventArgs e)
@@ -3168,14 +3320,42 @@ namespace AdangalApp
 
         private void btnLoadFirstTIme_Click(object sender, EventArgs e)
         {
+            SyncData();
 
+
+        }
+
+        private void SyncData()
+        {
             //var list = new List<KeyValue>() {
             //    new KeyValue() { Value = 9, Caption = "3B3" } ,
             //    //new KeyValue() { Value = 37, Caption = "2E" }
             //};
 
             List<KeyValue> list = DataAccess.GetSubdiv();
-            AdangalConverter.ProcessAdangal(list);
+            var adangalLatest = DataAccess.GetActiveAdangal().Count;
+
+            if (list.Count == adangalLatest)
+            {
+                if (DialogResult.Yes ==
+                    MessageBox.Show("All Data are in Sync!", "Retry?", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                {
+                    AdangalConverter.ProcessAdangal(list);
+                }
+            }
+            else
+            {
+                if(DialogResult.Yes == 
+                    MessageBox.Show($"still {(list.Count - adangalLatest)} pending! [{100 - list.Count.PercentageBtwIntNo(adangalLatest)}%]",
+                    "cotinue?", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                AdangalConverter.ProcessAdangal(list);
+            }
+
+        }
+
+        private void btnLoadFirstTime2_Click(object sender, EventArgs e)
+        {
+            SyncData();
         }
     }
 
