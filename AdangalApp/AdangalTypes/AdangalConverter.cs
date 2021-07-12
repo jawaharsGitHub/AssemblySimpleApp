@@ -70,6 +70,8 @@ namespace AdangalApp.AdangalTypes
                     currentSurvey = list[i].Value;
                     currentSubDiv = list[i].Caption;
 
+                    //LogEntries logEntries = driver.Manage().Logs.
+
                     if (isCorrection == false)
                     {
                         if (IsExist(currentSurvey, currentSubDiv))
@@ -147,10 +149,13 @@ namespace AdangalApp.AdangalTypes
 
                     var copiedText = Clipboard.GetText();
 
+                    vao.LogMessage($"STARTED: {currentSurvey}-{currentSubDiv} [{i}/{list.Count}]");
+                    vao.LogMessage($"------------------------------------");
+
                     if (copiedText.Contains("உரிமையாளர்கள் பெயர்"))
                     {
                         TextToAdangal(copiedText, currentSurvey, currentSubDiv);
-                        vao.logHelper.WriteAdangalLog($"added new record - {currentSurvey}-{currentSubDiv}");
+                        //vao.logHelper.WriteAdangalLog($"added new record - {currentSurvey}-{currentSubDiv}");
                     }
                     else if (IsHave(copiedText, "government"))
                     {
@@ -187,7 +192,7 @@ namespace AdangalApp.AdangalTypes
 
                     DataAccess.SaveCopiedText($"{currentSurvey}-{currentSubDiv}{Environment.NewLine}{copiedText}");
 
-                    vao.LogMessage($"DONE:[index-{i}]/{list.Count}");
+                    
 
                     bw.DoWork += (s, e) =>
                     {
@@ -206,6 +211,8 @@ namespace AdangalApp.AdangalTypes
                             aTimer.Start();
                         };
                     }
+
+                    vao.LogMessage($"DONE: {currentSurvey}-{currentSubDiv} [{i}/{list.Count}]");
                     driver.Close();
                 }
                 catch (Exception ex)
@@ -341,7 +348,6 @@ namespace AdangalApp.AdangalTypes
                 var third = sec.Split(Environment.NewLine.ToCharArray()).Where(w => w.Trim() != "").ToList();
 
                 var hecIndex = third.FindIndex(f => f.Contains("ஹெக்"));
-                //bool isVagai = (hecIndex > 3);
                 var totalIndex = third.Count - 1;
 
                 var neededData = third.Skip(hecIndex + 1);
