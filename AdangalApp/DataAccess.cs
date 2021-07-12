@@ -143,7 +143,6 @@ namespace AdangalApp
             string path = CopiedTextFile;
             General.CreateFileIfNotExist(path);
             File.AppendAllText(path, copiedText);
-            //InsertSingleObjectToListJson<Adangal>(path, adangalData);
         }
 
         public static List<Adangal> GetMissedAdangal(string missedSurveysPath)

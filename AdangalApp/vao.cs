@@ -1046,7 +1046,7 @@ namespace AdangalApp
         {
             if (cmbLandStatus.SelectedIndex == 0) return;
 
-            fullAdangalFromjson = dataGridView1.DataSource as List<Adangal>;
+            fullAdangalFromjson = DataAccess.GetActiveAdangal(); // dataGridView1.DataSource as List<Adangal>;
 
             if (fullAdangalFromjson != null)
             {
@@ -1057,12 +1057,8 @@ namespace AdangalApp
                     dataGridView1.DataSource = GetAdangalForSomeDots();
                 else if (selItem.Id == 101)
                     dataGridView1.DataSource = fullAdangalFromjson.Where(w => w.LandType != LandType.Porambokku && w.PattaEn == 0).ToList();
-
-                //if (selItem.Id == 1) // Deleted
-                //    dataGridView1.DataSource = DataAccess.GetDeletedAdangal();
                 else
                     dataGridView1.DataSource = fullAdangalFromjson.Where(w => (int)w.LandStatus == selItem.Id).OrderBy(o => o.NilaAlavaiEn).ToList();
-
                 waitForm.Close();
             }
         }
@@ -1723,7 +1719,10 @@ namespace AdangalApp
         }
         private void dataGridView1_DataSourceChanged(object sender, EventArgs e)
         {
-            lblMessage.Text = $"Record Count: {dataGridView1.Rows.Count} ";
+            var subDivCount = DataAccess.GetSubdiv().Count;
+            var perc = subDivCount.PercentageBtwIntNo(dataGridView1.Rows.Count);
+
+            lblMessage.Text = $"Record Count: {dataGridView1.Rows.Count} / {subDivCount} ({perc}%)";
 
         }
 
@@ -2261,7 +2260,6 @@ namespace AdangalApp
         private void UpadteLogPath(string villageName)
         {
             var logFolder = AdangalConstant.CreateAndReadPath($"{villageName}-Log", villageName);
-            //logHelper  =null;
             logHelper = new LogHelper("AdangalLog", logFolder, Environment.UserName, villageName);
         }
         private void cmbVillages_SelectedIndexChanged_1(object sender, EventArgs e)

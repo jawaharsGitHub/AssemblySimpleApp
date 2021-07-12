@@ -34,12 +34,12 @@ namespace Common
 
         
 
-        public static void SendAdangalUpdate(string mailBody)
+        public static void SendAdangalUpdate(string subject, string mailBody)
         {
             try
             {
-                var sub = mailBody;
-                var smtp = GetMailMessage(mailBody, mailBody);
+                //var sub = subject;
+                var smtp = GetMailMessage(subject, mailBody);
                 //smtp.Item1.Attachments.Add(new Attachment(attachmentFilePath)); // attachments
                 smtp.Item2.Send(smtp.Item1);
             }

@@ -51,23 +51,28 @@ namespace AdangalApp.AdangalTypes
 
             testdataPath = ConfigurationManager.AppSettings["testdataPath"];
 
-            try
+
+            var di = (from d in DriveInfo.GetDrives().ToList()
+                      where d.Name.ToLower().Contains("c") == false
+                      select d).First().Name;
+            var imgPath = Path.Combine(di, "imageTest\\");
+
+            int retryCount = 0;
+            System.Timers.Timer aTimer = new System.Timers.Timer(10 * 60 * 1000);
+            IWebDriver driver = new ChromeDriver();
+            driver.Navigate().GoToUrl("https://eservices.tn.gov.in/eservicesnew/land/chitta.html?lan=en");
+            int currentSurvey = 0;
+            string currentSubDiv = "";
+            for (int i = 0; i <= list.Count - 1; i++)
             {
-                var di = (from d in DriveInfo.GetDrives().ToList()
-                          where d.Name.ToLower().Contains("c") == false
-                          select d).First().Name;
-                var imgPath = Path.Combine(di, "imageTest\\");
-
-                int retryCount = 0;
-                System.Timers.Timer aTimer = new System.Timers.Timer(10 * 60 * 1000);
-                IWebDriver driver = new ChromeDriver();
-                driver.Navigate().GoToUrl("https://eservices.tn.gov.in/eservicesnew/land/chitta.html?lan=en");
-
-                for (int i = 0; i <= list.Count - 1; i++)
+                try
                 {
+                    currentSurvey = list[i].Value;
+                    currentSubDiv = list[i].Caption;
+
                     if (isCorrection == false)
                     {
-                        if (IsExist(list[i].Value, list[i].Caption)) // && isTest == false)
+                        if (IsExist(currentSurvey, currentSubDiv))
                             continue;
                     }
 
@@ -109,7 +114,7 @@ namespace AdangalApp.AdangalTypes
 
                     //enter survey no
                     var txt = driver.FindElement(By.Name("surveyNo"));
-                    txt.SendKeys(list[i].Value.ToString());
+                    txt.SendKeys(currentSurvey.ToString());
 
                     //enter captcha
                     var text = GenerateSnapshot(driver, imgPath);
@@ -125,12 +130,12 @@ namespace AdangalApp.AdangalTypes
                         subDivElement = new SelectElement(subDiv);
                         iterationCount += 1;
 
-                        if (iterationCount >= 100)
+                        if (iterationCount == 100 || iterationCount == 200 || iterationCount == 300)
                         {
                             MessageBox.Show("Website not working!!");
                         }
                     }
-                    subDivElement.SelectByValue(list[i].Caption);
+                    subDivElement.SelectByValue(currentSubDiv);
 
                     //button click
                     driver.FindElement(By.ClassName("button")).Click();
@@ -142,35 +147,31 @@ namespace AdangalApp.AdangalTypes
 
                     var copiedText = Clipboard.GetText();
 
-
-
-                    
-
                     if (copiedText.Contains("உரிமையாளர்கள் பெயர்"))
                     {
-                        TextToAdangal(copiedText, list[i].Value, list[i].Caption);
-                        vao.logHelper.WriteAdangalLog($"added new record - {list[i].Value}-{list[i].Caption}");
+                        TextToAdangal(copiedText, currentSurvey, currentSubDiv);
+                        vao.logHelper.WriteAdangalLog($"added new record - {currentSurvey}-{currentSubDiv}");
                     }
                     else if (IsHave(copiedText, "government"))
                     {
-                        AddOtherLandType(list[i].Value, list[i].Caption, LandType.Porambokku);
-                        vao.logHelper.WriteAdangalLog($"added govt land - {list[i].Value}-{list[i].Caption}");
+                        AddOtherLandType(currentSurvey, currentSubDiv, LandType.Porambokku);
+                        vao.logHelper.WriteAdangalLog($"added govt land - {currentSurvey}-{currentSubDiv}");
                     }
                     else if (IsHave(copiedText, "bhoodan"))
                     {
-                        AddOtherLandType(list[i].Value, list[i].Caption, LandType.CLRBhoodanLands);
-                        vao.logHelper.WriteAdangalLog($"added bhoodan land - {list[i].Value}-{list[i].Caption}");
+                        AddOtherLandType(currentSurvey, currentSubDiv, LandType.CLRBhoodanLands);
+                        vao.logHelper.WriteAdangalLog($"added bhoodan land - {currentSurvey}-{currentSubDiv}");
                     }
                     else if (IsDash(copiedText))
                     {
-                        AddOtherLandType(list[i].Value, list[i].Caption, LandType.Dash);
-                        vao.logHelper.WriteAdangalLog($"added dash - {list[i].Value}-{list[i].Caption}");
+                        AddOtherLandType(currentSurvey, currentSubDiv, LandType.Dash);
+                        vao.logHelper.WriteAdangalLog($"added dash - {currentSurvey}-{currentSubDiv}");
                     }
                     else if (copiedText.ToLower().Contains("district") == true &&
                             copiedText.ToLower().Contains("government") == false &&
                             copiedText.ToLower().Contains("bhoodan") == false)
                     {
-                        vao.logHelper.WriteAdangalLog($"Wrong Captcha: {text}: {list[i].Value}-{list[i].Caption}");
+                        vao.logHelper.WriteAdangalLog($"Wrong Captcha: {text}: {currentSurvey}-{currentSubDiv}");
                         retryCount += 1;
                         if (retryCount <= 2)
                             i -= 1;
@@ -179,54 +180,55 @@ namespace AdangalApp.AdangalTypes
                     }
                     else
                     {
-                        AddOtherLandType(list[i].Value, list[i].Caption, LandType.UnKnown);
-                        vao.logHelper.WriteAdangalLog($"added unknown - {list[i].Value}-{list[i].Caption}");
+                        AddOtherLandType(currentSurvey, currentSubDiv, LandType.UnKnown);
+                        vao.logHelper.WriteAdangalLog($"added unknown - {currentSurvey}-{currentSubDiv}");
                     }
                     retryCount = 0;
 
-                    DataAccess.SaveCopiedText(copiedText);
+                    DataAccess.SaveCopiedText($"{currentSurvey}-{currentSubDiv}{Environment.NewLine}{copiedText}");
 
                     vao.LogMessage($"DONE:[index-{i}]/{list.Count}");
 
-                    driver.Close();
+                    bw.DoWork += (s, e) =>
+                    {
+                        var perc = list.Count.PercentageBtwIntNo(i);
+                        var sub = $"{perc}% - {vao.loadedFile.VillageName}- DONE:{i} of {list.Count}";
+                        AppCommunication.SendAdangalUpdate(sub, $"{currentSurvey}-{currentSubDiv}");
+                    };
 
                     if (isCorrection == false)
                     {
                         aTimer.Elapsed += (a, o) =>
-                        {
-                            bw.DoWork += (s, e) =>
-                            {
-                                var perc = list.Count.PercentageBtwIntNo(i);
-                                var sub = $"{perc}% - {vao.loadedFile.VillageName}- DONE:[{i}] out of {list.Count}";
-                                AppCommunication.SendAdangalUpdate($"{perc}% - {vao.loadedFile.VillageName}- DONE:{i} of {list.Count}");
-                            };
-
+                        {                          
                             bw.RunWorkerAsync();
+                            aTimer.AutoReset = true;
+                            aTimer.Enabled = true;
+                            aTimer.Start();
                         };
-
-                        aTimer.AutoReset = true;
-                        aTimer.Enabled = true;
-                        aTimer.Start();
                     }
+                    driver.Close();
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show(ex.ToString());
+                    vao.LogMessage("ERROR:" + ex.ToString());
+                    driver.Close();
 
                 }
 
-                var processed = DataAccess.GetActiveAdangalNew();
-                bw.DoWork += (s, e) =>
-                {
-                    AppCommunication.SendAdangalUpdate($"{vao.loadedFile.VillageName} Completed-{processed} of {list.Count}");
-                };
-                bw.RunWorkerAsync();
-
-                MessageBox.Show($"Completed: {processed.Count} out of {list.Count}", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //driver.Close();
             }
-            catch (Exception ex)
+
+
+            var processed = DataAccess.GetActiveAdangalNew();
+            bw.DoWork += (s, e) =>
             {
-                MessageBox.Show(ex.ToString());
-                vao.LogMessage("ERROR:" + ex.ToString());
+                AppCommunication.SendAdangalUpdate($"{vao.loadedFile.VillageName} Completed-{processed} of {list.Count}", "");
+            };
+            bw.RunWorkerAsync();
 
-            }
+            MessageBox.Show($"Completed: {processed.Count} out of {list.Count}", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //driver.Close();
+
 
 
         }
@@ -371,7 +373,6 @@ namespace AdangalApp.AdangalTypes
                 DataAccess.AddNewAdangal(new Adangal()
                 { LandStatus = LandStatus.Error, NilaAlavaiEn = surveyNo, UtpirivuEn = subdivNo });
                 vao.LogMessage($"ERROR: {surveyNo}-{subdivNo} - {ex.ToString()}");
-                //LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
 
             }
 

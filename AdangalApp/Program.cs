@@ -27,8 +27,8 @@ namespace AdangalApp
             {
                 if (AppConfiguration.AddOrUpdateAppSettings("SourceFolder", dataFolder))
                 {
-                    CommonLogHelper = new LogHelper("commonLog", dataFolder, Environment.UserName);
-                    CommonLogHelper.WriteAdangalLog($"================={DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss")}========================");
+                    //CommonLogHelper = new LogHelper("commonLog", dataFolder, Environment.UserName);
+                    //CommonLogHelper.WriteAdangalLog($"================={DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss")}========================");
                     Application.Run(new vao());
                 }
             }
