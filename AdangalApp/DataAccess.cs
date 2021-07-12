@@ -175,8 +175,13 @@ namespace AdangalApp
                 myFile.Close();
 
                 data = summaryData;
-                data[0].Vibaram = $"மொத்த {data[0].Vibaram}";
-                data.Insert(3,
+                if (data[0].LandType == LandType.Nansai)
+                    data[0].Vibaram = $"மொத்த {data[0].Vibaram}";
+                else
+                    data[0].Vibaram = $"{data[0].Vibaram}";
+                
+                var porambokkuIndex = summaryData.FindIndex(a => a.LandType == LandType.Porambokku);
+                data.Insert(porambokkuIndex,
                     new Summary()
                     {
                         Id = -1,
@@ -221,7 +226,14 @@ namespace AdangalApp
                 myFile.Close();
 
                 data = summaryData;
-                data[0].Vibaram = $"மொத்த {data[0].Vibaram}";
+                if (data[0].LandType == LandType.Nansai)
+                {
+                    data[0].Vibaram = $"மொத்த {data[0].Vibaram}";
+                }
+                else
+                {
+                    data[0].Vibaram = $"{data[0].Vibaram}";
+                }
                 data.Insert(3,
                     new Summary()
                     {

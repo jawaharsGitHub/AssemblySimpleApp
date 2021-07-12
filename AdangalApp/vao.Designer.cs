@@ -55,6 +55,7 @@
             this.txtFirka = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnLoadFirstTime2 = new System.Windows.Forms.Button();
             this.btnLoadProcessed = new System.Windows.Forms.Button();
             this.ddlProcessedFiles = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -94,7 +95,6 @@
             this.txtRecCount = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lblPageNo = new System.Windows.Forms.Label();
-            this.btnLoadFirstTime2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -292,7 +292,6 @@
             // cmbFulfilled
             // 
             this.cmbFulfilled.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbFulfilled.Enabled = false;
             this.cmbFulfilled.FormattingEnabled = true;
             this.cmbFulfilled.Location = new System.Drawing.Point(17, 404);
             this.cmbFulfilled.Name = "cmbFulfilled";
@@ -386,6 +385,17 @@
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "STEP-1";
+            // 
+            // btnLoadFirstTime2
+            // 
+            this.btnLoadFirstTime2.Enabled = false;
+            this.btnLoadFirstTime2.Location = new System.Drawing.Point(119, 45);
+            this.btnLoadFirstTime2.Name = "btnLoadFirstTime2";
+            this.btnLoadFirstTime2.Size = new System.Drawing.Size(95, 23);
+            this.btnLoadFirstTime2.TabIndex = 19;
+            this.btnLoadFirstTime2.Text = "Load FirstTime";
+            this.btnLoadFirstTime2.UseVisualStyleBackColor = true;
+            this.btnLoadFirstTime2.Click += new System.EventHandler(this.btnLoadFirstTime2_Click);
             // 
             // btnLoadProcessed
             // 
@@ -800,17 +810,6 @@
             this.lblPageNo.Size = new System.Drawing.Size(61, 17);
             this.lblPageNo.TabIndex = 27;
             this.lblPageNo.Text = "பக்கம் -";
-            // 
-            // btnLoadFirstTime2
-            // 
-            this.btnLoadFirstTime2.Enabled = false;
-            this.btnLoadFirstTime2.Location = new System.Drawing.Point(119, 45);
-            this.btnLoadFirstTime2.Name = "btnLoadFirstTime2";
-            this.btnLoadFirstTime2.Size = new System.Drawing.Size(95, 23);
-            this.btnLoadFirstTime2.TabIndex = 19;
-            this.btnLoadFirstTime2.Text = "Load FirstTime";
-            this.btnLoadFirstTime2.UseVisualStyleBackColor = true;
-            this.btnLoadFirstTime2.Click += new System.EventHandler(this.btnLoadFirstTime2_Click);
             // 
             // vao
             // 

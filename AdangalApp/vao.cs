@@ -726,6 +726,8 @@ namespace AdangalApp
                 new KeyValue() { Id = -1, Caption = "--select--" },
                 new KeyValue() { Id = 1, Caption = "Fullfilled" },
                 new KeyValue() { Id = 2, Caption = "Extend" },
+                new KeyValue() { Id = 3, Caption = "Vagai" },
+                new KeyValue() { Id = 4, Caption = "ErrorVagai" },
             };
 
         }
@@ -1159,7 +1161,7 @@ namespace AdangalApp
             certSinglePage = certSinglePage.Replace("[pasali]", pasali.ToString());
             certSinglePage = certSinglePage.Replace("[maavattam]", loadedFile.MaavattamNameTamil);
             certSinglePage = certSinglePage.Replace("[vattam]", loadedFile.VattamNameTamil);
-            certSinglePage = certSinglePage.Replace("[village]", loadedFile.MaavattamNameTamil);
+            certSinglePage = certSinglePage.Replace("[village]", loadedFile.VillageNameTamil);
 
             sb.Append(certSinglePage.Replace("[pageNo]", pageNumber.ToString()).Replace("[header]", updatedHeader));
             return sb.ToString();
@@ -2187,7 +2189,7 @@ namespace AdangalApp
             notesPage = notesPage.Replace("[pasali]", pasali.ToString());
             notesPage = notesPage.Replace("[maavattam]", loadedFile.MaavattamNameTamil);
             notesPage = notesPage.Replace("[vattam]", loadedFile.VattamNameTamil);
-            notesPage = notesPage.Replace("[village]", loadedFile.MaavattamNameTamil);
+            notesPage = notesPage.Replace("[village]", loadedFile.VillageNameTamil);
 
             title = title.Replace("[pasali]", pasali.ToString());
             title = title.Replace("[br]", "</br>");
@@ -2528,6 +2530,8 @@ namespace AdangalApp
             waitForm.Show(this);
             if (selValue == 1) dataGridView1.DataSource = GetFullfilledAdangal();
             else if (selValue == 2) dataGridView1.DataSource = GetExtendedAdangal();
+            else if (selValue == 3) dataGridView1.DataSource = GetVagaiAdangal(); 
+                else if (selValue == 4) dataGridView1.DataSource = GetVagaiErrorAdangal();
             waitForm.Close();
         }
 
@@ -2545,6 +2549,16 @@ namespace AdangalApp
         private List<Adangal> GetExtendedAdangal()
         {
             return fullAdangalFromjson.Where(w => !string.IsNullOrEmpty(w.UtpirivuEn) && w.UtpirivuEn != "-").ToList();
+        }
+
+        private List<Adangal> GetVagaiAdangal()
+        {
+            return fullAdangalFromjson.Where(w => w.IsVagai).ToList();
+        }
+
+        private List<Adangal> GetVagaiErrorAdangal()
+        {
+            return fullAdangalFromjson.Where(w => !string.IsNullOrEmpty(w.OwnerName) && w.OwnerName.Contains("2")).ToList();
         }
 
 

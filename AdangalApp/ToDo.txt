@@ -79,23 +79,29 @@ Log in panchayat level
 grid page no.
 missed file json name with computer name.
 created date is taken from wrong place....
+2 in vagai. (correction)
+header in cert pages
+pasali not replaced.
+kurippu if any!
 
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 -----V-1-----
 
+
 enmanagkondaan:
-header in cert pages
-pasali not replaced.
-table alignment
-kurippu if any!
+100-7B2A - 0.2 or 0.02
+porambokku data update.
 starting page no?
+table alignment
 header height reduce(both right and left page)
+taking print out of cert and other pages for realtime testing.
+update script for updating porambokku parappu
 
 
 adding intial
 auto project for taking phone numbers.
-100-7B2A - 0.2 or 0.02
+
 adding last name also into adangal.
 
 working status email
