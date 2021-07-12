@@ -31,7 +31,8 @@ namespace AdangalApp.AdangalTypes
                         "காப்பாளர்",
                         "மகன்",
                         "மனைவி",
-                        "மகள்"
+                        "மகள்",
+                        "தாய்"
                     };
 
 
@@ -298,7 +299,7 @@ namespace AdangalApp.AdangalTypes
             {
                 var subDivCount = DataAccess.GetSubdiv().Count();
                 var activeAdangal = DataAccess.GetActiveAdangal();
-                var notSyncCount = activeAdangal.Where(w => w.LandStatus != LandStatus.NoChange).Count();
+                var notSyncCount = activeAdangal.Where(w => w.LandStatus == LandStatus.Error).Count();
 
                 if (activeAdangal.Count < subDivCount)
                 {

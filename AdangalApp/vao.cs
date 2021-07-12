@@ -3368,9 +3368,9 @@ namespace AdangalApp
             //};
 
             List<KeyValue> list = DataAccess.GetSubdiv();
-            var adangalLatest = DataAccess.GetActiveAdangal().Count;
+            var adangalLatest = DataAccess.GetActiveAdangal();
 
-            if (list.Count == adangalLatest)
+            if (list.Count == adangalLatest.Count)
             {
                 if (DialogResult.Yes ==
                     MessageBox.Show("All Data are in Sync!", "Retry?", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
@@ -3380,10 +3380,23 @@ namespace AdangalApp
             }
             else
             {
-                if(DialogResult.Yes == 
-                    MessageBox.Show($"still {(list.Count - adangalLatest)} pending! [{100 - list.Count.PercentageBtwIntNo(adangalLatest)}%]",
+                var adangalToKeyList = new List<KeyValue>();
+
+                list.ForEach(fe => {
+                    if(adangalLatest.Where(w => w.NilaAlavaiEn == fe.Value && w.UtpirivuEn == fe.Caption).Count() == 0)
+                        adangalToKeyList.Add(fe);
+                });
+
+                var result = new List<KeyValue>();
+
+
+
+                //var toBeProcessOnly = list.inte(adangalToKeyList).ToList();
+
+                if (DialogResult.Yes == 
+                    MessageBox.Show($"still {(list.Count - adangalLatest.Count)} pending! [{100 - list.Count.PercentageBtwIntNo(adangalLatest.Count)}%]",
                     "cotinue?", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
-                AdangalConverter.ProcessAdangal(list);
+                AdangalConverter.ProcessAdangal(adangalToKeyList);
             }
 
         }

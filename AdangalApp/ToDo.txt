@@ -83,6 +83,7 @@ created date is taken from wrong place....
 header in cert pages
 pasali not replaced.
 kurippu if any!
+header height reduce(both right and left page)!!!!!!!!!!!!!!!!!
 
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
@@ -90,14 +91,19 @@ kurippu if any!
 
 
 enmanagkondaan:
+------------------
 100-7B2A - 0.2 or 0.02
 porambokku data update.
 starting page no?
 table alignment
-header height reduce(both right and left page)
 taking print out of cert and other pages for realtime testing.
 update script for updating porambokku parappu
 expected page number - validations!
+
+CREATING FIRST TIME - SUBDIV DONT HAVE VILLAGE NAME ASSIGNED??
+FIRST TIME ASKING FOR KARAN.JSON FILE (IT SHOULD CREATE IF NOT EXIST)
+
+
 
 
 adding intial
