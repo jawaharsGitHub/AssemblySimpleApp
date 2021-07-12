@@ -91,9 +91,11 @@ namespace AdangalApp
 
         public static List<string> GetLoadedFileDetails()
         {
-            var data = (from d in Directory.GetDirectories(AppConfiguration.GetDynamicPath($"AdangalJson"))
-                        select new DirectoryInfo(d).Name).ToList();
+            var adangalJsonFolder = AppConfiguration.GetDynamicPath($"AdangalJson");
+            General.CreateFolderIfNotExist(adangalJsonFolder);
 
+            var data = (from d in Directory.GetDirectories(adangalJsonFolder)
+                        select new DirectoryInfo(d).Name).ToList();
             
 
             data.Insert(0, "--select--");

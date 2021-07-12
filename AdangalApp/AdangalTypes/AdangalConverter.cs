@@ -311,6 +311,10 @@ namespace AdangalApp.AdangalTypes
                     status = FileStatus.CompletedWithError;
                     error = $"Error Record {notSyncCount}";
                 }
+                else
+                {
+                    return $"{AdangalConstant.villageName} : Data are synced, please check for other";
+                }
             }
             return $"{AdangalConstant.villageName} : {status.ToName()}-{error}";
         }

@@ -1153,7 +1153,7 @@ namespace AdangalApp
 
         private string GetCertPage()
         {
-            pageNumber += 1;
+            //pageNumber += 1;
             var sb = new StringBuilder();
             //sb.Append(leftCertEmpty);
             certSinglePage = certSinglePage.Replace("[pageNo]", pageNumber.ToString());
@@ -1489,7 +1489,7 @@ namespace AdangalApp
                 if (isSoftCopy)
                     tbl = tbl.Replace("[pageNo]", empty);
                 if (isInitialSummaryPage3)
-                    tbl = tbl.Replace("[pageNo]", "3");
+                    tbl = tbl.Replace("[pageNo]", "1");
                 else
                     tbl = tbl.Replace("[pageNo]", isRightSide ? pageNumber.ToString() : empty);
                 tbl = tbl.Replace("[landtype]", "மொத்த கிராம விபரம்");
@@ -2398,8 +2398,8 @@ namespace AdangalApp
                 return;
             }
             var selItem = (ComboData)cmbVillages.SelectedItem;
-            DataAccess.SetVillageName();
             AdangalConstant.villageName = selItem.Display;
+            DataAccess.SetVillageName();
             UpadteLogPath(selItem.Display);
             LoadFileDetails();
 
