@@ -39,6 +39,8 @@ namespace AdangalApp
 
             if (Directory.Exists(Directory.GetParent(JsonPath).FullName) == false)
                 Directory.CreateDirectory(Directory.GetParent(JsonPath).FullName);
+
+            General.CreateFileIfNotExist(JsonPath);
         }
 
         private static string GetTablePath(string tableName)
