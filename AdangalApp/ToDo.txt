@@ -85,6 +85,12 @@ pasali not replaced.
 kurippu if any!
 header height reduce(both right and left page)!!!!!!!!!!!!!!!!!
 table alignment - cert page
+100-7B2A - 0.2 or 0.02
+starting page no?
+update script for updating porambokku parappu
+
+CREATING FIRST TIME - SUBDIV DONT HAVE VILLAGE NAME ASSIGNED??
+FIRST TIME ASKING FOR KARAN.JSON FILE (IT SHOULD CREATE IF NOT EXIST)
 
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
@@ -93,19 +99,15 @@ table alignment - cert page
 
 enmanagkondaan:
 ------------------
-100-7B2A - 0.2 or 0.02
-porambokku data update.
-starting page no?
-taking print out of cert and other pages for realtime testing.
-update script for updating porambokku parappu
+
+
+parappu - leading zero.
 expected page number - validations!
-parappu - lading zero.
+soft copy to bhuvanesh
+install in laptop-2
 
-CREATING FIRST TIME - SUBDIV DONT HAVE VILLAGE NAME ASSIGNED??
-FIRST TIME ASKING FOR KARAN.JSON FILE (IT SHOULD CREATE IF NOT EXIST)
-
-
-
+porambokku data update.
+taking print out of cert and other pages for realtime testing.
 
 adding intial
 auto project for taking phone numbers.

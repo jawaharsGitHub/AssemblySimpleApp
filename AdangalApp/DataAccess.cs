@@ -505,7 +505,7 @@ namespace AdangalApp
             return false;
         }
 
-        public static bool AddNewLoadedFile(LoadedFileDetail loadedFileDetail)
+        public static bool AddOrReplaceLoadedFile(LoadedFileDetail loadedFileDetail)
         {
             //DeleteLoadedFile(loadedFileDetail);
             //InsertSingleObjectToListJson<LoadedFileDetail>(LoadedFile, loadedFileDetail);

@@ -1274,25 +1274,32 @@ namespace AdangalApp
             //sb.Append(GetRightEmptyPage());
             return sb.ToString();
         }
+
+        int pdfTotalPageToVerify = 0;
         private string GetInitialPages()
         {
             var initialPages = new StringBuilder();
 
             initialPages.Append(firstPage);
+            pdfTotalPageToVerify += 1;
             initialPages.Append(plainPage);
+            pdfTotalPageToVerify += 1;
             initialPages.Append(GetCertPage());
+            pdfTotalPageToVerify += 1;
             //initialPages.Append(GetEmptyPages(1));
             //initialPages.Append(GetPage2());
             //initialPages.Append(GetPage3());
-            //initialPages.Append(GetBuildingPg());
-            
+            //initialPages.Append(GetBuildingPg());            
             initialPages.Append(GetNotesPages(4));
+            pdfTotalPageToVerify += 4;
             initialPages.Append(GetSumPage());
+            pdfTotalPageToVerify += 1;
             //initialPages.Append(GetPage4());
 
 
             int InitialEmptyPages = Convert.ToInt32(ConfigurationManager.AppSettings["InitialEmptyPages"]);
             initialPages.Append(GetEmptyPages(InitialEmptyPages));
+            pdfTotalPageToVerify += InitialEmptyPages;
 
             return initialPages.ToString();
 
@@ -1422,6 +1429,7 @@ namespace AdangalApp
                         {
                             tbl = tbl.Replace("சாகுபடி", fe.Key.ToName());
                         }
+                        pdfTotalPageToVerify += 1;
                         totalContent.Append(tbl);
                     }
 
@@ -1434,7 +1442,7 @@ namespace AdangalApp
 
             return totalContent.ToString();
         }
-        private void SetSummaryPageDetails(List<PageTotal> source)
+        private void SaveSummaryPageDetails(List<PageTotal> source)
         {
             List<Summary> summaryList = new List<Summary>();
 
@@ -1453,16 +1461,6 @@ namespace AdangalApp
                     });
 
                 }
-                //source.ForEach(ff =>
-                //{
-                //    summaryList.Add(new Summary()
-                //    {
-                //        Id = (int)ff.LandType,
-                //        Parappu = ff.ParappuTotal,
-                //        Pakkam = pageRangeList[(int)ff.LandType].Caption,
-                //        Vibaram = ff.LandType.ToName()
-                //    });
-                //});
                 DataAccess.SaveSummary(summaryList);
 
             }
@@ -1639,7 +1637,7 @@ namespace AdangalApp
             loadedFile.FirkaName = txtFirka.Text.Trim();
             loadedFile.VillageNameTamil = txtVaruvai.Text.Trim();
 
-            DataAccess.AddNewLoadedFile(loadedFile);
+            DataAccess.AddOrReplaceLoadedFile(loadedFile);
 
             PreLoadFile();
 
@@ -1652,6 +1650,7 @@ namespace AdangalApp
             {
                 LogMessage($"STARTED HTML GENERATION @ {DateTime.Now.ToLongTimeString()}");
                 pageNumber = 0;
+                pdfTotalPageToVerify = 0;
 
                 StringBuilder allContent = new StringBuilder();
                 pageTotalList = new List<PageTotal>();
@@ -1660,7 +1659,6 @@ namespace AdangalApp
 
                 var mainHtml = FileContentReader.MainHtml;
                 string initialPages = GetInitialPages();
-
                 mainHtml = mainHtml.Replace("[initialPages]", initialPages);
 
                 fullAdangalFromjson = DataAccess.GetActiveAdangal();
@@ -1731,6 +1729,7 @@ namespace AdangalApp
 
                         allContent.Append(leftPage);
                         allContent.Append(GetRightEmptyPage()); // right page
+                        pdfTotalPageToVerify += 2;
 
                         if (i == 0)
                         {
@@ -1753,33 +1752,41 @@ namespace AdangalApp
                 });
 
                 allContent.Append(GetEmptyPages(1));  // add 4 empty pages.
+                pdfTotalPageToVerify += (1 * 2);
                 allContent.Append(GetPageTotal(pageTotalList, pageTotal2List));
                 if (isTestingMode == false)
                 {
                     allContent.Append(GetPageTotal(pageTotal2List, pageTotal3List));
-                    SetSummaryPageDetails(pageTotal3List);
+                    SaveSummaryPageDetails(pageTotal3List);
+                    
                     //allContent.Append(GetOverallTotal(pageTotal3List));
                 }
                 else
                 {
-                    SetSummaryPageDetails(pageTotal2List);
+                    SaveSummaryPageDetails(pageTotal2List);
+                   
                     //allContent.Append(GetOverallTotal(pageTotal2List));
                 }
 
                 allContent.Append(GetSummaryPage());
+                pdfTotalPageToVerify += 1;
                 int FinalEmptyPages = Convert.ToInt32(ConfigurationManager.AppSettings["FinalEmptyPages"]);
                 allContent.Append(GetEmptyPages(FinalEmptyPages));
+                pdfTotalPageToVerify += (FinalEmptyPages * 2);
 
                 // Final Touch
                 mainHtml = mainHtml.Replace("[summaryPages]", GetSummaryPage(true));
                 if (haveGovtBuilding)
                 {
+                    pdfTotalPageToVerify += 1;
                     mainHtml = mainHtml.Replace("[building]", GetGovtBuildingPage());
                 }
                 else
                 {
                     mainHtml = mainHtml.Replace("[building]", empty);
                 }
+                
+
                 mainHtml = mainHtml.Replace("[allPageData]", allContent.ToString());
                 mainHtml = mainHtml.Replace("[certifed]", GetCertifiedContent());
 
@@ -1788,6 +1795,7 @@ namespace AdangalApp
                 File.AppendAllText(filePath, mainHtml);
 
                 LogMessage($"COMPLETED HTML GENERATION @ {filePath}");
+                MessageBox.Show($"pdf should have pages - {pdfTotalPageToVerify}");
                 Process.Start(filePath);
 
                 LogMessage($"STEP-5 - Generate Completed");
@@ -2251,7 +2259,7 @@ namespace AdangalApp
             loadedFile.VillageName = selectedVillage.Display;
             loadedFile.VillageNameTamil = txtVaruvai.Text.Trim();
 
-            DataAccess.AddNewLoadedFile(loadedFile);
+            DataAccess.AddOrReplaceLoadedFile(loadedFile);
 
 
         }
@@ -3296,12 +3304,12 @@ namespace AdangalApp
                 if (isTestingMode == false)
                 {
                     allContent.Append(GetPageTotal(pageTotal2List, pageTotal3List, true));
-                    SetSummaryPageDetails(pageTotal3List);
+                    SaveSummaryPageDetails(pageTotal3List);
                     //allContent.Append(GetOverallTotal(pageTotal3List));
                 }
                 else
                 {
-                    SetSummaryPageDetails(pageTotal2List);
+                    SaveSummaryPageDetails(pageTotal2List);
                     //allContent.Append(GetOverallTotal(pageTotal2List));
                 }
 

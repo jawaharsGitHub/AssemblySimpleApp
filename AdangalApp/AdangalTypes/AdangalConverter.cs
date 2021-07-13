@@ -435,7 +435,18 @@ namespace AdangalApp.AdangalTypes
         {
             return DataAccess.IsAdangalAlreadyExist(NilaAlavaiEn, UtpirivuEn);
         }
+        private static string FixParappu(string parappuToFix)
+        {
+            var p = parappuToFix.Trim().Replace(" ", "").Replace("-", ".").Split('.');
 
+            //var p = parappuToFix.Split('.');
+            if (p[1].Trim().Length < 2)
+            {
+                p[1] = p[1].PadLeft(2, '0');
+            }
+
+            return $"{p[0]}.{p[1].Trim()}.{p[2]}";
+        }
         public static Adangal GetAdangalFromCopiedData(List<string> data, string pattaEn, KeyValue ownerName)
         {
             var adangal = new Adangal();
@@ -446,7 +457,8 @@ namespace AdangalApp.AdangalTypes
                 adangal.UtpirivuEn = data[1];
 
                 var (lt, par, thee) = GetLandDetails(data);
-                adangal.Parappu = par.Trim().Replace(" ", "").Replace("-", ".");
+
+                adangal.Parappu = FixParappu(par);
                 adangal.Theervai = thee;
                 adangal.LandType = lt;
                 adangal.OwnerName = ownerName.Caption.Trim();
@@ -500,6 +512,8 @@ namespace AdangalApp.AdangalTypes
             {
                 //LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
+
+            
 
             return (ld, parappu, theervai);
         }
