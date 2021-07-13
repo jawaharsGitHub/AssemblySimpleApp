@@ -99,6 +99,7 @@ starting page no?
 taking print out of cert and other pages for realtime testing.
 update script for updating porambokku parappu
 expected page number - validations!
+parappu - lading zero.
 
 CREATING FIRST TIME - SUBDIV DONT HAVE VILLAGE NAME ASSIGNED??
 FIRST TIME ASKING FOR KARAN.JSON FILE (IT SHOULD CREATE IF NOT EXIST)

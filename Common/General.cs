@@ -207,5 +207,18 @@ namespace Common
                 return null;
 
         }
+
+        public static List<string> SelectSingleFileDialog(string defaultPath = null, string pattern = null)
+        {
+            OpenFileDialog fbd = new OpenFileDialog();
+            fbd.InitialDirectory = defaultPath;
+            //fbd.Filter = $"json files (*.*)|*{pattern}*"; // pattern;
+            fbd.Multiselect = false;
+            if (DialogResult.OK == fbd.ShowDialog())
+                return fbd.FileNames.ToList();
+            else
+                return null;
+
+        }
     }
 }

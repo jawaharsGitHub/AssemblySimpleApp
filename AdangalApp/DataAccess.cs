@@ -442,6 +442,38 @@ namespace AdangalApp
             WriteObjectsToFile(list, JsonPath);
         }
 
+        public static void UpdateErrorParappu()
+        {
+            List<Adangal> list = GetActiveAdangal();
+            list.ForEach(fe => {
+
+                if (string.IsNullOrEmpty(fe.Parappu) == false)
+                {
+
+                    var p = fe.Parappu.Split('.');
+                    if (p[1].Length < 2)
+                    {
+                        p[1] = p[1].PadLeft(2, '0');
+                    }
+
+                    fe.Parappu = $"{p[0]}.{p[1]}.{p[2]}";
+                }
+            
+            });
+
+            WriteObjectsToFile(list, JsonPath);
+        }
+
+        public static void UpdatePorambokku(Adangal adn)
+        {
+            List<Adangal> list = GetActiveAdangal();
+            var u = list.Where(ld => ld.NilaAlavaiEn == adn.NilaAlavaiEn &&
+                              ld.UtpirivuEn == adn.UtpirivuEn).First();
+            u.Parappu = adn.Parappu;
+            //u.UtpirivuEn = adn.UtpirivuEn;
+            WriteObjectsToFile(list, JsonPath);
+        }
+
         public static void UpdatePattaEN(Adangal adn)
         {
             List<Adangal> list = GetActiveAdangal();

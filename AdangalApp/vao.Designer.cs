@@ -95,6 +95,7 @@
             this.txtRecCount = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lblPageNo = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -610,27 +611,29 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.button2);
             this.groupBox7.Controls.Add(this.btnSyncNew);
             this.groupBox7.Controls.Add(this.btnSwap);
             this.groupBox7.Controls.Add(this.cmbItemToBeAdded);
             this.groupBox7.Controls.Add(this.txtAddNewSurvey);
             this.groupBox7.Controls.Add(this.btnAddNewSurvey);
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.Location = new System.Drawing.Point(750, 12);
+            this.groupBox7.Location = new System.Drawing.Point(750, 4);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(455, 322);
+            this.groupBox7.Size = new System.Drawing.Size(455, 330);
             this.groupBox7.TabIndex = 28;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Add Missed Survey";
             // 
             // btnSyncNew
             // 
-            this.btnSyncNew.Location = new System.Drawing.Point(326, 16);
+            this.btnSyncNew.Location = new System.Drawing.Point(252, 8);
             this.btnSyncNew.Name = "btnSyncNew";
-            this.btnSyncNew.Size = new System.Drawing.Size(91, 23);
+            this.btnSyncNew.Size = new System.Drawing.Size(91, 34);
             this.btnSyncNew.TabIndex = 31;
-            this.btnSyncNew.Text = "SyncNew...";
+            this.btnSyncNew.Text = "Update Porambokku";
             this.btnSyncNew.UseVisualStyleBackColor = true;
+            this.btnSyncNew.Click += new System.EventHandler(this.btnSyncNew_Click);
             // 
             // btnSwap
             // 
@@ -811,6 +814,16 @@
             this.lblPageNo.TabIndex = 27;
             this.lblPageNo.Text = "பக்கம் -";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(349, 6);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(91, 34);
+            this.button2.TabIndex = 32;
+            this.button2.Text = "Update Parappu (Zeros)";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // vao
             // 
             this.AcceptButton = this.btnNextPage;
@@ -932,6 +945,7 @@
         private System.Windows.Forms.Label lblPageNo;
         private System.Windows.Forms.Button btnLoadFirstTIme;
         private System.Windows.Forms.Button btnLoadFirstTime2;
+        private System.Windows.Forms.Button button2;
         //public System.Windows.Forms.Button bthThread;
     }
 }

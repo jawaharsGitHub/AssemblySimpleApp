@@ -220,12 +220,12 @@ namespace AdangalApp
 
 
         }
-        private void ProcessAreg()
+        private void ProcessAreg(string filePath)
         {
             try
             {
                 LogMessage($"STARTED PROCESSING AREG PDF FILE @ {DateTime.Now.ToLongTimeString()}");
-                aRegContent = aRegFile.GetPdfContent();
+                aRegContent = filePath.GetPdfContent();
 
                 PurambokkuAdangalList = new List<Adangal>();
 
@@ -283,9 +283,31 @@ namespace AdangalApp
                     }
                 }
 
-                AdangalOriginalList.AddRange(PurambokkuAdangalList);
+                int updatedCount = 0;
+                int NotupdatedCount = 0;
+                var latestData = DataAccess.GetActiveAdangal();
+
+                PurambokkuAdangalList.ForEach(fe => {
+                        
+                    if(latestData.Where(w => w.NilaAlavaiEn == fe.NilaAlavaiEn && w.UtpirivuEn == fe.UtpirivuEn).Count() == 1)
+                    {
+                        updatedCount += 1;
+                        DataAccess.UpdatePorambokku(fe);
+                    }
+                    else
+                    {
+                        NotupdatedCount += 1;
+                    }
+                
+                });
+
+                MessageBox.Show($"{updatedCount} - updated - {NotupdatedCount} NOT UPDATED!");
+                //AdangalOriginalList.AddRange(PurambokkuAdangalList);
+
+
                 LogMessage($"COMPLETED PROCESSING AREG PDF FILE @ {DateTime.Now.ToLongTimeString()}");
-                fullAdangalFromjson = DataAccess.AdangalToJson(AdangalOriginalList);
+
+                //fullAdangalFromjson = DataAccess.AdangalToJson(AdangalOriginalList);
             }
             catch (Exception ex)
             {
@@ -728,6 +750,7 @@ namespace AdangalApp
                 new KeyValue() { Id = 2, Caption = "Extend" },
                 new KeyValue() { Id = 3, Caption = "Vagai" },
                 new KeyValue() { Id = 4, Caption = "ErrorVagai" },
+                new KeyValue() { Id = 5, Caption = "ErrorParappu" },
             };
 
         }
@@ -2527,11 +2550,15 @@ namespace AdangalApp
             if (cmbFulfilled.SelectedIndex == 0) return;
             var selValue = ((KeyValue)cmbFulfilled.SelectedItem).Id;
 
+            fullAdangalFromjson = DataAccess.GetActiveAdangal();
+
             waitForm.Show(this);
             if (selValue == 1) dataGridView1.DataSource = GetFullfilledAdangal();
             else if (selValue == 2) dataGridView1.DataSource = GetExtendedAdangal();
             else if (selValue == 3) dataGridView1.DataSource = GetVagaiAdangal(); 
                 else if (selValue == 4) dataGridView1.DataSource = GetVagaiErrorAdangal();
+            else if (selValue == 5) dataGridView1.DataSource = GetErrorParappu();
+
             waitForm.Close();
         }
 
@@ -2559,6 +2586,11 @@ namespace AdangalApp
         private List<Adangal> GetVagaiErrorAdangal()
         {
             return fullAdangalFromjson.Where(w => !string.IsNullOrEmpty(w.OwnerName) && w.OwnerName.Contains("2")).ToList();
+        }
+
+        private List<Adangal> GetErrorParappu()
+        {
+            return fullAdangalFromjson.Where(w => !string.IsNullOrEmpty(w.Parappu) && w.Parappu.Split('.')[1].Length < 2).ToList();
         }
 
 
@@ -3404,6 +3436,18 @@ namespace AdangalApp
         private void btnLoadFirstTime2_Click(object sender, EventArgs e)
         {
             SyncData();
+        }
+
+        private void btnSyncNew_Click(object sender, EventArgs e)
+        {
+            var file = General.SelectSingleFileDialog().First();
+            ProcessAreg(file);
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataAccess.UpdateErrorParappu();
         }
     }
 
