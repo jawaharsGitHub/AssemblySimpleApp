@@ -96,6 +96,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblPageNo = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.chkRowSelect = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -144,7 +145,7 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView1.Location = new System.Drawing.Point(0, 431);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1217, 253);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.DataSourceChanged += new System.EventHandler(this.dataGridView1_DataSourceChanged);
@@ -823,12 +824,24 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // chkRowSelect
+            // 
+            this.chkRowSelect.AutoSize = true;
+            this.chkRowSelect.Location = new System.Drawing.Point(576, 389);
+            this.chkRowSelect.Name = "chkRowSelect";
+            this.chkRowSelect.Size = new System.Drawing.Size(116, 17);
+            this.chkRowSelect.TabIndex = 36;
+            this.chkRowSelect.Text = "ROW SELECTION";
+            this.chkRowSelect.UseVisualStyleBackColor = true;
+            this.chkRowSelect.CheckedChanged += new System.EventHandler(this.chkRowSelect_CheckedChanged);
+            // 
             // vao
             // 
             this.AcceptButton = this.btnNextPage;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1217, 684);
+            this.Controls.Add(this.chkRowSelect);
             this.Controls.Add(this.lblPageNo);
             this.Controls.Add(this.grpPaging);
             this.Controls.Add(this.grpTheervaiTest);
@@ -945,6 +958,7 @@
         private System.Windows.Forms.Button btnLoadFirstTIme;
         private System.Windows.Forms.Button btnLoadFirstTime2;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.CheckBox chkRowSelect;
         //public System.Windows.Forms.Button bthThread;
     }
 }

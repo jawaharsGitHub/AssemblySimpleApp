@@ -96,6 +96,10 @@ parappu - leading zero.
 expected page number - validations!
 HANDLE NATHTHAM PORAMBOKKU ? ( ot needed as we are reading it from website directly, but still it wont work for reading areg file)
 isvagai testing scenario
+softcopy version & hardcopy version
+porambokku theervai - empty or 0.00? --> EMPTY IS OK?
+install in laptop-2
+VALIDATE THE PARAPPU LAST 2 DIGIT
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 -----V-1-----
@@ -104,14 +108,15 @@ isvagai testing scenario
 enmanagkondaan:
 ------------------
 31-3, 31-9 37-2D8A, 2D9,37-20,37-2000 - MISSING?
-VALIDATE THE PARAPPU LAST 2 DIGIT
-porambokku data update.
+porambokku data update. photo to prambokku!!(time saving)
 soft copy to bhuvanesh
-install in laptop-2
-option to edit and update the total land parappu (if needed)
-porambokku theervai - empty or 0.00?
-photo to prambokku!!(time saving)
+option to edit and update the total land parappu (if needed) - ow do it in plain json
+breaking pages? what to do?
 
+
+html to pdf cnversion 
+email status in each 30 minutes.
+initial setup
 taking print out of cert and other pages for realtime testing.
 adding intial
 auto project for taking phone numbers.
@@ -134,24 +139,20 @@ modal popup for progress bar?
 while update name - should maintian a dictionary of correct and wrong name
 Surveyor Issue
 Correction history table.
-
 firka database
-softcopy version & hardcopy version
-STAGE-1:File loaded STAGE-2:LOADED WITHOU ISSUE STAGE-3:CORRECTED TO 100%
 Data analysis Report
 	patta count
 	land count(survey no)
 	siru guru vivasaayi
 	peru vivasaayi
 	siru guru vivasaayi -> owner(father name) -> land details and count.
-tamil names 
 
 marketing:
 ----------
-should be cheap that current price.
+should be cheap that current price. (2500 to 2000)
 time is money - how much is time is important?
 how much you spent?
-extra information?
+--------------extra information?
 need just pdf? or the full book?
 next year will be very very easy!!!
 online pdf 
@@ -159,6 +160,9 @@ manulal update list:
 	-> porampoakku pages photo
 	-> what is the final total number need to be?
 	-> land details group by kanmaai, meenu pidi etc.,
+full adngal for only one day:
+ONLY ONE TIME UPDATE IN PORAMBOKKU - NEXT TIME ITS VERY EASY
+CAN PROVIDE ANY TYPE OF DATA AT ANY TIME(SAVE A LOT OF TIME AND BE RELAXED)
 
 PRE-requisites:
 -----------------
@@ -172,8 +176,25 @@ google input tool -  tamil
 https://ramanathapuram.nic.in/ta/%e0%ae%a8%e0%ae%bf%e0%ae%b0%e0%af%8d%e0%ae%b5%e0%ae%be%e0%ae%95-%e0%ae%85%e0%ae%ae%e0%af%88%e0%ae%aa%e0%af%8d%e0%ae%aa%e0%af%81/%e0%ae%95%e0%af%8b%e0%ae%9f%e0%af%8d%e0%ae%9f%e0%ae%ae%e0%af%8d-%e0%ae%ae%e0%ae%b1%e0%af%8d%e0%ae%b1%e0%af%81%e0%ae%ae%e0%af%8d-%e0%ae%b5%e0%ae%9f%e0%af%8d%e0%ae%9f%e0%ae%ae%e0%af%8d/ - for knowing firkas
 https://cdn.s3waas.gov.in/s3f9b902fc3289af4dd08de5d1de54f68f/uploads/2018/06/2018061484.pdf - firka details
 
-STEPS:
-------
+
+STEPS(v2):
+-----------
+1) 1 pdf files - 2. Areg_Report-1.pdf (naming convention is very important!!!) [optional]
+2) overrite exe (or delete an existing)
+3) while print - margin  0 , A4, scale default, portrait etc.,
+4) browser certificate expires message/issue. (SOLVED)
+5)manual check:
+	porambaokku correction (MANUAL CHECK)
+	manual full check.
+	update total numbers if they want via html (before PRINT)
+	update porambokku data
+6) NOT FULLY PRODUCT _ SO PLEASE BARE AND JUST FOLLOW WHAT WE WANT FOR NOW!!
+7) ALWAYS MAKE SURE ADANGAL BOOK IS THE MAIN SOURCE. 9NOT THE ONLINE DATA)
+
+
+
+STEPS (OLD-v1):
+--------------
 1) 2 pdf files - 1. Chitta_Report-1.pdf 2. Areg_Report-1.pdf (naming convention is very important!!!)
 2) convet Chitta_Report-1.pdf file alone to txt -> https://www.pdf2go.com/pdf-to-text 
 3) move those 2+1 files into that panchayat folder (newly created) --> F:\AUTO-ADANGAL
@@ -195,6 +216,7 @@ Manual Work: (same as above)
 	(v2)Update name(first only or both first and last)
 
 8) NOT FULLY PRODUCT _ SO PLEASE BARE AND JUST FOLLOW WHAT WE WANT FOR NOW!!
+
 
 
 

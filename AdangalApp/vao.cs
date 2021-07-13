@@ -1755,17 +1755,19 @@ namespace AdangalApp
                 allContent.Append(GetEmptyPages(1));  // add 4 empty pages.
                 pdfTotalPageToVerify += (1 * 2);
                 allContent.Append(GetPageTotal(pageTotalList, pageTotal2List));
-                if (isTestingMode == false)
-                {
-                    allContent.Append(GetPageTotal(pageTotal2List, pageTotal3List));
-                    SaveSummaryPageDetails(pageTotal3List);
-                    //allContent.Append(GetOverallTotal(pageTotal3List));
-                }
-                else
-                {
-                    SaveSummaryPageDetails(pageTotal2List);
-                    //allContent.Append(GetOverallTotal(pageTotal2List));
-                }
+                //if (isTestingMode == false)
+                //{
+                //    //allContent.Append(GetPageTotal(pageTotal2List, pageTotal3List));
+                //    SaveSummaryPageDetails(pageTotal3List);
+                //    //allContent.Append(GetOverallTotal(pageTotal3List));
+                //}
+                //else
+                //{
+                //    SaveSummaryPageDetails(pageTotal2List);
+                //    //allContent.Append(GetOverallTotal(pageTotal2List));
+                //}
+
+                SaveSummaryPageDetails(pageTotal2List);
 
                 allContent.Append(GetSummaryPage());
                 pdfTotalPageToVerify += 1;
@@ -2545,8 +2547,8 @@ namespace AdangalApp
 
         private void SetTestMode()
         {
-            ddlPattaTypes.Visible = cmbFulfilled.Visible =
-                lblPattaCheck.Visible = ddlListType.Visible = // = btnGenerate.Enabled = 
+            ddlPattaTypes.Visible = 
+                lblPattaCheck.Visible = ddlListType.Visible = // = btnGenerate.Enabled = cmbFulfilled.Visible =
                 btnSoftGen.Enabled = isTestingMode;
 
             grpTheervaiTest.Visible = needTheervaiTest;
@@ -2712,7 +2714,7 @@ namespace AdangalApp
             if (p == false) return false;
             var pp = parappu.Split('.');
             if (pp.Count() != 3) return false;
-            if(pp[0].isNumber() && pp[1].isNumber() && pp[2].isNumber())
+            if(pp[0].isNumber() && pp[1].isNumber() && pp[2].isNumber() && pp[1].Length == 2 && pp[2].Length == 2)
             {
                 return true;
             }
@@ -3460,6 +3462,14 @@ namespace AdangalApp
         private void button2_Click(object sender, EventArgs e)
         {
             DataAccess.UpdateErrorParappu();
+        }
+
+        private void chkRowSelect_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkRowSelect.Checked)
+                dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            else
+                dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
         }
     }
 
