@@ -92,6 +92,10 @@ update script for updating porambokku parappu
 CREATING FIRST TIME - SUBDIV DONT HAVE VILLAGE NAME ASSIGNED??
 FIRST TIME ASKING FOR KARAN.JSON FILE (IT SHOULD CREATE IF NOT EXIST)
 
+parappu - leading zero.
+expected page number - validations!
+HANDLE NATHTHAM PORAMBOKKU ? ( ot needed as we are reading it from website directly, but still it wont work for reading areg file)
+isvagai testing scenario
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 -----V-1-----
@@ -99,32 +103,27 @@ FIRST TIME ASKING FOR KARAN.JSON FILE (IT SHOULD CREATE IF NOT EXIST)
 
 enmanagkondaan:
 ------------------
-
-
-parappu - leading zero.
-expected page number - validations!
+31-3, 31-9 37-2D8A, 2D9,37-20,37-2000 - MISSING?
+VALIDATE THE PARAPPU LAST 2 DIGIT
+porambokku data update.
 soft copy to bhuvanesh
 install in laptop-2
+option to edit and update the total land parappu (if needed)
+porambokku theervai - empty or 0.00?
+photo to prambokku!!(time saving)
 
-porambokku data update.
 taking print out of cert and other pages for realtime testing.
-
 adding intial
 auto project for taking phone numbers.
-
-adding last name also into adangal.
-
-working status email
+adding last name also into adangal.?
+working status email (limit for email count?)
 passcode - enable.
 
-HANDLE NATHTHAM PORAMBOKKU ?
-
-option to edit and update the total land parappu (if needed)
 manual check button and functionality.
 replace an existing exe (replace or overwrite)?
 what about last page page number if right side page? need testing.
 for texting use the constant value.
-isvagai testing scenario
+
 *****************************************
 
 ---

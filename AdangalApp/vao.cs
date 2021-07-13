@@ -751,6 +751,7 @@ namespace AdangalApp
                 new KeyValue() { Id = 3, Caption = "Vagai" },
                 new KeyValue() { Id = 4, Caption = "ErrorVagai" },
                 new KeyValue() { Id = 5, Caption = "ErrorParappu" },
+                new KeyValue() { Id = 6, Caption = "EmptyParappu" },
             };
 
         }
@@ -1714,7 +1715,7 @@ namespace AdangalApp
                         leftPage = leftPage.Replace("[datarows]", sb.ToString());
 
                         //LEFT PAGE TOTAL
-                        var totalparappu = "2.1.02"; // AdangalFn.GetSumThreeDotNo(temData.Select(s => s.Parappu).ToList());
+                        var totalparappu =  AdangalFn.GetSumThreeDotNo(temData.Select(s => s.Parappu).ToList()); // "2.1.02";
                         //var totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai));
 
                         decimal totalTheervai = 0;
@@ -1758,13 +1759,11 @@ namespace AdangalApp
                 {
                     allContent.Append(GetPageTotal(pageTotal2List, pageTotal3List));
                     SaveSummaryPageDetails(pageTotal3List);
-                    
                     //allContent.Append(GetOverallTotal(pageTotal3List));
                 }
                 else
                 {
                     SaveSummaryPageDetails(pageTotal2List);
-                   
                     //allContent.Append(GetOverallTotal(pageTotal2List));
                 }
 
@@ -2547,7 +2546,7 @@ namespace AdangalApp
         private void SetTestMode()
         {
             ddlPattaTypes.Visible = cmbFulfilled.Visible =
-                lblPattaCheck.Visible = ddlListType.Visible = btnGenerate.Enabled =
+                lblPattaCheck.Visible = ddlListType.Visible = // = btnGenerate.Enabled = 
                 btnSoftGen.Enabled = isTestingMode;
 
             grpTheervaiTest.Visible = needTheervaiTest;
@@ -2566,6 +2565,7 @@ namespace AdangalApp
             else if (selValue == 3) dataGridView1.DataSource = GetVagaiAdangal(); 
                 else if (selValue == 4) dataGridView1.DataSource = GetVagaiErrorAdangal();
             else if (selValue == 5) dataGridView1.DataSource = GetErrorParappu();
+            else if (selValue == 6) dataGridView1.DataSource = EmptyParappu();
 
             waitForm.Close();
         }
@@ -2599,6 +2599,10 @@ namespace AdangalApp
         private List<Adangal> GetErrorParappu()
         {
             return fullAdangalFromjson.Where(w => !string.IsNullOrEmpty(w.Parappu) && w.Parappu.Split('.')[1].Length < 2).ToList();
+        }
+        private List<Adangal> EmptyParappu()
+        {
+            return fullAdangalFromjson.Where(w => string.IsNullOrEmpty(w.Parappu)).ToList();
         }
 
 
@@ -2656,7 +2660,7 @@ namespace AdangalApp
                 // Edit Name
                 if (owningColumnName == "OwnerName")
                 {
-                    DataAccess.UpdateOwnerName(cus, cellValue);
+                    DataAccess.UpdateOwnerName(cus, cellValue.Trim());
                     EditSuccess();
                     //button2_Click_1(null, null);
                     return;
