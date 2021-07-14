@@ -112,6 +112,40 @@ porambokku data update. photo to prambokku!!(time saving)
 soft copy to bhuvanesh
 option to edit and update the total land parappu (if needed) - ow do it in plain json
 breaking pages? what to do?
+standard crop details?
+match the missing below and recalculation.
+
+
+NOT IN ONLINE
+------------------
+14-1B2A
+18-122A(splitted but not correctly updated?)
+18-124A1
+14-53 to 57(NEW)
+18 - 17B2
+26-2D1
+26-20A1
+37-200
+53-1B2c
+55-60,600
+56-50
+66-31
+79-3
+83-1A1A
+115-7
+NOT IN ADANGAL
+-------------------
+17-1b1a to 3a2
+17(43-50)
+18-130B to 141
+18 - 17B, 17B2A
+25-10,11
+26-26,27,28,29
+28-10,11
+
+
+-------------SpILT-------
+14 -> 14a + b -> more
 
 
 html to pdf cnversion 
@@ -152,6 +186,7 @@ marketing:
 should be cheap that current price. (2500 to 2000)
 time is money - how much is time is important?
 how much you spent?
+all the next year corrections we will provide.
 --------------extra information?
 need just pdf? or the full book?
 next year will be very very easy!!!

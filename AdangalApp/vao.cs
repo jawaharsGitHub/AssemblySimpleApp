@@ -1471,6 +1471,59 @@ namespace AdangalApp
             }
         }
 
+        private string GetSummaryPageStatic(bool isInitialSummaryPage3 = false, bool isSoftCopy = false)
+        {
+            StringBuilder totalContent = new StringBuilder();
+
+            List<Summary> summaryList = DataAccess.GetSummary();
+
+            try
+            {
+                var tbl = FileContentReader.SummaryTableTemplate;
+                var row = FileContentReader.SummayRowTemplate;
+
+                totalPageIndexTracker += 1;
+                var isRightSide = totalPageIndexTracker.IsEven();
+
+                if (isRightSide)
+                    pageNumber += 1;
+
+                string dataRows = "";
+                StringBuilder sb = new StringBuilder();
+
+                for (int i = 0; i <= summaryList.Count - 2; i++)
+                {
+                    dataRows = row.Replace("[vibaram]", summaryList[i].Vibaram)
+                                          .Replace("[pageNo]", summaryList[i].Pakkam)
+                                          .Replace("[parappu]", summaryList[i].Parappu);
+                    sb.Append(dataRows);
+
+                }
+
+                var totalRows = row.Replace("[vibaram]", $"<span style='font - size:20px;'><b>{summaryList.Last().Vibaram}</b></span>")
+                                          .Replace("[pageNo]", empty)
+                                          .Replace("[parappu]", $"<span style='font - size:20px;'><b>{summaryList.Last().Parappu}</b></span>");
+
+                tbl = tbl.Replace("[datarows]", sb.ToString());
+                tbl = tbl.Replace("[totalrow]", totalRows);
+                tbl = tbl.Replace("[header]", updatedHeader);
+
+                if (isSoftCopy)
+                    tbl = tbl.Replace("[pageNo]", empty);
+                if (isInitialSummaryPage3)
+                    tbl = tbl.Replace("[pageNo]", "1");
+                else
+                    tbl = tbl.Replace("[pageNo]", isRightSide ? pageNumber.ToString() : empty);
+                tbl = tbl.Replace("[landtype]", "மொத்த கிராம விபரம்");
+                totalContent.Append(tbl);
+            }
+            catch (Exception ex)
+            {
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
+            }
+            return totalContent.ToString();
+        }
+
         private string GetSummaryPage(bool isInitialSummaryPage3 = false, bool isSoftCopy = false)
         {
             StringBuilder totalContent = new StringBuilder();
@@ -1767,16 +1820,16 @@ namespace AdangalApp
                 //    //allContent.Append(GetOverallTotal(pageTotal2List));
                 //}
 
-                SaveSummaryPageDetails(pageTotal2List);
+                //SaveSummaryPageDetails(pageTotal2List);
 
-                allContent.Append(GetSummaryPage());
+                allContent.Append(GetSummaryPageStatic());
                 pdfTotalPageToVerify += 1;
                 int FinalEmptyPages = Convert.ToInt32(ConfigurationManager.AppSettings["FinalEmptyPages"]);
                 allContent.Append(GetEmptyPages(FinalEmptyPages));
                 pdfTotalPageToVerify += (FinalEmptyPages * 2);
 
                 // Final Touch
-                mainHtml = mainHtml.Replace("[summaryPages]", GetSummaryPage(true));
+                mainHtml = mainHtml.Replace("[summaryPages]", GetSummaryPageStatic(true));
                 if (haveGovtBuilding)
                 {
                     pdfTotalPageToVerify += 1;
@@ -3134,7 +3187,8 @@ namespace AdangalApp
         private void btnGoToPage_Click(object sender, EventArgs e)
         {
             if (fullAdangalFromjson == null) return;
-            dataGridView1.DataSource = GetCurrentRecords(txtGoto.Text.ToInt32() - 6);
+            CurrentPageIndex = txtGoto.Text.ToInt32();
+            dataGridView1.DataSource = GetCurrentRecords(txtGoto.Text.ToInt32()); // - 6);
         }
 
         private void txtRecCount_TextChanged(object sender, EventArgs e)
@@ -3310,12 +3364,12 @@ namespace AdangalApp
                 if (isTestingMode == false)
                 {
                     allContent.Append(GetPageTotal(pageTotal2List, pageTotal3List, true));
-                    SaveSummaryPageDetails(pageTotal3List);
+                    //SaveSummaryPageDetails(pageTotal3List);
                     //allContent.Append(GetOverallTotal(pageTotal3List));
                 }
                 else
                 {
-                    SaveSummaryPageDetails(pageTotal2List);
+                    //SaveSummaryPageDetails(pageTotal2List);
                     //allContent.Append(GetOverallTotal(pageTotal2List));
                 }
 

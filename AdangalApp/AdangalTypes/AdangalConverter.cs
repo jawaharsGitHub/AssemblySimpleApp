@@ -82,6 +82,7 @@ namespace AdangalApp.AdangalTypes
             //var startTime = DateTime.Now;
             //var subFirst = $"Started for {vao.loadedFile.VillageName}";
             //AppCommunication.SendAdangalUpdate(subFirst, subFirst);
+            int processedCount = 0;
 
             for (int i = 0; i <= list.Count - 1; i++)
             {
@@ -230,11 +231,8 @@ namespace AdangalApp.AdangalTypes
 
                     DataAccess.SaveCopiedText($"{currentSurvey}-{currentSubDiv}{Environment.NewLine}{copiedText}");
 
-
-
-                    
-
                     vao.LogMessage($"DONE: {currentSurvey}-{currentSubDiv} [{i}/{list.Count}]");
+                    processedCount += 1;
                     driver.Close();
                 }
                 catch (Exception ex)
@@ -244,22 +242,17 @@ namespace AdangalApp.AdangalTypes
                     driver.Close();
 
                 }
-
             }
 
-
-            var processed = DataAccess.GetActiveAdangalNew();
+            //var processed = DataAccess.GetActiveAdangalNew();
             bw.DoWork += (s, e) =>
             {
-                AppCommunication.SendAdangalUpdate($"{vao.loadedFile.VillageName} Completed-{processed} of {list.Count}", "");
+                AppCommunication.SendAdangalUpdate($"{vao.loadedFile.VillageName} Completed-{processedCount} of {list.Count}", "");
             };
             bw.RunWorkerAsync();
 
-            MessageBox.Show($"Completed: {processed.Count} out of {list.Count}", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Completed: {processedCount} out of {list.Count}", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //driver.Close();
-
-
-
         }
 
         private static bool IsHave(string copiedText, string searchedText)
