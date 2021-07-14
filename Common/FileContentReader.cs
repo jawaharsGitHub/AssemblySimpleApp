@@ -26,8 +26,8 @@ namespace Common
 
         public static string LeftPageTotalTemplate { get; } = GetHtmlFileContent("LeftPageTotalTemplate.htm");
         public static string RightPageTotalTemplate { get; } = GetHtmlFileContent("RightPageTotalTemplate.htm");
-        
 
+        public static string RightPlainPageTableTemplate { get; } = GetHtmlFileContent("RightPlainPageTableTemplate.htm");
 
         public static string LeftPageCertTableTemplate { get; } = GetHtmlFileContent("LeftPageCertTableTemplate.htm");
         public static string RightPageCertTableTemplate { get; } = GetHtmlFileContent("RightPageCertTableTemplate.htm");

@@ -78,7 +78,7 @@ namespace AdangalApp
         bool needTheervaiTest = Convert.ToBoolean(ConfigurationManager.AppSettings["needTheervaiTest"]);
         bool canAddMissedSurvey = Convert.ToBoolean(ConfigurationManager.AppSettings["canAddMissedSurvey"]);
         bool pcEnabled = Convert.ToBoolean(ConfigurationManager.AppSettings["pc"]);
-        int pasali = Convert.ToInt32(ConfigurationManager.AppSettings["PasaliEn"]); 
+        int pasali = Convert.ToInt32(ConfigurationManager.AppSettings["PasaliEn"]);
         bool haveGovtBuilding = Convert.ToBoolean(ConfigurationManager.AppSettings["haveGovtBuilding"]);
 
         int prepasali;
@@ -287,9 +287,10 @@ namespace AdangalApp
                 int NotupdatedCount = 0;
                 var latestData = DataAccess.GetActiveAdangal();
 
-                PurambokkuAdangalList.ForEach(fe => {
-                        
-                    if(latestData.Where(w => w.NilaAlavaiEn == fe.NilaAlavaiEn && w.UtpirivuEn == fe.UtpirivuEn).Count() == 1)
+                PurambokkuAdangalList.ForEach(fe =>
+                {
+
+                    if (latestData.Where(w => w.NilaAlavaiEn == fe.NilaAlavaiEn && w.UtpirivuEn == fe.UtpirivuEn).Count() == 1)
                     {
                         updatedCount += 1;
                         DataAccess.UpdatePorambokku(fe);
@@ -298,7 +299,7 @@ namespace AdangalApp
                     {
                         NotupdatedCount += 1;
                     }
-                
+
                 });
 
                 MessageBox.Show($"{updatedCount} - updated - {NotupdatedCount} NOT UPDATED!");
@@ -1007,25 +1008,36 @@ namespace AdangalApp
 
                 var d = data.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
-                var decimalList = new List<decimal>();
-                var intList = new List<int>();
+                textBox2.Text = AdangalFn.GetSumThreeDotNo(d);
 
-                d.ForEach(fe =>
-                {
-                    decimalList.Add(Convert.ToDecimal(fe.Substring(fe.IndexOf(".") + 1).Trim()));
-                    intList.Add(Convert.ToInt32(fe.Split('.')[0]));
-                });
 
-                var addedData = decimalList.Sum();
-                var intAddedData = intList.Sum();
+                //var decimalList = new List<decimal>();
+                //var intList = new List<int>();
 
-                var finalData = addedData + (intAddedData * 100);
+                //d.ForEach(fe =>
+                //{
+                //    decimalList.Add(Convert.ToDecimal(fe.Substring(fe.IndexOf(".") + 1).Trim()));
+                //    intList.Add(Convert.ToInt32(fe.Split('.')[0]));
+                //});
 
-                var firstPart = Convert.ToDecimal(Convert.ToInt32(finalData.ToString().Split('.')[0])) / Convert.ToDecimal(100);
+                //var addedData = decimalList.Sum();
+                //var intAddedData = intList.Sum();
 
-                var result = $"{firstPart}.{finalData.ToString().Split('.')[1]}";
+                //var finalData = addedData + (intAddedData * 100);
 
-                textBox2.Text = result;
+                ////var firstPart = Convert.ToDecimal(Convert.ToInt32(finalData.ToString().Split('.')[0])) / Convert.ToDecimal(100);
+
+                //var firstPart = Convert.ToInt32(finalData.ToString().Split('.')[0]) / 100;
+                //var secondData = Convert.ToInt32(finalData.ToString().Split('.')[0]) % 100;
+                //var secondPart = secondData.ToString().PadLeft(2, '0');
+                //var thirdPart = finalData.ToString().Split('.')[1].PadLeft(2, '0');
+
+                ////var result = $"{firstPart}.{finalData.ToString().Split('.')[1]}";
+                //var result = $"{firstPart}.{secondPart}.{thirdPart}";
+
+                //textBox2.Text = result;
+
+                //var dddd = AdangalFn.GetSumThreeDotNo(d);
             }
             catch (Exception ex)
             {
@@ -1223,6 +1235,25 @@ namespace AdangalApp
             return rightPage;
         }
 
+        private string GetRightPlainPage()
+        {
+            string rightPage = null;
+
+            try
+            {
+                rightPage = FileContentReader.RightPlainPageTableTemplate;
+                pageNumber += 1;
+                rightPage = rightPage.Replace("[pageNo]", pageNumber.ToString());
+
+            }
+            catch (Exception ex)
+            {
+                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
+            }
+
+            return rightPage;
+        }
+
         /// <summary>
         /// Left cert and summary page.
         /// </summary>
@@ -1291,7 +1322,7 @@ namespace AdangalApp
             //initialPages.Append(GetPage2());
             //initialPages.Append(GetPage3());
             //initialPages.Append(GetBuildingPg());            
-            initialPages.Append(GetNotesPages(4));
+            initialPages.Append(GetNotesPages(3));
             pdfTotalPageToVerify += 4;
             initialPages.Append(GetSumPage());
             pdfTotalPageToVerify += 1;
@@ -1358,7 +1389,7 @@ namespace AdangalApp
             try
             {
                 var landTypeGroup = (from wl in source
-                                     where wl.LandType != LandType.Zero
+                                     //where wl.LandType != LandType.Zero
                                      group wl by wl.LandType into newGrp
                                      select newGrp).ToList();
 
@@ -1485,7 +1516,7 @@ namespace AdangalApp
                 totalPageIndexTracker += 1;
                 var isRightSide = totalPageIndexTracker.IsEven();
 
-                if (isRightSide)
+                if (isRightSide && isInitialSummaryPage3 == false)
                     pageNumber += 1;
 
                 string dataRows = "";
@@ -1674,8 +1705,8 @@ namespace AdangalApp
         {
             LogMessage($"STEP-5 - Generate Started");
 
-            if (loadedFile.VattamNameTamil.Trim() == empty || 
-                loadedFile.FirkaName.Trim() == empty || 
+            if (loadedFile.VattamNameTamil.Trim() == empty ||
+                loadedFile.FirkaName.Trim() == empty ||
                 loadedFile.VillageNameTamil.Trim() == empty)
             {
                 if (txtVattam.Text.Trim() == empty || txtFirka.Text.Trim() == empty || txtVaruvai.Text.Trim() == empty)
@@ -1702,6 +1733,17 @@ namespace AdangalApp
 
             try
             {
+                var fontSizeChangeItem = ConfigurationManager.AppSettings["ChangeFonts"];
+                var fontSize = ConfigurationManager.AppSettings["fontSize"];
+                var fontChanging = new List<KeyValue>();
+
+                if(string.IsNullOrEmpty(fontSizeChangeItem) == false)
+                {
+                    fontSizeChangeItem.Split('|').ToList().ForEach(fe => {
+                        fontChanging.Add(new KeyValue() { Value = fe.Split('-')[0].ToInt32(), Caption  = fe.Split('-')[1] });
+                    });
+                }
+
                 LogMessage($"STARTED HTML GENERATION @ {DateTime.Now.ToLongTimeString()}");
                 pageNumber = 0;
                 pdfTotalPageToVerify = 0;
@@ -1718,7 +1760,7 @@ namespace AdangalApp
                 fullAdangalFromjson = DataAccess.GetActiveAdangal();
 
                 var landTypeGroup = (from wl in fullAdangalFromjson
-                                     where 
+                                     where
                                      //wl.LandType != LandType.Zero
                                      wl.LandType != LandType.Dash
                                      group wl by wl.LandType into newGrp
@@ -1761,6 +1803,11 @@ namespace AdangalApp
                                                    .Replace("[theervai]", ff.Theervai)
                                                    .Replace("[pattaen-name]", ff.Anupathaarar);
 
+                            if (fontChanging.Where(w => w.Value == ff.NilaAlavaiEn && w.Caption == ff.UtpirivuEn).Count() > 0)
+                                dataRows = dataRows.Replace("[fontsize]", $"style='font-size:{fontSize}px'");
+                            else
+                                dataRows = dataRows.Replace("[fontsize]", empty);
+
                             sb.Append(dataRows);
                         });
 
@@ -1768,7 +1815,7 @@ namespace AdangalApp
                         leftPage = leftPage.Replace("[datarows]", sb.ToString());
 
                         //LEFT PAGE TOTAL
-                        var totalparappu =  AdangalFn.GetSumThreeDotNo(temData.Select(s => s.Parappu).ToList()); // "2.1.02";
+                        var totalparappu = AdangalFn.GetSumThreeDotNo(temData.Select(s => s.Parappu).ToList()); // "2.1.02";
                         //var totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai));
 
                         decimal totalTheervai = 0;
@@ -1824,12 +1871,19 @@ namespace AdangalApp
 
                 allContent.Append(GetSummaryPageStatic());
                 pdfTotalPageToVerify += 1;
+                bool isEvenPage = pdfTotalPageToVerify.IsOdd();
+
+                if (isEvenPage)
+                {
+                    allContent.Append(GetRightPlainPage());
+                    pdfTotalPageToVerify += 1;
+                }
                 int FinalEmptyPages = Convert.ToInt32(ConfigurationManager.AppSettings["FinalEmptyPages"]);
                 allContent.Append(GetEmptyPages(FinalEmptyPages));
                 pdfTotalPageToVerify += (FinalEmptyPages * 2);
 
                 // Final Touch
-                mainHtml = mainHtml.Replace("[summaryPages]", GetSummaryPageStatic(true));
+                mainHtml = mainHtml.Replace("[summaryPages]", GetSummaryPageStatic(isInitialSummaryPage3: true));
                 if (haveGovtBuilding)
                 {
                     pdfTotalPageToVerify += 1;
@@ -1839,7 +1893,7 @@ namespace AdangalApp
                 {
                     mainHtml = mainHtml.Replace("[building]", empty);
                 }
-                
+
 
                 mainHtml = mainHtml.Replace("[allPageData]", allContent.ToString());
                 mainHtml = mainHtml.Replace("[certifed]", GetCertifiedContent());
@@ -1849,9 +1903,8 @@ namespace AdangalApp
                 File.AppendAllText(filePath, mainHtml);
 
                 LogMessage($"COMPLETED HTML GENERATION @ {filePath}");
-                MessageBox.Show($"pdf should have pages - {pdfTotalPageToVerify}");
                 Process.Start(filePath);
-
+                MessageBox.Show($"pdf should have pages - {pdfTotalPageToVerify}");
                 LogMessage($"STEP-5 - Generate Completed");
             }
             catch (Exception ex)
@@ -2600,7 +2653,7 @@ namespace AdangalApp
 
         private void SetTestMode()
         {
-            ddlPattaTypes.Visible = 
+            ddlPattaTypes.Visible =
                 lblPattaCheck.Visible = ddlListType.Visible = // = btnGenerate.Enabled = cmbFulfilled.Visible =
                 btnSoftGen.Enabled = isTestingMode;
 
@@ -2617,8 +2670,8 @@ namespace AdangalApp
             waitForm.Show(this);
             if (selValue == 1) dataGridView1.DataSource = GetFullfilledAdangal();
             else if (selValue == 2) dataGridView1.DataSource = GetExtendedAdangal();
-            else if (selValue == 3) dataGridView1.DataSource = GetVagaiAdangal(); 
-                else if (selValue == 4) dataGridView1.DataSource = GetVagaiErrorAdangal();
+            else if (selValue == 3) dataGridView1.DataSource = GetVagaiAdangal();
+            else if (selValue == 4) dataGridView1.DataSource = GetVagaiErrorAdangal();
             else if (selValue == 5) dataGridView1.DataSource = GetErrorParappu();
             else if (selValue == 6) dataGridView1.DataSource = EmptyParappu();
 
@@ -2767,7 +2820,7 @@ namespace AdangalApp
             if (p == false) return false;
             var pp = parappu.Split('.');
             if (pp.Count() != 3) return false;
-            if(pp[0].isNumber() && pp[1].isNumber() && pp[2].isNumber() && pp[1].Length == 2 && pp[2].Length == 2)
+            if (pp[0].isNumber() && pp[1].isNumber() && pp[2].isNumber() && pp[1].Length == 2 && pp[2].Length == 2)
             {
                 return true;
             }
@@ -3482,8 +3535,9 @@ namespace AdangalApp
             {
                 var adangalToKeyList = new List<KeyValue>();
 
-                list.ForEach(fe => {
-                    if(adangalLatest.Where(w => w.NilaAlavaiEn == fe.Value && w.UtpirivuEn == fe.Caption).Count() == 0)
+                list.ForEach(fe =>
+                {
+                    if (adangalLatest.Where(w => w.NilaAlavaiEn == fe.Value && w.UtpirivuEn == fe.Caption).Count() == 0)
                         adangalToKeyList.Add(fe);
                 });
 
@@ -3493,10 +3547,10 @@ namespace AdangalApp
 
                 //var toBeProcessOnly = list.inte(adangalToKeyList).ToList();
 
-                if (DialogResult.Yes == 
+                if (DialogResult.Yes ==
                     MessageBox.Show($"still {(list.Count - adangalLatest.Count)} pending! [{100 - list.Count.PercentageBtwIntNo(adangalLatest.Count)}%]",
                     "cotinue?", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
-                AdangalConverter.ProcessAdangal(adangalToKeyList);
+                    AdangalConverter.ProcessAdangal(adangalToKeyList);
             }
 
         }
