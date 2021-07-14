@@ -19,6 +19,13 @@ namespace AdangalApp.AdangalTypes
         public string VillageName { get; set; }
         public string VillageNameTamil { get; set; }
 
+        public string VillageFullName { get  
+            {
+                return $"{VillageCode} - {VillageName}";
+            }
+        
+        }
+
         public decimal? InitialPercentage { get; set; }
         public decimal? CorrectedPercentage { get; set; }
 

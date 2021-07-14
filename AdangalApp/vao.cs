@@ -68,7 +68,12 @@ namespace AdangalApp
         string reqFileFolderPath = "";
         string updatedHeader = "";
 
-        string title = ConfigurationManager.AppSettings["title"];
+        string titleP = ConfigurationManager.AppSettings["titleP"];
+        string titleV = ConfigurationManager.AppSettings["titleV"];
+        string titleF = ConfigurationManager.AppSettings["titleF"];
+        string titleT = ConfigurationManager.AppSettings["titleT"];
+        string titleM = ConfigurationManager.AppSettings["titleM"];
+
         string header = ConfigurationManager.AppSettings["header"];
         bool isTestingMode = Convert.ToBoolean(ConfigurationManager.AppSettings["isTesting"]);
         int TestingPage = ConfigurationManager.AppSettings["TestingPage"].ToInt32();
@@ -1192,14 +1197,15 @@ namespace AdangalApp
             //pageNumber += 1;
             var sb = new StringBuilder();
             //sb.Append(leftCertEmpty);
-            certSinglePage = certSinglePage.Replace("[pageNo]", pageNumber.ToString());
-            certSinglePage = certSinglePage.Replace("[header]", updatedHeader);
-            certSinglePage = certSinglePage.Replace("[pasali]", pasali.ToString());
+            //certSinglePage = certSinglePage.Replace("[pageNo]", pageNumber.ToString());
+            //certSinglePage = certSinglePage.Replace("[header]", updatedHeader);
+            certSinglePage = SetFontSize(certSinglePage.Replace("[pasali]", pasali.ToString()), 30);
             certSinglePage = certSinglePage.Replace("[maavattam]", loadedFile.MaavattamNameTamil);
             certSinglePage = certSinglePage.Replace("[vattam]", loadedFile.VattamNameTamil);
             certSinglePage = certSinglePage.Replace("[village]", loadedFile.VillageNameTamil);
 
-            sb.Append(certSinglePage.Replace("[pageNo]", pageNumber.ToString()).Replace("[header]", updatedHeader));
+            //sb.Append(certSinglePage.Replace("[pageNo]", pageNumber.ToString()).Replace("[header]", updatedHeader));
+            sb.Append(certSinglePage);
             return sb.ToString();
         }
 
@@ -1389,7 +1395,7 @@ namespace AdangalApp
             try
             {
                 var landTypeGroup = (from wl in source
-                                     //where wl.LandType != LandType.Zero
+                                         //where wl.LandType != LandType.Zero
                                      group wl by wl.LandType into newGrp
                                      select newGrp).ToList();
 
@@ -1737,10 +1743,11 @@ namespace AdangalApp
                 var fontSize = ConfigurationManager.AppSettings["fontSize"];
                 var fontChanging = new List<KeyValue>();
 
-                if(string.IsNullOrEmpty(fontSizeChangeItem) == false)
+                if (string.IsNullOrEmpty(fontSizeChangeItem) == false)
                 {
-                    fontSizeChangeItem.Split('|').ToList().ForEach(fe => {
-                        fontChanging.Add(new KeyValue() { Value = fe.Split('-')[0].ToInt32(), Caption  = fe.Split('-')[1] });
+                    fontSizeChangeItem.Split('|').ToList().ForEach(fe =>
+                    {
+                        fontChanging.Add(new KeyValue() { Value = fe.Split('-')[0].ToInt32(), Caption = fe.Split('-')[1] });
                     });
                 }
 
@@ -1766,9 +1773,14 @@ namespace AdangalApp
                                      group wl by wl.LandType into newGrp
                                      select newGrp).ToList();
 
-                var rowTemplate22 = FileContentReader.LeftPageRowTemplate;
-                var totalTemplate22 = FileContentReader.LeftPageTotalTemplate;
-                var tableTemplate22 = FileContentReader.LeftPageTableTemplate;
+                // Left
+                var lpTotalTemplate = FileContentReader.LeftPageTotalTemplate;
+                var lpRowTemplate = FileContentReader.LeftPageRowTemplate;
+                var lpTableTemplate = FileContentReader.LeftPageTableTemplate;
+                // Right
+                var rpTableTemplate = FileContentReader.RightPageTableTemplate;
+                var rpRowTemplate = FileContentReader.RightPageRowTemplate;
+                var rpTotalTemplate = FileContentReader.RightPageTotalTemplate;
 
                 landTypeGroup.ForEach(fe =>
                 {
@@ -1786,33 +1798,50 @@ namespace AdangalApp
 
                     for (int i = 0; i <= pageCount - 1; i++)
                     {
-                        var leftPage = tableTemplate22;
-                        var rowTemplate = rowTemplate22;
-                        var totalTemplate = totalTemplate22;
+                        var lpTable = lpTableTemplate;                        
+                        var lpRow = lpRowTemplate;
+                        var lpTotal = lpTotalTemplate;
 
-                        string dataRows = "";
-                        StringBuilder sb = new StringBuilder();
+                        var rpTable = rpTableTemplate ;
+                        var rpRow = rpRowTemplate;
+                        var rpTotal = rpTotalTemplate; 
+
+                        string lpData = "";
+                        string rpData = "";
+                        StringBuilder lpSb = new StringBuilder();
+                        StringBuilder rpSb = new StringBuilder();
 
                         var temData = dataToProcess.Skip(i * recordPerPage).Take(recordPerPage).ToList();
 
                         temData.ForEach(ff =>
                         {
-                            dataRows = rowTemplate.Replace("[pulaen]", ff.NilaAlavaiEn.ToString())
+                            lpData = lpRow.Replace("[pulaen]", ff.NilaAlavaiEn.ToString())
                                                   .Replace("[utpirivu]", ff.UtpirivuEn)
                                                   .Replace("[parappu]", ff.Parappu)
                                                    .Replace("[theervai]", ff.Theervai)
                                                    .Replace("[pattaen-name]", ff.Anupathaarar);
 
-                            if (fontChanging.Where(w => w.Value == ff.NilaAlavaiEn && w.Caption == ff.UtpirivuEn).Count() > 0)
-                                dataRows = dataRows.Replace("[fontsize]", $"style='font-size:{fontSize}px'");
-                            else
-                                dataRows = dataRows.Replace("[fontsize]", empty);
+                            rpData =  rpRow.Replace("[pattaen-name]", ff.Anupathaarar);
 
-                            sb.Append(dataRows);
+                            if (fontChanging.Where(w => w.Value == ff.NilaAlavaiEn && w.Caption == ff.UtpirivuEn).Count() > 0)
+                            {
+                                lpData = lpData.Replace("[fontsize]", $"style='font-size:{fontSize}px'");
+                                rpData = rpData.Replace("[fontsize]", $"style='font-size:{fontSize}px;display: none;'");
+                            }
+                            else
+                            {
+                                lpData = lpData.Replace("[fontsize]", empty);
+                                rpData = rpData.Replace("[fontsize]", $"style='display: none;'");
+                            }
+
+                            lpSb.Append(lpData);
+                            rpSb.Append(rpData);
+
                         });
 
                         // LEFT PAGE ROWS
-                        leftPage = leftPage.Replace("[datarows]", sb.ToString());
+                        lpTable = lpTable.Replace("[datarows]", lpSb.ToString());
+                        rpTable = rpTable.Replace("[datarows]", rpSb.ToString());
 
                         //LEFT PAGE TOTAL
                         var totalparappu = AdangalFn.GetSumThreeDotNo(temData.Select(s => s.Parappu).ToList()); // "2.1.02";
@@ -1822,15 +1851,22 @@ namespace AdangalApp
                         if (fe.Key != LandType.Porambokku)
                             totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai));
 
-                        var total = totalTemplate.Replace("[moththaparappu]", totalparappu).Replace("[moththatheervai]", totalTheervai == 0 ? "" : totalTheervai.ToString());
+                        var total = lpTotal.Replace("[moththaparappu]", totalparappu).Replace("[moththatheervai]", totalTheervai == 0 ? "" : totalTheervai.ToString());
 
-                        leftPage = leftPage.Replace("[totalrow]", total);
-                        leftPage = leftPage.Replace("[landtype]", landType);
-                        leftPage = leftPage.Replace("[header]", updatedHeader);
+                        lpTable = lpTable.Replace("[totalrow]", total);
+                        lpTable = lpTable.Replace("[landtype]", landType);
+                        lpTable = lpTable.Replace("[header]", updatedHeader);
 
-                        allContent.Append(leftPage);
-                        allContent.Append(GetRightEmptyPage()); // right page
-                        pdfTotalPageToVerify += 2;
+                        rpTable = rpTable.Replace("[totalrow]", rpTotal);
+                        //rightPage = rightPage.Replace("[landtype]", landType);
+                        //rightPage = rightPage.Replace("[header]", updatedHeader);
+
+                        allContent.Append(lpTable);
+                        pdfTotalPageToVerify += 1;
+                        pageNumber += 1;
+                        rpTable = rpTable.Replace("[pageNo]", pageNumber.ToString());
+                        allContent.Append(rpTable); // right page
+                        pdfTotalPageToVerify += 1;
 
                         if (i == 0)
                         {
@@ -2316,6 +2352,11 @@ namespace AdangalApp
 
         }
 
+        private string SetFontSize(string content, int fontSize)
+        {
+            return $"<span style='font-size:{fontSize}px'>{content}</span>";
+        }
+
         private void PreLoadFile()
         {
             SetHeader();
@@ -2328,15 +2369,16 @@ namespace AdangalApp
             notesPage = notesPage.Replace("[maavattam]", loadedFile.MaavattamNameTamil);
             notesPage = notesPage.Replace("[vattam]", loadedFile.VattamNameTamil);
             notesPage = notesPage.Replace("[village]", loadedFile.VillageNameTamil);
+            StringBuilder fullTtitle = new StringBuilder(); ;
 
-            title = title.Replace("[pasali]", pasali.ToString());
-            title = title.Replace("[br]", "</br>");
-            title = title.Replace("[varuvvaikiraamam]", loadedFile.VillageNameTamil);
-            title = title.Replace("[firka]", loadedFile.FirkaName);
-            title = title.Replace("[vattam]", loadedFile.VattamNameTamil);
-            title = title.Replace("[maavattam]", loadedFile.MaavattamNameTamil);
+            fullTtitle.AppendLine(SetFontSize(titleP.Replace("[pasali]", pasali.ToString()), 42));
+            fullTtitle.AppendLine(SetFontSize(titleV.Replace("[varuvvaikiraamam]", loadedFile.VillageNameTamil), 36));
+            fullTtitle.AppendLine(SetFontSize(titleF.Replace("[firka]", loadedFile.FirkaName), 32));
+            fullTtitle.AppendLine(SetFontSize(titleT.Replace("[vattam]", loadedFile.VattamNameTamil), 28));
+            fullTtitle.AppendLine(SetFontSize(titleM.Replace("[maavattam]", loadedFile.MaavattamNameTamil), 22));
+            fullTtitle = fullTtitle.Replace("[br]", "</br>");
 
-            firstPage = firstPage.Replace("[title]", title);
+            firstPage = firstPage.Replace("[title]", fullTtitle.ToString());
             plainPage = FileContentReader.EmptyPageTemplate;
             certSinglePage = FileContentReader.CertPageTemplate;
             leftEmpty = GetLeftEmptyPage();
