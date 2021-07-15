@@ -398,6 +398,68 @@ namespace AdangalApp.AdangalTypes
 
         }
 
+        public static void GetForm20s()
+        {
+
+            try
+            {
+                string fp = @"F:\AssemblySimpleApp\AssemblyApp\BLO\blo.txt";
+                IWebDriver driver = new ChromeDriver();
+                driver.Navigate().GoToUrl("https://www.elections.tn.gov.in/Form20_TNLA2021.aspx");
+
+                IList<IWebElement> links = driver.FindElements(By.TagName("a"));
+
+                var d = links.Where(element => element.Text.Trim().Split('.').Count() == 2).ToList(); //.Click();
+
+                // your logic with traditional foreach loop
+                foreach (var link in d)
+                {
+                    //if (link.Text == "YouTube")
+                    //{
+                    driver = driver.SwitchTo().Window(driver.WindowHandles[0]);
+                    link.Click();
+                    driver = driver.SwitchTo().Window(driver.WindowHandles[1]);
+
+                    //driver.WindowHandles[1].
+
+                    //IWebElement downloadIcon = driver.FindElement(By.TagName("embed"));
+                    //String fileAddress = downloadIcon.GetAttribute("src");
+                    //driver.g(fileAddress);
+
+                    Actions action = new Actions(driver);
+                    //Actions action = new Actions(driver);
+                    //action.KeyDown(SnKeys.Tab).KeyUp(SnKeys.Tab).Build().Perform();
+                    action.KeyDown(SnKeys.Control).SendKeys("a").KeyUp(SnKeys.Control).Build().Perform();
+                    action.KeyDown(SnKeys.Control).SendKeys("c").KeyUp(SnKeys.Control).Build().Perform();
+                    
+                    var copiedText = Clipboard.GetText();
+                    driver.Close();
+                    
+                }
+
+                driver.Quit();
+                
+            }
+      
+            catch (Exception ex)
+            {
+                vao.LogMessage("ERROR:" + ex.ToString());
+                General.Play(FileContentReader.InternetNotWorking);
+
+                while (General.CheckForInternetConnection() == false)
+                {
+                    Thread.Sleep(4000);
+                    General.Play(FileContentReader.InternetNotWorking);
+                }
+
+                //General.Play(FileContentReader.NoInternet);
+                //driver.Close();
+
+
+            }
+
+        }
+
 
 
         private static bool IsHave(string copiedText, string searchedText)
