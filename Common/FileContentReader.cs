@@ -11,7 +11,9 @@ namespace Common
 
         public static string MemberContactHtml { get; } = GetHtmlFileContent("MemberContact.htm");
 
-        public static string NoInternet { get; } = GetVoicePath("NoInternet.wav");
+        public static string InternetNotWorking { get; } = GetVoicePath("InternetNotWorking.wav");
+        public static string WebsiteNotWorking { get; } = GetVoicePath("WebsiteNotWorking.wav");
+        public static string SomethingWrong { get; } = GetVoicePath("SomethingWrong.wav");
 
 
         public static string FirstPageTemplate { get; } = GetHtmlFileContent("FirstPageTemplate.htm");

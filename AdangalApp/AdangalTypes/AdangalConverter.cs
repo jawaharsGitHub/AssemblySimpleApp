@@ -180,7 +180,7 @@ namespace AdangalApp.AdangalTypes
                             subDivElement = new SelectElement(subDiv);
                             iterationCount += 1;
                             Thread.Sleep(4000);
-                            General.Play(FileContentReader.NoInternet);
+                            General.Play(FileContentReader.WebsiteNotWorking);
                         }
                         subDivElement.SelectByValue(currentSubDiv);
 
@@ -259,12 +259,12 @@ namespace AdangalApp.AdangalTypes
                     catch (Exception ex)
                     {
                         vao.LogMessage("ERROR:" + ex.ToString());
-                        General.Play(FileContentReader.NoInternet);
+                        General.Play(FileContentReader.InternetNotWorking);
 
                         while (General.CheckForInternetConnection() == false)
                         {
                             Thread.Sleep(4000);
-                            General.Play(FileContentReader.NoInternet);
+                            General.Play(FileContentReader.InternetNotWorking);
                         }
 
                         //General.Play(FileContentReader.NoInternet);
@@ -293,7 +293,7 @@ namespace AdangalApp.AdangalTypes
                 while (General.CheckForInternetConnection() == false)
                 {
                     Thread.Sleep(4000);
-                    General.Play(FileContentReader.NoInternet);
+                    General.Play(FileContentReader.SomethingWrong);
                 }
             }
         }
