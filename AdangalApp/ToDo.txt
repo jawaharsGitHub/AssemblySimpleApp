@@ -100,16 +100,24 @@ softcopy version & hardcopy version
 porambokku theervai - empty or 0.00? --> EMPTY IS OK?
 install in laptop-2
 VALIDATE THE PARAPPU LAST 2 DIGIT
+set max-width for name column
+not able to edit grid columns.
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 -----V-1-----
 
 
 enmanagkondaan:
-------------------
-set max-width for name column
-not able to edit grid columns.
+----------------
 breaking page in pdf?
+validate pdf.
+tharsiu --> punjai anaatheenam, nansei anaatheenam
+group by naththam [naththam porambokku]
+group by tharisu.
+alarm time if it closes or error.
+
+
+
 31-3, 31-9 37-2D8A, 2D9,37-20,37-2000 - MISSING?
 porambokku data update. photo to prambokku!!(time saving)
 soft copy to bhuvanesh

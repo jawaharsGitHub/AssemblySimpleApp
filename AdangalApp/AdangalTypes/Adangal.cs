@@ -9,6 +9,7 @@ namespace AdangalApp.AdangalTypes
 {
     public class Adangal
     {
+        
         public int NilaAlavaiEn { get; set; }
         public string UtpirivuEn { get; set; }
         public string Parappu { get; set; }

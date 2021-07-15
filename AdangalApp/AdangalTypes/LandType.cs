@@ -12,10 +12,16 @@ namespace AdangalApp.AdangalTypes
         Maanaavari,
         [Description("புறம்போக்கு")]
         Porambokku,
-        PorambokkuError,        
+        PorambokkuError,
         Zero,
         CLRBhoodanLands,
         Dash,
-        UnKnown
+        UnKnown,
+        [Description("நன்செய் ஆதீனம்")]
+        NansaiAtheenam,
+        [Description("புன்செய் ஆதீனம்")]
+        PunsaiAtheenam,
+        [Description("நத்தம்")]
+        Naththam,
     }
 }

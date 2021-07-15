@@ -758,6 +758,7 @@ namespace AdangalApp
                 new KeyValue() { Id = 4, Caption = "ErrorVagai" },
                 new KeyValue() { Id = 5, Caption = "ErrorParappu" },
                 new KeyValue() { Id = 6, Caption = "EmptyParappu" },
+                new KeyValue() { Id = 7, Caption = "EmptyOwnerName" },
             };
 
         }
@@ -1071,18 +1072,35 @@ namespace AdangalApp
             if (ddlLandTypes.SelectedIndex == 0) return;
             if (fullAdangalFromjson != null)
             {
+                List<Adangal> ds;
+                
                 waitForm.Show(this);
                 var selItem = (ddlLandTypes.SelectedItem as KeyValue);
                 if (selItem.Id == -1)
-                    dataGridView1.DataSource = fullAdangalFromjson.OrderBy(o => o.NilaAlavaiEn).ToList();
+                     ds = fullAdangalFromjson.OrderBy(o => o.NilaAlavaiEn).ToList();
                 else
-                    dataGridView1.DataSource = fullAdangalFromjson.Where(w => (int)w.LandType == selItem.Id).OrderBy(o => o.NilaAlavaiEn).ToList();
+                    ds = fullAdangalFromjson.Where(w => (int)w.LandType == selItem.Id).OrderBy(o => o.NilaAlavaiEn).ToList();
 
                 if (selItem.Id == 3 || selItem.Id == 4) // porambokku/porambokku error
                 {
                     GridColumnVisibility(true);
                     dataGridView1.Columns["OwnerName"].DisplayIndex = 3;
+
+                    var groupedPromabokku = (from pk in ds
+                                             where string.IsNullOrEmpty(pk.OwnerName) == false 
+                                             //&&  pk.OwnerName.Trim() == "தரிசு"
+                                             //group pk by pk.OwnerName into ng
+                                             select pk.OwnerName.Trim()).Distinct().ToList();
+
+                    groupedPromabokku.Insert(0, "--select--");
+
+                    cmbPoramGroup.DataSource = groupedPromabokku; //.Select(s => s)
+
+                    //BindDropdown(cmbPoramGroup, groupedPromabokku, "OwnerName", $"OwnerName");
+
                 }
+
+                dataGridView1.DataSource = ds;
                 waitForm.Close();
             }
         }
@@ -1332,7 +1350,7 @@ namespace AdangalApp
             //initialPages.Append(GetPage3());
             //initialPages.Append(GetBuildingPg());            
             initialPages.Append(GetNotesPages(3));
-            pdfTotalPageToVerify += 4;
+            pdfTotalPageToVerify += 3;
             initialPages.Append(GetSumPage());
             pdfTotalPageToVerify += 1;
             //initialPages.Append(GetPage4());
@@ -1790,6 +1808,8 @@ namespace AdangalApp
                 var rpRowTemplate = FileContentReader.RightPageRowTemplate;
                 var rpTotalTemplate = FileContentReader.RightPageTotalTemplate;
 
+                int rowId = 0;
+
                 landTypeGroup.ForEach(fe =>
                 {
                     var dataToProcess = fe.ToList();
@@ -1829,21 +1849,26 @@ namespace AdangalApp
                                                    .Replace("[theervai]", ff.Theervai)
                                                    .Replace("[pattaen-name]", ff.Anupathaarar);
 
-                            rpData =  rpRow.Replace("[pattaen-name]", ff.Anupathaarar);
+                            rpData = rpRow.Replace("[pattaen-name]", ff.Anupathaarar);
 
                             if (fontChanging.Where(w => w.Value == ff.NilaAlavaiEn && w.Caption == ff.UtpirivuEn).Count() > 0)
                             {
-                                lpData = lpData.Replace("[fontsize]", $"style='font-size:{fontSize}px'");
-                                rpData = rpData.Replace("[fontsize]", $"style='font-size:{fontSize}px;opacity: 0.0;'");
+                                lpData = lpData.Replace("[fontsize]", $" id='lp-{rowId}' style='font-size:{fontSize}px'");
+                                rpData = rpData.Replace("[fontsize]", $" id='rp-{rowId}' style='font-size:{fontSize}px;opacity:0.0;max-width:100px;'");
                             }
                             else
                             {
-                                lpData = lpData.Replace("[fontsize]", empty);
-                                rpData = rpData.Replace("[fontsize]", $"style='opacity: 0.0;'");
+                                lpData = lpData.Replace("[fontsize]", $" id='lp-{rowId}'");
+                                rpData = rpData.Replace("[fontsize]", $" id='rp-{rowId}' style='opacity:0.0;max-width:100px;'");
                             }
+
+                            lpData = lpData.Replace("[rowId]", $"lpRow{rowId}");
+                            rpData = rpData.Replace("[rowId]", $"rpRow{rowId}");
 
                             lpSb.Append(lpData);
                             rpSb.Append(rpData);
+
+                            rowId += 1;
 
                         });
 
@@ -1915,7 +1940,7 @@ namespace AdangalApp
 
                 allContent.Append(GetSummaryPageStatic());
                 pdfTotalPageToVerify += 1;
-                bool isEvenPage = pdfTotalPageToVerify.IsOdd();
+                bool isEvenPage = pdfTotalPageToVerify.IsEven();
 
                 if (isEvenPage)
                 {
@@ -2724,6 +2749,7 @@ namespace AdangalApp
             else if (selValue == 4) dataGridView1.DataSource = GetVagaiErrorAdangal();
             else if (selValue == 5) dataGridView1.DataSource = GetErrorParappu();
             else if (selValue == 6) dataGridView1.DataSource = EmptyParappu();
+            else if (selValue == 7) dataGridView1.DataSource = EmptyOwner(); 
 
             waitForm.Close();
         }
@@ -2761,6 +2787,11 @@ namespace AdangalApp
         private List<Adangal> EmptyParappu()
         {
             return fullAdangalFromjson.Where(w => string.IsNullOrEmpty(w.Parappu)).ToList();
+        }
+
+        private List<Adangal> EmptyOwner()
+        {
+            return fullAdangalFromjson.Where(w => string.IsNullOrEmpty(w.OwnerName)).ToList();
         }
 
 
@@ -3628,6 +3659,15 @@ namespace AdangalApp
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             else
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
+        }
+
+        private void cmbPoramGroup_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbPoramGroup.SelectedIndex == 0) return;
+
+            dataGridView1.DataSource = DataAccess.GetActiveAdangal()
+                                    .Where(w => string.IsNullOrEmpty(w.OwnerName) == false 
+                                            && w.OwnerName.Trim() == cmbPoramGroup.SelectedItem.ToString()).ToList();
         }
     }
 

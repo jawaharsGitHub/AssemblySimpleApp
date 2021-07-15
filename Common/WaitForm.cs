@@ -14,7 +14,7 @@ namespace WaitWnd
         public WaitForm()
         {
             InitializeComponent();
-            this.StartPosition = FormStartPosition.CenterParent;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
         public WaitForm(Form parent)
         {
