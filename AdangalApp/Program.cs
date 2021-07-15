@@ -1,4 +1,5 @@
-﻿using Common;
+﻿using AdangalApp.AdangalTypes;
+using Common;
 using System;
 using System.Configuration;
 using System.IO;
@@ -22,7 +23,7 @@ namespace AdangalApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            
+            AdangalConverter.GetBloContacts();
 
             var dataFolder = General.GetDataFolder("data");
             try

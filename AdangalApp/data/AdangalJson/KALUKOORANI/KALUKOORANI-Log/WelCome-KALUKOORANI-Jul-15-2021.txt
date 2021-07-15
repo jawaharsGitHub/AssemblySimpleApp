@@ -1,0 +1,24 @@
+2021-07-15 23:28:00,562 [1] DEBUG - STEP - 1 - Village: 18-KALUKOORANI
+2021-07-15 23:28:17,775 [1] DEBUG - STEP-2 - Started - First time Load
+2021-07-15 23:28:19,282 [1] DEBUG - GETTING LAND COUNT - FROM INTERNET
+2021-07-15 23:32:50,318 [1] DEBUG - GETTING LAND COUNT - COMPLETED
+2021-07-15 23:32:50,483 [1] DEBUG - STEP-2 - VattamNameTamil:  FirkaName:  VillageNameTamil: 
+2021-07-15 23:32:50,483 [1] DEBUG - STEP-2 - Completed - - First time Load
+2021-07-15 23:33:59,648 [1] DEBUG - ERROR:System.InvalidOperationException: The file located at F:\AssemblySimpleApp\AdangalApp\Common\HTMLTemplate\WebsiteNotWorking.wav is not a valid wave file.
+   at System.Media.SoundPlayer.ValidateSoundFile(String fileName)
+   at System.Media.SoundPlayer.LoadAndPlay(Int32 flags)
+   at System.Media.SoundPlayer.Play()
+   at Common.General.Play(String file) in F:\AssemblySimpleApp\Common\General.cs:line 230
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 183
+2021-07-15 23:57:43,954 [1] DEBUG - STEP - 1 - Village: KALUKOORANI
+2021-07-15 23:58:44,858 [1] DEBUG - STARTED: 1-1 [0/4227]
+2021-07-15 23:58:44,858 [1] DEBUG - ------------------------------------
+2021-07-15 23:58:44,868 [1] DEBUG - Wrong Captcha: SHD7YE: 1-1
+2021-07-15 23:59:01,188 [1] DEBUG - STARTED: 1-1 [0/4227]
+2021-07-15 23:59:01,188 [1] DEBUG - ------------------------------------
+2021-07-15 23:59:04,489 [1] DEBUG - Added (2) out of (2) for 1-1
+2021-07-15 23:59:04,505 [1] DEBUG - DONE: 1-1 [0/4227]
+2021-07-15 23:59:19,385 [1] DEBUG - STARTED: 1-2 [1/4227]
+2021-07-15 23:59:19,385 [1] DEBUG - ------------------------------------
+2021-07-15 23:59:19,385 [1] DEBUG - Added (1) out of (1) for 1-2
+2021-07-15 23:59:19,385 [1] DEBUG - DONE: 1-2 [1/4227]

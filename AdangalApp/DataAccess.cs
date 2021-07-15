@@ -152,6 +152,13 @@ namespace AdangalApp
             File.AppendAllText(path, copiedText);
         }
 
+        public static void SaveText(string copiedText, string fileFullPath)
+        {
+            //string path = CopiedTextFile;
+            General.CreateFileIfNotExist(fileFullPath);
+            File.AppendAllText(fileFullPath, $"{copiedText}{Environment.NewLine}" );
+        }
+
         public static List<Adangal> GetMissedAdangal(string missedSurveysPath)
         {
             return ReadFileAsObjects<Adangal>(missedSurveysPath);

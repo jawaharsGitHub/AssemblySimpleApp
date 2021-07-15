@@ -179,8 +179,8 @@ namespace AdangalApp.AdangalTypes
                             subDiv = driver.FindElement(By.Name("subdivNo"));
                             subDivElement = new SelectElement(subDiv);
                             iterationCount += 1;
-                            Thread.Sleep(4000);
-                            General.Play(FileContentReader.WebsiteNotWorking);
+                            //Thread.Sleep(4000);
+                            //General.Play(FileContentReader.InternetNotWorking);
                         }
                         subDivElement.SelectByValue(currentSubDiv);
 
@@ -293,9 +293,109 @@ namespace AdangalApp.AdangalTypes
                 while (General.CheckForInternetConnection() == false)
                 {
                     Thread.Sleep(4000);
-                    General.Play(FileContentReader.SomethingWrong);
+                    General.Play(FileContentReader.InternetNotWorking);
+                }
+
+                while (true)
+                {
+                    Thread.Sleep(4000);
+                    General.Play(FileContentReader.InternetNotWorking);
                 }
             }
+        }
+
+        public static void GetBloContacts()
+        {
+
+            try
+            {
+                string fp = @"F:\AssemblySimpleApp\AssemblyApp\BLO\blo.txt";
+                IWebDriver driver = new ChromeDriver();
+                driver.Navigate().GoToUrl("https://www.elections.tn.gov.in/blo/");
+                driver = driver.SwitchTo().Window(driver.WindowHandles[0]);
+                var district = driver.FindElement(By.Name("ctl00$ContentPlaceHolder1$ddl_District"));
+                var selectElement = new SelectElement(district);
+                selectElement.SelectByValue("27");
+
+                List<KeyValue> list = new List<KeyValue>()
+                {
+                    //new KeyValue() {  Caption = "210", Value = 346, Id = 71  },
+                    new KeyValue() {  Caption = "211", Value = 336, Id = 1  },
+
+                      new KeyValue() {  Caption = "209", Value = 302, Id = 1  },
+                       new KeyValue() {  Caption = "212", Value = 385, Id = 1  }
+
+
+                };
+
+                list.ForEach(fe =>
+                {
+                    DataAccess.SaveText($"{fe.Caption}-{fe.Value}", fp);
+                    DataAccess.SaveText($"-------------------", fp);
+
+                    var assembly = driver.FindElement(By.Name("ctl00$ContentPlaceHolder1$ddl_Assembly"));
+                    var selectElement2 = new SelectElement(assembly);
+                    selectElement2.SelectByValue(fe.Caption);
+
+                    for (int i = fe.Id; i <= fe.Value; i++)
+                    {
+
+
+                        var booth = driver.FindElement(By.Name("ctl00$ContentPlaceHolder1$ddl_Part"));
+                        var selectElement3 = new SelectElement(booth);
+                        selectElement3.SelectByValue(i.ToString());
+
+                        driver.FindElement(By.ClassName("btn")).Click();
+
+                        //driver = driver.SwitchTo().Window(driver.WindowHandles[1]);
+                        Actions action = new Actions(driver);
+                        action.KeyDown(SnKeys.Control).SendKeys("a").KeyUp(SnKeys.Control).Build().Perform();
+                        action.KeyDown(SnKeys.Control).SendKeys("c").KeyUp(SnKeys.Control).Build().Perform();
+
+                        var copiedText = Clipboard.GetText();
+
+                        var neededData = copiedText.Replace("Mobile", "$").Split('$')[1].Replace("Copyright", "$").Split('$')[0].Trim().Split('\t');
+                        var contact = $"{neededData[neededData.Count() - 2]}-{neededData.Last()}";
+                        DataAccess.SaveText(contact, fp);
+                    }
+                    MessageBox.Show($"Completed for  {fe.Value}-{ fe.Caption}");
+
+                });
+
+                driver.Close();
+            }
+            //catch (WebDriverException wdex)
+            //{
+
+            //    //MessageBox.Show(ex.ToString());
+            //    vao.LogMessage("ERROR:" + wdex.ToString());
+            //    while (General.CheckForInternetConnection() == false)
+            //    {
+            //        Thread.Sleep(4000);
+            //        General.Play(FileContentReader.NoInternet);
+            //    }
+
+            //    continue;
+
+
+            //}
+            catch (Exception ex)
+            {
+                vao.LogMessage("ERROR:" + ex.ToString());
+                General.Play(FileContentReader.InternetNotWorking);
+
+                while (General.CheckForInternetConnection() == false)
+                {
+                    Thread.Sleep(4000);
+                    General.Play(FileContentReader.InternetNotWorking);
+                }
+
+                //General.Play(FileContentReader.NoInternet);
+                //driver.Close();
+
+
+            }
+
         }
 
 
