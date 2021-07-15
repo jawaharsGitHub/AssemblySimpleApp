@@ -161,6 +161,7 @@
     <Content Include="HTMLTemplate\GovtBuildingTableTemplate.htm" />
     <Content Include="HTMLTemplate\GovtBuildingRowTemplate.htm" />
     <Content Include="HTMLTemplate\LeftPageTableTemplateSoftCopy.htm" />
+    <Content Include="HTMLTemplate\RightPageRowTemplate.htm" />
     <Content Include="HTMLTemplate\RightPlainPageTableTemplate.htm" />
     <Content Include="HTMLTemplate\SummayRowTemplate.htm" />
     <Content Include="HTMLTemplate\PageTotalRowTemplate.htm" />
@@ -175,7 +176,7 @@
     <Content Include="HTMLTemplate\LeftPageTableTemplate.htm" />
     <Content Include="HTMLTemplate\RightPageTotalTemplate.htm" />
     <Content Include="HTMLTemplate\LeftPageTotalTemplate.htm" />
-    <Content Include="HTMLTemplate\RightPageRowTemplate.htm" />
+    <Content Include="HTMLTemplate\RightPageRowEmptyTemplate.htm" />
     <Content Include="HTMLTemplate\MainHtml.htm" />
     <Content Include="HTMLTemplate\MemberContact.htm" />
     <Content Include="HTMLTemplate\EmailBody.htm" />

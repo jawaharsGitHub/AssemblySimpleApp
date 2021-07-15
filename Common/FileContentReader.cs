@@ -35,6 +35,8 @@ namespace Common
         public static string PageTotalTableTemplate { get; } = GetHtmlFileContent("PageTotalTableTemplate.htm");
         public static string PageTotalRowTemplate { get; } = GetHtmlFileContent("PageTotalRowTemplate.htm");
 
+        public static string RightPageRowEmptyTemplate { get; } = GetHtmlFileContent("RightPageRowEmptyTemplate.htm");
+
         public static string PageOverallTotalTableTemplate { get; } = GetHtmlFileContent("PageOverallTotalTableTemplate.htm");
         public static string PageOverallTotalRowTemplate { get; } = GetHtmlFileContent("PageOverallTotalRowTemplate.htm");
 

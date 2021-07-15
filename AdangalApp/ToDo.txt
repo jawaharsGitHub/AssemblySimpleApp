@@ -107,6 +107,9 @@ VALIDATE THE PARAPPU LAST 2 DIGIT
 
 enmanagkondaan:
 ------------------
+set max-width for name column
+not able to edit grid columns.
+breaking page in pdf?
 31-3, 31-9 37-2D8A, 2D9,37-20,37-2000 - MISSING?
 porambokku data update. photo to prambokku!!(time saving)
 soft copy to bhuvanesh
@@ -146,8 +149,6 @@ NOT IN ADANGAL
 
 -------------SpILT-------
 14 -> 14a + b -> more
-
-
 html to pdf cnversion 
 email status in each 30 minutes.
 initial setup
@@ -180,6 +181,9 @@ Data analysis Report
 	siru guru vivasaayi
 	peru vivasaayi
 	siru guru vivasaayi -> owner(father name) -> land details and count.
+	who is doing registration as of now?
+	person by land / patta!!
+	start and end survey numbers.
 
 marketing:
 ----------

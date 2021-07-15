@@ -1177,6 +1177,8 @@ namespace AdangalApp
                                     .Replace("[vattam]", loadedFile.VattamNameTamil)
                                     .Replace("[varuvvaikiraamam]", $"{loadedFile.VillageCode} - {loadedFile.VillageNameTamil}")
                                     .Replace("[t]", "&emsp;&emsp;");
+
+            updatedHeader =  SetBold(updatedHeader);
         }
 
         /// <summary>
@@ -1199,7 +1201,8 @@ namespace AdangalApp
             //sb.Append(leftCertEmpty);
             //certSinglePage = certSinglePage.Replace("[pageNo]", pageNumber.ToString());
             //certSinglePage = certSinglePage.Replace("[header]", updatedHeader);
-            certSinglePage = SetFontSize(certSinglePage.Replace("[pasali]", pasali.ToString()), 30);
+            //certSinglePage = SetFontSize(certSinglePage.Replace("[pasali]", pasali.ToString()), 30);
+            certSinglePage = certSinglePage.Replace("[pasali]", pasali.ToString());
             certSinglePage = certSinglePage.Replace("[maavattam]", loadedFile.MaavattamNameTamil);
             certSinglePage = certSinglePage.Replace("[vattam]", loadedFile.VattamNameTamil);
             certSinglePage = certSinglePage.Replace("[village]", loadedFile.VillageNameTamil);
@@ -1219,7 +1222,7 @@ namespace AdangalApp
             try
             {
                 rightPage = FileContentReader.RightPageTableTemplate;
-                var rowTemplate = FileContentReader.RightPageRowTemplate;
+                var rowTemplate = FileContentReader.RightPageRowEmptyTemplate;
                 var totalRowTemplate = FileContentReader.RightPageTotalTemplate;
 
                 var sb = new StringBuilder();
@@ -1388,6 +1391,11 @@ namespace AdangalApp
         }
 
         int totalPageIndexTracker = 0;
+
+        private string SetBold(string content)
+        {
+            return $"<b>{content}</b>";
+        }
         private string GetPageTotal(List<PageTotal> source, List<PageTotal> destination, bool isSoftCopy = false)
         {
             StringBuilder totalContent = new StringBuilder();
@@ -1826,12 +1834,12 @@ namespace AdangalApp
                             if (fontChanging.Where(w => w.Value == ff.NilaAlavaiEn && w.Caption == ff.UtpirivuEn).Count() > 0)
                             {
                                 lpData = lpData.Replace("[fontsize]", $"style='font-size:{fontSize}px'");
-                                rpData = rpData.Replace("[fontsize]", $"style='font-size:{fontSize}px;display: none;'");
+                                rpData = rpData.Replace("[fontsize]", $"style='font-size:{fontSize}px;opacity: 0.0;'");
                             }
                             else
                             {
                                 lpData = lpData.Replace("[fontsize]", empty);
-                                rpData = rpData.Replace("[fontsize]", $"style='display: none;'");
+                                rpData = rpData.Replace("[fontsize]", $"style='opacity: 0.0;'");
                             }
 
                             lpSb.Append(lpData);
@@ -2371,10 +2379,10 @@ namespace AdangalApp
             notesPage = notesPage.Replace("[village]", loadedFile.VillageNameTamil);
             StringBuilder fullTtitle = new StringBuilder(); ;
 
-            fullTtitle.AppendLine(SetFontSize(titleP.Replace("[pasali]", pasali.ToString()), 42));
+            fullTtitle.AppendLine(SetFontSize(titleP.Replace("[pasali]", pasali.ToString()), 50));
             fullTtitle.AppendLine(SetFontSize(titleV.Replace("[varuvvaikiraamam]", loadedFile.VillageNameTamil), 36));
-            fullTtitle.AppendLine(SetFontSize(titleF.Replace("[firka]", loadedFile.FirkaName), 32));
-            fullTtitle.AppendLine(SetFontSize(titleT.Replace("[vattam]", loadedFile.VattamNameTamil), 28));
+            fullTtitle.AppendLine(SetFontSize(titleF.Replace("[firka]", loadedFile.FirkaName), 30));
+            fullTtitle.AppendLine(SetFontSize(titleT.Replace("[vattam]", loadedFile.VattamNameTamil), 26));
             fullTtitle.AppendLine(SetFontSize(titleM.Replace("[maavattam]", loadedFile.MaavattamNameTamil), 22));
             fullTtitle = fullTtitle.Replace("[br]", "</br>");
 
