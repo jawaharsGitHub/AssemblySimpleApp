@@ -22,6 +22,8 @@ namespace AdangalApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            
+
             var dataFolder = General.GetDataFolder("data");
             try
             {

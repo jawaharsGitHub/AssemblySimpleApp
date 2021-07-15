@@ -7,6 +7,7 @@ using System.Net.Mail;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Linq;
+using System.Media;
 
 namespace Common
 {
@@ -219,6 +220,14 @@ namespace Common
             else
                 return null;
 
+        }
+
+        public static void Play(string file)
+        {
+            SoundPlayer player = new SoundPlayer();
+            player.Stop();
+            player.SoundLocation = file;
+            player.Play();
         }
     }
 }

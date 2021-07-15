@@ -11,6 +11,8 @@ namespace Common
 
         public static string MemberContactHtml { get; } = GetHtmlFileContent("MemberContact.htm");
 
+        public static string NoInternet { get; } = GetVoicePath("NoInternet.wav");
+
 
         public static string FirstPageTemplate { get; } = GetHtmlFileContent("FirstPageTemplate.htm");
 
@@ -61,6 +63,14 @@ namespace Common
 
             var dataFolder = General.GetDataFolder("Common\\HTMLTemplate\\");
             return File.ReadAllText($"{dataFolder}{fileName}");
+        }
+
+        private static string GetVoicePath(string fileName)
+        {
+            // var dataFolder = General.GetDataFolder("AssemblySimpleApp\\bin\\Debug", "Common\\HTMLTemplate\\");
+
+            return General.GetDataFolder($"Common\\HTMLTemplate\\{fileName}");
+            //return File.ReadAllText($"{dataFolder}{fileName}");
         }
 
     }

@@ -1979,6 +1979,7 @@ namespace AdangalApp
             catch (Exception ex)
             {
                 LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
+
             }
         }
         private void dataGridView1_DataSourceChanged(object sender, EventArgs e)

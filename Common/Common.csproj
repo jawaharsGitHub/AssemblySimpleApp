@@ -154,6 +154,7 @@
     <Content Include="HTMLTemplate\Certified - Copy.txt" />
     <Content Include="HTMLTemplate\Certified.htm" />
     <Content Include="HTMLTemplate\jquery-3.6.0.min.js" />
+    <Content Include="HTMLTemplate\NoInternet.wav" />
     <Content Include="HTMLTemplate\NotesPageTemplate.htm" />
     <Content Include="HTMLTemplate\EmptyPageTemplate.htm" />
     <Content Include="HTMLTemplate\FirstPageTemplate.htm" />
