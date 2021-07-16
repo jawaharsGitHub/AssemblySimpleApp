@@ -66,6 +66,8 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnSoftGen = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cmbPoramGroup = new System.Windows.Forms.ComboBox();
             this.lblPattaCheckError = new System.Windows.Forms.Label();
             this.lblLandStatusError = new System.Windows.Forms.Label();
             this.lblLandTypeError = new System.Windows.Forms.Label();
@@ -97,8 +99,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblPageNo = new System.Windows.Forms.Label();
             this.chkRowSelect = new System.Windows.Forms.CheckBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.cmbPoramGroup = new System.Windows.Forms.ComboBox();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -519,6 +520,25 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "STEP-4";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(20, 103);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(99, 13);
+            this.label9.TabIndex = 40;
+            this.label9.Text = "Porambokku Group";
+            // 
+            // cmbPoramGroup
+            // 
+            this.cmbPoramGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPoramGroup.FormattingEnabled = true;
+            this.cmbPoramGroup.Location = new System.Drawing.Point(20, 119);
+            this.cmbPoramGroup.Name = "cmbPoramGroup";
+            this.cmbPoramGroup.Size = new System.Drawing.Size(186, 21);
+            this.cmbPoramGroup.TabIndex = 39;
+            this.cmbPoramGroup.SelectedIndexChanged += new System.EventHandler(this.cmbPoramGroup_SelectedIndexChanged);
+            // 
             // lblPattaCheckError
             // 
             this.lblPattaCheckError.AutoSize = true;
@@ -839,24 +859,15 @@
             this.chkRowSelect.UseVisualStyleBackColor = true;
             this.chkRowSelect.CheckedChanged += new System.EventHandler(this.chkRowSelect_CheckedChanged);
             // 
-            // label9
+            // button3
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(20, 103);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(99, 13);
-            this.label9.TabIndex = 40;
-            this.label9.Text = "Porambokku Group";
-            // 
-            // cmbPoramGroup
-            // 
-            this.cmbPoramGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPoramGroup.FormattingEnabled = true;
-            this.cmbPoramGroup.Location = new System.Drawing.Point(20, 119);
-            this.cmbPoramGroup.Name = "cmbPoramGroup";
-            this.cmbPoramGroup.Size = new System.Drawing.Size(186, 21);
-            this.cmbPoramGroup.TabIndex = 39;
-            this.cmbPoramGroup.SelectedIndexChanged += new System.EventHandler(this.cmbPoramGroup_SelectedIndexChanged);
+            this.button3.Location = new System.Drawing.Point(368, 399);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(69, 21);
+            this.button3.TabIndex = 34;
+            this.button3.Text = "NEXT";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // vao
             // 
@@ -864,6 +875,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1217, 684);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.chkRowSelect);
             this.Controls.Add(this.lblPageNo);
             this.Controls.Add(this.grpPaging);
@@ -984,6 +996,7 @@
         private System.Windows.Forms.CheckBox chkRowSelect;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cmbPoramGroup;
+        private System.Windows.Forms.Button button3;
         //public System.Windows.Forms.Button bthThread;
     }
 }

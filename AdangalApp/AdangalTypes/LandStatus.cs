@@ -12,6 +12,7 @@ namespace AdangalApp.AdangalTypes
         NameEdited,
         NeedToVerify,
         ParappuEdited,
+        LandTypeEdited
 
     }
 }

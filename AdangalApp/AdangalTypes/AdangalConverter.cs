@@ -319,8 +319,8 @@ namespace AdangalApp.AdangalTypes
 
                 List<KeyValue> list = new List<KeyValue>()
                 {
-                    //new KeyValue() {  Caption = "210", Value = 346, Id = 71  },
-                    new KeyValue() {  Caption = "211", Value = 336, Id = 1  },
+                    // new KeyValue() {  Caption = "210", Value = 346, Id = 129  },
+                    new KeyValue() {  Caption = "211", Value = 336, Id = 112  },
 
                       new KeyValue() {  Caption = "209", Value = 302, Id = 1  },
                        new KeyValue() {  Caption = "212", Value = 385, Id = 1  }
@@ -355,30 +355,15 @@ namespace AdangalApp.AdangalTypes
                         var copiedText = Clipboard.GetText();
 
                         var neededData = copiedText.Replace("Mobile", "$").Split('$')[1].Replace("Copyright", "$").Split('$')[0].Trim().Split('\t');
-                        var contact = $"{neededData[neededData.Count() - 2]}-{neededData.Last()}";
+                        var contact = $"{i}) {neededData[neededData.Count() - 2]}-{neededData.Last()}";
                         DataAccess.SaveText(contact, fp);
                     }
-                    MessageBox.Show($"Completed for  {fe.Value}-{ fe.Caption}");
+                    //MessageBox.Show($"Completed for  {fe.Value}-{ fe.Caption}");
 
                 });
 
                 driver.Close();
             }
-            //catch (WebDriverException wdex)
-            //{
-
-            //    //MessageBox.Show(ex.ToString());
-            //    vao.LogMessage("ERROR:" + wdex.ToString());
-            //    while (General.CheckForInternetConnection() == false)
-            //    {
-            //        Thread.Sleep(4000);
-            //        General.Play(FileContentReader.NoInternet);
-            //    }
-
-            //    continue;
-
-
-            //}
             catch (Exception ex)
             {
                 vao.LogMessage("ERROR:" + ex.ToString());

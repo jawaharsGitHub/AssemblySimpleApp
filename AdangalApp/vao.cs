@@ -2871,6 +2871,13 @@ namespace AdangalApp
                     //button2_Click_1(null, null);
                     return;
                 }
+                else if (owningColumnName == "LandType")
+                {
+                    DataAccess.UpdateLandType(cus);
+                    EditSuccess();
+                    //button2_Click_1(null, null);
+                    return;
+                }
                 else if (owningColumnName == "Parappu")
                 {
                     //string parappuPattern  = @"\d{1,}.\d{1,}.\d{2,}";
@@ -3669,6 +3676,12 @@ namespace AdangalApp
             dataGridView1.DataSource = DataAccess.GetActiveAdangal()
                                     .Where(w => string.IsNullOrEmpty(w.OwnerName) == false 
                                             && w.OwnerName.Trim() == cmbPoramGroup.SelectedItem.ToString()).ToList();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            cmbSurveyNo.SelectedIndex += 1;
+            cmbSubdivNo.DroppedDown = true;
         }
     }
 

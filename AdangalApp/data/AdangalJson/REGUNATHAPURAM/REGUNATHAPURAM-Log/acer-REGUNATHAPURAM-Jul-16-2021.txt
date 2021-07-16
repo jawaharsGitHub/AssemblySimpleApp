@@ -1,0 +1,31 @@
+2021-07-16 09:02:02,604 [1] DEBUG - STEP - 1 - Village: REGUNATHAPURAM
+2021-07-16 09:02:54,663 [1] DEBUG - ERROR:OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: 3
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection)
+2021-07-16 09:02:55,215 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: invalid session id
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection)
+2021-07-16 09:07:03,667 [1] DEBUG - STEP - 1 - Village: REGUNATHAPURAM
+2021-07-16 09:15:40,881 [1] DEBUG - ERROR:OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: 3
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection)
+2021-07-16 09:15:42,389 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: invalid session id
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection)
+2021-07-16 09:41:15,582 [1] DEBUG - STEP - 1 - Village: REGUNATHAPURAM
+2021-07-16 09:42:11,462 [1] DEBUG - ERROR:OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: 3
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection)
+2021-07-16 09:42:16,256 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: invalid session id
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection)
+2021-07-16 09:43:53,994 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-16 09:43:54,181 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-16 09:44:08,276 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-16 09:44:08,448 [1] DEBUG - STEP-2 - Completed - Existing file Load

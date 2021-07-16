@@ -385,7 +385,7 @@ namespace AdangalApp
         }
         public static List<Adangal> GetActiveAdangal()
         {
-            return ReadFileAsObjects<Adangal>(JsonPath).OrderBy(o => o.LandType)
+            return ReadFileAsObjects<Adangal>(JsonPath).OrderBy(o => o.LandType.SortOrder())
                                                           .ThenBy(o => o.NilaAlavaiEn)
                                                           .ThenBy(t => t.UtpirivuEn, new AlphanumericComparer())
                                                           .ToList();
@@ -488,6 +488,16 @@ namespace AdangalApp
                               ld.UtpirivuEn == adn.UtpirivuEn).First();
             u.PattaEn = adn.PattaEn;
             u.LandStatus = LandStatus.NameEdited;
+            WriteObjectsToFile(list, JsonPath);
+        }
+
+        public static void UpdateLandType(Adangal adn)
+        {
+            List<Adangal> list = GetActiveAdangal();
+            var u = list.Where(ld => ld.NilaAlavaiEn == adn.NilaAlavaiEn &&
+                              ld.UtpirivuEn == adn.UtpirivuEn).First();
+            u.LandType = adn.LandType;
+            u.LandStatus = LandStatus.LandTypeEdited;
             WriteObjectsToFile(list, JsonPath);
         }
 
