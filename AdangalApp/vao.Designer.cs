@@ -100,6 +100,8 @@
             this.lblPageNo = new System.Windows.Forms.Label();
             this.chkRowSelect = new System.Windows.Forms.CheckBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -727,7 +729,7 @@
             // chkEdit
             // 
             this.chkEdit.AutoSize = true;
-            this.chkEdit.Location = new System.Drawing.Point(478, 406);
+            this.chkEdit.Location = new System.Drawing.Point(285, 346);
             this.chkEdit.Name = "chkEdit";
             this.chkEdit.Size = new System.Drawing.Size(92, 17);
             this.chkEdit.TabIndex = 20;
@@ -851,7 +853,7 @@
             // chkRowSelect
             // 
             this.chkRowSelect.AutoSize = true;
-            this.chkRowSelect.Location = new System.Drawing.Point(576, 389);
+            this.chkRowSelect.Location = new System.Drawing.Point(285, 363);
             this.chkRowSelect.Name = "chkRowSelect";
             this.chkRowSelect.Size = new System.Drawing.Size(116, 17);
             this.chkRowSelect.TabIndex = 36;
@@ -869,12 +871,31 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(485, 410);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(74, 20);
+            this.txtSearch.TabIndex = 27;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(565, 408);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(69, 21);
+            this.btnSearch.TabIndex = 37;
+            this.btnSearch.Text = "SEARCH";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // vao
             // 
             this.AcceptButton = this.btnNextPage;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1217, 684);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.chkRowSelect);
             this.Controls.Add(this.lblPageNo);
@@ -997,6 +1018,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cmbPoramGroup;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnSearch;
         //public System.Windows.Forms.Button bthThread;
     }
 }

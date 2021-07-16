@@ -3683,6 +3683,13 @@ namespace AdangalApp
             cmbSurveyNo.SelectedIndex += 1;
             cmbSubdivNo.DroppedDown = true;
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = DataAccess.GetActiveAdangal()
+                                        .Where(w => string.IsNullOrEmpty(w.OwnerName) == false 
+                                        && w.OwnerName.Contains(txtSearch.Text.Trim())).ToList();
+        }
     }
 
 }
