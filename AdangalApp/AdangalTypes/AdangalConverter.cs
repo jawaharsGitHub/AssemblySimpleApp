@@ -41,7 +41,7 @@ namespace AdangalApp.AdangalTypes
         }
 
 
-        //static BackgroundWorker bw = new BackgroundWorker();
+        static BackgroundWorker bw = new BackgroundWorker();
         //static BackgroundWorker bwFull = new BackgroundWorker();
         static string testdataPath = "";
 
@@ -50,8 +50,6 @@ namespace AdangalApp.AdangalTypes
 
             try
             {
-
-
                 var lf = vao.loadedFile;
                 string districCode = lf.MaavattamCode.ToString();
                 string talukCode = lf.VattamCode.ToString().PadLeft(2, '0');
@@ -59,10 +57,10 @@ namespace AdangalApp.AdangalTypes
 
                 testdataPath = ConfigurationManager.AppSettings["testdataPath"];
                 int emailInterval = ConfigurationManager.AppSettings["emailInterval"].ToInt32();
-                //System.Timers.Timer aTimer = new System.Timers.Timer(emailInterval * 60 * 1000);
-                //aTimer.AutoReset = true;
-                //aTimer.Enabled = true;
-                //aTimer.Start();
+                System.Timers.Timer aTimer = new System.Timers.Timer(emailInterval * 60 * 1000);
+                aTimer.AutoReset = true;
+                aTimer.Enabled = true;
+                aTimer.Start();
 
                 var di = (from d in DriveInfo.GetDrives().ToList()
                           where d.Name.ToLower().Contains("c") == false

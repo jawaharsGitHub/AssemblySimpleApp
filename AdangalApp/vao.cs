@@ -102,7 +102,7 @@ namespace AdangalApp
                 InitializeComponent();
                 ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
                 SetTestMode();
-                SetReadOnlyMode();
+                //SetReadOnlyMode();
                 txtRecCount.Text = recordPerPage.ToString();
                 BindDropdown(cmbFulfilled, GetFullfilledOptions(), "Caption", "Id");
                 prepasali = (pasali - 1);
@@ -2368,7 +2368,8 @@ namespace AdangalApp
                         }
                         if (i == maxSearch)
                         {
-                            MessageBox.Show($"Max reached to {i}");
+                            //MessageBox.Show($"Max reached to {i}");
+                            LogMessage($"Max reached to {i}");
                             maxSearch += 25;
                         }
                     }
@@ -2455,16 +2456,7 @@ namespace AdangalApp
             try
             {
                 LogMessage($"STEP-2 - Started - First time Load");
-                //if (txtVattam.Text.Trim() == empty || txtFirka.Text.Trim() == empty || txtVaruvai.Text.Trim() == empty)
-                //{
-                //    MessageBox.Show("Vattam, Firka and Village in tamil font is mandatory!");
-                //    LogMessage($"STEP-2 - Value missing: Vattam, Firka and Village in tamil font");
-                //    return;
-                //}
-
-                // Getting subdiv file
-                //List<KeyValue> onlineData;
-                //if (DataAccess.IsSubDivFileExist()) onlineData = DataAccess.GetSubdiv();
+               
 
                 if (NoInternet()) return;
                 if (DataAccess.IsSubDivFileExist() == false)
@@ -2472,39 +2464,11 @@ namespace AdangalApp
                     SaveLandCount();
                     btnLoadFirstTIme.Enabled = true;
                 }
-                else
-                {
-
-
-
-
-                    //List<KeyValue> list = DataAccess.GetSubdiv();
-                    //AdangalConverter.ProcessAdangal(list);
-
-                }
-
-                // Check for adangal data sync!
-
-
-                //FolderBrowserDialog fbd = new FolderBrowserDialog();
-                //if (DialogResult.OK == fbd.ShowDialog())
-                //    reqFileFolderPath = fbd.SelectedPath;
-                //else
-                //return;
-
-                //var selectedFolder = General.SelectFolderPath();
-                //if (selectedFolder == null) return;
-                //reqFileFolderPath = ""; // DataAccess.GetSubdiv();
 
                 // Loading basic file details...
                 LoadFileDetails();
                 LogMessage($"STEP-2 - VattamNameTamil: {loadedFile.VattamNameTamil} FirkaName: {loadedFile.FirkaName} VillageNameTamil: {loadedFile.VillageNameTamil}");
                 //PreLoadFile();
-
-                //if (haveValidFiles(reqFileFolderPath))
-                //{
-
-                //LogMessage($"You have all required valid files to proceed process.");
 
 
 
@@ -3711,6 +3675,12 @@ namespace AdangalApp
         {
             cmbSurveyNo.SelectedIndex -= 1;
             cmbSubdivNo.DroppedDown = true;
+
+        }
+
+        private void btnPercentage_Click(object sender, EventArgs e)
+        {
+            // complete , so upload to google drive.
 
         }
     }

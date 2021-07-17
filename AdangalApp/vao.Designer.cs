@@ -429,6 +429,7 @@
             this.btnPercentage.TabIndex = 18;
             this.btnPercentage.Text = "%";
             this.btnPercentage.UseVisualStyleBackColor = true;
+            this.btnPercentage.Click += new System.EventHandler(this.btnPercentage_Click);
             // 
             // groupBox4
             // 
