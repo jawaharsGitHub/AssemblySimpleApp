@@ -65,9 +65,6 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cmbPoramGroup = new System.Windows.Forms.ComboBox();
-            this.lblPattaCheckError = new System.Windows.Forms.Label();
-            this.lblLandStatusError = new System.Windows.Forms.Label();
-            this.lblLandTypeError = new System.Windows.Forms.Label();
             this.cmbLandStatus = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -470,9 +467,6 @@
             // 
             this.groupBox6.Controls.Add(this.label9);
             this.groupBox6.Controls.Add(this.cmbPoramGroup);
-            this.groupBox6.Controls.Add(this.lblPattaCheckError);
-            this.groupBox6.Controls.Add(this.lblLandStatusError);
-            this.groupBox6.Controls.Add(this.lblLandTypeError);
             this.groupBox6.Controls.Add(this.cmbLandStatus);
             this.groupBox6.Controls.Add(this.label8);
             this.groupBox6.Controls.Add(this.label7);
@@ -488,7 +482,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(20, 103);
+            this.label9.Location = new System.Drawing.Point(19, 107);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(99, 13);
             this.label9.TabIndex = 40;
@@ -498,47 +492,11 @@
             // 
             this.cmbPoramGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPoramGroup.FormattingEnabled = true;
-            this.cmbPoramGroup.Location = new System.Drawing.Point(20, 119);
+            this.cmbPoramGroup.Location = new System.Drawing.Point(19, 123);
             this.cmbPoramGroup.Name = "cmbPoramGroup";
             this.cmbPoramGroup.Size = new System.Drawing.Size(186, 21);
             this.cmbPoramGroup.TabIndex = 39;
             this.cmbPoramGroup.SelectedIndexChanged += new System.EventHandler(this.cmbPoramGroup_SelectedIndexChanged);
-            // 
-            // lblPattaCheckError
-            // 
-            this.lblPattaCheckError.AutoSize = true;
-            this.lblPattaCheckError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPattaCheckError.ForeColor = System.Drawing.Color.Red;
-            this.lblPattaCheckError.Location = new System.Drawing.Point(209, 126);
-            this.lblPattaCheckError.Name = "lblPattaCheckError";
-            this.lblPattaCheckError.Size = new System.Drawing.Size(15, 13);
-            this.lblPattaCheckError.TabIndex = 38;
-            this.lblPattaCheckError.Text = "!!";
-            this.lblPattaCheckError.Visible = false;
-            // 
-            // lblLandStatusError
-            // 
-            this.lblLandStatusError.AutoSize = true;
-            this.lblLandStatusError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLandStatusError.ForeColor = System.Drawing.Color.Red;
-            this.lblLandStatusError.Location = new System.Drawing.Point(210, 35);
-            this.lblLandStatusError.Name = "lblLandStatusError";
-            this.lblLandStatusError.Size = new System.Drawing.Size(15, 13);
-            this.lblLandStatusError.TabIndex = 37;
-            this.lblLandStatusError.Text = "!!";
-            this.lblLandStatusError.Visible = false;
-            // 
-            // lblLandTypeError
-            // 
-            this.lblLandTypeError.AutoSize = true;
-            this.lblLandTypeError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLandTypeError.ForeColor = System.Drawing.Color.Red;
-            this.lblLandTypeError.Location = new System.Drawing.Point(208, 79);
-            this.lblLandTypeError.Name = "lblLandTypeError";
-            this.lblLandTypeError.Size = new System.Drawing.Size(15, 13);
-            this.lblLandTypeError.TabIndex = 36;
-            this.lblLandTypeError.Text = "!!";
-            this.lblLandTypeError.Visible = false;
             // 
             // cmbLandStatus
             // 
@@ -952,9 +910,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnLoadProcessed;
         private System.Windows.Forms.ComboBox cmbLandStatus;
-        private System.Windows.Forms.Label lblLandTypeError;
-        private System.Windows.Forms.Label lblPattaCheckError;
-        private System.Windows.Forms.Label lblLandStatusError;
         private System.Windows.Forms.GroupBox grpTheervaiTest;
         private System.Windows.Forms.Button btnSoftGen;
         private System.Windows.Forms.GroupBox grpPaging;

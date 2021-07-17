@@ -711,7 +711,7 @@ namespace AdangalApp.AdangalTypes
                 var nameRow = paramNameRow;
                 //nameRow = nameRow.Split('.').ToList().Where(w => w.Trim() != "").ToList()[1].Trim();
                 nameRow = nameRow.Replace("1.", "$").Split('$').ToList().Where(w => w.Trim() != "").ToList()[0].Trim();
-                string name = "";
+                //string name = "";
                 if (relationTypesCorrect.Any(a => nameRow.Split('\t').ToList().Contains(a))) // have valid names.
                 {
                     var delitList = relationTypesCorrect.Intersect(nameRow.Split('\t').ToList()).ToList();

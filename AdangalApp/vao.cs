@@ -2174,105 +2174,105 @@ namespace AdangalApp
                 LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
             }
         }
-        private (bool r, string status) IsReadyToPrint()
-        {
-            StringBuilder status = new StringBuilder();
-            bool result = true;
-            try
-            {
-                var errorCount = DataAccess.GetErrorAdangal().Count;
+        //private (bool r, string status) IsReadyToPrint()
+        //{
+        //    StringBuilder status = new StringBuilder();
+        //    bool result = true;
+        //    try
+        //    {
+        //        var errorCount = DataAccess.GetErrorAdangal().Count;
 
-                //if (notInPdfToBeAdded.Count != 0)
-                //{
-                //    status.AppendLine($"ADD:{notInPdfToBeAdded.Count}");
-                //    result = false;
-                //}
+        //        //if (notInPdfToBeAdded.Count != 0)
+        //        //{
+        //        //    status.AppendLine($"ADD:{notInPdfToBeAdded.Count}");
+        //        //    result = false;
+        //        //}
 
-                //if (notInOnlineToBeDeleted.Count != 0)
-                //{
-                //    status.AppendLine($"DELETE:{notInOnlineToBeDeleted.Count}");
-                //    result = false;
-                //}
+        //        //if (notInOnlineToBeDeleted.Count != 0)
+        //        //{
+        //        //    status.AppendLine($"DELETE:{notInOnlineToBeDeleted.Count}");
+        //        //    result = false;
+        //        //}
 
-                if (errorCount != 0)
-                {
-                    status.AppendLine($"ERROR REC:{errorCount}");
-                    result = false;
-                }
-                var pattaNameIssue = fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.WrongName);
+        //        if (errorCount != 0)
+        //        {
+        //            status.AppendLine($"ERROR REC:{errorCount}");
+        //            result = false;
+        //        }
+        //        var pattaNameIssue = fullAdangalFromjson.Where(w => w.LandStatus == LandStatus.WrongName);
 
-                if (pattaNameIssue.Count() != 0)
-                {
-                    status.AppendLine($"NAME ISSUE :{pattaNameIssue.Count()}");
-                    result = false;
-                }
+        //        if (pattaNameIssue.Count() != 0)
+        //        {
+        //            status.AppendLine($"NAME ISSUE :{pattaNameIssue.Count()}");
+        //            result = false;
+        //        }
 
-                var someDotsIssue = GetAdangalForSomeDots();
+        //        var someDotsIssue = GetAdangalForSomeDots();
 
-                if (someDotsIssue.Count() != 0)
-                {
-                    status.AppendLine($"SomeDots ISSUE :{someDotsIssue.Count()}");
-                    result = false;
-                }
-
-
-                // Validate Land Type.
-                lblLandTypeError.Visible = lblLandStatusError.Visible = lblPattaCheckError.Visible = false;
-                var totalAdangal = fullAdangalFromjson.Count;
-
-                var landTypeCheck = ddlLandTypes.DataSource as List<KeyValue>;
-                var totalLandTypes = (landTypeCheck[2].Value + landTypeCheck[3].Value + landTypeCheck[4].Value + landTypeCheck[5].Value);
-
-                if (totalAdangal != totalLandTypes || landTypeCheck[1].Value != totalLandTypes)
-                {
-                    status.AppendLine($"LandType ISSUE");
-                    lblLandTypeError.Visible = true;
-                    result = false;
-                }
-
-                // Validate Land Status.
-                var landStatusCheck = cmbLandStatus.DataSource as List<KeyValue>;
-                var totalLandStatus = landStatusCheck.Sum(s => s.Value);
-
-                if (totalAdangal != totalLandStatus)
-                {
-                    status.AppendLine($"LandStatus ISSUE");
-                    lblLandStatusError.Visible = true;
-                    result = false;
-                }
-
-                var pattaCount = pattaList.Count;
-
-                // Validate Patta types.
-                //var pattaCheck = ddlPattaTypes.DataSource as List<KeyValue>;
-                //var totalPattaStatus = pattaCheck.Skip(2).Sum(s => s.Value);
-
-                //if (pattaCount != totalPattaStatus || pattaCheck.Skip(9).Sum(s => s.Value) != 0)
-                //{
-                //    status.AppendLine($"Patta ISSUE");
-                //    lblPattaCheckError.Visible = true;
-                //    result = false;
-                //}
-
-                var needChangePorambokku = fullAdangalFromjson.Where(w => w.LandType == LandType.Porambokku || w.LandType == LandType.Porambokku)
-                    .Where(w => w.LandStatus == LandStatus.NoChange).Count();
-
-                if (needChangePorambokku > 0)
-                {
-                    status.AppendLine($"Porambokku: {needChangePorambokku}");
-                    result = false;
-                }
+        //        if (someDotsIssue.Count() != 0)
+        //        {
+        //            status.AppendLine($"SomeDots ISSUE :{someDotsIssue.Count()}");
+        //            result = false;
+        //        }
 
 
-                LogMessage($"ready: {result} STATUS: {status.ToString()}");
-            }
-            catch (Exception ex)
-            {
-                LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
-            }
-            return (result, status.ToString());
+        //        // Validate Land Type.
+        //        //lblLandTypeError.Visible = lblLandStatusError.Visible = lblPattaCheckError.Visible = false;
+        //        var totalAdangal = fullAdangalFromjson.Count;
 
-        }
+        //        var landTypeCheck = ddlLandTypes.DataSource as List<KeyValue>;
+        //        var totalLandTypes = (landTypeCheck[2].Value + landTypeCheck[3].Value + landTypeCheck[4].Value + landTypeCheck[5].Value);
+
+        //        if (totalAdangal != totalLandTypes || landTypeCheck[1].Value != totalLandTypes)
+        //        {
+        //            status.AppendLine($"LandType ISSUE");
+        //            //lblLandTypeError.Visible = true;
+        //            result = false;
+        //        }
+
+        //        // Validate Land Status.
+        //        var landStatusCheck = cmbLandStatus.DataSource as List<KeyValue>;
+        //        var totalLandStatus = landStatusCheck.Sum(s => s.Value);
+
+        //        if (totalAdangal != totalLandStatus)
+        //        {
+        //            status.AppendLine($"LandStatus ISSUE");
+        //            lblLandStatusError.Visible = true;
+        //            result = false;
+        //        }
+
+        //        var pattaCount = pattaList.Count;
+
+        //        // Validate Patta types.
+        //        //var pattaCheck = ddlPattaTypes.DataSource as List<KeyValue>;
+        //        //var totalPattaStatus = pattaCheck.Skip(2).Sum(s => s.Value);
+
+        //        //if (pattaCount != totalPattaStatus || pattaCheck.Skip(9).Sum(s => s.Value) != 0)
+        //        //{
+        //        //    status.AppendLine($"Patta ISSUE");
+        //        //    lblPattaCheckError.Visible = true;
+        //        //    result = false;
+        //        //}
+
+        //        var needChangePorambokku = fullAdangalFromjson.Where(w => w.LandType == LandType.Porambokku || w.LandType == LandType.Porambokku)
+        //            .Where(w => w.LandStatus == LandStatus.NoChange).Count();
+
+        //        if (needChangePorambokku > 0)
+        //        {
+        //            status.AppendLine($"Porambokku: {needChangePorambokku}");
+        //            result = false;
+        //        }
+
+
+        //        LogMessage($"ready: {result} STATUS: {status.ToString()}");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogError($"Error @ {MethodBase.GetCurrentMethod().Name} - {ex.ToString()}");
+        //    }
+        //    return (result, status.ToString());
+
+        //}
 
         private (bool r, string status) IsReadyToPrintNew()
         {
