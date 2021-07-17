@@ -102,6 +102,7 @@ namespace AdangalApp
                 InitializeComponent();
                 ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
                 SetTestMode();
+                SetReadOnlyMode();
                 txtRecCount.Text = recordPerPage.ToString();
                 BindDropdown(cmbFulfilled, GetFullfilledOptions(), "Caption", "Id");
                 prepasali = (pasali - 1);
@@ -2734,6 +2735,20 @@ namespace AdangalApp
             btnSoftGen.Enabled = isTestingMode;
             grpTheervaiTest.Visible = needTheervaiTest;
             //txtAddNewSurvey.Enabled = btnReady.Enabled = canAddMissedSurvey;
+        }
+
+        private void SetReadOnlyMode()
+        {
+            groupBox3.Visible = false;
+            groupBox4.Visible = false;
+            groupBox5.Visible = false;
+            groupBox6.Visible = false;
+            groupBox7.Visible = false;
+            grpPaging.Visible = false;
+            groupBox8.Visible = false;
+            btnLoadProcessed.Visible = false;
+            dataGridView1.Visible = false;
+
         }
         private void cmbFulfilled_SelectedIndexChanged(object sender, EventArgs e)
         {

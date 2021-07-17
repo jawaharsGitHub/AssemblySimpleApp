@@ -96,6 +96,7 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnPrevSurvey = new System.Windows.Forms.Button();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -106,6 +107,7 @@
             this.groupBox7.SuspendLayout();
             this.grpTheervaiTest.SuspendLayout();
             this.grpPaging.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -176,7 +178,7 @@
             this.lblMessage.AutoSize = true;
             this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMessage.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblMessage.Location = new System.Drawing.Point(460, 365);
+            this.lblMessage.Location = new System.Drawing.Point(426, 11);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(99, 17);
             this.lblMessage.TabIndex = 8;
@@ -271,7 +273,7 @@
             // 
             this.cmbFulfilled.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFulfilled.FormattingEnabled = true;
-            this.cmbFulfilled.Location = new System.Drawing.Point(17, 404);
+            this.cmbFulfilled.Location = new System.Drawing.Point(6, 40);
             this.cmbFulfilled.Name = "cmbFulfilled";
             this.cmbFulfilled.Size = new System.Drawing.Size(145, 21);
             this.cmbFulfilled.TabIndex = 14;
@@ -357,7 +359,7 @@
             this.groupBox2.Controls.Add(this.btnLoadProcessed);
             this.groupBox2.Controls.Add(this.ddlProcessedFiles);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(17, 295);
+            this.groupBox2.Location = new System.Drawing.Point(17, 291);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(231, 79);
             this.groupBox2.TabIndex = 22;
@@ -399,7 +401,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(108, 284);
+            this.label5.Location = new System.Drawing.Point(108, 281);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(23, 13);
             this.label5.TabIndex = 34;
@@ -604,7 +606,7 @@
             // 
             this.cmbSurveyNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSurveyNo.FormattingEnabled = true;
-            this.cmbSurveyNo.Location = new System.Drawing.Point(175, 404);
+            this.cmbSurveyNo.Location = new System.Drawing.Point(164, 40);
             this.cmbSurveyNo.Name = "cmbSurveyNo";
             this.cmbSurveyNo.Size = new System.Drawing.Size(56, 21);
             this.cmbSurveyNo.TabIndex = 29;
@@ -613,7 +615,7 @@
             // 
             this.cmbSubdivNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSubdivNo.FormattingEnabled = true;
-            this.cmbSubdivNo.Location = new System.Drawing.Point(248, 404);
+            this.cmbSubdivNo.Location = new System.Drawing.Point(236, 40);
             this.cmbSubdivNo.Name = "cmbSubdivNo";
             this.cmbSubdivNo.Size = new System.Drawing.Size(57, 21);
             this.cmbSubdivNo.TabIndex = 30;
@@ -621,7 +623,7 @@
             // lblSurveyNo
             // 
             this.lblSurveyNo.AutoSize = true;
-            this.lblSurveyNo.Location = new System.Drawing.Point(175, 388);
+            this.lblSurveyNo.Location = new System.Drawing.Point(163, 24);
             this.lblSurveyNo.Name = "lblSurveyNo";
             this.lblSurveyNo.Size = new System.Drawing.Size(52, 13);
             this.lblSurveyNo.TabIndex = 31;
@@ -630,7 +632,7 @@
             // lblSubdiv
             // 
             this.lblSubdiv.AutoSize = true;
-            this.lblSubdiv.Location = new System.Drawing.Point(250, 389);
+            this.lblSubdiv.Location = new System.Drawing.Point(236, 25);
             this.lblSubdiv.Name = "lblSubdiv";
             this.lblSubdiv.Size = new System.Drawing.Size(53, 13);
             this.lblSubdiv.TabIndex = 32;
@@ -639,11 +641,11 @@
             // chkEdit
             // 
             this.chkEdit.AutoSize = true;
-            this.chkEdit.Location = new System.Drawing.Point(285, 346);
+            this.chkEdit.Location = new System.Drawing.Point(395, 31);
             this.chkEdit.Name = "chkEdit";
-            this.chkEdit.Size = new System.Drawing.Size(92, 17);
+            this.chkEdit.Size = new System.Drawing.Size(57, 17);
             this.chkEdit.TabIndex = 20;
-            this.chkEdit.Text = "EDIT MODE?";
+            this.chkEdit.Text = "EDIT?";
             this.chkEdit.UseVisualStyleBackColor = true;
             this.chkEdit.CheckedChanged += new System.EventHandler(this.chkEdit_CheckedChanged);
             // 
@@ -754,7 +756,7 @@
             // 
             this.lblPageNo.AutoSize = true;
             this.lblPageNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPageNo.Location = new System.Drawing.Point(657, 410);
+            this.lblPageNo.Location = new System.Drawing.Point(655, 46);
             this.lblPageNo.Name = "lblPageNo";
             this.lblPageNo.Size = new System.Drawing.Size(61, 17);
             this.lblPageNo.TabIndex = 27;
@@ -763,17 +765,17 @@
             // chkRowSelect
             // 
             this.chkRowSelect.AutoSize = true;
-            this.chkRowSelect.Location = new System.Drawing.Point(285, 363);
+            this.chkRowSelect.Location = new System.Drawing.Point(395, 48);
             this.chkRowSelect.Name = "chkRowSelect";
-            this.chkRowSelect.Size = new System.Drawing.Size(116, 17);
+            this.chkRowSelect.Size = new System.Drawing.Size(59, 17);
             this.chkRowSelect.TabIndex = 36;
-            this.chkRowSelect.Text = "ROW SELECTION";
+            this.chkRowSelect.Text = "ROW?";
             this.chkRowSelect.UseVisualStyleBackColor = true;
             this.chkRowSelect.CheckedChanged += new System.EventHandler(this.chkRowSelect_CheckedChanged);
             // 
             // btnNextSurvey
             // 
-            this.btnNextSurvey.Location = new System.Drawing.Point(366, 404);
+            this.btnNextSurvey.Location = new System.Drawing.Point(357, 40);
             this.btnNextSurvey.Name = "btnNextSurvey";
             this.btnNextSurvey.Size = new System.Drawing.Size(32, 21);
             this.btnNextSurvey.TabIndex = 34;
@@ -783,14 +785,14 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(463, 404);
+            this.txtSearch.Location = new System.Drawing.Point(494, 40);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(74, 20);
             this.txtSearch.TabIndex = 27;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(543, 403);
+            this.btnSearch.Location = new System.Drawing.Point(582, 39);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(61, 21);
             this.btnSearch.TabIndex = 37;
@@ -800,7 +802,7 @@
             // 
             // btnPrevSurvey
             // 
-            this.btnPrevSurvey.Location = new System.Drawing.Point(328, 403);
+            this.btnPrevSurvey.Location = new System.Drawing.Point(319, 39);
             this.btnPrevSurvey.Name = "btnPrevSurvey";
             this.btnPrevSurvey.Size = new System.Drawing.Size(32, 21);
             this.btnPrevSurvey.TabIndex = 38;
@@ -808,27 +810,38 @@
             this.btnPrevSurvey.UseVisualStyleBackColor = true;
             this.btnPrevSurvey.Click += new System.EventHandler(this.btnPrevSurvey_Click);
             // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.cmbFulfilled);
+            this.groupBox8.Controls.Add(this.btnPrevSurvey);
+            this.groupBox8.Controls.Add(this.cmbSurveyNo);
+            this.groupBox8.Controls.Add(this.btnSearch);
+            this.groupBox8.Controls.Add(this.cmbSubdivNo);
+            this.groupBox8.Controls.Add(this.txtSearch);
+            this.groupBox8.Controls.Add(this.lblSurveyNo);
+            this.groupBox8.Controls.Add(this.btnNextSurvey);
+            this.groupBox8.Controls.Add(this.lblSubdiv);
+            this.groupBox8.Controls.Add(this.chkRowSelect);
+            this.groupBox8.Controls.Add(this.chkEdit);
+            this.groupBox8.Controls.Add(this.lblMessage);
+            this.groupBox8.Controls.Add(this.lblPageNo);
+            this.groupBox8.Location = new System.Drawing.Point(4, 364);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(740, 63);
+            this.groupBox8.TabIndex = 39;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Filters";
+            // 
             // vao
             // 
             this.AcceptButton = this.btnNextPage;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1217, 684);
-            this.Controls.Add(this.btnPrevSurvey);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.btnNextSurvey);
-            this.Controls.Add(this.chkRowSelect);
-            this.Controls.Add(this.lblPageNo);
+            this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.grpPaging);
             this.Controls.Add(this.grpTheervaiTest);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.chkEdit);
-            this.Controls.Add(this.lblSubdiv);
-            this.Controls.Add(this.lblSurveyNo);
-            this.Controls.Add(this.cmbSubdivNo);
-            this.Controls.Add(this.cmbSurveyNo);
-            this.Controls.Add(this.cmbFulfilled);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
@@ -836,7 +849,6 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.dataGridView1);
             this.Name = "vao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -858,6 +870,8 @@
             this.grpTheervaiTest.PerformLayout();
             this.grpPaging.ResumeLayout(false);
             this.grpPaging.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -934,6 +948,7 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnPrevSurvey;
+        private System.Windows.Forms.GroupBox groupBox8;
         //public System.Windows.Forms.Button bthThread;
     }
 }
