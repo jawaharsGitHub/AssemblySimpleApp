@@ -15,6 +15,8 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AdangalSetup", "AdangalSetu
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AdangalSetupFirstTime", "AdangalSetupFirstTime\AdangalSetupFirstTime.vdproj", "{47405451-1A0C-4652-A22C-04519E79DDA1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Form20", "Form20\Form20.csproj", "{4B7AD501-511B-4DDD-838E-8E967657FF14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,14 @@ Global
 		{47405451-1A0C-4652-A22C-04519E79DDA1}.Debug|x86.ActiveCfg = Debug
 		{47405451-1A0C-4652-A22C-04519E79DDA1}.Release|Any CPU.ActiveCfg = Release
 		{47405451-1A0C-4652-A22C-04519E79DDA1}.Release|x86.ActiveCfg = Release
+		{4B7AD501-511B-4DDD-838E-8E967657FF14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B7AD501-511B-4DDD-838E-8E967657FF14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B7AD501-511B-4DDD-838E-8E967657FF14}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4B7AD501-511B-4DDD-838E-8E967657FF14}.Debug|x86.Build.0 = Debug|Any CPU
+		{4B7AD501-511B-4DDD-838E-8E967657FF14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B7AD501-511B-4DDD-838E-8E967657FF14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B7AD501-511B-4DDD-838E-8E967657FF14}.Release|x86.ActiveCfg = Release|Any CPU
+		{4B7AD501-511B-4DDD-838E-8E967657FF14}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

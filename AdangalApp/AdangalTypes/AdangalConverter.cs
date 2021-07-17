@@ -29,15 +29,16 @@ namespace AdangalApp.AdangalTypes
         //public static string villagPath; // = @"F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\ACHUNTHANVAYAL\ACHUNTHANVAYAL-full.json";
         static AdangalConverter()
         {
-            relationTypesCorrect = new List<string>() {
-                        "தந்தை",
-                        "கணவன்",
-                        "காப்பாளர்",
-                        "மகன்",
-                        "மனைவி",
-                        "மகள்",
-                        "தாய்"
-                    };
+            relationTypesCorrect = ConfigurationManager.AppSettings["relation"].Split('|').ToList();
+            //relationTypesCorrect = new List<string>() {
+            //            "தந்தை",
+            //            "கணவன்",
+            //            "காப்பாளர்",
+            //            "மகன்",
+            //            "மனைவி",
+            //            "மகள்",
+            //            "தாய்"
+            //        };
 
             ss = new SpeechSynthesizer();
 

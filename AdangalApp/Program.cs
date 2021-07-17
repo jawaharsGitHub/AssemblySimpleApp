@@ -24,11 +24,8 @@ namespace AdangalApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            
-
-
             //AdangalConverter.GetBloContacts();
-            //AdangalConverter.GetForm20s();
+            AdangalConverter.GetForm20s();
 
             var dataFolder = General.GetDataFolder("data");
             try
