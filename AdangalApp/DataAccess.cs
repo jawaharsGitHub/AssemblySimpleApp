@@ -11,7 +11,7 @@ namespace AdangalApp
     public class DataAccess : BaseClass
     {
         static string JsonPath = "";
-        static string JsonFolderPath = "";
+        //static string JsonFolderPath = "";
         static string SubDivPath = "";
         static string LoadedFile = "";
         static string PattaJsonPath = "";

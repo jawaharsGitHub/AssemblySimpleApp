@@ -32,8 +32,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ddlPattaTypes = new System.Windows.Forms.ComboBox();
-            this.ddlListType = new System.Windows.Forms.ComboBox();
             this.ddlLandTypes = new System.Windows.Forms.ComboBox();
             this.btnGenerate = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
@@ -62,7 +60,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnPercentage = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnSoftGen = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -74,7 +71,6 @@
             this.cmbLandStatus = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.lblPattaCheck = new System.Windows.Forms.Label();
             this.txtAddNewSurvey = new System.Windows.Forms.TextBox();
             this.btnAddNewSurvey = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -99,9 +95,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblPageNo = new System.Windows.Forms.Label();
             this.chkRowSelect = new System.Windows.Forms.CheckBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnNextSurvey = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.btnPrevSurvey = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -157,28 +154,6 @@
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
-            // ddlPattaTypes
-            // 
-            this.ddlPattaTypes.BackColor = System.Drawing.SystemColors.Window;
-            this.ddlPattaTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlPattaTypes.FormattingEnabled = true;
-            this.ddlPattaTypes.Location = new System.Drawing.Point(18, 293);
-            this.ddlPattaTypes.Name = "ddlPattaTypes";
-            this.ddlPattaTypes.Size = new System.Drawing.Size(186, 21);
-            this.ddlPattaTypes.TabIndex = 12;
-            this.ddlPattaTypes.SelectedIndexChanged += new System.EventHandler(this.ddlPattaTypes_SelectedIndexChanged);
-            // 
-            // ddlListType
-            // 
-            this.ddlListType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlListType.FormattingEnabled = true;
-            this.ddlListType.Location = new System.Drawing.Point(334, 403);
-            this.ddlListType.Name = "ddlListType";
-            this.ddlListType.Size = new System.Drawing.Size(121, 21);
-            this.ddlListType.TabIndex = 5;
-            this.ddlListType.SelectedIndexChanged += new System.EventHandler(this.ddlListType_SelectedIndexChanged);
-            this.ddlListType.DataSourceChanged += new System.EventHandler(this.ddlListType_DataSourceChanged);
-            // 
             // ddlLandTypes
             // 
             this.ddlLandTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -204,7 +179,7 @@
             this.lblMessage.AutoSize = true;
             this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMessage.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblMessage.Location = new System.Drawing.Point(460, 374);
+            this.lblMessage.Location = new System.Drawing.Point(460, 365);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(99, 17);
             this.lblMessage.TabIndex = 8;
@@ -308,7 +283,7 @@
             // btnDelete
             // 
             this.btnDelete.Enabled = false;
-            this.btnDelete.Location = new System.Drawing.Point(20, 19);
+            this.btnDelete.Location = new System.Drawing.Point(19, 25);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(117, 20);
             this.btnDelete.TabIndex = 10;
@@ -458,7 +433,6 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.btnAdd);
             this.groupBox4.Controls.Add(this.btnDelete);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(285, 255);
@@ -467,17 +441,6 @@
             this.groupBox4.TabIndex = 23;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "STEP-3";
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Enabled = false;
-            this.btnAdd.Location = new System.Drawing.Point(20, 45);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(117, 22);
-            this.btnAdd.TabIndex = 11;
-            this.btnAdd.Text = "Add  Non Existing.";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // groupBox5
             // 
@@ -605,15 +568,6 @@
             this.label7.TabIndex = 34;
             this.label7.Text = "Land Type Check";
             // 
-            // lblPattaCheck
-            // 
-            this.lblPattaCheck.AutoSize = true;
-            this.lblPattaCheck.Location = new System.Drawing.Point(18, 277);
-            this.lblPattaCheck.Name = "lblPattaCheck";
-            this.lblPattaCheck.Size = new System.Drawing.Size(66, 13);
-            this.lblPattaCheck.TabIndex = 33;
-            this.lblPattaCheck.Text = "Patta Check";
-            // 
             // txtAddNewSurvey
             // 
             this.txtAddNewSurvey.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
@@ -641,8 +595,6 @@
             this.groupBox7.Controls.Add(this.cmbItemToBeAdded);
             this.groupBox7.Controls.Add(this.txtAddNewSurvey);
             this.groupBox7.Controls.Add(this.btnAddNewSurvey);
-            this.groupBox7.Controls.Add(this.lblPattaCheck);
-            this.groupBox7.Controls.Add(this.ddlPattaTypes);
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.Location = new System.Drawing.Point(750, 4);
             this.groupBox7.Name = "groupBox7";
@@ -696,14 +648,14 @@
             this.cmbSurveyNo.FormattingEnabled = true;
             this.cmbSurveyNo.Location = new System.Drawing.Point(175, 404);
             this.cmbSurveyNo.Name = "cmbSurveyNo";
-            this.cmbSurveyNo.Size = new System.Drawing.Size(65, 21);
+            this.cmbSurveyNo.Size = new System.Drawing.Size(56, 21);
             this.cmbSurveyNo.TabIndex = 29;
             // 
             // cmbSubdivNo
             // 
             this.cmbSubdivNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSubdivNo.FormattingEnabled = true;
-            this.cmbSubdivNo.Location = new System.Drawing.Point(258, 404);
+            this.cmbSubdivNo.Location = new System.Drawing.Point(248, 404);
             this.cmbSubdivNo.Name = "cmbSubdivNo";
             this.cmbSubdivNo.Size = new System.Drawing.Size(57, 21);
             this.cmbSubdivNo.TabIndex = 30;
@@ -720,7 +672,7 @@
             // lblSubdiv
             // 
             this.lblSubdiv.AutoSize = true;
-            this.lblSubdiv.Location = new System.Drawing.Point(256, 389);
+            this.lblSubdiv.Location = new System.Drawing.Point(250, 389);
             this.lblSubdiv.Name = "lblSubdiv";
             this.lblSubdiv.Size = new System.Drawing.Size(53, 13);
             this.lblSubdiv.TabIndex = 32;
@@ -861,32 +813,42 @@
             this.chkRowSelect.UseVisualStyleBackColor = true;
             this.chkRowSelect.CheckedChanged += new System.EventHandler(this.chkRowSelect_CheckedChanged);
             // 
-            // button3
+            // btnNextSurvey
             // 
-            this.button3.Location = new System.Drawing.Point(368, 399);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(69, 21);
-            this.button3.TabIndex = 34;
-            this.button3.Text = "NEXT";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnNextSurvey.Location = new System.Drawing.Point(366, 404);
+            this.btnNextSurvey.Name = "btnNextSurvey";
+            this.btnNextSurvey.Size = new System.Drawing.Size(32, 21);
+            this.btnNextSurvey.TabIndex = 34;
+            this.btnNextSurvey.Text = ">>";
+            this.btnNextSurvey.UseVisualStyleBackColor = true;
+            this.btnNextSurvey.Click += new System.EventHandler(this.button3_Click);
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(485, 410);
+            this.txtSearch.Location = new System.Drawing.Point(463, 404);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(74, 20);
             this.txtSearch.TabIndex = 27;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(565, 408);
+            this.btnSearch.Location = new System.Drawing.Point(543, 403);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(69, 21);
+            this.btnSearch.Size = new System.Drawing.Size(61, 21);
             this.btnSearch.TabIndex = 37;
             this.btnSearch.Text = "SEARCH";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnPrevSurvey
+            // 
+            this.btnPrevSurvey.Location = new System.Drawing.Point(328, 403);
+            this.btnPrevSurvey.Name = "btnPrevSurvey";
+            this.btnPrevSurvey.Size = new System.Drawing.Size(32, 21);
+            this.btnPrevSurvey.TabIndex = 38;
+            this.btnPrevSurvey.Text = "<<";
+            this.btnPrevSurvey.UseVisualStyleBackColor = true;
+            this.btnPrevSurvey.Click += new System.EventHandler(this.btnPrevSurvey_Click);
             // 
             // vao
             // 
@@ -894,9 +856,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1217, 684);
+            this.Controls.Add(this.btnPrevSurvey);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnNextSurvey);
             this.Controls.Add(this.chkRowSelect);
             this.Controls.Add(this.lblPageNo);
             this.Controls.Add(this.grpPaging);
@@ -914,7 +877,6 @@
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.ddlListType);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.dataGridView1);
@@ -949,8 +911,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox ddlPattaTypes;
-        private System.Windows.Forms.ComboBox ddlListType;
         private System.Windows.Forms.ComboBox ddlLandTypes;
         private System.Windows.Forms.Button btnGenerate;
         private System.Windows.Forms.Label lblMessage;
@@ -969,7 +929,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox txtAddNewSurvey;
@@ -985,12 +944,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox ddlProcessedFiles;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnLoad;
+        //private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.TextBox txtVaruvai;
         private System.Windows.Forms.TextBox txtVattam;
         private System.Windows.Forms.Button btnPercentage;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label lblPattaCheck;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnLoadProcessed;
         private System.Windows.Forms.ComboBox cmbLandStatus;
@@ -1017,9 +975,10 @@
         private System.Windows.Forms.CheckBox chkRowSelect;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cmbPoramGroup;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnNextSurvey;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnPrevSurvey;
         //public System.Windows.Forms.Button bthThread;
     }
 }

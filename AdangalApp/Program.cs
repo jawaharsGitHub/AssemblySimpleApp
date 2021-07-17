@@ -12,7 +12,7 @@ namespace AdangalApp
     static class Program
     {
 
-        public static LogHelper CommonLogHelper;
+        //public static LogHelper CommonLogHelper;
 
         /// <summary>
         /// The main entry point for the application.

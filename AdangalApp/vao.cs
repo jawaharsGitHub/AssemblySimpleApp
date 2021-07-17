@@ -32,7 +32,7 @@ namespace AdangalApp
 
         string chittaPdfFile = "";
         string chittaTxtFile = "";
-        string aRegFile = "";
+        //string aRegFile = "";
         string chittaContent = "";
         string aRegContent = "";
 
@@ -63,9 +63,9 @@ namespace AdangalApp
         List<PageTotal> pageTotal3List = null;
         public static LoadedFileDetail loadedFile = new LoadedFileDetail();
 
-        List<string> notInPdfToBeAdded;
-        List<string> notInOnlineToBeDeleted;
-        string reqFileFolderPath = "";
+        //List<string> notInPdfToBeAdded;
+        //List<string> notInOnlineToBeDeleted;
+        //string reqFileFolderPath = "";
         string updatedHeader = "";
 
         string titleP = ConfigurationManager.AppSettings["titleP"];
@@ -715,9 +715,9 @@ namespace AdangalApp
                 LogMessage($"STARTED FULL REPORT");
                 // Full Report
                 FinalReport fr = new FinalReport(pattaList);
-                BindDropdown(ddlPattaTypes, fr.CountData, "DisplayMember", "Id");
+                //BindDropdown(ddlPattaTypes, fr.CountData, "DisplayMember", "Id");
                 BindDropdown(ddlLandTypes, GetLandTypes(), "DisplayMember", "Id");
-                BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
+                //BindDropdown(ddlListType, GetListTypes(), "Caption", "Id");
                 BindDropdown(cmbLandStatus, GetLandStatusOptions(), "DisplayMember", "Id");
 
                 LoadSurveyAndSubdiv();
@@ -1052,20 +1052,20 @@ namespace AdangalApp
 
         }
 
-        private void ddlListType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var selected = ((KeyValue)ddlListType.SelectedItem).Id;
+        //private void ddlListType_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    var selected = ((KeyValue)ddlListType.SelectedItem).Id;
 
-            if (selected == 1)
-                dataGridView1.DataSource = pattaList;
-            else if (selected == 2)
-                dataGridView1.DataSource = WholeLandList;
-            else if (selected == 3)
-                dataGridView1.DataSource = AdangalOriginalList;
-            else if (selected == 4)
-                dataGridView1.DataSource = fullAdangalFromjson;
+        //    if (selected == 1)
+        //        dataGridView1.DataSource = pattaList;
+        //    else if (selected == 2)
+        //        dataGridView1.DataSource = WholeLandList;
+        //    else if (selected == 3)
+        //        dataGridView1.DataSource = AdangalOriginalList;
+        //    else if (selected == 4)
+        //        dataGridView1.DataSource = fullAdangalFromjson;
 
-        }
+        //}
 
         private void ddlLandTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1073,11 +1073,11 @@ namespace AdangalApp
             if (fullAdangalFromjson != null)
             {
                 List<Adangal> ds;
-                
+
                 waitForm.Show(this);
                 var selItem = (ddlLandTypes.SelectedItem as KeyValue);
                 if (selItem.Id == -1)
-                     ds = fullAdangalFromjson.OrderBy(o => o.NilaAlavaiEn).ToList();
+                    ds = fullAdangalFromjson.OrderBy(o => o.NilaAlavaiEn).ToList();
                 else
                     ds = fullAdangalFromjson.Where(w => (int)w.LandType == selItem.Id).OrderBy(o => o.NilaAlavaiEn).ToList();
 
@@ -1087,7 +1087,7 @@ namespace AdangalApp
                     dataGridView1.Columns["OwnerName"].DisplayIndex = 3;
 
                     var groupedPromabokku = (from pk in ds
-                                             where string.IsNullOrEmpty(pk.OwnerName) == false 
+                                             where string.IsNullOrEmpty(pk.OwnerName) == false
                                              //&&  pk.OwnerName.Trim() == "தரிசு"
                                              //group pk by pk.OwnerName into ng
                                              select pk.OwnerName.Trim()).Distinct().ToList();
@@ -1126,32 +1126,32 @@ namespace AdangalApp
             }
         }
 
-        private void ddlPattaTypes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //if (ddlPattaTypes.SelectedIndex == 0) return;
-            //waitForm.Show(this);
-            //var selected = ddlListType.SelectedValue.ToInt32();
+        //private void ddlPattaTypes_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    //if (ddlPattaTypes.SelectedIndex == 0) return;
+        //    //waitForm.Show(this);
+        //    //var selected = ddlListType.SelectedValue.ToInt32();
 
-            //if (selected == 1)
-            //    dataGridView1.DataSource = pattaList.Where(w => (int)w.PattaType == ddlPattaTypes.SelectedValue.ToInt32()).ToList();
-            //else if (selected == 2)
-            //    dataGridView1.DataSource = pattaList.Where(w => (int)w.PattaType == ddlPattaTypes.SelectedValue.ToInt32()).ToList()
-            //                                .SelectMany(x => x.landDetails.Select(y => y)).ToList();
+        //    //if (selected == 1)
+        //    //    dataGridView1.DataSource = pattaList.Where(w => (int)w.PattaType == ddlPattaTypes.SelectedValue.ToInt32()).ToList();
+        //    //else if (selected == 2)
+        //    //    dataGridView1.DataSource = pattaList.Where(w => (int)w.PattaType == ddlPattaTypes.SelectedValue.ToInt32()).ToList()
+        //    //                                .SelectMany(x => x.landDetails.Select(y => y)).ToList();
 
-            //waitForm.Close();
+        //    //waitForm.Close();
 
-            if (ddlPattaTypes.SelectedIndex == 0) return;
-            waitForm.Show(this);
-            var selected = ddlPattaTypes.SelectedItem as KeyValue;
+        //    if (ddlPattaTypes.SelectedIndex == 0) return;
+        //    waitForm.Show(this);
+        //    var selected = ddlPattaTypes.SelectedItem as KeyValue;
 
-            //if (selected == 1)
-            dataGridView1.DataSource = pattaList.Where(w => (int)w.PattaType == selected.Id).ToList();
-            //else if (selected == 2)
-            //    dataGridView1.DataSource = pattaList.Where(w => (int)w.PattaType == ddlPattaTypes.SelectedValue.ToInt32()).ToList()
-            //                                .SelectMany(x => x.landDetails.Select(y => y)).ToList();
+        //    //if (selected == 1)
+        //    dataGridView1.DataSource = pattaList.Where(w => (int)w.PattaType == selected.Id).ToList();
+        //    //else if (selected == 2)
+        //    //    dataGridView1.DataSource = pattaList.Where(w => (int)w.PattaType == ddlPattaTypes.SelectedValue.ToInt32()).ToList()
+        //    //                                .SelectMany(x => x.landDetails.Select(y => y)).ToList();
 
-            waitForm.Close();
-        }
+        //    waitForm.Close();
+        //}
         private string GetLeftEmptyPage()
         {
             string leftPage = null;
@@ -1196,7 +1196,7 @@ namespace AdangalApp
                                     .Replace("[varuvvaikiraamam]", $"{loadedFile.VillageCode} - {loadedFile.VillageNameTamil}")
                                     .Replace("[t]", "&emsp;&emsp;");
 
-            updatedHeader =  SetBold(updatedHeader);
+            updatedHeader = SetBold(updatedHeader);
         }
 
         /// <summary>
@@ -1826,13 +1826,13 @@ namespace AdangalApp
 
                     for (int i = 0; i <= pageCount - 1; i++)
                     {
-                        var lpTable = lpTableTemplate;                        
+                        var lpTable = lpTableTemplate;
                         var lpRow = lpRowTemplate;
                         var lpTotal = lpTotalTemplate;
 
-                        var rpTable = rpTableTemplate ;
+                        var rpTable = rpTableTemplate;
                         var rpRow = rpRowTemplate;
-                        var rpTotal = rpTotalTemplate; 
+                        var rpTotal = rpTotalTemplate;
 
                         string lpData = "";
                         string rpData = "";
@@ -2182,17 +2182,17 @@ namespace AdangalApp
             {
                 var errorCount = DataAccess.GetErrorAdangal().Count;
 
-                if (notInPdfToBeAdded.Count != 0)
-                {
-                    status.AppendLine($"ADD:{notInPdfToBeAdded.Count}");
-                    result = false;
-                }
+                //if (notInPdfToBeAdded.Count != 0)
+                //{
+                //    status.AppendLine($"ADD:{notInPdfToBeAdded.Count}");
+                //    result = false;
+                //}
 
-                if (notInOnlineToBeDeleted.Count != 0)
-                {
-                    status.AppendLine($"DELETE:{notInOnlineToBeDeleted.Count}");
-                    result = false;
-                }
+                //if (notInOnlineToBeDeleted.Count != 0)
+                //{
+                //    status.AppendLine($"DELETE:{notInOnlineToBeDeleted.Count}");
+                //    result = false;
+                //}
 
                 if (errorCount != 0)
                 {
@@ -2244,15 +2244,15 @@ namespace AdangalApp
                 var pattaCount = pattaList.Count;
 
                 // Validate Patta types.
-                var pattaCheck = ddlPattaTypes.DataSource as List<KeyValue>;
-                var totalPattaStatus = pattaCheck.Skip(2).Sum(s => s.Value);
+                //var pattaCheck = ddlPattaTypes.DataSource as List<KeyValue>;
+                //var totalPattaStatus = pattaCheck.Skip(2).Sum(s => s.Value);
 
-                if (pattaCount != totalPattaStatus || pattaCheck.Skip(9).Sum(s => s.Value) != 0)
-                {
-                    status.AppendLine($"Patta ISSUE");
-                    lblPattaCheckError.Visible = true;
-                    result = false;
-                }
+                //if (pattaCount != totalPattaStatus || pattaCheck.Skip(9).Sum(s => s.Value) != 0)
+                //{
+                //    status.AppendLine($"Patta ISSUE");
+                //    lblPattaCheckError.Visible = true;
+                //    result = false;
+                //}
 
                 var needChangePorambokku = fullAdangalFromjson.Where(w => w.LandType == LandType.Porambokku || w.LandType == LandType.Porambokku)
                     .Where(w => w.LandStatus == LandStatus.NoChange).Count();
@@ -2729,10 +2729,9 @@ namespace AdangalApp
 
         private void SetTestMode()
         {
-            ddlPattaTypes.Visible =
-                lblPattaCheck.Visible = ddlListType.Visible = // = btnGenerate.Enabled = cmbFulfilled.Visible =
-                btnSoftGen.Enabled = isTestingMode;
-
+            //ddlPattaTypes.Visible =
+            //  lblPattaCheck.Visible = ddlListType.Visible = // = btnGenerate.Enabled = cmbFulfilled.Visible =
+            btnSoftGen.Enabled = isTestingMode;
             grpTheervaiTest.Visible = needTheervaiTest;
             //txtAddNewSurvey.Enabled = btnReady.Enabled = canAddMissedSurvey;
         }
@@ -2750,7 +2749,7 @@ namespace AdangalApp
             else if (selValue == 4) dataGridView1.DataSource = GetVagaiErrorAdangal();
             else if (selValue == 5) dataGridView1.DataSource = GetErrorParappu();
             else if (selValue == 6) dataGridView1.DataSource = EmptyParappu();
-            else if (selValue == 7) dataGridView1.DataSource = EmptyOwner(); 
+            else if (selValue == 7) dataGridView1.DataSource = EmptyOwner();
 
             waitForm.Close();
         }
@@ -2801,9 +2800,9 @@ namespace AdangalApp
             try
             {
                 LogMessage($"STEP-4 - Delete Started");
-                fullAdangalFromjson = DataAccess.SetDeleteFlag(notInOnlineToBeDeleted);
-                dataGridView1.DataSource = fullAdangalFromjson;
-                LogMessage($"set delete flag to {notInOnlineToBeDeleted.Count} land");
+                //fullAdangalFromjson = DataAccess.SetDeleteFlag(notInOnlineToBeDeleted);
+                //dataGridView1.DataSource = fullAdangalFromjson;
+                //LogMessage($"set delete flag to {notInOnlineToBeDeleted.Count} land");
                 LogMessage($"STEP-4 - Delete Completed");
             }
             catch (Exception ex)
@@ -2981,13 +2980,13 @@ namespace AdangalApp
                     var rowData = fe.Split('\t').ToList();
                     var adangal = AdangalConverter.GetAdangalFromCopiedData(rowData, pattaEn, name);
 
-                    if (notInPdfToBeAdded.Contains($"{adangal.NilaAlavaiEn}~{adangal.UtpirivuEn}"))
-                    {
-                        DataAccess.AddNewAdangal(adangal);
-                        DataAccess.SaveMissedAdangal(adangal);
-                        addedCount += 1;
-                        LogMessage($"Added new land {adangal.ToString()}");
-                    }
+                    //if (notInPdfToBeAdded.Contains($"{adangal.NilaAlavaiEn}~{adangal.UtpirivuEn}"))
+                    //{
+                    //    DataAccess.AddNewAdangal(adangal);
+                    //    DataAccess.SaveMissedAdangal(adangal);
+                    //    addedCount += 1;
+                    //    LogMessage($"Added new land {adangal.ToString()}");
+                    //}
                 });
 
                 MessageBox.Show($"added {addedCount} land details");
@@ -3234,10 +3233,10 @@ namespace AdangalApp
             //SetVillage();
         }
 
-        private void ddlListType_DataSourceChanged(object sender, EventArgs e)
-        {
-            ddlListType.Enabled = isTestingMode;
-        }
+        //private void ddlListType_DataSourceChanged(object sender, EventArgs e)
+        //{
+        //    ddlListType.Enabled = isTestingMode;
+        //}
 
         private void OnVillageChange(object cb)
         {
@@ -3252,7 +3251,7 @@ namespace AdangalApp
         private int PgSize = 0;
         private int CurrentPageIndex = 1;
         private int TotalPage = 0;
-        private int startPage = 7;
+        //private int startPage = 7;
 
         private void CalculateTotalPages(int rec)
         {
@@ -3674,8 +3673,17 @@ namespace AdangalApp
             if (cmbPoramGroup.SelectedIndex == 0) return;
 
             dataGridView1.DataSource = DataAccess.GetActiveAdangal()
-                                    .Where(w => string.IsNullOrEmpty(w.OwnerName) == false 
+                                    .Where(w => string.IsNullOrEmpty(w.OwnerName) == false
                                             && w.OwnerName.Trim() == cmbPoramGroup.SelectedItem.ToString()).ToList();
+        }
+
+
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = DataAccess.GetActiveAdangal()
+                                        .Where(w => string.IsNullOrEmpty(w.OwnerName) == false
+                                        && w.OwnerName.Contains(txtSearch.Text.Trim())).ToList();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -3684,11 +3692,11 @@ namespace AdangalApp
             cmbSubdivNo.DroppedDown = true;
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void btnPrevSurvey_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = DataAccess.GetActiveAdangal()
-                                        .Where(w => string.IsNullOrEmpty(w.OwnerName) == false 
-                                        && w.OwnerName.Contains(txtSearch.Text.Trim())).ToList();
+            cmbSurveyNo.SelectedIndex -= 1;
+            cmbSubdivNo.DroppedDown = true;
+
         }
     }
 
