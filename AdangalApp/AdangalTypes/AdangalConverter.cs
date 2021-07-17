@@ -372,18 +372,13 @@ namespace AdangalApp.AdangalTypes
             catch (Exception ex)
             {
                 vao.LogMessage("ERROR:" + ex.ToString());
-                General.Play(FileContentReader.InternetNotWorking);
+                ss.Speak("No ineternet, please check!");
 
                 while (General.CheckForInternetConnection() == false)
                 {
                     Thread.Sleep(4000);
-                    General.Play(FileContentReader.InternetNotWorking);
+                    ss.Speak("No ineternet, please check!");
                 }
-
-                //General.Play(FileContentReader.NoInternet);
-                //driver.Close();
-
-
             }
 
         }
@@ -434,18 +429,13 @@ namespace AdangalApp.AdangalTypes
             catch (Exception ex)
             {
                 vao.LogMessage("ERROR:" + ex.ToString());
-                General.Play(FileContentReader.InternetNotWorking);
+                ss.Speak("No ineternet, please check!");
 
                 while (General.CheckForInternetConnection() == false)
                 {
                     Thread.Sleep(4000);
-                    General.Play(FileContentReader.InternetNotWorking);
+                    ss.Speak("No ineternet, please check!");
                 }
-
-                //General.Play(FileContentReader.NoInternet);
-                //driver.Close();
-
-
             }
 
         }
