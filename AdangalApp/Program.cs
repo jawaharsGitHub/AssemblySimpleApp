@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Tesseract;
+using System.Speech.Synthesis;
 
 namespace AdangalApp
 {
@@ -22,6 +23,9 @@ namespace AdangalApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            
+
 
             //AdangalConverter.GetBloContacts();
             //AdangalConverter.GetForm20s();

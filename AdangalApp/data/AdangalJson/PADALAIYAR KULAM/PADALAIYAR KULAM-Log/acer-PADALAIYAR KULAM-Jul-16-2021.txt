@@ -1,0 +1,311 @@
+2021-07-16 22:42:31,113 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-16 22:42:49,522 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-16 22:42:49,522 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-16 22:42:49,774 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-16 22:42:49,774 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-16 22:43:14,205 [1] DEBUG - STEP - 1 - Village: REGUNATHAPURAM
+2021-07-16 22:43:28,570 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-16 22:43:28,805 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-16 22:43:51,289 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-16 22:43:51,346 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-16 22:45:23,571 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-16 22:45:56,253 [1] DEBUG - STARTED: 1-1 [0/2987]
+2021-07-16 22:45:56,253 [1] DEBUG - ------------------------------------
+2021-07-16 22:45:56,357 [1] DEBUG - added govt land - 1-1
+2021-07-16 22:45:56,357 [1] DEBUG - DONE: 1-1 [0/2987]
+2021-07-16 22:46:10,815 [1] DEBUG - STARTED: 1-2 [1/2987]
+2021-07-16 22:46:10,815 [1] DEBUG - ------------------------------------
+2021-07-16 22:46:10,832 [1] DEBUG - Added (1) out of (1) for 1-2
+2021-07-16 22:46:10,840 [1] DEBUG - DONE: 1-2 [1/2987]
+2021-07-16 22:46:27,833 [1] DEBUG - STARTED: 1-3A [2/2987]
+2021-07-16 22:46:27,833 [1] DEBUG - ------------------------------------
+2021-07-16 22:46:27,833 [1] DEBUG - Added (1) out of (1) for 1-3A
+2021-07-16 22:46:27,833 [1] DEBUG - DONE: 1-3A [2/2987]
+2021-07-16 22:46:40,271 [1] DEBUG - STARTED: 1-3B [3/2987]
+2021-07-16 22:46:40,271 [1] DEBUG - ------------------------------------
+2021-07-16 22:46:40,271 [1] DEBUG - Added (1) out of (1) for 1-3B
+2021-07-16 22:46:40,271 [1] DEBUG - DONE: 1-3B [3/2987]
+2021-07-16 22:47:43,273 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: A exception with a null response was thrown sending an HTTP request to the remote WebDriver server for URL http://localhost:49346/session/1ebba9bc1c4bafdb35cb7846eb6349c8/window/handles. The status of the exception was ConnectFailure, and the message was: Unable to connect to the remote server ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:49346
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   --- End of inner exception stack trace ---
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection)
+2021-07-16 22:47:53,710 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-16 22:47:53,759 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-16 22:47:53,956 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-16 22:47:53,970 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-16 22:48:29,908 [1] DEBUG - STARTED: 1-3C [0/2983]
+2021-07-16 22:48:29,908 [1] DEBUG - ------------------------------------
+2021-07-16 22:48:29,924 [1] DEBUG - Added (1) out of (1) for 1-3C
+2021-07-16 22:48:29,924 [1] DEBUG - DONE: 1-3C [0/2983]
+2021-07-16 22:48:44,408 [1] DEBUG - STARTED: 1-3D [1/2983]
+2021-07-16 22:48:44,408 [1] DEBUG - ------------------------------------
+2021-07-16 22:48:44,416 [1] DEBUG - Added (1) out of (1) for 1-3D
+2021-07-16 22:48:44,424 [1] DEBUG - DONE: 1-3D [1/2983]
+2021-07-16 22:48:56,156 [1] DEBUG - STARTED: 1-3E [2/2983]
+2021-07-16 22:48:56,156 [1] DEBUG - ------------------------------------
+2021-07-16 22:48:56,177 [1] DEBUG - Added (1) out of (1) for 1-3E
+2021-07-16 22:48:56,177 [1] DEBUG - DONE: 1-3E [2/2983]
+2021-07-16 22:49:09,807 [1] DEBUG - STARTED: 1-3F [3/2983]
+2021-07-16 22:49:09,807 [1] DEBUG - ------------------------------------
+2021-07-16 22:49:09,807 [1] DEBUG - Added (1) out of (1) for 1-3F
+2021-07-16 22:49:09,823 [1] DEBUG - DONE: 1-3F [3/2983]
+2021-07-16 22:49:24,383 [1] DEBUG - STARTED: 1-3G [4/2983]
+2021-07-16 22:49:24,383 [1] DEBUG - ------------------------------------
+2021-07-16 22:49:24,399 [1] DEBUG - added govt land - 1-3G
+2021-07-16 22:49:24,399 [1] DEBUG - DONE: 1-3G [4/2983]
+2021-07-16 22:49:40,329 [1] DEBUG - STARTED: 2-1 [5/2983]
+2021-07-16 22:49:40,329 [1] DEBUG - ------------------------------------
+2021-07-16 22:49:40,346 [1] DEBUG - Added (2) out of (2) for 2-1
+2021-07-16 22:49:40,354 [1] DEBUG - DONE: 2-1 [5/2983]
+2021-07-16 22:49:57,455 [1] DEBUG - STARTED: 2-2 [6/2983]
+2021-07-16 22:49:57,455 [1] DEBUG - ------------------------------------
+2021-07-16 22:49:57,480 [1] DEBUG - Added (2) out of (2) for 2-2
+2021-07-16 22:49:57,480 [1] DEBUG - DONE: 2-2 [6/2983]
+2021-07-16 22:50:05,560 [1] DEBUG - STARTED: 2-3 [7/2983]
+2021-07-16 22:50:05,560 [1] DEBUG - ------------------------------------
+2021-07-16 22:50:05,600 [1] DEBUG - Added (3) out of (3) for 2-3
+2021-07-16 22:50:05,600 [1] DEBUG - DONE: 2-3 [7/2983]
+2021-07-16 22:50:16,865 [1] DEBUG - STARTED: 3-1 [8/2983]
+2021-07-16 22:50:16,865 [1] DEBUG - ------------------------------------
+2021-07-16 22:50:17,000 [1] DEBUG - Added (5) out of (5) for 3-1
+2021-07-16 22:50:17,000 [1] DEBUG - DONE: 3-1 [8/2983]
+2021-07-16 22:50:26,324 [1] DEBUG - STARTED: 3-2 [9/2983]
+2021-07-16 22:50:26,324 [1] DEBUG - ------------------------------------
+2021-07-16 22:50:26,348 [1] DEBUG - Added (2) out of (2) for 3-2
+2021-07-16 22:50:26,348 [1] DEBUG - DONE: 3-2 [9/2983]
+2021-07-16 22:50:39,311 [1] DEBUG - STARTED: 3-3 [10/2983]
+2021-07-16 22:50:39,311 [1] DEBUG - ------------------------------------
+2021-07-16 22:50:39,407 [1] DEBUG - Added (6) out of (6) for 3-3
+2021-07-16 22:50:39,407 [1] DEBUG - DONE: 3-3 [10/2983]
+2021-07-16 22:50:50,269 [1] DEBUG - STARTED: 3-5 [12/2983]
+2021-07-16 22:50:50,269 [1] DEBUG - ------------------------------------
+2021-07-16 22:50:50,269 [1] DEBUG - Wrong Captcha: 2ESMPV: 3-5
+2021-07-16 22:51:03,941 [1] DEBUG - STARTED: 3-5 [12/2983]
+2021-07-16 22:51:03,941 [1] DEBUG - ------------------------------------
+2021-07-16 22:51:03,989 [1] DEBUG - Added (3) out of (3) for 3-5
+2021-07-16 22:51:03,989 [1] DEBUG - DONE: 3-5 [12/2983]
+2021-07-16 22:51:14,150 [1] DEBUG - STARTED: 4-1 [14/2983]
+2021-07-16 22:51:14,150 [1] DEBUG - ------------------------------------
+2021-07-16 22:51:14,150 [1] DEBUG - Wrong Captcha: FSEPEE: 4-1
+2021-07-16 22:51:32,579 [1] DEBUG - STARTED: 4-1 [14/2983]
+2021-07-16 22:51:32,579 [1] DEBUG - ------------------------------------
+2021-07-16 22:51:32,587 [1] DEBUG - Added (1) out of (1) for 4-1
+2021-07-16 22:51:32,587 [1] DEBUG - DONE: 4-1 [14/2983]
+2021-07-16 22:51:52,662 [1] DEBUG - STARTED: 4-2 [15/2983]
+2021-07-16 22:51:52,662 [1] DEBUG - ------------------------------------
+2021-07-16 22:51:52,670 [1] DEBUG - Added (1) out of (1) for 4-2
+2021-07-16 22:51:52,670 [1] DEBUG - DONE: 4-2 [15/2983]
+2021-07-16 22:52:03,158 [1] DEBUG - STARTED: 4-3 [16/2983]
+2021-07-16 22:52:03,158 [1] DEBUG - ------------------------------------
+2021-07-16 22:52:03,158 [1] DEBUG - Added (1) out of (1) for 4-3
+2021-07-16 22:52:03,166 [1] DEBUG - DONE: 4-3 [16/2983]
+2021-07-16 22:52:16,524 [1] DEBUG - STARTED: 6-1 [20/2983]
+2021-07-16 22:52:16,524 [1] DEBUG - ------------------------------------
+2021-07-16 22:52:16,524 [1] DEBUG - added bhoodan land - 6-1
+2021-07-16 22:52:16,532 [1] DEBUG - DONE: 6-1 [20/2983]
+2021-07-16 22:52:46,099 [1] DEBUG - STARTED: 6-2 [21/2983]
+2021-07-16 22:52:46,099 [1] DEBUG - ------------------------------------
+2021-07-16 22:52:46,107 [1] DEBUG - Added (1) out of (1) for 6-2
+2021-07-16 22:52:46,107 [1] DEBUG - DONE: 6-2 [21/2983]
+2021-07-16 22:53:24,538 [1] DEBUG - STARTED: 7-1 [22/2983]
+2021-07-16 22:53:24,538 [1] DEBUG - ------------------------------------
+2021-07-16 22:53:24,538 [1] DEBUG - Wrong Captcha: UB5FPY: 7-1
+2021-07-16 22:53:58,814 [1] DEBUG - STARTED: 7-1 [22/2983]
+2021-07-16 22:53:58,814 [1] DEBUG - ------------------------------------
+2021-07-16 22:53:58,822 [1] DEBUG - Added (1) out of (1) for 7-1
+2021-07-16 22:53:58,822 [1] DEBUG - DONE: 7-1 [22/2983]
+2021-07-16 22:54:23,633 [1] DEBUG - STARTED: 7-2A [23/2983]
+2021-07-16 22:54:23,633 [1] DEBUG - ------------------------------------
+2021-07-16 22:54:23,633 [1] DEBUG - Added (1) out of (1) for 7-2A
+2021-07-16 22:54:23,633 [1] DEBUG - DONE: 7-2A [23/2983]
+2021-07-16 22:54:34,848 [1] DEBUG - STARTED: 7-2B [24/2983]
+2021-07-16 22:54:34,848 [1] DEBUG - ------------------------------------
+2021-07-16 22:54:34,856 [1] DEBUG - Added (1) out of (1) for 7-2B
+2021-07-16 22:54:34,856 [1] DEBUG - DONE: 7-2B [24/2983]
+2021-07-16 22:55:01,299 [1] DEBUG - STARTED: 8-1 [25/2983]
+2021-07-16 22:55:01,299 [1] DEBUG - ------------------------------------
+2021-07-16 22:55:01,299 [1] DEBUG - Added (1) out of (1) for 8-1
+2021-07-16 22:55:01,299 [1] DEBUG - DONE: 8-1 [25/2983]
+2021-07-16 22:55:08,323 [1] DEBUG - STARTED: 8-2 [26/2983]
+2021-07-16 22:55:08,323 [1] DEBUG - ------------------------------------
+2021-07-16 22:55:08,331 [1] DEBUG - Added (1) out of (1) for 8-2
+2021-07-16 22:55:08,331 [1] DEBUG - DONE: 8-2 [26/2983]
+2021-07-16 22:55:18,592 [1] DEBUG - STARTED: 8-3 [27/2983]
+2021-07-16 22:55:18,592 [1] DEBUG - ------------------------------------
+2021-07-16 22:55:18,592 [1] DEBUG - Added (1) out of (1) for 8-3
+2021-07-16 22:55:18,600 [1] DEBUG - DONE: 8-3 [27/2983]
+2021-07-16 22:55:26,143 [1] DEBUG - STARTED: 9-1 [28/2983]
+2021-07-16 22:55:26,143 [1] DEBUG - ------------------------------------
+2021-07-16 22:55:26,143 [1] DEBUG - Wrong Captcha: 422XuU8: 9-1
+2021-07-16 22:55:36,892 [1] DEBUG - STARTED: 9-1 [28/2983]
+2021-07-16 22:55:36,892 [1] DEBUG - ------------------------------------
+2021-07-16 22:55:36,892 [1] DEBUG - Added (1) out of (1) for 9-1
+2021-07-16 22:55:36,892 [1] DEBUG - DONE: 9-1 [28/2983]
+2021-07-16 22:55:44,380 [1] DEBUG - STARTED: 9-2A1 [29/2983]
+2021-07-16 22:55:44,380 [1] DEBUG - ------------------------------------
+2021-07-16 22:55:44,380 [1] DEBUG - Wrong Captcha: SPZX6V: 9-2A1
+2021-07-16 22:55:54,879 [1] DEBUG - STARTED: 9-2A1 [29/2983]
+2021-07-16 22:55:54,879 [1] DEBUG - ------------------------------------
+2021-07-16 22:55:54,879 [1] DEBUG - Added (1) out of (1) for 9-2A1
+2021-07-16 22:55:54,879 [1] DEBUG - DONE: 9-2A1 [29/2983]
+2021-07-16 22:56:06,192 [1] DEBUG - STARTED: 9-2A2 [30/2983]
+2021-07-16 22:56:06,192 [1] DEBUG - ------------------------------------
+2021-07-16 22:56:06,192 [1] DEBUG - Added (1) out of (1) for 9-2A2
+2021-07-16 22:56:06,200 [1] DEBUG - DONE: 9-2A2 [30/2983]
+2021-07-16 22:56:17,486 [1] DEBUG - STARTED: 9-2A3 [31/2983]
+2021-07-16 22:56:17,486 [1] DEBUG - ------------------------------------
+2021-07-16 22:56:17,486 [1] DEBUG - Added (1) out of (1) for 9-2A3
+2021-07-16 22:56:17,486 [1] DEBUG - DONE: 9-2A3 [31/2983]
+2021-07-16 22:56:24,710 [1] DEBUG - STARTED: 9-2A4 [32/2983]
+2021-07-16 22:56:24,710 [1] DEBUG - ------------------------------------
+2021-07-16 22:56:24,710 [1] DEBUG - Wrong Captcha: S5YUWQE: 9-2A4
+2021-07-16 22:56:38,809 [1] DEBUG - STARTED: 9-2A4 [32/2983]
+2021-07-16 22:56:38,809 [1] DEBUG - ------------------------------------
+2021-07-16 22:56:38,809 [1] DEBUG - Added (1) out of (1) for 9-2A4
+2021-07-16 22:56:38,817 [1] DEBUG - DONE: 9-2A4 [32/2983]
+2021-07-16 22:57:43,510 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: A exception with a null response was thrown sending an HTTP request to the remote WebDriver server for URL http://localhost:63571/session/7acb31e0a02a93bd8667f4366dac21d0/actions. The status of the exception was KeepAliveFailure, and the message was: The underlying connection was closed: A connection that was expected to be kept alive was closed by the server. ---> System.Net.WebException: The underlying connection was closed: A connection that was expected to be kept alive was closed by the server. ---> System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.PooledStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.Connection.SyncRead(HttpWebRequest request, Boolean userRetrievedStream, Boolean probeRead)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   --- End of inner exception stack trace ---
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.PerformActions(IList`1 actionSequenceList)
+   at OpenQA.Selenium.Interactions.Actions.Perform()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection)
+2021-07-16 22:57:54,765 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-16 22:57:54,765 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-16 22:57:55,277 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-16 22:57:55,335 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-16 23:00:31,320 [1] DEBUG - STARTED: 9-2B [0/2939]
+2021-07-16 23:00:31,320 [1] DEBUG - ------------------------------------
+2021-07-16 23:00:31,336 [1] DEBUG - Added (1) out of (1) for 9-2B
+2021-07-16 23:00:31,336 [1] DEBUG - DONE: 9-2B [0/2939]
+2021-07-16 23:00:52,369 [1] DEBUG - STARTED: 9-2C [1/2939]
+2021-07-16 23:00:52,369 [1] DEBUG - ------------------------------------
+2021-07-16 23:00:52,369 [1] DEBUG - Wrong Captcha: 4ycwus: 9-2C
+2021-07-16 23:01:10,026 [1] DEBUG - STARTED: 9-2C [1/2939]
+2021-07-16 23:01:10,026 [1] DEBUG - ------------------------------------
+2021-07-16 23:01:10,026 [1] DEBUG - Added (1) out of (1) for 9-2C
+2021-07-16 23:01:10,026 [1] DEBUG - DONE: 9-2C [1/2939]
+2021-07-16 23:01:20,771 [1] DEBUG - STARTED: 9-2D [2/2939]
+2021-07-16 23:01:20,771 [1] DEBUG - ------------------------------------
+2021-07-16 23:01:20,780 [1] DEBUG - Added (1) out of (1) for 9-2D
+2021-07-16 23:01:20,780 [1] DEBUG - DONE: 9-2D [2/2939]
+2021-07-16 23:01:30,673 [1] DEBUG - STARTED: 10-1 [3/2939]
+2021-07-16 23:01:30,673 [1] DEBUG - ------------------------------------
+2021-07-16 23:01:30,681 [1] DEBUG - added govt land - 10-1
+2021-07-16 23:01:30,681 [1] DEBUG - DONE: 10-1 [3/2939]
+2021-07-16 23:01:40,052 [1] DEBUG - STARTED: 10-2 [4/2939]
+2021-07-16 23:01:40,052 [1] DEBUG - ------------------------------------
+2021-07-16 23:01:40,060 [1] DEBUG - Added (1) out of (1) for 10-2
+2021-07-16 23:01:40,060 [1] DEBUG - DONE: 10-2 [4/2939]
+2021-07-16 23:01:50,115 [1] DEBUG - STARTED: 10-3 [5/2939]
+2021-07-16 23:01:50,115 [1] DEBUG - ------------------------------------
+2021-07-16 23:01:50,123 [1] DEBUG - Added (1) out of (1) for 10-3
+2021-07-16 23:01:50,131 [1] DEBUG - DONE: 10-3 [5/2939]
+2021-07-16 23:02:01,967 [1] DEBUG - STARTED: 10-4 [6/2939]
+2021-07-16 23:02:01,967 [1] DEBUG - ------------------------------------
+2021-07-16 23:02:01,975 [1] DEBUG - Added (1) out of (1) for 10-4
+2021-07-16 23:02:01,975 [1] DEBUG - DONE: 10-4 [6/2939]
+2021-07-16 23:02:13,276 [1] DEBUG - STARTED: 11-1A [7/2939]
+2021-07-16 23:02:13,276 [1] DEBUG - ------------------------------------
+2021-07-16 23:02:13,276 [1] DEBUG - added govt land - 11-1A
+2021-07-16 23:02:13,284 [1] DEBUG - DONE: 11-1A [7/2939]
+2021-07-16 23:02:33,537 [1] DEBUG - STARTED: 11-1B [8/2939]
+2021-07-16 23:02:33,537 [1] DEBUG - ------------------------------------
+2021-07-16 23:02:33,537 [1] DEBUG - Wrong Captcha: USRPUP: 11-1B
+2021-07-16 23:02:49,174 [1] DEBUG - STARTED: 11-1B [8/2939]
+2021-07-16 23:02:49,174 [1] DEBUG - ------------------------------------
+2021-07-16 23:02:49,174 [1] DEBUG - Added (1) out of (1) for 11-1B
+2021-07-16 23:02:49,174 [1] DEBUG - DONE: 11-1B [8/2939]
+2021-07-16 23:03:01,481 [1] DEBUG - STARTED: 11-1C1 [9/2939]
+2021-07-16 23:03:01,481 [1] DEBUG - ------------------------------------
+2021-07-16 23:03:01,489 [1] DEBUG - Added (1) out of (1) for 11-1C1
+2021-07-16 23:03:01,489 [1] DEBUG - DONE: 11-1C1 [9/2939]
+2021-07-16 23:03:11,773 [1] DEBUG - STARTED: 11-1C2 [10/2939]
+2021-07-16 23:03:11,773 [1] DEBUG - ------------------------------------
+2021-07-16 23:03:11,773 [1] DEBUG - Added (1) out of (1) for 11-1C2
+2021-07-16 23:03:11,773 [1] DEBUG - DONE: 11-1C2 [10/2939]
+2021-07-16 23:03:24,832 [1] DEBUG - STARTED: 11-2A [11/2939]
+2021-07-16 23:03:24,832 [1] DEBUG - ------------------------------------
+2021-07-16 23:03:24,873 [1] DEBUG - Added (3) out of (3) for 11-2A
+2021-07-16 23:03:24,873 [1] DEBUG - DONE: 11-2A [11/2939]
+2021-07-16 23:03:37,103 [1] DEBUG - STARTED: 11-2B [12/2939]
+2021-07-16 23:03:37,103 [1] DEBUG - ------------------------------------
+2021-07-16 23:03:37,103 [1] DEBUG - Added (1) out of (1) for 11-2B
+2021-07-16 23:03:37,103 [1] DEBUG - DONE: 11-2B [12/2939]
+2021-07-16 23:03:54,028 [1] DEBUG - STARTED: 12-1A1 [13/2939]
+2021-07-16 23:03:54,028 [1] DEBUG - ------------------------------------
+2021-07-16 23:03:54,035 [1] DEBUG - added govt land - 12-1A1
+2021-07-16 23:03:54,035 [1] DEBUG - DONE: 12-1A1 [13/2939]
+2021-07-16 23:04:18,136 [1] DEBUG - STARTED: 12-1A2 [14/2939]
+2021-07-16 23:04:18,136 [1] DEBUG - ------------------------------------
+2021-07-16 23:04:18,144 [1] DEBUG - Added (1) out of (1) for 12-1A2
+2021-07-16 23:04:18,144 [1] DEBUG - DONE: 12-1A2 [14/2939]
+2021-07-16 23:04:50,256 [1] DEBUG - STARTED: 12-1B [15/2939]
+2021-07-16 23:04:50,256 [1] DEBUG - ------------------------------------
+2021-07-16 23:04:50,264 [1] DEBUG - Added (1) out of (1) for 12-1B
+2021-07-16 23:04:50,264 [1] DEBUG - DONE: 12-1B [15/2939]
+2021-07-16 23:05:13,196 [1] DEBUG - STARTED: 12-1C2 [16/2939]
+2021-07-16 23:05:13,196 [1] DEBUG - ------------------------------------
+2021-07-16 23:05:13,204 [1] DEBUG - Added (1) out of (1) for 12-1C2
+2021-07-16 23:05:13,204 [1] DEBUG - DONE: 12-1C2 [16/2939]
+2021-07-16 23:05:45,111 [1] DEBUG - STARTED: 12-1D2 [17/2939]
+2021-07-16 23:05:45,111 [1] DEBUG - ------------------------------------
+2021-07-16 23:05:45,119 [1] DEBUG - Added (1) out of (1) for 12-1D2
+2021-07-16 23:05:45,119 [1] DEBUG - DONE: 12-1D2 [17/2939]
+2021-07-16 23:06:05,970 [1] DEBUG - STARTED: 12-2A [18/2939]
+2021-07-16 23:06:05,970 [1] DEBUG - ------------------------------------
+2021-07-16 23:06:05,978 [1] DEBUG - added dash - 12-2A
+2021-07-16 23:06:05,978 [1] DEBUG - DONE: 12-2A [18/2939]
+2021-07-16 23:11:35,797 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: A exception with a null response was thrown sending an HTTP request to the remote WebDriver server for URL http://localhost:59235/session/7a0dfde003b6cac25dc71dc45030c875/element/1aa4388f-3a18-4f4c-907e-8287b42bb991/name. The status of the exception was ConnectFailure, and the message was: Unable to connect to the remote server ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:59235
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   --- End of inner exception stack trace ---
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebElement.Execute(String commandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebElement.get_TagName()
+   at OpenQA.Selenium.Support.UI.SelectElement..ctor(IWebElement element)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection)
+2021-07-16 23:11:46,734 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-16 23:11:46,749 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-16 23:11:47,236 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-16 23:11:47,279 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-16 23:14:06,100 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: A exception with a null response was thrown sending an HTTP request to the remote WebDriver server for URL http://localhost:58255/session/3521f6850dfbd597f70b7e26664bf7f9/element/47bdf459-f82d-4f59-9a7b-6defb0f8a218/text. The status of the exception was ConnectFailure, and the message was: Unable to connect to the remote server ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:58255
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   --- End of inner exception stack trace ---
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebElement.Execute(String commandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebElement.get_Text()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection)

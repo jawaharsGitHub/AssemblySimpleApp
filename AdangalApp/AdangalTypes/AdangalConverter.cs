@@ -13,6 +13,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Media;
+using System.Speech.Synthesis;
 using System.Threading;
 using System.Windows.Forms;
 using Tesseract;
@@ -24,6 +25,7 @@ namespace AdangalApp.AdangalTypes
     {
         //static LogHelper logHelper;
         static List<string> relationTypesCorrect;
+        static SpeechSynthesizer ss;
         //public static string villagPath; // = @"F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\ACHUNTHANVAYAL\ACHUNTHANVAYAL-full.json";
         static AdangalConverter()
         {
@@ -37,16 +39,34 @@ namespace AdangalApp.AdangalTypes
                         "தாய்"
                     };
 
+            ss = new SpeechSynthesizer();
 
+            ss.Volume = 100;
+            ss.Rate = -1;
+            ss.Speak("Started Initialse Adangal Converter!");
         }
 
+
+        private static void SendEmailUpdate(int totalListCount, int processingIndex, int survey, string subdiv)
+        {
+            var perc = totalListCount.PercentageBtwIntNo(processingIndex);
+            var sub = $"{perc}% - {vao.loadedFile.VillageName}- DONE:{processingIndex} of {totalListCount}";
+            string bodyDtr = $"LastItem Procesed: {survey}-{subdiv}";
+            vao.LogMessage($"{sub}-{bodyDtr}");
+            AppCommunication.SendAdangalUpdate(sub, bodyDtr);
+            ss.Speak("Email Send please check!");
+        }
 
         static BackgroundWorker bw = new BackgroundWorker();
         //static BackgroundWorker bwFull = new BackgroundWorker();
         static string testdataPath = "";
+        static int lastIndexProcessed = 0;
+        static List<KeyValue> localList;
 
-        public static void ProcessAdangal(List<KeyValue> list, bool isCorrection = false)
+
+        public static void ProcessAdangal(List<KeyValue> list, int alreadyProcessed = 0, bool isCorrection = false)
         {
+            localList = list;
 
             try
             {
@@ -58,9 +78,12 @@ namespace AdangalApp.AdangalTypes
                 testdataPath = ConfigurationManager.AppSettings["testdataPath"];
                 int emailInterval = ConfigurationManager.AppSettings["emailInterval"].ToInt32();
                 System.Timers.Timer aTimer = new System.Timers.Timer(emailInterval * 60 * 1000);
+
+
                 aTimer.AutoReset = true;
                 aTimer.Enabled = true;
                 aTimer.Start();
+                DateTime lastEmailTime = DateTime.Now; // = DateTime.Now.ToString("dddd, dd MMMM yyyy");
 
                 var di = (from d in DriveInfo.GetDrives().ToList()
                           where d.Name.ToLower().Contains("c") == false
@@ -74,49 +97,21 @@ namespace AdangalApp.AdangalTypes
                 int currentSurvey = 0;
                 string currentSubDiv = "";
 
-                //bw.DoWork += (s, e) =>
-                //{
-                //    var perc = list.Count.PercentageBtwIntNo(i);
-                //    var sub = $"{perc}% - {vao.loadedFile.VillageName}- DONE:{i} of {list.Count}";
-                //    //var adn = DataAccess.GetActiveAdangal();
-                //    //var issueRec = adn.Where(w => w.LandType != LandType.Porambokku && w.LandType != LandType.Dash && w.PattaEn == 0).Count();
-                //    string bodyDtr = $"LastItem Procesed: {currentSurvey}-{currentSubDiv}";
-                //    AppCommunication.SendAdangalUpdate(sub, bodyDtr);
-                //};
+                var startTime = DateTime.Now;
+                var subFirst = $"Started for {vao.loadedFile.VillageName}";
+                AppCommunication.SendAdangalUpdate(subFirst, subFirst);
 
-                //var startTime = DateTime.Now;
-                //var subFirst = $"Started for {vao.loadedFile.VillageName}";
-                //AppCommunication.SendAdangalUpdate(subFirst, subFirst);
                 int processedCount = 0;
+                bool isSubDivFound = true;
 
 
-
-                for (int i = 0; i <= list.Count - 1; i++)
+                for (int i = lastIndexProcessed + 1; i <= list.Count - 1; i++)
                 {
                     try
                     {
                         currentSurvey = list[i].Value;
                         currentSubDiv = list[i].Caption;
-
-                        //if (isCorrection == false && DateTime.Now >= startTime.AddMinutes(1))
-                        //{
-                        //    var perc = list.Count.PercentageBtwIntNo(i);
-                        //    var sub = $"{perc}% - {vao.loadedFile.VillageName}- DONE:{i} of {list.Count}";
-                        //    //var adn = DataAccess.GetActiveAdangal();
-                        //    //var issueRec = adn.Where(w => w.LandType != LandType.Porambokku && w.LandType != LandType.Dash && w.PattaEn == 0).Count();
-                        //    string bodyDtr = $"LastItem Procesed: {currentSurvey}-{currentSubDiv}";
-                        //    AppCommunication.SendAdangalUpdate(sub, bodyDtr);
-                        //    startTime = DateTime.Now;
-
-                        //    //aTimer.Elapsed += (a, o) =>
-                        //    //{
-                        //    //    bw.RunWorkerAsync();
-                        //    //};
-                        //}
-
-
-
-                        //LogEntries logEntries = driver.Manage().Logs.
+                        lastIndexProcessed = i;
 
                         if (isCorrection == false)
                         {
@@ -128,7 +123,16 @@ namespace AdangalApp.AdangalTypes
                         //select district
                         var district = driver.FindElement(By.Name("districtCode"));
                         var selectElement = new SelectElement(district);
-                        selectElement.SelectByValue(districCode);
+                        try
+                        {
+                            selectElement.SelectByValue(districCode);
+                        }
+                        catch (Exception)
+                        {
+                            driver.Navigate().GoToUrl("https://eservices.tn.gov.in/eservicesnew/land/chitta.html?lan=en");
+                            selectElement.SelectByValue(districCode);
+                        }
+                        
 
                         //choose rural
                         RadioButtons categories = new RadioButtons(driver, driver.FindElements(By.Name("areaType")));
@@ -177,15 +181,36 @@ namespace AdangalApp.AdangalTypes
                             subDiv = driver.FindElement(By.Name("subdivNo"));
                             subDivElement = new SelectElement(subDiv);
                             iterationCount += 1;
-                            //Thread.Sleep(4000);
-                            //General.Play(FileContentReader.InternetNotWorking);
+
+                            if (iterationCount == 100 || iterationCount == 200 || iterationCount == 300)
+                                ss.Speak("Website not working!");
+
                         }
-                        subDivElement.SelectByValue(currentSubDiv);
+
+                        try
+                        {
+                            subDivElement.SelectByValue(currentSubDiv);
+                            isSubDivFound = true;
+
+                        }
+                        catch (NoSuchElementException nseEx)
+                        {
+                            subDivElement.SelectByIndex(0);
+                            vao.LogMessage($"ERROR:: {nseEx.ToString()} -  NOT FOUND FOR : {currentSurvey}-{currentSubDiv}");
+                            DataAccess.SaveSurveyNotFound(new KeyValue() { Value = currentSurvey, Caption = currentSubDiv });
+                            isSubDivFound = false;
+                        }
 
                         //button click
                         driver.FindElement(By.ClassName("button")).Click();
-
                         driver = driver.SwitchTo().Window(driver.WindowHandles[1]);
+
+                        if (isSubDivFound == false)
+                        {
+                            driver.Close();
+                            continue;
+
+                        }
                         Actions action = new Actions(driver);
                         action.KeyDown(SnKeys.Control).SendKeys("a").KeyUp(SnKeys.Control).Build().Perform();
                         action.KeyDown(SnKeys.Control).SendKeys("c").KeyUp(SnKeys.Control).Build().Perform();
@@ -237,52 +262,36 @@ namespace AdangalApp.AdangalTypes
 
                         vao.LogMessage($"DONE: {currentSurvey}-{currentSubDiv} [{i}/{list.Count}]");
                         processedCount += 1;
+
+                        aTimer.Elapsed += (a, o) =>
+                        {
+                            if (lastEmailTime == o.SignalTime)
+                            {
+                                //ss.Speak("Try email again, so ignore!");
+                                return;
+                            }
+                            lastEmailTime = o.SignalTime;
+                            SendEmailUpdate(list.Count + alreadyProcessed, i + alreadyProcessed, currentSurvey, currentSubDiv);
+                            aTimer.Stop();
+                        };
+                        aTimer.Start();
                         driver.Close();
                     }
-                    //catch (WebDriverException wdex)
-                    //{
-
-                    //    //MessageBox.Show(ex.ToString());
-                    //    vao.LogMessage("ERROR:" + wdex.ToString());
-                    //    while (General.CheckForInternetConnection() == false)
-                    //    {
-                    //        Thread.Sleep(4000);
-                    //        General.Play(FileContentReader.NoInternet);
-                    //    }
-
-                    //    continue;
-
-
-                    //}
                     catch (Exception ex)
                     {
                         vao.LogMessage("ERROR:" + ex.ToString());
-                        General.Play(FileContentReader.InternetNotWorking);
+                        ss.Speak($"Other exception: {ex.Message}");
 
                         while (General.CheckForInternetConnection() == false)
                         {
                             Thread.Sleep(4000);
-                            General.Play(FileContentReader.InternetNotWorking);
+                            ss.Speak("Internet not working!");
                         }
-
-                        //General.Play(FileContentReader.NoInternet);
-                        //driver.Close();
-
-
                     }
                 }
 
-                AppCommunication.SendAdangalUpdate($"{vao.loadedFile.VillageName} Completed-{processedCount} of {list.Count}", "");
-
-                //var processed = DataAccess.GetActiveAdangalNew();
-                //bw.DoWork += (s, e) =>
-                //{
-                //    AppCommunication.SendAdangalUpdate($"{vao.loadedFile.VillageName} Completed-{processedCount} of {list.Count}", "");
-                //};
-                //bw.RunWorkerAsync();
-
                 MessageBox.Show($"Completed: {processedCount} out of {list.Count}", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //driver.Close();
+                AppCommunication.SendAdangalUpdate($"{vao.loadedFile.VillageName} Completed-{processedCount} of {list.Count()}", "");
 
             }
             catch (Exception ex)
@@ -291,14 +300,12 @@ namespace AdangalApp.AdangalTypes
                 while (General.CheckForInternetConnection() == false)
                 {
                     Thread.Sleep(4000);
-                    General.Play(FileContentReader.InternetNotWorking);
+                    ss.Speak("No ineternet, please check!");
                 }
 
-                while (true)
-                {
-                    Thread.Sleep(4000);
-                    General.Play(FileContentReader.InternetNotWorking);
-                }
+                ss.Speak($"{ex.Message}, so trying again!");
+                ProcessAdangal(localList);
+
             }
         }
 
@@ -414,16 +421,16 @@ namespace AdangalApp.AdangalTypes
                     //action.KeyDown(SnKeys.Tab).KeyUp(SnKeys.Tab).Build().Perform();
                     action.KeyDown(SnKeys.Control).SendKeys("a").KeyUp(SnKeys.Control).Build().Perform();
                     action.KeyDown(SnKeys.Control).SendKeys("c").KeyUp(SnKeys.Control).Build().Perform();
-                    
+
                     var copiedText = Clipboard.GetText();
                     driver.Close();
-                    
+
                 }
 
                 driver.Quit();
-                
+
             }
-      
+
             catch (Exception ex)
             {
                 vao.LogMessage("ERROR:" + ex.ToString());

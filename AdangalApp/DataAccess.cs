@@ -20,6 +20,7 @@ namespace AdangalApp
         static string SummaryPath = "";
         static string GovtBuildingPath = "";
         static string MissedAdangalPath = "";
+        static string SurveyNotFound = "";
         static string CopiedTextFile = "";
 
         public static void SetVillageName()
@@ -30,6 +31,7 @@ namespace AdangalApp
             PattaJsonPath = AppConfiguration.GetDynamicPath($"{vnPath}-PattaJsonPath.json");
             WholeLandListJsonPath = AppConfiguration.GetDynamicPath($"{vnPath}-WholeLandListJsonPath.json");
             SubDivPath = AppConfiguration.GetDynamicPath($"{vnPath}-subdiv.json");
+            SurveyNotFound = AppConfiguration.GetDynamicPath($"{vnPath}-SurveyNotFound.json");
             AdangalOriginalPath = AppConfiguration.GetDynamicPath($"{vnPath}-OriginalAdangal.json");
             SummaryPath = AppConfiguration.GetDynamicPath($"{vnPath}-Summary.json");
             GovtBuildingPath = AppConfiguration.GetDynamicPath($"{vnPath}-GovtBuilding.json");
@@ -50,9 +52,21 @@ namespace AdangalApp
 
         public static List<KeyValue> GetSubdiv()
         {
-            //SubDivPath = path;
             var data = ReadFileAsObjects<KeyValue>(SubDivPath);
             return data;
+        }
+
+        public static List<KeyValue> GetSurveyNotFound()
+        {
+            var data = ReadFileAsObjects<KeyValue>(SubDivPath);
+            return data;
+        }
+
+        public static void SaveSurveyNotFound(KeyValue kv)
+        {
+            //string path = MissedAdangalPath;
+            General.CreateFileIfNotExist(SubDivPath);
+            InsertSingleObjectToListJson<KeyValue>(SubDivPath, kv);
         }
 
         public static List<LoadedFileDetail> GetLoadedFile()

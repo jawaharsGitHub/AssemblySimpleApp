@@ -1,21 +1,6 @@
 [
   {
     "NilaAlavaiEn": 1,
-    "UtpirivuEn": "1",
-    "Parappu": "0.16.00",
-    "Theervai": "0.14",
-    "Anupathaarar": "13 - காலிப்பட்டா",
-    "OwnerName": "காலிப்பட்டா",
-    "LastName": "இல்லை",
-    "IsVagai": false,
-    "RegisterDate": "26-11-2015",
-    "LandType": 1,
-    "IsFullfilled": false,
-    "LandStatus": 3,
-    "PattaEn": 13
-  },
-  {
-    "NilaAlavaiEn": 1,
     "UtpirivuEn": "2",
     "Parappu": "0.20.00",
     "Theervai": "0.28",
@@ -50790,33 +50775,48 @@
     "PattaEn": 0
   },
   {
+    "NilaAlavaiEn": 1,
+    "UtpirivuEn": "1",
+    "Parappu": "0.16.00",
+    "Theervai": "0.14",
+    "Anupathaarar": "சாலை",
+    "OwnerName": "சாலை",
+    "LastName": "இல்லை",
+    "IsVagai": false,
+    "RegisterDate": "26-11-2015",
+    "LandType": 3,
+    "IsFullfilled": false,
+    "LandStatus": 5,
+    "PattaEn": 13
+  },
+  {
     "NilaAlavaiEn": 2,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.16.00",
     "Theervai": null,
-    "Anupathaarar": "",
-    "OwnerName": null,
+    "Anupathaarar": "சாலை",
+    "OwnerName": "சாலை",
     "LastName": null,
     "IsVagai": false,
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 3,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.16.00",
     "Theervai": null,
-    "Anupathaarar": "",
-    "OwnerName": null,
+    "Anupathaarar": "சாலை",
+    "OwnerName": "சாலை",
     "LastName": null,
     "IsVagai": false,
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -50837,7 +50837,7 @@
   {
     "NilaAlavaiEn": 3,
     "UtpirivuEn": "8",
-    "Parappu": null,
+    "Parappu": "0.35.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -50846,13 +50846,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 4,
     "UtpirivuEn": "6",
-    "Parappu": null,
+    "Parappu": "0.09.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -50861,13 +50861,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 7,
     "UtpirivuEn": "5",
-    "Parappu": null,
+    "Parappu": "0.16.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -50876,13 +50876,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 8,
     "UtpirivuEn": "4",
-    "Parappu": null,
+    "Parappu": "0.19.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -50891,13 +50891,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 12,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.20.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -50906,13 +50906,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 12,
     "UtpirivuEn": "7",
-    "Parappu": null,
+    "Parappu": "0.04.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -50921,13 +50921,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 12,
     "UtpirivuEn": "8",
-    "Parappu": null,
+    "Parappu": "0.77.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -50936,13 +50936,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 14,
     "UtpirivuEn": "4",
-    "Parappu": null,
+    "Parappu": "0.11.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -50951,13 +50951,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 18,
     "UtpirivuEn": "4",
-    "Parappu": null,
+    "Parappu": "0.27.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -50966,13 +50966,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 19,
     "UtpirivuEn": "2",
-    "Parappu": null,
+    "Parappu": "0.18.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -50981,13 +50981,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 20,
     "UtpirivuEn": "3",
-    "Parappu": null,
+    "Parappu": "0.29.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -50996,7 +50996,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -51017,7 +51017,7 @@
   {
     "NilaAlavaiEn": 24,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.02.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51026,13 +51026,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 26,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "2.66.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51041,13 +51041,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 26,
     "UtpirivuEn": "3",
-    "Parappu": null,
+    "Parappu": "0.16.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51056,13 +51056,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 26,
     "UtpirivuEn": "5",
-    "Parappu": null,
+    "Parappu": "0.16.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51071,13 +51071,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 26,
     "UtpirivuEn": "6",
-    "Parappu": null,
+    "Parappu": "0.16.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51086,13 +51086,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 28,
     "UtpirivuEn": "2",
-    "Parappu": null,
+    "Parappu": "0.41.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51101,13 +51101,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 28,
     "UtpirivuEn": "4",
-    "Parappu": null,
+    "Parappu": "1.56.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51116,13 +51116,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 29,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.30.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51131,13 +51131,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 29,
     "UtpirivuEn": "2",
-    "Parappu": null,
+    "Parappu": "0.30.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51146,13 +51146,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 39,
     "UtpirivuEn": "11",
-    "Parappu": null,
+    "Parappu": "0.23.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51161,13 +51161,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 41,
     "UtpirivuEn": "2",
-    "Parappu": null,
+    "Parappu": "0.84.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51176,13 +51176,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 42,
     "UtpirivuEn": "3",
-    "Parappu": null,
+    "Parappu": "0.24.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51191,13 +51191,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 43,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "1.92.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51206,13 +51206,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 43,
     "UtpirivuEn": "3",
-    "Parappu": null,
+    "Parappu": "1.17.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51221,13 +51221,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 44,
     "UtpirivuEn": "9",
-    "Parappu": null,
+    "Parappu": "1.41.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51236,7 +51236,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -51257,7 +51257,7 @@
   {
     "NilaAlavaiEn": 52,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "4.98.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51266,13 +51266,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 54,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.21.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51281,13 +51281,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 55,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.31.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51296,13 +51296,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 56,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.23.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51311,13 +51311,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 57,
     "UtpirivuEn": "5",
-    "Parappu": null,
+    "Parappu": "0.35.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51326,7 +51326,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -51347,7 +51347,7 @@
   {
     "NilaAlavaiEn": 58,
     "UtpirivuEn": "6",
-    "Parappu": null,
+    "Parappu": "0.08.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51356,13 +51356,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 59,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.23.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51371,7 +51371,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -51482,7 +51482,7 @@
   {
     "NilaAlavaiEn": 62,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "3.22.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51491,7 +51491,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -51527,7 +51527,7 @@
   {
     "NilaAlavaiEn": 65,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.18.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51536,7 +51536,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -51572,7 +51572,7 @@
   {
     "NilaAlavaiEn": 71,
     "UtpirivuEn": "-",
-    "Parappu": null,
+    "Parappu": "33.31.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51581,13 +51581,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 72,
     "UtpirivuEn": "7",
-    "Parappu": null,
+    "Parappu": "0.33.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51596,13 +51596,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 73,
     "UtpirivuEn": "-",
-    "Parappu": null,
+    "Parappu": "4.51.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51611,13 +51611,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 77,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.84.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51626,7 +51626,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -51647,7 +51647,7 @@
   {
     "NilaAlavaiEn": 82,
     "UtpirivuEn": "13",
-    "Parappu": null,
+    "Parappu": "0.12.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51656,13 +51656,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 83,
     "UtpirivuEn": "-",
-    "Parappu": null,
+    "Parappu": "10.46.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51671,13 +51671,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 84,
     "UtpirivuEn": "2",
-    "Parappu": null,
+    "Parappu": "0.07.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51686,13 +51686,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 90,
     "UtpirivuEn": "2",
-    "Parappu": null,
+    "Parappu": "2.43.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51701,13 +51701,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 91,
     "UtpirivuEn": "2",
-    "Parappu": null,
+    "Parappu": "2.44.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51716,13 +51716,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 92,
     "UtpirivuEn": "2",
-    "Parappu": null,
+    "Parappu": "0.30.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51731,7 +51731,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -51752,7 +51752,7 @@
   {
     "NilaAlavaiEn": 94,
     "UtpirivuEn": "7",
-    "Parappu": null,
+    "Parappu": "0.39.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51761,13 +51761,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 95,
     "UtpirivuEn": "9",
-    "Parappu": null,
+    "Parappu": "0.24.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51776,13 +51776,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 101,
     "UtpirivuEn": "3",
-    "Parappu": null,
+    "Parappu": "2.81.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51791,7 +51791,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -51812,7 +51812,7 @@
   {
     "NilaAlavaiEn": 105,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.28.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51821,13 +51821,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 106,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.20.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51836,13 +51836,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 106,
     "UtpirivuEn": "2",
-    "Parappu": null,
+    "Parappu": "15.45.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51851,7 +51851,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -51932,7 +51932,7 @@
   {
     "NilaAlavaiEn": 123,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.32.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51941,13 +51941,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 124,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.40.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51956,13 +51956,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 126,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.10.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51971,13 +51971,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 126,
     "UtpirivuEn": "2",
-    "Parappu": null,
+    "Parappu": "5.25.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -51986,13 +51986,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 127,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.17.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52001,13 +52001,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 128,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.66.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52016,13 +52016,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 129,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.48.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52031,7 +52031,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -52367,7 +52367,7 @@
   {
     "NilaAlavaiEn": 130,
     "UtpirivuEn": "2",
-    "Parappu": null,
+    "Parappu": "0.24.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52376,7 +52376,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -52412,7 +52412,7 @@
   {
     "NilaAlavaiEn": 132,
     "UtpirivuEn": "5",
-    "Parappu": null,
+    "Parappu": "0.01.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52421,13 +52421,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 133,
     "UtpirivuEn": "4",
-    "Parappu": null,
+    "Parappu": "0.20.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52436,13 +52436,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 134,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "1.88.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52451,13 +52451,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 136,
     "UtpirivuEn": "3",
-    "Parappu": null,
+    "Parappu": "0.14.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52466,13 +52466,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 139,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "7.09.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52481,7 +52481,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -52547,7 +52547,7 @@
   {
     "NilaAlavaiEn": 143,
     "UtpirivuEn": "2",
-    "Parappu": null,
+    "Parappu": "0.14.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52556,13 +52556,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 143,
     "UtpirivuEn": "3",
-    "Parappu": null,
+    "Parappu": "0.02.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52571,13 +52571,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 147,
     "UtpirivuEn": "2",
-    "Parappu": null,
+    "Parappu": "0.16.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52586,13 +52586,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 149,
     "UtpirivuEn": "5",
-    "Parappu": null,
+    "Parappu": "0.19.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52601,13 +52601,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 151,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.22.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52616,13 +52616,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 151,
     "UtpirivuEn": "3",
-    "Parappu": null,
+    "Parappu": "0.19.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52631,13 +52631,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 152,
     "UtpirivuEn": "6",
-    "Parappu": null,
+    "Parappu": "0.06.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52646,13 +52646,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 153,
     "UtpirivuEn": "2",
-    "Parappu": null,
+    "Parappu": "0.30.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52661,13 +52661,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 153,
     "UtpirivuEn": "3",
-    "Parappu": null,
+    "Parappu": "0.15.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52676,13 +52676,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 153,
     "UtpirivuEn": "5",
-    "Parappu": null,
+    "Parappu": "0.12.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52691,7 +52691,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -52742,7 +52742,7 @@
   {
     "NilaAlavaiEn": 156,
     "UtpirivuEn": "5",
-    "Parappu": null,
+    "Parappu": "0.09.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52751,13 +52751,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 161,
     "UtpirivuEn": "5",
-    "Parappu": null,
+    "Parappu": "0.26.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52766,13 +52766,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 166,
     "UtpirivuEn": "4",
-    "Parappu": null,
+    "Parappu": "0.05.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52781,13 +52781,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 167,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.04.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52796,7 +52796,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -52817,7 +52817,7 @@
   {
     "NilaAlavaiEn": 173,
     "UtpirivuEn": "3",
-    "Parappu": null,
+    "Parappu": "0.14.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52826,13 +52826,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 174,
     "UtpirivuEn": "4",
-    "Parappu": null,
+    "Parappu": "0.13.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52841,7 +52841,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -52862,7 +52862,7 @@
   {
     "NilaAlavaiEn": 179,
     "UtpirivuEn": "-",
-    "Parappu": null,
+    "Parappu": "22.92.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52871,13 +52871,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 180,
     "UtpirivuEn": "-",
-    "Parappu": null,
+    "Parappu": "14.26.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -52886,7 +52886,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -53042,7 +53042,7 @@
   {
     "NilaAlavaiEn": 184,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "8.59.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53051,7 +53051,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -53087,7 +53087,7 @@
   {
     "NilaAlavaiEn": 185,
     "UtpirivuEn": "2",
-    "Parappu": null,
+    "Parappu": "0.20.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53096,13 +53096,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 189,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.18.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53111,13 +53111,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 190,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.16.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53126,13 +53126,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 190,
     "UtpirivuEn": "3",
-    "Parappu": null,
+    "Parappu": "0.32.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53141,13 +53141,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 191,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.87.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53156,13 +53156,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 192,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.14.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53171,13 +53171,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 192,
     "UtpirivuEn": "5",
-    "Parappu": null,
+    "Parappu": "0.15.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53186,13 +53186,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 193,
     "UtpirivuEn": "2",
-    "Parappu": null,
+    "Parappu": "0.14.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53201,13 +53201,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 194,
     "UtpirivuEn": "9",
-    "Parappu": null,
+    "Parappu": "0.24.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53216,13 +53216,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 197,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.49.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53231,13 +53231,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 205,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "1.02.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53246,13 +53246,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 206,
     "UtpirivuEn": "2",
-    "Parappu": null,
+    "Parappu": "0.69.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53261,13 +53261,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 207,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.19.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53276,7 +53276,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -53342,7 +53342,7 @@
   {
     "NilaAlavaiEn": 209,
     "UtpirivuEn": "14",
-    "Parappu": null,
+    "Parappu": "0.24.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53351,13 +53351,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 211,
     "UtpirivuEn": "2",
-    "Parappu": null,
+    "Parappu": "0.15.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53366,13 +53366,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 212,
     "UtpirivuEn": "10",
-    "Parappu": null,
+    "Parappu": "0.34.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53381,13 +53381,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 214,
     "UtpirivuEn": "8",
-    "Parappu": null,
+    "Parappu": "0.35.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53396,7 +53396,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -53417,7 +53417,7 @@
   {
     "NilaAlavaiEn": 221,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.11.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53426,13 +53426,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 223,
     "UtpirivuEn": "-",
-    "Parappu": null,
+    "Parappu": "8.40.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53441,7 +53441,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -53462,7 +53462,7 @@
   {
     "NilaAlavaiEn": 227,
     "UtpirivuEn": "4",
-    "Parappu": null,
+    "Parappu": "0.13.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53471,7 +53471,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -53492,7 +53492,7 @@
   {
     "NilaAlavaiEn": 233,
     "UtpirivuEn": "6",
-    "Parappu": null,
+    "Parappu": "0.01.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53501,13 +53501,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 234,
     "UtpirivuEn": "20",
-    "Parappu": null,
+    "Parappu": "0.12.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53516,7 +53516,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -53732,7 +53732,7 @@
   {
     "NilaAlavaiEn": 237,
     "UtpirivuEn": "5",
-    "Parappu": null,
+    "Parappu": "0.09.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53741,7 +53741,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -53837,7 +53837,7 @@
   {
     "NilaAlavaiEn": 238,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "2.43.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53846,13 +53846,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 240,
     "UtpirivuEn": "5",
-    "Parappu": null,
+    "Parappu": "0.06.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -53861,7 +53861,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -54017,7 +54017,7 @@
   {
     "NilaAlavaiEn": 242,
     "UtpirivuEn": "9",
-    "Parappu": null,
+    "Parappu": "0.16.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -54026,13 +54026,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 246,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.08.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -54041,7 +54041,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -54062,7 +54062,7 @@
   {
     "NilaAlavaiEn": 247,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.16.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -54071,7 +54071,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
@@ -54092,7 +54092,7 @@
   {
     "NilaAlavaiEn": 252,
     "UtpirivuEn": "-",
-    "Parappu": null,
+    "Parappu": "49.10.70",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -54101,13 +54101,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 255,
     "UtpirivuEn": "2",
-    "Parappu": null,
+    "Parappu": "0.36.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -54116,13 +54116,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 259,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.22.55",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -54131,13 +54131,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 261,
     "UtpirivuEn": "2",
-    "Parappu": null,
+    "Parappu": "0.21.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -54146,13 +54146,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 264,
     "UtpirivuEn": "2",
-    "Parappu": null,
+    "Parappu": "0.26.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -54161,13 +54161,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 265,
     "UtpirivuEn": "7",
-    "Parappu": null,
+    "Parappu": "0.44.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -54176,13 +54176,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 266,
     "UtpirivuEn": "-",
-    "Parappu": null,
+    "Parappu": "2.16.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -54191,13 +54191,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 270,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.42.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -54206,13 +54206,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 271,
     "UtpirivuEn": "5",
-    "Parappu": null,
+    "Parappu": "0.09.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -54221,13 +54221,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 272,
     "UtpirivuEn": "3",
-    "Parappu": null,
+    "Parappu": "0.19.50",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -54236,13 +54236,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 273,
     "UtpirivuEn": "3",
-    "Parappu": null,
+    "Parappu": "0.14.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -54251,13 +54251,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 274,
     "UtpirivuEn": "2",
-    "Parappu": null,
+    "Parappu": "0.55.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -54266,13 +54266,13 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {
     "NilaAlavaiEn": 276,
     "UtpirivuEn": "1",
-    "Parappu": null,
+    "Parappu": "0.12.00",
     "Theervai": null,
     "Anupathaarar": "",
     "OwnerName": null,
@@ -54281,7 +54281,7 @@
     "RegisterDate": null,
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 0,
+    "LandStatus": 7,
     "PattaEn": 0
   },
   {

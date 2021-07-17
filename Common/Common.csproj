@@ -154,7 +154,6 @@
   <ItemGroup>
     <Content Include="HTMLTemplate\Certified - Copy.txt" />
     <Content Include="HTMLTemplate\Certified.htm" />
-    <Content Include="HTMLTemplate\InternetNotWorking.wav" />
     <Content Include="HTMLTemplate\NotesPageTemplate.htm" />
     <Content Include="HTMLTemplate\EmptyPageTemplate.htm" />
     <Content Include="HTMLTemplate\FirstPageTemplate.htm" />
@@ -165,7 +164,6 @@
     <Content Include="HTMLTemplate\LeftPageTableTemplateSoftCopy.htm" />
     <Content Include="HTMLTemplate\RightPageRowTemplate.htm" />
     <Content Include="HTMLTemplate\RightPlainPageTableTemplate.htm" />
-    <Content Include="HTMLTemplate\SomethingWrong.wav" />
     <Content Include="HTMLTemplate\SummayRowTemplate.htm" />
     <Content Include="HTMLTemplate\PageTotalRowTemplate.htm" />
     <Content Include="HTMLTemplate\PageOverallTotalTableTemplate.htm" />
@@ -183,7 +181,6 @@
     <Content Include="HTMLTemplate\MainHtml.htm" />
     <Content Include="HTMLTemplate\MemberContact.htm" />
     <Content Include="HTMLTemplate\EmailBody.htm" />
-    <Content Include="HTMLTemplate\WebsiteNotWorking.wav" />
     <Content Include="ICSharpCode.SharpZipLib.dll" />
     <Content Include="PL file\balance mismatch.txt" />
     <Content Include="PL file\BT- Credits.txt" />

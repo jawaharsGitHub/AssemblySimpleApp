@@ -1,0 +1,1256 @@
+2021-07-17 14:25:06,768 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-17 14:39:59,898 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-17 14:41:14,257 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 183 -  NOT FOUND FOR : 77--
+2021-07-17 14:41:26,106 [1] DEBUG - ERROR:OpenQA.Selenium.Support.UI.UnexpectedTagNameException: Element should have been select but was input
+   at OpenQA.Selenium.Support.UI.SelectElement..ctor(IWebElement element)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 130
+2021-07-17 14:41:41,295 [1] DEBUG - ERROR:OpenQA.Selenium.Support.UI.UnexpectedTagNameException: Element should have been select but was input
+   at OpenQA.Selenium.Support.UI.SelectElement..ctor(IWebElement element)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 130
+2021-07-17 14:42:51,776 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-17 14:43:38,332 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 183 -  NOT FOUND FOR : 77--
+2021-07-17 14:45:12,814 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: invalid session id
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 127
+2021-07-17 14:45:33,221 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: invalid session id
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 127
+2021-07-17 14:49:25,262 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-17 15:00:54,855 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-17 15:02:25,209 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 187 -  NOT FOUND FOR : 77--
+2021-07-17 15:03:38,643 [1] DEBUG - STARTED: 78-- [1/2338]
+2021-07-17 15:03:39,099 [1] DEBUG - ------------------------------------
+2021-07-17 15:03:41,691 [1] DEBUG - added govt land - 78--
+2021-07-17 15:03:43,948 [1] DEBUG - DONE: 78-- [1/2338]
+2021-07-17 15:04:05,402 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 187 -  NOT FOUND FOR : 79--
+2021-07-17 15:24:00,088 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-17 15:24:38,118 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 174 -  NOT FOUND FOR : 77--
+2021-07-17 15:24:46,118 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 174 -  NOT FOUND FOR : 79--
+2021-07-17 15:24:55,444 [1] DEBUG - STARTED: 80-1A [2/2339]
+2021-07-17 15:24:55,444 [1] DEBUG - ------------------------------------
+2021-07-17 15:24:55,468 [1] DEBUG - Wrong Captcha: SUH4EX: 80-1A
+2021-07-17 15:25:04,767 [1] DEBUG - STARTED: 80-1A [2/2339]
+2021-07-17 15:25:04,767 [1] DEBUG - ------------------------------------
+2021-07-17 15:25:05,580 [1] DEBUG - Added (2) out of (2) for 80-1A
+2021-07-17 15:25:05,584 [1] DEBUG - DONE: 80-1A [2/2339]
+2021-07-17 15:26:05,469 [1] DEBUG - STARTED: 80-2 [4/2339]
+2021-07-17 15:26:05,469 [1] DEBUG - ------------------------------------
+2021-07-17 15:26:05,469 [1] DEBUG - Wrong Captcha: WEN2NF: 80-2
+2021-07-17 15:32:19,643 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-17 15:32:48,670 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 166 -  NOT FOUND FOR : 77--
+2021-07-17 15:32:53,010 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 166 -  NOT FOUND FOR : 79--
+2021-07-17 15:33:00,274 [1] DEBUG - STARTED: 80-2 [2/2339]
+2021-07-17 15:33:00,274 [1] DEBUG - ------------------------------------
+2021-07-17 15:33:00,302 [1] DEBUG - ERROR in names: namerow-
+1.  	-	??????	????????	-
+
+2021-07-17 15:33:01,812 [1] DEBUG - ERROR: 80-2 - System.NullReferenceException: Object reference not set to an instance of an object.
+   at AdangalApp.AdangalTypes.AdangalConverter.GetAdangalFromCopiedData(List`1 data, String pattaEn, KeyValue ownerName) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 651
+   at AdangalApp.AdangalTypes.AdangalConverter.<>c__DisplayClass14_0.<TextToAdangal>b__2(String fe) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 573
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at AdangalApp.AdangalTypes.AdangalConverter.TextToAdangal(String text, Int32 surveyNo, String subdivNo) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 570
+2021-07-17 15:33:02,142 [1] DEBUG - DONE: 80-2 [2/2339]
+2021-07-17 15:33:07,132 [1] DEBUG - STARTED: 81-2 [3/2339]
+2021-07-17 15:33:07,132 [1] DEBUG - ------------------------------------
+2021-07-17 15:33:07,432 [1] DEBUG - Added (1) out of (1) for 81-2
+2021-07-17 15:33:07,433 [1] DEBUG - DONE: 81-2 [3/2339]
+2021-07-17 15:33:12,482 [1] DEBUG - STARTED: 82-- [4/2339]
+2021-07-17 15:33:12,482 [1] DEBUG - ------------------------------------
+2021-07-17 15:33:13,028 [1] DEBUG - Added (2) out of (2) for 82--
+2021-07-17 15:33:13,029 [1] DEBUG - DONE: 82-- [4/2339]
+2021-07-17 15:33:20,328 [1] DEBUG - STARTED: 84-1 [6/2339]
+2021-07-17 15:33:20,328 [1] DEBUG - ------------------------------------
+2021-07-17 15:33:20,508 [1] DEBUG - Added (2) out of (2) for 84-1
+2021-07-17 15:33:20,508 [1] DEBUG - DONE: 84-1 [6/2339]
+2021-07-17 15:33:24,052 [3] DEBUG - 0% - PADALAIYAR KULAM- DONE:8 of 2339-LastItem Procesed: 85-2A
+2021-07-17 15:33:26,882 [1] DEBUG - STARTED: 85-2A [8/2339]
+2021-07-17 15:33:26,882 [1] DEBUG - ------------------------------------
+2021-07-17 15:33:27,415 [1] DEBUG - Added (4) out of (4) for 85-2A
+2021-07-17 15:33:27,416 [1] DEBUG - DONE: 85-2A [8/2339]
+2021-07-17 15:33:29,837 [3] DEBUG - 0% - PADALAIYAR KULAM- DONE:9 of 2339-LastItem Procesed: 85-2B
+2021-07-17 15:33:35,726 [1] DEBUG - STARTED: 85-2B [9/2339]
+2021-07-17 15:33:35,726 [1] DEBUG - ------------------------------------
+2021-07-17 15:33:35,938 [1] DEBUG - Added (2) out of (2) for 85-2B
+2021-07-17 15:33:35,939 [1] DEBUG - DONE: 85-2B [9/2339]
+2021-07-17 15:33:36,224 [3] DEBUG - 0% - PADALAIYAR KULAM- DONE:10 of 2339-LastItem Procesed: 86-1B
+2021-07-17 15:33:41,532 [3] DEBUG - 0% - PADALAIYAR KULAM- DONE:10 of 2339-LastItem Procesed: 86-1B
+2021-07-17 15:33:43,912 [1] DEBUG - STARTED: 86-1B [10/2339]
+2021-07-17 15:33:43,912 [1] DEBUG - ------------------------------------
+2021-07-17 15:33:44,140 [1] DEBUG - Added (2) out of (2) for 86-1B
+2021-07-17 15:33:44,141 [1] DEBUG - DONE: 86-1B [10/2339]
+2021-07-17 15:33:50,619 [1] DEBUG - STARTED: 86-2A [11/2339]
+2021-07-17 15:33:50,619 [1] DEBUG - ------------------------------------
+2021-07-17 15:33:50,796 [1] DEBUG - Added (2) out of (2) for 86-2A
+2021-07-17 15:33:50,825 [1] DEBUG - DONE: 86-2A [11/2339]
+2021-07-17 15:33:57,309 [1] DEBUG - STARTED: 86-2B [12/2339]
+2021-07-17 15:33:57,309 [1] DEBUG - ------------------------------------
+2021-07-17 15:33:57,378 [1] DEBUG - Added (1) out of (1) for 86-2B
+2021-07-17 15:33:57,379 [1] DEBUG - DONE: 86-2B [12/2339]
+2021-07-17 15:34:02,926 [1] DEBUG - STARTED: 86-3A [13/2339]
+2021-07-17 15:34:02,926 [1] DEBUG - ------------------------------------
+2021-07-17 15:34:03,011 [1] DEBUG - Added (1) out of (1) for 86-3A
+2021-07-17 15:34:03,012 [1] DEBUG - DONE: 86-3A [13/2339]
+2021-07-17 15:34:11,735 [1] DEBUG - STARTED: 86-3B [14/2339]
+2021-07-17 15:34:11,735 [1] DEBUG - ------------------------------------
+2021-07-17 15:34:12,032 [1] DEBUG - Added (4) out of (4) for 86-3B
+2021-07-17 15:34:12,033 [1] DEBUG - DONE: 86-3B [14/2339]
+2021-07-17 15:34:27,821 [1] DEBUG - STARTED: 86-4B [17/2339]
+2021-07-17 15:34:27,821 [1] DEBUG - ------------------------------------
+2021-07-17 15:34:27,897 [1] DEBUG - Added (1) out of (1) for 86-4B
+2021-07-17 15:34:27,898 [1] DEBUG - DONE: 86-4B [17/2339]
+2021-07-17 15:34:29,848 [4] DEBUG - 1% - PADALAIYAR KULAM- DONE:18 of 2339-LastItem Procesed: 87-1
+2021-07-17 15:34:33,306 [1] DEBUG - STARTED: 87-1 [18/2339]
+2021-07-17 15:34:33,306 [1] DEBUG - ------------------------------------
+2021-07-17 15:34:33,644 [1] DEBUG - Added (3) out of (3) for 87-1
+2021-07-17 15:34:33,663 [1] DEBUG - DONE: 87-1 [18/2339]
+2021-07-17 15:34:34,369 [4] DEBUG - 1% - PADALAIYAR KULAM- DONE:19 of 2339-LastItem Procesed: 87-2
+2021-07-17 15:34:38,942 [4] DEBUG - 1% - PADALAIYAR KULAM- DONE:19 of 2339-LastItem Procesed: 87-2
+2021-07-17 15:34:38,998 [1] DEBUG - STARTED: 87-2 [19/2339]
+2021-07-17 15:34:38,998 [1] DEBUG - ------------------------------------
+2021-07-17 15:34:39,258 [1] DEBUG - Added (3) out of (3) for 87-2
+2021-07-17 15:34:39,263 [1] DEBUG - DONE: 87-2 [19/2339]
+2021-07-17 15:34:44,070 [4] DEBUG - 1% - PADALAIYAR KULAM- DONE:20 of 2339-LastItem Procesed: 88--
+2021-07-17 15:34:45,140 [1] DEBUG - STARTED: 88-- [20/2339]
+2021-07-17 15:34:45,141 [1] DEBUG - ------------------------------------
+2021-07-17 15:34:46,412 [1] DEBUG - Added (11) out of (11) for 88--
+2021-07-17 15:34:46,413 [1] DEBUG - DONE: 88-- [20/2339]
+2021-07-17 15:41:49,440 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-17 15:44:57,812 [1] DEBUG - ERROR:System.NullReferenceException: Object reference not set to an instance of an object.
+   at OpenQA.Selenium.Remote.RemoteWebElement.get_Text()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 156
+2021-07-17 15:45:04,374 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 108
+2021-07-17 15:45:08,635 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 108
+2021-07-17 15:45:08,923 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 108
+2021-07-17 15:45:12,972 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 108
+2021-07-17 15:45:13,403 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 108
+2021-07-17 15:45:17,434 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 108
+2021-07-17 15:45:17,884 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 108
+2021-07-17 15:46:30,306 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-17 15:48:05,196 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 167 -  NOT FOUND FOR : 77--
+2021-07-17 15:48:10,032 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 167 -  NOT FOUND FOR : 79--
+2021-07-17 15:48:18,848 [1] DEBUG - STARTED: 89-1 [2/2304]
+2021-07-17 15:48:18,848 [1] DEBUG - ------------------------------------
+2021-07-17 15:48:18,862 [1] DEBUG - ERROR in names: namerow-
+1.  	-	??????	???????? ?	-
+
+2021-07-17 15:48:19,410 [1] DEBUG - ERROR: 89-1 - System.NullReferenceException: Object reference not set to an instance of an object.
+   at AdangalApp.AdangalTypes.AdangalConverter.GetAdangalFromCopiedData(List`1 data, String pattaEn, KeyValue ownerName) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 655
+   at AdangalApp.AdangalTypes.AdangalConverter.<>c__DisplayClass14_0.<TextToAdangal>b__2(String fe) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 577
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at AdangalApp.AdangalTypes.AdangalConverter.TextToAdangal(String text, Int32 surveyNo, String subdivNo) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 574
+2021-07-17 15:48:19,478 [1] DEBUG - DONE: 89-1 [2/2304]
+2021-07-17 15:48:25,809 [1] DEBUG - STARTED: 89-2 [3/2304]
+2021-07-17 15:48:25,809 [1] DEBUG - ------------------------------------
+2021-07-17 15:48:25,910 [1] DEBUG - Added (1) out of (1) for 89-2
+2021-07-17 15:48:25,914 [1] DEBUG - DONE: 89-2 [3/2304]
+2021-07-17 15:48:32,172 [1] DEBUG - STARTED: 89-3 [4/2304]
+2021-07-17 15:48:32,172 [1] DEBUG - ------------------------------------
+2021-07-17 15:48:32,172 [1] DEBUG - ERROR in names: namerow-
+1.  	-	??????	???????	-
+
+2021-07-17 15:48:32,283 [1] DEBUG - ERROR: 89-3 - System.NullReferenceException: Object reference not set to an instance of an object.
+   at AdangalApp.AdangalTypes.AdangalConverter.GetAdangalFromCopiedData(List`1 data, String pattaEn, KeyValue ownerName) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 655
+   at AdangalApp.AdangalTypes.AdangalConverter.<>c__DisplayClass14_0.<TextToAdangal>b__2(String fe) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 577
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at AdangalApp.AdangalTypes.AdangalConverter.TextToAdangal(String text, Int32 surveyNo, String subdivNo) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 574
+2021-07-17 15:48:32,284 [1] DEBUG - DONE: 89-3 [4/2304]
+2021-07-17 15:48:38,560 [1] DEBUG - STARTED: 89-4 [5/2304]
+2021-07-17 15:48:38,561 [1] DEBUG - ------------------------------------
+2021-07-17 15:48:38,647 [1] DEBUG - Added (1) out of (1) for 89-4
+2021-07-17 15:48:38,648 [1] DEBUG - DONE: 89-4 [5/2304]
+2021-07-17 15:48:44,317 [1] DEBUG - STARTED: 89-5 [6/2304]
+2021-07-17 15:48:44,317 [1] DEBUG - ------------------------------------
+2021-07-17 15:48:44,385 [1] DEBUG - Added (1) out of (1) for 89-5
+2021-07-17 15:48:44,386 [1] DEBUG - DONE: 89-5 [6/2304]
+2021-07-17 15:48:51,222 [1] DEBUG - STARTED: 90-1A [7/2304]
+2021-07-17 15:48:51,222 [1] DEBUG - ------------------------------------
+2021-07-17 15:48:51,309 [1] DEBUG - Added (1) out of (1) for 90-1A
+2021-07-17 15:48:51,311 [1] DEBUG - DONE: 90-1A [7/2304]
+2021-07-17 15:48:56,797 [1] DEBUG - STARTED: 90-1B [8/2304]
+2021-07-17 15:48:56,797 [1] DEBUG - ------------------------------------
+2021-07-17 15:48:56,872 [1] DEBUG - Added (1) out of (1) for 90-1B
+2021-07-17 15:48:56,873 [1] DEBUG - DONE: 90-1B [8/2304]
+2021-07-17 15:49:02,756 [1] DEBUG - STARTED: 90-1C [9/2304]
+2021-07-17 15:49:02,756 [1] DEBUG - ------------------------------------
+2021-07-17 15:49:02,871 [1] DEBUG - Added (1) out of (1) for 90-1C
+2021-07-17 15:49:02,872 [1] DEBUG - DONE: 90-1C [9/2304]
+2021-07-17 15:49:05,086 [1] DEBUG - ERROR:OpenQA.Selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElementByName(String name)
+   at OpenQA.Selenium.By.<>c__DisplayClass18_0.<Name>b__0(ISearchContext context)
+   at OpenQA.Selenium.By.FindElement(ISearchContext context)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(By by)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 122
+2021-07-17 15:49:09,642 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 108
+2021-07-17 15:49:09,896 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 108
+2021-07-17 15:49:13,941 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 108
+2021-07-17 15:49:14,323 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 108
+2021-07-17 15:49:18,210 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 108
+2021-07-17 15:49:18,697 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 108
+2021-07-17 15:49:22,524 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 108
+2021-07-17 15:49:23,372 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 108
+2021-07-17 15:49:26,840 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 108
+2021-07-17 15:49:27,699 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 108
+2021-07-17 15:50:09,880 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 108
+2021-07-17 15:58:26,660 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-17 15:59:15,621 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 167 -  NOT FOUND FOR : 77--
+2021-07-17 15:59:20,433 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 167 -  NOT FOUND FOR : 79--
+2021-07-17 15:59:29,088 [1] DEBUG - STARTED: 90-1D [2/2298]
+2021-07-17 15:59:29,088 [1] DEBUG - ------------------------------------
+2021-07-17 15:59:29,213 [1] DEBUG - Added (1) out of (1) for 90-1D
+2021-07-17 15:59:29,510 [1] DEBUG - DONE: 90-1D [2/2298]
+2021-07-17 15:59:35,436 [1] DEBUG - STARTED: 91-1 [3/2298]
+2021-07-17 15:59:35,436 [1] DEBUG - ------------------------------------
+2021-07-17 15:59:35,451 [1] DEBUG - Wrong Captcha: SR6YRP: 91-1
+2021-07-17 15:59:40,663 [1] DEBUG - STARTED: 91-1 [3/2298]
+2021-07-17 15:59:40,663 [1] DEBUG - ------------------------------------
+2021-07-17 15:59:40,831 [1] DEBUG - ERROR:System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.AdangalTypes.AdangalConverter.IsDash(String copiedText) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 456
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 213
+2021-07-17 15:59:53,070 [1] DEBUG - STARTED: 92-1A [4/2298]
+2021-07-17 15:59:53,070 [1] DEBUG - ------------------------------------
+2021-07-17 15:59:53,238 [1] DEBUG - Added (2) out of (2) for 92-1A
+2021-07-17 15:59:53,238 [1] DEBUG - DONE: 92-1A [4/2298]
+2021-07-17 15:59:57,989 [1] DEBUG - STARTED: 92-1B [5/2298]
+2021-07-17 15:59:57,989 [1] DEBUG - ------------------------------------
+2021-07-17 15:59:58,069 [1] DEBUG - Added (1) out of (1) for 92-1B
+2021-07-17 15:59:58,069 [1] DEBUG - DONE: 92-1B [5/2298]
+2021-07-17 16:00:07,705 [1] DEBUG - STARTED: 92-3 [6/2298]
+2021-07-17 16:00:07,705 [1] DEBUG - ------------------------------------
+2021-07-17 16:00:07,705 [1] DEBUG - Wrong Captcha: 7HC2BX: 92-3
+2021-07-17 16:00:44,704 [1] DEBUG - STARTED: 92-3 [6/2298]
+2021-07-17 16:00:44,704 [1] DEBUG - ------------------------------------
+2021-07-17 16:00:44,976 [1] DEBUG - Added (3) out of (3) for 92-3
+2021-07-17 16:00:44,976 [1] DEBUG - DONE: 92-3 [6/2298]
+2021-07-17 16:01:01,629 [1] DEBUG - STARTED: 92-5 [7/2298]
+2021-07-17 16:01:01,629 [1] DEBUG - ------------------------------------
+2021-07-17 16:01:02,150 [1] DEBUG - Added (3) out of (3) for 92-5
+2021-07-17 16:01:02,152 [1] DEBUG - DONE: 92-5 [7/2298]
+2021-07-17 16:01:09,357 [1] DEBUG - STARTED: 92-6A [8/2298]
+2021-07-17 16:01:09,357 [1] DEBUG - ------------------------------------
+2021-07-17 16:01:09,442 [1] DEBUG - Added (1) out of (1) for 92-6A
+2021-07-17 16:01:09,463 [1] DEBUG - DONE: 92-6A [8/2298]
+2021-07-17 16:01:23,413 [1] DEBUG - STARTED: 92-6B [9/2298]
+2021-07-17 16:01:23,414 [1] DEBUG - ------------------------------------
+2021-07-17 16:01:23,497 [1] DEBUG - Added (1) out of (1) for 92-6B
+2021-07-17 16:01:23,497 [1] DEBUG - DONE: 92-6B [9/2298]
+2021-07-17 16:01:27,757 [1] DEBUG - STARTED: 93-2A [11/2298]
+2021-07-17 16:01:27,757 [1] DEBUG - ------------------------------------
+2021-07-17 16:01:27,946 [1] DEBUG - Added (2) out of (2) for 93-2A
+2021-07-17 16:01:27,946 [1] DEBUG - DONE: 93-2A [11/2298]
+2021-07-17 16:01:32,342 [1] DEBUG - STARTED: 93-2B [12/2298]
+2021-07-17 16:01:32,342 [1] DEBUG - ------------------------------------
+2021-07-17 16:01:32,342 [1] DEBUG - Wrong Captcha: 2MP8UE: 93-2B
+2021-07-17 16:01:36,930 [1] DEBUG - STARTED: 93-2B [12/2298]
+2021-07-17 16:01:36,930 [1] DEBUG - ------------------------------------
+2021-07-17 16:01:37,003 [1] DEBUG - Added (1) out of (1) for 93-2B
+2021-07-17 16:01:37,003 [1] DEBUG - DONE: 93-2B [12/2298]
+2021-07-17 16:01:41,545 [1] DEBUG - STARTED: 93-2D [13/2298]
+2021-07-17 16:01:41,545 [1] DEBUG - ------------------------------------
+2021-07-17 16:01:41,686 [1] DEBUG - Added (1) out of (1) for 93-2D
+2021-07-17 16:01:41,687 [1] DEBUG - DONE: 93-2D [13/2298]
+2021-07-17 16:01:46,921 [1] DEBUG - STARTED: 94-2 [14/2298]
+2021-07-17 16:01:46,921 [1] DEBUG - ------------------------------------
+2021-07-17 16:01:46,998 [1] DEBUG - Added (1) out of (1) for 94-2
+2021-07-17 16:01:46,999 [1] DEBUG - DONE: 94-2 [14/2298]
+2021-07-17 16:01:51,222 [1] DEBUG - STARTED: 94-3 [15/2298]
+2021-07-17 16:01:51,222 [1] DEBUG - ------------------------------------
+2021-07-17 16:01:51,291 [1] DEBUG - Added (1) out of (1) for 94-3
+2021-07-17 16:01:51,291 [1] DEBUG - DONE: 94-3 [15/2298]
+2021-07-17 16:01:55,974 [1] DEBUG - STARTED: 98-1 [16/2298]
+2021-07-17 16:01:55,974 [1] DEBUG - ------------------------------------
+2021-07-17 16:01:56,183 [1] DEBUG - Added (2) out of (2) for 98-1
+2021-07-17 16:01:56,183 [1] DEBUG - DONE: 98-1 [16/2298]
+2021-07-17 16:02:00,073 [1] DEBUG - STARTED: 98-2 [17/2298]
+2021-07-17 16:02:00,073 [1] DEBUG - ------------------------------------
+2021-07-17 16:02:00,374 [1] DEBUG - Added (3) out of (3) for 98-2
+2021-07-17 16:02:00,375 [1] DEBUG - DONE: 98-2 [17/2298]
+2021-07-17 16:02:05,233 [1] DEBUG - STARTED: 99-1 [18/2298]
+2021-07-17 16:02:05,233 [1] DEBUG - ------------------------------------
+2021-07-17 16:02:06,388 [1] DEBUG - Added (13) out of (13) for 99-1
+2021-07-17 16:02:06,388 [1] DEBUG - DONE: 99-1 [18/2298]
+2021-07-17 16:02:13,537 [1] DEBUG - STARTED: 99-2 [19/2298]
+2021-07-17 16:02:13,537 [1] DEBUG - ------------------------------------
+2021-07-17 16:02:14,056 [1] DEBUG - Added (6) out of (6) for 99-2
+2021-07-17 16:02:14,056 [1] DEBUG - DONE: 99-2 [19/2298]
+2021-07-17 16:02:18,164 [1] DEBUG - STARTED: 100-1A [20/2298]
+2021-07-17 16:02:18,164 [1] DEBUG - ------------------------------------
+2021-07-17 16:02:18,164 [1] DEBUG - Wrong Captcha: XVBQG3: 100-1A
+2021-07-17 16:02:23,391 [1] DEBUG - STARTED: 100-1A [20/2298]
+2021-07-17 16:02:23,391 [1] DEBUG - ------------------------------------
+2021-07-17 16:02:23,824 [1] DEBUG - Added (4) out of (4) for 100-1A
+2021-07-17 16:02:23,825 [1] DEBUG - DONE: 100-1A [20/2298]
+2021-07-17 16:02:30,732 [1] DEBUG - STARTED: 100-1B [21/2298]
+2021-07-17 16:02:30,733 [1] DEBUG - ------------------------------------
+2021-07-17 16:02:31,213 [1] DEBUG - Added (4) out of (4) for 100-1B
+2021-07-17 16:02:31,213 [1] DEBUG - DONE: 100-1B [21/2298]
+2021-07-17 16:02:36,067 [1] DEBUG - STARTED: 100-2 [23/2298]
+2021-07-17 16:02:36,067 [1] DEBUG - ------------------------------------
+2021-07-17 16:02:36,067 [1] DEBUG - Wrong Captcha: GBZV6E: 100-2
+2021-07-17 16:02:38,158 [1] DEBUG - ERROR:OpenQA.Selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElements(String mechanism, String value)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElementsByName(String name)
+   at OpenQA.Selenium.By.<>c__DisplayClass18_0.<Name>b__1(ISearchContext context)
+   at OpenQA.Selenium.By.FindElements(ISearchContext context)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElements(By by)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 131
+2021-07-17 16:18:50,169 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-17 16:19:46,399 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 178 -  NOT FOUND FOR : 77--
+2021-07-17 16:19:52,887 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 178 -  NOT FOUND FOR : 79--
+2021-07-17 16:20:02,127 [1] DEBUG - STARTED: 92-1B [2/2269]
+2021-07-17 16:20:02,127 [1] DEBUG - ------------------------------------
+2021-07-17 16:20:02,221 [1] DEBUG - Added (1) out of (1) for 92-1B
+2021-07-17 16:20:02,511 [1] DEBUG - DONE: 92-1B [2/2269]
+2021-07-17 16:20:07,214 [1] DEBUG - STARTED: 93-2A [3/2269]
+2021-07-17 16:20:07,214 [1] DEBUG - ------------------------------------
+2021-07-17 16:20:07,279 [1] DEBUG - Added (1) out of (1) for 93-2A
+2021-07-17 16:20:07,279 [1] DEBUG - DONE: 93-2A [3/2269]
+2021-07-17 16:20:12,876 [1] DEBUG - STARTED: 100-1B [4/2269]
+2021-07-17 16:20:12,876 [1] DEBUG - ------------------------------------
+2021-07-17 16:20:12,939 [1] DEBUG - Added (1) out of (1) for 100-1B
+2021-07-17 16:20:12,939 [1] DEBUG - DONE: 100-1B [4/2269]
+2021-07-17 16:20:18,297 [1] DEBUG - STARTED: 100-2 [5/2269]
+2021-07-17 16:20:18,297 [1] DEBUG - ------------------------------------
+2021-07-17 16:20:18,598 [1] DEBUG - Added (3) out of (3) for 100-2
+2021-07-17 16:20:18,598 [1] DEBUG - DONE: 100-2 [5/2269]
+2021-07-17 16:20:23,363 [1] DEBUG - STARTED: 101-1A [6/2269]
+2021-07-17 16:20:23,363 [1] DEBUG - ------------------------------------
+2021-07-17 16:20:23,442 [1] DEBUG - Added (1) out of (1) for 101-1A
+2021-07-17 16:20:23,442 [1] DEBUG - DONE: 101-1A [6/2269]
+2021-07-17 16:20:27,827 [1] DEBUG - STARTED: 102-1A [7/2269]
+2021-07-17 16:20:27,827 [1] DEBUG - ------------------------------------
+2021-07-17 16:20:27,910 [1] DEBUG - Added (1) out of (1) for 102-1A
+2021-07-17 16:20:27,910 [1] DEBUG - DONE: 102-1A [7/2269]
+2021-07-17 16:20:33,006 [1] DEBUG - STARTED: 102-1B [8/2269]
+2021-07-17 16:20:33,006 [1] DEBUG - ------------------------------------
+2021-07-17 16:20:33,006 [1] DEBUG - Wrong Captcha: HBUFEF: 102-1B
+2021-07-17 16:20:37,432 [1] DEBUG - STARTED: 102-1B [8/2269]
+2021-07-17 16:20:37,432 [1] DEBUG - ------------------------------------
+2021-07-17 16:20:37,517 [1] DEBUG - Added (1) out of (1) for 102-1B
+2021-07-17 16:20:37,518 [1] DEBUG - DONE: 102-1B [8/2269]
+2021-07-17 16:20:42,641 [1] DEBUG - STARTED: 102-2 [9/2269]
+2021-07-17 16:20:42,641 [1] DEBUG - ------------------------------------
+2021-07-17 16:20:42,722 [1] DEBUG - Added (1) out of (1) for 102-2
+2021-07-17 16:20:42,737 [1] DEBUG - DONE: 102-2 [9/2269]
+2021-07-17 16:20:49,224 [1] DEBUG - STARTED: 103-2 [10/2269]
+2021-07-17 16:20:49,224 [1] DEBUG - ------------------------------------
+2021-07-17 16:20:49,286 [1] DEBUG - Added (1) out of (1) for 103-2
+2021-07-17 16:20:49,286 [1] DEBUG - DONE: 103-2 [10/2269]
+2021-07-17 16:20:56,832 [1] DEBUG - STARTED: 103-4A [11/2269]
+2021-07-17 16:20:56,832 [1] DEBUG - ------------------------------------
+2021-07-17 16:20:56,910 [1] DEBUG - Added (1) out of (1) for 103-4A
+2021-07-17 16:20:56,910 [1] DEBUG - DONE: 103-4A [11/2269]
+2021-07-17 16:21:02,065 [1] DEBUG - STARTED: 103-4B [12/2269]
+2021-07-17 16:21:02,065 [1] DEBUG - ------------------------------------
+2021-07-17 16:21:02,128 [1] DEBUG - Added (1) out of (1) for 103-4B
+2021-07-17 16:21:02,128 [1] DEBUG - DONE: 103-4B [12/2269]
+2021-07-17 16:21:07,650 [1] DEBUG - STARTED: 104-- [13/2269]
+2021-07-17 16:21:07,650 [1] DEBUG - ------------------------------------
+2021-07-17 16:21:07,820 [1] DEBUG - Added (2) out of (2) for 104--
+2021-07-17 16:21:07,820 [1] DEBUG - DONE: 104-- [13/2269]
+2021-07-17 16:21:13,433 [1] DEBUG - STARTED: 107-1A [15/2269]
+2021-07-17 16:21:13,433 [1] DEBUG - ------------------------------------
+2021-07-17 16:21:13,605 [1] DEBUG - Added (2) out of (2) for 107-1A
+2021-07-17 16:21:13,605 [1] DEBUG - DONE: 107-1A [15/2269]
+2021-07-17 16:21:19,931 [1] DEBUG - STARTED: 107-1B [16/2269]
+2021-07-17 16:21:19,931 [1] DEBUG - ------------------------------------
+2021-07-17 16:21:20,013 [1] DEBUG - Added (1) out of (1) for 107-1B
+2021-07-17 16:21:20,013 [1] DEBUG - DONE: 107-1B [16/2269]
+2021-07-17 16:21:25,371 [1] DEBUG - STARTED: 107-2A [17/2269]
+2021-07-17 16:21:25,371 [1] DEBUG - ------------------------------------
+2021-07-17 16:21:25,632 [1] DEBUG - Added (2) out of (2) for 107-2A
+2021-07-17 16:21:25,632 [1] DEBUG - DONE: 107-2A [17/2269]
+2021-07-17 16:21:30,203 [1] DEBUG - STARTED: 107-3 [19/2269]
+2021-07-17 16:21:30,203 [1] DEBUG - ------------------------------------
+2021-07-17 16:21:30,285 [1] DEBUG - added govt land - 107-3
+2021-07-17 16:21:30,286 [1] DEBUG - DONE: 107-3 [19/2269]
+2021-07-17 16:21:35,624 [1] DEBUG - STARTED: 108-2 [20/2269]
+2021-07-17 16:21:35,624 [1] DEBUG - ------------------------------------
+2021-07-17 16:21:35,703 [1] DEBUG - Added (1) out of (1) for 108-2
+2021-07-17 16:21:35,704 [1] DEBUG - DONE: 108-2 [20/2269]
+2021-07-17 16:21:40,841 [1] DEBUG - STARTED: 108-3 [21/2269]
+2021-07-17 16:21:40,841 [1] DEBUG - ------------------------------------
+2021-07-17 16:21:40,912 [1] DEBUG - added govt land - 108-3
+2021-07-17 16:21:40,913 [1] DEBUG - DONE: 108-3 [21/2269]
+2021-07-17 16:21:45,990 [1] DEBUG - STARTED: 109-1A [22/2269]
+2021-07-17 16:21:45,990 [1] DEBUG - ------------------------------------
+2021-07-17 16:21:46,053 [1] DEBUG - Added (1) out of (1) for 109-1A
+2021-07-17 16:21:46,053 [1] DEBUG - DONE: 109-1A [22/2269]
+2021-07-17 16:21:51,658 [1] DEBUG - STARTED: 109-1B [23/2269]
+2021-07-17 16:21:51,658 [1] DEBUG - ------------------------------------
+2021-07-17 16:21:51,721 [1] DEBUG - Added (1) out of (1) for 109-1B
+2021-07-17 16:21:51,721 [1] DEBUG - DONE: 109-1B [23/2269]
+2021-07-17 16:22:02,453 [1] DEBUG - STARTED: 109-2 [24/2269]
+2021-07-17 16:22:02,453 [1] DEBUG - ------------------------------------
+2021-07-17 16:22:02,537 [1] DEBUG - Added (1) out of (1) for 109-2
+2021-07-17 16:22:02,537 [1] DEBUG - DONE: 109-2 [24/2269]
+2021-07-17 16:22:09,929 [1] DEBUG - STARTED: 109-3 [25/2269]
+2021-07-17 16:22:09,929 [1] DEBUG - ------------------------------------
+2021-07-17 16:22:10,100 [1] DEBUG - ERROR:System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.AdangalTypes.AdangalConverter.IsDash(String copiedText) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 467
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 224
+2021-07-17 16:26:30,442 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-17 16:27:05,845 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 178 -  NOT FOUND FOR : 77--
+2021-07-17 16:27:12,066 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 178 -  NOT FOUND FOR : 79--
+2021-07-17 16:27:19,568 [1] DEBUG - STARTED: 109-3 [2/2246]
+2021-07-17 16:27:19,568 [1] DEBUG - ------------------------------------
+2021-07-17 16:27:19,663 [1] DEBUG - added govt land - 109-3
+2021-07-17 16:27:19,746 [1] DEBUG - DONE: 109-3 [2/2246]
+2021-07-17 16:27:27,709 [1] DEBUG - STARTED: 110-- [3/2246]
+2021-07-17 16:27:27,709 [1] DEBUG - ------------------------------------
+2021-07-17 16:27:27,715 [1] DEBUG - ERROR in names: namerow-
+1.  	-	??????	???????? ??????	-
+
+2021-07-17 16:27:28,259 [1] DEBUG - ERROR: 110-- - System.NullReferenceException: Object reference not set to an instance of an object.
+   at AdangalApp.AdangalTypes.AdangalConverter.GetAdangalFromCopiedData(List`1 data, String pattaEn, KeyValue ownerName) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 646
+   at AdangalApp.AdangalTypes.AdangalConverter.<>c__DisplayClass15_0.<TextToAdangal>b__2(String fe) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 568
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at AdangalApp.AdangalTypes.AdangalConverter.TextToAdangal(String text, Int32 surveyNo, String subdivNo) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 565
+2021-07-17 16:27:28,260 [1] DEBUG - DONE: 110-- [3/2246]
+2021-07-17 16:27:34,714 [1] DEBUG - STARTED: 111-1 [4/2246]
+2021-07-17 16:27:34,714 [1] DEBUG - ------------------------------------
+2021-07-17 16:27:35,544 [1] DEBUG - Added (4) out of (4) for 111-1
+2021-07-17 16:27:35,545 [1] DEBUG - DONE: 111-1 [4/2246]
+2021-07-17 16:27:40,608 [1] DEBUG - STARTED: 111-2 [5/2246]
+2021-07-17 16:27:40,608 [1] DEBUG - ------------------------------------
+2021-07-17 16:27:41,218 [1] DEBUG - Added (6) out of (6) for 111-2
+2021-07-17 16:27:41,218 [1] DEBUG - DONE: 111-2 [5/2246]
+2021-07-17 16:27:47,809 [1] DEBUG - STARTED: 111-3 [6/2246]
+2021-07-17 16:27:47,809 [1] DEBUG - ------------------------------------
+2021-07-17 16:27:47,904 [1] DEBUG - Added (1) out of (1) for 111-3
+2021-07-17 16:27:47,904 [1] DEBUG - DONE: 111-3 [6/2246]
+2021-07-17 16:28:00,014 [1] DEBUG - STARTED: 111-4 [7/2246]
+2021-07-17 16:28:00,014 [1] DEBUG - ------------------------------------
+2021-07-17 16:28:00,131 [1] DEBUG - added govt land - 111-4
+2021-07-17 16:28:00,132 [1] DEBUG - DONE: 111-4 [7/2246]
+2021-07-17 16:28:08,022 [1] DEBUG - STARTED: 112-- [8/2246]
+2021-07-17 16:28:08,022 [1] DEBUG - ------------------------------------
+2021-07-17 16:28:08,026 [1] DEBUG - Wrong Captcha: umMc2xQ: 112--
+2021-07-17 16:28:15,850 [1] DEBUG - STARTED: 112-- [8/2246]
+2021-07-17 16:28:15,850 [1] DEBUG - ------------------------------------
+2021-07-17 16:28:15,933 [1] DEBUG - Added (1) out of (1) for 112--
+2021-07-17 16:28:15,933 [1] DEBUG - DONE: 112-- [8/2246]
+2021-07-17 16:28:20,837 [1] DEBUG - STARTED: 113-- [9/2246]
+2021-07-17 16:28:20,837 [1] DEBUG - ------------------------------------
+2021-07-17 16:28:20,837 [1] DEBUG - Wrong Captcha: 4772ZvZ: 113--
+2021-07-17 16:28:25,387 [1] DEBUG - STARTED: 113-- [9/2246]
+2021-07-17 16:28:25,387 [1] DEBUG - ------------------------------------
+2021-07-17 16:28:25,387 [1] DEBUG - Wrong Captcha: EYDQNS: 113--
+2021-07-17 16:28:31,327 [1] DEBUG - STARTED: 113-- [9/2246]
+2021-07-17 16:28:31,327 [1] DEBUG - ------------------------------------
+2021-07-17 16:28:32,577 [1] DEBUG - Added (11) out of (11) for 113--
+2021-07-17 16:28:32,635 [1] DEBUG - DONE: 113-- [9/2246]
+2021-07-17 16:28:37,907 [1] DEBUG - STARTED: 114-1 [10/2246]
+2021-07-17 16:28:37,907 [1] DEBUG - ------------------------------------
+2021-07-17 16:28:38,216 [1] DEBUG - Added (2) out of (2) for 114-1
+2021-07-17 16:28:38,217 [1] DEBUG - DONE: 114-1 [10/2246]
+2021-07-17 16:28:42,732 [1] DEBUG - STARTED: 114-3 [11/2246]
+2021-07-17 16:28:42,733 [1] DEBUG - ------------------------------------
+2021-07-17 16:28:42,733 [1] DEBUG - Wrong Captcha: 7PY4UB: 114-3
+2021-07-17 16:28:48,297 [1] DEBUG - STARTED: 114-3 [11/2246]
+2021-07-17 16:28:48,297 [1] DEBUG - ------------------------------------
+2021-07-17 16:28:48,389 [1] DEBUG - added govt land - 114-3
+2021-07-17 16:28:48,391 [1] DEBUG - DONE: 114-3 [11/2246]
+2021-07-17 16:28:54,765 [1] DEBUG - STARTED: 115-1 [12/2246]
+2021-07-17 16:28:54,765 [1] DEBUG - ------------------------------------
+2021-07-17 16:28:55,283 [1] DEBUG - Added (3) out of (3) for 115-1
+2021-07-17 16:28:55,283 [1] DEBUG - DONE: 115-1 [12/2246]
+2021-07-17 16:28:59,486 [1] DEBUG - STARTED: 115-2 [13/2246]
+2021-07-17 16:28:59,487 [1] DEBUG - ------------------------------------
+2021-07-17 16:28:59,599 [1] DEBUG - added govt land - 115-2
+2021-07-17 16:28:59,599 [1] DEBUG - DONE: 115-2 [13/2246]
+2021-07-17 16:29:04,611 [1] DEBUG - STARTED: 116-1B [14/2246]
+2021-07-17 16:29:04,611 [1] DEBUG - ------------------------------------
+2021-07-17 16:29:04,698 [1] DEBUG - Added (1) out of (1) for 116-1B
+2021-07-17 16:29:04,699 [1] DEBUG - DONE: 116-1B [14/2246]
+2021-07-17 16:29:09,150 [1] DEBUG - STARTED: 116-2 [15/2246]
+2021-07-17 16:29:09,150 [1] DEBUG - ------------------------------------
+2021-07-17 16:29:09,150 [1] DEBUG - Wrong Captcha: QD8wWU7: 116-2
+2021-07-17 16:29:13,878 [1] DEBUG - STARTED: 116-2 [15/2246]
+2021-07-17 16:29:13,878 [1] DEBUG - ------------------------------------
+2021-07-17 16:29:13,965 [1] DEBUG - added govt land - 116-2
+2021-07-17 16:29:13,987 [1] DEBUG - DONE: 116-2 [15/2246]
+2021-07-17 16:29:19,058 [1] DEBUG - STARTED: 117-- [16/2246]
+2021-07-17 16:29:19,059 [1] DEBUG - ------------------------------------
+2021-07-17 16:29:20,085 [1] DEBUG - Added (9) out of (9) for 117--
+2021-07-17 16:29:20,086 [1] DEBUG - DONE: 117-- [16/2246]
+2021-07-17 16:29:26,229 [1] DEBUG - STARTED: 119-2B [19/2246]
+2021-07-17 16:29:26,229 [1] DEBUG - ------------------------------------
+2021-07-17 16:29:26,329 [1] DEBUG - Added (1) out of (1) for 119-2B
+2021-07-17 16:29:26,466 [1] DEBUG - DONE: 119-2B [19/2246]
+2021-07-17 16:29:32,740 [1] DEBUG - STARTED: 119-2C [20/2246]
+2021-07-17 16:29:32,740 [1] DEBUG - ------------------------------------
+2021-07-17 16:29:32,843 [1] DEBUG - ERROR:System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.AdangalTypes.AdangalConverter.IsDash(String copiedText) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 447
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 224
+2021-07-17 16:37:33,653 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-17 16:38:20,092 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 178 -  NOT FOUND FOR : 77--
+2021-07-17 16:38:26,799 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 178 -  NOT FOUND FOR : 79--
+2021-07-17 16:38:36,443 [1] DEBUG - STARTED: 119-2C [2/2203]
+2021-07-17 16:38:36,443 [1] DEBUG - ------------------------------------
+2021-07-17 16:38:37,145 [1] DEBUG - Added (5) out of (5) for 119-2C
+2021-07-17 16:38:37,235 [1] DEBUG - DONE: 119-2C [2/2203]
+2021-07-17 16:38:42,517 [1] DEBUG - STARTED: 119-3 [3/2203]
+2021-07-17 16:38:42,517 [1] DEBUG - ------------------------------------
+2021-07-17 16:38:42,614 [1] DEBUG - added govt land - 119-3
+2021-07-17 16:38:42,615 [1] DEBUG - DONE: 119-3 [3/2203]
+2021-07-17 16:40:22,773 [4] DEBUG - 0% - PADALAIYAR KULAM- DONE:4 of 2203-LastItem Procesed: 121-2A
+2021-07-17 16:40:22,773 [9] DEBUG - 0% - PADALAIYAR KULAM- DONE:4 of 2203-LastItem Procesed: 121-2A
+2021-07-17 16:40:26,443 [1] DEBUG - STARTED: 121-2A [4/2203]
+2021-07-17 16:40:26,443 [1] DEBUG - ------------------------------------
+2021-07-17 16:40:26,720 [1] DEBUG - Added (1) out of (1) for 121-2A
+2021-07-17 16:40:26,720 [1] DEBUG - DONE: 121-2A [4/2203]
+2021-07-17 16:40:39,638 [1] DEBUG - STARTED: 121-2B1 [5/2203]
+2021-07-17 16:40:39,638 [1] DEBUG - ------------------------------------
+2021-07-17 16:40:39,706 [4] DEBUG - 0% - PADALAIYAR KULAM- DONE:5 of 2203-LastItem Procesed: 121-2B1
+2021-07-17 16:41:25,238 [5] DEBUG - 0% - PADALAIYAR KULAM- DONE:5 of 2203-LastItem Procesed: 121-2B1
+2021-07-17 16:41:25,291 [1] DEBUG - Added (1) out of (1) for 121-2B1
+2021-07-17 16:41:25,294 [1] DEBUG - DONE: 121-2B1 [5/2203]
+2021-07-17 16:41:39,009 [1] DEBUG - STARTED: 121-2B2 [6/2203]
+2021-07-17 16:41:39,010 [1] DEBUG - ------------------------------------
+2021-07-17 16:41:39,119 [1] DEBUG - Added (1) out of (1) for 121-2B2
+2021-07-17 16:41:39,162 [1] DEBUG - DONE: 121-2B2 [6/2203]
+2021-07-17 16:41:45,272 [1] DEBUG - STARTED: 122-1 [7/2203]
+2021-07-17 16:41:45,273 [1] DEBUG - ------------------------------------
+2021-07-17 16:41:45,570 [1] DEBUG - Added (2) out of (2) for 122-1
+2021-07-17 16:41:45,572 [1] DEBUG - DONE: 122-1 [7/2203]
+2021-07-17 16:41:51,418 [1] DEBUG - STARTED: 122-2A [8/2203]
+2021-07-17 16:41:51,418 [1] DEBUG - ------------------------------------
+2021-07-17 16:41:51,418 [1] DEBUG - ERROR in names: namerow-
+1.  	-	??????	????????? ??????	-
+
+2021-07-17 16:41:51,786 [1] DEBUG - ERROR: 122-2A - System.NullReferenceException: Object reference not set to an instance of an object.
+   at AdangalApp.AdangalTypes.AdangalConverter.GetAdangalFromCopiedData(List`1 data, String pattaEn, KeyValue ownerName) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 648
+   at AdangalApp.AdangalTypes.AdangalConverter.<>c__DisplayClass15_0.<TextToAdangal>b__2(String fe) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 570
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at AdangalApp.AdangalTypes.AdangalConverter.TextToAdangal(String text, Int32 surveyNo, String subdivNo) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 567
+2021-07-17 16:41:51,786 [1] DEBUG - DONE: 122-2A [8/2203]
+2021-07-17 16:41:56,243 [1] DEBUG - STARTED: 122-2B [9/2203]
+2021-07-17 16:41:56,243 [1] DEBUG - ------------------------------------
+2021-07-17 16:41:56,264 [1] DEBUG - Wrong Captcha: WXSNPU: 122-2B
+2021-07-17 16:42:01,397 [1] DEBUG - STARTED: 122-2B [9/2203]
+2021-07-17 16:42:01,397 [1] DEBUG - ------------------------------------
+2021-07-17 16:42:01,485 [1] DEBUG - Added (1) out of (1) for 122-2B
+2021-07-17 16:42:01,486 [1] DEBUG - DONE: 122-2B [9/2203]
+2021-07-17 16:42:05,554 [1] DEBUG - STARTED: 122-3 [10/2203]
+2021-07-17 16:42:05,554 [1] DEBUG - ------------------------------------
+2021-07-17 16:42:05,554 [1] DEBUG - Wrong Captcha: G4UzZ73: 122-3
+2021-07-17 16:42:10,345 [1] DEBUG - STARTED: 122-3 [10/2203]
+2021-07-17 16:42:10,345 [1] DEBUG - ------------------------------------
+2021-07-17 16:42:10,435 [1] DEBUG - added govt land - 122-3
+2021-07-17 16:42:10,435 [1] DEBUG - DONE: 122-3 [10/2203]
+2021-07-17 16:42:15,791 [1] DEBUG - STARTED: 123-1 [11/2203]
+2021-07-17 16:42:15,791 [1] DEBUG - ------------------------------------
+2021-07-17 16:42:16,069 [1] DEBUG - Added (2) out of (2) for 123-1
+2021-07-17 16:42:16,069 [1] DEBUG - DONE: 123-1 [11/2203]
+2021-07-17 16:42:20,049 [1] DEBUG - STARTED: 123-2 [12/2203]
+2021-07-17 16:42:20,049 [1] DEBUG - ------------------------------------
+2021-07-17 16:42:20,049 [1] DEBUG - Wrong Captcha: DS5RFZV: 123-2
+2021-07-17 16:42:24,908 [1] DEBUG - STARTED: 123-2 [12/2203]
+2021-07-17 16:42:24,908 [1] DEBUG - ------------------------------------
+2021-07-17 16:42:25,002 [1] DEBUG - added govt land - 123-2
+2021-07-17 16:42:25,002 [1] DEBUG - DONE: 123-2 [12/2203]
+2021-07-17 16:42:25,243 [4] DEBUG - 1% - PADALAIYAR KULAM- DONE:15 of 2203-LastItem Procesed: 125-2
+2021-07-17 16:42:30,688 [1] DEBUG - STARTED: 125-2 [15/2203]
+2021-07-17 16:42:30,688 [1] DEBUG - ------------------------------------
+2021-07-17 16:42:30,945 [1] DEBUG - Added (2) out of (2) for 125-2
+2021-07-17 16:42:30,947 [1] DEBUG - DONE: 125-2 [15/2203]
+2021-07-17 16:42:36,799 [1] DEBUG - STARTED: 126-1 [16/2203]
+2021-07-17 16:42:36,799 [1] DEBUG - ------------------------------------
+2021-07-17 16:42:37,529 [1] DEBUG - Added (6) out of (6) for 126-1
+2021-07-17 16:42:37,529 [1] DEBUG - DONE: 126-1 [16/2203]
+2021-07-17 16:42:43,528 [1] DEBUG - STARTED: 126-2 [17/2203]
+2021-07-17 16:42:43,529 [1] DEBUG - ------------------------------------
+2021-07-17 16:42:43,632 [1] DEBUG - Added (1) out of (1) for 126-2
+2021-07-17 16:42:43,637 [1] DEBUG - DONE: 126-2 [17/2203]
+2021-07-17 16:42:48,254 [1] DEBUG - STARTED: 126-3 [18/2203]
+2021-07-17 16:42:48,254 [1] DEBUG - ------------------------------------
+2021-07-17 16:42:48,356 [1] DEBUG - added govt land - 126-3
+2021-07-17 16:42:48,357 [1] DEBUG - DONE: 126-3 [18/2203]
+2021-07-17 16:42:54,518 [1] DEBUG - STARTED: 127-1 [19/2203]
+2021-07-17 16:42:54,518 [1] DEBUG - ------------------------------------
+2021-07-17 16:42:54,625 [1] DEBUG - Added (1) out of (1) for 127-1
+2021-07-17 16:42:54,626 [1] DEBUG - DONE: 127-1 [19/2203]
+2021-07-17 16:42:58,977 [1] DEBUG - STARTED: 127-2 [20/2203]
+2021-07-17 16:42:58,977 [1] DEBUG - ------------------------------------
+2021-07-17 16:42:59,085 [1] DEBUG - added govt land - 127-2
+2021-07-17 16:42:59,088 [1] DEBUG - DONE: 127-2 [20/2203]
+2021-07-17 16:43:03,305 [1] DEBUG - STARTED: 128-- [21/2203]
+2021-07-17 16:43:03,305 [1] DEBUG - ------------------------------------
+2021-07-17 16:43:03,306 [1] DEBUG - Wrong Captcha: vuupzc: 128--
+2021-07-17 16:43:09,071 [1] DEBUG - STARTED: 128-- [21/2203]
+2021-07-17 16:43:09,072 [1] DEBUG - ------------------------------------
+2021-07-17 16:43:09,544 [1] DEBUG - Added (4) out of (4) for 128--
+2021-07-17 16:43:09,548 [1] DEBUG - DONE: 128-- [21/2203]
+2021-07-17 16:43:16,231 [1] DEBUG - STARTED: 129-1A [22/2203]
+2021-07-17 16:43:16,231 [1] DEBUG - ------------------------------------
+2021-07-17 16:43:16,982 [1] DEBUG - Added (7) out of (7) for 129-1A
+2021-07-17 16:43:16,983 [1] DEBUG - DONE: 129-1A [22/2203]
+2021-07-17 16:43:21,333 [1] DEBUG - STARTED: 130-1A [24/2203]
+2021-07-17 16:43:21,333 [1] DEBUG - ------------------------------------
+2021-07-17 16:43:21,418 [1] DEBUG - Added (1) out of (1) for 130-1A
+2021-07-17 16:43:21,418 [1] DEBUG - DONE: 130-1A [24/2203]
+2021-07-17 16:43:25,248 [4] DEBUG - 1% - PADALAIYAR KULAM- DONE:25 of 2203-LastItem Procesed: 130-1B
+2021-07-17 16:43:26,502 [1] DEBUG - STARTED: 130-1B [25/2203]
+2021-07-17 16:43:26,502 [1] DEBUG - ------------------------------------
+2021-07-17 16:43:26,893 [1] DEBUG - Added (2) out of (2) for 130-1B
+2021-07-17 16:43:26,894 [1] DEBUG - DONE: 130-1B [25/2203]
+2021-07-17 16:43:30,809 [1] DEBUG - STARTED: 130-2 [26/2203]
+2021-07-17 16:43:30,809 [1] DEBUG - ------------------------------------
+2021-07-17 16:43:30,920 [1] DEBUG - added govt land - 130-2
+2021-07-17 16:43:30,920 [1] DEBUG - DONE: 130-2 [26/2203]
+2021-07-17 16:43:35,757 [1] DEBUG - STARTED: 131-1 [27/2203]
+2021-07-17 16:43:35,757 [1] DEBUG - ------------------------------------
+2021-07-17 16:43:36,136 [1] DEBUG - Added (3) out of (3) for 131-1
+2021-07-17 16:43:36,137 [1] DEBUG - DONE: 131-1 [27/2203]
+2021-07-17 16:43:41,012 [1] DEBUG - STARTED: 131-2 [28/2203]
+2021-07-17 16:43:41,012 [1] DEBUG - ------------------------------------
+2021-07-17 16:43:41,012 [1] DEBUG - ERROR in names: namerow-
+1.  	-	??????	????????????	-
+
+2021-07-17 16:43:41,151 [1] DEBUG - ERROR: 131-2 - System.NullReferenceException: Object reference not set to an instance of an object.
+   at AdangalApp.AdangalTypes.AdangalConverter.GetAdangalFromCopiedData(List`1 data, String pattaEn, KeyValue ownerName) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 648
+   at AdangalApp.AdangalTypes.AdangalConverter.<>c__DisplayClass15_0.<TextToAdangal>b__2(String fe) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 570
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at AdangalApp.AdangalTypes.AdangalConverter.TextToAdangal(String text, Int32 surveyNo, String subdivNo) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 567
+2021-07-17 16:43:41,152 [1] DEBUG - DONE: 131-2 [28/2203]
+2021-07-17 16:43:45,231 [1] DEBUG - STARTED: 131-3 [29/2203]
+2021-07-17 16:43:45,231 [1] DEBUG - ------------------------------------
+2021-07-17 16:43:45,333 [1] DEBUG - added govt land - 131-3
+2021-07-17 16:43:45,334 [1] DEBUG - DONE: 131-3 [29/2203]
+2021-07-17 16:43:50,100 [1] DEBUG - STARTED: 132-2 [30/2203]
+2021-07-17 16:43:50,100 [1] DEBUG - ------------------------------------
+2021-07-17 16:43:50,218 [1] DEBUG - added govt land - 132-2
+2021-07-17 16:43:50,218 [1] DEBUG - DONE: 132-2 [30/2203]
+2021-07-17 16:43:55,841 [1] DEBUG - STARTED: 133-1 [31/2203]
+2021-07-17 16:43:55,841 [1] DEBUG - ------------------------------------
+2021-07-17 16:43:56,114 [1] DEBUG - Added (2) out of (2) for 133-1
+2021-07-17 16:43:56,115 [1] DEBUG - DONE: 133-1 [31/2203]
+2021-07-17 16:44:00,628 [1] DEBUG - STARTED: 133-2 [32/2203]
+2021-07-17 16:44:00,629 [1] DEBUG - ------------------------------------
+2021-07-17 16:44:00,725 [1] DEBUG - Added (1) out of (1) for 133-2
+2021-07-17 16:44:00,725 [1] DEBUG - DONE: 133-2 [32/2203]
+2021-07-17 16:44:07,213 [1] DEBUG - STARTED: 133-3 [33/2203]
+2021-07-17 16:44:07,213 [1] DEBUG - ------------------------------------
+2021-07-17 16:44:07,213 [1] DEBUG - ERROR in names: namerow-
+1.  	-	??????	????????? ???????	-
+
+2021-07-17 16:44:07,402 [1] DEBUG - ERROR: 133-3 - System.NullReferenceException: Object reference not set to an instance of an object.
+   at AdangalApp.AdangalTypes.AdangalConverter.GetAdangalFromCopiedData(List`1 data, String pattaEn, KeyValue ownerName) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 648
+   at AdangalApp.AdangalTypes.AdangalConverter.<>c__DisplayClass15_0.<TextToAdangal>b__2(String fe) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 570
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at AdangalApp.AdangalTypes.AdangalConverter.TextToAdangal(String text, Int32 surveyNo, String subdivNo) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 567
+2021-07-17 16:44:07,413 [1] DEBUG - DONE: 133-3 [33/2203]
+2021-07-17 16:45:35,321 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-17 16:46:29,503 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 178 -  NOT FOUND FOR : 77--
+2021-07-17 16:46:34,815 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 178 -  NOT FOUND FOR : 79--
+2021-07-17 16:46:41,874 [1] DEBUG - STARTED: 133-4 [2/2152]
+2021-07-17 16:46:41,874 [1] DEBUG - ------------------------------------
+2021-07-17 16:46:42,034 [1] DEBUG - added govt land - 133-4
+2021-07-17 16:46:42,150 [1] DEBUG - DONE: 133-4 [2/2152]
+2021-07-17 16:46:49,507 [1] DEBUG - STARTED: 134-2A [3/2152]
+2021-07-17 16:46:49,507 [1] DEBUG - ------------------------------------
+2021-07-17 16:46:49,628 [1] DEBUG - Added (1) out of (1) for 134-2A
+2021-07-17 16:46:49,629 [1] DEBUG - DONE: 134-2A [3/2152]
+2021-07-17 16:46:56,391 [1] DEBUG - STARTED: 134-2B [4/2152]
+2021-07-17 16:46:56,391 [1] DEBUG - ------------------------------------
+2021-07-17 16:46:56,480 [4] DEBUG - 0% - PADALAIYAR KULAM- DONE:4 of 2152-LastItem Procesed: 134-2B
+2021-07-17 16:46:57,071 [1] DEBUG - ERROR:System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.AdangalTypes.AdangalConverter.IsDash(String copiedText) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 450
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 224
+2021-07-17 16:47:56,553 [8] DEBUG - 0% - PADALAIYAR KULAM- DONE:4 of 2152-LastItem Procesed: 134-2B
+2021-07-17 16:48:24,930 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-17 16:48:59,915 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 178 -  NOT FOUND FOR : 77--
+2021-07-17 16:49:03,555 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 178 -  NOT FOUND FOR : 79--
+2021-07-17 16:49:11,042 [1] DEBUG - STARTED: 134-2B [2/2152]
+2021-07-17 16:49:11,042 [1] DEBUG - ------------------------------------
+2021-07-17 16:49:11,168 [1] DEBUG - Added (1) out of (1) for 134-2B
+2021-07-17 16:49:11,273 [1] DEBUG - DONE: 134-2B [2/2152]
+2021-07-17 16:49:15,922 [1] DEBUG - STARTED: 135-1 [3/2152]
+2021-07-17 16:49:15,922 [1] DEBUG - ------------------------------------
+2021-07-17 16:49:16,029 [1] DEBUG - Added (1) out of (1) for 135-1
+2021-07-17 16:49:16,030 [1] DEBUG - DONE: 135-1 [3/2152]
+2021-07-17 16:49:21,212 [1] DEBUG - STARTED: 135-2 [4/2152]
+2021-07-17 16:49:21,212 [1] DEBUG - ------------------------------------
+2021-07-17 16:49:21,246 [1] DEBUG - Wrong Captcha: 8QCDuUB: 135-2
+2021-07-17 16:49:25,685 [1] DEBUG - STARTED: 135-2 [4/2152]
+2021-07-17 16:49:25,685 [1] DEBUG - ------------------------------------
+2021-07-17 16:49:26,213 [1] DEBUG - Added (4) out of (4) for 135-2
+2021-07-17 16:49:26,213 [1] DEBUG - DONE: 135-2 [4/2152]
+2021-07-17 16:49:31,806 [1] DEBUG - STARTED: 135-3 [5/2152]
+2021-07-17 16:49:31,806 [1] DEBUG - ------------------------------------
+2021-07-17 16:49:31,908 [1] DEBUG - Added (1) out of (1) for 135-3
+2021-07-17 16:49:31,909 [1] DEBUG - DONE: 135-3 [5/2152]
+2021-07-17 16:49:37,430 [1] DEBUG - STARTED: 136-1 [6/2152]
+2021-07-17 16:49:37,430 [1] DEBUG - ------------------------------------
+2021-07-17 16:49:37,448 [4] DEBUG - 0% - PADALAIYAR KULAM- DONE:6 of 2152-LastItem Procesed: 136-1
+2021-07-17 16:49:37,539 [1] DEBUG - Added (1) out of (1) for 136-1
+2021-07-17 16:49:37,542 [1] DEBUG - DONE: 136-1 [6/2152]
+2021-07-17 16:49:41,868 [1] DEBUG - STARTED: 136-2 [7/2152]
+2021-07-17 16:49:41,868 [1] DEBUG - ------------------------------------
+2021-07-17 16:49:41,966 [1] DEBUG - Added (1) out of (1) for 136-2
+2021-07-17 16:49:41,967 [1] DEBUG - DONE: 136-2 [7/2152]
+2021-07-17 16:49:47,704 [1] DEBUG - STARTED: 136-4 [8/2152]
+2021-07-17 16:49:47,704 [1] DEBUG - ------------------------------------
+2021-07-17 16:49:48,567 [1] DEBUG - Added (6) out of (6) for 136-4
+2021-07-17 16:49:48,575 [1] DEBUG - DONE: 136-4 [8/2152]
+2021-07-17 16:49:53,995 [1] DEBUG - STARTED: 137-2 [9/2152]
+2021-07-17 16:49:53,995 [1] DEBUG - ------------------------------------
+2021-07-17 16:49:53,995 [1] DEBUG - Wrong Captcha: G7DWMS5: 137-2
+2021-07-17 16:49:59,945 [1] DEBUG - STARTED: 137-2 [9/2152]
+2021-07-17 16:49:59,945 [1] DEBUG - ------------------------------------
+2021-07-17 16:49:59,945 [1] DEBUG - Wrong Captcha: GA4ZHXV: 137-2
+2021-07-17 16:50:04,204 [1] DEBUG - STARTED: 137-2 [9/2152]
+2021-07-17 16:50:04,204 [1] DEBUG - ------------------------------------
+2021-07-17 16:50:04,204 [1] DEBUG - Wrong Captcha: GCczpP2w: 137-2
+2021-07-17 16:50:08,781 [1] DEBUG - STARTED: 137-3 [10/2152]
+2021-07-17 16:50:08,781 [1] DEBUG - ------------------------------------
+2021-07-17 16:50:08,888 [1] DEBUG - Added (1) out of (1) for 137-3
+2021-07-17 16:50:08,919 [1] DEBUG - DONE: 137-3 [10/2152]
+2021-07-17 16:50:13,425 [1] DEBUG - STARTED: 137-4B [11/2152]
+2021-07-17 16:50:13,425 [1] DEBUG - ------------------------------------
+2021-07-17 16:50:13,425 [1] DEBUG - Wrong Captcha: HB2EQS: 137-4B
+2021-07-17 16:50:18,693 [1] DEBUG - STARTED: 137-4B [11/2152]
+2021-07-17 16:50:18,695 [1] DEBUG - ------------------------------------
+2021-07-17 16:50:18,789 [1] DEBUG - Added (1) out of (1) for 137-4B
+2021-07-17 16:50:18,790 [1] DEBUG - DONE: 137-4B [11/2152]
+2021-07-17 16:51:25,874 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-17 16:52:04,939 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 178 -  NOT FOUND FOR : 77--
+2021-07-17 16:52:09,608 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 178 -  NOT FOUND FOR : 79--
+2021-07-17 16:52:17,580 [1] DEBUG - STARTED: 137-2 [2/2137]
+2021-07-17 16:52:17,581 [1] DEBUG - ------------------------------------
+2021-07-17 16:52:17,929 [1] DEBUG - Added (3) out of (3) for 137-2
+2021-07-17 16:52:17,975 [1] DEBUG - DONE: 137-2 [2/2137]
+2021-07-17 16:52:24,125 [1] DEBUG - STARTED: 138-1 [3/2137]
+2021-07-17 16:52:24,126 [1] DEBUG - ------------------------------------
+2021-07-17 16:52:24,353 [1] DEBUG - Added (2) out of (2) for 138-1
+2021-07-17 16:52:24,353 [1] DEBUG - DONE: 138-1 [3/2137]
+2021-07-17 16:52:29,494 [1] DEBUG - STARTED: 138-2 [4/2137]
+2021-07-17 16:52:29,494 [1] DEBUG - ------------------------------------
+2021-07-17 16:52:29,494 [1] DEBUG - ERROR in names: namerow-
+1.  	-	??????	????????? ??????????????????????	-
+
+2021-07-17 16:52:29,957 [1] DEBUG - ERROR: 138-2 - System.NullReferenceException: Object reference not set to an instance of an object.
+   at AdangalApp.AdangalTypes.AdangalConverter.GetAdangalFromCopiedData(List`1 data, String pattaEn, KeyValue ownerName) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 649
+   at AdangalApp.AdangalTypes.AdangalConverter.<>c__DisplayClass15_0.<TextToAdangal>b__2(String fe) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 571
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at AdangalApp.AdangalTypes.AdangalConverter.TextToAdangal(String text, Int32 surveyNo, String subdivNo) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 568
+2021-07-17 16:52:29,957 [1] DEBUG - DONE: 138-2 [4/2137]
+2021-07-17 16:52:34,663 [1] DEBUG - STARTED: 139-1 [5/2137]
+2021-07-17 16:52:34,663 [1] DEBUG - ------------------------------------
+2021-07-17 16:52:34,666 [1] DEBUG - Wrong Captcha: SUDHBD: 139-1
+2021-07-17 16:52:38,833 [1] DEBUG - STARTED: 139-1 [5/2137]
+2021-07-17 16:52:38,833 [1] DEBUG - ------------------------------------
+2021-07-17 16:52:38,975 [1] DEBUG - added govt land - 139-1
+2021-07-17 16:52:38,976 [1] DEBUG - DONE: 139-1 [5/2137]
+2021-07-17 16:52:40,439 [5] DEBUG - 0% - PADALAIYAR KULAM- DONE:6 of 2137-LastItem Procesed: 139-2
+2021-07-17 16:52:44,146 [1] DEBUG - STARTED: 139-2 [6/2137]
+2021-07-17 16:52:44,146 [1] DEBUG - ------------------------------------
+2021-07-17 16:52:44,265 [1] DEBUG - Added (1) out of (1) for 139-2
+2021-07-17 16:52:44,269 [1] DEBUG - DONE: 139-2 [6/2137]
+2021-07-17 16:52:49,080 [1] DEBUG - STARTED: 139-5A [7/2137]
+2021-07-17 16:52:49,080 [1] DEBUG - ------------------------------------
+2021-07-17 16:52:49,183 [1] DEBUG - Added (1) out of (1) for 139-5A
+2021-07-17 16:52:49,481 [1] DEBUG - DONE: 139-5A [7/2137]
+2021-07-17 16:52:55,227 [1] DEBUG - STARTED: 139-5B [8/2137]
+2021-07-17 16:52:55,227 [1] DEBUG - ------------------------------------
+2021-07-17 16:52:55,327 [1] DEBUG - Added (1) out of (1) for 139-5B
+2021-07-17 16:52:55,328 [1] DEBUG - DONE: 139-5B [8/2137]
+2021-07-17 16:53:00,116 [1] DEBUG - STARTED: 139-6A [9/2137]
+2021-07-17 16:53:00,116 [1] DEBUG - ------------------------------------
+2021-07-17 16:53:00,116 [1] DEBUG - Wrong Captcha: D4vVW45: 139-6A
+2021-07-17 16:53:05,000 [1] DEBUG - STARTED: 139-6A [9/2137]
+2021-07-17 16:53:05,000 [1] DEBUG - ------------------------------------
+2021-07-17 16:53:05,133 [1] DEBUG - Added (1) out of (1) for 139-6A
+2021-07-17 16:53:05,178 [1] DEBUG - DONE: 139-6A [9/2137]
+2021-07-17 16:53:10,825 [1] DEBUG - STARTED: 139-9A [10/2137]
+2021-07-17 16:53:10,825 [1] DEBUG - ------------------------------------
+2021-07-17 16:53:10,930 [1] DEBUG - Added (1) out of (1) for 139-9A
+2021-07-17 16:53:10,931 [1] DEBUG - DONE: 139-9A [10/2137]
+2021-07-17 16:53:16,605 [1] DEBUG - STARTED: 139-9B [11/2137]
+2021-07-17 16:53:16,605 [1] DEBUG - ------------------------------------
+2021-07-17 16:53:16,710 [1] DEBUG - Added (1) out of (1) for 139-9B
+2021-07-17 16:53:16,711 [1] DEBUG - DONE: 139-9B [11/2137]
+2021-07-17 16:53:22,105 [1] DEBUG - STARTED: 139-10B [12/2137]
+2021-07-17 16:53:22,105 [1] DEBUG - ------------------------------------
+2021-07-17 16:53:22,207 [1] DEBUG - Added (1) out of (1) for 139-10B
+2021-07-17 16:53:22,208 [1] DEBUG - DONE: 139-10B [12/2137]
+2021-07-17 16:53:27,436 [1] DEBUG - STARTED: 139-12 [13/2137]
+2021-07-17 16:53:27,436 [1] DEBUG - ------------------------------------
+2021-07-17 16:53:27,531 [1] DEBUG - Added (1) out of (1) for 139-12
+2021-07-17 16:53:27,531 [1] DEBUG - DONE: 139-12 [13/2137]
+2021-07-17 16:53:30,207 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 178 -  NOT FOUND FOR : 140--
+2021-07-17 16:53:42,304 [1] DEBUG - STARTED: 141-- [15/2137]
+2021-07-17 16:53:42,304 [1] DEBUG - ------------------------------------
+2021-07-17 16:53:42,422 [1] DEBUG - added govt land - 141--
+2021-07-17 16:53:42,423 [1] DEBUG - DONE: 141-- [15/2137]
+2021-07-17 16:53:48,631 [1] DEBUG - STARTED: 142-1A [16/2137]
+2021-07-17 16:53:48,631 [1] DEBUG - ------------------------------------
+2021-07-17 16:53:48,752 [1] DEBUG - Added (1) out of (1) for 142-1A
+2021-07-17 16:53:48,753 [1] DEBUG - DONE: 142-1A [16/2137]
+2021-07-17 16:53:49,483 [5] DEBUG - 1% - PADALAIYAR KULAM- DONE:17 of 2137-LastItem Procesed: 142-1B
+2021-07-17 16:53:53,982 [1] DEBUG - STARTED: 142-1B [17/2137]
+2021-07-17 16:53:53,982 [1] DEBUG - ------------------------------------
+2021-07-17 16:53:54,101 [1] DEBUG - Added (1) out of (1) for 142-1B
+2021-07-17 16:53:54,102 [1] DEBUG - DONE: 142-1B [17/2137]
+2021-07-17 16:53:58,654 [1] DEBUG - STARTED: 143-1B [18/2137]
+2021-07-17 16:53:58,654 [1] DEBUG - ------------------------------------
+2021-07-17 16:53:58,754 [1] DEBUG - Added (1) out of (1) for 143-1B
+2021-07-17 16:53:58,754 [1] DEBUG - DONE: 143-1B [18/2137]
+2021-07-17 16:54:05,063 [1] DEBUG - STARTED: 143-2A [19/2137]
+2021-07-17 16:54:05,063 [1] DEBUG - ------------------------------------
+2021-07-17 16:54:05,170 [1] DEBUG - Added (1) out of (1) for 143-2A
+2021-07-17 16:54:05,171 [1] DEBUG - DONE: 143-2A [19/2137]
+2021-07-17 16:54:09,978 [1] DEBUG - STARTED: 144-2 [20/2137]
+2021-07-17 16:54:09,978 [1] DEBUG - ------------------------------------
+2021-07-17 16:54:10,087 [1] DEBUG - Added (1) out of (1) for 144-2
+2021-07-17 16:54:10,088 [1] DEBUG - DONE: 144-2 [20/2137]
+2021-07-17 16:54:14,725 [1] DEBUG - STARTED: 145-2 [21/2137]
+2021-07-17 16:54:14,725 [1] DEBUG - ------------------------------------
+2021-07-17 16:54:14,845 [1] DEBUG - added govt land - 145-2
+2021-07-17 16:54:14,847 [1] DEBUG - DONE: 145-2 [21/2137]
+2021-07-17 16:54:22,432 [1] DEBUG - STARTED: 146-1 [22/2137]
+2021-07-17 16:54:22,432 [1] DEBUG - ------------------------------------
+2021-07-17 16:54:22,536 [1] DEBUG - Added (1) out of (1) for 146-1
+2021-07-17 16:54:22,539 [1] DEBUG - DONE: 146-1 [22/2137]
+2021-07-17 16:54:29,482 [1] DEBUG - STARTED: 146-2 [23/2137]
+2021-07-17 16:54:29,482 [1] DEBUG - ------------------------------------
+2021-07-17 16:54:29,733 [1] DEBUG - Added (2) out of (2) for 146-2
+2021-07-17 16:54:29,733 [1] DEBUG - DONE: 146-2 [23/2137]
+2021-07-17 16:54:34,647 [1] DEBUG - STARTED: 148-1A [24/2137]
+2021-07-17 16:54:34,647 [1] DEBUG - ------------------------------------
+2021-07-17 16:54:35,588 [1] DEBUG - Added (6) out of (6) for 148-1A
+2021-07-17 16:54:35,589 [1] DEBUG - DONE: 148-1A [24/2137]
+2021-07-17 16:54:42,651 [1] DEBUG - STARTED: 148-2 [26/2137]
+2021-07-17 16:54:42,651 [1] DEBUG - ------------------------------------
+2021-07-17 16:54:42,775 [1] DEBUG - Added (1) out of (1) for 148-2
+2021-07-17 16:54:42,775 [1] DEBUG - DONE: 148-2 [26/2137]
+2021-07-17 17:03:38,824 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-17 17:04:18,059 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 183 -  NOT FOUND FOR : 79--
+2021-07-17 17:04:23,381 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 183 -  NOT FOUND FOR : 140--
+2021-07-17 17:04:30,920 [1] DEBUG - STARTED: 149-2 [3/2109]
+2021-07-17 17:04:30,920 [1] DEBUG - ------------------------------------
+2021-07-17 17:04:30,941 [1] DEBUG - Wrong Captcha: 3wysws: 149-2
+2021-07-17 17:04:36,824 [1] DEBUG - STARTED: 149-2 [3/2109]
+2021-07-17 17:04:36,824 [1] DEBUG - ------------------------------------
+2021-07-17 17:04:37,000 [1] DEBUG - Added (1) out of (1) for 149-2
+2021-07-17 17:04:37,477 [1] DEBUG - DONE: 149-2 [3/2109]
+2021-07-17 17:04:43,779 [1] DEBUG - STARTED: 150-- [4/2109]
+2021-07-17 17:04:43,779 [1] DEBUG - ------------------------------------
+2021-07-17 17:04:44,701 [1] DEBUG - Added (7) out of (7) for 150--
+2021-07-17 17:04:44,702 [1] DEBUG - DONE: 150-- [4/2109]
+2021-07-17 17:04:49,082 [4] DEBUG - 0% - PADALAIYAR KULAM- DONE:8 of 2109-LastItem Procesed: 152-2
+2021-07-17 17:04:49,238 [1] DEBUG - STARTED: 152-2 [8/2109]
+2021-07-17 17:04:49,238 [1] DEBUG - ------------------------------------
+2021-07-17 17:04:49,389 [1] DEBUG - added govt land - 152-2
+2021-07-17 17:04:49,390 [1] DEBUG - DONE: 152-2 [8/2109]
+2021-07-17 17:04:54,360 [1] DEBUG - STARTED: 153-2 [9/2109]
+2021-07-17 17:04:54,360 [1] DEBUG - ------------------------------------
+2021-07-17 17:04:54,472 [1] DEBUG - added govt land - 153-2
+2021-07-17 17:04:54,472 [1] DEBUG - DONE: 153-2 [9/2109]
+2021-07-17 17:05:00,567 [1] DEBUG - STARTED: 154-1B [10/2109]
+2021-07-17 17:05:00,568 [1] DEBUG - ------------------------------------
+2021-07-17 17:05:01,484 [1] DEBUG - Added (7) out of (7) for 154-1B
+2021-07-17 17:05:01,486 [1] DEBUG - DONE: 154-1B [10/2109]
+2021-07-17 17:05:06,028 [1] DEBUG - STARTED: 154-2 [11/2109]
+2021-07-17 17:05:06,028 [1] DEBUG - ------------------------------------
+2021-07-17 17:05:06,028 [1] DEBUG - Wrong Captcha: SHHM8W: 154-2
+2021-07-17 17:05:11,525 [1] DEBUG - STARTED: 154-2 [11/2109]
+2021-07-17 17:05:11,525 [1] DEBUG - ------------------------------------
+2021-07-17 17:05:11,646 [1] DEBUG - added govt land - 154-2
+2021-07-17 17:05:11,725 [1] DEBUG - DONE: 154-2 [11/2109]
+2021-07-17 17:05:17,094 [1] DEBUG - STARTED: 157-1A [13/2109]
+2021-07-17 17:05:17,094 [1] DEBUG - ------------------------------------
+2021-07-17 17:05:17,309 [1] DEBUG - ERROR:System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AdangalApp.AdangalTypes.AdangalConverter.IsDash(String copiedText) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 453
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 229
+2021-07-17 17:05:35,492 [1] DEBUG - STARTED: 157-1B [14/2109]
+2021-07-17 17:05:35,492 [1] DEBUG - ------------------------------------
+2021-07-17 17:05:35,606 [1] DEBUG - Added (1) out of (1) for 157-1B
+2021-07-17 17:05:35,607 [1] DEBUG - DONE: 157-1B [14/2109]
+2021-07-17 17:05:40,359 [1] DEBUG - STARTED: 157-2 [15/2109]
+2021-07-17 17:05:40,359 [1] DEBUG - ------------------------------------
+2021-07-17 17:05:41,090 [1] DEBUG - Added (5) out of (5) for 157-2
+2021-07-17 17:05:41,112 [1] DEBUG - DONE: 157-2 [15/2109]
+2021-07-17 17:05:45,594 [1] DEBUG - STARTED: 158-2 [17/2109]
+2021-07-17 17:05:45,594 [1] DEBUG - ------------------------------------
+2021-07-17 17:05:45,709 [1] DEBUG - added govt land - 158-2
+2021-07-17 17:05:45,709 [1] DEBUG - DONE: 158-2 [17/2109]
+2021-07-17 17:05:50,801 [1] DEBUG - STARTED: 160-1A1 [18/2109]
+2021-07-17 17:05:50,801 [1] DEBUG - ------------------------------------
+2021-07-17 17:05:50,950 [1] DEBUG - added govt land - 160-1A1
+2021-07-17 17:05:50,951 [1] DEBUG - DONE: 160-1A1 [18/2109]
+2021-07-17 17:05:56,290 [1] DEBUG - STARTED: 160-1A2 [19/2109]
+2021-07-17 17:05:56,290 [1] DEBUG - ------------------------------------
+2021-07-17 17:05:56,472 [1] DEBUG - Added (1) out of (1) for 160-1A2
+2021-07-17 17:05:56,472 [1] DEBUG - DONE: 160-1A2 [19/2109]
+2021-07-17 17:06:01,079 [1] DEBUG - STARTED: 160-1B [20/2109]
+2021-07-17 17:06:01,079 [1] DEBUG - ------------------------------------
+2021-07-17 17:06:01,437 [1] DEBUG - Added (2) out of (2) for 160-1B
+2021-07-17 17:06:01,438 [1] DEBUG - DONE: 160-1B [20/2109]
+2021-07-17 17:06:01,582 [5] DEBUG - 1% - PADALAIYAR KULAM- DONE:21 of 2109-LastItem Procesed: 160-2
+2021-07-17 17:06:06,004 [1] DEBUG - STARTED: 160-2 [21/2109]
+2021-07-17 17:06:06,004 [1] DEBUG - ------------------------------------
+2021-07-17 17:06:06,489 [1] DEBUG - Added (2) out of (2) for 160-2
+2021-07-17 17:06:06,493 [1] DEBUG - DONE: 160-2 [21/2109]
+2021-07-17 17:06:12,225 [1] DEBUG - STARTED: 161-1 [22/2109]
+2021-07-17 17:06:12,225 [1] DEBUG - ------------------------------------
+2021-07-17 17:06:12,345 [1] DEBUG - Added (1) out of (1) for 161-1
+2021-07-17 17:06:12,345 [1] DEBUG - DONE: 161-1 [22/2109]
+2021-07-17 17:06:16,686 [1] DEBUG - STARTED: 161-2 [23/2109]
+2021-07-17 17:06:16,686 [1] DEBUG - ------------------------------------
+2021-07-17 17:06:16,800 [1] DEBUG - Added (1) out of (1) for 161-2
+2021-07-17 17:06:16,801 [1] DEBUG - DONE: 161-2 [23/2109]
+2021-07-17 17:06:21,211 [1] DEBUG - STARTED: 162-2 [24/2109]
+2021-07-17 17:06:21,211 [1] DEBUG - ------------------------------------
+2021-07-17 17:06:21,315 [1] DEBUG - Added (1) out of (1) for 162-2
+2021-07-17 17:06:21,316 [1] DEBUG - DONE: 162-2 [24/2109]
+2021-07-17 17:06:25,374 [1] DEBUG - STARTED: 163-3 [25/2109]
+2021-07-17 17:06:25,374 [1] DEBUG - ------------------------------------
+2021-07-17 17:06:25,490 [1] DEBUG - added govt land - 163-3
+2021-07-17 17:06:25,491 [1] DEBUG - DONE: 163-3 [25/2109]
+2021-07-17 17:06:30,827 [1] DEBUG - STARTED: 164-1A [26/2109]
+2021-07-17 17:06:30,827 [1] DEBUG - ------------------------------------
+2021-07-17 17:06:31,062 [1] DEBUG - Added (1) out of (1) for 164-1A
+2021-07-17 17:06:31,066 [1] DEBUG - DONE: 164-1A [26/2109]
+2021-07-17 17:06:35,539 [1] DEBUG - STARTED: 164-1B [27/2109]
+2021-07-17 17:06:35,539 [1] DEBUG - ------------------------------------
+2021-07-17 17:06:35,673 [1] DEBUG - Added (1) out of (1) for 164-1B
+2021-07-17 17:06:35,675 [1] DEBUG - DONE: 164-1B [27/2109]
+2021-07-17 17:06:40,624 [1] DEBUG - STARTED: 164-2 [28/2109]
+2021-07-17 17:06:40,624 [1] DEBUG - ------------------------------------
+2021-07-17 17:06:40,727 [1] DEBUG - Added (1) out of (1) for 164-2
+2021-07-17 17:06:40,728 [1] DEBUG - DONE: 164-2 [28/2109]
+2021-07-17 17:06:46,454 [1] DEBUG - STARTED: 165-1 [29/2109]
+2021-07-17 17:06:46,454 [1] DEBUG - ------------------------------------
+2021-07-17 17:06:46,620 [1] DEBUG - added govt land - 165-1
+2021-07-17 17:06:46,621 [1] DEBUG - DONE: 165-1 [29/2109]
+2021-07-17 17:06:50,695 [1] DEBUG - STARTED: 166-1 [30/2109]
+2021-07-17 17:06:50,695 [1] DEBUG - ------------------------------------
+2021-07-17 17:06:50,909 [1] DEBUG - Added (1) out of (1) for 166-1
+2021-07-17 17:06:50,910 [1] DEBUG - DONE: 166-1 [30/2109]
+2021-07-17 17:06:56,168 [1] DEBUG - STARTED: 166-2A1 [31/2109]
+2021-07-17 17:06:56,168 [1] DEBUG - ------------------------------------
+2021-07-17 17:06:56,300 [1] DEBUG - Added (1) out of (1) for 166-2A1
+2021-07-17 17:06:56,301 [1] DEBUG - DONE: 166-2A1 [31/2109]
+2021-07-17 17:07:01,088 [1] DEBUG - STARTED: 166-2B [32/2109]
+2021-07-17 17:07:01,088 [1] DEBUG - ------------------------------------
+2021-07-17 17:07:01,616 [1] DEBUG - Added (3) out of (3) for 166-2B
+2021-07-17 17:07:01,617 [1] DEBUG - DONE: 166-2B [32/2109]
+2021-07-17 17:07:05,758 [1] DEBUG - STARTED: 167-- [33/2109]
+2021-07-17 17:07:05,758 [1] DEBUG - ------------------------------------
+2021-07-17 17:07:06,124 [1] DEBUG - Added (2) out of (2) for 167--
+2021-07-17 17:07:06,125 [1] DEBUG - DONE: 167-- [33/2109]
+2021-07-17 17:07:11,153 [1] DEBUG - STARTED: 168-2 [34/2109]
+2021-07-17 17:07:11,153 [1] DEBUG - ------------------------------------
+2021-07-17 17:07:11,639 [1] DEBUG - Added (2) out of (2) for 168-2
+2021-07-17 17:07:11,662 [1] DEBUG - DONE: 168-2 [34/2109]
+2021-07-17 17:07:12,357 [4] DEBUG - 2% - PADALAIYAR KULAM- DONE:35 of 2109-LastItem Procesed: 170--
+2021-07-17 17:07:16,234 [1] DEBUG - STARTED: 170-- [35/2109]
+2021-07-17 17:07:16,234 [1] DEBUG - ------------------------------------
+2021-07-17 17:07:16,511 [1] DEBUG - Added (1) out of (1) for 170--
+2021-07-17 17:07:16,531 [1] DEBUG - DONE: 170-- [35/2109]
+2021-07-17 17:07:24,470 [1] DEBUG - STARTED: 172-- [36/2109]
+2021-07-17 17:07:24,470 [1] DEBUG - ------------------------------------
+2021-07-17 17:07:24,592 [1] DEBUG - Added (1) out of (1) for 172--
+2021-07-17 17:07:24,610 [1] DEBUG - DONE: 172-- [36/2109]
+2021-07-17 17:07:30,142 [1] DEBUG - STARTED: 176-- [37/2109]
+2021-07-17 17:07:30,142 [1] DEBUG - ------------------------------------
+2021-07-17 17:07:30,299 [1] DEBUG - Added (1) out of (1) for 176--
+2021-07-17 17:07:30,303 [1] DEBUG - DONE: 176-- [37/2109]
+2021-07-17 17:07:35,274 [1] DEBUG - STARTED: 177-- [38/2109]
+2021-07-17 17:07:35,274 [1] DEBUG - ------------------------------------
+2021-07-17 17:07:35,975 [1] DEBUG - Added (5) out of (5) for 177--
+2021-07-17 17:07:35,975 [1] DEBUG - DONE: 177-- [38/2109]
+2021-07-17 17:07:40,251 [1] DEBUG - STARTED: 178-- [39/2109]
+2021-07-17 17:07:40,251 [1] DEBUG - ------------------------------------
+2021-07-17 17:07:40,380 [1] DEBUG - Added (1) out of (1) for 178--
+2021-07-17 17:07:40,380 [1] DEBUG - DONE: 178-- [39/2109]
+2021-07-17 17:08:06,051 [1] DEBUG - STARTED: 184-1 [44/2109]
+2021-07-17 17:08:06,051 [1] DEBUG - ------------------------------------
+2021-07-17 17:08:06,169 [1] DEBUG - Added (1) out of (1) for 184-1
+2021-07-17 17:08:06,198 [1] DEBUG - DONE: 184-1 [44/2109]
+2021-07-17 17:08:10,680 [1] DEBUG - STARTED: 185-- [45/2109]
+2021-07-17 17:08:10,680 [1] DEBUG - ------------------------------------
+2021-07-17 17:08:10,816 [1] DEBUG - Added (1) out of (1) for 185--
+2021-07-17 17:08:10,817 [1] DEBUG - DONE: 185-- [45/2109]
+2021-07-17 17:08:15,498 [1] DEBUG - STARTED: 186-1A [46/2109]
+2021-07-17 17:08:15,498 [1] DEBUG - ------------------------------------
+2021-07-17 17:08:15,619 [1] DEBUG - Added (1) out of (1) for 186-1A
+2021-07-17 17:08:15,619 [1] DEBUG - DONE: 186-1A [46/2109]
+2021-07-17 17:08:21,177 [1] DEBUG - STARTED: 186-1B [47/2109]
+2021-07-17 17:08:21,178 [1] DEBUG - ------------------------------------
+2021-07-17 17:08:21,178 [1] DEBUG - Wrong Captcha: Ccus7w8: 186-1B
+2021-07-17 17:08:24,648 [4] DEBUG - 2% - PADALAIYAR KULAM- DONE:47 of 2109-LastItem Procesed: 186-1B
+2021-07-17 17:08:25,893 [1] DEBUG - STARTED: 186-1B [47/2109]
+2021-07-17 17:08:25,893 [1] DEBUG - ------------------------------------
+2021-07-17 17:08:25,893 [1] DEBUG - Wrong Captcha: XM5YMH: 186-1B
+2021-07-17 17:08:30,355 [1] DEBUG - STARTED: 186-1B [47/2109]
+2021-07-17 17:08:30,355 [1] DEBUG - ------------------------------------
+2021-07-17 17:08:30,661 [1] DEBUG - Added (2) out of (2) for 186-1B
+2021-07-17 17:08:30,663 [1] DEBUG - DONE: 186-1B [47/2109]
+2021-07-17 17:08:38,879 [1] DEBUG - STARTED: 187-2 [48/2109]
+2021-07-17 17:08:38,879 [1] DEBUG - ------------------------------------
+2021-07-17 17:08:39,310 [1] DEBUG - Added (2) out of (2) for 187-2
+2021-07-17 17:08:39,311 [1] DEBUG - DONE: 187-2 [48/2109]
+2021-07-17 17:08:44,882 [1] DEBUG - STARTED: 187-3 [49/2109]
+2021-07-17 17:08:44,882 [1] DEBUG - ------------------------------------
+2021-07-17 17:08:45,312 [1] DEBUG - Added (3) out of (3) for 187-3
+2021-07-17 17:08:45,312 [1] DEBUG - DONE: 187-3 [49/2109]
+2021-07-17 17:09:15,823 [1] DEBUG - <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>ERROR:OpenQA.Selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"*[name="talukCode"]"}
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElementByName(String name)
+   at OpenQA.Selenium.By.<>c__DisplayClass18_0.<Name>b__0(ISearchContext context)
+   at OpenQA.Selenium.By.FindElement(ISearchContext context)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(By by)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 136</format><args>{}</args></log4net.Error>
+2021-07-17 17:09:39,330 [9] DEBUG - 2% - PADALAIYAR KULAM- DONE:51 of 2109-LastItem Procesed: 188--
+2021-07-17 17:10:11,514 [1] DEBUG - <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>ERROR:OpenQA.Selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"*[name="districtCode"]"}
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElementByName(String name)
+   at OpenQA.Selenium.By.<>c__DisplayClass18_0.<Name>b__0(ISearchContext context)
+   at OpenQA.Selenium.By.FindElement(ISearchContext context)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(By by)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 124</format><args>{}</args></log4net.Error>
+2021-07-17 17:10:40,692 [10] DEBUG - 2% - PADALAIYAR KULAM- DONE:52 of 2109-LastItem Procesed: 189-1
+2021-07-17 17:11:10,572 [1] DEBUG - <log4net.Error>Exception during StringFormat: Input string was not in a correct format. <format>ERROR:OpenQA.Selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"*[name="districtCode"]"}
+  (Session info: chrome=91.0.4472.124)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElementByName(String name)
+   at OpenQA.Selenium.By.<>c__DisplayClass18_0.<Name>b__0(ISearchContext context)
+   at OpenQA.Selenium.By.FindElement(ISearchContext context)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(By by)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 124</format><args>{}</args></log4net.Error>
+2021-07-17 17:24:03,122 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-17 17:24:35,107 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Int32 alreadyProcessed, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 192 -  NOT FOUND FOR : 79--
+2021-07-17 17:24:40,979 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Int32 alreadyProcessed, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 192 -  NOT FOUND FOR : 140--
+2021-07-17 17:24:50,601 [1] DEBUG - STARTED: 157-2 [3/2053]
+2021-07-17 17:24:50,601 [1] DEBUG - ------------------------------------
+2021-07-17 17:24:50,715 [1] DEBUG - added govt land - 157-2
+2021-07-17 17:24:50,749 [1] DEBUG - DONE: 157-2 [3/2053]
+2021-07-17 17:24:55,908 [1] DEBUG - STARTED: 162-2 [4/2053]
+2021-07-17 17:24:55,908 [1] DEBUG - ------------------------------------
+2021-07-17 17:24:56,027 [1] DEBUG - added govt land - 162-2
+2021-07-17 17:24:56,031 [1] DEBUG - DONE: 162-2 [4/2053]
+2021-07-17 17:25:01,211 [1] DEBUG - STARTED: 164-2 [5/2053]
+2021-07-17 17:25:01,211 [1] DEBUG - ------------------------------------
+2021-07-17 17:25:01,321 [1] DEBUG - added govt land - 164-2
+2021-07-17 17:25:01,321 [1] DEBUG - DONE: 164-2 [5/2053]
+2021-07-17 17:25:08,324 [1] DEBUG - STARTED: 186-1A [6/2053]
+2021-07-17 17:25:08,324 [1] DEBUG - ------------------------------------
+2021-07-17 17:25:08,434 [1] DEBUG - Added (1) out of (1) for 186-1A
+2021-07-17 17:25:08,434 [1] DEBUG - DONE: 186-1A [6/2053]
+2021-07-17 17:25:12,225 [4] DEBUG - 32% - PADALAIYAR KULAM- DONE:982 of 3028-LastItem Procesed: 187-3
+2021-07-17 17:25:15,619 [1] DEBUG - STARTED: 187-3 [7/2053]
+2021-07-17 17:25:15,619 [1] DEBUG - ------------------------------------
+2021-07-17 17:25:15,734 [1] DEBUG - Added (1) out of (1) for 187-3
+2021-07-17 17:25:15,734 [1] DEBUG - DONE: 187-3 [7/2053]
+2021-07-17 17:25:21,761 [1] DEBUG - STARTED: 188-- [8/2053]
+2021-07-17 17:25:21,761 [1] DEBUG - ------------------------------------
+2021-07-17 17:25:21,867 [1] DEBUG - added govt land - 188--
+2021-07-17 17:25:21,892 [1] DEBUG - DONE: 188-- [8/2053]
+2021-07-17 17:25:28,402 [1] DEBUG - STARTED: 189-1 [9/2053]
+2021-07-17 17:25:28,402 [1] DEBUG - ------------------------------------
+2021-07-17 17:25:28,682 [1] DEBUG - Added (2) out of (2) for 189-1
+2021-07-17 17:25:28,683 [1] DEBUG - DONE: 189-1 [9/2053]
+2021-07-17 17:25:35,380 [1] DEBUG - STARTED: 189-2 [10/2053]
+2021-07-17 17:25:35,380 [1] DEBUG - ------------------------------------
+2021-07-17 17:25:35,477 [1] DEBUG - Added (1) out of (1) for 189-2
+2021-07-17 17:25:35,477 [1] DEBUG - DONE: 189-2 [10/2053]
+2021-07-17 17:25:43,729 [1] DEBUG - STARTED: 190-1 [11/2053]
+2021-07-17 17:25:43,729 [1] DEBUG - ------------------------------------
+2021-07-17 17:25:43,812 [1] DEBUG - Added (1) out of (1) for 190-1
+2021-07-17 17:25:43,828 [1] DEBUG - DONE: 190-1 [11/2053]
+2021-07-17 17:25:49,477 [1] DEBUG - STARTED: 191-2B1 [12/2053]
+2021-07-17 17:25:49,477 [1] DEBUG - ------------------------------------
+2021-07-17 17:25:49,574 [1] DEBUG - Added (1) out of (1) for 191-2B1
+2021-07-17 17:25:49,574 [1] DEBUG - DONE: 191-2B1 [12/2053]
+2021-07-17 17:25:57,296 [1] DEBUG - STARTED: 191-4B [13/2053]
+2021-07-17 17:25:57,296 [1] DEBUG - ------------------------------------
+2021-07-17 17:25:57,381 [1] DEBUG - Added (1) out of (1) for 191-4B
+2021-07-17 17:25:57,412 [1] DEBUG - DONE: 191-4B [13/2053]
+2021-07-17 17:26:17,624 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-17 17:27:22,089 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
