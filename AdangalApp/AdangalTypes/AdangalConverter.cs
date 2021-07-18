@@ -120,7 +120,19 @@ namespace AdangalApp.AdangalTypes
                                 continue;
                         }
 
-                        driver = driver.SwitchTo().Window(driver.WindowHandles[0]);
+
+                        try
+                        {
+                            driver = driver.SwitchTo().Window(driver.WindowHandles[0]);
+                        }
+                        catch (Exception ex)
+                        {
+                            driver.Dispose();
+                            ss.Speak("Driver Closed! so stopping the process.");
+                            AppCommunication.SendAdangalUpdate("Driver issue, so stopping the process.", ex.Message);
+                            return;
+                        }
+
                         //select district
                         var district = driver.FindElement(By.Name("districtCode"));
                         var selectElement = new SelectElement(district);
@@ -133,7 +145,7 @@ namespace AdangalApp.AdangalTypes
                             driver.Navigate().GoToUrl("https://eservices.tn.gov.in/eservicesnew/land/chitta.html?lan=en");
                             selectElement.SelectByValue(districCode);
                         }
-                        
+
 
                         //choose rural
                         RadioButtons categories = new RadioButtons(driver, driver.FindElements(By.Name("areaType")));
@@ -281,7 +293,7 @@ namespace AdangalApp.AdangalTypes
                     catch (Exception ex)
                     {
                         vao.LogMessage("ERROR:" + ex.ToString());
-                        ss.Speak($"Other exception: {ex.Message}");
+                        ss.SpeakAsync($"Other exception: {ex.Message}");
 
                         while (General.CheckForInternetConnection() == false)
                         {
