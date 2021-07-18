@@ -65,7 +65,7 @@ namespace AdangalApp.AdangalTypes
         static List<KeyValue> localList;
 
 
-        public static void ProcessAdangal(List<KeyValue> list, int alreadyProcessed = 0, bool isCorrection = false)
+        public static bool ProcessAdangal(List<KeyValue> list, int alreadyProcessed = 0, bool isCorrection = false)
         {
             localList = list;
 
@@ -130,7 +130,7 @@ namespace AdangalApp.AdangalTypes
                             driver.Dispose();
                             ss.Speak("Driver Closed! so stopping the process.");
                             AppCommunication.SendAdangalUpdate("Driver issue, so stopping the process.", ex.Message);
-                            return;
+                            return false;
                         }
 
                         //select district
@@ -305,7 +305,7 @@ namespace AdangalApp.AdangalTypes
 
                 MessageBox.Show($"Completed: {processedCount} out of {list.Count}", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 AppCommunication.SendAdangalUpdate($"{vao.loadedFile.VillageName} Completed-{processedCount} of {list.Count()}", "");
-
+                return true;
             }
             catch (Exception ex)
             {
@@ -317,7 +317,8 @@ namespace AdangalApp.AdangalTypes
                 }
 
                 ss.Speak($"{ex.Message}, so trying again!");
-                ProcessAdangal(localList);
+                //ProcessAdangal(localList);
+                return false;
 
             }
         }

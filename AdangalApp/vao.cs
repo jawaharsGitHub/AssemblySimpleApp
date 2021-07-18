@@ -3595,7 +3595,10 @@ namespace AdangalApp
                 if (DialogResult.Yes ==
                     MessageBox.Show("All Data are in Sync!", "Retry?", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                 {
-                    AdangalConverter.ProcessAdangal(list);
+                    if(AdangalConverter.ProcessAdangal(list) == false)
+                    {
+                        SyncData();
+                    }
                 }
             }
             else
@@ -3613,7 +3616,10 @@ namespace AdangalApp
                 if (DialogResult.Yes ==
                     MessageBox.Show($"still {(list.Count - adangalProcessed.Count)} pending! [{100 - list.Count.PercentageBtwIntNo(adangalProcessed.Count)}%]",
                     "cotinue?", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
-                    AdangalConverter.ProcessAdangal(adangalToKeyList, alreadyProcessed: adangalProcessed.Count);
+                {
+                    if (AdangalConverter.ProcessAdangal(adangalToKeyList, alreadyProcessed: adangalProcessed.Count) == false)
+                        SyncData();
+                }
             }
 
         }
