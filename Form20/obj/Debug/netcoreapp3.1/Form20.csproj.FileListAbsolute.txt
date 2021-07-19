@@ -1,0 +1,11 @@
+F:\AssemblySimpleApp\Form20\bin\Debug\netcoreapp3.1\Form20.exe
+F:\AssemblySimpleApp\Form20\bin\Debug\netcoreapp3.1\Form20.deps.json
+F:\AssemblySimpleApp\Form20\bin\Debug\netcoreapp3.1\Form20.runtimeconfig.json
+F:\AssemblySimpleApp\Form20\bin\Debug\netcoreapp3.1\Form20.runtimeconfig.dev.json
+F:\AssemblySimpleApp\Form20\bin\Debug\netcoreapp3.1\Form20.dll
+F:\AssemblySimpleApp\Form20\bin\Debug\netcoreapp3.1\Form20.pdb
+F:\AssemblySimpleApp\Form20\obj\Debug\netcoreapp3.1\Form20.csprojAssemblyReference.cache
+F:\AssemblySimpleApp\Form20\obj\Debug\netcoreapp3.1\Form20.AssemblyInfoInputs.cache
+F:\AssemblySimpleApp\Form20\obj\Debug\netcoreapp3.1\Form20.AssemblyInfo.cs
+F:\AssemblySimpleApp\Form20\obj\Debug\netcoreapp3.1\Form20.dll
+F:\AssemblySimpleApp\Form20\obj\Debug\netcoreapp3.1\Form20.pdb

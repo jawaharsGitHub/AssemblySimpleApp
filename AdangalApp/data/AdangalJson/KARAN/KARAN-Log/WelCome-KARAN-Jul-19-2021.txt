@@ -1,0 +1,27 @@
+2021-07-19 12:42:11,767 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-19 12:42:20,063 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 12:42:20,219 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 12:42:33,156 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 12:42:33,187 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-19 12:44:04,478 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-19 12:44:12,870 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 12:44:12,995 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 12:44:25,853 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 12:44:25,884 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-19 13:03:37,430 [1] DEBUG - STEP - 1 - Village: ENMANAMKONDAN
+2021-07-19 13:11:18,712 [1] DEBUG - Error @ dataGridView1_CellEndEdit - System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at AdangalApp.DataAccess.UpdateParappu(Adangal adn) in F:\AssemblySimpleApp\AdangalApp\DataAccess.cs:line 521
+   at AdangalApp.vao.dataGridView1_CellEndEdit(Object sender, DataGridViewCellEventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 2866
+2021-07-19 13:11:55,342 [1] DEBUG - Error @ dataGridView1_CellEndEdit - System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at AdangalApp.DataAccess.UpdateParappu(Adangal adn) in F:\AssemblySimpleApp\AdangalApp\DataAccess.cs:line 521
+   at AdangalApp.vao.dataGridView1_CellEndEdit(Object sender, DataGridViewCellEventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 2866
+2021-07-19 13:12:51,115 [1] DEBUG - Error @ dataGridView1_CellEndEdit - System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at AdangalApp.DataAccess.UpdateParappu(Adangal adn) in F:\AssemblySimpleApp\AdangalApp\DataAccess.cs:line 521
+   at AdangalApp.vao.dataGridView1_CellEndEdit(Object sender, DataGridViewCellEventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 2866
+2021-07-19 13:12:54,537 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 13:12:54,678 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 13:13:05,208 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 13:13:05,286 [1] DEBUG - STEP-2 - Completed - Existing file Load

@@ -525,6 +525,16 @@ namespace AdangalApp
             WriteObjectsToFile(list, JsonPath);
         }
 
+        public static void UpdateTheervai(Adangal adn)
+        {
+            List<Adangal> list = GetActiveAdangal();
+            var u = list.Where(ld => ld.NilaAlavaiEn == adn.NilaAlavaiEn &&
+                              ld.UtpirivuEn == adn.UtpirivuEn).First();
+            u.Theervai = adn.Theervai;
+            u.LandStatus = LandStatus.ParappuEdited;
+            WriteObjectsToFile(list, JsonPath);
+        }
+
 
         public static bool AddNewAdangal(Adangal adangal)
         {

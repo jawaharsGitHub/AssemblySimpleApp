@@ -19,7 +19,7 @@ namespace AdangalApp.AdangalTypes
             get
             {
                 //if(PattaEn > 0)
-                if (LandType == LandType.Porambokku)
+                if (LandType == LandType.Porambokku || LandType == LandType.NansaiAtheenam || LandType == LandType.PunsaiAtheenam)
                     return $"{OwnerName}";
                 else
                     return $"{PattaEn} - {(IsVagai ?  OwnerName + " வகை" : OwnerName)}";

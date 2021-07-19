@@ -23,28 +23,16 @@ namespace AdangalApp.AdangalTypes
 {
     public static class AdangalConverter
     {
-        //static LogHelper logHelper;
         static List<string> relationTypesCorrect;
-        static SpeechSynthesizer ss;
-        //public static string villagPath; // = @"F:\AssemblySimpleApp\AdangalApp\data\AdangalJson\ACHUNTHANVAYAL\ACHUNTHANVAYAL-full.json";
+        static readonly SpeechSynthesizer ss;
+
         static AdangalConverter()
         {
             relationTypesCorrect = ConfigurationManager.AppSettings["relation"].Split('|').ToList();
-            //relationTypesCorrect = new List<string>() {
-            //            "தந்தை",
-            //            "கணவன்",
-            //            "காப்பாளர்",
-            //            "மகன்",
-            //            "மனைவி",
-            //            "மகள்",
-            //            "தாய்"
-            //        };
-
             ss = new SpeechSynthesizer();
-
             ss.Volume = 100;
             ss.Rate = -1;
-            ss.Speak("Started Initialse Adangal Converter!");
+            //ss.Speak("Started Initialse Adangal Converter!");
         }
 
 

@@ -1,0 +1,91 @@
+2021-07-18 08:06:36,895 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-18 08:07:32,242 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: A exception with a null response was thrown sending an HTTP request to the remote WebDriver server for URL http://localhost:64494/session/db2ce97d50d7b1b4afb4fe958fc42d0c/element. The status of the exception was KeepAliveFailure, and the message was: The underlying connection was closed: A connection that was expected to be kept alive was closed by the server. ---> System.Net.WebException: The underlying connection was closed: A connection that was expected to be kept alive was closed by the server. ---> System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.PooledStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.Connection.SyncRead(HttpWebRequest request, Boolean userRetrievedStream, Boolean probeRead)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   --- End of inner exception stack trace ---
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElementByName(String name)
+   at OpenQA.Selenium.By.<>c__DisplayClass18_0.<Name>b__0(ISearchContext context)
+   at OpenQA.Selenium.By.FindElement(ISearchContext context)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(By by)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Int32 alreadyProcessed, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 176
+2021-07-18 08:10:12,318 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: A exception with a null response was thrown sending an HTTP request to the remote WebDriver server for URL http://localhost:64494/session//window/handles. The status of the exception was ConnectFailure, and the message was: Unable to connect to the remote server ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:64494
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   --- End of inner exception stack trace ---
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Int32 alreadyProcessed, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 125
+2021-07-18 08:12:25,191 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-18 08:15:45,324 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-18 08:16:15,906 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Int32 alreadyProcessed, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 195 -  NOT FOUND FOR : 77--
+2021-07-18 08:16:21,957 [1] DEBUG - ERROR:: OpenQA.Selenium.NoSuchElementException: Cannot locate option with value: -
+   at OpenQA.Selenium.Support.UI.SelectElement.SelectByValue(String value)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Int32 alreadyProcessed, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 195 -  NOT FOUND FOR : 79--
+2021-07-18 08:16:23,381 [1] DEBUG - ERROR:OpenQA.Selenium.Support.UI.UnexpectedTagNameException: Element should have been select but was input
+   at OpenQA.Selenium.Support.UI.SelectElement..ctor(IWebElement element)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Int32 alreadyProcessed, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 128
+2021-07-18 08:17:03,662 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: A exception with a null response was thrown sending an HTTP request to the remote WebDriver server for URL http://localhost:54058/session//window/handles. The status of the exception was ConnectFailure, and the message was: Unable to connect to the remote server ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:54058
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   --- End of inner exception stack trace ---
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Int32 alreadyProcessed, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 125
+2021-07-18 08:27:12,857 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-18 08:28:03,386 [1] DEBUG - ERROR:System.NullReferenceException: Object reference not set to an instance of an object.
+   at OpenQA.Selenium.Remote.RemoteWebElement.get_Text()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Int32 alreadyProcessed, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 182
+2021-07-18 08:28:22,504 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: A exception with a null response was thrown sending an HTTP request to the remote WebDriver server for URL http://localhost:55706/session//window/handles. The status of the exception was ConnectFailure, and the message was: Unable to connect to the remote server ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:55706
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   --- End of inner exception stack trace ---
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Int32 alreadyProcessed, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 125
+2021-07-18 08:29:09,310 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM
+2021-07-18 08:29:58,766 [1] DEBUG - ERROR:OpenQA.Selenium.WebDriverException: A exception with a null response was thrown sending an HTTP request to the remote WebDriver server for URL http://localhost:54365/session/8431fd12d5fe9bc9325e67b18be2a87c/window/handles. The status of the exception was ConnectFailure, and the message was: Unable to connect to the remote server ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:54365
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   --- End of inner exception stack trace ---
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.get_WindowHandles()
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Int32 alreadyProcessed, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 125
+2021-07-18 08:36:57,608 [1] DEBUG - STEP - 1 - Village: PADALAIYAR KULAM

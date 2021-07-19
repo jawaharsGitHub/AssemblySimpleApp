@@ -2805,7 +2805,6 @@ namespace AdangalApp
         {
             try
             {
-                //if (ddlListType.SelectedIndex != 0) return;
 
                 if (IsEnterKey == false)
                 {
@@ -2813,8 +2812,10 @@ namespace AdangalApp
                     return;
                 }
 
+                bool edited = false;
                 DataGridView grid = (sender as DataGridView);
                 int rowIndex = grid.CurrentCell.RowIndex;
+                int columnIndex = grid.CurrentCell.ColumnIndex;
                 string owningColumnName = grid.CurrentCell.OwningColumn.Name;
                 string cellValue = GetGridCellValue(grid, rowIndex, owningColumnName);
                 Adangal cus = grid.Rows[grid.CurrentCell.RowIndex].DataBoundItem as Adangal;
@@ -2829,44 +2830,48 @@ namespace AdangalApp
                 if (owningColumnName == "OwnerName")
                 {
                     DataAccess.UpdateOwnerName(cus, cellValue.Trim());
-                    EditSuccess();
-                    //button2_Click_1(null, null);
-                    return;
+                    rowIndex += 1;
+                    edited = true;
                 }
 
                 else if (owningColumnName == "LandStatus")
                 {
                     DataAccess.UpdateLandStatus(cus);
                     EditSuccess();
-                    //button2_Click_1(null, null);
-                    return;
                 }
 
                 else if (owningColumnName == "PattaEn")
                 {
                     DataAccess.UpdatePattaEN(cus);
-                    EditSuccess();
-                    //button2_Click_1(null, null);
-                    return;
+                    edited = true;
                 }
                 else if (owningColumnName == "LandType")
                 {
                     DataAccess.UpdateLandType(cus);
-                    EditSuccess();
-                    //button2_Click_1(null, null);
-                    return;
+                    rowIndex += 1;
+                    edited = true;
                 }
                 else if (owningColumnName == "Parappu")
                 {
-                    //string parappuPattern  = @"\d{1,}.\d{1,}.\d{2,}";
-
-                    //Match m = IsValidParappu(cus.Parappu); //Regex.Match(cus.Parappu, @"\d{1,}.\d{1,}.\d{2,}");
                     if (IsValidParappu(cus.Parappu))
                     {
                         DataAccess.UpdateParappu(cus);
-                        EditSuccess();
-                        //button2_Click_1(null, null);
-                        return;
+                        columnIndex += 1;
+                        edited = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"wrong format {cus.Parappu} Expect [d1,].[d1,].[d2,]");
+                    }
+                }
+                else if (owningColumnName == "Theervai")
+                {
+                    if (IsValidTheervai(cus.Theervai))
+                    {
+                        DataAccess.UpdateTheervai(cus);
+                        rowIndex += 1;
+                        columnIndex -= 1;
+                        edited = true;
                     }
                     else
                     {
@@ -2874,6 +2879,13 @@ namespace AdangalApp
                     }
                 }
 
+                if (edited == true)
+                {
+                    EditSuccess();
+                    dataGridView1.Rows[rowIndex].Cells[columnIndex].Selected = true;
+                    dataGridView1.CurrentCell = dataGridView1.Rows[rowIndex].Cells[columnIndex];
+                    dataGridView1.BeginEdit(true);
+                }
             }
             catch (Exception ex)
             {
@@ -2888,6 +2900,19 @@ namespace AdangalApp
             var pp = parappu.Split('.');
             if (pp.Count() != 3) return false;
             if (pp[0].isNumber() && pp[1].isNumber() && pp[2].isNumber() && pp[1].Length == 2 && pp[2].Length == 2)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private static bool IsValidTheervai(string parappu)
+        {
+            var p = parappu.Contains(".");
+            if (p == false) return false;
+            var pp = parappu.Split('.');
+            if (pp.Count() != 2) return false;
+            if (pp[0].isNumber() && pp[1].isNumber() && pp[0].Length == 1 && pp[1].Length == 2)
             {
                 return true;
             }
@@ -3692,6 +3717,21 @@ namespace AdangalApp
         {
             // complete , so upload to google drive.
 
+        }
+
+       
+    }
+
+    public class CustomGrid : DataGridView
+    {
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (keyData == Keys.Enter)
+            {
+                EndEdit();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
         }
     }
 

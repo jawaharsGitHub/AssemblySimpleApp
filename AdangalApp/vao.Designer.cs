@@ -31,7 +31,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView1 = new CustomGrid();
             this.ddlLandTypes = new System.Windows.Forms.ComboBox();
             this.btnGenerate = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
@@ -883,7 +883,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private CustomGrid dataGridView1;
         private System.Windows.Forms.ComboBox ddlLandTypes;
         private System.Windows.Forms.Button btnGenerate;
         private System.Windows.Forms.Label lblMessage;
