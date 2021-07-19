@@ -152,11 +152,7 @@ namespace AdangalApp
             }
         }
 
-
-
-
-
-        private void BindDropdown(ComboBox cb, object dataSource, string DisplayMember, string ValueMember)
+        public void BindDropdown(ComboBox cb, object dataSource, string DisplayMember, string ValueMember)
         {
             try
             {
@@ -760,7 +756,8 @@ namespace AdangalApp
                 new KeyValue() { Id = 5, Caption = "ErrorParappu" },
                 new KeyValue() { Id = 6, Caption = "EmptyParappu" },
                 new KeyValue() { Id = 7, Caption = "EmptyOwnerName" }, 
-                 new KeyValue() { Id = 8, Caption = "NonExistingPorambokku" },
+                 new KeyValue() { Id = 8, Caption = "Pbk-Not in Book" },
+                 new KeyValue() { Id = 9, Caption = "Pbk-Yes in Book" }
             };
 
         }
@@ -800,7 +797,7 @@ namespace AdangalApp
             return landStatusSource;
         }
 
-        private List<KeyValue> GetLandTypes()
+        public List<KeyValue> GetLandTypes()
         {
             var landTypeSource = new List<KeyValue>();
             landTypeSource.Add(new KeyValue() { Caption = "--select--", Id = -2 });
@@ -1879,7 +1876,12 @@ namespace AdangalApp
                         rpTable = rpTable.Replace("[datarows]", rpSb.ToString());
 
                         //LEFT PAGE TOTAL
-                        var totalparappu = AdangalFn.GetSumThreeDotNo(temData.Select(s => s.Parappu).ToList()); // "2.1.02";
+                        string totalparappu = empty ;
+
+                        if (fe.Key != LandType.ThennaiAbiViruththi)
+                            totalparappu = AdangalFn.GetSumThreeDotNo(temData.Select(s => s.Parappu).ToList()); // "2.1.02";
+
+
                         //var totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai));
 
                         decimal totalTheervai = 0;
@@ -2730,7 +2732,8 @@ namespace AdangalApp
             else if (selValue == 5) dataGridView1.DataSource = GetErrorParappu();
             else if (selValue == 6) dataGridView1.DataSource = EmptyParappu();
             else if (selValue == 7) dataGridView1.DataSource = EmptyOwner();
-            else if (selValue == 8) dataGridView1.DataSource = NonExistingPorambokku();
+            else if (selValue == 8) dataGridView1.DataSource = PbkNotExistInAdangalBook();
+            else if (selValue == 9) dataGridView1.DataSource = PbkOnlyExistingInAdangalBook();
 
             dataGridView1.Columns["OwnerName"].DisplayIndex = 3;
 
@@ -2776,9 +2779,15 @@ namespace AdangalApp
         {
             return fullAdangalFromjson.Where(w => string.IsNullOrEmpty(w.OwnerName)).ToList();
         }
-        private List<Adangal> NonExistingPorambokku()
+        private List<Adangal> PbkNotExistInAdangalBook()
         {
-            return fullAdangalFromjson.Where(w => !string.IsNullOrEmpty(w.Parappu) && w.LandType == LandType.Porambokku).ToList();
+            return fullAdangalFromjson.Where(w => string.IsNullOrEmpty(w.Parappu) == true && w.LandType == LandType.Porambokku).ToList();
+        }
+        
+
+        private List<Adangal> PbkOnlyExistingInAdangalBook()
+        {
+            return fullAdangalFromjson.Where(w => string.IsNullOrEmpty(w.Parappu) == false && w.LandType == LandType.Porambokku).ToList();
         }
 
 
@@ -2861,7 +2870,7 @@ namespace AdangalApp
                 }
                 else if (owningColumnName == "Parappu")
                 {
-                    if (IsValidParappu(cus.Parappu))
+                    if (AdangalFn.IsValidParappu(cus.Parappu))
                     {
                         DataAccess.UpdateParappu(cus);
                         columnIndex += 1;
@@ -2874,7 +2883,7 @@ namespace AdangalApp
                 }
                 else if (owningColumnName == "Theervai")
                 {
-                    if (IsValidTheervai(cus.Theervai))
+                    if (AdangalFn.IsValidTheervai(cus.Theervai))
                     {
                         DataAccess.UpdateTheervai(cus);
                         rowIndex += 1;
@@ -2890,9 +2899,17 @@ namespace AdangalApp
                 if (edited == true)
                 {
                     EditSuccess();
-                    dataGridView1.Rows[rowIndex].Cells[columnIndex].Selected = true;
-                    dataGridView1.CurrentCell = dataGridView1.Rows[rowIndex].Cells[columnIndex];
-                    dataGridView1.BeginEdit(true);
+                    if (rowIndex <= dataGridView1.Rows.Count - 1)
+                    {
+                        dataGridView1.Rows[rowIndex].Cells[columnIndex].Selected = true;
+                        dataGridView1.CurrentCell = dataGridView1.Rows[rowIndex].Cells[columnIndex];
+                        dataGridView1.BeginEdit(true);
+                    }
+                    else
+                    {
+                        //var data = General.ShowPrompt("details", "details");
+                        //AddNew(data);
+                    }
                 }
             }
             catch (Exception ex)
@@ -2901,34 +2918,24 @@ namespace AdangalApp
             }
         }
 
-        private static bool IsValidParappu(string parappu)
-        {
-            var p = parappu.Contains(".");
-            if (p == false) return false;
-            var pp = parappu.Split('.');
-            if (pp.Count() != 3) return false;
-            if (pp[0].isNumber() && pp[1].isNumber() && pp[2].isNumber() && pp[1].Length == 2 && pp[2].Length == 2)
-            {
-                return true;
-            }
-            return false;
-        }
+        //private void AddNew(string data)
+        //{
+        //    var adangal = data.Split('-').ToList();
+        //    var newAdangal = new Adangal()
+        //    {
+        //        NilaAlavaiEn = adangal[0].ToInt32(),
+        //        UtpirivuEn = adangal[1],
+        //        Parappu = adangal[2],
+        //        OwnerName = adangal[3],
+        //        LandType = (LandType)(ddlLandTypes.SelectedItem as KeyValue).Id
 
-        private static bool IsValidTheervai(string parappu)
-        {
-            var p = parappu.Contains(".");
-            if (p == false) return false;
-            var pp = parappu.Split('.');
-            if (pp.Count() != 2) return false;
-            if (pp[0].isNumber() && pp[1].isNumber() && pp[0].Length == 1 && pp[1].Length == 2)
-            {
-                return true;
-            }
-            return false;
+        //    };
 
+        //    DataAccess.AddNewAdangal(newAdangal);
 
+        //    dataGridView1.DataSource = DataAccess.GetActiveAdangal(newAdangal.LandType);
+        //}
 
-        }
         public static string GetGridCellValue(DataGridView grid, int rowIndex, string columnName)
         {
             var cellValue = Convert.ToString(grid.Rows[rowIndex].Cells[columnName].Value);
@@ -2952,58 +2959,15 @@ namespace AdangalApp
         {
             try
             {
-
-
                 if (txtAddNewSurvey.Text.Trim() == empty)
                 {
                     MessageBox.Show("Please provide data to process");
                     return;
                 }
 
+                
+
                 AdangalConverter.TextToAdangal(txtAddNewSurvey.Text, 0, "");
-
-                var newData = txtAddNewSurvey.Text;
-
-                var splitData = newData.Replace("உரிமையாளர்கள் பெயர்", "$").Split('$');
-                var pattaEn = splitData[0].Replace("பட்டா எண்", "$").Split('$').ToList()[1].Replace(":", "").Trim();
-
-                var first = splitData[1];
-
-                var sec = first.Replace("குறிப்பு2", "$").Split('$')[0];
-                var third = sec.Split(Environment.NewLine.ToCharArray()).Where(w => w.Trim() != "").ToList();
-
-                var hecIndex = third.FindIndex(f => f.Contains("ஹெக்"));
-                var totalIndex = third.Count - 1;
-
-                var neededData = third.Skip(hecIndex + 1);
-                neededData = neededData.Take(neededData.Count() - 1);
-                var firstRowWithName = sec.Replace("புல எண்", "$").Split('$').ToList()[0];
-                if (firstRowWithName.Contains("2."))
-                {
-                    firstRowWithName = firstRowWithName.Replace("2.", "$").Split('$')[0];
-                }
-                var name = AdangalConverter.GetOwnerName(firstRowWithName);
-
-                //var surveysubdiv = cmbItemToBeAdded.SelectedItem.ToString().Split('~').ToList();
-
-                int addedCount = 0;
-                neededData.ToList().ForEach(fe =>
-                {
-                    var rowData = fe.Split('\t').ToList();
-                    var adangal = AdangalConverter.GetAdangalFromCopiedData(rowData, pattaEn, name);
-
-                    //if (notInPdfToBeAdded.Contains($"{adangal.NilaAlavaiEn}~{adangal.UtpirivuEn}"))
-                    //{
-                    //    DataAccess.AddNewAdangal(adangal);
-                    //    DataAccess.SaveMissedAdangal(adangal);
-                    //    addedCount += 1;
-                    //    LogMessage($"Added new land {adangal.ToString()}");
-                    //}
-                });
-
-                MessageBox.Show($"added {addedCount} land details");
-                button2_Click_1(null, null);
-
                 txtAddNewSurvey.Clear();
             }
             catch (Exception ex)
@@ -3727,7 +3691,12 @@ namespace AdangalApp
 
         }
 
-       
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            //AddNew(txtAddNewSurvey.Text.Trim());
+            AddNewAdangal ana = new AddNewAdangal();
+            ana.ShowDialog();
+        }
     }
 
     public class CustomGrid : DataGridView

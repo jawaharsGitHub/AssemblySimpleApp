@@ -89,5 +89,32 @@ namespace Common.ExtensionMethod
             }
 
         }
+
+        public static bool IsValidParappu(string parappu)
+        {
+            var p = parappu.Contains(".");
+            if (p == false) return false;
+            var pp = parappu.Split('.');
+            if (pp.Count() != 3) return false;
+            if (pp[0].isNumber() && pp[1].isNumber() && pp[2].isNumber() && pp[1].Length == 2 && pp[2].Length == 2)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static bool IsValidTheervai(string parappu)
+        {
+            var p = parappu.Contains(".");
+            if (p == false) return false;
+            var pp = parappu.Split('.');
+            if (pp.Count() != 2) return false;
+            if (pp[0].isNumber() && pp[1].isNumber() && pp[0].Length == 1 && pp[1].Length == 2)
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 }

@@ -59,3 +59,4 @@ F:\AssemblySimpleApp\AdangalApp\obj\Debug\AdangalApp.csproj.GenerateResource.cac
 F:\AssemblySimpleApp\AdangalApp\obj\Debug\AdangalApp.csproj.CopyComplete
 F:\AssemblySimpleApp\AdangalApp\obj\Debug\AdangalApp.exe
 F:\AssemblySimpleApp\AdangalApp\obj\Debug\AdangalApp.pdb
+F:\AssemblySimpleApp\AdangalApp\obj\Debug\AdangalApp.AddNewAdangal.resources

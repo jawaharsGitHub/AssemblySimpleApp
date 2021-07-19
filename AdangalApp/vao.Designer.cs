@@ -31,7 +31,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new CustomGrid();
+            this.dataGridView1 = new AdangalApp.CustomGrid();
             this.ddlLandTypes = new System.Windows.Forms.ComboBox();
             this.btnGenerate = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
@@ -97,6 +97,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnPrevSurvey = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -542,14 +543,15 @@
             // 
             this.btnAddNewSurvey.Location = new System.Drawing.Point(155, 17);
             this.btnAddNewSurvey.Name = "btnAddNewSurvey";
-            this.btnAddNewSurvey.Size = new System.Drawing.Size(75, 23);
+            this.btnAddNewSurvey.Size = new System.Drawing.Size(46, 23);
             this.btnAddNewSurvey.TabIndex = 27;
-            this.btnAddNewSurvey.Text = "Add";
+            this.btnAddNewSurvey.Text = "Test";
             this.btnAddNewSurvey.UseVisualStyleBackColor = true;
             this.btnAddNewSurvey.Click += new System.EventHandler(this.btnAddNewSurvey_Click);
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.button3);
             this.groupBox7.Controls.Add(this.button2);
             this.groupBox7.Controls.Add(this.btnSyncNew);
             this.groupBox7.Controls.Add(this.btnSwap);
@@ -833,6 +835,16 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Filters";
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(207, 17);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(46, 23);
+            this.button3.TabIndex = 33;
+            this.button3.Text = "Add";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
             // vao
             // 
             this.AcceptButton = this.btnNextPage;
@@ -950,6 +962,7 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnPrevSurvey;
         private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Button button3;
         //public System.Windows.Forms.Button bthThread;
     }
 }

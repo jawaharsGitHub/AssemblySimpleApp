@@ -312,9 +312,17 @@ namespace AdangalApp
         public static bool IsAdangalAlreadyExist(int NilaAlavaiEn, string UtpirivuEn)
         {
             if (File.Exists(JsonPath) == false) return false;
-            //JsonPath = path;
             return GetActiveAdangal()
-                .Where(w => w.NilaAlavaiEn == NilaAlavaiEn && w.UtpirivuEn.Trim() == UtpirivuEn) // && w.LandStatus != LandStatus.Error)
+                .Where(w => w.NilaAlavaiEn == NilaAlavaiEn && w.UtpirivuEn.Trim() == UtpirivuEn) 
+                .Count() == 1;
+
+        }
+
+        public static bool IsAdangalAlreadyExist(Adangal adangal)
+        {
+            if (File.Exists(JsonPath) == false) return false;
+            return GetActiveAdangal()
+                .Where(w => w.NilaAlavaiEn == adangal.NilaAlavaiEn && w.UtpirivuEn.Trim() == adangal.UtpirivuEn) 
                 .Count() == 1;
 
         }
@@ -401,6 +409,14 @@ namespace AdangalApp
         {
             return ReadFileAsObjects<Adangal>(JsonPath).OrderBy(o => o.LandType.SortOrder())
                                                           .ThenBy(o => o.NilaAlavaiEn)
+                                                          .ThenBy(t => t.UtpirivuEn, new AlphanumericComparer())
+                                                          .ToList();
+        }
+
+        public static List<Adangal> GetActiveAdangal(LandType landtype)
+        {
+            return ReadFileAsObjects<Adangal>(JsonPath).Where(w => w.LandType == landtype)
+                                                          .OrderBy(o => o.NilaAlavaiEn)
                                                           .ThenBy(t => t.UtpirivuEn, new AlphanumericComparer())
                                                           .ToList();
         }
@@ -544,6 +560,12 @@ namespace AdangalApp
                 return true;
             }
             return false;
+        }
+
+        public static bool AddNewAdangalEvenExist(Adangal adangal)
+        {
+                InsertSingleObjectToListJson<Adangal>(JsonPath, adangal);
+                return true;
         }
 
         public static bool AddOrReplaceLoadedFile(LoadedFileDetail loadedFileDetail)

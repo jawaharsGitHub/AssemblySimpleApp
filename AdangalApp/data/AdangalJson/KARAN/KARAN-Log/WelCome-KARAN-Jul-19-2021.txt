@@ -41,3 +41,180 @@ Parameter name: index
    at System.Windows.Forms.DataGridViewRowCollection.SharedRow(Int32 rowIndex)
    at System.Windows.Forms.DataGridViewRowCollection.get_Item(Int32 index)
    at AdangalApp.vao.dataGridView1_CellEndEdit(Object sender, DataGridViewCellEventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 2893
+2021-07-19 15:59:18,323 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-19 15:59:22,890 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 15:59:24,781 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 15:59:40,182 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 15:59:40,322 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-19 15:59:40,366 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 15:59:40,839 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 15:59:53,758 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 15:59:53,862 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-19 16:02:33,190 [1] DEBUG - Error @ dataGridView1_CellEndEdit - System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.Collections.ArrayList.get_Item(Int32 index)
+   at System.Windows.Forms.DataGridViewRowCollection.SharedRow(Int32 rowIndex)
+   at System.Windows.Forms.DataGridViewRowCollection.get_Item(Int32 index)
+   at AdangalApp.vao.dataGridView1_CellEndEdit(Object sender, DataGridViewCellEventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 2895
+2021-07-19 16:09:24,874 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-19 16:09:28,777 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 16:09:28,928 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 16:09:42,135 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 16:09:42,187 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-19 16:23:55,698 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-19 16:24:03,995 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 16:24:04,304 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 16:24:18,116 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 16:24:18,168 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-19 16:26:32,739 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-19 16:26:35,497 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 16:26:38,846 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 16:26:52,021 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 16:26:52,072 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-19 16:30:52,390 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-19 16:30:55,252 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 16:30:55,504 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 16:31:08,798 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 16:31:08,847 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-19 16:38:17,175 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-19 16:38:19,656 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 16:38:19,810 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 16:38:33,073 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 16:38:33,126 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-19 17:39:55,963 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-19 17:40:34,426 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 17:40:34,923 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 17:40:48,428 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 17:40:48,536 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-19 17:42:20,410 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-19 17:42:24,631 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 17:42:24,832 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 17:42:38,481 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 17:42:38,529 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-19 17:49:20,486 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-19 17:49:37,960 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 17:49:38,259 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 17:49:51,598 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 17:49:51,646 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-19 17:53:29,406 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-19 17:53:34,011 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 17:53:34,583 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 17:53:48,148 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 17:53:48,199 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-19 18:02:06,215 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 18:02:06,388 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 18:02:19,581 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 18:02:19,628 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-19 18:11:02,549 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-19 18:11:05,706 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 18:11:06,039 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 18:11:19,492 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 18:11:19,538 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-19 18:13:20,964 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-19 18:13:24,901 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 18:13:25,051 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 18:13:38,360 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 18:13:38,402 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-19 18:14:55,291 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 18:14:55,452 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 18:15:09,370 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 18:15:09,403 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-19 18:15:40,088 [1] DEBUG - STEP-5 - Generate Started
+2021-07-19 18:15:42,026 [1] DEBUG - Value missing: Vattam, Firka and Village in tamil font
+2021-07-19 18:27:27,784 [1] DEBUG - STEP-5 - Generate Started
+2021-07-19 18:27:28,541 [1] DEBUG - STARTED HTML GENERATION @ 6:27:28 PM
+2021-07-19 18:27:52,218 [1] DEBUG - Error @ btnGenerate_Click - System.FormatException: Input string was not in a correct format.
+   at Common.ExtensionMethod.AdangalFn.GetSumThreeDotNo(List`1 nos) in F:\AssemblySimpleApp\Common\ExtensionMethod\AdangalExtension.cs:line 52
+   at AdangalApp.vao.<>c__DisplayClass106_0.<btnGenerate_Click>b__4(IGrouping`2 fe) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1879
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at AdangalApp.vao.btnGenerate_Click(Object sender, EventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1812
+2021-07-19 18:35:01,442 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-19 18:35:12,060 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 18:35:12,184 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 18:35:25,803 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 18:35:25,930 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-19 18:37:17,758 [1] DEBUG - STARTED: 42-6B [0/1]
+2021-07-19 18:37:18,211 [1] DEBUG - ------------------------------------
+2021-07-19 18:37:35,329 [1] DEBUG - Wrong Captcha: WS5NEF7: 42-6B
+2021-07-19 18:38:25,076 [1] DEBUG - STARTED: 42-6B [0/1]
+2021-07-19 18:38:25,266 [1] DEBUG - ------------------------------------
+2021-07-19 18:38:27,719 [1] DEBUG - Wrong Captcha: SWFZXP: 42-6B
+2021-07-19 18:38:39,979 [1] DEBUG - STARTED: 42-6B [0/1]
+2021-07-19 18:38:40,521 [1] DEBUG - ------------------------------------
+2021-07-19 18:38:50,635 [1] DEBUG - ERROR in names: namerow-
+1.  	???????????????????????????????????????????????????????????????????????????????????	...	???????????????????????? ???? ??????????????????????? ???????????????	-
+
+2021-07-19 18:41:46,396 [1] DEBUG - ERROR in names: namerow-
+1.  	???????????????????????????????????????????????????????????????????????????????????	...	???????????????????????? ???? ??????????????????????? ???????????????	-
+
+2021-07-19 18:41:54,946 [1] DEBUG - ERROR: 42-6B - System.NullReferenceException: Object reference not set to an instance of an object.
+   at AdangalApp.AdangalTypes.AdangalConverter.GetAdangalFromCopiedData(List`1 data, String pattaEn, KeyValue ownerName) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 653
+   at AdangalApp.AdangalTypes.AdangalConverter.<>c__DisplayClass15_0.<TextToAdangal>b__2(String fe) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 575
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at AdangalApp.AdangalTypes.AdangalConverter.TextToAdangal(String text, Int32 surveyNo, String subdivNo) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 572
+2021-07-19 18:41:55,004 [1] DEBUG - DONE: 42-6B [0/1]
+2021-07-19 18:45:35,829 [1] DEBUG - STARTED: 42-6B [0/1]
+2021-07-19 18:45:36,440 [1] DEBUG - ------------------------------------
+2021-07-19 18:45:37,716 [1] DEBUG - ERROR in names: namerow-
+1.  	???????????????????????????????????????????????????????????????????????????????????	...	???????????????????????? ???? ??????????????????????? ???????????????	-
+
+2021-07-19 18:45:38,439 [1] DEBUG - ERROR: 42-6B - System.NullReferenceException: Object reference not set to an instance of an object.
+   at AdangalApp.AdangalTypes.AdangalConverter.GetAdangalFromCopiedData(List`1 data, String pattaEn, KeyValue ownerName) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 653
+   at AdangalApp.AdangalTypes.AdangalConverter.<>c__DisplayClass15_0.<TextToAdangal>b__2(String fe) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 575
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at AdangalApp.AdangalTypes.AdangalConverter.TextToAdangal(String text, Int32 surveyNo, String subdivNo) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 572
+2021-07-19 18:45:43,370 [1] DEBUG - DONE: 42-6B [0/1]
+2021-07-19 20:06:30,181 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-19 20:06:35,036 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 20:06:35,333 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 20:06:48,551 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 20:06:48,598 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-19 20:09:02,261 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-19 20:09:04,933 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 20:09:08,386 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 20:09:21,416 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 20:09:21,447 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-19 20:09:21,525 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 20:09:21,822 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 20:09:34,728 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 20:09:34,774 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-19 20:09:56,101 [1] DEBUG - STEP-5 - Generate Started
+2021-07-19 20:09:57,320 [1] DEBUG - STARTED HTML GENERATION @ 8:09:57 PM
+2021-07-19 20:10:22,662 [1] DEBUG - Error @ btnGenerate_Click - System.FormatException: Input string was not in a correct format.
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseDecimal(String value, NumberStyles options, NumberFormatInfo numfmt)
+   at System.Convert.ToDecimal(String value)
+   at AdangalApp.vao.<>c.<btnGenerate_Click>b__106_7(Adangal s) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1889
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.Sum(IEnumerable`1 source)
+   at System.Linq.Enumerable.Sum[TSource](IEnumerable`1 source, Func`2 selector)
+   at AdangalApp.vao.<>c__DisplayClass106_0.<btnGenerate_Click>b__4(IGrouping`2 fe) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1889
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at AdangalApp.vao.btnGenerate_Click(Object sender, EventArgs e) in F:\AssemblySimpleApp\AdangalApp\vao.cs:line 1812
+2021-07-19 20:10:42,637 [1] DEBUG - STEP-3 - Raedy For Print - Started
+2021-07-19 20:10:42,777 [1] DEBUG - ready: False STATUS: 100%
+PBK NOT UPDATED:105 of 105
+ISSUE:43
+
+2021-07-19 20:10:42,777 [1] DEBUG - STEP-3 - Raedy For Print - Completed
+2021-07-19 20:17:24,221 [1] DEBUG - STARTED: 274-1C2D [0/13]
+2021-07-19 20:17:24,221 [1] DEBUG - ------------------------------------
+2021-07-19 20:17:25,721 [1] DEBUG - Added (2) out of (2) for 274-1C2D
+2021-07-19 20:17:25,830 [1] DEBUG - DONE: 274-1C2D [0/13]
+2021-07-19 20:17:38,337 [1] DEBUG - STARTED: 274-1C2C [1/13]
+2021-07-19 20:17:38,337 [1] DEBUG - ------------------------------------
+2021-07-19 20:17:39,257 [1] DEBUG - Added (2) out of (2) for 274-1C2C
+2021-07-19 20:17:39,257 [1] DEBUG - DONE: 274-1C2C [1/13]
+2021-07-19 20:17:46,935 [1] DEBUG - STARTED: 237-2A [2/13]
+2021-07-19 20:17:46,935 [1] DEBUG - ------------------------------------
+2021-07-19 20:17:47,441 [1] DEBUG - Added (1) out of (1) for 237-2A
+2021-07-19 20:17:47,457 [1] DEBUG - DONE: 237-2A [2/13]
+2021-07-19 20:29:58,677 [1] DEBUG - STEP - 1 - Village: KARAN
+2021-07-19 20:30:02,146 [1] DEBUG - STEP-2 - Started - Existing file Load
+2021-07-19 20:30:02,240 [1] DEBUG - READED DATA FROM EXISTING JSON FILE
+2021-07-19 20:30:14,739 [1] DEBUG - LOADING Survey and subdiv no.
+2021-07-19 20:30:14,864 [1] DEBUG - STEP-2 - Completed - Existing file Load
+2021-07-19 20:32:44,237 [1] DEBUG - ERROR:System.ArgumentNullException: element cannot be null
+Parameter name: element
+   at OpenQA.Selenium.Support.UI.SelectElement..ctor(IWebElement element)
+   at AdangalApp.AdangalTypes.AdangalConverter.ProcessAdangal(List`1 list, Int32 alreadyProcessed, Boolean isCorrection) in F:\AssemblySimpleApp\AdangalApp\AdangalTypes\AdangalConverter.cs:line 183

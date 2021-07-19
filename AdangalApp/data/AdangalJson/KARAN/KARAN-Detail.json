@@ -4,11 +4,12 @@
   "MaavattamNameTamil": "இராமநாதபுரம்",
   "VattamCode": 11,
   "VattamName": "RAMANATHAPURAM",
-  "VattamNameTamil": "",
-  "FirkaName": "",
+  "VattamNameTamil": "இராமநாதபுரம்",
+  "FirkaName": "பெருங்குளம்",
   "VillageCode": 55,
   "VillageName": "KARAN",
-  "VillageNameTamil": "",
+  "VillageNameTamil": "காரான்",
+  "VillageFullName": "55 - KARAN",
   "InitialPercentage": null,
   "CorrectedPercentage": null
 }

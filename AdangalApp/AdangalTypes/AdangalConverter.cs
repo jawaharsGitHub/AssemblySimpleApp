@@ -49,13 +49,13 @@ namespace AdangalApp.AdangalTypes
         static BackgroundWorker bw = new BackgroundWorker();
         //static BackgroundWorker bwFull = new BackgroundWorker();
         static string testdataPath = "";
-        static int lastIndexProcessed = 0;
-        static List<KeyValue> localList;
+        //static int lastIndexProcessed = 0;
+        //static List<KeyValue> localList;
 
 
         public static bool ProcessAdangal(List<KeyValue> list, int alreadyProcessed = 0, bool isCorrection = false)
         {
-            localList = list;
+            //localList = list;
 
             try
             {
@@ -94,13 +94,13 @@ namespace AdangalApp.AdangalTypes
                 bool isSubDivFound = true;
 
 
-                for (int i = lastIndexProcessed + 1; i <= list.Count - 1; i++)
+                for (int i = 0; i <= list.Count - 1; i++)
                 {
                     try
                     {
                         currentSurvey = list[i].Value;
                         currentSubDiv = list[i].Caption;
-                        lastIndexProcessed = i;
+                        //lastIndexProcessed = i;
 
                         if (isCorrection == false)
                         {
