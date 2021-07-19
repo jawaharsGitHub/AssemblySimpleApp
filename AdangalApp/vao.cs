@@ -755,7 +755,7 @@ namespace AdangalApp
                 new KeyValue() { Id = 4, Caption = "ErrorVagai" },
                 new KeyValue() { Id = 5, Caption = "ErrorParappu" },
                 new KeyValue() { Id = 6, Caption = "EmptyParappu" },
-                new KeyValue() { Id = 7, Caption = "EmptyOwnerName" }, 
+                new KeyValue() { Id = 7, Caption = "EmptyOwnerName" },
                  new KeyValue() { Id = 8, Caption = "Pbk-Not in Book" },
                  new KeyValue() { Id = 9, Caption = "Pbk-Yes in Book" }
             };
@@ -1420,7 +1420,7 @@ namespace AdangalApp
             try
             {
                 var landTypeGroup = (from wl in source
-                                         //where wl.LandType != LandType.Zero
+                                      where wl.LandType != LandType.ThennaiAbiViruththi
                                      group wl by wl.LandType into newGrp
                                      select newGrp).ToList();
 
@@ -1465,9 +1465,20 @@ namespace AdangalApp
                         if (fe.Key != LandType.Porambokku)
                             totalTheervai = temData.Sum(s => s.TheervaiTotal).ToString();
 
-                        var totalRows = row.Replace("[pageNo]", $"<b>{tamilMoththam}</b>")
-                                                  .Replace("[parappu]", $"<b>{AdangalFn.GetSumThreeDotNo(temData.Select(s => s.ParappuTotal).ToList())}</b>")
-                                                  .Replace("[theervai]", $"<b>{totalTheervai}</b>");
+                        string totalRows = "";
+                        try
+                        {
+
+                             totalRows = row.Replace("[pageNo]", $"<b>{tamilMoththam}</b>")
+                                                      .Replace("[parappu]", $"<b>{AdangalFn.GetSumThreeDotNo(temData.Select(s => s.ParappuTotal).ToList())}</b>")
+                                                      .Replace("[theervai]", $"<b>{totalTheervai}</b>");
+
+                        }
+                        catch (Exception)
+                        {
+
+                            throw;
+                        }
 
                         // Created a sub list item!
                         destination.Add(new PageTotal()
@@ -1876,17 +1887,35 @@ namespace AdangalApp
                         rpTable = rpTable.Replace("[datarows]", rpSb.ToString());
 
                         //LEFT PAGE TOTAL
-                        string totalparappu = empty ;
+                        string totalparappu = empty;
 
-                        if (fe.Key != LandType.ThennaiAbiViruththi)
-                            totalparappu = AdangalFn.GetSumThreeDotNo(temData.Select(s => s.Parappu).ToList()); // "2.1.02";
+                        try
+                        {
+
+
+                            if (fe.Key != LandType.ThennaiAbiViruththi)
+                                totalparappu = AdangalFn.GetSumThreeDotNo(temData.Select(s => s.Parappu).ToList()); // "2.1.02";
+                        }
+                        catch (Exception)
+                        {
+
+                            throw;
+                        }
 
 
                         //var totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai));
 
                         decimal totalTheervai = 0;
-                        if (fe.Key != LandType.Porambokku)
-                            totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai));
+                        try
+                        {
+                            if (fe.Key != LandType.Porambokku && fe.Key != LandType.ThennaiAbiViruththi)
+                                totalTheervai = temData.Sum(s => Convert.ToDecimal(s.Theervai));
+                        }
+                        catch (Exception)
+                        {
+
+                            throw;
+                        }
 
                         var total = lpTotal.Replace("[moththaparappu]", totalparappu).Replace("[moththatheervai]", totalTheervai == 0 ? "" : totalTheervai.ToString());
 
@@ -2459,7 +2488,7 @@ namespace AdangalApp
             try
             {
                 LogMessage($"STEP-2 - Started - First time Load");
-               
+
 
                 if (NoInternet()) return;
                 if (DataAccess.IsSubDivFileExist() == false)
@@ -2783,7 +2812,7 @@ namespace AdangalApp
         {
             return fullAdangalFromjson.Where(w => string.IsNullOrEmpty(w.Parappu) == true && w.LandType == LandType.Porambokku).ToList();
         }
-        
+
 
         private List<Adangal> PbkOnlyExistingInAdangalBook()
         {
@@ -2965,7 +2994,7 @@ namespace AdangalApp
                     return;
                 }
 
-                
+
 
                 AdangalConverter.TextToAdangal(txtAddNewSurvey.Text, 0, "");
                 txtAddNewSurvey.Clear();
@@ -3557,7 +3586,7 @@ namespace AdangalApp
 
             if (e.ClickedItem.Name == "ReCreateName")
             {
-                AdangalConverter.ProcessAdangal(list, isCorrection:  true);
+                AdangalConverter.ProcessAdangal(list, isCorrection: true);
             }
             else if (e.ClickedItem.Name == "DeleteName")
             {
@@ -3592,7 +3621,7 @@ namespace AdangalApp
                 if (DialogResult.Yes ==
                     MessageBox.Show("All Data are in Sync!", "Retry?", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                 {
-                    if(AdangalConverter.ProcessAdangal(list) == false)
+                    if (AdangalConverter.ProcessAdangal(list) == false)
                     {
                         SyncData();
                     }
@@ -3674,7 +3703,7 @@ namespace AdangalApp
             catch (Exception)
             {
             }
-            
+
         }
 
         private void btnPrevSurvey_Click(object sender, EventArgs e)
