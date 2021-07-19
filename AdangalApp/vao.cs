@@ -759,7 +759,8 @@ namespace AdangalApp
                 new KeyValue() { Id = 4, Caption = "ErrorVagai" },
                 new KeyValue() { Id = 5, Caption = "ErrorParappu" },
                 new KeyValue() { Id = 6, Caption = "EmptyParappu" },
-                new KeyValue() { Id = 7, Caption = "EmptyOwnerName" },
+                new KeyValue() { Id = 7, Caption = "EmptyOwnerName" }, 
+                 new KeyValue() { Id = 8, Caption = "NonExistingPorambokku" },
             };
 
         }
@@ -2729,6 +2730,9 @@ namespace AdangalApp
             else if (selValue == 5) dataGridView1.DataSource = GetErrorParappu();
             else if (selValue == 6) dataGridView1.DataSource = EmptyParappu();
             else if (selValue == 7) dataGridView1.DataSource = EmptyOwner();
+            else if (selValue == 8) dataGridView1.DataSource = NonExistingPorambokku();
+
+            dataGridView1.Columns["OwnerName"].DisplayIndex = 3;
 
             waitForm.Close();
         }
@@ -2771,6 +2775,10 @@ namespace AdangalApp
         private List<Adangal> EmptyOwner()
         {
             return fullAdangalFromjson.Where(w => string.IsNullOrEmpty(w.OwnerName)).ToList();
+        }
+        private List<Adangal> NonExistingPorambokku()
+        {
+            return fullAdangalFromjson.Where(w => !string.IsNullOrEmpty(w.Parappu) && w.LandType == LandType.Porambokku).ToList();
         }
 
 
