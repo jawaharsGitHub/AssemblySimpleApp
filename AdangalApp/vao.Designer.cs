@@ -71,6 +71,7 @@
             this.txtAddNewSurvey = new System.Windows.Forms.TextBox();
             this.btnAddNewSurvey = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnSyncNew = new System.Windows.Forms.Button();
             this.btnSwap = new System.Windows.Forms.Button();
@@ -97,7 +98,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnPrevSurvey = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnPdfVerify = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -166,9 +167,9 @@
             // 
             // btnGenerate
             // 
-            this.btnGenerate.Location = new System.Drawing.Point(34, 105);
+            this.btnGenerate.Location = new System.Drawing.Point(73, 105);
             this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(74, 40);
+            this.btnGenerate.Size = new System.Drawing.Size(65, 40);
             this.btnGenerate.TabIndex = 7;
             this.btnGenerate.Text = "Hard Copy";
             this.btnGenerate.UseVisualStyleBackColor = true;
@@ -445,6 +446,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.btnPdfVerify);
             this.groupBox5.Controls.Add(this.btnSoftGen);
             this.groupBox5.Controls.Add(this.btnPercentage);
             this.groupBox5.Controls.Add(this.btnGenerate);
@@ -459,9 +461,9 @@
             // btnSoftGen
             // 
             this.btnSoftGen.Enabled = false;
-            this.btnSoftGen.Location = new System.Drawing.Point(129, 105);
+            this.btnSoftGen.Location = new System.Drawing.Point(147, 105);
             this.btnSoftGen.Name = "btnSoftGen";
-            this.btnSoftGen.Size = new System.Drawing.Size(74, 40);
+            this.btnSoftGen.Size = new System.Drawing.Size(69, 40);
             this.btnSoftGen.TabIndex = 19;
             this.btnSoftGen.Text = "Soft Copy";
             this.btnSoftGen.UseVisualStyleBackColor = true;
@@ -565,6 +567,16 @@
             this.groupBox7.TabIndex = 28;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Add Missed Survey";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(207, 17);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(46, 23);
+            this.button3.TabIndex = 33;
+            this.button3.Text = "Add";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // button2
             // 
@@ -835,15 +847,15 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Filters";
             // 
-            // button3
+            // btnPdfVerify
             // 
-            this.button3.Location = new System.Drawing.Point(207, 17);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(46, 23);
-            this.button3.TabIndex = 33;
-            this.button3.Text = "Add";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            this.btnPdfVerify.Location = new System.Drawing.Point(0, 105);
+            this.btnPdfVerify.Name = "btnPdfVerify";
+            this.btnPdfVerify.Size = new System.Drawing.Size(65, 40);
+            this.btnPdfVerify.TabIndex = 20;
+            this.btnPdfVerify.Text = "VERIFY PDF";
+            this.btnPdfVerify.UseVisualStyleBackColor = true;
+            this.btnPdfVerify.Click += new System.EventHandler(this.btnPdfVerify_Click);
             // 
             // vao
             // 
@@ -963,6 +975,7 @@
         private System.Windows.Forms.Button btnPrevSurvey;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnPdfVerify;
         //public System.Windows.Forms.Button bthThread;
     }
 }

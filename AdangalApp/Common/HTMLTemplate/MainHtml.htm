@@ -133,43 +133,10 @@
             width: 100%;
         }
     </style>
-    <!--<script src="jquery-3.6.0.min.js"></script>-->
+    <script src="[jQueryPath]"></script>
     <script>
         $(document).ready(function () {
             alert('Completely Loaded');
-            //var allLp = $(".lpChangeColNo"); //.css("background-color", "#2a3843");
-            //var allRp = $(".rpChangeColNo");
-
-            var lpId = "lp-";
-            var rpId = "rp-";
-            var allLp = $("[id^='" + lpId + "']");
-            var allRp = $("[id^='" + rpId + "']");
-
-            if (allLp.length == allRp.length) {
-
-                for (var i = 0; i <= allLp.length - 1; i++) {
-
-                    if ($(allRp[i]).height() != $(allLp[i]).height()) {
-                        //alert($(allRp[i]).height() + 'vs' + $(allLp[i]).height());
-                         //alert($(allRp[i]).height() + 'vs' + $(allLp[i]).height());
-                        $(allRp[i]).height($(allLp[i]).height());
-                    }
-
-
-
-                    //if (allLp[i].clientWidth != allRp[i].clientWidth || allLp[i].clientWidth != allRp[i].clientWidth) {
-                    //    //alert('not same for ' + allLp[i].innerText + '-' + allLp[i + 1].innerText)
-                    //    allRp[i].clientWidth = allLp[i].clientWidth;
-                    //    allRp[i].clientWidth = allLp[i].clientWidth;
-                    //}
-
-                }
-                alert('Correction Completed');
-            }
-            else {
-                alert('something wrong!' + allLp.length + '' + allRp.length);
-            }
-           
         });
     </script>
 </head>

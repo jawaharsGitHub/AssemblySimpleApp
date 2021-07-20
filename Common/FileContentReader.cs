@@ -8,12 +8,10 @@ namespace Common
         //public static string DataPageHtml { get; } = GetHtmlFileContent("adangal-DataPage.htm");
 
         //public static string pageListHtml { get; } = GetHtmlFileContent("adangal-PageList.htm");
-
+        
         public static string MemberContactHtml { get; } = GetHtmlFileContent("MemberContact.htm");
 
-        public static string InternetNotWorking { get; } = GetVoicePath("NoInternet.wav");
-        public static string WebsiteNotWorking { get; } = GetVoicePath("WebsiteNotWorking.wav");
-        public static string SomethingWrong { get; } = GetVoicePath("SomethingWrong.wav");
+        public static string jQueryPath { get; } = GetFilePath("jquery-3.6.0.min.js");
 
 
         public static string FirstPageTemplate { get; } = GetHtmlFileContent("FirstPageTemplate.htm");
@@ -61,18 +59,13 @@ namespace Common
 
         private static string GetHtmlFileContent(string fileName)
         {
-            // var dataFolder = General.GetDataFolder("AssemblySimpleApp\\bin\\Debug", "Common\\HTMLTemplate\\");
-
             var dataFolder = General.GetDataFolder("Common\\HTMLTemplate\\");
             return File.ReadAllText($"{dataFolder}{fileName}");
         }
 
-        private static string GetVoicePath(string fileName)
+        private static string GetFilePath(string fileName)
         {
-            // var dataFolder = General.GetDataFolder("AssemblySimpleApp\\bin\\Debug", "Common\\HTMLTemplate\\");
-
             return General.GetDataFolder($"Common\\HTMLTemplate\\{fileName}");
-            //return File.ReadAllText($"{dataFolder}{fileName}");
         }
 
     }

@@ -51153,7 +51153,7 @@
     "NilaAlavaiEn": 1,
     "UtpirivuEn": "1",
     "Parappu": "0.16.00",
-    "Theervai": "0.14",
+    "Theervai": null,
     "Anupathaarar": "சாலை",
     "OwnerName": "சாலை",
     "LastName": "இல்லை",
@@ -51161,7 +51161,7 @@
     "RegisterDate": "26-11-2015",
     "LandType": 3,
     "IsFullfilled": false,
-    "LandStatus": 5,
+    "LandStatus": 7,
     "PattaEn": 13
   },
   {

@@ -104,6 +104,14 @@ set max-width for name column
 not able to edit grid columns.
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
+---check list--------
+page no should be odd numbers
+run validate pdf
+summary cross check
+check all basic details.
+
+
+
 -----V-1-----
 
 IGNORE LOG FILES (IGNOREFILES?)

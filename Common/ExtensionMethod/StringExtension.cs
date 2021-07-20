@@ -30,5 +30,12 @@ namespace Common.ExtensionMethod
             if (seperator == null) seperator = Environment.NewLine;
             return string.Join(seperator, list);
         }
+
+        public static string ListToIntString(this List<int> list, string seperator = null)
+        {
+
+            if (seperator == null) seperator = Environment.NewLine;
+            return string.Join(seperator, list);
+        }
     }
 }

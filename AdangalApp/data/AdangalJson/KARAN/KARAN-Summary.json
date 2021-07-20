@@ -1,35 +1,35 @@
 [
   {
     "Vibaram": "கைப்பற்று புஞ்சை",
-    "Pakkam": "2-161",
+    "Pakkam": "2-206",
     "Parappu": "865.76.5",
     "Id": 1,
     "LandType": 1
   },
   {
     "Vibaram": "கைப்பற்று மானாவாரி",
-    "Pakkam": "162-170",
+    "Pakkam": "207-227",
     "Parappu": "76.99.0",
     "Id": 2,
     "LandType": 2
   },
   {
     "Vibaram": "கைப்பற்று மொத்தம்",
-    "Pakkam": "2-170",
+    "Pakkam": "2-227",
     "Parappu": "942.75.50",
     "Id": -1,
     "LandType": 0
   },
   {
     "Vibaram": "புஞ்சை அனாதீனம்",
-    "Pakkam": "",
+    "Pakkam": "228-229",
     "Parappu": "29.51.00",
     "Id": -1,
     "LandType": 0
   },
   {
     "Vibaram": "புறம்போக்கு",
-    "Pakkam": "171-196",
+    "Pakkam": "231-239",
     "Parappu": "238.53.50",
     "Id": 3,
     "LandType": 3

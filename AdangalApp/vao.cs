@@ -1420,7 +1420,7 @@ namespace AdangalApp
             try
             {
                 var landTypeGroup = (from wl in source
-                                      where wl.LandType != LandType.ThennaiAbiViruththi
+                                     where wl.LandType != LandType.ThennaiAbiViruththi
                                      group wl by wl.LandType into newGrp
                                      select newGrp).ToList();
 
@@ -1469,9 +1469,9 @@ namespace AdangalApp
                         try
                         {
 
-                             totalRows = row.Replace("[pageNo]", $"<b>{tamilMoththam}</b>")
-                                                      .Replace("[parappu]", $"<b>{AdangalFn.GetSumThreeDotNo(temData.Select(s => s.ParappuTotal).ToList())}</b>")
-                                                      .Replace("[theervai]", $"<b>{totalTheervai}</b>");
+                            totalRows = row.Replace("[pageNo]", $"<b>{tamilMoththam}</b>")
+                                                     .Replace("[parappu]", $"<b>{AdangalFn.GetSumThreeDotNo(temData.Select(s => s.ParappuTotal).ToList())}</b>")
+                                                     .Replace("[theervai]", $"<b>{totalTheervai}</b>");
 
                         }
                         catch (Exception)
@@ -1999,6 +1999,7 @@ namespace AdangalApp
 
                 mainHtml = mainHtml.Replace("[allPageData]", allContent.ToString());
                 mainHtml = mainHtml.Replace("[certifed]", GetCertifiedContent());
+                mainHtml = mainHtml.Replace("[jQueryPath]", FileContentReader.jQueryPath);
 
                 var fPath = AdangalConstant.CreateAndReadPath($"{loadedFile.VillageName}-Result");
                 var filePath = Path.Combine(fPath, $"{loadedFile.VillageName}-{DateTime.Now.ToString("MM-dd-yyyy HH-mm-ss")}.htm");
@@ -3725,6 +3726,32 @@ namespace AdangalApp
             //AddNew(txtAddNewSurvey.Text.Trim());
             AddNewAdangal ana = new AddNewAdangal();
             ana.ShowDialog();
+        }
+
+        private void btnPdfVerify_Click(object sender, EventArgs e)
+        {
+            var file = General.SelectSingleFileDialog().First();
+            var allPages = file.GetPdfPages();
+
+            List<int> wrongPages = new List<int>();
+            List<int> emptyPages = new List<int>();
+
+            for (int i = 0; i <= allPages.Count - 1; i++)
+            {
+                if (allPages[i].Contains("பச\0: 1431") == false && allPages[i].Contains("எண் : 2") == false)
+                    wrongPages.Add(i + 1);
+            }
+
+            for (int i = 0; i <= allPages.Count - 1; i++)
+            {
+                if (string.IsNullOrEmpty(allPages[i].Trim()))
+                    emptyPages.Add(i + 1);
+
+            }
+
+            MessageBox.Show($"Page To Verify: {wrongPages.ListToIntString(",")} {Environment.NewLine} " +
+                $"Empty Pages: {emptyPages.ListToIntString(",")}");
+
         }
     }
 

@@ -17,27 +17,9 @@ namespace Common.ExtensionMethod
             PdfReader reader = new PdfReader(fileName);
             int intPageNum = reader.NumberOfPages;
 
-            var filePath = fileName.Replace(".pdf", ".txt");
+            //var filePath = fileName.Replace(".pdf", ".txt");
 
             var sb = new StringBuilder();
-
-            //File.WriteAllText(filePath, "");
-
-            //for (int i = 1; i <= intPageNum; i++)
-            //{
-            //    FontProgramRenderFilter fontFilter = new FontProgramRenderFilter();
-            //    ITextExtractionStrategy strategy = new FilteredTextRenderListener(
-            //            new LocationTextExtractionStrategy(), fontFilter);
-
-            //    var text = PdfTextExtractor.GetTextFromPage(reader, i, strategy);
-
-            //    //var text2 = Encoding.UTF8.GetString(Encoding.Default.GetBytes(text));
-
-            //    //var text2 = PdfTextExtractor.GetTextFromPage(reader, i, new SimpleTextExtractionStrategy());
-
-            //    File.AppendAllText(filePath, text);
-            //}
-
 
             for (int i = 1; i <= intPageNum; i++)
             {
@@ -47,6 +29,22 @@ namespace Common.ExtensionMethod
             }
             reader.Close();
             return sb.ToString(); //File.ReadAllText(filePath);
+        }
+
+        public static List<string> GetPdfPages(this string fileName)
+        {
+            PdfReader reader = new PdfReader(fileName);
+            int intPageNum = reader.NumberOfPages;
+
+            var sb = new List<string>();
+
+            for (int i = 1; i <= intPageNum; i++)
+            {
+                var text = PdfTextExtractor.GetTextFromPage(reader, i, new LocationTextExtractionStrategy());
+                sb.Add(text);
+            }
+            reader.Close();
+            return sb; 
         }
 
 
