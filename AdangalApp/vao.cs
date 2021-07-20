@@ -2002,7 +2002,7 @@ namespace AdangalApp
                 mainHtml = mainHtml.Replace("[jQueryPath]", FileContentReader.jQueryPath);
 
                 var fPath = AdangalConstant.CreateAndReadPath($"{loadedFile.VillageName}-Result");
-                var filePath = Path.Combine(fPath, $"{loadedFile.VillageName}-{DateTime.Now.ToString("MM-dd-yyyy HH-mm-ss")}.htm");
+                var filePath = Path.Combine(fPath, $"{loadedFile.VillageName}-{DateTime.Now.ToString("MM-dd-yyyy")}.htm");
                 File.AppendAllText(filePath, mainHtml);
 
                 LogMessage($"COMPLETED HTML GENERATION @ {filePath}");
